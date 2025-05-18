@@ -94,6 +94,11 @@ def main():
     type_system.define_function_signature("SetTemperature", ["Room", "Integer"], "Boolean")
     
     # Initialize other core components
+    print("\nInitializing other core components...")
+    parser = FormalLogicParser(type_system)
+    unification_engine = UnificationEngine(type_system)
+    ksi = KnowledgeStoreInterface(type_system)
+    
 # PART 2: Creating the Knowledge Base
     # ----------------------------------
     print("\n\n" + "-"*40)
@@ -782,8 +787,6 @@ def main():
     print("complex problems in a smart home automation system.")
 
 
-if __name__ == "__main__":
-    main()
     # Get all relevant context for the query
     arithmetic_context = ksi.query_all_statements(context_ids=["DEVICES", "ARITHMETIC"])
     
@@ -795,6 +798,8 @@ if __name__ == "__main__":
     print(f"Status message: {arithmetic_result.status_message}")
     print(f"Inference engine used: {arithmetic_result.inference_engine_used}")
     print(f"Time taken: {arithmetic_result.time_taken_ms:.2f} ms")
+    
+    # Print FOL result again for demonstration
     print(f"Goal achieved: {fol_result.goal_achieved}")
     print(f"Status message: {fol_result.status_message}")
     print(f"Inference engine used: {fol_result.inference_engine_used}")
@@ -804,7 +809,6 @@ if __name__ == "__main__":
         print("\nProof steps:")
         for i, step in enumerate(fol_result.proof_steps):
             print(f"  Step {i+1}: {step.rule_name} - {step.explanation}")
-    print("\nInitializing other core components...")
-    parser = FormalLogicParser(type_system)
-    unification_engine = UnificationEngine(type_system)
-    ksi = KnowledgeStoreInterface(type_system)
+
+if __name__ == "__main__":
+    main()

@@ -4,7 +4,7 @@ Type checking and inference visitor for AST nodes.
 This module defines a visitor for type checking and inference of AST nodes.
 """
 
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, TYPE_CHECKING
 
 from godelOS.core_kr.ast.nodes import (
     AST_Node, ASTVisitor, ConstantNode, VariableNode, ApplicationNode,
@@ -12,6 +12,9 @@ from godelOS.core_kr.ast.nodes import (
 )
 from godelOS.core_kr.type_system.types import Type, FunctionType
 from godelOS.core_kr.type_system.environment import TypeEnvironment
+
+if TYPE_CHECKING:
+    from godelOS.core_kr.type_system.manager import TypeSystemManager
 
 
 class Error:

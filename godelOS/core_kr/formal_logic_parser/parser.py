@@ -14,6 +14,7 @@ from godelOS.core_kr.ast.nodes import (
     QuantifierNode, ConnectiveNode, ModalOpNode, LambdaNode
 )
 from godelOS.core_kr.type_system.manager import TypeSystemManager
+from godelOS.core_kr.type_system.types import Type, FunctionType
 
 
 class Token:

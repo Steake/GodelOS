@@ -14,7 +14,8 @@ from typing import Dict, List, Optional, Set, Tuple, Any
 import time
 import logging
 
-from godelOS.core_kr.ast.nodes import AST_Node, VariableNode, ConstantNode
+from godelOS.core_kr.ast.nodes import AST_Node, VariableNode, ConstantNode, ApplicationNode, ConnectiveNode, QuantifierNode
+from godelOS.core_kr.type_system.types import Type, AtomicType, FunctionType, InstantiatedParametricType
 from godelOS.core_kr.type_system.manager import TypeSystemManager
 from godelOS.inference_engine.base_prover import BaseProver, ResourceLimits
 from godelOS.inference_engine.proof_object import ProofObject, ProofStepNode
@@ -373,7 +374,7 @@ class SMTInterface(BaseProver):
             declared_sorts: Set of already declared sort names
             script_lines: List of script lines to append to
         """
-        from godelOS.core_kr.type_system.types import AtomicType, FunctionType, InstantiatedParametricType
+        # Types already imported at the top of the file
         
         if isinstance(type_obj, AtomicType):
             sort_name = type_obj.name
@@ -431,7 +432,7 @@ class SMTInterface(BaseProver):
         Returns:
             The corresponding SMT-LIB sort as a string
         """
-        from godelOS.core_kr.type_system.types import AtomicType, FunctionType, InstantiatedParametricType
+        # Types already imported at the top of the file
         
         if isinstance(type_obj, AtomicType):
             # Map common types to SMT-LIB sorts

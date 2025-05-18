@@ -9,6 +9,7 @@ import unittest
 from unittest.mock import MagicMock, patch
 import tempfile
 import os
+import subprocess
 from typing import Dict, List, Optional, Set
 
 from godelOS.core_kr.ast.nodes import (

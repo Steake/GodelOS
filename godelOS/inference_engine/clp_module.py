@@ -11,6 +11,7 @@ import time
 import logging
 
 from godelOS.core_kr.ast.nodes import AST_Node, VariableNode, ApplicationNode, ConstantNode, ConnectiveNode
+from godelOS.core_kr.type_system.types import Type, FunctionType
 from godelOS.core_kr.unification_engine.engine import UnificationEngine
 from godelOS.core_kr.knowledge_store.interface import KnowledgeStoreInterface
 from godelOS.inference_engine.base_prover import BaseProver, ResourceLimits

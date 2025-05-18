@@ -9,6 +9,7 @@ and traversal support.
 from typing import Any, Dict, List, Optional, Set, Tuple, TypeVar, Generic
 from abc import ABC, abstractmethod
 from copy import deepcopy
+from godelOS.core_kr.type_system.types import Type
 
 # Type variable for the visitor pattern return type
 T = TypeVar('T')

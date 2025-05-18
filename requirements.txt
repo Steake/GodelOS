@@ -1,5 +1,9 @@
 # Core dependencies
 typing-extensions>=4.0.0
+psutil>=5.9.0
+spacy>=3.5.0
+nltk>=3.8.0
+semver>=3.0.0
 
 # Development dependencies
 pytest>=7.0.0
