@@ -1,0 +1,17 @@
+{
+  "timestamp": "20250520_120518",
+  "categories_tested": [
+    "core_kr"
+  ],
+  "results": [
+    {
+      "category": "core_kr",
+      "total": 61,
+      "passed": 52,
+      "failed": 9,
+      "skipped": 0,
+      "error": 0,
+      "duration": 34.804174184799194
+    }
+  ]
+}

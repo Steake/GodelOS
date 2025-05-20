@@ -28,6 +28,8 @@ import inspect
 import hashlib
 import semver
 
+# Configure logging
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
@@ -167,9 +169,12 @@ class ModuleLibraryActivator:
         backup_directory: Optional[str] = None
     ):
         """Initialize the module library activator."""
+        logger.debug(f"Initializing ModuleLibraryActivator with modules_directory={modules_directory}")
         self.modules_directory = modules_directory
         self.config_file = config_file or os.path.join(modules_directory, "module_config.json")
         self.backup_directory = backup_directory or os.path.join(modules_directory, "backups")
+        
+        logger.debug(f"Using config_file={self.config_file}, backup_directory={self.backup_directory}")
         
         # Create directories if they don't exist
         os.makedirs(self.modules_directory, exist_ok=True)
@@ -184,6 +189,8 @@ class ModuleLibraryActivator:
         
         # Scan modules directory for new modules
         self._scan_modules_directory()
+        
+        logger.debug(f"Initialization complete. Modules: {list(self.modules.keys())}")
     
     def _load_config(self) -> None:
         """Load module configuration from config file."""
@@ -274,28 +281,38 @@ class ModuleLibraryActivator:
     
     def _scan_modules_directory(self) -> None:
         """Scan modules directory for new modules."""
+        logger.debug(f"Scanning modules directory: {self.modules_directory}")
         if not os.path.exists(self.modules_directory):
             logger.warning(f"Modules directory {self.modules_directory} not found")
             return
         
-        for item in os.listdir(self.modules_directory):
+        # Log the contents of the modules directory
+        dir_contents = os.listdir(self.modules_directory)
+        logger.debug(f"Contents of modules directory: {dir_contents}")
+        
+        for item in dir_contents:
             item_path = os.path.join(self.modules_directory, item)
+            logger.debug(f"Checking item: {item} (is directory: {os.path.isdir(item_path)})")
             
             # Check if it's a directory
             if os.path.isdir(item_path):
                 # Check for metadata file
                 metadata_path = os.path.join(item_path, "metadata.json")
+                logger.debug(f"Checking for metadata file: {metadata_path} (exists: {os.path.exists(metadata_path)})")
+                
                 if os.path.exists(metadata_path):
                     try:
                         with open(metadata_path, 'r') as f:
                             metadata_dict = json.load(f)
                         
+                        logger.debug(f"Loaded metadata: {metadata_dict}")
                         metadata = ModuleMetadata.from_dict(metadata_dict)
                         module_id = metadata.module_id
                         version_str = str(metadata.version)
                         
                         # Check if module already exists in registry
                         if module_id in self.modules and version_str in self.modules[module_id]:
+                            logger.debug(f"Module {module_id} v{version_str} already exists in registry")
                             continue
                         
                         # Calculate checksum
@@ -314,7 +331,9 @@ class ModuleLibraryActivator:
                         logger.info(f"Found new module: {module_id} v{version_str}")
                     except Exception as e:
                         logger.error(f"Error processing module in {item_path}: {e}")
+                        logger.exception(e)  # Log the full exception traceback
         
+        logger.debug(f"Modules after scanning: {list(self.modules.keys())}")
         # Save updated registry
         self._save_config()
     
@@ -483,10 +502,14 @@ class ModuleLibraryActivator:
         Returns:
             Tuple of (success, message)
         """
+        logger.debug(f"Deactivating module {module_id}")
+        
         if module_id not in self.active_modules:
+            logger.error(f"Module {module_id} is not active. Active modules: {list(self.active_modules.keys())}")
             return False, f"Module {module_id} is not active"
         
         instance = self.active_modules[module_id]
+        logger.debug(f"Found active instance: {instance.metadata.module_id} v{instance.metadata.version}")
         
         # Check if other active modules depend on this one
         for other_id, other_instance in self.active_modules.items():
@@ -494,11 +517,16 @@ class ModuleLibraryActivator:
                 continue
             
             if module_id in other_instance.metadata.dependencies:
+                logger.error(f"Cannot deactivate module {module_id}: it is required by {other_id}")
                 return False, f"Cannot deactivate module {module_id}: it is required by {other_id}"
         
         try:
-            # Unload the module
-            self._unload_module(instance.module_object)
+            # Unload the module if it has a module object
+            if instance.module_object is not None:
+                logger.debug(f"Unloading module object for {module_id}")
+                self._unload_module(instance.module_object)
+            else:
+                logger.warning(f"Module {module_id} has no module object to unload")
             
             # Update instance
             instance.status = ModuleStatus.INACTIVE
@@ -510,8 +538,11 @@ class ModuleLibraryActivator:
             # Save config
             self._save_config()
             
+            logger.info(f"Module {module_id} deactivated successfully")
             return True, f"Module {module_id} deactivated successfully"
         except Exception as e:
+            logger.error(f"Failed to deactivate module {module_id}: {e}")
+            logger.exception(e)
             return False, f"Failed to deactivate module {module_id}: {e}"
     
     def _check_dependencies(self, metadata: ModuleMetadata) -> Tuple[bool, str]:
@@ -547,9 +578,20 @@ class ModuleLibraryActivator:
         Returns:
             True if the version satisfies the constraint, False otherwise
         """
+        logger.debug(f"Checking if version {version} satisfies constraint {constraint}")
         try:
-            return semver.match(version, constraint)
-        except Exception:
+            # Handle complex constraints with spaces (e.g., ">=1.0.0 <2.0.0")
+            if " " in constraint:
+                constraints = constraint.split()
+                logger.debug(f"Split complex constraint into: {constraints}")
+                return all(self._version_satisfies_constraint(version, c) for c in constraints)
+            
+            result = semver.match(version, constraint)
+            logger.debug(f"semver.match result: {result}")
+            return result
+        except Exception as e:
+            logger.error(f"Error checking version constraint: {e}")
+            logger.exception(e)
             return False
     
     def _load_module(self, module_path: str, module_id: str) -> Any:
@@ -594,14 +636,26 @@ class ModuleLibraryActivator:
         Args:
             module_object: The module object to unload
         """
-        # Call cleanup method if available
-        if hasattr(module_object, "cleanup") and callable(module_object.cleanup):
-            module_object.cleanup()
+        logger.debug(f"Unloading module object: {module_object}")
         
-        # Remove from sys.modules
-        module_name = module_object.__name__
-        if module_name in sys.modules:
-            del sys.modules[module_name]
+        try:
+            # Call cleanup method if available
+            if hasattr(module_object, "cleanup") and callable(module_object.cleanup):
+                logger.debug("Calling cleanup method")
+                module_object.cleanup()
+            
+            # Remove from sys.modules
+            if hasattr(module_object, "__name__"):
+                module_name = module_object.__name__
+                logger.debug(f"Module name: {module_name}")
+                if module_name in sys.modules:
+                    logger.debug(f"Removing {module_name} from sys.modules")
+                    del sys.modules[module_name]
+            else:
+                logger.warning("Module object has no __name__ attribute")
+        except Exception as e:
+            logger.error(f"Error unloading module: {e}")
+            logger.exception(e)
     
     def get_active_modules(self) -> Dict[str, ModuleMetadata]:
         """
@@ -611,6 +665,130 @@ class ModuleLibraryActivator:
             Dictionary mapping module IDs to their metadata
         """
         return {module_id: instance.metadata for module_id, instance in self.active_modules.items()}
+    
+    def add_module(self, module_dir: str) -> Tuple[bool, str]:
+        """
+        Add a module to the library from a directory.
+        
+        Args:
+            module_dir: Path to the module directory
+            
+        Returns:
+            Tuple of (success, message)
+        """
+        logger.debug(f"Adding module from directory: {module_dir}")
+        
+        # Check if directory exists
+        if not os.path.exists(module_dir):
+            return False, f"Module directory {module_dir} not found"
+        
+        # Check for metadata file
+        metadata_path = os.path.join(module_dir, "metadata.json")
+        if not os.path.exists(metadata_path):
+            return False, f"Metadata file not found in {module_dir}"
+        
+        # Check for main.py file
+        main_py_path = os.path.join(module_dir, "main.py")
+        if not os.path.exists(main_py_path):
+            return False, f"main.py file not found in {module_dir}"
+        
+        try:
+            # Load metadata
+            with open(metadata_path, 'r') as f:
+                metadata_dict = json.load(f)
+            
+            logger.debug(f"Loaded metadata: {metadata_dict}")
+            metadata = ModuleMetadata.from_dict(metadata_dict)
+            module_id = metadata.module_id
+            version_str = str(metadata.version)
+            
+            # Calculate checksum
+            checksum = self._calculate_module_checksum(module_dir)
+            metadata.checksum = checksum
+            
+            # Create module destination directory
+            dest_dir = os.path.join(self.modules_directory, f"{module_id}_{version_str.replace('.', '_')}")
+            os.makedirs(dest_dir, exist_ok=True)
+            
+            # Copy module files to destination
+            for item in os.listdir(module_dir):
+                src_path = os.path.join(module_dir, item)
+                dst_path = os.path.join(dest_dir, item)
+                
+                if os.path.isdir(src_path):
+                    shutil.copytree(src_path, dst_path, dirs_exist_ok=True)
+                else:
+                    shutil.copy2(src_path, dst_path)
+            
+            # Add to registry
+            if module_id not in self.modules:
+                self.modules[module_id] = {}
+            
+            self.modules[module_id][version_str] = ModuleInstance(
+                metadata=metadata,
+                module_path=dest_dir
+            )
+            
+            # Save updated registry
+            self._save_config()
+            
+            logger.info(f"Added module {module_id} v{version_str} to library")
+            return True, f"Module {module_id} v{version_str} added successfully"
+            
+        except Exception as e:
+            logger.error(f"Error adding module from {module_dir}: {e}")
+            logger.exception(e)
+            return False, f"Failed to add module: {e}"
+    
+    def remove_module(self, module_id: str, version: str) -> Tuple[bool, str]:
+        """
+        Remove a module from the library.
+        
+        Args:
+            module_id: ID of the module to remove
+            version: Version of the module to remove
+            
+        Returns:
+            Tuple of (success, message)
+        """
+        logger.debug(f"Removing module {module_id} v{version}")
+        
+        # Check if module exists
+        if module_id not in self.modules:
+            return False, f"Module {module_id} not found"
+        
+        if version not in self.modules[module_id]:
+            return False, f"Version {version} not found for module {module_id}"
+        
+        # Check if module is active
+        if module_id in self.active_modules and str(self.active_modules[module_id].metadata.version) == version:
+            return False, f"Cannot remove active module {module_id} v{version}. Deactivate it first."
+        
+        try:
+            # Get module instance
+            instance = self.modules[module_id][version]
+            
+            # Remove module directory
+            if os.path.exists(instance.module_path):
+                shutil.rmtree(instance.module_path)
+            
+            # Remove from registry
+            del self.modules[module_id][version]
+            
+            # If no more versions, remove module entry
+            if not self.modules[module_id]:
+                del self.modules[module_id]
+            
+            # Save updated registry
+            self._save_config()
+            
+            logger.info(f"Removed module {module_id} v{version} from library")
+            return True, f"Module {module_id} v{version} removed successfully"
+            
+        except Exception as e:
+            logger.error(f"Error removing module {module_id} v{version}: {e}")
+            logger.exception(e)
+            return False, f"Failed to remove module: {e}"
     
     def get_module_status(self, module_id: str, version: Optional[str] = None) -> Optional[ModuleStatus]:
         """
@@ -654,33 +832,49 @@ class ModuleLibraryActivator:
         Returns:
             Tuple of (success, message)
         """
+        logger.debug(f"Rolling back module {module_id} to target_version={target_version}")
+        
         if module_id not in self.modules:
+            logger.error(f"Module {module_id} not found in modules: {list(self.modules.keys())}")
             return False, f"Module {module_id} not found"
         
         if module_id not in self.active_modules:
+            logger.error(f"Module {module_id} is not active. Active modules: {list(self.active_modules.keys())}")
             return False, f"Module {module_id} is not active"
         
         current_version = str(self.active_modules[module_id].metadata.version)
+        logger.debug(f"Current version of module {module_id}: {current_version}")
         
         # Determine target version
         if target_version is None:
             # Get all versions
             versions = list(self.modules[module_id].keys())
+            logger.debug(f"Available versions for module {module_id}: {versions}")
             
             # Sort versions using semver
             sorted_versions = sorted(versions, key=lambda v: semver.VersionInfo.parse(v), reverse=True)
+            logger.debug(f"Sorted versions: {sorted_versions}")
             
             # Find the version before the current one
             try:
                 current_index = sorted_versions.index(current_version)
+                logger.debug(f"Current version index: {current_index}")
+                
                 if current_index == len(sorted_versions) - 1:
+                    logger.error(f"No previous version available for module {module_id}")
                     return False, f"No previous version available for module {module_id}"
                 
                 target_version = sorted_versions[current_index + 1]
+                logger.debug(f"Selected target version: {target_version}")
             except ValueError:
+                logger.error(f"Current version {current_version} not found in available versions")
                 return False, f"Current version {current_version} not found in available versions"
         elif target_version not in self.modules[module_id]:
+            logger.error(f"Target version {target_version} not found for module {module_id}")
             return False, f"Target version {target_version} not found for module {module_id}"
         
         # Activate the target version
-        return self.activate_module(module_id, target_version)
+        logger.debug(f"Activating target version {target_version} for module {module_id}")
+        success, message = self.activate_module(module_id, target_version)
+        logger.debug(f"Activation result: success={success}, message={message}")
+        return success, message

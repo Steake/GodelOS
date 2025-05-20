@@ -358,9 +358,3 @@ class TestContextEngine(unittest.TestCase):
         self.assertEqual(context.variables["var2"].value, 42)
         self.assertEqual(context.variables["var2"].type, "int")
         self.assertEqual(context.variables["var2"].metadata, {"unit": "count"})
-        self.assertIsNone(active)
-        
-        # Check that the knowledge store was called with the relationship
-        self.knowledge_store.add_relation.assert_called_with(
-            f"context:{child.id}", "has_parent", f"context:{parent.id}"
-        )

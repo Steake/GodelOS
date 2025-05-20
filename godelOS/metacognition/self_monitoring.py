@@ -134,8 +134,13 @@ class SelfMonitoringModule:
     def start_monitoring(self) -> None:
         """Start the monitoring threads."""
         # Make sure the internal state monitor is running
-        if not self.internal_state_monitor.monitoring_thread or not self.internal_state_monitor.monitoring_thread.is_alive():
-            self.internal_state_monitor.start_monitoring()
+        logger.debug(f"Internal state monitor: {self.internal_state_monitor}")
+        try:
+            if not hasattr(self.internal_state_monitor, 'monitoring_thread') or not self.internal_state_monitor.monitoring_thread or not self.internal_state_monitor.monitoring_thread.is_alive():
+                logger.debug("Starting internal state monitor")
+                self.internal_state_monitor.start_monitoring()
+        except AttributeError as e:
+            logger.error(f"AttributeError accessing monitoring_thread: {e}")
         
         if (self.anomaly_detection_thread and self.anomaly_detection_thread.is_alive() and
             self.performance_metrics_thread and self.performance_metrics_thread.is_alive()):
@@ -271,24 +276,32 @@ class SelfMonitoringModule:
         """Detect anomalies in system and cognitive performance."""
         # Get current system state
         system_state = self.internal_state_monitor.get_current_state_summary()
+        logger.debug(f"Detecting anomalies with system state: {system_state}")
         
         # Check for resource saturation
         for resource_name, metrics in system_state.get("system_resources", {}).items():
-            if resource_name == "CPU" and metrics.get("value", 0) > self.anomaly_thresholds["cpu_saturation"]:
+            logger.debug(f"Checking resource {resource_name} with metrics {metrics}")
+            
+            # Debug comparison values
+            if resource_name == "CPU":
+                logger.debug(f"CPU value: {metrics.get('value', 0)}, threshold: {self.anomaly_thresholds['cpu_saturation']}, comparison result: {metrics.get('value', 0) >= self.anomaly_thresholds['cpu_saturation']}")
+            
+            if resource_name == "CPU" and metrics.get("value", 0) >= self.anomaly_thresholds["cpu_saturation"]:
+                logger.debug(f"CPU saturation detected: {metrics.get('value')}% >= {self.anomaly_thresholds['cpu_saturation']}%")
                 self._record_anomaly(
                     AnomalyType.RESOURCE_SATURATION,
                     0.8,  # Severity
                     "CPU",
-                    f"CPU saturation: {metrics.get('value')}% > {self.anomaly_thresholds['cpu_saturation']}%",
+                    f"CPU saturation: {metrics.get('value')}% >= {self.anomaly_thresholds['cpu_saturation']}%",
                     {"resource": resource_name, "value": metrics.get("value")}
                 )
             
-            if resource_name == "Memory" and metrics.get("value", 0) > self.anomaly_thresholds["memory_saturation"]:
+            if resource_name == "Memory" and metrics.get("value", 0) >= self.anomaly_thresholds["memory_saturation"]:
                 self._record_anomaly(
                     AnomalyType.RESOURCE_SATURATION,
                     0.8,  # Severity
                     "Memory",
-                    f"Memory saturation: {metrics.get('value')}% > {self.anomaly_thresholds['memory_saturation']}%",
+                    f"Memory saturation: {metrics.get('value')}% >= {self.anomaly_thresholds['memory_saturation']}%",
                     {"resource": resource_name, "value": metrics.get("value")}
                 )
             
@@ -368,16 +381,21 @@ class SelfMonitoringModule:
         self.current_performance_metrics = metrics
     
     def _record_anomaly(
-        self, 
-        anomaly_type: AnomalyType, 
-        severity: float, 
-        affected_component: str, 
-        description: str, 
+        self,
+        anomaly_type: Union[AnomalyType, str],
+        severity: float,
+        affected_component: str,
+        description: str,
         metrics: Optional[Dict[str, Any]] = None
     ) -> None:
         """Record a performance anomaly."""
+        # Handle both enum and string values for anomaly_type
+        anomaly_type_value = anomaly_type.value if isinstance(anomaly_type, AnomalyType) else anomaly_type
+        
+        logger.debug(f"Recording anomaly: type={anomaly_type_value}, component={affected_component}, description={description}")
+        
         anomaly = PerformanceAnomaly(
-            anomaly_type=anomaly_type.value,
+            anomaly_type=anomaly_type_value,
             severity=severity,
             affected_component=affected_component,
             description=description,

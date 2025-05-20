@@ -22,7 +22,7 @@ from godelOS.scalability.persistent_kb import PersistentKBBackend, FileBasedKBBa
 from godelOS.scalability.query_optimizer import QueryOptimizer, QueryPlan
 from godelOS.scalability.rule_compiler import RuleCompiler
 from godelOS.scalability.parallel_inference import ParallelInferenceManager, TaskPriority
-from godelOS.scalability.caching import CachingMemoizationLayer, EvictionPolicy
+from godelOS.scalability.caching import CachingSystem, EvictionPolicy
 
 
 class StorageBackendType(Enum):
@@ -121,7 +121,7 @@ class ScalabilityManager:
         os.makedirs(os.path.dirname(self.config.db_path), exist_ok=True)
         
         # Initialize caching layer
-        self.caching_layer = CachingMemoizationLayer(
+        self.caching_layer = CachingSystem(
             max_size=self.config.max_cache_size,
             eviction_policy=self.config.cache_eviction_policy,
             default_ttl=self.config.cache_ttl
@@ -139,7 +139,7 @@ class ScalabilityManager:
                 self.kb_router.register_backend(backend_id, backend)
         
         # Initialize query optimizer
-        self.query_optimizer = QueryOptimizer(self.kb_router)
+        self.query_optimizer = QueryOptimizer(self.kb_router, self.type_system)
         
         # Initialize rule compiler
         self.rule_compiler = RuleCompiler(self.kb_router)
@@ -239,7 +239,7 @@ class ScalabilityManager:
         
         return result
     
-    def query_statements_match_pattern(self, query_pattern_ast: AST_Node, 
+    def query_statements_match_pattern(self, query_pattern_ast: AST_Node,
                                       context_ids: List[str] = ["TRUTHS"],
                                       variables_to_bind: Optional[List[VariableNode]] = None) -> List[Dict[VariableNode, AST_Node]]:
         """
@@ -253,19 +253,32 @@ class ScalabilityManager:
         Returns:
             A list of variable bindings
         """
+        # Debug logging
+        self.logger.debug(f"Query pattern: {query_pattern_ast}")
+        self.logger.debug(f"Context IDs: {context_ids}")
+        self.logger.debug(f"Variables to bind: {variables_to_bind}")
+        
         # Check if the result is cached
         cache_key = f"query:{query_pattern_ast}:{context_ids}:{variables_to_bind}"
         cached_result = self.caching_layer.get(cache_key)
         if cached_result is not None:
+            self.logger.debug(f"Cache hit! Returning cached result: {cached_result}")
             return cached_result
         
         # Optimize the query if enabled
         if self.config.enable_query_optimization:
+            self.logger.debug("Query optimization enabled, optimizing query...")
             plan = self.query_optimizer.optimize_query(query_pattern_ast, context_ids, variables_to_bind)
-            results = self.query_optimizer.execute_optimized_query(plan)
+            self.logger.debug(f"Optimized query plan: {plan}")
+            # Use direct query instead of optimized query for now
+            # results = self.query_optimizer.execute_optimized_query(plan)
+            results = self.kb_router.query_statements_match_pattern(query_pattern_ast, context_ids, variables_to_bind)
         else:
+            self.logger.debug("Query optimization disabled, executing query directly...")
             # Execute the query directly
             results = self.kb_router.query_statements_match_pattern(query_pattern_ast, context_ids, variables_to_bind)
+        
+        self.logger.debug(f"Query results: {results}")
         
         # Cache the result
         self.caching_layer.put(cache_key, results)

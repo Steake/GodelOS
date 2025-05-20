@@ -125,11 +125,43 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -e ".[dev]"
 ```
 
-### Running Tests
+### Testing
+
+GödelOS includes a comprehensive test suite and test coverage infrastructure to ensure code quality and reliability. The testing system includes:
+
+1. **Enhanced Test Suite**: Comprehensive tests for all modules, organized into three phases:
+   - Symbol Grounding, Common Sense, and Ontology (Phase 1)
+   - Core Knowledge Representation and Inference Engine (Phase 2)
+   - Metacognition, NLU/NLG, and Scalability (Phase 3)
+
+2. **Test Suite Runner**: A modular, extensible test runner with visually appealing output formatting.
+
+3. **Test Coverage Analysis Tools**: Tools for analyzing test coverage at both component and method levels.
+
+#### Running Basic Tests
 
 ```bash
+# Run all tests
 pytest
+
+# Run enhanced tests with detailed reporting
+python run_enhanced_tests.py
+
+# Run tests for a specific module
+pytest tests/metacognition/
+
+# Run tests with coverage analysis
+./run_test_coverage_analysis.sh
 ```
+
+#### Test Documentation
+
+For detailed information about the testing infrastructure, refer to:
+
+- [TEST_COVERAGE.md](TEST_COVERAGE.md): Comprehensive documentation of the test coverage implementation
+- [TEST_QUICKREF.md](TEST_QUICKREF.md): Quick reference guide for common testing tasks
+
+These documents provide guidelines for writing new tests, best practices for maintaining test coverage, and performance considerations for running tests efficiently.
 
 ### Project Structure
 

@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Report - 2025-05-20 12:00:41</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .summary {
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .summary-item {
+            margin-bottom: 5px;
+        }
+        .category {
+            margin-bottom: 30px;
+        }
+        .test-result {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 5px solid #ddd;
+        }
+        .test-passed {
+            border-left-color: #4CAF50;
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+        .test-failed {
+            border-left-color: #F44336;
+            background-color: rgba(244, 67, 54, 0.1);
+        }
+        .test-skipped {
+            border-left-color: #FFC107;
+            background-color: rgba(255, 193, 7, 0.1);
+        }
+        .test-error {
+            border-left-color: #F44336;
+            background-color: rgba(244, 67, 54, 0.1);
+        }
+        .test-header {
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+        .test-details {
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        .test-message {
+            margin-top: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 3px;
+        }
+        .docstring {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Report</h1>
+
+    <div class="summary">
+        <h2>Summary</h2>
+        <div class="summary-item">Status: <span style="color: #F44336;">FAILED</span></div>
+        <div class="summary-item">Total Tests: 80</div>
+        <div class="summary-item">Passed: <span style="color: #4CAF50;">75</span> (93.8%)</div>
+        <div class="summary-item">Failed: <span style="color: #F44336;">5</span></div>
+        <div class="summary-item">Duration: 0.26 seconds</div>
+        <div class="summary-item">Generated: 2025-05-20 12:00:41</div>
+    </div>
+
+    <div class="category">
+        <h2>Category: common_sense</h2>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/common_sense/test_context_engine_enhanced.py::TestContextEngineEnhanced::test_integration_with_knowledge_store</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/common_sense/test_context_engine_enhanced.py::TestContextEngineEnhanced::test_revert_context</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/common_sense/test_context_engine_enhanced.py::TestContextEngineEnhanced::test_save_and_load_contexts</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/common_sense/test_default_reasoning.py::TestDefaultReasoningModule::test_apply_defaults_with_default_rules</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/common_sense/test_default_reasoning.py::TestDefaultReasoningModule::test_apply_defaults_with_exceptions</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine.py::TestContextEngine::test_create_context</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine.py::TestContextEngine::test_create_context_with_parent</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine.py::TestContextEngine::test_create_context_with_variables</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine.py::TestContextEngine::test_delete_context</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine.py::TestContextEngine::test_get_active_context</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine.py::TestContextEngine::test_get_context</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine.py::TestContextEngine::test_get_variable</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine.py::TestContextEngine::test_get_variable_from_parent</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine.py::TestContextEngine::test_initialization</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine.py::TestContextEngine::test_set_active_context</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine.py::TestContextEngine::test_set_variable</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine.py::TestContextEngine::test_update_context</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine_enhanced.py::TestContextEngineEnhanced::test_complex_variable_inheritance</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine_enhanced.py::TestContextEngineEnhanced::test_derive_context</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine_enhanced.py::TestContextEngineEnhanced::test_get_context_hierarchy</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine_enhanced.py::TestContextEngineEnhanced::test_get_context_snapshot</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine_enhanced.py::TestContextEngineEnhanced::test_get_contexts_by_type</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine_enhanced.py::TestContextEngineEnhanced::test_get_contexts_by_variable</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_context_engine_enhanced.py::TestContextEngineEnhanced::test_merge_contexts</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_contextualized_retriever.py::TestContextualizedRetriever::test_generate_cache_key</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_contextualized_retriever.py::TestContextualizedRetriever::test_get_context</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_contextualized_retriever.py::TestContextualizedRetriever::test_initialization</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_contextualized_retriever.py::TestContextualizedRetriever::test_register_custom_relevance_function</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_contextualized_retriever.py::TestContextualizedRetriever::test_retrieval_result</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_contextualized_retriever.py::TestContextualizedRetriever::test_retrieve_with_ambiguity_resolution</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_contextualized_retriever.py::TestContextualizedRetriever::test_retrieve_with_cache_hit</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_contextualized_retriever.py::TestContextualizedRetriever::test_retrieve_with_cache_miss</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_contextualized_retriever.py::TestContextualizedRetriever::test_retrieve_with_context_sensitivity</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_default_reasoning.py::TestDefault::test_from_dict</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_default_reasoning.py::TestDefault::test_initialization</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_default_reasoning.py::TestDefault::test_to_dict</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_default_reasoning.py::TestDefaultReasoningModule::test_add_default</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_default_reasoning.py::TestDefaultReasoningModule::test_add_exception</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_default_reasoning.py::TestDefaultReasoningModule::test_apply_defaults_standard_inference_success</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_default_reasoning.py::TestDefaultReasoningModule::test_check_consistency</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_default_reasoning.py::TestDefaultReasoningModule::test_get_default</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_default_reasoning.py::TestDefaultReasoningModule::test_get_exception</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_default_reasoning.py::TestDefaultReasoningModule::test_get_exceptions_for_default</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_default_reasoning.py::TestDefaultReasoningModule::test_initialization</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_default_reasoning.py::TestDefaultReasoningModule::test_remove_default</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_default_reasoning.py::TestDefaultReasoningModule::test_remove_exception</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_default_reasoning.py::TestException::test_from_dict</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_default_reasoning.py::TestException::test_initialization</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_default_reasoning.py::TestException::test_to_dict</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_external_kb_interface.py::TestExternalCommonSenseKB_Interface::test_bulk_import_concepts</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_external_kb_interface.py::TestExternalCommonSenseKB_Interface::test_caching_system</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_external_kb_interface.py::TestExternalCommonSenseKB_Interface::test_clear_cache</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_external_kb_interface.py::TestExternalCommonSenseKB_Interface::test_file_based_caching</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_external_kb_interface.py::TestExternalCommonSenseKB_Interface::test_get_common_sense_facts</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_external_kb_interface.py::TestExternalCommonSenseKB_Interface::test_initialization</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_external_kb_interface.py::TestExternalCommonSenseKB_Interface::test_integrate_with_knowledge_store</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_external_kb_interface.py::TestExternalCommonSenseKB_Interface::test_query_concept_offline_mode</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_external_kb_interface.py::TestExternalCommonSenseKB_Interface::test_query_concept_with_conceptnet</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_external_kb_interface.py::TestExternalCommonSenseKB_Interface::test_query_concept_with_wordnet</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_external_kb_interface.py::TestExternalCommonSenseKB_Interface::test_query_relation</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_integration.py::TestCommonSenseContextIntegration::test_combined_workflow</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_integration.py::TestCommonSenseContextIntegration::test_context_enrichment</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_integration.py::TestCommonSenseContextIntegration::test_context_management</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_integration.py::TestCommonSenseContextIntegration::test_contextualized_retrieval</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_integration.py::TestCommonSenseContextIntegration::test_default_reasoning</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_integration.py::TestCommonSenseContextIntegration::test_external_kb_integration</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_integration.py::TestCommonSenseContextIntegration::test_initialization</span>
+                <span>0.03s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_manager.py::TestCommonSenseContextManager::test_answer_query</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_manager.py::TestCommonSenseContextManager::test_context_operations</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_manager.py::TestCommonSenseContextManager::test_create_context</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_manager.py::TestCommonSenseContextManager::test_default_reasoning_operations</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_manager.py::TestCommonSenseContextManager::test_enrich_context</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_manager.py::TestCommonSenseContextManager::test_external_kb_operations</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_manager.py::TestCommonSenseContextManager::test_init_context_engine</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_manager.py::TestCommonSenseContextManager::test_init_contextualized_retriever</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_manager.py::TestCommonSenseContextManager::test_init_default_reasoning_module</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_manager.py::TestCommonSenseContextManager::test_init_external_kb_interface</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_manager.py::TestCommonSenseContextManager::test_initialization</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_manager.py::TestCommonSenseContextManager::test_retrieval_operations</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/common_sense/test_manager.py::TestCommonSenseContextManager::test_shutdown</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

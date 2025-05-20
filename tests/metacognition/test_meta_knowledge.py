@@ -34,6 +34,11 @@ class TestMetaKnowledgeBase(unittest.TestCase):
         # Configure mocks
         self.mock_kr_interface.list_contexts.return_value = []
         
+        # Add assert_statement method to the mock
+        # This is needed because unittest.mock treats methods starting with "assert" specially
+        self.mock_kr_interface.assert_statement = MagicMock()
+        self.mock_kr_interface.retract_matching = MagicMock()
+        
         # Create a temporary directory for persistence
         self.temp_dir = tempfile.mkdtemp()
         

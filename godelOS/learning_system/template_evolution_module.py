@@ -416,7 +416,18 @@ class TemplateEvolutionModule:
         elif crossover_type == "conclusion_swap":
             # Swap the conclusion from parent2 into the child
             parent2_conclusion = parent2.operands[1]  # In IMPLIES, operands[1] is the conclusion
-            child.operands[1] = copy.deepcopy(parent2_conclusion)
+            
+            # Create a new ConnectiveNode with the updated conclusion
+            # Instead of trying to modify the tuple directly
+            body = child.operands[0]  # Keep the original premises
+            new_conclusion = copy.deepcopy(parent2_conclusion)
+            
+            # Create a new ConnectiveNode with the same body but new conclusion
+            child = ConnectiveNode(
+                connective_type="IMPLIES",
+                operands=[body, new_conclusion],
+                type_ref=new_conclusion.type
+            )
         
         elif crossover_type == "premise_merge":
             # Merge premises from both parents
@@ -478,10 +489,11 @@ class TemplateEvolutionModule:
                 premises = self._extract_premises(mutated)
                 
                 # If there are premises to remove
-                if premises:
-                    # Remove a random premise
-                    premise_to_remove = random.choice(premises)
-                    premises.remove(premise_to_remove)
+                if premises and len(premises) > 0:
+                    # Remove a random premise by index instead of by value
+                    # This avoids issues with object equality
+                    premise_idx = random.randrange(len(premises))
+                    del premises[premise_idx]
                     
                     # Update the template with the new premises
                     mutated = self._update_template_premises(mutated, premises)

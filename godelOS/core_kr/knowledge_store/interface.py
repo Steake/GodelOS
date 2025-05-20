@@ -17,6 +17,42 @@ from godelOS.core_kr.type_system.manager import TypeSystemManager
 from godelOS.core_kr.unification_engine.engine import UnificationEngine
 
 
+class QueryResult:
+    """
+    Class representing the result of a query to the knowledge store.
+    
+    This class encapsulates the success status of a query and the variable bindings
+    that satisfy the query.
+    """
+    
+    def __init__(self, success: bool, bindings: List[Dict[VariableNode, AST_Node]] = None):
+        """
+        Initialize a query result.
+        
+        Args:
+            success: Whether the query was successful
+            bindings: List of variable bindings that satisfy the query
+        """
+        self.success = success
+        self.bindings = bindings or []
+    
+    def __bool__(self) -> bool:
+        """Return success status when used in boolean context."""
+        return self.success
+    
+    def __len__(self) -> int:
+        """Return the number of binding sets."""
+        return len(self.bindings)
+    
+    def __iter__(self):
+        """Iterate over binding sets."""
+        return iter(self.bindings)
+    
+    def __getitem__(self, index: int) -> Dict[VariableNode, AST_Node]:
+        """Get a specific binding set."""
+        return self.bindings[index]
+
+
 class KnowledgeStoreBackend(ABC):
     """
     Abstract base class for knowledge store backends.

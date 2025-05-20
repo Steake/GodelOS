@@ -276,7 +276,53 @@ class TypeVariable(Type):
         return f"TypeVariable({self._name})"
 
 
-class ParametricTypeConstructor:
+class ParametricType(Type):
+    """
+    Base class for parametric types.
+    
+    This is an abstract base class that serves as a common parent for
+    ParametricTypeConstructor and InstantiatedParametricType.
+    """
+    
+    @abstractmethod
+    def get_type_params(self) -> List['TypeVariable']:
+        """
+        Get the type parameters of this parametric type.
+        
+        Returns:
+            A list of type variables representing the type parameters
+        """
+        pass
+    
+    def is_subtype_of(self, other_type: 'Type', type_system: 'TypeSystemManager') -> bool:
+        """
+        Check if this parametric type is a subtype of another type.
+        
+        Args:
+            other_type: The type to check against
+            type_system: The type system manager to use for the check
+            
+        Returns:
+            True if this type is a subtype of other_type, False otherwise
+        """
+        # This is a base implementation that should be overridden by subclasses
+        return self == other_type
+    
+    def substitute_type_vars(self, bindings: Dict['TypeVariable', 'Type']) -> 'Type':
+        """
+        Substitute type variables in this type according to the given bindings.
+        
+        Args:
+            bindings: A mapping from type variables to types
+            
+        Returns:
+            A new type with the substitutions applied
+        """
+        # This is a base implementation that should be overridden by subclasses
+        return self
+
+
+class ParametricTypeConstructor(ParametricType):
     """
     A type constructor for parametric types.
     
@@ -302,6 +348,7 @@ class ParametricTypeConstructor:
     @property
     def type_params(self) -> tuple:
         """Get the type parameters."""
+        """Get the type parameters."""
         return self._type_params
     
     def __eq__(self, other: object) -> bool:
@@ -319,9 +366,18 @@ class ParametricTypeConstructor:
     
     def __repr__(self) -> str:
         return f"ParametricTypeConstructor({self._name}, {self._type_params})"
+        
+    def get_type_params(self) -> List['TypeVariable']:
+        """
+        Get the type parameters of this parametric type constructor.
+        
+        Returns:
+            A list of type variables representing the type parameters
+        """
+        return list(self._type_params)
 
 
-class InstantiatedParametricType(Type):
+class InstantiatedParametricType(ParametricType):
     """
     A parametric type with concrete type arguments.
     
@@ -420,3 +476,12 @@ class InstantiatedParametricType(Type):
     
     def __repr__(self) -> str:
         return f"InstantiatedParametricType({self._constructor}, {self._actual_type_args})"
+        
+    def get_type_params(self) -> List['TypeVariable']:
+        """
+        Get the type parameters of this instantiated parametric type.
+        
+        Returns:
+            A list of type variables representing the type parameters
+        """
+        return self._constructor.get_type_params()

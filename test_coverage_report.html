@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GödelOS Test Coverage Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+        }
+        .summary {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .summary-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+        }
+        .summary-item h3 {
+            margin-top: 0;
+        }
+        .summary-item .value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #3498db;
+        }
+        .coverage-bar {
+            height: 20px;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+        .coverage-fill {
+            height: 100%;
+            background-color: #2ecc71;
+        }
+        .low-coverage {
+            background-color: #e74c3c;
+        }
+        .medium-coverage {
+            background-color: #f39c12;
+        }
+        .high-coverage {
+            background-color: #2ecc71;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .component-details {
+            margin-top: 30px;
+        }
+        .component-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .component-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .component-title {
+            margin: 0;
+        }
+        .coverage-badge {
+            padding: 5px 10px;
+            border-radius: 15px;
+            color: white;
+            font-weight: bold;
+        }
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .detail-section {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        .detail-section h4 {
+            margin-top: 0;
+        }
+        .detail-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        .detail-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .detail-list li:last-child {
+            border-bottom: none;
+        }
+        .timestamp {
+            text-align: center;
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>GödelOS Test Coverage Report</h1>
+    
+    <div class="summary">
+        <h2>Summary</h2>
+        <div class="summary-grid">
+            <div class="summary-item">
+                <h3>Total Components</h3>
+                <div class="value">14</div>
+            </div>
+            <div class="summary-item">
+                <h3>Components with Tests</h3>
+                <div class="value">14 (100.0%)</div>
+            </div>
+            <div class="summary-item">
+                <h3>Components without Tests</h3>
+                <div class="value">0 (0.0%)</div>
+            </div>
+            <div class="summary-item">
+                <h3>Average Test Coverage</h3>
+                <div class="value">97.8%</div>
+                <div class="coverage-bar">
+                    <div class="coverage-fill high-coverage" style="width: 97.80219780219781%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h2>Component Coverage Overview</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Component</th>
+                <th>Test Coverage</th>
+                <th>Has Unit Tests</th>
+                <th>Has Integration Tests</th>
+                <th>Classes Tested</th>
+                <th>Functions Tested</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>godelOS.metacognition.diagnostician</td>
+                <td>
+                    100.0%
+                    <div class="coverage-bar">
+                        <div class="coverage-fill high-coverage" style="width: 100.0%;"></div>
+                    </div>
+                </td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>9/9</td>
+                <td>0/0</td>
+            </tr>
+
+            <tr>
+                <td>godelOS.metacognition.module_library</td>
+                <td>
+                    100.0%
+                    <div class="coverage-bar">
+                        <div class="coverage-fill high-coverage" style="width: 100.0%;"></div>
+                    </div>
+                </td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>5/5</td>
+                <td>0/0</td>
+            </tr>
+
+            <tr>
+                <td>godelOS.metacognition.self_monitoring</td>
+                <td>
+                    100.0%
+                    <div class="coverage-bar">
+                        <div class="coverage-fill high-coverage" style="width: 100.0%;"></div>
+                    </div>
+                </td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>4/4</td>
+                <td>0/0</td>
+            </tr>
+
+            <tr>
+                <td>godelOS.metacognition.manager</td>
+                <td>
+                    100.0%
+                    <div class="coverage-bar">
+                        <div class="coverage-fill high-coverage" style="width: 100.0%;"></div>
+                    </div>
+                </td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>4/4</td>
+                <td>0/0</td>
+            </tr>
+
+            <tr>
+                <td>godelOS.metacognition.modification_planner</td>
+                <td>
+                    100.0%
+                    <div class="coverage-bar">
+                        <div class="coverage-fill high-coverage" style="width: 100.0%;"></div>
+                    </div>
+                </td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>10/10</td>
+                <td>0/0</td>
+            </tr>
+
+            <tr>
+                <td>godelOS.inference_engine.coordinator</td>
+                <td>
+                    100.0%
+                    <div class="coverage-bar">
+                        <div class="coverage-fill high-coverage" style="width: 100.0%;"></div>
+                    </div>
+                </td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>2/2</td>
+                <td>0/0</td>
+            </tr>
+
+            <tr>
+                <td>godelOS.inference_engine.analogical_reasoning_engine</td>
+                <td>
+                    100.0%
+                    <div class="coverage-bar">
+                        <div class="coverage-fill high-coverage" style="width: 100.0%;"></div>
+                    </div>
+                </td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>5/5</td>
+                <td>0/0</td>
+            </tr>
+
+            <tr>
+                <td>godelOS.inference_engine.resolution_prover</td>
+                <td>
+                    100.0%
+                    <div class="coverage-bar">
+                        <div class="coverage-fill high-coverage" style="width: 100.0%;"></div>
+                    </div>
+                </td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>5/5</td>
+                <td>0/0</td>
+            </tr>
+
+            <tr>
+                <td>godelOS.inference_engine.clp_module</td>
+                <td>
+                    100.0%
+                    <div class="coverage-bar">
+                        <div class="coverage-fill high-coverage" style="width: 100.0%;"></div>
+                    </div>
+                </td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>7/7</td>
+                <td>0/0</td>
+            </tr>
+
+            <tr>
+                <td>godelOS.inference_engine.proof_object</td>
+                <td>
+                    100.0%
+                    <div class="coverage-bar">
+                        <div class="coverage-fill high-coverage" style="width: 100.0%;"></div>
+                    </div>
+                </td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>2/2</td>
+                <td>0/0</td>
+            </tr>
+
+            <tr>
+                <td>godelOS.inference_engine.base_prover</td>
+                <td>
+                    100.0%
+                    <div class="coverage-bar">
+                        <div class="coverage-fill high-coverage" style="width: 100.0%;"></div>
+                    </div>
+                </td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>2/2</td>
+                <td>0/0</td>
+            </tr>
+
+            <tr>
+                <td>godelOS.inference_engine.modal_tableau_prover</td>
+                <td>
+                    100.0%
+                    <div class="coverage-bar">
+                        <div class="coverage-fill high-coverage" style="width: 100.0%;"></div>
+                    </div>
+                </td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>9/9</td>
+                <td>0/0</td>
+            </tr>
+
+            <tr>
+                <td>godelOS.inference_engine.smt_interface</td>
+                <td>
+                    100.0%
+                    <div class="coverage-bar">
+                        <div class="coverage-fill high-coverage" style="width: 100.0%;"></div>
+                    </div>
+                </td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>3/3</td>
+                <td>0/0</td>
+            </tr>
+
+            <tr>
+                <td>godelOS.metacognition.meta_knowledge</td>
+                <td>
+                    69.2%
+                    <div class="coverage-bar">
+                        <div class="coverage-fill medium-coverage" style="width: 69.23076923076923%;"></div>
+                    </div>
+                </td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>9/12</td>
+                <td>0/1</td>
+            </tr>
+
+        </tbody>
+    </table>
+    
+    <h2>Detailed Component Analysis</h2>
+    <div class="component-details">
+
+        <div class="component-card">
+            <div class="component-header">
+                <h3 class="component-title">godelOS.metacognition.diagnostician</h3>
+                <span class="coverage-badge high-coverage">100.0% Coverage</span>
+            </div>
+            
+            <p><strong>File:</strong> godelOS/metacognition/diagnostician.py</p>
+            <p><strong>Test Files:</strong> tests/metacognition/test_diagnostician.py, tests/metacognition/test_diagnostician.py</p>
+            
+            <div class="details-grid">
+                <div class="detail-section">
+                    <h4>Classes (9/9 tested)</h4>
+                    <ul class="detail-list">
+
+                        <li>CognitiveDiagnostician ✅</li>
+
+                        <li>DiagnosisType ✅</li>
+
+                        <li>DiagnosticFinding ✅</li>
+
+                        <li>DiagnosticReport ✅</li>
+
+                        <li>DiagnosticRule ✅</li>
+
+                        <li>PerformanceBottleneckRule ✅</li>
+
+                        <li>ReasoningFailureRule ✅</li>
+
+                        <li>ResourceContentionRule ✅</li>
+
+                        <li>SeverityLevel ✅</li>
+
+                    </ul>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Functions ({len(info['tested_functions'])}/{len(info['function_names'])} tested)</h4>
+                    <ul class="detail-list">
+
+                        <li><em>No functions defined</em></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="component-card">
+            <div class="component-header">
+                <h3 class="component-title">godelOS.metacognition.module_library</h3>
+                <span class="coverage-badge high-coverage">100.0% Coverage</span>
+            </div>
+            
+            <p><strong>File:</strong> godelOS/metacognition/module_library.py</p>
+            <p><strong>Test Files:</strong> tests/metacognition/test_module_library.py, tests/metacognition/test_module_library.py</p>
+            
+            <div class="details-grid">
+                <div class="detail-section">
+                    <h4>Classes (5/5 tested)</h4>
+                    <ul class="detail-list">
+
+                        <li>ModuleInstance ✅</li>
+
+                        <li>ModuleLibraryActivator ✅</li>
+
+                        <li>ModuleMetadata ✅</li>
+
+                        <li>ModuleStatus ✅</li>
+
+                        <li>ModuleVersion ✅</li>
+
+                    </ul>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Functions ({len(info['tested_functions'])}/{len(info['function_names'])} tested)</h4>
+                    <ul class="detail-list">
+
+                        <li><em>No functions defined</em></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="component-card">
+            <div class="component-header">
+                <h3 class="component-title">godelOS.metacognition.self_monitoring</h3>
+                <span class="coverage-badge high-coverage">100.0% Coverage</span>
+            </div>
+            
+            <p><strong>File:</strong> godelOS/metacognition/self_monitoring.py</p>
+            <p><strong>Test Files:</strong> tests/metacognition/test_self_monitoring.py, tests/metacognition/test_self_monitoring.py</p>
+            
+            <div class="details-grid">
+                <div class="detail-section">
+                    <h4>Classes (4/4 tested)</h4>
+                    <ul class="detail-list">
+
+                        <li>AnomalyType ✅</li>
+
+                        <li>PerformanceAnomaly ✅</li>
+
+                        <li>ReasoningEvent ✅</li>
+
+                        <li>SelfMonitoringModule ✅</li>
+
+                    </ul>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Functions ({len(info['tested_functions'])}/{len(info['function_names'])} tested)</h4>
+                    <ul class="detail-list">
+
+                        <li><em>No functions defined</em></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="component-card">
+            <div class="component-header">
+                <h3 class="component-title">godelOS.metacognition.manager</h3>
+                <span class="coverage-badge high-coverage">100.0% Coverage</span>
+            </div>
+            
+            <p><strong>File:</strong> godelOS/metacognition/manager.py</p>
+            <p><strong>Test Files:</strong> tests/metacognition/test_manager.py, tests/common_sense/test_manager.py, tests/ontology/test_manager.py, tests/metacognition/test_manager.py, tests/scalability/test_manager.py</p>
+            
+            <div class="details-grid">
+                <div class="detail-section">
+                    <h4>Classes (4/4 tested)</h4>
+                    <ul class="detail-list">
+
+                        <li>MetacognitionManager ✅</li>
+
+                        <li>MetacognitiveEvent ✅</li>
+
+                        <li>MetacognitiveMode ✅</li>
+
+                        <li>MetacognitivePhase ✅</li>
+
+                    </ul>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Functions ({len(info['tested_functions'])}/{len(info['function_names'])} tested)</h4>
+                    <ul class="detail-list">
+
+                        <li><em>No functions defined</em></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="component-card">
+            <div class="component-header">
+                <h3 class="component-title">godelOS.metacognition.modification_planner</h3>
+                <span class="coverage-badge high-coverage">100.0% Coverage</span>
+            </div>
+            
+            <p><strong>File:</strong> godelOS/metacognition/modification_planner.py</p>
+            <p><strong>Test Files:</strong> tests/metacognition/test_modification_planner.py, tests/metacognition/test_modification_planner.py</p>
+            
+            <div class="details-grid">
+                <div class="detail-section">
+                    <h4>Classes (10/10 tested)</h4>
+                    <ul class="detail-list">
+
+                        <li>ExecutionPlan ✅</li>
+
+                        <li>ModificationEvaluator ✅</li>
+
+                        <li>ModificationParameter ✅</li>
+
+                        <li>ModificationProposal ✅</li>
+
+                        <li>ModificationResult ✅</li>
+
+                        <li>ModificationStatus ✅</li>
+
+                        <li>ModificationType ✅</li>
+
+                        <li>SafetyChecker ✅</li>
+
+                        <li>SafetyRiskLevel ✅</li>
+
+                        <li>SelfModificationPlanner ✅</li>
+
+                    </ul>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Functions ({len(info['tested_functions'])}/{len(info['function_names'])} tested)</h4>
+                    <ul class="detail-list">
+
+                        <li><em>No functions defined</em></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="component-card">
+            <div class="component-header">
+                <h3 class="component-title">godelOS.inference_engine.coordinator</h3>
+                <span class="coverage-badge high-coverage">100.0% Coverage</span>
+            </div>
+            
+            <p><strong>File:</strong> godelOS/inference_engine/coordinator.py</p>
+            <p><strong>Test Files:</strong> tests/test_coordinator.py</p>
+            
+            <div class="details-grid">
+                <div class="detail-section">
+                    <h4>Classes (2/2 tested)</h4>
+                    <ul class="detail-list">
+
+                        <li>InferenceCoordinator ✅</li>
+
+                        <li>StrategyKnowledgeBase ✅</li>
+
+                    </ul>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Functions ({len(info['tested_functions'])}/{len(info['function_names'])} tested)</h4>
+                    <ul class="detail-list">
+
+                        <li><em>No functions defined</em></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="component-card">
+            <div class="component-header">
+                <h3 class="component-title">godelOS.inference_engine.analogical_reasoning_engine</h3>
+                <span class="coverage-badge high-coverage">100.0% Coverage</span>
+            </div>
+            
+            <p><strong>File:</strong> godelOS/inference_engine/analogical_reasoning_engine.py</p>
+            <p><strong>Test Files:</strong> tests/test_analogical_reasoning_engine.py</p>
+            
+            <div class="details-grid">
+                <div class="detail-section">
+                    <h4>Classes (5/5 tested)</h4>
+                    <ul class="detail-list">
+
+                        <li>AnalogicalMapping ✅</li>
+
+                        <li>AnalogicalReasoningEngine ✅</li>
+
+                        <li>ObjectMapping ✅</li>
+
+                        <li>PredicateFunctionMapping ✅</li>
+
+                        <li>RelationInstanceMapping ✅</li>
+
+                    </ul>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Functions ({len(info['tested_functions'])}/{len(info['function_names'])} tested)</h4>
+                    <ul class="detail-list">
+
+                        <li><em>No functions defined</em></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="component-card">
+            <div class="component-header">
+                <h3 class="component-title">godelOS.inference_engine.resolution_prover</h3>
+                <span class="coverage-badge high-coverage">100.0% Coverage</span>
+            </div>
+            
+            <p><strong>File:</strong> godelOS/inference_engine/resolution_prover.py</p>
+            <p><strong>Test Files:</strong> tests/test_resolution_prover.py</p>
+            
+            <div class="details-grid">
+                <div class="detail-section">
+                    <h4>Classes (5/5 tested)</h4>
+                    <ul class="detail-list">
+
+                        <li>CNFConverter ✅</li>
+
+                        <li>Clause ✅</li>
+
+                        <li>Literal ✅</li>
+
+                        <li>ResolutionProver ✅</li>
+
+                        <li>ResolutionStrategy ✅</li>
+
+                    </ul>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Functions ({len(info['tested_functions'])}/{len(info['function_names'])} tested)</h4>
+                    <ul class="detail-list">
+
+                        <li><em>No functions defined</em></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="component-card">
+            <div class="component-header">
+                <h3 class="component-title">godelOS.inference_engine.clp_module</h3>
+                <span class="coverage-badge high-coverage">100.0% Coverage</span>
+            </div>
+            
+            <p><strong>File:</strong> godelOS/inference_engine/clp_module.py</p>
+            <p><strong>Test Files:</strong> tests/test_clp_module.py</p>
+            
+            <div class="details-grid">
+                <div class="detail-section">
+                    <h4>Classes (7/7 tested)</h4>
+                    <ul class="detail-list">
+
+                        <li>CLPClause ✅</li>
+
+                        <li>CLPModule ✅</li>
+
+                        <li>ConstraintSolver ✅</li>
+
+                        <li>ConstraintStore ✅</li>
+
+                        <li>ConstraintVariable ✅</li>
+
+                        <li>DomainStore ✅</li>
+
+                        <li>FiniteDomainSolver ✅</li>
+
+                    </ul>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Functions ({len(info['tested_functions'])}/{len(info['function_names'])} tested)</h4>
+                    <ul class="detail-list">
+
+                        <li><em>No functions defined</em></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="component-card">
+            <div class="component-header">
+                <h3 class="component-title">godelOS.inference_engine.proof_object</h3>
+                <span class="coverage-badge high-coverage">100.0% Coverage</span>
+            </div>
+            
+            <p><strong>File:</strong> godelOS/inference_engine/proof_object.py</p>
+            <p><strong>Test Files:</strong> tests/test_proof_object.py</p>
+            
+            <div class="details-grid">
+                <div class="detail-section">
+                    <h4>Classes (2/2 tested)</h4>
+                    <ul class="detail-list">
+
+                        <li>ProofObject ✅</li>
+
+                        <li>ProofStepNode ✅</li>
+
+                    </ul>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Functions ({len(info['tested_functions'])}/{len(info['function_names'])} tested)</h4>
+                    <ul class="detail-list">
+
+                        <li><em>No functions defined</em></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="component-card">
+            <div class="component-header">
+                <h3 class="component-title">godelOS.inference_engine.base_prover</h3>
+                <span class="coverage-badge high-coverage">100.0% Coverage</span>
+            </div>
+            
+            <p><strong>File:</strong> godelOS/inference_engine/base_prover.py</p>
+            <p><strong>Test Files:</strong> tests/test_base_prover.py</p>
+            
+            <div class="details-grid">
+                <div class="detail-section">
+                    <h4>Classes (2/2 tested)</h4>
+                    <ul class="detail-list">
+
+                        <li>BaseProver ✅</li>
+
+                        <li>ResourceLimits ✅</li>
+
+                    </ul>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Functions ({len(info['tested_functions'])}/{len(info['function_names'])} tested)</h4>
+                    <ul class="detail-list">
+
+                        <li><em>No functions defined</em></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="component-card">
+            <div class="component-header">
+                <h3 class="component-title">godelOS.inference_engine.modal_tableau_prover</h3>
+                <span class="coverage-badge high-coverage">100.0% Coverage</span>
+            </div>
+            
+            <p><strong>File:</strong> godelOS/inference_engine/modal_tableau_prover.py</p>
+            <p><strong>Test Files:</strong> tests/test_modal_tableau_prover.py</p>
+            
+            <div class="details-grid">
+                <div class="detail-section">
+                    <h4>Classes (9/9 tested)</h4>
+                    <ul class="detail-list">
+
+                        <li>AccessibilityRelation ✅</li>
+
+                        <li>Branch ✅</li>
+
+                        <li>FormulaType ✅</li>
+
+                        <li>ModalSystem ✅</li>
+
+                        <li>ModalTableauProver ✅</li>
+
+                        <li>SignedFormula ✅</li>
+
+                        <li>Tableau ✅</li>
+
+                        <li>TableauRuleApplicator ✅</li>
+
+                        <li>World ✅</li>
+
+                    </ul>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Functions ({len(info['tested_functions'])}/{len(info['function_names'])} tested)</h4>
+                    <ul class="detail-list">
+
+                        <li><em>No functions defined</em></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="component-card">
+            <div class="component-header">
+                <h3 class="component-title">godelOS.inference_engine.smt_interface</h3>
+                <span class="coverage-badge high-coverage">100.0% Coverage</span>
+            </div>
+            
+            <p><strong>File:</strong> godelOS/inference_engine/smt_interface.py</p>
+            <p><strong>Test Files:</strong> tests/test_smt_interface.py</p>
+            
+            <div class="details-grid">
+                <div class="detail-section">
+                    <h4>Classes (3/3 tested)</h4>
+                    <ul class="detail-list">
+
+                        <li>SMTInterface ✅</li>
+
+                        <li>SMTResult ✅</li>
+
+                        <li>SMTSolverConfiguration ✅</li>
+
+                    </ul>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Functions ({len(info['tested_functions'])}/{len(info['function_names'])} tested)</h4>
+                    <ul class="detail-list">
+
+                        <li><em>No functions defined</em></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="component-card">
+            <div class="component-header">
+                <h3 class="component-title">godelOS.metacognition.meta_knowledge</h3>
+                <span class="coverage-badge medium-coverage">69.2% Coverage</span>
+            </div>
+            
+            <p><strong>File:</strong> godelOS/metacognition/meta_knowledge.py</p>
+            <p><strong>Test Files:</strong> tests/metacognition/test_meta_knowledge.py, tests/metacognition/test_meta_knowledge.py</p>
+            
+            <div class="details-grid">
+                <div class="detail-section">
+                    <h4>Classes (9/12 tested)</h4>
+                    <ul class="detail-list">
+
+                        <li>ComponentPerformanceModel ✅</li>
+
+                        <li>FailurePattern ✅</li>
+
+                        <li>LearningEffectivenessModel ❌</li>
+
+                        <li>MetaKnowledgeBase ✅</li>
+
+                        <li>MetaKnowledgeEncoder ❌</li>
+
+                        <li>MetaKnowledgeEntry ✅</li>
+
+                        <li>MetaKnowledgeRepository ❌</li>
+
+                        <li>MetaKnowledgeType ✅</li>
+
+                        <li>OptimizationHint ✅</li>
+
+                        <li>ReasoningStrategyModel ✅</li>
+
+                        <li>ResourceUsagePattern ✅</li>
+
+                        <li>SystemCapability ✅</li>
+
+                    </ul>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Functions ({len(info['tested_functions'])}/{len(info['function_names'])} tested)</h4>
+                    <ul class="detail-list">
+
+                        <li>create_meta_knowledge_entry ❌</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="timestamp">
+        Report generated on 2025-05-20 08:37:44
+    </div>
+</body>
+</html>

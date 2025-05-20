@@ -29,6 +29,7 @@ from godelOS.metacognition.self_monitoring import (
 )
 from godelOS.metacognition.meta_knowledge import (
     MetaKnowledgeBase,
+    MetaKnowledgeType,
     ComponentPerformanceModel,
     ReasoningStrategyModel,
     ResourceUsagePattern,
@@ -620,7 +621,7 @@ class CognitiveDiagnostician:
         
         # Get component performance models
         for model in self.meta_knowledge.get_entries_by_type(
-            self.meta_knowledge.MetaKnowledgeType.COMPONENT_PERFORMANCE
+            MetaKnowledgeType.COMPONENT_PERFORMANCE
         ):
             if isinstance(model, ComponentPerformanceModel):
                 meta_knowledge["component_performance"].append({
@@ -634,7 +635,7 @@ class CognitiveDiagnostician:
         
         # Get reasoning strategy models
         for model in self.meta_knowledge.get_entries_by_type(
-            self.meta_knowledge.MetaKnowledgeType.REASONING_STRATEGY
+            MetaKnowledgeType.REASONING_STRATEGY
         ):
             if isinstance(model, ReasoningStrategyModel):
                 meta_knowledge["reasoning_strategies"].append({
@@ -649,7 +650,7 @@ class CognitiveDiagnostician:
         
         # Get resource usage patterns
         for pattern in self.meta_knowledge.get_entries_by_type(
-            self.meta_knowledge.MetaKnowledgeType.RESOURCE_USAGE
+            MetaKnowledgeType.RESOURCE_USAGE
         ):
             if isinstance(pattern, ResourceUsagePattern):
                 meta_knowledge["resource_usage"].append({
@@ -663,7 +664,7 @@ class CognitiveDiagnostician:
         
         # Get failure patterns
         for pattern in self.meta_knowledge.get_entries_by_type(
-            self.meta_knowledge.MetaKnowledgeType.FAILURE_PATTERN
+            MetaKnowledgeType.FAILURE_PATTERN
         ):
             if isinstance(pattern, FailurePattern):
                 meta_knowledge["failure_patterns"].append({
@@ -678,7 +679,7 @@ class CognitiveDiagnostician:
         
         # Get optimization hints
         for hint in self.meta_knowledge.get_entries_by_type(
-            self.meta_knowledge.MetaKnowledgeType.OPTIMIZATION_HINT
+            MetaKnowledgeType.OPTIMIZATION_HINT
         ):
             if isinstance(hint, OptimizationHint):
                 meta_knowledge["optimization_hints"].append({

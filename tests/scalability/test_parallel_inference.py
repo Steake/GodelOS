@@ -73,9 +73,10 @@ class TestInferenceTask(unittest.TestCase):
         low_priority_task = InferenceTask("low", self.query, self.context_ids, TaskPriority.LOW)
         
         # Check if tasks are compared correctly
-        self.assertLess(medium_priority_task, high_priority_task)
-        self.assertLess(low_priority_task, medium_priority_task)
-        self.assertLess(low_priority_task, high_priority_task)
+        # Higher priority tasks come first in priority queue, so HIGH < MEDIUM < LOW
+        self.assertLess(high_priority_task, medium_priority_task)
+        self.assertLess(medium_priority_task, low_priority_task)
+        self.assertLess(high_priority_task, low_priority_task)
     
     def test_get_status(self):
         """Test getting the status of a task."""

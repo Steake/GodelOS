@@ -144,4 +144,4 @@ ehthumbs.db
 Desktop.ini
 
 # Project specific
-godelOS.egg-info/
+godelOS.egg-info/./out

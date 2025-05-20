@@ -185,7 +185,7 @@ class FileBasedKBBackend(PersistentKBBackend):
             
             return True
     
-    def query_statements_match_pattern(self, query_pattern_ast: AST_Node, 
+    def query_statements_match_pattern(self, query_pattern_ast: AST_Node,
                                       context_ids: List[str],
                                       variables_to_bind: Optional[List[VariableNode]] = None) -> List[Dict[VariableNode, AST_Node]]:
         """
@@ -199,6 +199,10 @@ class FileBasedKBBackend(PersistentKBBackend):
         Returns:
             A list of variable bindings
         """
+        print(f"FileBasedKBBackend.query_statements_match_pattern called with pattern: {query_pattern_ast}")
+        print(f"Context IDs: {context_ids}")
+        print(f"Variables to bind: {variables_to_bind}")
+        
         with self._lock:
             results = []
             
@@ -207,20 +211,31 @@ class FileBasedKBBackend(PersistentKBBackend):
                     raise ValueError(f"Context {context_id} does not exist")
                 
                 if context_id not in self._statements:
+                    print(f"Context {context_id} has no statements")
                     continue
+                
+                print(f"Context {context_id} has {len(self._statements[context_id])} statements")
                 
                 # Use indexes to optimize the query if possible
                 candidate_statements = self._get_candidate_statements(query_pattern_ast, context_id)
+                print(f"Found {len(candidate_statements)} candidate statements for context {context_id}")
                 
                 for statement in candidate_statements:
+                    print(f"Checking statement: {statement}")
                     bindings, errors = self.unification_engine.unify(query_pattern_ast, statement)
+                    print(f"Unification result: bindings={bindings}, errors={errors}")
+                    
                     if bindings is not None:
+                        print(f"Statement matched with bindings: {bindings}")
                         # Filter bindings to only include the variables to bind
                         if variables_to_bind:
                             filtered_bindings = {}
                             for var in variables_to_bind:
                                 if var.var_id in bindings:
                                     filtered_bindings[var] = bindings[var.var_id]
+                                    print(f"Binding variable {var} to {bindings[var.var_id]}")
+                                else:
+                                    print(f"Variable {var} not found in bindings")
                             results.append(filtered_bindings)
                         else:
                             # Convert var_id -> AST_Node to VariableNode -> AST_Node
@@ -230,8 +245,10 @@ class FileBasedKBBackend(PersistentKBBackend):
                                 var_type = self.unification_engine.type_system.get_type("Entity") or ast_node.type
                                 var = VariableNode(f"?var{var_id}", var_id, var_type)
                                 var_bindings[var] = ast_node
+                                print(f"Created binding for variable {var} to {ast_node}")
                             results.append(var_bindings)
             
+            print(f"Returning {len(results)} results")
             return results
     
     def statement_exists(self, statement_ast: AST_Node, context_ids: List[str]) -> bool:
@@ -1038,7 +1055,7 @@ class KBRouter:
         backend = self.get_backend_for_context(context_id)
         return backend.retract_statement(statement_pattern_ast, context_id)
     
-    def query_statements_match_pattern(self, query_pattern_ast: AST_Node, 
+    def query_statements_match_pattern(self, query_pattern_ast: AST_Node,
                                       context_ids: List[str],
                                       variables_to_bind: Optional[List[VariableNode]] = None) -> List[Dict[VariableNode, AST_Node]]:
         """
@@ -1052,20 +1069,27 @@ class KBRouter:
         Returns:
             A list of variable bindings
         """
+        print(f"KBRouter.query_statements_match_pattern called with pattern: {query_pattern_ast}")
+        print(f"Context IDs: {context_ids}")
+        print(f"Variables to bind: {variables_to_bind}")
+        
         results = []
         
         # Group contexts by backend
         contexts_by_backend: Dict[PersistentKBBackend, List[str]] = {}
         for context_id in context_ids:
             backend = self.get_backend_for_context(context_id)
+            print(f"Backend for context {context_id}: {backend.__class__.__name__}")
             if backend not in contexts_by_backend:
                 contexts_by_backend[backend] = []
             contexts_by_backend[backend].append(context_id)
         
         # Query each backend with its contexts
         for backend, backend_contexts in contexts_by_backend.items():
+            print(f"Querying backend {backend.__class__.__name__} with contexts: {backend_contexts}")
             backend_results = backend.query_statements_match_pattern(
                 query_pattern_ast, backend_contexts, variables_to_bind)
+            print(f"Backend {backend.__class__.__name__} returned {len(backend_results)} results")
             results.extend(backend_results)
         
         return results

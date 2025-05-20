@@ -11,7 +11,11 @@ import time
 import os
 import tempfile
 import shutil
+import logging
 from unittest.mock import MagicMock, patch
+
+# Set up logging
+logging.basicConfig(level=logging.DEBUG)
 
 from godelOS.core_kr.ast.nodes import AST_Node, VariableNode, ConstantNode, ApplicationNode
 from godelOS.core_kr.type_system.types import Type
@@ -70,13 +74,13 @@ class TestScalabilityIntegration(unittest.TestCase):
         self.manager.create_context("TEST_CHILD", "TEST", "test")
         
         # Create test statements
-        self.person = ConstantNode("Person", "Person", self.entity_type)
-        self.john = ConstantNode("John", "John", self.entity_type)
-        self.mary = ConstantNode("Mary", "Mary", self.entity_type)
-        self.car = ConstantNode("Car", "Car", self.entity_type)
-        self.toyota = ConstantNode("Toyota", "Toyota", self.entity_type)
-        self.is_a = ConstantNode("is_a", "is_a", self.relation_type)
-        self.owns = ConstantNode("owns", "owns", self.relation_type)
+        self.person = ConstantNode("Person", self.entity_type, "Person")
+        self.john = ConstantNode("John", self.entity_type, "John")
+        self.mary = ConstantNode("Mary", self.entity_type, "Mary")
+        self.car = ConstantNode("Car", self.entity_type, "Car")
+        self.toyota = ConstantNode("Toyota", self.entity_type, "Toyota")
+        self.is_a = ConstantNode("is_a", self.relation_type, "is_a")
+        self.owns = ConstantNode("owns", self.relation_type, "owns")
         
         self.statement1 = ApplicationNode(self.is_a, [self.john, self.person], self.entity_type)
         self.statement2 = ApplicationNode(self.is_a, [self.mary, self.person], self.entity_type)
@@ -103,7 +107,31 @@ class TestScalabilityIntegration(unittest.TestCase):
         x = VariableNode("?x", "x", self.entity_type)
         query = ApplicationNode(self.is_a, [x, self.person], self.entity_type)
         
+        # Debug logging
+        print(f"Entity type: {self.entity_type}")
+        print(f"Person: {self.person}")
+        print(f"John: {self.john}")
+        print(f"Mary: {self.mary}")
+        print(f"Statement1: {self.statement1}")
+        print(f"Statement2: {self.statement2}")
+        print(f"Query: {query}")
+        
+        # Check if statements exist in the knowledge base
+        exists1 = self.manager.statement_exists(self.statement1, ["TEST"])
+        exists2 = self.manager.statement_exists(self.statement2, ["TEST"])
+        print(f"Statement1 exists: {exists1}")
+        print(f"Statement2 exists: {exists2}")
+        
+        # Try adding statements again to see if there's an error
+        try:
+            self.manager.add_statement(self.statement1, "TEST")
+            self.manager.add_statement(self.statement2, "TEST")
+            print("Statements added successfully")
+        except Exception as e:
+            print(f"Error adding statements: {e}")
+        
         results = self.manager.query_statements_match_pattern(query, ["TEST"], [x])
+        print(f"Query results: {results}")
         
         # Check if the results are correct
         self.assertEqual(len(results), 2)
@@ -284,7 +312,7 @@ class TestScalabilityIntegration(unittest.TestCase):
         self.assertEqual(y_binding, "Toyota")
         
         # Test adding a new statement
-        new_car = ConstantNode("Honda", "Honda", self.entity_type)
+        new_car = ConstantNode("Honda", self.entity_type, "Honda")
         new_statement = ApplicationNode(self.is_a, [new_car, self.car], self.entity_type)
         
         result = self.manager.add_statement(new_statement, "TEST_CHILD")
@@ -353,15 +381,15 @@ class TestPerformanceMeasurement(unittest.TestCase):
         self.manager_without_opt.create_context("TEST", None, "test")
         
         # Create test statements
-        self.person = ConstantNode("Person", "Person", self.entity_type)
-        self.john = ConstantNode("John", "John", self.entity_type)
-        self.is_a = ConstantNode("is_a", "is_a", self.entity_type)
+        self.person = ConstantNode("Person", self.entity_type, "Person")
+        self.john = ConstantNode("John", self.entity_type, "John")
+        self.is_a = ConstantNode("is_a", self.entity_type, "is_a")
         
         self.statement = ApplicationNode(self.is_a, [self.john, self.person], self.entity_type)
         
         # Add statements to the knowledge bases
         for i in range(100):
-            person = ConstantNode(f"Person{i}", f"Person{i}", self.entity_type)
+            person = ConstantNode(f"Person{i}", self.entity_type, f"Person{i}")
             statement = ApplicationNode(self.is_a, [person, self.person], self.entity_type)
             self.manager_with_opt.add_statement(statement, "TEST")
             self.manager_without_opt.add_statement(statement, "TEST")
@@ -426,7 +454,7 @@ class TestPerformanceMeasurement(unittest.TestCase):
         x = VariableNode("?x", "x", self.entity_type)
         queries = []
         for i in range(10):
-            person = ConstantNode(f"Person{i}", f"Person{i}", self.entity_type)
+            person = ConstantNode(f"Person{i}", self.entity_type, f"Person{i}")
             query = ApplicationNode(self.is_a, [person, self.person], self.entity_type)
             queries.append(query)
         

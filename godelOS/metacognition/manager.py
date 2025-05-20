@@ -379,17 +379,17 @@ class MetacognitionManager:
         # Generate diagnostic report
         diagnostic_report = self.diagnostician.generate_report()
         
+        # Always log the diagnostic report generation
+        self._log_event("diagnostic_report_generated", {
+            "report_id": diagnostic_report.report_id,
+            "finding_count": len(diagnostic_report.findings)
+        })
+        
         # Skip remaining phases if no issues found
         if not diagnostic_report.findings:
             self._log_event("no_issues_found", {})
             self.current_phase = MetacognitivePhase.IDLE
             return
-        
-        # Log diagnostic findings
-        self._log_event("diagnostic_report_generated", {
-            "report_id": diagnostic_report.report_id,
-            "finding_count": len(diagnostic_report.findings)
-        })
         
         # 3. Planning phase
         self.current_phase = MetacognitivePhase.PLANNING
@@ -646,10 +646,20 @@ class MetacognitionManager:
         if not proposal:
             return False
         
-        if proposal.status != ModificationStatus.PROPOSED:
-            return False
+        # Handle both enum and string status values
+        if isinstance(proposal.status, str):
+            if proposal.status != ModificationStatus.PROPOSED.value:
+                return False
+        else:
+            if proposal.status != ModificationStatus.PROPOSED:
+                return False
         
-        proposal.status = ModificationStatus.APPROVED
+        # Set status to string or enum based on the original type
+        if isinstance(proposal.status, str):
+            proposal.status = ModificationStatus.APPROVED.value  # Use string value
+        else:
+            proposal.status = ModificationStatus.APPROVED  # Use enum value
+            
         proposal.last_updated = time.time()
         
         self._log_event("proposal_approved", {"proposal_id": proposal_id})
@@ -674,10 +684,20 @@ class MetacognitionManager:
         if not proposal:
             return False
         
-        if proposal.status != ModificationStatus.PROPOSED:
-            return False
+        # Handle both enum and string status values
+        if isinstance(proposal.status, str):
+            if proposal.status != ModificationStatus.PROPOSED.value:
+                return False
+        else:
+            if proposal.status != ModificationStatus.PROPOSED:
+                return False
         
-        proposal.status = ModificationStatus.REJECTED
+        # Set status to string or enum based on the original type
+        if isinstance(proposal.status, str):
+            proposal.status = ModificationStatus.REJECTED.value  # Use string value
+        else:
+            proposal.status = ModificationStatus.REJECTED  # Use enum value
+            
         proposal.last_updated = time.time()
         
         if reason:
@@ -708,8 +728,13 @@ class MetacognitionManager:
         if not proposal:
             return False, f"Proposal with ID {proposal_id} not found"
         
-        if proposal.status != ModificationStatus.APPROVED:
-            return False, f"Proposal is not approved (status: {proposal.status.value})"
+        # Handle both enum and string status values
+        if isinstance(proposal.status, str):
+            if proposal.status != ModificationStatus.APPROVED.value:
+                return False, f"Proposal is not approved (status: {proposal.status})"
+        else:
+            if proposal.status != ModificationStatus.APPROVED:
+                return False, f"Proposal is not approved (status: {proposal.status.value})"
         
         try:
             # Create execution plan

@@ -10,6 +10,7 @@ import shutil
 import json
 import time
 import sys
+import logging
 
 from godelOS.metacognition.module_library import (
     ModuleLibraryActivator,
@@ -25,25 +26,39 @@ class TestModuleLibraryActivator(unittest.TestCase):
     
     def setUp(self):
         """Set up test fixtures."""
+        # Configure logging
+        logging.basicConfig(level=logging.DEBUG)
+        logger = logging.getLogger(__name__)
+        
         # Create temporary directories
         self.temp_dir = tempfile.mkdtemp()
         self.modules_dir = os.path.join(self.temp_dir, "modules")
         self.backup_dir = os.path.join(self.temp_dir, "backups")
         self.config_file = os.path.join(self.temp_dir, "module_config.json")
         
+        logger.debug(f"Test setup: temp_dir={self.temp_dir}")
+        logger.debug(f"Test setup: modules_dir={self.modules_dir}")
+        
         # Create directories
         os.makedirs(self.modules_dir, exist_ok=True)
         os.makedirs(self.backup_dir, exist_ok=True)
         
+        # Create test module directories and metadata
+        self.create_test_modules()
+        
+        # Log the contents of the modules directory after creating test modules
+        logger.debug(f"Modules directory contents after creating test modules: {os.listdir(self.modules_dir)}")
+        
         # Create ModuleLibraryActivator instance
+        logger.debug("Creating ModuleLibraryActivator instance")
         self.module_library = ModuleLibraryActivator(
             modules_directory=self.modules_dir,
             config_file=self.config_file,
             backup_directory=self.backup_dir
         )
         
-        # Create test module directories and metadata
-        self.create_test_modules()
+        # Log the modules detected by the ModuleLibraryActivator
+        logger.debug(f"Modules detected by ModuleLibraryActivator: {list(self.module_library.modules.keys())}")
     
     def tearDown(self):
         """Tear down test fixtures."""
@@ -291,9 +306,13 @@ def cleanup():
     
     def test_add_remove_module(self):
         """Test adding and removing modules."""
+        test_logger = logging.getLogger(__name__)
+        test_logger.debug("=== Starting test_add_remove_module ===")
+        
         # Create a new module directory
         new_module_dir = os.path.join(self.temp_dir, "new_module")
         os.makedirs(new_module_dir, exist_ok=True)
+        test_logger.debug(f"Created new module directory: {new_module_dir}")
         
         # Create metadata file
         metadata = {
@@ -307,19 +326,32 @@ def cleanup():
             "tags": ["test", "new"]
         }
         
-        with open(os.path.join(new_module_dir, "metadata.json"), "w") as f:
+        metadata_path = os.path.join(new_module_dir, "metadata.json")
+        with open(metadata_path, "w") as f:
             json.dump(metadata, f)
+        test_logger.debug(f"Created metadata file at {metadata_path}: {metadata}")
         
         # Create main.py file
-        with open(os.path.join(new_module_dir, "main.py"), "w") as f:
+        main_py_path = os.path.join(new_module_dir, "main.py")
+        with open(main_py_path, "w") as f:
             f.write("""
 # New module
 def hello():
     return "Hello from New Module"
 """)
+        test_logger.debug(f"Created main.py file at {main_py_path}")
+        
+        # Check if add_module method exists
+        test_logger.debug(f"ModuleLibraryActivator methods: {[method for method in dir(self.module_library) if not method.startswith('_')]}")
         
         # Add the module
-        success, message = self.module_library.add_module(new_module_dir)
+        test_logger.debug("Attempting to call add_module method")
+        try:
+            success, message = self.module_library.add_module(new_module_dir)
+            test_logger.debug(f"add_module result: success={success}, message={message}")
+        except AttributeError as e:
+            test_logger.error(f"AttributeError when calling add_module: {e}")
+            raise
         
         # Verify module was added
         self.assertTrue(success)
@@ -338,9 +370,13 @@ def hello():
     
     def test_rollback_module(self):
         """Test rolling back a module to a previous version."""
+        test_logger = logging.getLogger(__name__)
+        test_logger.debug("=== Starting test_rollback_module ===")
+        
         # Create a new version of test_module1
         module1_v2_dir = os.path.join(self.modules_dir, "test_module1_v2")
         os.makedirs(module1_v2_dir, exist_ok=True)
+        test_logger.debug(f"Created new module version directory: {module1_v2_dir}")
         
         # Create metadata file
         metadata = {
@@ -354,11 +390,14 @@ def hello():
             "tags": ["test", "module"]
         }
         
-        with open(os.path.join(module1_v2_dir, "metadata.json"), "w") as f:
+        metadata_path = os.path.join(module1_v2_dir, "metadata.json")
+        with open(metadata_path, "w") as f:
             json.dump(metadata, f)
+        test_logger.debug(f"Created metadata file at {metadata_path}: {metadata}")
         
         # Create main.py file
-        with open(os.path.join(module1_v2_dir, "main.py"), "w") as f:
+        main_py_path = os.path.join(module1_v2_dir, "main.py")
+        with open(main_py_path, "w") as f:
             f.write("""
 # Test module 1 (version 2)
 def hello():
@@ -367,9 +406,19 @@ def hello():
 def cleanup():
     print("Cleaning up Test Module 1 (version 2)")
 """)
+        test_logger.debug(f"Created main.py file at {main_py_path}")
+        
+        # Check what methods are available in ModuleLibraryActivator
+        test_logger.debug(f"Available methods in ModuleLibraryActivator: {[method for method in dir(self.module_library) if not method.startswith('_')]}")
         
         # Add the new version
-        success, message = self.module_library.add_module(module1_v2_dir)
+        test_logger.debug("Attempting to call add_module method")
+        try:
+            success, message = self.module_library.add_module(module1_v2_dir)
+            test_logger.debug(f"add_module result: success={success}, message={message}")
+        except AttributeError as e:
+            test_logger.error(f"AttributeError when calling add_module: {e}")
+            raise
         self.assertTrue(success)
         
         # Activate the new version
@@ -382,6 +431,7 @@ def cleanup():
         with patch('importlib.util.spec_from_file_location'), \
              patch('importlib.util.module_from_spec'):
             success, message = self.module_library.rollback_module("test_module1")
+            print(f"Rollback result: success={success}, message={message}")
             self.assertTrue(success)
         
         # Verify the previous version is active

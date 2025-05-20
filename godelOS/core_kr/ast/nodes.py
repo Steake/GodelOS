@@ -6,10 +6,13 @@ in the GödelOS system, following the principles of immutability, typing, rich m
 and traversal support.
 """
 
-from typing import Any, Dict, List, Optional, Set, Tuple, TypeVar, Generic
+from typing import Any, Dict, List, Optional, Set, Tuple, TypeVar, Generic, ForwardRef
 from abc import ABC, abstractmethod
 from copy import deepcopy
-from godelOS.core_kr.type_system.types import Type
+
+# Use string type annotation to break circular dependency
+# Instead of: from godelOS.core_kr.type_system.types import Type
+Type = ForwardRef('Type')
 
 # Type variable for the visitor pattern return type
 T = TypeVar('T')

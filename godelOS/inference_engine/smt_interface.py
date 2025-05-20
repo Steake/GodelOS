@@ -476,11 +476,26 @@ class SMTInterface(BaseProver):
         """
         if isinstance(node, ConstantNode):
             # Handle special constants
-            if node.type.name == "Boolean":
+            logger.debug(f"Translating ConstantNode: {node.name}, type: {type(node.type).__name__}")
+            
+            # Handle Boolean constants
+            if hasattr(node.type, 'name') and node.type.name == "Boolean":
                 if node.value is True:
                     return "true"
                 elif node.value is False:
                     return "false"
+            
+            # Handle function type constants - these are typically operators
+            elif isinstance(node.type, FunctionType):
+                # For function constants, just use the name as is
+                logger.debug(f"Handling function constant: {node.name} with type {node.type}")
+                return node.name
+            
+            # Handle other types that may not have a 'name' attribute
+            elif not hasattr(node.type, 'name'):
+                logger.debug(f"Handling constant with type that has no 'name' attribute: {node.name}, type: {type(node.type).__name__}")
+                return node.name
+            
             # For other constants, just use the name
             return node.name
         

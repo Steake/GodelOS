@@ -5,7 +5,7 @@ This module defines the TypeSystemManager class, which is responsible for
 managing the type hierarchy, type signatures, and type checking/inference.
 """
 
-from typing import Dict, List, Optional, Set, Tuple
+from typing import Dict, List, Optional, Set, Tuple, Union, Any
 import networkx as nx
 
 from godelOS.core_kr.ast.nodes import AST_Node
@@ -123,7 +123,7 @@ class TypeSystemManager:
         """
         return self._types.get(type_name)
     
-    def is_subtype(self, subtype: Type, supertype: Type) -> bool:
+    def is_subtype(self, subtype: Union[Type, str], supertype: Union[Type, str]) -> bool:
         """
         Check if a type is a subtype of another type.
         
@@ -134,6 +134,31 @@ class TypeSystemManager:
         Returns:
             True if subtype is a subtype of supertype, False otherwise
         """
+        # Handle string types by converting them to Type objects
+        if isinstance(subtype, str):
+            subtype_obj = self.get_type(subtype)
+            if subtype_obj is None:
+                # If the type doesn't exist, create a new atomic type
+                subtype_obj = AtomicType(subtype)
+                # Register the new type
+                self._types[subtype] = subtype_obj
+                # Add it to the type hierarchy graph
+                self._type_hierarchy.add_node(subtype_obj)
+            subtype = subtype_obj
+            
+        if isinstance(supertype, str):
+            supertype_obj = self.get_type(supertype)
+            if supertype_obj is None:
+                # If the type doesn't exist, create a new atomic type
+                supertype_obj = AtomicType(supertype)
+                # Register the new type
+                self._types[supertype] = supertype_obj
+                # Add it to the type hierarchy graph
+                self._type_hierarchy.add_node(supertype_obj)
+            supertype = supertype_obj
+            
+        # If both types are the same, they are subtypes of each other
+            
         if subtype == supertype:
             return True
         
@@ -293,3 +318,23 @@ class TypeSystemManager:
             return any(self._occurs_check(var, arg_type) for arg_type in type_obj.actual_type_args)
             
         return False
+        
+    def register_type(self, type_name: str, parent_type: Optional[str] = None) -> AtomicType:
+        """
+        Alias for define_atomic_type for backward compatibility with tests.
+        
+        Args:
+            type_name: The name of the type
+            parent_type: Optional parent type name
+            
+        Returns:
+            The newly defined atomic type or the existing type if already defined
+        """
+        # Check if the type already exists
+        existing_type = self.get_type(type_name)
+        if existing_type and isinstance(existing_type, AtomicType):
+            return existing_type
+            
+        # Otherwise define a new type
+        parent_types = [parent_type] if parent_type is not None else None
+        return self.define_atomic_type(type_name, parent_types)

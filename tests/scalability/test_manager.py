@@ -96,9 +96,9 @@ class TestScalabilityManager(unittest.TestCase):
         self.entity_type = self.type_system.get_type("Entity")
         
         # Create a statement
-        self.person = ConstantNode("Person", "Person", self.entity_type)
-        self.john = ConstantNode("John", "John", self.entity_type)
-        self.is_a = ConstantNode("is_a", "is_a", self.entity_type)
+        self.person = ConstantNode("Person", self.entity_type, "Person")
+        self.john = ConstantNode("John", self.entity_type, "John")
+        self.is_a = ConstantNode("is_a", self.entity_type, "is_a")
         self.statement = ApplicationNode(self.is_a, [self.john, self.person], self.entity_type)
         
         # Create a query
@@ -155,11 +155,13 @@ class TestScalabilityManager(unittest.TestCase):
     
     def test_query_statements_match_pattern(self):
         """Test querying statements matching a pattern."""
-        # Mock the query optimizer
+        # Mock the query optimizer and KB router
         self.manager.query_optimizer = MagicMock(spec=QueryOptimizer)
+        self.manager.kb_router = MagicMock(spec=KBRouter)
+        
         mock_plan = MagicMock()
         self.manager.query_optimizer.optimize_query.return_value = mock_plan
-        self.manager.query_optimizer.execute_optimized_query.return_value = ["result1", "result2"]
+        self.manager.kb_router.query_statements_match_pattern.return_value = ["result1", "result2"]
         
         # Query statements
         results = self.manager.query_statements_match_pattern(self.query, ["TEST"], [self.x])
@@ -167,7 +169,7 @@ class TestScalabilityManager(unittest.TestCase):
         # Check if the query was executed
         self.assertEqual(results, ["result1", "result2"])
         self.manager.query_optimizer.optimize_query.assert_called_once_with(self.query, ["TEST"], [self.x])
-        self.manager.query_optimizer.execute_optimized_query.assert_called_once_with(mock_plan)
+        self.manager.kb_router.query_statements_match_pattern.assert_called_once_with(self.query, ["TEST"], [self.x])
     
     def test_statement_exists(self):
         """Test checking if a statement exists."""

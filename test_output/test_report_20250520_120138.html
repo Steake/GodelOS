@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Report - 2025-05-20 12:01:38</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .summary {
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .summary-item {
+            margin-bottom: 5px;
+        }
+        .category {
+            margin-bottom: 30px;
+        }
+        .test-result {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 5px solid #ddd;
+        }
+        .test-passed {
+            border-left-color: #4CAF50;
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+        .test-failed {
+            border-left-color: #F44336;
+            background-color: rgba(244, 67, 54, 0.1);
+        }
+        .test-skipped {
+            border-left-color: #FFC107;
+            background-color: rgba(255, 193, 7, 0.1);
+        }
+        .test-error {
+            border-left-color: #F44336;
+            background-color: rgba(244, 67, 54, 0.1);
+        }
+        .test-header {
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+        .test-details {
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        .test-message {
+            margin-top: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 3px;
+        }
+        .docstring {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Report</h1>
+
+    <div class="summary">
+        <h2>Summary</h2>
+        <div class="summary-item">Status: <span style="color: #F44336;">FAILED</span></div>
+        <div class="summary-item">Total Tests: 102</div>
+        <div class="summary-item">Passed: <span style="color: #4CAF50;">74</span> (72.5%)</div>
+        <div class="summary-item">Failed: <span style="color: #F44336;">5</span></div>
+        <div class="summary-item">Error: <span style="color: #F44336;">23</span></div>
+        <div class="summary-item">Duration: 3.03 seconds</div>
+        <div class="summary-item">Generated: 2025-05-20 12:01:38</div>
+    </div>
+
+    <div class="category">
+        <h2>Category: ontology</h2>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_add_abstraction_relation_with_level_assignment</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_generalize_from_instances</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/ontology/test_hypothesis_generator.py::TestHypothesisGenerator::test_generate_hypotheses_with_constraints</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/ontology/test_hypothesis_generator.py::TestHypothesisGenerator::test_helper_methods</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/ontology/test_hypothesis_generator.py::TestHypothesisGenerator::test_hypothesis_caching</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_integration.py::TestOntologyIntegration::test_abstraction_hierarchy_workflow</span>
+                <span>0.09s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_integration.py::TestOntologyIntegration::test_abstraction_hierarchy_workflow. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_integration.py::TestOntologyIntegration::test_concept_blending_workflow</span>
+                <span>0.09s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_integration.py::TestOntologyIntegration::test_concept_blending_workflow. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_integration.py::TestOntologyIntegration::test_cross_component_integration</span>
+                <span>0.08s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_integration.py::TestOntologyIntegration::test_cross_component_integration. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_integration.py::TestOntologyIntegration::test_hypothesis_generation_workflow</span>
+                <span>0.09s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_integration.py::TestOntologyIntegration::test_hypothesis_generation_workflow. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_integration.py::TestOntologyIntegration::test_integration_with_kr_system</span>
+                <span>0.09s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_integration.py::TestOntologyIntegration::test_integration_with_kr_system. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_integration.py::TestOntologyIntegration::test_integration_with_metacognition_system</span>
+                <span>0.13s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_integration.py::TestOntologyIntegration::test_integration_with_metacognition_system. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_abstraction_management_check_consistency</span>
+                <span>0.13s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_abstraction_management_check_consistency. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_abstraction_management_create_hierarchy</span>
+                <span>0.09s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_abstraction_management_create_hierarchy. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_abstraction_management_find_level</span>
+                <span>0.09s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_abstraction_management_find_level. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_abstraction_management_generalize</span>
+                <span>0.10s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_abstraction_management_generalize. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_concept_creation_blend</span>
+                <span>0.10s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_concept_creation_blend. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_concept_creation_novel</span>
+                <span>0.10s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_concept_creation_novel. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_hypothesis_generation</span>
+                <span>0.10s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_hypothesis_generation. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_invalid_operation</span>
+                <span>0.10s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_invalid_operation. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_invalid_workflow</span>
+                <span>0.10s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_execute_workflow_invalid_workflow. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_get_component</span>
+                <span>0.10s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_get_component. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_get_config</span>
+                <span>0.10s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_get_config. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_get_specific_components</span>
+                <span>0.10s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_get_specific_components. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_initialization</span>
+                <span>0.09s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_initialization. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_initialize</span>
+                <span>0.10s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_initialize. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_load_config</span>
+                <span>0.58s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_load_config. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_shutdown</span>
+                <span>0.18s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_shutdown. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_update_config</span>
+                <span>0.13s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestOntologyCreativityManager::test_update_config. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_add_abstraction_relation</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_add_concept_to_level</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_create_hierarchy</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_delete_hierarchy</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_find_appropriate_abstraction_level</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_generalize_from_instances_invalid_inputs</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_get_abstractions</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_get_all_abstractions</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_get_all_hierarchies</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_get_all_levels</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_get_all_specializations</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_get_concept_level</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_get_concepts_at_level</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_get_hierarchy</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_get_specializations</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_helper_methods</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_remove_abstraction_relation</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_abstraction_hierarchy.py::TestAbstractionHierarchyModule::test_remove_concept_from_level</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender.py::TestConceptualBlender::test_analogy_caching</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender.py::TestConceptualBlender::test_blend_caching</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender.py::TestConceptualBlender::test_blend_concepts_invalid_inputs</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender.py::TestConceptualBlender::test_blend_concepts_property_merge</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender.py::TestConceptualBlender::test_blend_concepts_structure_mapping</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender.py::TestConceptualBlender::test_blend_concepts_with_constraints</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender.py::TestConceptualBlender::test_create_analogy</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender.py::TestConceptualBlender::test_create_analogy_invalid_inputs</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender.py::TestConceptualBlender::test_detect_novelty</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender.py::TestConceptualBlender::test_evaluate_concept_utility</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender.py::TestConceptualBlender::test_generate_novel_concept</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender.py::TestConceptualBlender::test_helper_methods</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_analogy_attribute_mapping</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_analogy_relational_mapping</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_analogy_with_constraints</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_blend_multiple_concepts</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_blend_with_complex_property_types</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_blend_with_conflicting_properties</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_blend_with_excluded_properties</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_blend_with_excluded_relations</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_blend_with_property_weights</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_concept_utility_evaluation</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_cross_space_mapping_strategy</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_helper_methods</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_integration_with_ontology_manager</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_novel_concept_generation_with_threshold</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_novelty_detection_metrics</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_selective_projection_strategy</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_semantic_coherence_checking</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_conceptual_blender_enhanced.py::TestConceptualBlenderEnhanced::test_structure_mapping_strategy</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_hypothesis_generator.py::TestHypothesisGenerator::test_evaluate_hypothesis</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_hypothesis_generator.py::TestHypothesisGenerator::test_generate_hypotheses_abductive</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_hypothesis_generator.py::TestHypothesisGenerator::test_generate_hypotheses_analogical</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_hypothesis_generator.py::TestHypothesisGenerator::test_generate_hypotheses_deductive</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_hypothesis_generator.py::TestHypothesisGenerator::test_generate_hypotheses_inductive</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_hypothesis_generator.py::TestHypothesisGenerator::test_generate_hypotheses_invalid_strategy</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_hypothesis_generator.py::TestHypothesisGenerator::test_test_hypothesis</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_hypothesis_generator.py::TestHypothesisGenerator::test_test_hypothesis_no_predictions</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_add_concept</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_add_property</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_add_relation</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_add_relation_instance</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_check_consistency</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_export_to_kr_system</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_get_all_concepts</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_get_concept</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_get_concept_property</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_get_concepts_with_property</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_get_related_concepts</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_import_from_kr_system</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_remove_concept</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_remove_relation_from_concept</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_repair_inconsistencies</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_set_concept_property</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_taxonomic_relations</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/ontology/test_ontology_manager.py::TestOntologyManager::test_update_concept</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

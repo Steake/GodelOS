@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Report - 2025-05-20 12:01:57</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .summary {
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .summary-item {
+            margin-bottom: 5px;
+        }
+        .category {
+            margin-bottom: 30px;
+        }
+        .test-result {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 5px solid #ddd;
+        }
+        .test-passed {
+            border-left-color: #4CAF50;
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+        .test-failed {
+            border-left-color: #F44336;
+            background-color: rgba(244, 67, 54, 0.1);
+        }
+        .test-skipped {
+            border-left-color: #FFC107;
+            background-color: rgba(255, 193, 7, 0.1);
+        }
+        .test-error {
+            border-left-color: #F44336;
+            background-color: rgba(244, 67, 54, 0.1);
+        }
+        .test-header {
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+        .test-details {
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        .test-message {
+            margin-top: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 3px;
+        }
+        .docstring {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Report</h1>
+
+    <div class="summary">
+        <h2>Summary</h2>
+        <div class="summary-item">Status: <span style="color: #F44336;">FAILED</span></div>
+        <div class="summary-item">Total Tests: 111</div>
+        <div class="summary-item">Passed: <span style="color: #4CAF50;">82</span> (73.9%)</div>
+        <div class="summary-item">Error: <span style="color: #F44336;">29</span></div>
+        <div class="summary-item">Duration: 6.77 seconds</div>
+        <div class="summary-item">Generated: 2025-05-20 12:01:57</div>
+    </div>
+
+    <div class="category">
+        <h2>Category: scalability</h2>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_integration.py::TestPerformanceMeasurement::test_caching_performance</span>
+                <span>0.10s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_integration.py::TestPerformanceMeasurement::test_caching_performance. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_integration.py::TestPerformanceMeasurement::test_parallel_inference_performance</span>
+                <span>0.10s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_integration.py::TestPerformanceMeasurement::test_parallel_inference_performance. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_integration.py::TestPerformanceMeasurement::test_query_performance</span>
+                <span>0.10s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_integration.py::TestPerformanceMeasurement::test_query_performance. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_integration.py::TestScalabilityIntegration::test_caching_integration</span>
+                <span>0.10s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_integration.py::TestScalabilityIntegration::test_caching_integration. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_integration.py::TestScalabilityIntegration::test_kb_router_integration</span>
+                <span>0.12s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_integration.py::TestScalabilityIntegration::test_kb_router_integration. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_integration.py::TestScalabilityIntegration::test_parallel_inference_integration</span>
+                <span>0.12s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_integration.py::TestScalabilityIntegration::test_parallel_inference_integration. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_integration.py::TestScalabilityIntegration::test_query_optimizer_integration</span>
+                <span>0.12s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_integration.py::TestScalabilityIntegration::test_query_optimizer_integration. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_integration.py::TestScalabilityIntegration::test_rule_compiler_integration</span>
+                <span>0.14s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_integration.py::TestScalabilityIntegration::test_rule_compiler_integration. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_integration.py::TestScalabilityIntegration::test_scalability_manager_integration</span>
+                <span>0.13s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_integration.py::TestScalabilityIntegration::test_scalability_manager_integration. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityConfig::test_initialization</span>
+                <span>0.11s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityConfig::test_initialization. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityConfig::test_str_representation</span>
+                <span>0.16s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityConfig::test_str_representation. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_add_statement</span>
+                <span>0.19s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_add_statement. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_batch_prove</span>
+                <span>0.14s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_batch_prove. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_clear_caches</span>
+                <span>0.13s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_clear_caches. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_compile_rule</span>
+                <span>0.12s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_compile_rule. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_create_context</span>
+                <span>0.13s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_create_context. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_delete_context</span>
+                <span>0.13s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_delete_context. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_execute_rule</span>
+                <span>0.13s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_execute_rule. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_get_cache_statistics</span>
+                <span>0.12s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_get_cache_statistics. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_get_inference_statistics</span>
+                <span>0.12s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_get_inference_statistics. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_get_inference_task_result</span>
+                <span>0.30s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_get_inference_task_result. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_initialization</span>
+                <span>0.19s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_initialization. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_list_contexts</span>
+                <span>0.30s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_list_contexts. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_process_inference_tasks</span>
+                <span>0.18s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_process_inference_tasks. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_query_statements_match_pattern</span>
+                <span>0.16s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_query_statements_match_pattern. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_retract_statement</span>
+                <span>0.13s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_retract_statement. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_shutdown</span>
+                <span>0.12s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_shutdown. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_statement_exists</span>
+                <span>0.11s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_statement_exists. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-error">
+            <div class="test-header">
+                <span>💥 tests/common_sense/test_manager.py::TestScalabilityManager::test_submit_inference_task</span>
+                <span>0.11s</span>
+            </div>
+            <div class="test-message">No result collected for tests/common_sense/test_manager.py::TestScalabilityManager::test_submit_inference_task. The test might not exist.</div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestCacheEntry::test_access</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestCacheEntry::test_initialization</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestCacheEntry::test_is_expired</span>
+                <span>1.10s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestCacheInvalidationStrategies::test_dependency_based_invalidation</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestCacheInvalidationStrategies::test_pattern_based_invalidation</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestCacheInvalidationStrategies::test_time_based_invalidation</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestCachingMemoizationLayer::test_clear</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestCachingMemoizationLayer::test_convert_key</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestCachingMemoizationLayer::test_generate_cache_key</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestCachingMemoizationLayer::test_invalidate</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestCachingMemoizationLayer::test_memoize</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestCachingMemoizationLayer::test_put_and_get</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestCachingMemoizationLayer::test_size</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestInMemoryCacheStore::test_clear</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestInMemoryCacheStore::test_eviction_fifo</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestInMemoryCacheStore::test_eviction_lfu</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestInMemoryCacheStore::test_eviction_lru</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestInMemoryCacheStore::test_put_and_get</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestInMemoryCacheStore::test_remove</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestInMemoryCacheStore::test_size</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching.py::TestInMemoryCacheStore::test_ttl_expiration</span>
+                <span>0.20s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching_enhanced.py::TestCachingEnhanced::test_cache_with_large_values</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching_enhanced.py::TestCachingEnhanced::test_caching_with_ast_nodes</span>
+                <span>0.04s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching_enhanced.py::TestCachingEnhanced::test_complex_eviction_policy_behavior</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching_enhanced.py::TestCachingEnhanced::test_concurrent_access</span>
+                <span>0.11s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching_enhanced.py::TestCachingEnhanced::test_custom_cache_invalidation_strategy</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching_enhanced.py::TestCachingEnhanced::test_dependency_based_invalidation_complex</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching_enhanced.py::TestCachingEnhanced::test_memoization_with_complex_arguments</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching_enhanced.py::TestCachingEnhanced::test_memoize_recursive_function</span>
+                <span>0.25s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching_enhanced.py::TestCachingEnhanced::test_performance_under_high_load</span>
+                <span>0.05s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_caching_enhanced.py::TestCachingEnhanced::test_ttl_with_high_precision</span>
+                <span>0.07s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestInferenceTask::test_comparison</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestInferenceTask::test_get_duration</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestInferenceTask::test_get_status</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestInferenceTask::test_initialization</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestInferenceTask::test_is_expired</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestParallelInferenceManager::test_batch_prove</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestParallelInferenceManager::test_cancel_task</span>
+                <span>0.11s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestParallelInferenceManager::test_get_statistics</span>
+                <span>0.11s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestParallelInferenceManager::test_get_task_result</span>
+                <span>0.11s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestParallelInferenceManager::test_get_task_status</span>
+                <span>0.12s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestParallelInferenceManager::test_process_tasks</span>
+                <span>0.11s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestParallelInferenceManager::test_submit_task</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestTaskResult::test_initialization</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestTaskResult::test_is_success</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestTaskResult::test_str_representation</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestWorkDistributionStrategies::test_priority_based_strategy</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestWorkDistributionStrategies::test_round_robin_strategy</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_parallel_inference.py::TestWorkDistributionStrategies::test_work_stealing_strategy</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_persistent_kb.py::TestFileBasedKBBackend::test_add_statement</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_persistent_kb.py::TestFileBasedKBBackend::test_create_context</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_persistent_kb.py::TestFileBasedKBBackend::test_persist_and_load</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_persistent_kb.py::TestFileBasedKBBackend::test_query_statements_match_pattern</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_persistent_kb.py::TestFileBasedKBBackend::test_retract_statement</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_persistent_kb.py::TestFileBasedKBBackend::test_transactions</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_persistent_kb.py::TestKBRouter::test_add_statement</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_persistent_kb.py::TestKBRouter::test_get_backend_for_context</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_persistent_kb.py::TestKBRouter::test_query_statements_match_pattern</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_persistent_kb.py::TestSQLiteKBBackend::test_add_statement</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_persistent_kb.py::TestSQLiteKBBackend::test_create_context</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_query_optimizer.py::TestQueryOptimizer::test_estimate_pattern_complexity</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_query_optimizer.py::TestQueryOptimizer::test_estimate_query_cost</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_query_optimizer.py::TestQueryOptimizer::test_execute_optimized_query</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_query_optimizer.py::TestQueryOptimizer::test_optimize_query</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_query_optimizer.py::TestQueryPlan::test_initialization</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_query_optimizer.py::TestQueryPlan::test_str_representation</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_query_optimizer.py::TestQueryStatistics::test_get_constant_selectivity</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_query_optimizer.py::TestQueryStatistics::test_get_predicate_selectivity</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_query_optimizer.py::TestQueryStatistics::test_get_type_selectivity</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_query_optimizer.py::TestQueryStatistics::test_record_and_get_query_time</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_rule_compiler.py::TestCompilationStrategies::test_complex_rule_strategy</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_rule_compiler.py::TestCompilationStrategies::test_conjunctive_rule_strategy</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_rule_compiler.py::TestCompilationStrategies::test_simple_rule_strategy</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_rule_compiler.py::TestCompiledRule::test_initialization</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_rule_compiler.py::TestCompiledRule::test_str_representation</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_rule_compiler.py::TestRuleCompiler::test_compile_rule</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_rule_compiler.py::TestRuleCompiler::test_execute_rule</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_rule_compiler.py::TestRuleCompiler::test_find_matching_rules</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_rule_compiler.py::TestRuleCompiler::test_remove_rule</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_rule_compiler.py::TestRuleIndex::test_add_rule</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_rule_compiler.py::TestRuleIndex::test_find_matching_rules</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/scalability/test_rule_compiler.py::TestRuleIndex::test_remove_rule</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

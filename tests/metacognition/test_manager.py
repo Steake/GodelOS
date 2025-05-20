@@ -137,8 +137,8 @@ class TestMetacognitionManager(unittest.TestCase):
         self.assertEqual(self.manager.current_mode, MetacognitiveMode.PASSIVE)
         
         # Test invalid mode
-        with self.assertRaises(ValueError):
-            self.manager.set_mode("invalid_mode")
+        success = self.manager.set_mode("invalid_mode")
+        self.assertFalse(success)  # Should return False for invalid mode
         
         # Verify event was logged
         self.assertEqual(len(self.manager.event_history), 2)
@@ -152,9 +152,14 @@ class TestMetacognitionManager(unittest.TestCase):
             findings=[MagicMock(), MagicMock()]  # Two findings
         )
         
-        self.manager.modification_planner.generate_proposals_from_diagnostic_report.return_value = [
-            MagicMock(status=MetacognitiveMode.APPROVED.value)  # One approved proposal
-        ]
+        from godelOS.metacognition.modification_planner import ModificationStatus
+        
+        # Create a mock proposal with the proper status
+        mock_proposal = MagicMock()
+        mock_proposal.proposal_id = "test_proposal"
+        mock_proposal.status = ModificationStatus.APPROVED  # Use the enum value, not the string
+        
+        self.manager.modification_planner.generate_proposals_from_diagnostic_report.return_value = [mock_proposal]
         
         # Execute cycle in autonomous mode
         self.manager.current_mode = MetacognitiveMode.AUTONOMOUS

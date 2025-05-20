@@ -70,9 +70,9 @@ class TestFileBasedKBBackend(unittest.TestCase):
     def test_add_statement(self):
         """Test adding a statement."""
         # Create a statement
-        person = ConstantNode("Person", "Person", self.entity_type)
-        john = ConstantNode("John", "John", self.entity_type)
-        is_a = ConstantNode("is_a", "is_a", self.relation_type)
+        person = ConstantNode("Person", self.entity_type, "Person")
+        john = ConstantNode("John", self.entity_type, "John")
+        is_a = ConstantNode("is_a", self.relation_type, "is_a")
         statement = ApplicationNode(is_a, [john, person], self.entity_type)
         
         # Add the statement
@@ -88,9 +88,9 @@ class TestFileBasedKBBackend(unittest.TestCase):
     def test_retract_statement(self):
         """Test retracting a statement."""
         # Create a statement
-        person = ConstantNode("Person", "Person", self.entity_type)
-        john = ConstantNode("John", "John", self.entity_type)
-        is_a = ConstantNode("is_a", "is_a", self.relation_type)
+        person = ConstantNode("Person", self.entity_type, "Person")
+        john = ConstantNode("John", self.entity_type, "John")
+        is_a = ConstantNode("is_a", self.relation_type, "is_a")
         statement = ApplicationNode(is_a, [john, person], self.entity_type)
         
         # Add the statement
@@ -109,10 +109,10 @@ class TestFileBasedKBBackend(unittest.TestCase):
     def test_query_statements_match_pattern(self):
         """Test querying statements matching a pattern."""
         # Create statements
-        person = ConstantNode("Person", "Person", self.entity_type)
-        john = ConstantNode("John", "John", self.entity_type)
-        mary = ConstantNode("Mary", "Mary", self.entity_type)
-        is_a = ConstantNode("is_a", "is_a", self.relation_type)
+        person = ConstantNode("Person", self.entity_type, "Person")
+        john = ConstantNode("John", self.entity_type, "John")
+        mary = ConstantNode("Mary", self.entity_type, "Mary")
+        is_a = ConstantNode("is_a", self.relation_type, "is_a")
         
         statement1 = ApplicationNode(is_a, [john, person], self.entity_type)
         statement2 = ApplicationNode(is_a, [mary, person], self.entity_type)
@@ -143,9 +143,9 @@ class TestFileBasedKBBackend(unittest.TestCase):
     def test_persist_and_load(self):
         """Test persisting and loading the knowledge store."""
         # Create a statement
-        person = ConstantNode("Person", "Person", self.entity_type)
-        john = ConstantNode("John", "John", self.entity_type)
-        is_a = ConstantNode("is_a", "is_a", self.relation_type)
+        person = ConstantNode("Person", self.entity_type, "Person")
+        john = ConstantNode("John", self.entity_type, "John")
+        is_a = ConstantNode("is_a", self.relation_type, "is_a")
         statement = ApplicationNode(is_a, [john, person], self.entity_type)
         
         # Add the statement
@@ -161,9 +161,9 @@ class TestFileBasedKBBackend(unittest.TestCase):
     def test_transactions(self):
         """Test transactions."""
         # Create a statement
-        person = ConstantNode("Person", "Person", self.entity_type)
-        john = ConstantNode("John", "John", self.entity_type)
-        is_a = ConstantNode("is_a", "is_a", self.relation_type)
+        person = ConstantNode("Person", self.entity_type, "Person")
+        john = ConstantNode("John", self.entity_type, "John")
+        is_a = ConstantNode("is_a", self.relation_type, "is_a")
         statement = ApplicationNode(is_a, [john, person], self.entity_type)
         
         # Begin a transaction
@@ -241,9 +241,9 @@ class TestSQLiteKBBackend(unittest.TestCase):
     def test_add_statement(self):
         """Test adding a statement."""
         # Create a statement
-        person = ConstantNode("Person", "Person", self.entity_type)
-        john = ConstantNode("John", "John", self.entity_type)
-        is_a = ConstantNode("is_a", "is_a", self.relation_type)
+        person = ConstantNode("Person", self.entity_type, "Person")
+        john = ConstantNode("John", self.entity_type, "John")
+        is_a = ConstantNode("is_a", self.relation_type, "is_a")
         statement = ApplicationNode(is_a, [john, person], self.entity_type)
         
         # Add the statement

@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "generated_at": "2025-05-19T11:58:38.159087",
+    "version": "1.0.0"
+  },
+  "summary": {
+    "status": "No tests run",
+    "total_tests": 0,
+    "passed_tests": 0,
+    "failed_tests": 0,
+    "skipped_tests": 0,
+    "error_tests": 0,
+    "total_duration": 0,
+    "start_time": null,
+    "end_time": null,
+    "pass_rate": 0
+  },
+  "categories": {},
+  "tests": []
+}

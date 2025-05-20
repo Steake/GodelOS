@@ -15,7 +15,7 @@ from godelOS.scalability.persistent_kb import PersistentKBBackend, KBRouter
 from godelOS.scalability.query_optimizer import QueryOptimizer
 from godelOS.scalability.rule_compiler import RuleCompiler
 from godelOS.scalability.parallel_inference import ParallelInferenceManager
-from godelOS.scalability.caching import CachingMemoizationLayer
+from godelOS.scalability.caching import CachingSystem
 from godelOS.scalability.manager import ScalabilityManager
 
 __all__ = [
@@ -24,6 +24,6 @@ __all__ = [
     'QueryOptimizer',
     'RuleCompiler',
     'ParallelInferenceManager',
-    'CachingMemoizationLayer',
+    'CachingSystem',
     'ScalabilityManager',
 ]

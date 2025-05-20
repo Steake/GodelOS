@@ -1,0 +1,3628 @@
+{
+  "summary": {
+    "total_components": 14,
+    "total_classes": 52,
+    "total_methods": 339,
+    "tested_methods": 167,
+    "untested_methods": 172,
+    "average_method_coverage": 49.26253687315634
+  },
+  "components": {
+    "godelOS.metacognition.meta_knowledge": {
+      "module_path": "godelOS.metacognition.meta_knowledge",
+      "file_path": "godelOS/metacognition/meta_knowledge.py",
+      "classes": [
+        {
+          "name": "MetaKnowledgeEncoder",
+          "methods": [
+            {
+              "name": "default",
+              "class_name": "MetaKnowledgeEncoder",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 4,
+              "complexity": 2
+            }
+          ],
+          "tested_method_count": 0,
+          "total_method_count": 1,
+          "test_coverage_percentage": 0.0
+        },
+        {
+          "name": "ComponentPerformanceModel",
+          "methods": [
+            {
+              "name": "create",
+              "class_name": "ComponentPerformanceModel",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 20,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 0,
+          "total_method_count": 1,
+          "test_coverage_percentage": 0.0
+        },
+        {
+          "name": "ReasoningStrategyModel",
+          "methods": [
+            {
+              "name": "create",
+              "class_name": "ReasoningStrategyModel",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 20,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 0,
+          "total_method_count": 1,
+          "test_coverage_percentage": 0.0
+        },
+        {
+          "name": "ResourceUsagePattern",
+          "methods": [
+            {
+              "name": "create",
+              "class_name": "ResourceUsagePattern",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 18,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 0,
+          "total_method_count": 1,
+          "test_coverage_percentage": 0.0
+        },
+        {
+          "name": "LearningEffectivenessModel",
+          "methods": [
+            {
+              "name": "create",
+              "class_name": "LearningEffectivenessModel",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 20,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 0,
+          "total_method_count": 1,
+          "test_coverage_percentage": 0.0
+        },
+        {
+          "name": "FailurePattern",
+          "methods": [
+            {
+              "name": "create",
+              "class_name": "FailurePattern",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 19,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 0,
+          "total_method_count": 1,
+          "test_coverage_percentage": 0.0
+        },
+        {
+          "name": "SystemCapability",
+          "methods": [
+            {
+              "name": "create",
+              "class_name": "SystemCapability",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 19,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 0,
+          "total_method_count": 1,
+          "test_coverage_percentage": 0.0
+        },
+        {
+          "name": "OptimizationHint",
+          "methods": [
+            {
+              "name": "create",
+              "class_name": "OptimizationHint",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 18,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 0,
+          "total_method_count": 1,
+          "test_coverage_percentage": 0.0
+        },
+        {
+          "name": "MetaKnowledgeRepository",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "MetaKnowledgeRepository",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 4,
+              "complexity": 1
+            },
+            {
+              "name": "add",
+              "class_name": "MetaKnowledgeRepository",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 6,
+              "complexity": 2
+            },
+            {
+              "name": "get",
+              "class_name": "MetaKnowledgeRepository",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "update",
+              "class_name": "MetaKnowledgeRepository",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 11,
+              "complexity": 3
+            },
+            {
+              "name": "remove",
+              "class_name": "MetaKnowledgeRepository",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 4,
+              "complexity": 2
+            },
+            {
+              "name": "list_all",
+              "class_name": "MetaKnowledgeRepository",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "find_by_attribute",
+              "class_name": "MetaKnowledgeRepository",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 4,
+              "complexity": 2
+            }
+          ],
+          "tested_method_count": 0,
+          "total_method_count": 7,
+          "test_coverage_percentage": 0.0
+        },
+        {
+          "name": "MetaKnowledgeBase",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 40,
+              "complexity": 3
+            },
+            {
+              "name": "add_component_performance_model",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 39,
+              "complexity": 1
+            },
+            {
+              "name": "add_reasoning_strategy_model",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 39,
+              "complexity": 1
+            },
+            {
+              "name": "add_resource_usage_pattern",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 37,
+              "complexity": 1
+            },
+            {
+              "name": "add_learning_effectiveness_model",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 39,
+              "complexity": 1
+            },
+            {
+              "name": "add_failure_pattern",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 39,
+              "complexity": 1
+            },
+            {
+              "name": "add_system_capability",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 39,
+              "complexity": 1
+            },
+            {
+              "name": "add_optimization_hint",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 37,
+              "complexity": 1
+            },
+            {
+              "name": "get_entry",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 8,
+              "complexity": 3
+            },
+            {
+              "name": "update_entry",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 15,
+              "complexity": 4
+            },
+            {
+              "name": "remove_entry",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 16,
+              "complexity": 3
+            },
+            {
+              "name": "get_entries_by_type",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 7,
+              "complexity": 2
+            },
+            {
+              "name": "get_component_performance_model",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 9,
+              "complexity": 2
+            },
+            {
+              "name": "get_reasoning_strategy_model",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 9,
+              "complexity": 2
+            },
+            {
+              "name": "get_resource_usage_pattern",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 9,
+              "complexity": 2
+            },
+            {
+              "name": "get_learning_effectiveness_model",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 9,
+              "complexity": 2
+            },
+            {
+              "name": "get_failure_patterns_for_component",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 5,
+              "complexity": 1
+            },
+            {
+              "name": "get_system_capability",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 9,
+              "complexity": 2
+            },
+            {
+              "name": "get_optimization_hints_for_component",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "search_entries",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 43,
+              "complexity": 7
+            },
+            {
+              "name": "export_to_json",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 10,
+              "complexity": 3
+            },
+            {
+              "name": "_persist_entry",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 15,
+              "complexity": 4
+            },
+            {
+              "name": "_remove_persisted_entry",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 9,
+              "complexity": 3
+            },
+            {
+              "name": "_load_persisted_data",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 19,
+              "complexity": 9
+            },
+            {
+              "name": "_assert_to_kr_system",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 31,
+              "complexity": 5
+            },
+            {
+              "name": "_update_kr_system",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 9,
+              "complexity": 3
+            },
+            {
+              "name": "_remove_from_kr_system",
+              "class_name": "MetaKnowledgeBase",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 34,
+              "complexity": 5
+            }
+          ],
+          "tested_method_count": 18,
+          "total_method_count": 27,
+          "test_coverage_percentage": 66.66666666666666
+        }
+      ],
+      "test_files": [
+        "tests/metacognition/test_meta_knowledge.py",
+        "tests/metacognition/test_meta_knowledge.py"
+      ],
+      "test_coverage_percentage": 42.857142857142854
+    },
+    "godelOS.metacognition.diagnostician": {
+      "module_path": "godelOS.metacognition.diagnostician",
+      "file_path": "godelOS/metacognition/diagnostician.py",
+      "classes": [
+        {
+          "name": "DiagnosticRule",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "DiagnosticRule",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 4,
+              "complexity": 1
+            },
+            {
+              "name": "evaluate",
+              "class_name": "DiagnosticRule",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 16,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 1,
+          "total_method_count": 2,
+          "test_coverage_percentage": 50.0
+        },
+        {
+          "name": "PerformanceBottleneckRule",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "PerformanceBottleneckRule",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 12,
+              "complexity": 1
+            },
+            {
+              "name": "evaluate",
+              "class_name": "PerformanceBottleneckRule",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 58,
+              "complexity": 8
+            }
+          ],
+          "tested_method_count": 1,
+          "total_method_count": 2,
+          "test_coverage_percentage": 50.0
+        },
+        {
+          "name": "ReasoningFailureRule",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "ReasoningFailureRule",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 14,
+              "complexity": 1
+            },
+            {
+              "name": "evaluate",
+              "class_name": "ReasoningFailureRule",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 67,
+              "complexity": 10
+            }
+          ],
+          "tested_method_count": 1,
+          "total_method_count": 2,
+          "test_coverage_percentage": 50.0
+        },
+        {
+          "name": "ResourceContentionRule",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "ResourceContentionRule",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 12,
+              "complexity": 1
+            },
+            {
+              "name": "evaluate",
+              "class_name": "ResourceContentionRule",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 61,
+              "complexity": 9
+            }
+          ],
+          "tested_method_count": 1,
+          "total_method_count": 2,
+          "test_coverage_percentage": 50.0
+        },
+        {
+          "name": "CognitiveDiagnostician",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "CognitiveDiagnostician",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 20,
+              "complexity": 3
+            },
+            {
+              "name": "_initialize_default_rules",
+              "class_name": "CognitiveDiagnostician",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 87,
+              "complexity": 1
+            },
+            {
+              "name": "add_diagnostic_rule",
+              "class_name": "CognitiveDiagnostician",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "remove_diagnostic_rule",
+              "class_name": "CognitiveDiagnostician",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 13,
+              "complexity": 3
+            },
+            {
+              "name": "diagnose",
+              "class_name": "CognitiveDiagnostician",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 28,
+              "complexity": 6
+            },
+            {
+              "name": "generate_report",
+              "class_name": "CognitiveDiagnostician",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 37,
+              "complexity": 2
+            },
+            {
+              "name": "get_recent_reports",
+              "class_name": "CognitiveDiagnostician",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 11,
+              "complexity": 1
+            },
+            {
+              "name": "get_findings_by_component",
+              "class_name": "CognitiveDiagnostician",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 18,
+              "complexity": 4
+            },
+            {
+              "name": "get_findings_by_type",
+              "class_name": "CognitiveDiagnostician",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 18,
+              "complexity": 4
+            },
+            {
+              "name": "_prepare_meta_knowledge",
+              "class_name": "CognitiveDiagnostician",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 88,
+              "complexity": 11
+            },
+            {
+              "name": "_is_duplicate_finding",
+              "class_name": "CognitiveDiagnostician",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 22,
+              "complexity": 3
+            },
+            {
+              "name": "_cache_finding",
+              "class_name": "CognitiveDiagnostician",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 9,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_report_summary",
+              "class_name": "CognitiveDiagnostician",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 46,
+              "complexity": 9
+            }
+          ],
+          "tested_method_count": 5,
+          "total_method_count": 13,
+          "test_coverage_percentage": 38.46153846153847
+        }
+      ],
+      "test_files": [
+        "tests/metacognition/test_diagnostician.py",
+        "tests/metacognition/test_diagnostician.py"
+      ],
+      "test_coverage_percentage": 42.857142857142854
+    },
+    "godelOS.metacognition.module_library": {
+      "module_path": "godelOS.metacognition.module_library",
+      "file_path": "godelOS/metacognition/module_library.py",
+      "classes": [
+        {
+          "name": "ModuleVersion",
+          "methods": [
+            {
+              "name": "__str__",
+              "class_name": "ModuleVersion",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 8,
+              "complexity": 3
+            },
+            {
+              "name": "from_string",
+              "class_name": "ModuleVersion",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 10,
+              "complexity": 1
+            },
+            {
+              "name": "to_dict",
+              "class_name": "ModuleVersion",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 9,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 2,
+          "total_method_count": 3,
+          "test_coverage_percentage": 66.66666666666666
+        },
+        {
+          "name": "ModuleMetadata",
+          "methods": [
+            {
+              "name": "to_dict",
+              "class_name": "ModuleMetadata",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 15,
+              "complexity": 1
+            },
+            {
+              "name": "from_dict",
+              "class_name": "ModuleMetadata",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 15,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 2,
+          "total_method_count": 2,
+          "test_coverage_percentage": 100.0
+        },
+        {
+          "name": "ModuleInstance",
+          "methods": [
+            {
+              "name": "to_dict",
+              "class_name": "ModuleInstance",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 9,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 1,
+          "total_method_count": 1,
+          "test_coverage_percentage": 100.0
+        },
+        {
+          "name": "ModuleLibraryActivator",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 29,
+              "complexity": 3
+            },
+            {
+              "name": "_load_config",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 49,
+              "complexity": 10
+            },
+            {
+              "name": "_save_config",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 36,
+              "complexity": 7
+            },
+            {
+              "name": "_scan_modules_directory",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 57,
+              "complexity": 10
+            },
+            {
+              "name": "_calculate_module_checksum",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 25,
+              "complexity": 7
+            },
+            {
+              "name": "get_available_modules",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 16,
+              "complexity": 3
+            },
+            {
+              "name": "get_module_info",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 30,
+              "complexity": 6
+            },
+            {
+              "name": "_get_latest_version",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 11,
+              "complexity": 3
+            },
+            {
+              "name": "activate_module",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 68,
+              "complexity": 13
+            },
+            {
+              "name": "deactivate_module",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 52,
+              "complexity": 8
+            },
+            {
+              "name": "_check_dependencies",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 21,
+              "complexity": 4
+            },
+            {
+              "name": "_version_satisfies_constraint",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 26,
+              "complexity": 4
+            },
+            {
+              "name": "_load_module",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 34,
+              "complexity": 5
+            },
+            {
+              "name": "_unload_module",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 27,
+              "complexity": 7
+            },
+            {
+              "name": "get_active_modules",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 8,
+              "complexity": 1
+            },
+            {
+              "name": "add_module",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 73,
+              "complexity": 9
+            },
+            {
+              "name": "remove_module",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 49,
+              "complexity": 9
+            },
+            {
+              "name": "get_module_status",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 30,
+              "complexity": 6
+            },
+            {
+              "name": "rollback_module",
+              "class_name": "ModuleLibraryActivator",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 57,
+              "complexity": 8
+            }
+          ],
+          "tested_method_count": 8,
+          "total_method_count": 19,
+          "test_coverage_percentage": 42.10526315789473
+        }
+      ],
+      "test_files": [
+        "tests/metacognition/test_module_library.py",
+        "tests/metacognition/test_module_library.py"
+      ],
+      "test_coverage_percentage": 52.0
+    },
+    "godelOS.metacognition.self_monitoring": {
+      "module_path": "godelOS.metacognition.self_monitoring",
+      "file_path": "godelOS/metacognition/self_monitoring.py",
+      "classes": [
+        {
+          "name": "SelfMonitoringModule",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "SelfMonitoringModule",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 53,
+              "complexity": 2
+            },
+            {
+              "name": "start_monitoring",
+              "class_name": "SelfMonitoringModule",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 33,
+              "complexity": 10
+            },
+            {
+              "name": "stop_monitoring",
+              "class_name": "SelfMonitoringModule",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 11,
+              "complexity": 5
+            },
+            {
+              "name": "record_reasoning_event",
+              "class_name": "SelfMonitoringModule",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 37,
+              "complexity": 4
+            },
+            {
+              "name": "get_strategy_success_rate",
+              "class_name": "SelfMonitoringModule",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 10,
+              "complexity": 2
+            },
+            {
+              "name": "get_strategy_average_duration",
+              "class_name": "SelfMonitoringModule",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 8,
+              "complexity": 2
+            },
+            {
+              "name": "get_recent_anomalies",
+              "class_name": "SelfMonitoringModule",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 6,
+              "complexity": 2
+            },
+            {
+              "name": "get_performance_metrics",
+              "class_name": "SelfMonitoringModule",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "register_anomaly_callback",
+              "class_name": "SelfMonitoringModule",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "_anomaly_detection_loop",
+              "class_name": "SelfMonitoringModule",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 10,
+              "complexity": 4
+            },
+            {
+              "name": "_performance_metrics_loop",
+              "class_name": "SelfMonitoringModule",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 10,
+              "complexity": 4
+            },
+            {
+              "name": "_detect_anomalies",
+              "class_name": "SelfMonitoringModule",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 72,
+              "complexity": 18
+            },
+            {
+              "name": "_calculate_performance_metrics",
+              "class_name": "SelfMonitoringModule",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 34,
+              "complexity": 3
+            },
+            {
+              "name": "_record_anomaly",
+              "class_name": "SelfMonitoringModule",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 34,
+              "complexity": 5
+            }
+          ],
+          "tested_method_count": 11,
+          "total_method_count": 14,
+          "test_coverage_percentage": 78.57142857142857
+        }
+      ],
+      "test_files": [
+        "tests/metacognition/test_self_monitoring.py",
+        "tests/metacognition/test_self_monitoring.py"
+      ],
+      "test_coverage_percentage": 78.57142857142857
+    },
+    "godelOS.metacognition.manager": {
+      "module_path": "godelOS.metacognition.manager",
+      "file_path": "godelOS/metacognition/manager.py",
+      "classes": [
+        {
+          "name": "MetacognitionManager",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "MetacognitionManager",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 44,
+              "complexity": 2
+            },
+            {
+              "name": "_load_config",
+              "class_name": "MetacognitionManager",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 35,
+              "complexity": 5
+            },
+            {
+              "name": "initialize",
+              "class_name": "MetacognitionManager",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 75,
+              "complexity": 6
+            },
+            {
+              "name": "_setup_event_subscriptions",
+              "class_name": "MetacognitionManager",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 4,
+              "complexity": 1
+            },
+            {
+              "name": "start",
+              "class_name": "MetacognitionManager",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 40,
+              "complexity": 6
+            },
+            {
+              "name": "stop",
+              "class_name": "MetacognitionManager",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 34,
+              "complexity": 7
+            },
+            {
+              "name": "set_mode",
+              "class_name": "MetacognitionManager",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 24,
+              "complexity": 4
+            },
+            {
+              "name": "_metacognitive_cycle_loop",
+              "class_name": "MetacognitionManager",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 12,
+              "complexity": 4
+            },
+            {
+              "name": "_execute_metacognitive_cycle",
+              "class_name": "MetacognitionManager",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 85,
+              "complexity": 8
+            },
+            {
+              "name": "_get_current_system_state",
+              "class_name": "MetacognitionManager",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 20,
+              "complexity": 1
+            },
+            {
+              "name": "_on_anomaly_detected",
+              "class_name": "MetacognitionManager",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 14,
+              "complexity": 3
+            },
+            {
+              "name": "_log_event",
+              "class_name": "MetacognitionManager",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 17,
+              "complexity": 2
+            },
+            {
+              "name": "_notify_event_subscribers",
+              "class_name": "MetacognitionManager",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 17,
+              "complexity": 9
+            },
+            {
+              "name": "subscribe_to_event",
+              "class_name": "MetacognitionManager",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 12,
+              "complexity": 2
+            },
+            {
+              "name": "unsubscribe_from_event",
+              "class_name": "MetacognitionManager",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 19,
+              "complexity": 4
+            },
+            {
+              "name": "get_recent_events",
+              "class_name": "MetacognitionManager",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 20,
+              "complexity": 3
+            },
+            {
+              "name": "get_current_status",
+              "class_name": "MetacognitionManager",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 22,
+              "complexity": 1
+            },
+            {
+              "name": "get_diagnostic_reports",
+              "class_name": "MetacognitionManager",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 14,
+              "complexity": 2
+            },
+            {
+              "name": "get_modification_proposals",
+              "class_name": "MetacognitionManager",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 19,
+              "complexity": 3
+            },
+            {
+              "name": "approve_modification_proposal",
+              "class_name": "MetacognitionManager",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 36,
+              "complexity": 7
+            },
+            {
+              "name": "reject_modification_proposal",
+              "class_name": "MetacognitionManager",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 44,
+              "complexity": 9
+            },
+            {
+              "name": "execute_modification",
+              "class_name": "MetacognitionManager",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 48,
+              "complexity": 9
+            }
+          ],
+          "tested_method_count": 14,
+          "total_method_count": 22,
+          "test_coverage_percentage": 63.63636363636363
+        }
+      ],
+      "test_files": [
+        "tests/metacognition/test_manager.py",
+        "tests/common_sense/test_manager.py",
+        "tests/ontology/test_manager.py",
+        "tests/metacognition/test_manager.py",
+        "tests/scalability/test_manager.py"
+      ],
+      "test_coverage_percentage": 63.63636363636363
+    },
+    "godelOS.metacognition.modification_planner": {
+      "module_path": "godelOS.metacognition.modification_planner",
+      "file_path": "godelOS/metacognition/modification_planner.py",
+      "classes": [
+        {
+          "name": "SafetyChecker",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "SafetyChecker",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 9,
+              "complexity": 2
+            },
+            {
+              "name": "assess_risk",
+              "class_name": "SafetyChecker",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 48,
+              "complexity": 3
+            },
+            {
+              "name": "_assess_complexity_risk",
+              "class_name": "SafetyChecker",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 17,
+              "complexity": 1
+            },
+            {
+              "name": "_assess_scope_risk",
+              "class_name": "SafetyChecker",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 15,
+              "complexity": 5
+            },
+            {
+              "name": "_assess_reversibility_risk",
+              "class_name": "SafetyChecker",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 14,
+              "complexity": 1
+            },
+            {
+              "name": "_assess_criticality_risk",
+              "class_name": "SafetyChecker",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 27,
+              "complexity": 7
+            },
+            {
+              "name": "_assess_novelty_risk",
+              "class_name": "SafetyChecker",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 17,
+              "complexity": 5
+            },
+            {
+              "name": "is_safe_to_apply",
+              "class_name": "SafetyChecker",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 32,
+              "complexity": 4
+            }
+          ],
+          "tested_method_count": 2,
+          "total_method_count": 8,
+          "test_coverage_percentage": 25.0
+        },
+        {
+          "name": "ModificationEvaluator",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "ModificationEvaluator",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "evaluate_proposal",
+              "class_name": "ModificationEvaluator",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 47,
+              "complexity": 8
+            },
+            {
+              "name": "_evaluate_parameter_tuning",
+              "class_name": "ModificationEvaluator",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 57,
+              "complexity": 13
+            },
+            {
+              "name": "_evaluate_resource_allocation",
+              "class_name": "ModificationEvaluator",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 55,
+              "complexity": 12
+            },
+            {
+              "name": "_evaluate_algorithm_selection",
+              "class_name": "ModificationEvaluator",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 77,
+              "complexity": 9
+            },
+            {
+              "name": "_evaluate_component_replacement",
+              "class_name": "ModificationEvaluator",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 59,
+              "complexity": 8
+            },
+            {
+              "name": "_evaluate_knowledge_update",
+              "class_name": "ModificationEvaluator",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 46,
+              "complexity": 7
+            },
+            {
+              "name": "_evaluate_strategy_adaptation",
+              "class_name": "ModificationEvaluator",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 58,
+              "complexity": 11
+            },
+            {
+              "name": "_evaluate_architecture_change",
+              "class_name": "ModificationEvaluator",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 35,
+              "complexity": 1
+            },
+            {
+              "name": "_incorporate_optimization_hints",
+              "class_name": "ModificationEvaluator",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 19,
+              "complexity": 4
+            },
+            {
+              "name": "_generate_recommendation",
+              "class_name": "ModificationEvaluator",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 24,
+              "complexity": 8
+            }
+          ],
+          "tested_method_count": 1,
+          "total_method_count": 11,
+          "test_coverage_percentage": 9.090909090909092
+        },
+        {
+          "name": "SelfModificationPlanner",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 22,
+              "complexity": 3
+            },
+            {
+              "name": "generate_proposals_from_diagnostic_report",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 43,
+              "complexity": 11
+            },
+            {
+              "name": "_generate_bottleneck_proposals",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 84,
+              "complexity": 11
+            },
+            {
+              "name": "_generate_reasoning_failure_proposals",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 73,
+              "complexity": 6
+            },
+            {
+              "name": "_generate_resource_contention_proposals",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 76,
+              "complexity": 2
+            },
+            {
+              "name": "_generate_pattern_mismatch_proposals",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 8,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_strategy_ineffectiveness_proposals",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 8,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_knowledge_gap_proposals",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 8,
+              "complexity": 1
+            },
+            {
+              "name": "_generate_architectural_limitation_proposals",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 8,
+              "complexity": 1
+            },
+            {
+              "name": "evaluate_proposal",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 57,
+              "complexity": 5
+            },
+            {
+              "name": "create_execution_plan",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 57,
+              "complexity": 10
+            },
+            {
+              "name": "_create_parameter_tuning_steps",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 44,
+              "complexity": 3
+            },
+            {
+              "name": "_create_resource_allocation_steps",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 41,
+              "complexity": 2
+            },
+            {
+              "name": "_create_algorithm_selection_steps",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 55,
+              "complexity": 3
+            },
+            {
+              "name": "_create_component_replacement_steps",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 7,
+              "complexity": 1
+            },
+            {
+              "name": "_create_knowledge_update_steps",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 7,
+              "complexity": 1
+            },
+            {
+              "name": "_create_strategy_adaptation_steps",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 7,
+              "complexity": 1
+            },
+            {
+              "name": "_create_architecture_change_steps",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 7,
+              "complexity": 1
+            },
+            {
+              "name": "execute_plan",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 109,
+              "complexity": 9
+            },
+            {
+              "name": "_perform_rollback",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 30,
+              "complexity": 4
+            },
+            {
+              "name": "_capture_performance_metrics",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 31,
+              "complexity": 3
+            },
+            {
+              "name": "get_proposal",
+              "class_name": "SelfModificationPlanner",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 11,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 5,
+          "total_method_count": 22,
+          "test_coverage_percentage": 22.727272727272727
+        }
+      ],
+      "test_files": [
+        "tests/metacognition/test_modification_planner.py",
+        "tests/metacognition/test_modification_planner.py"
+      ],
+      "test_coverage_percentage": 19.51219512195122
+    },
+    "godelOS.inference_engine.coordinator": {
+      "module_path": "godelOS.inference_engine.coordinator",
+      "file_path": "godelOS/inference_engine/coordinator.py",
+      "classes": [
+        {
+          "name": "StrategyKnowledgeBase",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "StrategyKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "add_strategy_rule",
+              "class_name": "StrategyKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 18,
+              "complexity": 1
+            },
+            {
+              "name": "select_prover",
+              "class_name": "StrategyKnowledgeBase",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 38,
+              "complexity": 10
+            }
+          ],
+          "tested_method_count": 3,
+          "total_method_count": 3,
+          "test_coverage_percentage": 100.0
+        },
+        {
+          "name": "InferenceCoordinator",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "InferenceCoordinator",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 14,
+              "complexity": 2
+            },
+            {
+              "name": "_create_default_strategy_kb",
+              "class_name": "InferenceCoordinator",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 39,
+              "complexity": 1
+            },
+            {
+              "name": "_contains_modal_operator",
+              "class_name": "InferenceCoordinator",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 28,
+              "complexity": 10
+            },
+            {
+              "name": "_contains_arithmetic",
+              "class_name": "InferenceCoordinator",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 41,
+              "complexity": 15
+            },
+            {
+              "name": "_contains_constraints",
+              "class_name": "InferenceCoordinator",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 41,
+              "complexity": 16
+            },
+            {
+              "name": "submit_goal",
+              "class_name": "InferenceCoordinator",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 84,
+              "complexity": 6
+            }
+          ],
+          "tested_method_count": 6,
+          "total_method_count": 6,
+          "test_coverage_percentage": 100.0
+        }
+      ],
+      "test_files": [
+        "tests/test_coordinator.py"
+      ],
+      "test_coverage_percentage": 100.0
+    },
+    "godelOS.inference_engine.analogical_reasoning_engine": {
+      "module_path": "godelOS.inference_engine.analogical_reasoning_engine",
+      "file_path": "godelOS/inference_engine/analogical_reasoning_engine.py",
+      "classes": [
+        {
+          "name": "AnalogicalMapping",
+          "methods": [
+            {
+              "name": "get_overall_score",
+              "class_name": "AnalogicalMapping",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 10,
+              "complexity": 1
+            },
+            {
+              "name": "get_object_mapping",
+              "class_name": "AnalogicalMapping",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 14,
+              "complexity": 3
+            },
+            {
+              "name": "get_predicate_mapping",
+              "class_name": "AnalogicalMapping",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 15,
+              "complexity": 3
+            },
+            {
+              "name": "add_object_mapping",
+              "class_name": "AnalogicalMapping",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 19,
+              "complexity": 3
+            },
+            {
+              "name": "add_predicate_mapping",
+              "class_name": "AnalogicalMapping",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 21,
+              "complexity": 3
+            },
+            {
+              "name": "add_relation_mapping",
+              "class_name": "AnalogicalMapping",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 17,
+              "complexity": 3
+            }
+          ],
+          "tested_method_count": 4,
+          "total_method_count": 6,
+          "test_coverage_percentage": 66.66666666666666
+        },
+        {
+          "name": "AnalogicalReasoningEngine",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "AnalogicalReasoningEngine",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 13,
+              "complexity": 1
+            },
+            {
+              "name": "name",
+              "class_name": "AnalogicalReasoningEngine",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "capabilities",
+              "class_name": "AnalogicalReasoningEngine",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 8,
+              "complexity": 1
+            },
+            {
+              "name": "can_handle",
+              "class_name": "AnalogicalReasoningEngine",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 36,
+              "complexity": 10
+            },
+            {
+              "name": "compute_analogies",
+              "class_name": "AnalogicalReasoningEngine",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 77,
+              "complexity": 3
+            },
+            {
+              "name": "project_inferences",
+              "class_name": "AnalogicalReasoningEngine",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 30,
+              "complexity": 3
+            },
+            {
+              "name": "prove",
+              "class_name": "AnalogicalReasoningEngine",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 769,
+              "complexity": 88
+            }
+          ],
+          "tested_method_count": 4,
+          "total_method_count": 7,
+          "test_coverage_percentage": 57.14285714285714
+        }
+      ],
+      "test_files": [
+        "tests/test_analogical_reasoning_engine.py"
+      ],
+      "test_coverage_percentage": 61.53846153846154
+    },
+    "godelOS.inference_engine.resolution_prover": {
+      "module_path": "godelOS.inference_engine.resolution_prover",
+      "file_path": "godelOS/inference_engine/resolution_prover.py",
+      "classes": [
+        {
+          "name": "Literal",
+          "methods": [
+            {
+              "name": "negate",
+              "class_name": "Literal",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "__str__",
+              "class_name": "Literal",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 2,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 0,
+          "total_method_count": 2,
+          "test_coverage_percentage": 0.0
+        },
+        {
+          "name": "Clause",
+          "methods": [
+            {
+              "name": "__str__",
+              "class_name": "Clause",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 4,
+              "complexity": 2
+            },
+            {
+              "name": "is_empty",
+              "class_name": "Clause",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "is_unit",
+              "class_name": "Clause",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 1,
+          "total_method_count": 3,
+          "test_coverage_percentage": 33.33333333333333
+        },
+        {
+          "name": "CNFConverter",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "CNFConverter",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 10,
+              "complexity": 1
+            },
+            {
+              "name": "convert_to_cnf",
+              "class_name": "CNFConverter",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 41,
+              "complexity": 1
+            },
+            {
+              "name": "_eliminate_implications",
+              "class_name": "CNFConverter",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 70,
+              "complexity": 5
+            },
+            {
+              "name": "_move_negations_inward",
+              "class_name": "CNFConverter",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 93,
+              "complexity": 13
+            },
+            {
+              "name": "_standardize_variables",
+              "class_name": "CNFConverter",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 59,
+              "complexity": 7
+            },
+            {
+              "name": "_skolemize",
+              "class_name": "CNFConverter",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 79,
+              "complexity": 9
+            },
+            {
+              "name": "_drop_quantifiers",
+              "class_name": "CNFConverter",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 32,
+              "complexity": 5
+            },
+            {
+              "name": "_distribute_or_over_and",
+              "class_name": "CNFConverter",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 53,
+              "complexity": 8
+            },
+            {
+              "name": "_extract_clauses",
+              "class_name": "CNFConverter",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 21,
+              "complexity": 4
+            },
+            {
+              "name": "_extract_literals",
+              "class_name": "CNFConverter",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 24,
+              "complexity": 6
+            }
+          ],
+          "tested_method_count": 4,
+          "total_method_count": 10,
+          "test_coverage_percentage": 40.0
+        },
+        {
+          "name": "ResolutionProver",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "ResolutionProver",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 15,
+              "complexity": 2
+            },
+            {
+              "name": "name",
+              "class_name": "ResolutionProver",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "capabilities",
+              "class_name": "ResolutionProver",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 10,
+              "complexity": 1
+            },
+            {
+              "name": "can_handle",
+              "class_name": "ResolutionProver",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 29,
+              "complexity": 7
+            },
+            {
+              "name": "prove",
+              "class_name": "ResolutionProver",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 115,
+              "complexity": 10
+            },
+            {
+              "name": "_negate_formula",
+              "class_name": "ResolutionProver",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 11,
+              "complexity": 1
+            },
+            {
+              "name": "_resolve_clauses",
+              "class_name": "ResolutionProver",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 114,
+              "complexity": 19
+            },
+            {
+              "name": "_select_clause",
+              "class_name": "ResolutionProver",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 19,
+              "complexity": 4
+            },
+            {
+              "name": "_resolve_pair",
+              "class_name": "ResolutionProver",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 46,
+              "complexity": 9
+            },
+            {
+              "name": "_apply_bindings",
+              "class_name": "ResolutionProver",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 50,
+              "complexity": 10
+            },
+            {
+              "name": "_is_tautology",
+              "class_name": "ResolutionProver",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 25,
+              "complexity": 5
+            },
+            {
+              "name": "_clauses_equivalent",
+              "class_name": "ResolutionProver",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 33,
+              "complexity": 7
+            },
+            {
+              "name": "_get_clause_depth",
+              "class_name": "ResolutionProver",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 16,
+              "complexity": 2
+            },
+            {
+              "name": "_trace_proof",
+              "class_name": "ResolutionProver",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 21,
+              "complexity": 3
+            },
+            {
+              "name": "_create_proof_steps",
+              "class_name": "ResolutionProver",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 64,
+              "complexity": 7
+            },
+            {
+              "name": "__init__",
+              "class_name": "ResolutionProver",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 14,
+              "complexity": 1
+            },
+            {
+              "name": "name",
+              "class_name": "ResolutionProver",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "capabilities",
+              "class_name": "ResolutionProver",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 10,
+              "complexity": 1
+            },
+            {
+              "name": "can_handle",
+              "class_name": "ResolutionProver",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 26,
+              "complexity": 3
+            },
+            {
+              "name": "prove",
+              "class_name": "ResolutionProver",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 29,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 10,
+          "total_method_count": 20,
+          "test_coverage_percentage": 50.0
+        }
+      ],
+      "test_files": [
+        "tests/test_resolution_prover.py"
+      ],
+      "test_coverage_percentage": 42.857142857142854
+    },
+    "godelOS.inference_engine.clp_module": {
+      "module_path": "godelOS.inference_engine.clp_module",
+      "file_path": "godelOS/inference_engine/clp_module.py",
+      "classes": [
+        {
+          "name": "ConstraintVariable",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "ConstraintVariable",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 15,
+              "complexity": 1
+            },
+            {
+              "name": "set_domain_values",
+              "class_name": "ConstraintVariable",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 8,
+              "complexity": 1
+            },
+            {
+              "name": "get_size",
+              "class_name": "ConstraintVariable",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 13,
+              "complexity": 6
+            },
+            {
+              "name": "is_singleton",
+              "class_name": "ConstraintVariable",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 12,
+              "complexity": 4
+            },
+            {
+              "name": "get_value",
+              "class_name": "ConstraintVariable",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 12,
+              "complexity": 3
+            },
+            {
+              "name": "intersect",
+              "class_name": "ConstraintVariable",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 26,
+              "complexity": 9
+            },
+            {
+              "name": "__str__",
+              "class_name": "ConstraintVariable",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 7,
+              "complexity": 4
+            }
+          ],
+          "tested_method_count": 5,
+          "total_method_count": 7,
+          "test_coverage_percentage": 71.42857142857143
+        },
+        {
+          "name": "CLPClause",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "CLPClause",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 13,
+              "complexity": 3
+            },
+            {
+              "name": "is_fact",
+              "class_name": "CLPClause",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 8,
+              "complexity": 3
+            },
+            {
+              "name": "is_query",
+              "class_name": "CLPClause",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 8,
+              "complexity": 1
+            },
+            {
+              "name": "__str__",
+              "class_name": "CLPClause",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 13,
+              "complexity": 5
+            }
+          ],
+          "tested_method_count": 2,
+          "total_method_count": 4,
+          "test_coverage_percentage": 50.0
+        },
+        {
+          "name": "ConstraintStore",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "ConstraintStore",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 4,
+              "complexity": 1
+            },
+            {
+              "name": "add_constraint",
+              "class_name": "ConstraintStore",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 15,
+              "complexity": 2
+            },
+            {
+              "name": "get_constraints",
+              "class_name": "ConstraintStore",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 8,
+              "complexity": 1
+            },
+            {
+              "name": "get_next_constraint_to_wake_up",
+              "class_name": "ConstraintStore",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 10,
+              "complexity": 2
+            },
+            {
+              "name": "wake_up_all",
+              "class_name": "ConstraintStore",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 7,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 4,
+          "total_method_count": 5,
+          "test_coverage_percentage": 80.0
+        },
+        {
+          "name": "DomainStore",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "DomainStore",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 4,
+              "complexity": 1
+            },
+            {
+              "name": "set_domain",
+              "class_name": "DomainStore",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 23,
+              "complexity": 3
+            },
+            {
+              "name": "get_domain",
+              "class_name": "DomainStore",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 11,
+              "complexity": 1
+            },
+            {
+              "name": "update_domain",
+              "class_name": "DomainStore",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 52,
+              "complexity": 15
+            },
+            {
+              "name": "get_changed_variables",
+              "class_name": "DomainStore",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 8,
+              "complexity": 1
+            },
+            {
+              "name": "clear_changed_variables",
+              "class_name": "DomainStore",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "get_all_variables",
+              "class_name": "DomainStore",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 8,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 6,
+          "total_method_count": 7,
+          "test_coverage_percentage": 85.71428571428571
+        },
+        {
+          "name": "ConstraintSolver",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "ConstraintSolver",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 8,
+              "complexity": 1
+            },
+            {
+              "name": "propagate",
+              "class_name": "ConstraintSolver",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 12,
+              "complexity": 1
+            },
+            {
+              "name": "can_handle_constraint",
+              "class_name": "ConstraintSolver",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 11,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 2,
+          "total_method_count": 3,
+          "test_coverage_percentage": 66.66666666666666
+        },
+        {
+          "name": "FiniteDomainSolver",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "FiniteDomainSolver",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "can_handle_constraint",
+              "class_name": "FiniteDomainSolver",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 19,
+              "complexity": 3
+            },
+            {
+              "name": "propagate",
+              "class_name": "FiniteDomainSolver",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 40,
+              "complexity": 11
+            },
+            {
+              "name": "_propagate_equality",
+              "class_name": "FiniteDomainSolver",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 86,
+              "complexity": 32
+            },
+            {
+              "name": "_propagate_inequality",
+              "class_name": "FiniteDomainSolver",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 61,
+              "complexity": 20
+            },
+            {
+              "name": "_propagate_less_than",
+              "class_name": "FiniteDomainSolver",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 104,
+              "complexity": 35
+            },
+            {
+              "name": "_propagate_greater_than",
+              "class_name": "FiniteDomainSolver",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 14,
+              "complexity": 1
+            },
+            {
+              "name": "_propagate_less_than_or_equal",
+              "class_name": "FiniteDomainSolver",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 105,
+              "complexity": 35
+            },
+            {
+              "name": "_propagate_greater_than_or_equal",
+              "class_name": "FiniteDomainSolver",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 14,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 2,
+          "total_method_count": 9,
+          "test_coverage_percentage": 22.22222222222222
+        },
+        {
+          "name": "CLPModule",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "CLPModule",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 14,
+              "complexity": 2
+            },
+            {
+              "name": "name",
+              "class_name": "CLPModule",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "capabilities",
+              "class_name": "CLPModule",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 9,
+              "complexity": 1
+            },
+            {
+              "name": "can_handle",
+              "class_name": "CLPModule",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 25,
+              "complexity": 4
+            },
+            {
+              "name": "solve_clp_query",
+              "class_name": "CLPModule",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 39,
+              "complexity": 1
+            },
+            {
+              "name": "_parse_program",
+              "class_name": "CLPModule",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 42,
+              "complexity": 9
+            },
+            {
+              "name": "_parse_query",
+              "class_name": "CLPModule",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 28,
+              "complexity": 6
+            },
+            {
+              "name": "_is_constraint",
+              "class_name": "CLPModule",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 20,
+              "complexity": 6
+            },
+            {
+              "name": "_initialize_domains",
+              "class_name": "CLPModule",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 37,
+              "complexity": 9
+            },
+            {
+              "name": "prove",
+              "class_name": "CLPModule",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 76,
+              "complexity": 4
+            },
+            {
+              "name": "_solve",
+              "class_name": "CLPModule",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 98,
+              "complexity": 15
+            },
+            {
+              "name": "_can_unify",
+              "class_name": "CLPModule",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 30,
+              "complexity": 6
+            },
+            {
+              "name": "_get_variables",
+              "class_name": "CLPModule",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 23,
+              "complexity": 6
+            },
+            {
+              "name": "_propagate_constraints",
+              "class_name": "CLPModule",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 42,
+              "complexity": 9
+            },
+            {
+              "name": "_label_variables",
+              "class_name": "CLPModule",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 69,
+              "complexity": 13
+            },
+            {
+              "name": "_select_variable",
+              "class_name": "CLPModule",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 30,
+              "complexity": 5
+            },
+            {
+              "name": "_get_values",
+              "class_name": "CLPModule",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 38,
+              "complexity": 9
+            }
+          ],
+          "tested_method_count": 10,
+          "total_method_count": 17,
+          "test_coverage_percentage": 58.82352941176471
+        }
+      ],
+      "test_files": [
+        "tests/test_clp_module.py"
+      ],
+      "test_coverage_percentage": 59.61538461538461
+    },
+    "godelOS.inference_engine.proof_object": {
+      "module_path": "godelOS.inference_engine.proof_object",
+      "file_path": "godelOS/inference_engine/proof_object.py",
+      "classes": [
+        {
+          "name": "ProofObject",
+          "methods": [
+            {
+              "name": "create_success",
+              "class_name": "ProofObject",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 30,
+              "complexity": 4
+            },
+            {
+              "name": "create_failure",
+              "class_name": "ProofObject",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 21,
+              "complexity": 2
+            },
+            {
+              "name": "with_time_and_resources",
+              "class_name": "ProofObject",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 22,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 3,
+          "total_method_count": 3,
+          "test_coverage_percentage": 100.0
+        }
+      ],
+      "test_files": [
+        "tests/test_proof_object.py"
+      ],
+      "test_coverage_percentage": 100.0
+    },
+    "godelOS.inference_engine.base_prover": {
+      "module_path": "godelOS.inference_engine.base_prover",
+      "file_path": "godelOS/inference_engine/base_prover.py",
+      "classes": [
+        {
+          "name": "ResourceLimits",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "ResourceLimits",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 20,
+              "complexity": 1
+            },
+            {
+              "name": "get_limit",
+              "class_name": "ResourceLimits",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 14,
+              "complexity": 2
+            },
+            {
+              "name": "__str__",
+              "class_name": "ResourceLimits",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 14,
+              "complexity": 6
+            }
+          ],
+          "tested_method_count": 3,
+          "total_method_count": 3,
+          "test_coverage_percentage": 100.0
+        },
+        {
+          "name": "BaseProver",
+          "methods": [
+            {
+              "name": "prove",
+              "class_name": "BaseProver",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 17,
+              "complexity": 1
+            },
+            {
+              "name": "can_handle",
+              "class_name": "BaseProver",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 15,
+              "complexity": 1
+            },
+            {
+              "name": "name",
+              "class_name": "BaseProver",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 8,
+              "complexity": 1
+            },
+            {
+              "name": "capabilities",
+              "class_name": "BaseProver",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 21,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 4,
+          "total_method_count": 4,
+          "test_coverage_percentage": 100.0
+        }
+      ],
+      "test_files": [
+        "tests/test_base_prover.py"
+      ],
+      "test_coverage_percentage": 100.0
+    },
+    "godelOS.inference_engine.modal_tableau_prover": {
+      "module_path": "godelOS.inference_engine.modal_tableau_prover",
+      "file_path": "godelOS/inference_engine/modal_tableau_prover.py",
+      "classes": [
+        {
+          "name": "SignedFormula",
+          "methods": [
+            {
+              "name": "__str__",
+              "class_name": "SignedFormula",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "negate",
+              "class_name": "SignedFormula",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 1,
+          "total_method_count": 2,
+          "test_coverage_percentage": 50.0
+        },
+        {
+          "name": "World",
+          "methods": [
+            {
+              "name": "__str__",
+              "class_name": "World",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 2,
+              "complexity": 1
+            },
+            {
+              "name": "add_formula",
+              "class_name": "World",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "contains_formula",
+              "class_name": "World",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "contains_contradiction",
+              "class_name": "World",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 10,
+              "complexity": 3
+            }
+          ],
+          "tested_method_count": 2,
+          "total_method_count": 4,
+          "test_coverage_percentage": 50.0
+        },
+        {
+          "name": "AccessibilityRelation",
+          "methods": [
+            {
+              "name": "__str__",
+              "class_name": "AccessibilityRelation",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 2,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 0,
+          "total_method_count": 1,
+          "test_coverage_percentage": 0.0
+        },
+        {
+          "name": "Branch",
+          "methods": [
+            {
+              "name": "__str__",
+              "class_name": "Branch",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 5,
+              "complexity": 1
+            },
+            {
+              "name": "add_world",
+              "class_name": "Branch",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "add_accessibility_relation",
+              "class_name": "Branch",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "get_accessible_worlds",
+              "class_name": "Branch",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 7,
+              "complexity": 1
+            },
+            {
+              "name": "is_closed",
+              "class_name": "Branch",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 15,
+              "complexity": 4
+            },
+            {
+              "name": "is_fully_expanded",
+              "class_name": "Branch",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 9,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 2,
+          "total_method_count": 6,
+          "test_coverage_percentage": 33.33333333333333
+        },
+        {
+          "name": "Tableau",
+          "methods": [
+            {
+              "name": "__str__",
+              "class_name": "Tableau",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 2,
+              "complexity": 1
+            },
+            {
+              "name": "add_branch",
+              "class_name": "Tableau",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "create_new_world",
+              "class_name": "Tableau",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 5,
+              "complexity": 1
+            },
+            {
+              "name": "is_closed",
+              "class_name": "Tableau",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 7,
+              "complexity": 1
+            },
+            {
+              "name": "has_open_branch",
+              "class_name": "Tableau",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 7,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 2,
+          "total_method_count": 5,
+          "test_coverage_percentage": 40.0
+        },
+        {
+          "name": "TableauRuleApplicator",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "TableauRuleApplicator",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 8,
+              "complexity": 1
+            },
+            {
+              "name": "get_formula_type",
+              "class_name": "TableauRuleApplicator",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 34,
+              "complexity": 9
+            },
+            {
+              "name": "apply_alpha_rule",
+              "class_name": "TableauRuleApplicator",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 33,
+              "complexity": 8
+            },
+            {
+              "name": "apply_beta_rule",
+              "class_name": "TableauRuleApplicator",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 55,
+              "complexity": 8
+            },
+            {
+              "name": "apply_pi_rule",
+              "class_name": "TableauRuleApplicator",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 18,
+              "complexity": 5
+            },
+            {
+              "name": "apply_nu_rule",
+              "class_name": "TableauRuleApplicator",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 25,
+              "complexity": 4
+            },
+            {
+              "name": "apply_accessibility_properties",
+              "class_name": "TableauRuleApplicator",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 39,
+              "complexity": 14
+            },
+            {
+              "name": "expand_branch",
+              "class_name": "TableauRuleApplicator",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 37,
+              "complexity": 8
+            }
+          ],
+          "tested_method_count": 1,
+          "total_method_count": 8,
+          "test_coverage_percentage": 12.5
+        },
+        {
+          "name": "ModalTableauProver",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "ModalTableauProver",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 11,
+              "complexity": 1
+            },
+            {
+              "name": "name",
+              "class_name": "ModalTableauProver",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "capabilities",
+              "class_name": "ModalTableauProver",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 9,
+              "complexity": 1
+            },
+            {
+              "name": "can_handle",
+              "class_name": "ModalTableauProver",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 25,
+              "complexity": 4
+            },
+            {
+              "name": "_negate_formula",
+              "class_name": "ModalTableauProver",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 16,
+              "complexity": 3
+            },
+            {
+              "name": "_create_initial_tableau",
+              "class_name": "ModalTableauProver",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 37,
+              "complexity": 3
+            },
+            {
+              "name": "_expand_tableau",
+              "class_name": "ModalTableauProver",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 66,
+              "complexity": 12
+            },
+            {
+              "name": "_create_proof_steps",
+              "class_name": "ModalTableauProver",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 95,
+              "complexity": 11
+            },
+            {
+              "name": "prove",
+              "class_name": "ModalTableauProver",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 95,
+              "complexity": 10
+            }
+          ],
+          "tested_method_count": 5,
+          "total_method_count": 9,
+          "test_coverage_percentage": 55.55555555555556
+        }
+      ],
+      "test_files": [
+        "tests/test_modal_tableau_prover.py"
+      ],
+      "test_coverage_percentage": 37.142857142857146
+    },
+    "godelOS.inference_engine.smt_interface": {
+      "module_path": "godelOS.inference_engine.smt_interface",
+      "file_path": "godelOS/inference_engine/smt_interface.py",
+      "classes": [
+        {
+          "name": "SMTSolverConfiguration",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "SMTSolverConfiguration",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 12,
+              "complexity": 2
+            },
+            {
+              "name": "get_command",
+              "class_name": "SMTSolverConfiguration",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 11,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 0,
+          "total_method_count": 2,
+          "test_coverage_percentage": 0.0
+        },
+        {
+          "name": "SMTResult",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "SMTResult",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 13,
+              "complexity": 1
+            }
+          ],
+          "tested_method_count": 0,
+          "total_method_count": 1,
+          "test_coverage_percentage": 0.0
+        },
+        {
+          "name": "SMTInterface",
+          "methods": [
+            {
+              "name": "__init__",
+              "class_name": "SMTInterface",
+              "is_tested": false,
+              "is_private": false,
+              "is_dunder": true,
+              "line_count": 12,
+              "complexity": 1
+            },
+            {
+              "name": "name",
+              "class_name": "SMTInterface",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 3,
+              "complexity": 1
+            },
+            {
+              "name": "capabilities",
+              "class_name": "SMTInterface",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 11,
+              "complexity": 1
+            },
+            {
+              "name": "can_handle",
+              "class_name": "SMTInterface",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 29,
+              "complexity": 4
+            },
+            {
+              "name": "check_satisfiability",
+              "class_name": "SMTInterface",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 109,
+              "complexity": 18
+            },
+            {
+              "name": "_generate_smt_script",
+              "class_name": "SMTInterface",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 67,
+              "complexity": 11
+            },
+            {
+              "name": "_collect_symbols",
+              "class_name": "SMTInterface",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 33,
+              "complexity": 9
+            },
+            {
+              "name": "_declare_sorts_for_type",
+              "class_name": "SMTInterface",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 26,
+              "complexity": 8
+            },
+            {
+              "name": "_declare_constant",
+              "class_name": "SMTInterface",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 13,
+              "complexity": 1
+            },
+            {
+              "name": "_declare_variable",
+              "class_name": "SMTInterface",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 16,
+              "complexity": 1
+            },
+            {
+              "name": "_type_to_smt_sort",
+              "class_name": "SMTInterface",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 41,
+              "complexity": 5
+            },
+            {
+              "name": "_translate_ast_to_smtlib",
+              "class_name": "SMTInterface",
+              "is_tested": true,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 100,
+              "complexity": 21
+            },
+            {
+              "name": "_parse_smt_result",
+              "class_name": "SMTInterface",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 35,
+              "complexity": 9
+            },
+            {
+              "name": "_parse_smt_model",
+              "class_name": "SMTInterface",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 19,
+              "complexity": 1
+            },
+            {
+              "name": "_parse_smt_unsat_core",
+              "class_name": "SMTInterface",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 26,
+              "complexity": 4
+            },
+            {
+              "name": "_negate_formula",
+              "class_name": "SMTInterface",
+              "is_tested": false,
+              "is_private": true,
+              "is_dunder": false,
+              "line_count": 18,
+              "complexity": 4
+            },
+            {
+              "name": "prove",
+              "class_name": "SMTInterface",
+              "is_tested": true,
+              "is_private": false,
+              "is_dunder": false,
+              "line_count": 109,
+              "complexity": 9
+            }
+          ],
+          "tested_method_count": 8,
+          "total_method_count": 17,
+          "test_coverage_percentage": 47.05882352941176
+        }
+      ],
+      "test_files": [
+        "tests/test_smt_interface.py"
+      ],
+      "test_coverage_percentage": 40.0
+    }
+  }
+}

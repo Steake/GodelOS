@@ -72,7 +72,12 @@ class ExternalCommonSenseKB_Interface:
                 nltk.data.find('corpora/wordnet')
             except LookupError:
                 logger.info("Downloading WordNet...")
-                nltk.download('wordnet', quiet=True)
+                try:
+                    nltk.download('wordnet', quiet=True)
+                    logger.info("WordNet downloaded successfully")
+                except Exception as e:
+                    logger.warning(f"Failed to download WordNet: {e}")
+                    logger.warning("Some WordNet functionality may be unavailable")
     
     def query_concept(self, concept: str, relation_types: Optional[List[str]] = None) -> Dict[str, Any]:
         """Query information about a concept from external knowledge bases.
@@ -543,6 +548,7 @@ class ExternalCommonSenseKB_Interface:
             return cached_data
         
         # If no cached data and we're in offline mode, return minimal information
+        logger.debug(f"Returning fallback knowledge for concept: {concept}")
         return {
             "concept": concept,
             "relations": [],
@@ -579,19 +585,45 @@ class ExternalCommonSenseKB_Interface:
         """
         if self.cache_system:
             if concept:
+                # Delete specific concept from cache
                 self.cache_system.delete(f"common_sense:concept_{concept}")
+                # Also delete any relation cache entries involving this concept
+                self.cache_system.delete(f"common_sense:relation_{concept}_*")
             else:
                 # Clear all common sense cache entries
                 # This depends on the implementation of the cache system
-                pass
+                # For now, we'll just log that this operation is not fully supported
+                logger.info("Clearing all cache entries is not fully supported with the caching system")
         else:
             # File-based cache clearing
             if concept:
-                cache_file = os.path.join(self.cache_dir, f"concept_{concept}.json")
-                if os.path.exists(cache_file):
-                    os.remove(cache_file)
+                # Clear specific concept cache
+                logger.debug(f"Clearing cache for concept: {concept}")
+                
+                # The exact filename format used in the tests
+                concept_file = os.path.join(self.cache_dir, f"concept_{concept}.json")
+                if os.path.exists(concept_file):
+                    try:
+                        os.remove(concept_file)
+                        logger.debug(f"Removed cache file: {concept_file}")
+                    except Exception as e:
+                        logger.warning(f"Error removing cache file {concept_file}: {e}")
+                
+                # Also check for any relation files with this concept
+                for file in os.listdir(self.cache_dir):
+                    if file.startswith(f"relation_{concept}_") and file.endswith(".json"):
+                        try:
+                            os.remove(os.path.join(self.cache_dir, file))
+                            logger.debug(f"Removed cache file: {file}")
+                        except Exception as e:
+                            logger.warning(f"Error removing cache file {file}: {e}")
             else:
                 # Clear all cache files
+                logger.debug("Clearing all cache files")
                 for file in os.listdir(self.cache_dir):
                     if file.endswith(".json"):
-                        os.remove(os.path.join(self.cache_dir, file))
+                        try:
+                            os.remove(os.path.join(self.cache_dir, file))
+                            logger.debug(f"Removed cache file: {file}")
+                        except Exception as e:
+                            logger.warning(f"Error removing cache file {file}: {e}")

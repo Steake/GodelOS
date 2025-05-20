@@ -503,3 +503,103 @@ class AbstractionHierarchyModule:
                     del common_properties[prop_id]
         
         return common_properties
+        
+    def get_abstractions(self,
+                        hierarchy_id: str,
+                        concept_id: str) -> Set[str]:
+        """
+        Get the direct abstractions of a concept in a hierarchy.
+        
+        Args:
+            hierarchy_id: Identifier of the hierarchy
+            concept_id: Identifier of the concept
+            
+        Returns:
+            Set[str]: Set of concept IDs that are direct abstractions of the given concept
+        """
+        if hierarchy_id not in self._hierarchies:
+            logger.warning(f"Hierarchy {hierarchy_id} does not exist")
+            return set()
+        
+        if concept_id not in self._concept_abstractions.get(hierarchy_id, {}):
+            return set()
+        
+        return set(self._concept_abstractions[hierarchy_id][concept_id].keys())
+    
+    def get_specializations(self,
+                           hierarchy_id: str,
+                           concept_id: str) -> Set[str]:
+        """
+        Get the direct specializations of a concept in a hierarchy.
+        
+        Args:
+            hierarchy_id: Identifier of the hierarchy
+            concept_id: Identifier of the concept
+            
+        Returns:
+            Set[str]: Set of concept IDs that are direct specializations of the given concept
+        """
+        if hierarchy_id not in self._hierarchies:
+            logger.warning(f"Hierarchy {hierarchy_id} does not exist")
+            return set()
+        
+        if concept_id not in self._concept_specializations.get(hierarchy_id, {}):
+            return set()
+        
+        return set(self._concept_specializations[hierarchy_id][concept_id].keys())
+    
+    def get_all_abstractions(self,
+                            hierarchy_id: str,
+                            concept_id: str) -> Set[str]:
+        """
+        Get all abstractions of a concept in a hierarchy, including indirect ones.
+        
+        Args:
+            hierarchy_id: Identifier of the hierarchy
+            concept_id: Identifier of the concept
+            
+        Returns:
+            Set[str]: Set of concept IDs that are abstractions of the given concept (direct or indirect)
+        """
+        if hierarchy_id not in self._hierarchies:
+            logger.warning(f"Hierarchy {hierarchy_id} does not exist")
+            return set()
+        
+        # Get direct abstractions
+        direct_abstractions = self.get_abstractions(hierarchy_id, concept_id)
+        all_abstractions = set(direct_abstractions)
+        
+        # Recursively get abstractions of abstractions
+        for abstraction_id in direct_abstractions:
+            higher_abstractions = self.get_all_abstractions(hierarchy_id, abstraction_id)
+            all_abstractions.update(higher_abstractions)
+        
+        return all_abstractions
+    
+    def get_all_specializations(self,
+                               hierarchy_id: str,
+                               concept_id: str) -> Set[str]:
+        """
+        Get all specializations of a concept in a hierarchy, including indirect ones.
+        
+        Args:
+            hierarchy_id: Identifier of the hierarchy
+            concept_id: Identifier of the concept
+            
+        Returns:
+            Set[str]: Set of concept IDs that are specializations of the given concept (direct or indirect)
+        """
+        if hierarchy_id not in self._hierarchies:
+            logger.warning(f"Hierarchy {hierarchy_id} does not exist")
+            return set()
+        
+        # Get direct specializations
+        direct_specializations = self.get_specializations(hierarchy_id, concept_id)
+        all_specializations = set(direct_specializations)
+        
+        # Recursively get specializations of specializations
+        for specialization_id in direct_specializations:
+            lower_specializations = self.get_all_specializations(hierarchy_id, specialization_id)
+            all_specializations.update(lower_specializations)
+        
+        return all_specializations

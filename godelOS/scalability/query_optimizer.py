@@ -24,14 +24,16 @@ class QueryStatistics:
     These statistics are used by the QueryOptimizer to make optimization decisions.
     """
     
-    def __init__(self, knowledge_store: KnowledgeStoreInterface):
+    def __init__(self, knowledge_store: KnowledgeStoreInterface, type_system=None):
         """
         Initialize the query statistics.
         
         Args:
             knowledge_store: The knowledge store interface
+            type_system: Optional type system manager
         """
         self.knowledge_store = knowledge_store
+        self.type_system = type_system
         self.predicate_counts: Dict[str, int] = {}
         self.constant_counts: Dict[str, int] = {}
         self.type_counts: Dict[str, int] = {}
@@ -105,7 +107,17 @@ class QueryStatistics:
         # Create a wildcard query pattern
         # This is a placeholder and would need to be implemented properly
         # based on the actual AST structure
-        wildcard_var = VariableNode("?x", "x", self.knowledge_store.type_system.get_type("Entity"))
+        if self.type_system:
+            entity_type = self.type_system.get_type("Entity")
+        else:
+            # Fallback to try accessing through knowledge_store if type_system not provided
+            try:
+                entity_type = self.knowledge_store.type_system.get_type("Entity")
+            except AttributeError:
+                # If all else fails, use a string as a placeholder
+                entity_type = "Entity"
+                
+        wildcard_var = VariableNode("?x", "x", entity_type)
         query_pattern = wildcard_var
         
         # Query all statements in the context
@@ -269,15 +281,17 @@ class QueryOptimizer:
     strategies to improve query performance.
     """
     
-    def __init__(self, knowledge_store: KnowledgeStoreInterface):
+    def __init__(self, knowledge_store: KnowledgeStoreInterface, type_system=None):
         """
         Initialize the query optimizer.
         
         Args:
             knowledge_store: The knowledge store interface
+            type_system: Optional type system manager
         """
         self.knowledge_store = knowledge_store
-        self.statistics = QueryStatistics(knowledge_store)
+        self.type_system = type_system
+        self.statistics = QueryStatistics(knowledge_store, type_system)
         self.optimization_strategies: List[Callable[[QueryPlan, QueryStatistics], QueryPlan]] = [
             self._reorder_conjunctions,
             self._push_constants_to_front,

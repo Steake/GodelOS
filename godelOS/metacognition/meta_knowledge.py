@@ -23,6 +23,14 @@ from dataclasses import dataclass, field, asdict
 from datetime import datetime, timedelta
 import pickle
 import statistics
+import json
+
+# Custom JSON encoder to handle MetaKnowledgeType enum
+class MetaKnowledgeEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Enum):
+            return obj.value
+        return super().default(obj)
 
 from godelOS.core_kr.knowledge_store.interface import KnowledgeStoreInterface
 from godelOS.core_kr.type_system.manager import TypeSystemManager
@@ -44,6 +52,7 @@ class MetaKnowledgeType(Enum):
     OPTIMIZATION_HINT = "optimization_hint"
 
 
+# Common fields for all meta-knowledge entries
 @dataclass
 class MetaKnowledgeEntry:
     """Base class for meta-knowledge entries."""
@@ -56,9 +65,36 @@ class MetaKnowledgeEntry:
     metadata: Dict[str, Any] = field(default_factory=dict)
 
 
+# Create a factory function to help create entries with common fields
+def create_meta_knowledge_entry(entry_type: MetaKnowledgeType, entry_id: str = None, **kwargs) -> Dict[str, Any]:
+    """Create a dictionary with common meta-knowledge entry fields."""
+    if entry_id is None:
+        entry_id = f"{entry_type.value}_{int(time.time())}"
+    
+    return {
+        "entry_id": entry_id,
+        "entry_type": entry_type,
+        "creation_time": kwargs.get("creation_time", time.time()),
+        "last_updated": kwargs.get("last_updated", time.time()),
+        "confidence": kwargs.get("confidence", 1.0),
+        "source": kwargs.get("source", "system"),
+        "metadata": kwargs.get("metadata", {})
+    }
+
+
 @dataclass
-class ComponentPerformanceModel(MetaKnowledgeEntry):
+class ComponentPerformanceModel:
     """Model of a component's performance characteristics."""
+    # Meta-knowledge fields
+    entry_id: str
+    entry_type: MetaKnowledgeType
+    creation_time: float
+    last_updated: float
+    confidence: float
+    source: str
+    metadata: Dict[str, Any]
+    
+    # Component-specific fields
     component_id: str
     average_response_time_ms: float
     throughput_per_second: float
@@ -66,11 +102,43 @@ class ComponentPerformanceModel(MetaKnowledgeEntry):
     resource_usage: Dict[str, float]
     performance_factors: Dict[str, float] = field(default_factory=dict)
     historical_data: Dict[str, List[float]] = field(default_factory=dict)
+    
+    @classmethod
+    def create(cls, component_id: str, average_response_time_ms: float,
+               throughput_per_second: float, failure_rate: float,
+               resource_usage: Dict[str, float], **kwargs) -> 'ComponentPerformanceModel':
+        """Factory method to create a ComponentPerformanceModel with proper defaults."""
+        base_fields = create_meta_knowledge_entry(
+            MetaKnowledgeType.COMPONENT_PERFORMANCE,
+            entry_id=kwargs.get("entry_id", f"component_performance_{component_id}_{int(time.time())}"),
+            **kwargs
+        )
+        
+        return cls(
+            **base_fields,
+            component_id=component_id,
+            average_response_time_ms=average_response_time_ms,
+            throughput_per_second=throughput_per_second,
+            failure_rate=failure_rate,
+            resource_usage=resource_usage,
+            performance_factors=kwargs.get("performance_factors", {}),
+            historical_data=kwargs.get("historical_data", {})
+        )
 
 
 @dataclass
-class ReasoningStrategyModel(MetaKnowledgeEntry):
+class ReasoningStrategyModel:
     """Model of a reasoning strategy's effectiveness."""
+    # Meta-knowledge fields
+    entry_id: str
+    entry_type: MetaKnowledgeType
+    creation_time: float
+    last_updated: float
+    confidence: float
+    source: str
+    metadata: Dict[str, Any]
+    
+    # Strategy-specific fields
     strategy_name: str
     success_rate: float
     average_duration_ms: float
@@ -78,22 +146,84 @@ class ReasoningStrategyModel(MetaKnowledgeEntry):
     preconditions: List[str]
     resource_requirements: Dict[str, float]
     effectiveness_by_domain: Dict[str, float] = field(default_factory=dict)
+    
+    @classmethod
+    def create(cls, strategy_name: str, success_rate: float, average_duration_ms: float,
+               applicable_problem_types: List[str], preconditions: List[str],
+               resource_requirements: Dict[str, float], **kwargs) -> 'ReasoningStrategyModel':
+        """Factory method to create a ReasoningStrategyModel with proper defaults."""
+        base_fields = create_meta_knowledge_entry(
+            MetaKnowledgeType.REASONING_STRATEGY,
+            entry_id=kwargs.get("entry_id", f"reasoning_strategy_{strategy_name}_{int(time.time())}"),
+            **kwargs
+        )
+        
+        return cls(
+            **base_fields,
+            strategy_name=strategy_name,
+            success_rate=success_rate,
+            average_duration_ms=average_duration_ms,
+            applicable_problem_types=applicable_problem_types,
+            preconditions=preconditions,
+            resource_requirements=resource_requirements,
+            effectiveness_by_domain=kwargs.get("effectiveness_by_domain", {})
+        )
 
 
 @dataclass
-class ResourceUsagePattern(MetaKnowledgeEntry):
+class ResourceUsagePattern:
     """Pattern of resource usage over time."""
+    # Meta-knowledge fields
+    entry_id: str
+    entry_type: MetaKnowledgeType
+    creation_time: float
+    last_updated: float
+    confidence: float
+    source: str
+    metadata: Dict[str, Any]
+    
+    # Resource-specific fields
     resource_name: str
     average_usage: float
     peak_usage: float
     usage_trend: str  # "increasing", "decreasing", "stable"
     periodic_patterns: Dict[str, Any] = field(default_factory=dict)
     correlations: Dict[str, float] = field(default_factory=dict)
+    
+    @classmethod
+    def create(cls, resource_name: str, average_usage: float, peak_usage: float,
+               usage_trend: str, **kwargs) -> 'ResourceUsagePattern':
+        """Factory method to create a ResourceUsagePattern with proper defaults."""
+        base_fields = create_meta_knowledge_entry(
+            MetaKnowledgeType.RESOURCE_USAGE,
+            entry_id=kwargs.get("entry_id", f"resource_usage_{resource_name}_{int(time.time())}"),
+            **kwargs
+        )
+        
+        return cls(
+            **base_fields,
+            resource_name=resource_name,
+            average_usage=average_usage,
+            peak_usage=peak_usage,
+            usage_trend=usage_trend,
+            periodic_patterns=kwargs.get("periodic_patterns", {}),
+            correlations=kwargs.get("correlations", {})
+        )
 
 
 @dataclass
-class LearningEffectivenessModel(MetaKnowledgeEntry):
+class LearningEffectivenessModel:
     """Model of learning effectiveness for different approaches."""
+    # Meta-knowledge fields
+    entry_id: str
+    entry_type: MetaKnowledgeType
+    creation_time: float
+    last_updated: float
+    confidence: float
+    source: str
+    metadata: Dict[str, Any]
+    
+    # Learning-specific fields
     learning_approach: str
     knowledge_gain_rate: float
     convergence_speed: float
@@ -101,11 +231,43 @@ class LearningEffectivenessModel(MetaKnowledgeEntry):
     resource_efficiency: float
     applicable_domains: List[str]
     limitations: List[str] = field(default_factory=list)
+    
+    @classmethod
+    def create(cls, learning_approach: str, knowledge_gain_rate: float, convergence_speed: float,
+               generalization_ability: float, resource_efficiency: float, applicable_domains: List[str],
+               **kwargs) -> 'LearningEffectivenessModel':
+        """Factory method to create a LearningEffectivenessModel with proper defaults."""
+        base_fields = create_meta_knowledge_entry(
+            MetaKnowledgeType.LEARNING_EFFECTIVENESS,
+            entry_id=kwargs.get("entry_id", f"learning_effectiveness_{learning_approach}_{int(time.time())}"),
+            **kwargs
+        )
+        
+        return cls(
+            **base_fields,
+            learning_approach=learning_approach,
+            knowledge_gain_rate=knowledge_gain_rate,
+            convergence_speed=convergence_speed,
+            generalization_ability=generalization_ability,
+            resource_efficiency=resource_efficiency,
+            applicable_domains=applicable_domains,
+            limitations=kwargs.get("limitations", [])
+        )
 
 
 @dataclass
-class FailurePattern(MetaKnowledgeEntry):
+class FailurePattern:
     """Pattern of system failures."""
+    # Meta-knowledge fields
+    entry_id: str
+    entry_type: MetaKnowledgeType
+    creation_time: float
+    last_updated: float
+    confidence: float
+    source: str
+    metadata: Dict[str, Any]
+    
+    # Failure-specific fields
     pattern_name: str
     affected_components: List[str]
     symptoms: List[str]
@@ -113,11 +275,42 @@ class FailurePattern(MetaKnowledgeEntry):
     frequency: float  # occurrences per time unit
     severity: float  # 0.0 to 1.0
     mitigation_strategies: List[str] = field(default_factory=list)
+    
+    @classmethod
+    def create(cls, pattern_name: str, affected_components: List[str], symptoms: List[str],
+               root_causes: List[str], frequency: float, severity: float, **kwargs) -> 'FailurePattern':
+        """Factory method to create a FailurePattern with proper defaults."""
+        base_fields = create_meta_knowledge_entry(
+            MetaKnowledgeType.FAILURE_PATTERN,
+            entry_id=kwargs.get("entry_id", f"failure_pattern_{pattern_name}_{int(time.time())}"),
+            **kwargs
+        )
+        
+        return cls(
+            **base_fields,
+            pattern_name=pattern_name,
+            affected_components=affected_components,
+            symptoms=symptoms,
+            root_causes=root_causes,
+            frequency=frequency,
+            severity=severity,
+            mitigation_strategies=kwargs.get("mitigation_strategies", [])
+        )
 
 
 @dataclass
-class SystemCapability(MetaKnowledgeEntry):
+class SystemCapability:
     """Description of a system capability."""
+    # Meta-knowledge fields
+    entry_id: str
+    entry_type: MetaKnowledgeType
+    creation_time: float
+    last_updated: float
+    confidence: float
+    source: str
+    metadata: Dict[str, Any]
+    
+    # Capability-specific fields
     capability_name: str
     capability_description: str
     performance_level: float  # 0.0 to 1.0
@@ -125,17 +318,68 @@ class SystemCapability(MetaKnowledgeEntry):
     resource_requirements: Dict[str, float]
     dependencies: List[str] = field(default_factory=list)
     limitations: List[str] = field(default_factory=list)
+    
+    @classmethod
+    def create(cls, capability_name: str, capability_description: str, performance_level: float,
+               reliability: float, resource_requirements: Dict[str, float], **kwargs) -> 'SystemCapability':
+        """Factory method to create a SystemCapability with proper defaults."""
+        base_fields = create_meta_knowledge_entry(
+            MetaKnowledgeType.SYSTEM_CAPABILITY,
+            entry_id=kwargs.get("entry_id", f"system_capability_{capability_name}_{int(time.time())}"),
+            **kwargs
+        )
+        
+        return cls(
+            **base_fields,
+            capability_name=capability_name,
+            capability_description=capability_description,
+            performance_level=performance_level,
+            reliability=reliability,
+            resource_requirements=resource_requirements,
+            dependencies=kwargs.get("dependencies", []),
+            limitations=kwargs.get("limitations", [])
+        )
 
 
 @dataclass
-class OptimizationHint(MetaKnowledgeEntry):
+class OptimizationHint:
     """Hint for system optimization."""
+    # Meta-knowledge fields
+    entry_id: str
+    entry_type: MetaKnowledgeType
+    creation_time: float
+    last_updated: float
+    confidence: float
+    source: str
+    metadata: Dict[str, Any]
+    
+    # Optimization-specific fields
     target_component: str
     optimization_type: str  # "performance", "resource", "reliability"
     expected_improvement: float  # 0.0 to 1.0
     implementation_difficulty: float  # 0.0 to 1.0
     preconditions: List[str]
     side_effects: List[str] = field(default_factory=list)
+    
+    @classmethod
+    def create(cls, target_component: str, optimization_type: str, expected_improvement: float,
+               implementation_difficulty: float, preconditions: List[str], **kwargs) -> 'OptimizationHint':
+        """Factory method to create an OptimizationHint with proper defaults."""
+        base_fields = create_meta_knowledge_entry(
+            MetaKnowledgeType.OPTIMIZATION_HINT,
+            entry_id=kwargs.get("entry_id", f"optimization_hint_{target_component}_{optimization_type}_{int(time.time())}"),
+            **kwargs
+        )
+        
+        return cls(
+            **base_fields,
+            target_component=target_component,
+            optimization_type=optimization_type,
+            expected_improvement=expected_improvement,
+            implementation_difficulty=implementation_difficulty,
+            preconditions=preconditions,
+            side_effects=kwargs.get("side_effects", [])
+        )
 
 
 class MetaKnowledgeRepository(Generic[T]):
@@ -253,21 +497,20 @@ class MetaKnowledgeBase:
         Returns:
             The ID of the newly created entry
         """
-        entry_id = f"component_performance_{component_id}_{int(time.time())}"
-        model = ComponentPerformanceModel(
-            entry_id=entry_id,
-            entry_type=MetaKnowledgeType.COMPONENT_PERFORMANCE,
+        # Use the factory method to create the model
+        model = ComponentPerformanceModel.create(
             component_id=component_id,
             average_response_time_ms=average_response_time_ms,
             throughput_per_second=throughput_per_second,
             failure_rate=failure_rate,
             resource_usage=resource_usage,
-            performance_factors=performance_factors or {},
-            historical_data=historical_data or {},
+            performance_factors=performance_factors,
+            historical_data=historical_data,
             confidence=confidence,
             source=source,
-            metadata=metadata or {}
+            metadata=metadata
         )
+        entry_id = model.entry_id
         
         self.component_performance_repo.add(model)
         self._persist_entry(model)
@@ -294,21 +537,20 @@ class MetaKnowledgeBase:
         Returns:
             The ID of the newly created entry
         """
-        entry_id = f"reasoning_strategy_{strategy_name}_{int(time.time())}"
-        model = ReasoningStrategyModel(
-            entry_id=entry_id,
-            entry_type=MetaKnowledgeType.REASONING_STRATEGY,
+        # Use the factory method to create the model
+        model = ReasoningStrategyModel.create(
             strategy_name=strategy_name,
             success_rate=success_rate,
             average_duration_ms=average_duration_ms,
             applicable_problem_types=applicable_problem_types,
             preconditions=preconditions,
             resource_requirements=resource_requirements,
-            effectiveness_by_domain=effectiveness_by_domain or {},
+            effectiveness_by_domain=effectiveness_by_domain,
             confidence=confidence,
             source=source,
-            metadata=metadata or {}
+            metadata=metadata
         )
+        entry_id = model.entry_id
         
         self.reasoning_strategy_repo.add(model)
         self._persist_entry(model)
@@ -334,20 +576,19 @@ class MetaKnowledgeBase:
         Returns:
             The ID of the newly created entry
         """
-        entry_id = f"resource_usage_{resource_name}_{int(time.time())}"
-        pattern = ResourceUsagePattern(
-            entry_id=entry_id,
-            entry_type=MetaKnowledgeType.RESOURCE_USAGE,
+        # Use the factory method to create the pattern
+        pattern = ResourceUsagePattern.create(
             resource_name=resource_name,
             average_usage=average_usage,
             peak_usage=peak_usage,
             usage_trend=usage_trend,
-            periodic_patterns=periodic_patterns or {},
-            correlations=correlations or {},
+            periodic_patterns=periodic_patterns,
+            correlations=correlations,
             confidence=confidence,
             source=source,
-            metadata=metadata or {}
+            metadata=metadata
         )
+        entry_id = pattern.entry_id
         
         self.resource_usage_repo.add(pattern)
         self._persist_entry(pattern)
@@ -374,21 +615,20 @@ class MetaKnowledgeBase:
         Returns:
             The ID of the newly created entry
         """
-        entry_id = f"learning_effectiveness_{learning_approach}_{int(time.time())}"
-        model = LearningEffectivenessModel(
-            entry_id=entry_id,
-            entry_type=MetaKnowledgeType.LEARNING_EFFECTIVENESS,
+        # Use the factory method to create the model
+        model = LearningEffectivenessModel.create(
             learning_approach=learning_approach,
             knowledge_gain_rate=knowledge_gain_rate,
             convergence_speed=convergence_speed,
             generalization_ability=generalization_ability,
             resource_efficiency=resource_efficiency,
             applicable_domains=applicable_domains,
-            limitations=limitations or [],
+            limitations=limitations,
             confidence=confidence,
             source=source,
-            metadata=metadata or {}
+            metadata=metadata
         )
+        entry_id = model.entry_id
         
         self.learning_effectiveness_repo.add(model)
         self._persist_entry(model)
@@ -415,21 +655,20 @@ class MetaKnowledgeBase:
         Returns:
             The ID of the newly created entry
         """
-        entry_id = f"failure_pattern_{pattern_name}_{int(time.time())}"
-        pattern = FailurePattern(
-            entry_id=entry_id,
-            entry_type=MetaKnowledgeType.FAILURE_PATTERN,
+        # Use the factory method to create the pattern
+        pattern = FailurePattern.create(
             pattern_name=pattern_name,
             affected_components=affected_components,
             symptoms=symptoms,
             root_causes=root_causes,
             frequency=frequency,
             severity=severity,
-            mitigation_strategies=mitigation_strategies or [],
+            mitigation_strategies=mitigation_strategies,
             confidence=confidence,
             source=source,
-            metadata=metadata or {}
+            metadata=metadata
         )
+        entry_id = pattern.entry_id
         
         self.failure_pattern_repo.add(pattern)
         self._persist_entry(pattern)
@@ -456,21 +695,20 @@ class MetaKnowledgeBase:
         Returns:
             The ID of the newly created entry
         """
-        entry_id = f"system_capability_{capability_name}_{int(time.time())}"
-        capability = SystemCapability(
-            entry_id=entry_id,
-            entry_type=MetaKnowledgeType.SYSTEM_CAPABILITY,
+        # Use the factory method to create the capability
+        capability = SystemCapability.create(
             capability_name=capability_name,
             capability_description=capability_description,
             performance_level=performance_level,
             reliability=reliability,
             resource_requirements=resource_requirements,
-            dependencies=dependencies or [],
-            limitations=limitations or [],
+            dependencies=dependencies,
+            limitations=limitations,
             confidence=confidence,
             source=source,
-            metadata=metadata or {}
+            metadata=metadata
         )
+        entry_id = capability.entry_id
         
         self.system_capability_repo.add(capability)
         self._persist_entry(capability)
@@ -496,20 +734,19 @@ class MetaKnowledgeBase:
         Returns:
             The ID of the newly created entry
         """
-        entry_id = f"optimization_hint_{target_component}_{optimization_type}_{int(time.time())}"
-        hint = OptimizationHint(
-            entry_id=entry_id,
-            entry_type=MetaKnowledgeType.OPTIMIZATION_HINT,
+        # Use the factory method to create the hint
+        hint = OptimizationHint.create(
             target_component=target_component,
             optimization_type=optimization_type,
             expected_improvement=expected_improvement,
             implementation_difficulty=implementation_difficulty,
             preconditions=preconditions,
-            side_effects=side_effects or [],
+            side_effects=side_effects,
             confidence=confidence,
             source=source,
-            metadata=metadata or {}
+            metadata=metadata
         )
+        entry_id = hint.entry_id
         
         self.optimization_hint_repo.add(hint)
         self._persist_entry(hint)
@@ -526,10 +763,13 @@ class MetaKnowledgeBase:
         
         return None
     
-    def update_entry(self, entry: MetaKnowledgeEntry) -> None:
+    def update_entry(self, entry) -> None:
         """Update a meta-knowledge entry."""
-        if not isinstance(entry, MetaKnowledgeEntry):
-            raise TypeError("Entry must be a subclass of MetaKnowledgeEntry")
+        # Check if entry has the required fields
+        required_fields = ['entry_id', 'entry_type']
+        for field in required_fields:
+            if not hasattr(entry, field):
+                raise TypeError(f"Entry must have field '{field}'")
         
         repo = self.repositories.get(entry.entry_type)
         if not repo:
@@ -560,7 +800,7 @@ class MetaKnowledgeBase:
         """Get all meta-knowledge entries of a specific type."""
         repo = self.repositories.get(entry_type)
         if not repo:
-            raise ValueError(f"No repository for entry type {entry_type}")
+            raise KeyError(f"No repository for entry type {entry_type}")
         
         return repo.list_all()
     
@@ -661,7 +901,7 @@ class MetaKnowledgeBase:
                 
                 # Check keywords
                 entry_dict = asdict(entry)
-                entry_str = json.dumps(entry_dict).lower()
+                entry_str = json.dumps(entry_dict, cls=MetaKnowledgeEncoder).lower()
                 
                 if all(keyword.lower() in entry_str for keyword in keywords):
                     results.append(entry)
@@ -677,7 +917,7 @@ class MetaKnowledgeBase:
                 all_entries.append(asdict(entry))
         
         with open(file_path, 'w') as f:
-            json.dump(all_entries, f, indent=2)
+            json.dump(all_entries, f, indent=2, cls=MetaKnowledgeEncoder)
     
     def _persist_entry(self, entry: MetaKnowledgeEntry) -> None:
         """Persist an entry to disk if persistence is enabled."""
@@ -688,8 +928,12 @@ class MetaKnowledgeBase:
         
         file_path = os.path.join(self.persistence_directory, f"{entry.entry_id}.pickle")
         
-        with open(file_path, 'wb') as f:
-            pickle.dump(entry, f)
+        try:
+            with open(file_path, 'wb') as f:
+                pickle.dump(entry, f)
+        except (IOError, OSError) as e:
+            # Log the error but don't raise an exception
+            logger.error(f"Error persisting entry {entry.entry_id}: {e}")
     
     def _remove_persisted_entry(self, entry_id: str) -> None:
         """Remove a persisted entry from disk."""
@@ -727,58 +971,73 @@ class MetaKnowledgeBase:
         # This is a simplified implementation that would need to be expanded
         # based on the actual KR system's capabilities
         
-        # Get necessary types from type system
-        entity_type = self.type_system.get_type("Entity") or self.type_system.get_type("Object")
-        prop_type = self.type_system.get_type("Proposition")
-        float_type = self.type_system.get_type("Float") or self.type_system.get_type("Real")
-        string_type = self.type_system.get_type("String")
-        
-        # Create a simple predicate for the entry
-        predicate = ApplicationNode(
-            operator=ConstantNode(f"Has{entry.entry_type.value.title().replace('_', '')}", prop_type),
-            arguments=[
-                ConstantNode(entry.entry_id, entity_type),
-                ConstantNode(str(entry.confidence), float_type)
-            ],
-            type_ref=prop_type
-        )
-        
-        # Assert the predicate to the meta-knowledge context
-        self.kr_interface.assert_statement(
-            self.meta_knowledge_context_id,
-            predicate
-        )
+        try:
+            # Get necessary types from type system
+            entity_type = self.type_system.get_type("Entity") or self.type_system.get_type("Object")
+            prop_type = self.type_system.get_type("Proposition")
+            float_type = self.type_system.get_type("Float") or self.type_system.get_type("Real")
+            string_type = self.type_system.get_type("String")
+            
+            # Create a simple predicate for the entry
+            predicate = ApplicationNode(
+                operator=ConstantNode(f"Has{entry.entry_type.value.title().replace('_', '')}", prop_type),
+                arguments=[
+                    ConstantNode(entry.entry_id, entity_type),
+                    ConstantNode(str(entry.confidence), float_type)
+                ],
+                type_ref=prop_type
+            )
+            
+            # Assert the predicate to the meta-knowledge context
+            self.kr_interface.assert_statement(
+                context_id=self.meta_knowledge_context_id,
+                statement=predicate
+            )
+        except Exception as e:
+            # Log the error but don't raise an exception
+            logger.error(f"Error asserting entry {entry.entry_id} to KR system: {e}")
     
     def _update_kr_system(self, entry: MetaKnowledgeEntry) -> None:
         """Update a meta-knowledge entry in the KR system."""
-        # For simplicity, we'll just remove and re-assert
-        self._remove_from_kr_system(entry)
-        self._assert_to_kr_system(entry)
+        try:
+            # For simplicity, we'll just remove and re-assert
+            self._remove_from_kr_system(entry)
+            self._assert_to_kr_system(entry)
+        except Exception as e:
+            # Log the error but don't raise an exception
+            logger.error(f"Error updating entry {entry.entry_id} in KR system: {e}")
     
     def _remove_from_kr_system(self, entry: MetaKnowledgeEntry) -> None:
         """Remove a meta-knowledge entry from the KR system."""
-        # This is a simplified implementation that would need to be expanded
-        # based on the actual KR system's capabilities
-        
-        # Get necessary types from type system
-        entity_type = self.type_system.get_type("Entity") or self.type_system.get_type("Object")
-        prop_type = self.type_system.get_type("Proposition")
-        
-        # Create a variable for the confidence
-        confidence_var = VariableNode("Confidence", self.type_system.get_type("Float") or self.type_system.get_type("Real"))
-        
-        # Create a pattern to match the predicate
-        pattern = ApplicationNode(
-            operator=ConstantNode(f"Has{entry.entry_type.value.title().replace('_', '')}", prop_type),
-            arguments=[
-                ConstantNode(entry.entry_id, entity_type),
-                confidence_var
-            ],
-            type_ref=prop_type
-        )
-        
-        # Retract matching statements from the meta-knowledge context
-        self.kr_interface.retract_matching(
-            self.meta_knowledge_context_id,
-            pattern
-        )
+        try:
+            # This is a simplified implementation that would need to be expanded
+            # based on the actual KR system's capabilities
+            
+            # Get necessary types from type system
+            entity_type = self.type_system.get_type("Entity") or self.type_system.get_type("Object")
+            prop_type = self.type_system.get_type("Proposition")
+            
+            # Create a variable for the confidence
+            float_type = self.type_system.get_type("Float") or self.type_system.get_type("Real")
+            # Generate a unique ID for the variable
+            var_id = hash(f"Confidence_{time.time()}")
+            confidence_var = VariableNode(name="Confidence", var_id=var_id, type_ref=float_type)
+            
+            # Create a pattern to match the predicate
+            pattern = ApplicationNode(
+                operator=ConstantNode(f"Has{entry.entry_type.value.title().replace('_', '')}", prop_type),
+                arguments=[
+                    ConstantNode(entry.entry_id, entity_type),
+                    confidence_var
+                ],
+                type_ref=prop_type
+            )
+            
+            # Retract matching statements from the meta-knowledge context
+            self.kr_interface.retract_matching(
+                self.meta_knowledge_context_id,
+                pattern
+            )
+        except Exception as e:
+            # Log the error but don't raise an exception
+            logger.error(f"Error removing entry {entry.entry_id} from KR system: {e}")

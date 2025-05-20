@@ -71,7 +71,7 @@ class Lexer:
         ('BELIEVES', r'believes|B'),
         ('POSSIBLE', r'possible|◇'),
         ('NECESSARY', r'necessary|□'),
-        ('PROBABILITY', r'prob|P'),
+        ('PROBABILITY', r'prob|P(?![a-zA-Z])'),
         ('DEFEASIBLE', r'defeasibly|def'),
         ('TRUE', r'True|true|⊤'),
         ('FALSE', r'False|false|⊥'),
@@ -634,3 +634,7 @@ class FormalLogicParser:
         
         # If we get here, we don't know how to parse this token
         raise ValueError(f"Unexpected token '{token.value}' of type '{token.type}'")
+
+
+# Create an alias for backward compatibility with tests
+LogicParser = FormalLogicParser
