@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Report - 2025-05-20 17:09:38</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .summary {
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .summary-item {
+            margin-bottom: 5px;
+        }
+        .category {
+            margin-bottom: 30px;
+        }
+        .test-result {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 5px solid #ddd;
+        }
+        .test-passed {
+            border-left-color: #4CAF50;
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+        .test-failed {
+            border-left-color: #F44336;
+            background-color: rgba(244, 67, 54, 0.1);
+        }
+        .test-skipped {
+            border-left-color: #FFC107;
+            background-color: rgba(255, 193, 7, 0.1);
+        }
+        .test-error {
+            border-left-color: #F44336;
+            background-color: rgba(244, 67, 54, 0.1);
+        }
+        .test-header {
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+        .test-details {
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        .test-message {
+            margin-top: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 3px;
+        }
+        .docstring {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Report</h1>
+
+    <div class="summary">
+        <h2>Summary</h2>
+        <div class="summary-item">Status: <span style="color: #F44336;">FAILED</span></div>
+        <div class="summary-item">Total Tests: 132</div>
+        <div class="summary-item">Passed: <span style="color: #4CAF50;">97</span> (73.5%)</div>
+        <div class="summary-item">Failed: <span style="color: #F44336;">35</span></div>
+        <div class="summary-item">Duration: 13.15 seconds</div>
+        <div class="summary-item">Generated: 2025-05-20 17:09:38</div>
+    </div>
+
+    <div class="category">
+        <h2>Category: core_kr</h2>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_belief_revision.py::TestBeliefRevisionSystem::test_argumentation_framework</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_belief_revision.py::TestBeliefRevisionSystem::test_contract_belief_set_kernel</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_belief_revision.py::TestBeliefRevisionSystem::test_contract_belief_set_partial_meet</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_belief_revision.py::TestBeliefRevisionSystem::test_expand_belief_set</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_belief_revision.py::TestBeliefRevisionSystem::test_get_justified_beliefs_via_argumentation</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_belief_revision.py::TestBeliefRevisionSystem::test_revise_belief_set</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_knowledge_store.py::TestKnowledgeStoreInterface::test_query_statements_match_pattern</span>
+                <span>0.05s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_probabilistic_logic.py::TestProbabilisticLogicModule::test_learn_weights</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_ast.py::TestASTNodes::test_application_node</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_ast.py::TestASTNodes::test_connective_node</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_ast.py::TestASTNodes::test_constant_node</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_ast.py::TestASTNodes::test_contains_variable</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_ast.py::TestASTNodes::test_metadata</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_ast.py::TestASTNodes::test_variable_node</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_ast.py::TestASTNodes::test_variable_substitution</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_ast.py::TestASTNodes::test_visitor_pattern</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_knowledge_store.py::TestKnowledgeStoreInterface::test_add_statement</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_knowledge_store.py::TestKnowledgeStoreInterface::test_caching_layer</span>
+                <span>0.06s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_knowledge_store.py::TestKnowledgeStoreInterface::test_create_context</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_knowledge_store.py::TestKnowledgeStoreInterface::test_default_contexts</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_knowledge_store.py::TestKnowledgeStoreInterface::test_delete_context</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_knowledge_store.py::TestKnowledgeStoreInterface::test_dynamic_context_model</span>
+                <span>0.03s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_knowledge_store.py::TestKnowledgeStoreInterface::test_indexing</span>
+                <span>7.71s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_knowledge_store.py::TestKnowledgeStoreInterface::test_retract_statement</span>
+                <span>0.03s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_knowledge_store.py::TestKnowledgeStoreInterface::test_statement_exists</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_knowledge_store.py::TestKnowledgeStoreInterface::test_thread_safety</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_parser.py::TestFormalLogicParser::test_parse_application</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_parser.py::TestFormalLogicParser::test_parse_complex_expressions</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_parser.py::TestFormalLogicParser::test_parse_connectives</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_parser.py::TestFormalLogicParser::test_parse_constant</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_parser.py::TestFormalLogicParser::test_parse_errors</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_parser.py::TestFormalLogicParser::test_parse_lambda</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_parser.py::TestFormalLogicParser::test_parse_modal_operators</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_parser.py::TestFormalLogicParser::test_parse_quantifiers</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_parser.py::TestFormalLogicParser::test_parse_variable</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_probabilistic_logic.py::TestProbabilisticLogicModule::test_add_weighted_formula</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_probabilistic_logic.py::TestProbabilisticLogicModule::test_get_map_assignment</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_probabilistic_logic.py::TestProbabilisticLogicModule::test_get_marginal_probability</span>
+                <span>0.04s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_type_system.py::TestTypeClasses::test_atomic_type</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_type_system.py::TestTypeClasses::test_function_type</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_type_system.py::TestTypeClasses::test_instantiated_parametric_type</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_type_system.py::TestTypeClasses::test_parametric_type_constructor</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_type_system.py::TestTypeClasses::test_type_substitution</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_type_system.py::TestTypeClasses::test_type_variable</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_type_system.py::TestTypeSystemManager::test_base_types</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_type_system.py::TestTypeSystemManager::test_define_atomic_type</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_type_system.py::TestTypeSystemManager::test_define_function_signature</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_type_system.py::TestTypeSystemManager::test_is_subtype</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_type_system.py::TestTypeSystemManager::test_type_checking_and_inference</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_type_system.py::TestTypeSystemManager::test_unify_types</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_unification.py::TestUnificationEngine::test_application_unification</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_unification.py::TestUnificationEngine::test_connective_unification</span>
+                <span>0.03s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_unification.py::TestUnificationEngine::test_constant_unification</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_unification.py::TestUnificationEngine::test_definition_unification</span>
+                <span>0.03s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_unification.py::TestUnificationEngine::test_higher_order_unification</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_unification.py::TestUnificationEngine::test_lambda_unification</span>
+                <span>0.03s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_unification.py::TestUnificationEngine::test_modal_op_unification</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_unification.py::TestUnificationEngine::test_occurs_check</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_unification.py::TestUnificationEngine::test_quantifier_unification</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_unification.py::TestUnificationEngine::test_variable_constant_unification</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_unification.py::TestUnificationEngine::test_variable_variable_unification</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h2>Category: inference</h2>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_analogical_reasoning_engine.py::TestAnalogicalReasoningEngine::test_analyze_goal</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_analogical_reasoning_engine.py::TestAnalogicalReasoningEngine::test_calculate_object_similarity</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_analogical_reasoning_engine.py::TestAnalogicalReasoningEngine::test_calculate_predicate_similarity</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_analogical_reasoning_engine.py::TestAnalogicalReasoningEngine::test_compute_analogies</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_analogical_reasoning_engine.py::TestAnalogicalReasoningEngine::test_create_analogy_proof_steps</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_analogical_reasoning_engine.py::TestAnalogicalReasoningEngine::test_evaluate_semantic_fit</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_analogical_reasoning_engine.py::TestAnalogicalReasoningEngine::test_evaluate_structural_consistency</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_analogical_reasoning_engine.py::TestAnalogicalReasoningEngine::test_extract_domain_elements</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_analogical_reasoning_engine.py::TestAnalogicalReasoningEngine::test_generate_initial_mappings</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_analogical_reasoning_engine.py::TestAnalogicalReasoningEngine::test_perform_structural_alignment</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_analogical_reasoning_engine.py::TestAnalogicalReasoningEngine::test_project_expression</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_analogical_reasoning_engine.py::TestAnalogicalReasoningEngine::test_project_inferences</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_clp_module.py::TestCLPModule::test_finite_domain_solver</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_clp_module.py::TestCLPModule::test_is_constraint</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_clp_module.py::TestCLPModule::test_parse_program</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_clp_module.py::TestCLPModule::test_propagate_constraints</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_modal_tableau_prover.py::TestModalTableauProver::test_modal_system_properties</span>
+                <span>2.17s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_modal_tableau_prover.py::TestModalTableauProver::test_negate_formula</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_modal_tableau_prover.py::TestModalTableauProver::test_signed_formula</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_modal_tableau_prover.py::TestModalTableauProver::test_simple_proof_satisfiability</span>
+                <span>1.55s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_modal_tableau_prover.py::TestModalTableauProver::test_simple_proof_validity</span>
+                <span>0.65s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_resolution_prover.py::TestCNFConverter::test_extract_clauses</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_resolution_prover.py::TestResolutionProver::test_clauses_equivalent</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_resolution_prover.py::TestResolutionProver::test_is_tautology</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_resolution_prover.py::TestResolutionProver::test_negate_formula</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_resolution_prover.py::TestResolutionProver::test_resolve_pair_simple</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-failed">
+            <div class="test-header">
+                <span>❌ tests/test_resolution_prover.py::TestResolutionProver::test_simple_proof</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_analogical_reasoning_engine.py::TestAnalogicalReasoningEngine::test_can_handle</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_analogical_reasoning_engine.py::TestAnalogicalReasoningEngine::test_capabilities</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_clp_module.py::TestCLPModule::test_can_handle</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_clp_module.py::TestCLPModule::test_capabilities</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_clp_module.py::TestCLPModule::test_clp_clause</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_clp_module.py::TestCLPModule::test_constraint_store</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_clp_module.py::TestCLPModule::test_constraint_variable</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_clp_module.py::TestCLPModule::test_domain_store</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_clp_module.py::TestCLPModule::test_get_values</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_clp_module.py::TestCLPModule::test_initialize_domains</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_clp_module.py::TestCLPModule::test_label_variables</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_clp_module.py::TestCLPModule::test_parse_query</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_clp_module.py::TestCLPModule::test_select_variable</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_inference_engine.py::TestInferenceCoordinator::test_submit_goal_with_no_suitable_prover</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_inference_engine.py::TestInferenceCoordinator::test_submit_goal_with_prover_error</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_inference_engine.py::TestInferenceCoordinator::test_submit_goal_with_strategy_hint</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_inference_engine.py::TestInferenceCoordinator::test_submit_goal_with_suitable_prover</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_inference_engine.py::TestProofObject::test_create_failure</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_inference_engine.py::TestProofObject::test_create_success</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_inference_engine.py::TestProofObject::test_with_time_and_resources</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_modal_tableau_prover.py::TestModalTableauProver::test_branch_is_closed</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_modal_tableau_prover.py::TestModalTableauProver::test_can_handle</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_modal_tableau_prover.py::TestModalTableauProver::test_cannot_handle_non_modal</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_modal_tableau_prover.py::TestModalTableauProver::test_capabilities</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_modal_tableau_prover.py::TestModalTableauProver::test_create_initial_tableau_satisfiability</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_modal_tableau_prover.py::TestModalTableauProver::test_create_initial_tableau_validity</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_modal_tableau_prover.py::TestModalTableauProver::test_formula_type_classification</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_modal_tableau_prover.py::TestModalTableauProver::test_tableau_is_closed</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_modal_tableau_prover.py::TestModalTableauProver::test_world_contains_contradiction</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_resolution_prover.py::TestCNFConverter::test_eliminate_equivalences</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_resolution_prover.py::TestCNFConverter::test_eliminate_implications</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_resolution_prover.py::TestCNFConverter::test_move_negations_inward</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_resolution_prover.py::TestResolutionProver::test_can_handle</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_resolution_prover.py::TestResolutionProver::test_cannot_handle_modal</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_resolution_prover.py::TestResolutionProver::test_capabilities</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_smt_interface.py::TestSMTInterface::test_can_handle</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_smt_interface.py::TestSMTInterface::test_capabilities</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_smt_interface.py::TestSMTInterface::test_check_satisfiability</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_smt_interface.py::TestSMTInterface::test_generate_smt_script</span>
+                <span>0.02s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_smt_interface.py::TestSMTInterface::test_prove_invalid</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_smt_interface.py::TestSMTInterface::test_prove_valid</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_smt_interface.py::TestSMTInterface::test_prove_with_context</span>
+                <span>0.01s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_smt_interface.py::TestSMTInterface::test_translate_ast_to_smtlib</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+
+        <div class="test-result test-passed">
+            <div class="test-header">
+                <span>✅ tests/test_smt_interface.py::TestSMTInterface::test_type_to_smt_sort</span>
+                <span>0.00s</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

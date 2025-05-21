@@ -76,7 +76,7 @@ def parse_args(args: Optional[List[str]] = None) -> argparse.Namespace:
         help="Enable debug output"
     )
     output_group.add_argument(
-        "--output-dir", 
+        "--output-dir",
         help="Directory for test output files"
     )
     output_group.add_argument(
@@ -86,6 +86,10 @@ def parse_args(args: Optional[List[str]] = None) -> argparse.Namespace:
     output_group.add_argument(
         "--no-emoji", action="store_true",
         help="Disable emoji in output"
+    )
+    output_group.add_argument(
+        "--failures-only", action="store_true",
+        help="Only print failing tests grouped by module to stdout"
     )
     
     # Test execution options
@@ -239,11 +243,23 @@ def run_tests(args: argparse.Namespace) -> int:
     config_path = args.config if hasattr(args, 'config') else None
     # Don't pass raw CLI args to TestRunner, use the parsed config instead
     runner = TestRunner(config_path=config_path)
-    
+
+    # Suppress all output except failures summary if --failures-only is set
+    if getattr(args, "failures_only", False):
+        # Patch output_manager to suppress all output except the failures summary
+        def _suppress_print(*_a, **_kw): pass
+        runner.output_manager.print = _suppress_print
+        runner.output_manager.print_test_start = _suppress_print
+        runner.output_manager.print_test_result = _suppress_print
+        runner.output_manager.print_summary = _suppress_print
+        runner.output_manager.start_progress = _suppress_print
+        runner.output_manager.update_progress = _suppress_print
+        runner.output_manager.finish_progress = _suppress_print
+
     # Update runner configuration with parsed arguments
     if config_dict:
         runner.update_config(config_dict)
-    
+
     # Determine which tests to run
     if args.rerun_failed:
         # Rerun failed tests from previous run
@@ -265,6 +281,17 @@ def run_tests(args: argparse.Namespace) -> int:
         runner.categorize_tests()
         results = runner.run_tests()
     
+    # If --failures-only is set, only print failing tests grouped by module and exit
+    if getattr(args, "failures_only", False):
+        runner.print_failing_tests_by_module()
+        # Exit code: 0 if no failures, 1 if any failures
+        all_results = runner.results_collector.get_all_results()
+        any_failures = any(
+            hasattr(result, "outcome") and result.outcome == "failed"
+            for result in all_results.values()
+        )
+        return 1 if any_failures else 0
+
     # Get test summary
     summary = runner.get_test_summary()
     

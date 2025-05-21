@@ -1,47 +1,141 @@
-# GödelOS
+# GödelOS 🦉✨
+*A Symbolic Cognition Engine for the Modern Age*
 
-GödelOS is a comprehensive symbolic cognition engine with multiple modules, designed to represent and reason with knowledge using Typed Higher-Order Logic (HOL) with extensions for modality, probability, and defeasibility.
+---
 
-## Project Overview
+![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![Logic](https://img.shields.io/badge/logic-HOL%2C%20Modal%2C%20Probabilistic-purple)
+![Modular](https://img.shields.io/badge/modular-yes-brightgreen)
 
-GödelOS aims to be a highly modular and extensible symbolic cognition engine. Its architecture is designed around a central Knowledge Representation system using Typed Higher-Order Logic (HOL) with extensions for modality, probability, and defeasibility. A multi-strategy Inference Engine operates on this knowledge, coordinated by a central unit that selects appropriate reasoning techniques.
+---
 
-## Architecture
+GödelOS is not just another logic engine—it's a playground for symbolic thought, knowledge representation, and automated reasoning.  
+Built with a modular, extensible architecture and a passion for expressive logic, GödelOS brings higher-order logic (HOL) into the 21st century: modal, probabilistic, defeasible, and ready for the unexpected.
 
-### Module 1: Core Knowledge Representation (KR) System
+> **Why GödelOS?**  
+> Because cognition deserves more than just neural nets. Welcome to the future of symbolic AI.
 
-The KR system is the heart of GödelOS, responsible for representing, storing, and managing all forms of knowledge. It defines the syntax and semantics of the agent's internal language and provides foundational operations for knowledge manipulation.
+---
+
+## 🧠 Project Overview
+
+GödelOS is a highly modular symbolic cognition engine designed for researchers, hackers, and tinkerers who want to push the boundaries of knowledge representation and reasoning.  
+At its core: Typed Higher-Order Logic (HOL) with support for modality, probability, and defeasibility.  
+A multi-strategy inference engine orchestrates reasoning, always choosing the right tool for the job.
+
+---
+
+## 🏗️ Architecture
+
+### 📊 GödelOS High-Level Architecture
+
+```mermaid
+flowchart TD
+    subgraph Core_KR_System["Core Knowledge Representation"]
+        FLP["FormalLogicParser"]
+        AST["AbstractSyntaxTree"]
+        UE["UnificationEngine"]
+        TSM["TypeSystemManager"]
+        KSI["KnowledgeStoreInterface"]
+        PLM["ProbabilisticLogicModule"]
+        BRS["BeliefRevisionSystem"]
+    end
+
+    subgraph Inference_Engine["Inference Engine"]
+        IC["InferenceCoordinator"]
+        RP["ResolutionProver"]
+        MTP["ModalTableauProver"]
+        SMT["SMTInterface"]
+        CLP["ConstraintLogicProgrammingModule"]
+        ARE["AnalogicalReasoningEngine"]
+        PO["ProofObject"]
+    end
+
+    FLP --> AST
+    AST --> UE
+    TSM --> FLP
+    AST --> KSI
+    PLM --> KSI
+    BRS --> KSI
+
+    IC --> RP
+    IC --> MTP
+    IC --> SMT
+    IC --> CLP
+    IC --> ARE
+    IC --> PO
+    IC --> KSI
+    RP --> PO
+    MTP --> PO
+    SMT --> PO
+    CLP --> PO
+    ARE --> PO
+```
+*GödelOS is built around a modular core KR system, with an extensible inference engine orchestrating multiple reasoning strategies.*
+
+---
+
+### 📚 Module 1: Core Knowledge Representation (KR) System
+
+The *heart* of GödelOS. Responsible for representing, storing, and managing all forms of knowledge.  
+Defines the agent's internal language and provides foundational operations for knowledge manipulation.
 
 #### Components
+- 📝 **FormalLogicParser**: Translates logic text into canonical ASTs.
+- 🌳 **AbstractSyntaxTree (AST)**: Represents logical expressions structurally.
+- 🧩 **UnificationEngine**: Makes logical expressions fit together via variable substitution.
+- 🏷️ **TypeSystemManager**: Handles type hierarchies, checking, and inference.
+- 📦 **KnowledgeStoreInterface (KSI)**: Unified API for storing and retrieving knowledge.
+- 🎲 **ProbabilisticLogicModule (PLM)**: Manages and reasons with uncertainty.
+- 🔄 **BeliefRevisionSystem (BRS)**: Keeps beliefs rational and consistent as knowledge evolves.
 
-1. **FormalLogicParser (Module 1.1)**: Converts textual representations of logical formulae into canonical Abstract Syntax Tree (AST) structures.
-2. **AbstractSyntaxTree (AST) Representation (Module 1.2)**: Defines the structure for representing logical expressions.
-3. **UnificationEngine (Module 1.3)**: Determines if two logical expressions can be made syntactically identical by substituting variables with terms.
-4. **TypeSystemManager (Module 1.4)**: Defines and manages the type hierarchy and performs type checking and inference.
-5. **KnowledgeStoreInterface (KSI) (Module 1.5)**: Provides a unified API for storing, retrieving, updating, and deleting knowledge.
-6. **ProbabilisticLogicModule (PLM) (Module 1.6)**: Manages and reasons with uncertain knowledge.
-7. **BeliefRevisionSystem (BRS) (Module 1.7)**: Manages changes to the agent's belief set in a rational and consistent manner.
+---
 
-### Module 2: Inference Engine Architecture
+### 🤖 Module 2: Inference Engine Architecture
 
-The Inference Engine is responsible for all deductive reasoning. It takes goals and applies logical rules and knowledge from the KR system, employing multiple reasoning strategies.
+Handles all deductive reasoning.  
+Takes goals, applies rules, and leverages multiple reasoning strategies.
 
 #### Components
+- 🧑‍💼 **InferenceCoordinator**: Task dispatcher and proof search manager.
+- 📄 **ProofObject**: Standardized proof representation.
+- 🔍 **ResolutionProver**: Classic FOL/propositional resolution.
+- 🪞 **ModalTableauProver**: Modal logic satisfiability and validity.
+- 🛠️ **SMTInterface**: Connects to external SMT solvers for arithmetic, arrays, etc.
+- 🧮 **ConstraintLogicProgrammingModule (CLP)**: Logic + constraint satisfaction.
+- 🪐 **AnalogicalReasoningEngine (ARE)**: Finds deep structural analogies.
 
-1. **InferenceCoordinator (Module 2.1)**: Receives reasoning tasks, analyzes goals, selects appropriate inference engines, and manages the proof search process.
-2. **ProofObject Data Structure**: A standardized way to represent the outcome of a reasoning process, including proof steps if successful.
-3. **ResolutionProver (Module 2.2)**: Proves goals using the resolution inference rule, primarily for First-Order Logic (FOL) and propositional logic.
-4. **ModalTableauProver (Module 2.3)**: Determines the validity or satisfiability of formulae in various modal logics.
-5. **SMTInterface (Module 2.4)**: Interfaces with external SMT solvers for theories like arithmetic, arrays, and bit-vectors.
-6. **ConstraintLogicProgrammingModule (CLP) (Module 2.5)**: Provides a declarative framework for solving problems that combine logical deduction with constraint satisfaction.
-7. **AnalogicalReasoningEngine (ARE) (Module 2.6)**: Identifies structural analogies between domains and supports analogical inference.
+---
 
-## Installation
+### 🔄 Inference Flow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant IC as InferenceCoordinator
+    participant KSI as KnowledgeStoreInterface
+    participant Engine as Inference Engines
+    participant PO as ProofObject
+
+    User->>IC: Submit Goal
+    IC->>KSI: Retrieve Knowledge
+    IC->>Engine: Select & Delegate Reasoning (e.g., RP/MTP/CLP/SMT/ARE)
+    Engine->>KSI: Query/Update Knowledge
+    Engine->>PO: Produce ProofObject
+    PO-->>IC: Return Proof
+    IC-->>User: Goal Proven / Status Message
+```
+*From user query to proof: GödelOS coordinates knowledge, inference, and results with clarity and rigor.*
+
+---
+
+## 🚀 Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/godelOS.git
-cd godelOS
+git clone https://github.com/Steake/GodelOS.git
+cd GodelOS
 
 # Create and activate a virtual environment
 python -m venv venv
@@ -51,11 +145,13 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -e .
 ```
 
-## Usage
+---
 
-Here are some basic examples of how to use GödelOS:
+## 🛠️ Usage
 
-### Core Knowledge Representation Example
+Here are some ways to get started with GödelOS:
+
+### 📖 Core Knowledge Representation Example
 
 ```python
 from godelOS.core_kr.formal_logic_parser import parser
@@ -75,7 +171,7 @@ else:
     print(f"Parsing errors: {errors}")
 ```
 
-### Inference Engine Example
+### 🧠 Inference Engine Example
 
 ```python
 from godelOS.inference_engine.coordinator import InferenceCoordinator
@@ -103,19 +199,21 @@ else:
     print(f"Failed to prove goal: {proof_result.status_message}")
 ```
 
-For more detailed examples, check the `examples/` directory:
+For more detailed examples, check the [`examples/`](examples/) directory:
 - `simple_example.py`: Basic usage of the core components
-- `core_kr_example.py`: Detailed example of the Knowledge Representation system
-- `inference_engine_example.py`: Example of using the Inference Engine
+- `core_kr_example.py`: Detailed knowledge representation
+- `inference_engine_example.py`: Advanced inference
 
-## Development
+---
 
-### Setup
+## 🧑‍💻 Development
+
+### ⚙️ Setup
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/godelOS.git
-cd godelOS
+git clone https://github.com/Steake/GodelOS.git
+cd GodelOS
 
 # Create and activate a virtual environment
 python -m venv venv
@@ -125,18 +223,14 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -e ".[dev]"
 ```
 
-### Testing
+---
 
-GödelOS includes a comprehensive test suite and test coverage infrastructure to ensure code quality and reliability. The testing system includes:
+### 🧪 Testing
 
-1. **Enhanced Test Suite**: Comprehensive tests for all modules, organized into three phases:
-   - Symbol Grounding, Common Sense, and Ontology (Phase 1)
-   - Core Knowledge Representation and Inference Engine (Phase 2)
-   - Metacognition, NLU/NLG, and Scalability (Phase 3)
-
-2. **Test Suite Runner**: A modular, extensible test runner with visually appealing output formatting.
-
-3. **Test Coverage Analysis Tools**: Tools for analyzing test coverage at both component and method levels.
+GödelOS is built with reliability in mind. The project includes:
+- 🧹 **Enhanced Test Suite**: Comprehensive, modular tests for all components
+- 🎨 **Test Suite Runner**: Visually appealing output, easy to extend
+- 📊 **Coverage Tools**: Analyze coverage at the component and method level
 
 #### Running Basic Tests
 
@@ -156,17 +250,18 @@ pytest tests/metacognition/
 
 #### Test Documentation
 
-For detailed information about the testing infrastructure, refer to:
+See:
+- [`TEST_COVERAGE.md`](TEST_COVERAGE.md): Full coverage documentation
+- [`TEST_QUICKREF.md`](TEST_QUICKREF.md): Quick reference for testing tasks
 
-- [TEST_COVERAGE.md](TEST_COVERAGE.md): Comprehensive documentation of the test coverage implementation
-- [TEST_QUICKREF.md](TEST_QUICKREF.md): Quick reference guide for common testing tasks
+These guides will help you write new tests, maintain high coverage, and optimize performance.
 
-These documents provide guidelines for writing new tests, best practices for maintaining test coverage, and performance considerations for running tests efficiently.
+---
 
-### Project Structure
+### 🗂️ Project Structure
 
 ```
-godelOS/
+GodelOS/
 ├── core_kr/                  # Core Knowledge Representation System
 │   ├── ast/                  # Abstract Syntax Tree representation
 │   ├── belief_revision/      # Belief Revision System
@@ -188,14 +283,30 @@ godelOS/
 └── tests/                    # Test suite
 ```
 
-## License
+---
+
+## 📄 License
 
 [MIT License](LICENSE)
 
-## Contributing
+---
 
-Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to this project.
+## 🤝 Contributing
 
-## Roadmap
+Pull requests, issues, and discussions are welcome!  
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for guidelines.
 
-For a list of planned features and modules, see [TODO.md](TODO.md).
+---
+
+## 🛣️ Roadmap
+
+For upcoming features and ideas, see [`TODO.md`](TODO.md).
+
+---
+
+> **GödelOS**: Where logic meets possibility.  
+> *Let’s build symbolic cognition for the next generation.* 🚀🦉
+
+---
+
+<sub>Maintained by [@Steake](https://github.com/Steake)</sub>

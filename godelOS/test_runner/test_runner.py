@@ -243,9 +243,54 @@ class TestRunner:
         
         # Print summary
         self.output_manager.print_summary(summary)
+
+        # Print failing tests grouped by module
+        self.print_failing_tests_by_module()
         
         return self.test_results
     
+    def print_failing_tests_by_module(self):
+        """
+        Print a summary of failing tests grouped by module (file).
+        """
+        from collections import defaultdict
+
+        all_results = self.results_collector.get_all_results()
+        failures_by_module = defaultdict(list)
+
+        for node_id, result in all_results.items():
+            # Outcome might be 'failed', 'error', etc. Adjust as needed.
+            if hasattr(result, 'outcome') and result.outcome == 'failed':
+                # Extract module (file path before '::')
+                module = node_id.split("::")[0]
+                failures_by_module[module].append(node_id)
+
+        if failures_by_module:
+            self.output_manager.print(
+                "\nFailing tests grouped by module:",
+                level=OutputLevel.MINIMAL,
+                formatter="console",
+                status="header"
+            )
+            for module, failures in sorted(failures_by_module.items(), key=lambda x: len(x[1]), reverse=True):
+                self.output_manager.print(
+                    f"  {module}: {len(failures)} failing test(s)",
+                    level=OutputLevel.MINIMAL,
+                    formatter="console"
+                )
+                for node_id in failures:
+                    self.output_manager.print(
+                        f"    - {node_id}",
+                        level=OutputLevel.MINIMAL,
+                        formatter="console"
+                    )
+        else:
+            self.output_manager.print(
+                "\nNo failing tests detected.",
+                level=OutputLevel.MINIMAL,
+                formatter="console"
+            )
+
     def run_specific_tests(self, node_ids: List[str]) -> Dict[str, TestResult]:
         """
         Run specific tests by node ID.
