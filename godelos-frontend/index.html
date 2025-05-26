@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GödelOS - Web Demonstration Interface</title>
+    
+    <!-- External Libraries -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/three@0.155.0/build/three.min.js"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="src/styles/main.css">
+    <link rel="stylesheet" href="src/styles/components.css">
+    <link rel="stylesheet" href="src/styles/visualizations.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">GödelOS</h1>
+            <div class="status-indicators">
+                <div class="connection-status" id="connectionStatus">
+                    <span class="status-dot disconnected"></span>
+                    <span class="status-text">Disconnected</span>
+                </div>
+                <div class="system-status" id="systemStatus">
+                    <span class="status-text">System: Idle</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Layout -->
+        <main class="main-layout">
+            <!-- Left Panel: Query Interface -->
+            <section class="panel query-panel" id="queryPanel">
+                <div class="panel-header">
+                    <h2>Query Interface</h2>
+                    <button class="panel-toggle" data-panel="query">−</button>
+                </div>
+                <div class="panel-content">
+                    <div class="query-form" id="queryForm">
+                        <div class="input-group">
+                            <label for="naturalLanguageQuery">Natural Language Query:</label>
+                            <textarea 
+                                id="naturalLanguageQuery" 
+                                placeholder="Enter your question or request in natural language..."
+                                rows="4"
+                            ></textarea>
+                        </div>
+                        
+                        <div class="query-options">
+                            <div class="option-group">
+                                <label for="queryType">Query Type:</label>
+                                <select id="queryType">
+                                    <option value="knowledge">Knowledge Retrieval</option>
+                                    <option value="reasoning">Logical Reasoning</option>
+                                    <option value="learning">Learning Task</option>
+                                    <option value="metacognition">Metacognitive Analysis</option>
+                                </select>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label for="confidenceThreshold">Confidence Threshold:</label>
+                                <input type="range" id="confidenceThreshold" min="0" max="1" step="0.1" value="0.7">
+                                <span id="confidenceValue">0.7</span>
+                            </div>
+                        </div>
+                        
+                        <div class="query-actions">
+                            <button id="submitQuery" class="btn primary">Submit Query</button>
+                            <button id="clearQuery" class="btn secondary">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Center Panel: Knowledge Visualization -->
+            <section class="panel knowledge-panel" id="knowledgePanel">
+                <div class="panel-header">
+                    <h2>Knowledge Visualization</h2>
+                    <div class="visualization-controls">
+                        <select id="visualizationType">
+                            <option value="graph">Knowledge Graph</option>
+                            <option value="hierarchy">Concept Hierarchy</option>
+                            <option value="network">Semantic Network</option>
+                        </select>
+                        <button class="panel-toggle" data-panel="knowledge">−</button>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <div class="visualization-container" id="knowledgeVisualization">
+                        <svg id="knowledgeGraph" width="100%" height="400"></svg>
+                        <div class="visualization-overlay">
+                            <div class="node-info" id="nodeInfo" style="display: none;">
+                                <h4 id="nodeTitle"></h4>
+                                <p id="nodeDescription"></p>
+                                <div id="nodeProperties"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Panel: Cognitive Layers -->
+            <section class="panel cognitive-panel" id="cognitivePanel">
+                <div class="panel-header">
+                    <h2>Cognitive Layers</h2>
+                    <button class="panel-toggle" data-panel="cognitive">−</button>
+                </div>
+                <div class="panel-content">
+                    <div class="cognitive-layers">
+                        <!-- Manifest Consciousness Layer -->
+                        <div class="cognitive-layer" id="manifestLayer">
+                            <h3>Manifest Consciousness</h3>
+                            <div class="layer-visualization">
+                                <div class="consciousness-indicator">
+                                    <div class="attention-focus" id="attentionFocus"></div>
+                                    <div class="working-memory" id="workingMemory">
+                                        <div class="memory-item">Current Query</div>
+                                        <div class="memory-item">Active Concepts</div>
+                                        <div class="memory-item">Reasoning Chain</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agentic Processes Layer -->
+                        <div class="cognitive-layer" id="agenticLayer">
+                            <h3>Agentic Processes</h3>
+                            <div class="layer-visualization">
+                                <div class="process-list" id="agenticProcesses">
+                                    <div class="process-item active">
+                                        <span class="process-name">Query Parser</span>
+                                        <span class="process-status">Running</span>
+                                    </div>
+                                    <div class="process-item">
+                                        <span class="process-name">Knowledge Retriever</span>
+                                        <span class="process-status">Idle</span>
+                                    </div>
+                                    <div class="process-item">
+                                        <span class="process-name">Inference Engine</span>
+                                        <span class="process-status">Idle</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Daemon Threads Layer -->
+                        <div class="cognitive-layer" id="daemonLayer">
+                            <h3>Daemon Threads</h3>
+                            <div class="layer-visualization">
+                                <div class="daemon-list" id="daemonThreads">
+                                    <div class="daemon-item">
+                                        <span class="daemon-name">Memory Consolidation</span>
+                                        <div class="daemon-activity"></div>
+                                    </div>
+                                    <div class="daemon-item">
+                                        <span class="daemon-name">Background Learning</span>
+                                        <div class="daemon-activity"></div>
+                                    </div>
+                                    <div class="daemon-item">
+                                        <span class="daemon-name">System Monitoring</span>
+                                        <div class="daemon-activity active"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Panel: Response/Results -->
+        <section class="panel response-panel" id="responsePanel">
+            <div class="panel-header">
+                <h2>Response & Results</h2>
+                <div class="response-controls">
+                    <button id="exportResults" class="btn secondary">Export</button>
+                    <button class="panel-toggle" data-panel="response">−</button>
+                </div>
+            </div>
+            <div class="panel-content">
+                <div class="response-container">
+                    <div class="response-tabs">
+                        <button class="tab-button active" data-tab="natural">Natural Language</button>
+                        <button class="tab-button" data-tab="formal">Formal Logic</button>
+                        <button class="tab-button" data-tab="metadata">Metadata</button>
+                        <button class="tab-button" data-tab="trace">Reasoning Trace</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="naturalTab">
+                            <div class="response-text" id="naturalResponse">
+                                <p class="placeholder">Submit a query to see the natural language response...</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane" id="formalTab">
+                            <div class="formal-logic" id="formalResponse">
+                                <pre class="placeholder">Formal logic representation will appear here...</pre>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane" id="metadataTab">
+                            <div class="metadata-display" id="metadataResponse">
+                                <div class="metadata-grid">
+                                    <div class="metadata-item">
+                                        <label>Confidence:</label>
+                                        <span id="responseConfidence">-</span>
+                                    </div>
+                                    <div class="metadata-item">
+                                        <label>Processing Time:</label>
+                                        <span id="processingTime">-</span>
+                                    </div>
+                                    <div class="metadata-item">
+                                        <label>Sources Used:</label>
+                                        <span id="sourcesUsed">-</span>
+                                    </div>
+                                    <div class="metadata-item">
+                                        <label>Reasoning Steps:</label>
+                                        <span id="reasoningSteps">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane" id="traceTab">
+                            <div class="reasoning-trace" id="reasoningTrace">
+                                <div class="trace-placeholder">Reasoning trace will be displayed here...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="src/scripts/api-client.js"></script>
+    <script src="src/scripts/websocket.js"></script>
+    <script src="src/scripts/visualization.js"></script>
+    <script src="src/scripts/cognitive-layers.js"></script>
+    <script src="src/scripts/query-handler.js"></script>
+    <script src="src/scripts/main.js"></script>
+</body>
+</html>

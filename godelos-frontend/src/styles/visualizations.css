@@ -1,0 +1,558 @@
+/* Visualization-specific styles */
+
+/* Knowledge Graph Visualization */
+.knowledge-graph {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(79, 172, 254, 0.05) 0%, transparent 70%);
+}
+
+.knowledge-graph .node {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.knowledge-graph .node circle {
+    fill: #4facfe;
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.knowledge-graph .node:hover circle {
+    fill: #00f2fe;
+    stroke: rgba(255, 255, 255, 0.8);
+    stroke-width: 3px;
+    filter: drop-shadow(0 0 10px rgba(79, 172, 254, 0.6));
+}
+
+.knowledge-graph .node.selected circle {
+    fill: #ff6b6b;
+    stroke: #ff4757;
+    stroke-width: 3px;
+    filter: drop-shadow(0 0 15px rgba(255, 107, 107, 0.8));
+}
+
+.knowledge-graph .node text {
+    fill: #e0e6ed;
+    font-size: 12px;
+    font-weight: 500;
+    text-anchor: middle;
+    pointer-events: none;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.knowledge-graph .link {
+    stroke: rgba(79, 172, 254, 0.6);
+    stroke-width: 2px;
+    fill: none;
+    transition: all 0.3s ease;
+}
+
+.knowledge-graph .link:hover {
+    stroke: rgba(79, 172, 254, 1);
+    stroke-width: 3px;
+    filter: drop-shadow(0 0 5px rgba(79, 172, 254, 0.8));
+}
+
+.knowledge-graph .link.highlighted {
+    stroke: #ff6b6b;
+    stroke-width: 3px;
+    animation: pulse-link 2s infinite;
+}
+
+@keyframes pulse-link {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* Graph Controls */
+.graph-controls {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.graph-control-btn {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(79, 172, 254, 0.5);
+    border-radius: 6px;
+    color: #4facfe;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.8rem;
+}
+
+.graph-control-btn:hover {
+    background: rgba(79, 172, 254, 0.2);
+    border-color: #4facfe;
+}
+
+/* Concept Hierarchy Visualization */
+.concept-hierarchy {
+    width: 100%;
+    height: 100%;
+}
+
+.concept-hierarchy .hierarchy-node {
+    cursor: pointer;
+}
+
+.concept-hierarchy .hierarchy-node rect {
+    fill: rgba(79, 172, 254, 0.2);
+    stroke: #4facfe;
+    stroke-width: 1px;
+    rx: 4;
+    ry: 4;
+    transition: all 0.3s ease;
+}
+
+.concept-hierarchy .hierarchy-node:hover rect {
+    fill: rgba(79, 172, 254, 0.4);
+    stroke-width: 2px;
+}
+
+.concept-hierarchy .hierarchy-node text {
+    fill: #e0e6ed;
+    font-size: 11px;
+    text-anchor: middle;
+    pointer-events: none;
+}
+
+.concept-hierarchy .hierarchy-link {
+    fill: none;
+    stroke: rgba(79, 172, 254, 0.6);
+    stroke-width: 1.5px;
+}
+
+/* Semantic Network Visualization */
+.semantic-network {
+    width: 100%;
+    height: 100%;
+}
+
+.semantic-network .semantic-node {
+    cursor: pointer;
+}
+
+.semantic-network .semantic-node circle {
+    transition: all 0.3s ease;
+}
+
+.semantic-network .semantic-node.concept circle {
+    fill: #4facfe;
+    stroke: rgba(255, 255, 255, 0.3);
+}
+
+.semantic-network .semantic-node.relation circle {
+    fill: #ff6b6b;
+    stroke: rgba(255, 255, 255, 0.3);
+}
+
+.semantic-network .semantic-node.instance circle {
+    fill: #2ed573;
+    stroke: rgba(255, 255, 255, 0.3);
+}
+
+.semantic-network .semantic-link {
+    stroke: rgba(255, 255, 255, 0.4);
+    stroke-width: 1px;
+    fill: none;
+    marker-end: url(#arrowhead);
+}
+
+/* Cognitive Process Visualization */
+.cognitive-process-viz {
+    width: 100%;
+    height: 150px;
+    position: relative;
+    background: linear-gradient(90deg, 
+        rgba(79, 172, 254, 0.1) 0%, 
+        rgba(79, 172, 254, 0.2) 50%, 
+        rgba(79, 172, 254, 0.1) 100%);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.process-flow {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 0%, #4facfe 50%, transparent 100%);
+    transform: translateY(-50%);
+}
+
+.process-flow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.8) 50%, transparent 100%);
+    animation: process-flow 3s infinite;
+}
+
+@keyframes process-flow {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.process-stages {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.process-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.stage-indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(79, 172, 254, 0.3);
+    border: 2px solid #4facfe;
+    transition: all 0.3s ease;
+}
+
+.stage-indicator.active {
+    background: #4facfe;
+    box-shadow: 0 0 15px rgba(79, 172, 254, 0.8);
+    animation: pulse-stage 2s infinite;
+}
+
+@keyframes pulse-stage {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.stage-label {
+    font-size: 0.7rem;
+    color: #e0e6ed;
+    text-align: center;
+    max-width: 60px;
+}
+
+/* Real-time Activity Indicators */
+.activity-indicator {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.activity-wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(79, 172, 254, 0.3) 25%, 
+        rgba(79, 172, 254, 0.6) 50%, 
+        rgba(79, 172, 254, 0.3) 75%, 
+        transparent 100%);
+    animation: activity-wave 2s infinite;
+}
+
+@keyframes activity-wave {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.activity-indicator.high-activity .activity-wave {
+    animation-duration: 1s;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 107, 107, 0.3) 25%, 
+        rgba(255, 107, 107, 0.6) 50%, 
+        rgba(255, 107, 107, 0.3) 75%, 
+        transparent 100%);
+}
+
+.activity-indicator.low-activity .activity-wave {
+    animation-duration: 4s;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(46, 213, 115, 0.3) 25%, 
+        rgba(46, 213, 115, 0.6) 50%, 
+        rgba(46, 213, 115, 0.3) 75%, 
+        transparent 100%);
+}
+
+/* Memory Visualization */
+.memory-visualization {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.memory-block {
+    height: 40px;
+    background: rgba(79, 172, 254, 0.1);
+    border: 1px solid rgba(79, 172, 254, 0.3);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.memory-block.active {
+    background: rgba(79, 172, 254, 0.3);
+    border-color: #4facfe;
+    box-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
+}
+
+.memory-block.accessing {
+    animation: memory-access 1s infinite;
+}
+
+@keyframes memory-access {
+    0%, 100% { background: rgba(79, 172, 254, 0.1); }
+    50% { background: rgba(79, 172, 254, 0.4); }
+}
+
+.memory-block::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.memory-block:hover::after {
+    transform: translateX(100%);
+}
+
+/* Reasoning Chain Visualization */
+.reasoning-chain {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.reasoning-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border-left: 4px solid #4facfe;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.reasoning-step.active {
+    background: rgba(79, 172, 254, 0.1);
+    border-left-color: #00f2fe;
+    box-shadow: 0 4px 12px rgba(79, 172, 254, 0.2);
+}
+
+.reasoning-step::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(79, 172, 254, 0.1) 50%, transparent 100%);
+    transform: translateX(-100%);
+    transition: transform 0.8s ease;
+}
+
+.reasoning-step.active::before {
+    transform: translateX(100%);
+}
+
+.step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: #4facfe;
+    color: white;
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex: 1;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.step-confidence {
+    font-size: 0.8rem;
+    color: rgba(224, 230, 237, 0.7);
+    padding: 0.25rem 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+/* Attention Focus Visualization */
+.attention-focus-viz {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(90deg, 
+        rgba(79, 172, 254, 0.1) 0%, 
+        rgba(79, 172, 254, 0.3) 50%, 
+        rgba(79, 172, 254, 0.1) 100%);
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.focus-beam {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20%;
+    height: 80%;
+    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: focus-drift 4s ease-in-out infinite;
+}
+
+@keyframes focus-drift {
+    0%, 100% { left: 30%; }
+    25% { left: 70%; }
+    50% { left: 50%; }
+    75% { left: 40%; }
+}
+
+.focus-target {
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    background: #4facfe;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 10px rgba(79, 172, 254, 0.8);
+    animation: target-move 4s ease-in-out infinite;
+}
+
+@keyframes target-move {
+    0%, 100% { left: 25%; }
+    25% { left: 65%; }
+    50% { left: 45%; }
+    75% { left: 35%; }
+}
+
+/* Network Activity Visualization */
+.network-activity {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background: radial-gradient(circle at center, rgba(79, 172, 254, 0.1) 0%, transparent 70%);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.network-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #4facfe;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: network-pulse 2s infinite;
+}
+
+@keyframes network-pulse {
+    0% {
+        width: 20px;
+        height: 20px;
+        opacity: 1;
+    }
+    100% {
+        width: 80px;
+        height: 80px;
+        opacity: 0;
+    }
+}
+
+.network-connections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.connection-line {
+    position: absolute;
+    background: linear-gradient(90deg, transparent 0%, #4facfe 50%, transparent 100%);
+    height: 2px;
+    animation: connection-flow 3s infinite;
+}
+
+@keyframes connection-flow {
+    0% { width: 0%; }
+    50% { width: 100%; }
+    100% { width: 0%; }
+}
+
+/* Responsive Visualization Adjustments */
+@media (max-width: 768px) {
+    .knowledge-graph .node text {
+        font-size: 10px;
+    }
+    
+    .process-stages {
+        padding: 0 1rem;
+    }
+    
+    .stage-label {
+        font-size: 0.6rem;
+        max-width: 50px;
+    }
+    
+    .memory-visualization {
+        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    }
+    
+    .reasoning-step {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .step-number {
+        align-self: flex-start;
+    }
+}
