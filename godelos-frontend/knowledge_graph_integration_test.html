@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Graph Integration Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+            line-height: 1.6;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background: #2a2a2a;
+        }
+        .status {
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid;
+        }
+        .success { 
+            background-color: #1a2e1a; 
+            border-left-color: #4caf50;
+            color: #81c784;
+        }
+        .error { 
+            background-color: #2e1a1a; 
+            border-left-color: #f44336;
+            color: #e57373;
+        }
+        .info { 
+            background-color: #1a2a2e; 
+            border-left-color: #2196f3;
+            color: #64b5f6;
+        }
+        .code-block {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 16px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        h1 { color: #58a6ff; text-align: center; }
+        h2 { color: #7c3aed; }
+        h3 { color: #f97316; }
+        button {
+            background: #238636;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        button:hover {
+            background: #2ea043;
+        }
+        button:disabled {
+            background: #6a737d;
+            cursor: not-allowed;
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        @media (max-width: 768px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Knowledge Graph Integration Test</h1>
+        
+        <div class="test-section">
+            <h2>📋 Test Instructions</h2>
+            <p>This test verifies that the knowledge graph integration is working correctly in the main GödelOS application.</p>
+            
+            <div class="status info">
+                <strong>Instructions:</strong>
+                <ol>
+                    <li>Open the main GödelOS application in another tab: <a href="http://localhost:3000" target="_blank" style="color: #58a6ff;">http://localhost:3000</a></li>
+                    <li>Click the "Test Main App Integration" button below</li>
+                    <li>Use the browser console commands to test knowledge graph functionality</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="test-grid">
+            <div class="test-section">
+                <h3>🔧 Quick Tests</h3>
+                <div id="quickTestResults"></div>
+                <button onclick="testMainAppIntegration()">Test Main App Integration</button>
+                <button onclick="generateConsoleCommands()">Generate Console Commands</button>
+            </div>
+            
+            <div class="test-section">
+                <h3>📊 Test Results</h3>
+                <div id="testResults"></div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>💻 Browser Console Commands</h3>
+            <p>Copy and paste these commands in the browser console of the main GödelOS application (localhost:3000):</p>
+            
+            <div id="consoleCommands">
+                <div class="code-block">
+                    Click "Generate Console Commands" to see the test commands.
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>🎯 Expected Results</h3>
+            <div class="status success">
+                <strong>✅ Success Indicators:</strong>
+                <ul>
+                    <li>Backend health check returns OK</li>
+                    <li>Knowledge graph API returns 7 nodes and 6 edges</li>
+                    <li>Knowledge graph visualizer is initialized</li>
+                    <li>Clicking knowledge tab loads and displays the graph</li>
+                    <li>SVG elements are visible in the knowledge pane</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addResult(message, type = 'info') {
+            const results = document.getElementById('testResults');
+            const div = document.createElement('div');
+            div.className = `status ${type}`;
+            div.innerHTML = message;
+            results.appendChild(div);
+        }
+
+        function addQuickResult(message, type = 'info') {
+            const results = document.getElementById('quickTestResults');
+            const div = document.createElement('div');
+            div.className = `status ${type}`;
+            div.innerHTML = message;
+            results.appendChild(div);
+        }
+
+        async function testMainAppIntegration() {
+            document.getElementById('quickTestResults').innerHTML = '';
+            addQuickResult('🔄 Testing main application integration...', 'info');
+
+            // Test 1: Check if main app is accessible
+            try {
+                const response = await fetch('http://localhost:3000/');
+                if (response.ok) {
+                    addQuickResult('✅ Main application is accessible', 'success');
+                } else {
+                    addQuickResult('❌ Main application not accessible', 'error');
+                    return;
+                }
+            } catch (error) {
+                addQuickResult(`❌ Main application not accessible: ${error.message}`, 'error');
+                return;
+            }
+
+            // Test 2: Check backend API
+            try {
+                const response = await fetch('http://localhost:8000/health');
+                if (response.ok) {
+                    const data = await response.json();
+                    addQuickResult(`✅ Backend health: ${data.status}`, 'success');
+                } else {
+                    addQuickResult('❌ Backend not healthy', 'error');
+                }
+            } catch (error) {
+                addQuickResult(`❌ Backend not accessible: ${error.message}`, 'error');
+            }
+
+            // Test 3: Check knowledge graph API
+            try {
+                const response = await fetch('http://localhost:8000/api/transparency/knowledge-graph/export');
+                if (response.ok) {
+                    const data = await response.json();
+                    const nodeCount = data.graph_data?.nodes?.length || 0;
+                    const edgeCount = data.graph_data?.edges?.length || 0;
+                    addQuickResult(`✅ Knowledge graph API: ${nodeCount} nodes, ${edgeCount} edges`, 'success');
+                } else {
+                    addQuickResult('❌ Knowledge graph API failed', 'error');
+                }
+            } catch (error) {
+                addQuickResult(`❌ Knowledge graph API error: ${error.message}`, 'error');
+            }
+
+            // Test 4: Check if scripts are accessible
+            const scripts = [
+                'http://localhost:3000/src/scripts/knowledge-graph-visualizer.js',
+                'http://localhost:3000/src/scripts/api-client.js',
+                'http://localhost:3000/src/scripts/main.js'
+            ];
+
+            for (const script of scripts) {
+                try {
+                    const response = await fetch(script);
+                    if (response.ok) {
+                        const scriptName = script.split('/').pop();
+                        addQuickResult(`✅ ${scriptName} accessible`, 'success');
+                    } else {
+                        addQuickResult(`❌ ${script} not accessible`, 'error');
+                    }
+                } catch (error) {
+                    addQuickResult(`❌ ${script} error: ${error.message}`, 'error');
+                }
+            }
+
+            addQuickResult('🎯 Integration test complete! Use console commands for detailed testing.', 'info');
+        }
+
+        function generateConsoleCommands() {
+            const commands = `
+// === GödelOS Knowledge Graph Integration Test ===
+// Run these commands one by one in the browser console
+
+// 1. Check if main application is loaded
+console.log('🔍 App Controller:', !!window.app);
+console.log('🔍 Knowledge Graph Visualizer:', !!window.knowledgeGraphVisualizer);
+console.log('🔍 API Client:', !!window.apiClient);
+
+// 2. Test API connection
+try {
+    const testAPI = await fetch('http://localhost:8000/api/transparency/knowledge-graph/export');
+    const data = await testAPI.json();
+    console.log('✅ API Test Result:', {
+        nodes: data.graph_data?.nodes?.length,
+        edges: data.graph_data?.edges?.length,
+        sample_nodes: data.graph_data?.nodes?.slice(0, 3)
+    });
+} catch (error) {
+    console.error('❌ API Test Failed:', error);
+}
+
+// 3. Test knowledge graph data loading
+if (window.app && window.app.loadKnowledgeGraphData) {
+    try {
+        const result = await window.app.loadKnowledgeGraphData();
+        console.log('✅ Knowledge Graph Load Result:', result);
+    } catch (error) {
+        console.error('❌ Knowledge Graph Load Failed:', error);
+    }
+} else {
+    console.warn('⚠️ loadKnowledgeGraphData method not available');
+}
+
+// 4. Test transparency panel knowledge tab
+const knowledgeTab = document.querySelector('[data-tab="knowledge"]');
+if (knowledgeTab) {
+    console.log('🔍 Knowledge tab found, clicking...');
+    knowledgeTab.click();
+    
+    setTimeout(() => {
+        const knowledgePane = document.getElementById('knowledgePane');
+        const svg = knowledgePane?.querySelector('svg');
+        const nodes = svg?.querySelectorAll('circle, rect');
+        const links = svg?.querySelectorAll('line, path');
+        
+        console.log('📊 Knowledge Graph Status:', {
+            pane_visible: knowledgePane?.classList.contains('active'),
+            svg_exists: !!svg,
+            nodes_count: nodes?.length || 0,
+            links_count: links?.length || 0
+        });
+    }, 2000);
+} else {
+    console.warn('⚠️ Knowledge tab not found');
+}
+
+// 5. Manual visualization test
+if (window.KnowledgeGraphVisualizer) {
+    try {
+        const testVisualizer = new window.KnowledgeGraphVisualizer('knowledgeGraphVisualization');
+        console.log('✅ Manual visualizer creation successful');
+    } catch (error) {
+        console.error('❌ Manual visualizer creation failed:', error);
+    }
+} else {
+    console.warn('⚠️ KnowledgeGraphVisualizer constructor not available');
+}
+
+console.log('🎯 Knowledge Graph Integration Test Complete!');
+            `;
+
+            document.getElementById('consoleCommands').innerHTML = `
+                <div class="code-block">${commands.trim()}</div>
+                <button onclick="copyToClipboard(\`${commands.trim()}\`)">📋 Copy Commands</button>
+            `;
+
+            addResult('✅ Console commands generated! Copy and paste them in the main app browser console.', 'success');
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                addResult('📋 Commands copied to clipboard!', 'success');
+            }).catch(() => {
+                addResult('❌ Failed to copy to clipboard', 'error');
+            });
+        }
+
+        // Auto-run basic test on load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                addResult('🚀 Knowledge Graph Integration Test initialized', 'info');
+                addResult('📌 Open the main app and run the integration test to verify everything is working', 'info');
+            }, 500);
+        });
+    </script>
+</body>
+</html>

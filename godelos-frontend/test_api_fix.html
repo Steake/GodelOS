@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test API Fix - Knowledge Graph</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            max-height: 300px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 API Fix Test - Knowledge Graph</h1>
+        
+        <div class="test-section info">
+            <h2>📋 Test Status</h2>
+            <p>Testing if the API client now correctly fetches knowledge graph data from the transparency endpoint.</p>
+        </div>
+        
+        <div class="test-section" id="testResults">
+            <h2>🧪 Test Results</h2>
+            <button onclick="runAPITest()">Run API Test</button>
+            <div id="testOutput"></div>
+        </div>
+        
+        <div class="test-section" id="dataVisualization">
+            <h2>📊 Data Structure</h2>
+            <div id="dataOutput"></div>
+        </div>
+    </div>
+
+    <!-- Load API Client -->
+    <script src="/src/scripts/api-client.js"></script>
+
+    <script>
+        // Initialize API client
+        window.apiClient = new APIClient('http://localhost:8000');
+        
+        async function runAPITest() {
+            const testOutput = document.getElementById('testOutput');
+            const dataOutput = document.getElementById('dataOutput');
+            
+            testOutput.innerHTML = '<p>⏳ Running API test...</p>';
+            dataOutput.innerHTML = '';
+            
+            try {
+                console.log('🔧 Testing API client...');
+                
+                // Test the corrected API endpoint
+                const data = await window.apiClient.getKnowledgeGraph();
+                
+                console.log('✅ API Response:', data);
+                
+                // Check if we got real data
+                if (!data || !data.graph_data) {
+                    throw new Error('No graph_data in response');
+                }
+                
+                const { nodes, links } = data.graph_data;
+                
+                if (!Array.isArray(nodes) || !Array.isArray(links)) {
+                    throw new Error('Invalid data structure');
+                }
+                
+                // Display success results
+                testOutput.innerHTML = `
+                    <div class="success">
+                        <h3>✅ API Test Successful!</h3>
+                        <p><strong>Nodes found:</strong> ${nodes.length}</p>
+                        <p><strong>Links found:</strong> ${links.length}</p>
+                        <p><strong>Endpoint:</strong> /api/transparency/knowledge-graph/export</p>
+                    </div>
+                `;
+                
+                // Display data structure
+                dataOutput.innerHTML = `
+                    <h3>📋 Sample Node Data:</h3>
+                    <pre>${JSON.stringify(nodes[0] || 'No nodes', null, 2)}</pre>
+                    
+                    <h3>🔗 Sample Link Data:</h3>
+                    <pre>${JSON.stringify(links[0] || 'No links', null, 2)}</pre>
+                    
+                    <h3>📈 Full Response Structure:</h3>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+                
+            } catch (error) {
+                console.error('❌ API Test Failed:', error);
+                
+                testOutput.innerHTML = `
+                    <div class="error">
+                        <h3>❌ API Test Failed</h3>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                        <p>Check the console for more details.</p>
+                    </div>
+                `;
+                
+                dataOutput.innerHTML = `
+                    <div class="error">
+                        <h3>Error Details</h3>
+                        <pre>${error.stack || error.toString()}</pre>
+                    </div>
+                `;
+            }
+        }
+        
+        // Auto-run test on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(runAPITest, 1000);
+        });
+    </script>
+</body>
+</html>

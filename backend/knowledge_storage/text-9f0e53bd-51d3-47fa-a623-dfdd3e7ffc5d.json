@@ -1,0 +1,49 @@
+{
+  "id": "text-9f0e53bd-51d3-47fa-a623-dfdd3e7ffc5d",
+  "content": "Consciousness is the state of being aware. Cognition involves mental processes like thinking and reasoning. Memory is essential for learning.",
+  "knowledge_type": "fact",
+  "title": "Basic Cognitive Concepts",
+  "source": {
+    "source_type": "text",
+    "source_identifier": "test_consciousness_data",
+    "metadata": {
+      "type": "educational"
+    }
+  },
+  "import_id": "9f0e53bd-51d3-47fa-a623-dfdd3e7ffc5d",
+  "extracted_at": 1748463569.513788,
+  "chunks": [],
+  "relationships": [],
+  "confidence": 0.9,
+  "validation_status": "pending",
+  "quality_score": 0.85,
+  "categories": [
+    "manual"
+  ],
+  "auto_categories": [],
+  "manual_categories": [
+    "manual"
+  ],
+  "access_count": 0,
+  "last_accessed": null,
+  "usage_context": [],
+  "metadata": {
+    "word_count": 20,
+    "char_count": 141,
+    "chunks": 1,
+    "keywords": [
+      "consciousness",
+      "state",
+      "aware",
+      "cognition",
+      "involves",
+      "mental",
+      "processes",
+      "like",
+      "thinking",
+      "reasoning"
+    ],
+    "language": "en"
+  },
+  "annotations": []
+}

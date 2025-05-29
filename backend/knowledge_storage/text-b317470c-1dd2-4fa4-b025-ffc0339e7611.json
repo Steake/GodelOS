@@ -1,0 +1,49 @@
+{
+  "id": "text-b317470c-1dd2-4fa4-b025-ffc0339e7611",
+  "content": "Water boils at 100 degrees Celsius at sea level.",
+  "knowledge_type": "fact",
+  "title": "Water Boiling Point",
+  "source": {
+    "source_type": "text",
+    "source_identifier": "Water Boiling Point",
+    "metadata": {
+      "category": "science",
+      "created_by": "user"
+    }
+  },
+  "import_id": "b317470c-1dd2-4fa4-b025-ffc0339e7611",
+  "extracted_at": 1748347511.976661,
+  "chunks": [],
+  "relationships": [],
+  "confidence": 0.9,
+  "validation_status": "pending",
+  "quality_score": 0.85,
+  "categories": [
+    "chemistry",
+    "physics"
+  ],
+  "auto_categories": [],
+  "manual_categories": [
+    "chemistry",
+    "physics"
+  ],
+  "access_count": 0,
+  "last_accessed": null,
+  "usage_context": [],
+  "metadata": {
+    "word_count": 9,
+    "char_count": 48,
+    "chunks": 1,
+    "keywords": [
+      "water",
+      "boils",
+      "100",
+      "degrees",
+      "celsius",
+      "sea",
+      "level"
+    ],
+    "language": "es"
+  },
+  "annotations": []
+}

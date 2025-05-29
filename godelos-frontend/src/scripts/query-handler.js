@@ -8,6 +8,7 @@ class QueryHandler {
         this.currentQuery = null;
         this.queryHistory = [];
         this.isProcessing = false;
+        this.eventListeners = new Map();
         
         this.initializeForm();
         this.setupEventListeners();
@@ -77,6 +78,22 @@ class QueryHandler {
                 this.exportResults();
             });
         }
+
+        // Random query button
+        const randomButton = document.getElementById('randomQuery');
+        if (randomButton) {
+            randomButton.addEventListener('click', () => {
+                this.selectRandomQuery();
+            });
+        }
+
+        // Share results button
+        const shareButton = document.getElementById('shareResults');
+        if (shareButton) {
+            shareButton.addEventListener('click', () => {
+                this.shareResults();
+            });
+        }
     }
 
     /**
@@ -124,6 +141,13 @@ class QueryHandler {
         this.setProcessingState(true);
         
         try {
+            // Emit query submitted event
+            this.emit('querySubmitted', {
+                query: queryData.query,
+                queryData: queryData,
+                timestamp: Date.now()
+            });
+            
             // Send query to backend via WebSocket
             this.sendQuery(queryData);
             
@@ -238,6 +262,13 @@ class QueryHandler {
      */
     handleQueryResponse(responseData) {
         console.log('Received query response:', responseData);
+        
+        // Emit response received event
+        this.emit('responseReceived', {
+            response: responseData,
+            timestamp: Date.now(),
+            query: responseData.original_query
+        });
         
         // Update response panels
         this.updateNaturalLanguageResponse(responseData.natural_response);
@@ -606,6 +637,171 @@ class QueryHandler {
     }
 
     /**
+     * Select a random example query
+     */
+    selectRandomQuery() {
+        const exampleQueries = [
+            "What is the difference between consciousness and awareness?",
+            "How does attention work in cognitive systems?",
+            "Explain neural network architectures",
+            "What are the limitations of current AI systems?",
+            "How does formal logic relate to human reasoning?",
+            "What is abductive reasoning?",
+            "Explain the concept of emergent intelligence",
+            "What role does working memory play in cognition?",
+            "How do large language models work?",
+            "What are the ethical implications of artificial consciousness?"
+        ];
+        
+        const randomQuery = exampleQueries[Math.floor(Math.random() * exampleQueries.length)];
+        const queryInput = document.getElementById('naturalLanguageQuery');
+        
+        if (queryInput) {
+            queryInput.value = randomQuery;
+            queryInput.focus();
+            
+            // Update character count if educational manager is available
+            if (window.educationalManager) {
+                window.educationalManager.updateCharacterCount(randomQuery.length);
+            }
+            
+            // Show helpful tip
+            this.showNotification('Random query selected! Feel free to modify it or submit as-is.', 'info');
+        }
+    }
+
+    /**
+     * Share current results
+     */
+    shareResults() {
+        if (!this.currentQuery) {
+            this.showNotification('No results to share yet. Submit a query first!', 'info');
+            return;
+        }
+
+        const shareData = {
+            query: this.currentQuery.query,
+            queryType: this.currentQuery.queryType,
+            timestamp: new Date().toISOString(),
+            url: window.location.href
+        };
+
+        // Try to use Web Share API if available
+        if (navigator.share) {
+            navigator.share({
+                title: 'GödelOS Query Result',
+                text: `Check out this interesting query: "${this.currentQuery.query}"`,
+                url: window.location.href
+            }).catch(err => {
+                console.log('Error sharing:', err);
+                this.fallbackShare(shareData);
+            });
+        } else {
+            this.fallbackShare(shareData);
+        }
+    }
+
+    /**
+     * Fallback share method
+     */
+    fallbackShare(shareData) {
+        // Copy to clipboard
+        const shareText = `GödelOS Query: "${shareData.query}"\nExplore at: ${shareData.url}`;
+        
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(shareText).then(() => {
+                this.showSuccess('Share link copied to clipboard!');
+            }).catch(() => {
+                this.showTextShareModal(shareText);
+            });
+        } else {
+            this.showTextShareModal(shareText);
+        }
+    }
+
+    /**
+     * Show text share modal
+     */
+    showTextShareModal(text) {
+        const modal = document.createElement('div');
+        modal.className = 'share-modal-overlay';
+        modal.innerHTML = `
+            <div class="share-modal">
+                <h3>Share Query</h3>
+                <textarea readonly>${text}</textarea>
+                <div class="share-modal-actions">
+                    <button onclick="this.closest('.share-modal-overlay').remove()" class="btn secondary">Close</button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        // Select text for easy copying
+        const textarea = modal.querySelector('textarea');
+        textarea.select();
+        
+        // Auto-remove after delay
+        setTimeout(() => {
+            if (modal.parentElement) {
+                modal.remove();
+            }
+        }, 10000);
+    }
+
+    /**
+     * Enhanced processing indicators with educational loading
+     */
+    showProcessingIndicators() {
+        // Use educational loading overlay if available
+        if (window.educationalManager) {
+            window.educationalManager.showLoadingOverlay('Processing your query through cognitive layers...');
+        }
+        
+        // Update cognitive layers to show activity
+        this.updateCognitiveLayersForProcessing();
+    }
+
+    /**
+     * Update cognitive layers to show processing activity
+     */
+    updateCognitiveLayersForProcessing() {
+        // Activate query parser
+        const queryParser = document.querySelector('[data-process="query-parser"]');
+        if (queryParser) {
+            queryParser.classList.add('active');
+        }
+        
+        // Show processing in manifest consciousness
+        const attentionFocus = document.getElementById('attentionFocus');
+        if (attentionFocus) {
+            attentionFocus.classList.add('processing');
+        }
+    }
+
+    /**
+     * Event emitter functionality
+     */
+    on(event, callback) {
+        if (!this.eventListeners.has(event)) {
+            this.eventListeners.set(event, []);
+        }
+        this.eventListeners.get(event).push(callback);
+    }
+
+    emit(event, data) {
+        if (this.eventListeners.has(event)) {
+            this.eventListeners.get(event).forEach(callback => {
+                try {
+                    callback(data);
+                } catch (error) {
+                    console.error(`Error in event listener for ${event}:`, error);
+                }
+            });
+        }
+    }
+
+    /**
      * Initialize the query handler
      */
     initialize() {
@@ -613,6 +809,9 @@ class QueryHandler {
         console.log('Query handler initialized');
     }
 }
+
+// Make the class available globally
+window.QueryHandler = QueryHandler;
 
 // Create global query handler instance
 window.queryHandler = new QueryHandler();
@@ -625,3 +824,5 @@ if (document.readyState === 'loading') {
 } else {
     window.queryHandler.initialize();
 }
+
+console.log('✅ QueryHandler module loaded and available as window.QueryHandler');

@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 
 def ensure_logs_directory():
     """Ensure the logs directory exists."""
-    logs_dir = Path("backend/logs")
+    logs_dir = Path("logs")
     logs_dir.mkdir(parents=True, exist_ok=True)
     return logs_dir
 

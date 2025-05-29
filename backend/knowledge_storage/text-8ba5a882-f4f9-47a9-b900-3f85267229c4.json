@@ -1,0 +1,47 @@
+{
+  "id": "text-8ba5a882-f4f9-47a9-b900-3f85267229c4",
+  "content": "Python is a high-level programming language.",
+  "knowledge_type": "fact",
+  "title": "Python Language",
+  "source": {
+    "source_type": "text",
+    "source_identifier": "Python Language",
+    "metadata": {
+      "category": "programming",
+      "created_by": "user"
+    }
+  },
+  "import_id": "8ba5a882-f4f9-47a9-b900-3f85267229c4",
+  "extracted_at": 1748347577.526353,
+  "chunks": [],
+  "relationships": [],
+  "confidence": 0.9,
+  "validation_status": "pending",
+  "quality_score": 0.85,
+  "categories": [
+    "programming",
+    "technology"
+  ],
+  "auto_categories": [],
+  "manual_categories": [
+    "programming",
+    "technology"
+  ],
+  "access_count": 0,
+  "last_accessed": null,
+  "usage_context": [],
+  "metadata": {
+    "word_count": 6,
+    "char_count": 44,
+    "chunks": 1,
+    "keywords": [
+      "python",
+      "high",
+      "level",
+      "programming",
+      "language"
+    ],
+    "language": "es"
+  },
+  "annotations": []
+}

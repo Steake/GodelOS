@@ -13,6 +13,7 @@ import logging
 import copy
 from dataclasses import dataclass, field
 from enum import Enum
+import dataclasses
 
 from godelOS.core_kr.ast.nodes import (
     AST_Node, VariableNode, ConstantNode, ConnectiveNode,
@@ -594,699 +595,356 @@ class ResolutionProver(BaseProver):
     and applies various resolution strategies to find a refutation.
     """
     
-    def __init__(self, kr_system_interface: KnowledgeStoreInterface,
-                unification_engine: UnificationEngine,
-                cnf_converter: Optional[CNFConverter] = None):
-        """
-        Initialize the resolution prover.
-        
-        Args:
-            kr_system_interface: Interface to the Knowledge Representation system
-            unification_engine: Engine for unifying logical expressions
-            cnf_converter: Optional converter for Conjunctive Normal Form
-        """
-        self.kr_system_interface = kr_system_interface
+    def __init__(self, knowledge_store: KnowledgeStoreInterface,
+                 unification_engine: UnificationEngine,
+                 default_strategy: ResolutionStrategy = ResolutionStrategy.SET_OF_SUPPORT):
+        super().__init__()  # Corrected: Call super without arguments
+        self.knowledge_store = knowledge_store
         self.unification_engine = unification_engine
-        self.cnf_converter = cnf_converter or CNFConverter(unification_engine)
-        self.next_clause_id = 0
-    
-    @property
+        self.default_strategy = default_strategy
+        self.cnf_converter = CNFConverter(self.unification_engine)
+        self._clause_id_counter = 0
+
     def name(self) -> str:
-        """Get the name of this prover."""
+        """Returns the name of the prover."""
         return "ResolutionProver"
-    
-    @property
-    def capabilities(self) -> Dict[str, bool]:
-        """Get the capabilities of this prover."""
-        capabilities = super().capabilities.copy()
-        capabilities.update({
-            "first_order_logic": True,
-            "propositional_logic": True,
-            "equality": True,
-            "uninterpreted_functions": True
-        })
-        return capabilities
-    
-    def can_handle(self, goal_ast: AST_Node, context_asts: Set[AST_Node]) -> bool:
+
+    def can_handle(self, goal: AST_Node, context: Optional[List[AST_Node]] = None) -> bool:
         """
-        Determine if this prover can handle the given goal and context.
-        
-        The resolution prover can handle first-order logic and propositional logic goals.
-        
-        Args:
-            goal_ast: The goal to prove
-            context_asts: The set of context assertions
-            
-        Returns:
-            True if this prover can handle the given goal and context, False otherwise
+        Checks if the prover can handle the given goal and context by verifying
+        that the goal and all context formulas are of recognizable AST_Node types
+        suitable for CNF conversion.
         """
-        # Check if the goal and context contain modal operators, arithmetic, or constraints
-        from godelOS.inference_engine.coordinator import InferenceCoordinator
-        coordinator = InferenceCoordinator(self.kr_system_interface, {})
-        
-        contains_modal = coordinator._contains_modal_operator(goal_ast)
-        contains_arithmetic = coordinator._contains_arithmetic(goal_ast)
-        contains_constraints = coordinator._contains_constraints(goal_ast)
-        
-        # Check context as well
-        for ast in context_asts:
-            if coordinator._contains_modal_operator(ast) or \
-               coordinator._contains_arithmetic(ast) or \
-               coordinator._contains_constraints(ast):
+        try:
+            # Define recognizable AST node types that can represent top-level formulas.
+            # ApplicationNode (e.g., P(x), Related(a,b))
+            # ConnectiveNode (e.g., AND, OR, NOT, IMPLIES)
+            # QuantifierNode (e.g., FORALL, EXISTS)
+            # ConstantNode (e.g., True, False, or other logical constants if defined)
+            # VariableNode is typically part of an ApplicationNode or QuantifierNode's scope,
+            # not usually a standalone formula.
+            formula_node_types = (ApplicationNode, ConnectiveNode, QuantifierNode, ConstantNode)
+
+            if not isinstance(goal, AST_Node):
+                logger.warning(f"ResolutionProver.can_handle: Goal is not an AST_Node instance. Type: {type(goal)}")
                 return False
+            if not isinstance(goal, formula_node_types):
+                 logger.warning(
+                    f"ResolutionProver.can_handle: Goal (type: {type(goal)}) is not one of the expected "
+                    f"formula node types: {formula_node_types}."
+                 )
+                 return False
+
+            if context:
+                for i, formula in enumerate(context):
+                    if not isinstance(formula, AST_Node):
+                        logger.warning(f"ResolutionProver.can_handle: Context formula {i} is not an AST_Node instance. Type: {type(formula)}")
+                        return False
+                    if not isinstance(formula, formula_node_types):
+                        logger.warning(
+                            f"ResolutionProver.can_handle: Context formula {i} (type: {type(formula)}) is not one of the expected "
+                            f"formula node types: {formula_node_types}."
+                        )
+                        return False
+            return True
+        except Exception as e:
+            # Log the exception for debugging, including context if it's not too large
+            context_str = str(context) if context and len(str(context)) < 500 else "Context too large or None"
+            logger.error(f"ResolutionProver.can_handle: Exception during type checking. Goal: '{goal}'. Context: {context_str}. Error: {e}", exc_info=True)
+            return False
+
+    def _get_next_clause_id(self) -> int:
+        """
+        Get the next unique clause ID.
         
-        return not (contains_modal or contains_arithmetic or contains_constraints)
-    
-    def prove(self, goal_ast: AST_Node, context_asts: Set[AST_Node],
-             resources: Optional[ResourceLimits] = None) -> ProofObject:
+        This method ensures that each clause gets a unique ID, even across different
+        proof attempts.
+        
+        Returns:
+            A unique clause ID
+        """
+        current_id = self.next_clause_id
+        self.next_clause_id += 1
+        return current_id
+
+    def prove(self, goal: AST_Node, context: Optional[List[AST_Node]] = None,
+              resource_limits: Optional[ResourceLimits] = None) -> ProofObject:
         """
         Attempt to prove a goal using resolution.
-        
-        This method implements the full resolution algorithm, including:
-        1. Converting the goal and context to CNF
-        2. Negating the goal
-        3. Applying resolution strategies to find a refutation
-        
+
         Args:
-            goal_ast: The goal to prove
-            context_asts: The set of context assertions
-            resources: Optional resource limits for the proof attempt
-            
+            goal: The logical formula to prove.
+            context: Optional list of logical formulas representing the knowledge base.
+            resource_limits: Optional resource limits for the proof process.
+
         Returns:
-            A ProofObject representing the result of the proof attempt
+            A ProofObject representing the result of the proof attempt.
         """
         start_time = time.time()
+        proof_obj = ProofObject(goal=goal, status="pending", prover_name="ResolutionProver")
+
+        if resource_limits is None:
+            resource_limits = ResourceLimits() # Default limits
+
+        # 1. Negate the goal
+        negated_goal = ConnectiveNode("NOT", [goal], goal.type)
+        logger.info(f"ResolutionProver: Negated goal: {negated_goal}")
+        proof_obj.add_step(ProofStepNode(f"Negate goal: {goal}", f"¬({goal})"))
+
+        # 2. Convert all formulas (context + negated_goal) to CNF
+        all_clauses: List[Clause] = []
         
-        # Set default resource limits if none provided
-        if resources is None:
-            resources = ResourceLimits(time_limit_ms=10000, depth_limit=100, nodes_limit=10000)
+        # Convert context (knowledge base)
+        if context:
+            for i, formula in enumerate(context):
+                cnf_clauses = self.cnf_converter.convert_to_cnf(formula)
+                for cnf_clause in cnf_clauses:
+                    unique_id = self._get_next_clause_id()
+                    all_clauses.append(dataclasses.replace(cnf_clause, source=f"context_{i}", clause_id=unique_id))
+                proof_obj.add_step(ProofStepNode(f"Convert context formula {i+1} to CNF: {formula}", 
+                                                 f"Clauses: {[str(c) for c in cnf_clauses]}"))
         
-        logger.info(f"ResolutionProver attempting to prove: {goal_ast}")
-        logger.info(f"Context size: {len(context_asts)}")
+        # Convert negated goal
+        negated_goal_cnf_clauses = self.cnf_converter.convert_to_cnf(negated_goal)
+        set_of_support: Set[Clause] = set() # Clauses derived from the negated goal
+
+        for cnf_clause in negated_goal_cnf_clauses:
+            unique_id = self._get_next_clause_id()
+            clause_with_id = dataclasses.replace(cnf_clause, source="negated_goal", clause_id=unique_id)
+            all_clauses.append(clause_with_id)
+            set_of_support.add(clause_with_id)
+        proof_obj.add_step(ProofStepNode(f"Convert negated goal to CNF: {negated_goal}",
+                                         f"Clauses: {[str(c) for c in negated_goal_cnf_clauses]}"))
+
+        logger.info(f"ResolutionProver: Initial clauses ({len(all_clauses)} total):")
+        for clause in all_clauses:
+            logger.info(f"  ID: {clause.clause_id}, Source: {clause.source}, Clause: {clause}")
         
-        try:
-            # Step 1: Negate the goal
-            negated_goal = self._negate_formula(goal_ast)
-            logger.debug(f"Negated goal: {negated_goal}")
-            
-            # Step 2: Convert all formulas to CNF
-            axiom_clauses = []
-            for axiom in context_asts:
-                axiom_clauses.extend(self.cnf_converter.convert_to_cnf(axiom))
-            
-            goal_clauses = self.cnf_converter.convert_to_cnf(negated_goal)
-            
-            # Assign IDs to all clauses
-            all_clauses = []
-            for clause in axiom_clauses:
-                all_clauses.append(Clause(
-                    clause.literals,
-                    "axiom",
-                    (),
-                    self.next_clause_id
-                ))
-                self.next_clause_id += 1
-            
-            for clause in goal_clauses:
-                all_clauses.append(Clause(
-                    clause.literals,
-                    "negated_goal",
-                    (),
-                    self.next_clause_id
-                ))
-                self.next_clause_id += 1
-            
-            logger.info(f"Total clauses: {len(all_clauses)}")
-            for clause in all_clauses:
-                logger.debug(f"Clause {clause.clause_id}: {clause}")
-            
-            # Step 3: Apply resolution
-            strategy = resources.get_limit("strategy", "set_of_support")
-            result = self._resolve_clauses(all_clauses, resources, strategy)
-            
-            # Calculate time taken
-            end_time = time.time()
-            time_taken_ms = (end_time - start_time) * 1000
-            
-            # Return the proof object
-            if result.proof_found:
-                # Create proof steps
-                proof_steps = self._create_proof_steps(result.proof_trace, all_clauses)
-                
-                return ProofObject.create_success(
-                    conclusion_ast=goal_ast,
-                    proof_steps=proof_steps,
-                    used_axioms_rules=context_asts,
-                    inference_engine_used=self.name,
-                    time_taken_ms=time_taken_ms,
-                    resources_consumed={
-                        "clauses_generated": result.clauses_generated,
-                        "resolution_steps": result.resolution_steps,
-                        "max_depth": result.max_depth
-                    }
-                )
-            else:
-                status_message = "Proof not found"
-                if result.resource_limit_reached:
-                    status_message = f"Resource limit reached: {result.limit_type}"
-                
-                return ProofObject.create_failure(
-                    status_message=status_message,
-                    inference_engine_used=self.name,
-                    time_taken_ms=time_taken_ms,
-                    resources_consumed={
-                        "clauses_generated": result.clauses_generated,
-                        "resolution_steps": result.resolution_steps,
-                        "max_depth": result.max_depth
-                    }
-                )
-                
-        except Exception as e:
-            logger.error(f"Error during proof: {str(e)}", exc_info=True)
-            end_time = time.time()
-            time_taken_ms = (end_time - start_time) * 1000
-            
-            return ProofObject.create_failure(
-                status_message=f"Error: {str(e)}",
-                inference_engine_used=self.name,
-                time_taken_ms=time_taken_ms,
-                resources_consumed={}
-            )
-    
-    def _negate_formula(self, formula: AST_Node) -> AST_Node:
-        """
-        Negate a formula.
-        
-        Args:
-            formula: The formula to negate
-            
-        Returns:
-            The negated formula
-        """
-        return ConnectiveNode("NOT", [formula], formula.type)
-    
-    @dataclass
-    class ResolutionResult:
-        """Result of the resolution process."""
-        proof_found: bool = False
-        resource_limit_reached: bool = False
-        limit_type: str = ""
-        clauses_generated: int = 0
-        resolution_steps: int = 0
-        max_depth: int = 0
-        proof_trace: List[int] = field(default_factory=list)
-    
-    def _resolve_clauses(self, clauses: List[Clause], resources: ResourceLimits,
-                        strategy: str = "set_of_support") -> ResolutionResult:
-        """
-        Apply resolution to a set of clauses.
-        
-        Args:
-            clauses: The clauses to resolve
-            resources: Resource limits for the proof attempt
-            strategy: The resolution strategy to use
-            
-        Returns:
-            A ResolutionResult object containing the result of the resolution process
-        """
-        result = self.ResolutionResult()
-        
-        # Initialize clause sets based on the strategy
-        if strategy == "set_of_support":
-            # Separate axioms and goal clauses
-            axiom_clauses = [c for c in clauses if c.source == "axiom"]
-            goal_clauses = [c for c in clauses if c.source == "negated_goal"]
-            
-            # The set of support initially contains the goal clauses
-            sos = set(goal_clauses)
-            usable = set(axiom_clauses)
-        else:
-            # For other strategies, all clauses are usable
-            sos = set(clauses)
-            usable = set()
-        
-        # Keep track of all generated clauses to avoid duplicates
-        all_clauses = {c.clause_id: c for c in clauses}
-        
-        # Keep track of the maximum depth of the proof
-        result.max_depth = 0
-        
-        # Main resolution loop
-        while sos and not result.proof_found and not result.resource_limit_reached:
-            # Check resource limits
-            result.resolution_steps += 1
-            
-            if resources.time_limit_ms is not None:
-                elapsed_time = (time.time() - time.time()) * 1000  # This is a placeholder
-                if elapsed_time > resources.time_limit_ms:
-                    result.resource_limit_reached = True
-                    result.limit_type = "time_limit"
-                    break
-            
-            if resources.nodes_limit is not None and result.clauses_generated > resources.nodes_limit:
-                result.resource_limit_reached = True
-                result.limit_type = "nodes_limit"
+        if not negated_goal_cnf_clauses: # Should not happen if goal is valid
+            proof_obj.status = "failure"
+            proof_obj.message = "ResolutionProver: Negated goal resulted in no clauses."
+            proof_obj.execution_time_ms = (time.time() - start_time) * 1000
+            return proof_obj
+
+        # --- Resolution Loop ---
+        # Use a list for the agenda to allow for different selection strategies if needed (e.g., unit preference)
+        agenda: List[Clause] = list(set_of_support) 
+        processed_clauses_set: Set[FrozenSet[Literal]] = set() # Store literals of processed clauses to avoid reprocessing identical clauses
+        all_clauses_map: Dict[int, Clause] = {c.clause_id: c for c in all_clauses}
+
+        iteration_count = 0
+        max_iterations = resource_limits.max_steps if resource_limits and resource_limits.max_steps else 1000
+
+        while agenda:
+            if iteration_count >= max_iterations:
+                proof_obj.status = "failure"
+                proof_obj.message = f"ResolutionProver: Exceeded max iterations ({max_iterations})."
                 break
             
-            if resources.depth_limit is not None and result.max_depth > resources.depth_limit:
-                result.resource_limit_reached = True
-                result.limit_type = "depth_limit"
-                break
-            
-            # Select a clause from the set of support
-            given_clause = self._select_clause(sos, strategy)
-            sos.remove(given_clause)
-            
-            # Add the given clause to the usable set
-            usable.add(given_clause)
-            
-            # Try to resolve the given clause with all usable clauses
-            for clause in usable:
-                # Skip if the clause is the given clause itself
-                if clause.clause_id == given_clause.clause_id:
-                    continue
+            iteration_count += 1
+            # Simple FIFO selection, could be replaced with a more sophisticated strategy (e.g. unit preference)
+            current_clause = agenda.pop(0)
+
+            if current_clause.literals in processed_clauses_set:
+                continue
+            processed_clauses_set.add(current_clause.literals)
+
+            logger.debug(f"Iteration {iteration_count}: Resolving with {current_clause}")
+
+            # Resolve `current_clause` (from set_of_support or its descendants) with clauses from `all_clauses_map`
+            # This implements the set-of-support strategy: one parent must be in the set of support or one of its descendants.
+            potential_partners = list(all_clauses_map.values()) # Iterate over a copy
+
+            for other_clause in potential_partners:
+                # Optimization: Don't resolve a clause with itself unless it can lead to a valid resolvent (e.g. P(x) v P(y) with P(a) v P(b))
+                # For simplicity here, we allow it, _resolve should handle it. Or, ensure other_clause.clause_id != current_clause.clause_id if needed.
+                # However, resolving C with C is usually not productive unless C contains complementary literals after self-unification, which is rare.
                 
-                # Try to resolve the two clauses
-                resolvents = self._resolve_pair(given_clause, clause)
+                resolvents = self._resolve(current_clause, other_clause)
                 
-                # Process the resolvents
                 for resolvent in resolvents:
-                    # Check if the resolvent is the empty clause (contradiction found)
                     if resolvent.is_empty():
-                        result.proof_found = True
-                        result.proof_trace = self._trace_proof(resolvent, all_clauses)
-                        return result
-                    
-                    # Check if the resolvent is a tautology (always true)
-                    if self._is_tautology(resolvent):
-                        continue
-                    
-                    # Check if the resolvent is a duplicate
-                    is_duplicate = False
-                    for existing_clause in all_clauses.values():
-                        if self._clauses_equivalent(resolvent, existing_clause):
-                            is_duplicate = True
-                            break
-                    
-                    if is_duplicate:
-                        continue
-                    
-                    # Add the resolvent to the set of support and all clauses
-                    new_clause = Clause(
-                        resolvent.literals,
-                        "derived",
-                        (given_clause.clause_id, clause.clause_id),
-                        self.next_clause_id
-                    )
-                    self.next_clause_id += 1
-                    
-                    sos.add(new_clause)
-                    all_clauses[new_clause.clause_id] = new_clause
-                    result.clauses_generated += 1
-                    
-                    # Update the maximum depth
-                    depth = max(self._get_clause_depth(given_clause, all_clauses),
-                               self._get_clause_depth(clause, all_clauses)) + 1
-                    result.max_depth = max(result.max_depth, depth)
+                        proof_obj.status = "success"
+                        proof_obj.message = "ResolutionProver: Contradiction found (empty clause derived)."
+                        proof_obj.add_step(ProofStepNode(f"Resolved {current_clause.clause_id} ({current_clause.source}) and {other_clause.clause_id} ({other_clause.source})", f"Derived empty clause: {resolvent}"))
+                        proof_obj.execution_time_ms = (time.time() - start_time) * 1000
+                        logger.info(f"ResolutionProver: Success! Empty clause derived from {current_clause.clause_id} and {other_clause.clause_id}.")
+                        return proof_obj
+
+                    # Check if the resolvent is new (not subsumed by an existing clause)
+                    # Simple check: avoid adding clauses with identical literal sets.
+                    # A proper subsumption check is more complex.
+                    if resolvent.literals not in processed_clauses_set and not any(c.literals == resolvent.literals for c in all_clauses_map.values()):
+                        unique_id = self._get_next_clause_id()
+                        resolvent_with_id = dataclasses.replace(resolvent, clause_id=unique_id, parent_ids=(current_clause.clause_id, other_clause.clause_id), source="derived")
+                        
+                        all_clauses_map[unique_id] = resolvent_with_id
+                        agenda.append(resolvent_with_id) # Add to agenda for further resolution
+                        # set_of_support.add(resolvent_with_id) # Implicitly handled as agenda comes from SoS
+                        
+                        proof_obj.add_step(ProofStepNode(f"Resolved {current_clause.clause_id} ({current_clause.source}) and {other_clause.clause_id} ({other_clause.source})", f"Derived ID {unique_id}: {resolvent_with_id}"))
+                        logger.info(f"ResolutionProver: Derived new clause {resolvent_with_id.clause_id}: {resolvent_with_id} from {current_clause.clause_id} and {other_clause.clause_id}")
+                    else:
+                        logger.debug(f"Skipping redundant or already processed resolvent: {resolvent} from {current_clause.clause_id} and {other_clause.clause_id}")
+
+            # Check resource limits (time)
+            if (time.time() - start_time) * 1000 > resource_limits.max_time_ms:
+                proof_obj.status = "failure"
+                proof_obj.message = f"ResolutionProver: Exceeded time limit ({resource_limits.max_time_ms} ms)."
+                break
         
-        return result
-    
-    def _select_clause(self, clauses: Set[Clause], strategy: str) -> Clause:
-        """
-        Select a clause based on the given strategy.
-        
-        Args:
-            clauses: The set of clauses to select from
-            strategy: The selection strategy
-            
-        Returns:
-            The selected clause
-        """
-        if strategy == "unit_preference":
-            # Prefer unit clauses
-            for clause in clauses:
-                if clause.is_unit():
-                    return clause
-        
-        # Default: select the first clause (arbitrary)
-        return next(iter(clauses))
-    
-    def _resolve_pair(self, clause1: Clause, clause2: Clause) -> List[Clause]:
+        if proof_obj.status == "pending":
+            proof_obj.status = "failure"
+            proof_obj.message = "ResolutionProver: Could not derive empty clause within limits."
+
+        proof_obj.execution_time_ms = (time.time() - start_time) * 1000
+        logger.info(f"ResolutionProver: Proof attempt finished. Status: {proof_obj.status}, Message: {proof_obj.message}")
+        return proof_obj
+
+    def _resolve(self, clause1: Clause, clause2: Clause) -> List[Clause]:
         """
         Resolve two clauses.
-        
+
+        For each literal L1 in clause1 and literal L2 in clause2,
+        if L1 and L2 are complementary (e.g., P(x) and ¬P(y)),
+        try to unify their atoms. If unification succeeds with substitution S,
+        the resolvent is ( (clause1 - {L1}) U (clause2 - {L2}) )S.
+
         Args:
-            clause1: The first clause
-            clause2: The second clause
-            
+            clause1: The first clause.
+            clause2: The second clause.
+
         Returns:
-            A list of resolvent clauses
+            A list of resolvent clauses. Can be empty if no resolution is possible.
+            Can contain the empty clause if a contradiction is found.
         """
-        resolvents = []
+        resolvents: List[Clause] = []
         
-        # Try to resolve each literal in clause1 with each literal in clause2
-        for lit1 in clause1.literals:
-            for lit2 in clause2.literals:
-                # Check if the literals have opposite polarity
-                if lit1.is_negated != lit2.is_negated:
-                    # Try to unify the atoms
-                    bindings, errors = self.unification_engine.unify(
-                        lit1.atom, lit2.atom, None, "FIRST_ORDER"
-                    )
-                    
-                    if bindings is not None:
-                        # Unification successful, create the resolvent
-                        new_literals = set()
+        # Create copies of clauses to rename variables without affecting original clauses in the knowledge base
+        # The renaming should ensure that variables from clause1 and clause2 are distinct before unification.
+        # We use a unique suffix based on current time and clause IDs to try and ensure uniqueness.
+        # A more robust way is to pass a global variable counter or use a more systematic renaming scheme.
+        
+        # Suffix for renaming, to make variables in this resolution step unique
+        # Using a combination of clause IDs and a portion of the prover's clause counter for variety
+        # This is a heuristic. A more robust approach would be a dedicated variable renaming utility
+        # that ensures no clashes with any existing variable in the entire proof process if needed.
+        # For resolving just two clauses, making them distinct from each other is the primary goal.
+        
+        # Standardize variables apart for this resolution step.
+        # This is crucial to avoid unintended variable capture.
+        # We'll create new versions of the atoms with fresh variables.
+        # The renaming prefix should be different for clause1 and clause2.
+
+        # Create a new clause by renaming variables in clause1
+        c1_renamed_literals: Set[Literal] = set()
+        c1_var_map: Dict[str, VariableNode] = {}
+        # Use a more unique prefix for renaming, perhaps related to the resolution step or a counter
+        # For simplicity, let's use a fixed prefix and rely on the unification engine or hope for the best.
+        # A better approach: self._get_next_temp_var_id() or similar for fresh variable names.
+        # For now, we will rely on the unification engine to handle variables correctly if they are distinct.
+        # The critical part is that variables in lit1.atom and lit2.atom must be treated as distinct if they have the same name.
+        # The UnificationEngine should ideally handle this by not assuming shared scopes unless explicitly told.
+        # However, to be safe, we should rename. Let's use a simple renaming strategy here.
+
+        def rename_vars_in_ast(node: AST_Node, var_map: Dict[str, VariableNode], prefix: str, instance_id: int) -> AST_Node:
+            if isinstance(node, VariableNode):
+                original_name = node.name
+                if original_name not in var_map:
+                    # Create a new unique variable name
+                    new_var_name = f"{prefix}_{original_name}_{instance_id}"
+                    var_map[original_name] = VariableNode(new_var_name, node.type)
+                return var_map[original_name]
+            elif isinstance(node, ConstantNode):
+                return node
+            elif isinstance(node, ApplicationNode):
+                new_args = [rename_vars_in_ast(arg, var_map, prefix, instance_id) for arg in node.arguments]
+                return ApplicationNode(node.function_name, new_args, node.type)
+            return node # Should not happen for atoms in literals
+
+        # Create resolvable versions of clauses with variables standardized apart
+        # We need a unique instance_id for renaming to avoid clashes if the same clause is used multiple times
+        # with itself or with another clause that was derived from it.
+        # Using object ids or clause_ids might work if they are sufficiently unique for this purpose.
+        
+        # Renaming for clause1
+        renamed_c1_literals: Set[Literal] = set()
+        c1_rename_map: Dict[str, VariableNode] = {}
+        # Use clause_id and a counter to ensure unique renaming context
+        # This renaming is local to this _resolve call.
+        # A simpler approach might be to just pass copies of atoms to unify and let unifier handle it, 
+        # but explicit renaming is safer.
+        
+        # For each literal in clause1, create a version with renamed variables
+        temp_id1 = self._get_next_clause_id() # Get a unique ID for this renaming context
+        for lit_c1 in clause1.literals:
+            renamed_atom_c1 = rename_vars_in_ast(lit_c1.atom, c1_rename_map, "r1", temp_id1)
+            renamed_c1_literals.add(Literal(atom=renamed_atom_c1, is_negated=lit_c1.is_negated))
+
+        # Renaming for clause2
+        renamed_c2_literals: Set[Literal] = set()
+        c2_rename_map: Dict[str, VariableNode] = {}
+        temp_id2 = self._get_next_clause_id() # Get another unique ID
+        for lit_c2 in clause2.literals:
+            renamed_atom_c2 = rename_vars_in_ast(lit_c2.atom, c2_rename_map, "r2", temp_id2)
+            renamed_c2_literals.add(Literal(atom=renamed_atom_c2, is_negated=lit_c2.is_negated))
+
+        for lit1_renamed in renamed_c1_literals:
+            for lit2_renamed in renamed_c2_literals:
+                if lit1_renamed.is_negated != lit2_renamed.is_negated:
+                    # Atoms are already renamed, so they can be unified directly.
+                    unification_result = self.unification_engine.unify(lit1_renamed.atom, lit2_renamed.atom)
+
+                    if unification_result.is_success():
+                        substitution = unification_result.substitution
+                        new_literals_set: Set[Literal] = set()
+
+                        # Add literals from renamed_c1_literals (excluding lit1_renamed), applying substitution
+                        for l_from_c1 in renamed_c1_literals:
+                            if l_from_c1 != lit1_renamed:
+                                substituted_atom = self.unification_engine.apply_substitution(l_from_c1.atom, substitution)
+                                new_literals_set.add(Literal(atom=substituted_atom, is_negated=l_from_c1.is_negated))
+
+                        # Add literals from renamed_c2_literals (excluding lit2_renamed), applying substitution
+                        for l_from_c2 in renamed_c2_literals:
+                            if l_from_c2 != lit2_renamed:
+                                substituted_atom = self.unification_engine.apply_substitution(l_from_c2.atom, substitution)
+                                new_literals_set.add(Literal(atom=substituted_atom, is_negated=l_from_c2.is_negated))
                         
-                        # Add literals from clause1 (except lit1)
-                        for l in clause1.literals:
-                            if l != lit1:
-                                # Apply bindings to the literal
-                                new_atom = self._apply_bindings(l.atom, bindings)
-                                new_literals.add(Literal(new_atom, l.is_negated))
-                        
-                        # Add literals from clause2 (except lit2)
-                        for l in clause2.literals:
-                            if l != lit2:
-                                # Apply bindings to the literal
-                                new_atom = self._apply_bindings(l.atom, bindings)
-                                new_literals.add(Literal(new_atom, l.is_negated))
-                        
-                        # Create the resolvent clause
-                        resolvent = Clause(frozenset(new_literals))
-                        resolvents.append(resolvent)
+                        resolvent_clause = Clause(literals=frozenset(new_literals_set))
+                        resolvents.append(resolvent_clause)
+                        # Corrected logger string, removed trailing backslash
+                        logger.debug(f"Resolved {lit1_renamed} (orig c1: {clause1.clause_id}) and {lit2_renamed} (orig c2: {clause2.clause_id}) -> {resolvent_clause} with sub: {substitution}")
         
         return resolvents
-    
-    def _apply_bindings(self, node: AST_Node, bindings: Dict[int, AST_Node]) -> AST_Node:
-        """
-        Apply variable bindings to an AST node.
-        
-        Args:
-            node: The AST node to which bindings should be applied
-            bindings: The variable bindings to apply
-            
-        Returns:
-            A new AST node with the bindings applied
-        """
-        # Convert the bindings from var_id to VariableNode
-        substitution = {}
-        
-        # Helper function to find all variables in a node
-        def collect_variables(n: AST_Node) -> List[VariableNode]:
-            if isinstance(n, VariableNode):
-                return [n]
-            
-            variables = []
-            # For each child node, collect variables recursively
-            if isinstance(n, ApplicationNode):
-                variables.extend(collect_variables(n.operator))
-                for arg in n.arguments:
-                    variables.extend(collect_variables(arg))
-            elif isinstance(n, ConnectiveNode):
-                for operand in n.operands:
-                    variables.extend(collect_variables(operand))
-            elif isinstance(n, QuantifierNode):
-                # Skip bound variables
-                bound_var_ids = {var.var_id for var in n.bound_variables}
-                scope_vars = collect_variables(n.scope)
-                variables.extend([var for var in scope_vars if var.var_id not in bound_var_ids])
-            
-            return variables
-        
-        # Find all variables in the node
-        all_vars = collect_variables(node)
-        
-        # Create substitution dictionary
-        for var in all_vars:
-            if var.var_id in bindings:
-                substitution[var] = bindings[var.var_id]
-        
-        # If no substitutions are needed, return the original node
-        if not substitution:
-            return node
-        
-        # Apply the substitutions
-        return node.substitute(substitution)
-    
-    def _is_tautology(self, clause: Clause) -> bool:
-        """
-        Check if a clause is a tautology.
-        
-        A clause is a tautology if it contains both a literal and its negation.
-        
-        Args:
-            clause: The clause to check
-            
-        Returns:
-            True if the clause is a tautology, False otherwise
-        """
-        for lit1 in clause.literals:
-            for lit2 in clause.literals:
-                if lit1.is_negated != lit2.is_negated:
-                    # Try to unify the atoms
-                    bindings, errors = self.unification_engine.unify(
-                        lit1.atom, lit2.atom, None, "FIRST_ORDER"
-                    )
-                    
-                    if bindings is not None:
-                        # The atoms unify, so the clause contains a literal and its negation
-                        return True
-        
-        return False
-    
-    def _clauses_equivalent(self, clause1: Clause, clause2: Clause) -> bool:
-        """
-        Check if two clauses are equivalent.
-        
-        Args:
-            clause1: The first clause
-            clause2: The second clause
-            
-        Returns:
-            True if the clauses are equivalent, False otherwise
-        """
-        # Quick check: if the clauses have different numbers of literals, they're not equivalent
-        if len(clause1.literals) != len(clause2.literals):
-            return False
-        
-        # Check if each literal in clause1 has a corresponding literal in clause2
-        for lit1 in clause1.literals:
-            found_match = False
-            for lit2 in clause2.literals:
-                if lit1.is_negated == lit2.is_negated:
-                    # Try to unify the atoms
-                    bindings, errors = self.unification_engine.unify(
-                        lit1.atom, lit2.atom, None, "FIRST_ORDER"
-                    )
-                    
-                    if bindings is not None:
-                        found_match = True
-                        break
-            
-            if not found_match:
-                return False
-        
-        return True
-    
-    def _get_clause_depth(self, clause: Clause, all_clauses: Dict[int, Clause]) -> int:
-        """
-        Get the depth of a clause in the proof tree.
-        
-        Args:
-            clause: The clause to check
-            all_clauses: Dictionary of all clauses by ID
-            
-        Returns:
-            The depth of the clause
-        """
-        if not clause.parent_ids:
-            return 0
-        
-        return 1 + max(self._get_clause_depth(all_clauses[parent_id], all_clauses)
-                      for parent_id in clause.parent_ids)
-    
-    def _trace_proof(self, empty_clause: Clause, all_clauses: Dict[int, Clause]) -> List[int]:
-        """
-        Trace the proof from the empty clause back to the original clauses.
-        
-        Args:
-            empty_clause: The empty clause (contradiction)
-            all_clauses: Dictionary of all clauses by ID
-            
-        Returns:
-            A list of clause IDs in the proof trace
-        """
-        trace = [empty_clause.clause_id]
-        queue = list(empty_clause.parent_ids)
-        
-        while queue:
-            clause_id = queue.pop(0)
-            if clause_id not in trace:
-                trace.append(clause_id)
-                queue.extend(all_clauses[clause_id].parent_ids)
-        
-        return trace
-    
-    def _create_proof_steps(self, proof_trace: List[int], all_clauses: Dict[int, Clause]) -> List[ProofStepNode]:
-        """
-        Create proof steps from a proof trace.
-        
-        Args:
-            proof_trace: The proof trace (list of clause IDs)
-            all_clauses: Dictionary of all clauses by ID
-            
-        Returns:
-            A list of ProofStepNode objects
-        """
-        steps = []
-        
-        # Helper function to convert a clause to an AST
-        def clause_to_ast(clause: Clause) -> AST_Node:
-            if clause.is_empty():
-                # Empty clause (contradiction)
-                return ConstantNode("false", clause.literals[0].atom.type if clause.literals else None)
-            
-            # Convert literals to AST nodes
-            literals = []
-            for lit in clause.literals:
-                if lit.is_negated:
-                    literals.append(ConnectiveNode("NOT", [lit.atom], lit.atom.type))
-                else:
-                    literals.append(lit.atom)
-            
-            # If there's only one literal, return it
-            if len(literals) == 1:
-                return literals[0]
-            
-            # Otherwise, create a disjunction
-            return ConnectiveNode("OR", literals, literals[0].type)
-        
-        # Create a step for each clause in the proof trace
-        for i, clause_id in enumerate(proof_trace):
-            clause = all_clauses[clause_id]
-            
-            # Create the formula for this step
-            formula = clause_to_ast(clause)
-            
-            # Determine the rule name and premises
-            if not clause.parent_ids:
-                # Original clause (axiom or negated goal)
-                rule_name = "Given"
-                premises = []
-                explanation = f"Original {clause.source} clause"
-            else:
-                # Derived clause
-                rule_name = "Resolution"
-                premises = [proof_trace.index(parent_id) for parent_id in clause.parent_ids if parent_id in proof_trace]
-                explanation = f"Resolvent of clauses {', '.join(str(p) for p in premises)}"
-            
-            # Create the proof step
-            step = ProofStepNode(
-                formula=formula,
-                rule_name=rule_name,
-                premises=premises,
-                explanation=explanation
-            )
-            
-            steps.append(step)
-        
-        return steps
 
-class ResolutionProver(BaseProver):
-    """
-    Prover using resolution for FOL and propositional logic.
-    
-    This prover implements the resolution inference rule for First-Order Logic (FOL)
-    and propositional logic. It converts input formulae into Conjunctive Normal Form (CNF)
-    and applies various resolution strategies to find a refutation.
-    """
-    
-    def __init__(self, kr_system_interface: KnowledgeStoreInterface, 
-                unification_engine: UnificationEngine,
-                cnf_converter: Any = None):
+    def _standardize_variables_in_clause(self, clause: Clause, clause_id_for_renaming: int) -> Clause:
         """
-        Initialize the resolution prover.
-        
-        Args:
-            kr_system_interface: Interface to the Knowledge Representation system
-            unification_engine: Engine for unifying logical expressions
-            cnf_converter: Optional converter for Conjunctive Normal Form
+        Standardizes variables within a single clause to make them unique.
+        This method is kept for potential utility but the primary renaming for resolution
+        now happens inside `_resolve` for the pair of clauses being resolved.
         """
-        self.kr_system_interface = kr_system_interface
-        self.unification_engine = unification_engine
-        self.cnf_converter = cnf_converter
-    
-    @property
-    def name(self) -> str:
-        """Get the name of this prover."""
-        return "ResolutionProver"
-    
-    @property
-    def capabilities(self) -> Dict[str, bool]:
-        """Get the capabilities of this prover."""
-        capabilities = super().capabilities.copy()
-        capabilities.update({
-            "first_order_logic": True,
-            "propositional_logic": True,
-            "equality": True,
-            "uninterpreted_functions": True
-        })
-        return capabilities
-    
-    def can_handle(self, goal_ast: AST_Node, context_asts: Set[AST_Node]) -> bool:
-        """
-        Determine if this prover can handle the given goal and context.
+        var_map: Dict[str, VariableNode] = {}
+        new_literals: Set[Literal] = set()
+
+        # Inner helper function for renaming, similar to the one in _resolve
+        def rename_node_vars(node: AST_Node, current_var_map: Dict[str, VariableNode], base_prefix: str, id_suffix: int) -> AST_Node:
+            if isinstance(node, VariableNode):
+                original_name = node.name
+                if original_name not in current_var_map:
+                    new_var_name = f"{base_prefix}_{original_name}_{id_suffix}"
+                    current_var_map[original_name] = VariableNode(new_var_name, node.type)
+                return current_var_map[original_name]
+            elif isinstance(node, ConstantNode):
+                return node
+            elif isinstance(node, ApplicationNode):
+                new_args = [rename_node_vars(arg, current_var_map, base_prefix, id_suffix) for arg in node.arguments]
+                return ApplicationNode(node.function_name, new_args, node.type)
+            return node
+
+        # Use the passed clause_id_for_renaming to ensure context-specific renaming
+        for lit in clause.literals:
+            new_atom = rename_node_vars(lit.atom, var_map, "std", clause_id_for_renaming)
+            new_literals.add(Literal(atom=new_atom, is_negated=lit.is_negated))
         
-        The resolution prover can handle first-order logic and propositional logic goals.
-        
-        Args:
-            goal_ast: The goal to prove
-            context_asts: The set of context assertions
-            
-        Returns:
-            True if this prover can handle the given goal and context, False otherwise
-        """
-        # This is a simplified check that would need to be expanded in a full implementation
-        # to properly analyze the goal and context for compatibility with resolution
-        
-        # For now, assume we can handle the goal if it doesn't contain modal operators,
-        # arithmetic, or constraints (which would be handled by other provers)
-        from godelOS.inference_engine.coordinator import InferenceCoordinator
-        coordinator = InferenceCoordinator(self.kr_system_interface, {})
-        
-        contains_modal = coordinator._contains_modal_operator(goal_ast)
-        contains_arithmetic = coordinator._contains_arithmetic(goal_ast)
-        contains_constraints = coordinator._contains_constraints(goal_ast)
-        
-        return not (contains_modal or contains_arithmetic or contains_constraints)
-    
-    def prove(self, goal_ast: AST_Node, context_asts: Set[AST_Node], 
-             resources: Optional[ResourceLimits] = None) -> ProofObject:
-        """
-        Attempt to prove a goal using resolution.
-        
-        This method would implement the full resolution algorithm, including:
-        1. Converting the goal and context to CNF
-        2. Negating the goal
-        3. Applying resolution strategies to find a refutation
-        
-        Args:
-            goal_ast: The goal to prove
-            context_asts: The set of context assertions
-            resources: Optional resource limits for the proof attempt
-            
-        Returns:
-            A ProofObject representing the result of the proof attempt
-        """
-        # This is a placeholder implementation that would be expanded in the future
-        
-        logger.info(f"ResolutionProver attempting to prove: {goal_ast}")
-        
-        # For now, just return a failure proof object
-        return ProofObject.create_failure(
-            status_message="ResolutionProver not fully implemented yet",
-            inference_engine_used=self.name,
-            time_taken_ms=0.0,
-            resources_consumed={}
-        )
+        return Clause(literals=frozenset(new_literals), source=clause.source, parent_ids=clause.parent_ids, clause_id=clause.clause_id)

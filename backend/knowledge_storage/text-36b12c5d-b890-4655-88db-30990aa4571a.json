@@ -1,0 +1,42 @@
+{
+  "id": "text-36b12c5d-b890-4655-88db-30990aa4571a",
+  "content": "Artificial intelligence involves machines that can think.",
+  "knowledge_type": "fact",
+  "title": "AI Test",
+  "source": {
+    "source_type": "text",
+    "source_identifier": "test_simple",
+    "metadata": {}
+  },
+  "import_id": "36b12c5d-b890-4655-88db-30990aa4571a",
+  "extracted_at": 1748476168.265758,
+  "chunks": [],
+  "relationships": [],
+  "confidence": 0.9,
+  "validation_status": "pending",
+  "quality_score": 0.85,
+  "categories": [
+    "manual"
+  ],
+  "auto_categories": [],
+  "manual_categories": [
+    "manual"
+  ],
+  "access_count": 0,
+  "last_accessed": null,
+  "usage_context": [],
+  "metadata": {
+    "word_count": 7,
+    "char_count": 57,
+    "chunks": 1,
+    "keywords": [
+      "artificial",
+      "intelligence",
+      "involves",
+      "machines",
+      "think"
+    ],
+    "language": "en"
+  },
+  "annotations": []
+}

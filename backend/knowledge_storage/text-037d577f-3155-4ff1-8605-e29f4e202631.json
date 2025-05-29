@@ -1,0 +1,48 @@
+{
+  "id": "text-037d577f-3155-4ff1-8605-e29f4e202631",
+  "content": "This is a diagnostic text import from the console.",
+  "knowledge_type": "fact",
+  "title": "Console Diagnostic Text Import",
+  "source": {
+    "source_type": "text",
+    "source_identifier": "Console Diagnostic Text Import",
+    "metadata": {
+      "category": "diagnostic",
+      "created_by": "console_diagnostics",
+      "created_at": "2025-05-27T19:31:38.327Z"
+    }
+  },
+  "import_id": "037d577f-3155-4ff1-8605-e29f4e202631",
+  "extracted_at": 1748374298.869604,
+  "chunks": [],
+  "relationships": [],
+  "confidence": 0.9,
+  "validation_status": "pending",
+  "quality_score": 0.85,
+  "categories": [
+    "diagnostic",
+    "console"
+  ],
+  "auto_categories": [],
+  "manual_categories": [
+    "diagnostic",
+    "console"
+  ],
+  "access_count": 0,
+  "last_accessed": null,
+  "usage_context": [],
+  "metadata": {
+    "word_count": 9,
+    "char_count": 50,
+    "chunks": 1,
+    "keywords": [
+      "diagnostic",
+      "text",
+      "import",
+      "from",
+      "console"
+    ],
+    "language": "en"
+  },
+  "annotations": []
+}

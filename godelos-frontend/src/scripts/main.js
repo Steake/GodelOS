@@ -1,584 +1,1231 @@
 /**
- * Main Application Controller for GödelOS Frontend
- * Coordinates all components and manages application state
+ * GödelOS Main Application Controller
+ *
+ * Enhanced main application controller that integrates the new adaptive interface
+ * system with all existing functionality
  */
+
+// Debug: Track script loading
+console.log('🔍 DEBUG: Main.js loading...');
+console.log('🔍 DEBUG: Available window objects at main.js load:', Object.keys(window).filter(k =>
+    k.includes('API') || k.includes('Client') || k.includes('WebSocket') || k.includes('Query') ||
+    k.includes('Handler') || k.includes('Cognitive') || k.includes('Educational') || k.includes('Manager')
+));
 
 class GödelOSApp {
     constructor() {
         this.isInitialized = false;
-        this.components = {};
-        this.state = {
-            connected: false,
-            processing: false,
-            currentQuery: null,
-            systemStatus: 'idle'
+        this.modules = new Map();
+        this.eventListeners = new Map();
+        this.config = {
+            apiBaseUrl: 'http://localhost:8000',
+            wsBaseUrl: 'ws://localhost:8000',
+            retryAttempts: 3,
+            retryDelay: 1000,
+            heartbeatInterval: 30000
         };
         
-        this.initializeApp();
+        this.state = {
+            isConnected: false,
+            currentQuery: null,
+            lastResponse: null,
+            cognitiveState: null,
+            complexityLevel: 'intermediate'
+        };
+        
+        console.log('🚀 GödelOS Application Controller initialized');
     }
 
     /**
      * Initialize the application
      */
-    async initializeApp() {
+    async init() {
+        if (this.isInitialized) {
+            console.warn('Application already initialized');
+            return;
+        }
+
         try {
-            console.log('Initializing GödelOS Frontend...');
+            console.log('🔄 Initializing GödelOS Application...');
             
             // Wait for DOM to be ready
-            await this.waitForDOM();
+            if (document.readyState === 'loading') {
+                await new Promise(resolve => {
+                    document.addEventListener('DOMContentLoaded', resolve);
+                });
+            }
+
+            // Initialize core modules in order
+            await this.initializeAdaptiveInterface();
+            await this.initializeAPIClient();
+            await this.initializeWebSocket();
+            await this.initializeQueryHandler();
+            await this.initializeVisualization();
+            await this.initializeCognitiveLayers();
+            await this.initializeKnowledgeManagement();
+            await this.initializeEducationalFeatures();
             
-            // Initialize components
-            this.initializeComponents();
+            // Setup event handlers
+            this.setupEventHandlers();
+            this.setupKeyboardShortcuts();
+            this.setupErrorHandling();
             
-            // Setup global event listeners
-            this.setupGlobalEventListeners();
+            // Initialize UI components
+            this.initializeUIComponents();
             
-            // Setup UI interactions
-            this.setupUIInteractions();
+            // Run backend diagnostics
+            await this.runBackendDiagnostics();
             
-            // Connect to backend
-            this.connectToBackend();
+            // Start application services
+            this.startServices();
             
-            // Mark as initialized
             this.isInitialized = true;
+            console.log('✅ GödelOS Application successfully initialized');
             
-            console.log('GödelOS Frontend initialized successfully');
-            this.showWelcomeMessage();
+            // Dispatch initialization complete event
+            this.dispatchEvent('appInitialized', {
+                timestamp: Date.now(),
+                modules: Array.from(this.modules.keys())
+            });
             
         } catch (error) {
-            console.error('Failed to initialize GödelOS Frontend:', error);
-            this.showError('Failed to initialize application');
+            console.error('❌ Failed to initialize GödelOS Application:', error);
+            this.handleInitializationError(error);
         }
     }
 
     /**
-     * Wait for DOM to be ready
+     * Initialize adaptive interface system
      */
-    waitForDOM() {
-        return new Promise((resolve) => {
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', resolve);
+    async initializeAdaptiveInterface() {
+        try {
+            // AdaptiveInterface is already initialized globally
+            if (window.adaptiveInterface) {
+                this.modules.set('adaptiveInterface', window.adaptiveInterface);
+                
+                // Listen for complexity changes
+                document.addEventListener('complexityChanged', (event) => {
+                    this.handleComplexityChange(event.detail);
+                });
+                
+                console.log('✅ Adaptive Interface integrated');
             } else {
-                resolve();
+                throw new Error('Adaptive Interface not found');
             }
-        });
+        } catch (error) {
+            console.error('❌ Failed to initialize Adaptive Interface:', error);
+            throw error;
+        }
     }
 
     /**
-     * Initialize all components
+     * Initialize API client
      */
-    initializeComponents() {
-        console.log('Initializing components...');
-        
-        // Components are already initialized globally
-        this.components = {
-            websocket: window.wsManager,
-            visualization: window.vizManager,
-            cognitive: window.cognitiveManager,
-            query: window.queryHandler
-        };
-        
-        // Verify all components are available
-        Object.entries(this.components).forEach(([name, component]) => {
-            if (!component) {
-                console.warn(`Component ${name} not available`);
+    async initializeAPIClient() {
+        try {
+            console.log('🔍 DEBUG: Checking for window.APIClient...', typeof window.APIClient);
+            if (window.APIClient) {
+                this.modules.set('apiClient', new window.APIClient(this.config.apiBaseUrl));
+                console.log('✅ API Client initialized');
             } else {
-                console.log(`✓ ${name} component ready`);
+                console.warn('⚠️ API Client not available, using fallback');
+                console.log('🔍 DEBUG: Available window objects:', Object.keys(window).filter(k => k.includes('API') || k.includes('Client')));
+                this.modules.set('apiClient', this.createFallbackAPIClient());
             }
-        });
+        } catch (error) {
+            console.error('❌ Failed to initialize API Client:', error);
+            this.modules.set('apiClient', this.createFallbackAPIClient());
+        }
     }
 
     /**
-     * Setup global event listeners
+     * Initialize WebSocket connection
      */
-    setupGlobalEventListeners() {
-        // Window resize handler
-        window.addEventListener('resize', this.debounce(() => {
-            this.handleWindowResize();
-        }, 250));
+    async initializeWebSocket() {
+        try {
+            // Use the existing global WebSocket manager instead of creating a new one
+            if (window.wsManager) {
+                this.modules.set('websocket', window.wsManager);
+                
+                // Setup WebSocket event handlers
+                window.wsManager.on('connected', () => {
+                    this.updateConnectionStatus('connected');
+                });
+                
+                window.wsManager.on('disconnected', () => {
+                    this.updateConnectionStatus('disconnected');
+                });
+                
+                window.wsManager.on('cognitiveUpdate', (data) => {
+                    this.handleCognitiveUpdate(data);
+                });
+                
+                console.log('✅ Using existing global WebSocket Manager');
+            } else {
+                console.warn('⚠️ Global WebSocket Manager not available');
+                console.log('🔍 DEBUG: Checking for WebSocket classes...', {
+                    'window.WebSocketManager': typeof window.WebSocketManager,
+                    'window.wsManager': typeof window.wsManager,
+                    'window.io': typeof window.io,
+                    'WebSocket': typeof WebSocket
+                });
+            }
+        } catch (error) {
+            console.error('❌ Failed to initialize WebSocket:', error);
+            this.updateConnectionStatus('disconnected');
+        }
+    }
 
-        // Keyboard shortcuts
+    /**
+     * Initialize query handler
+     */
+    async initializeQueryHandler() {
+        try {
+            console.log('🔍 DEBUG: Checking for window.QueryHandler...', typeof window.QueryHandler);
+            if (window.QueryHandler) {
+                const queryHandler = new window.QueryHandler({
+                    apiClient: this.modules.get('apiClient'),
+                    websocket: this.modules.get('websocket')
+                });
+                this.modules.set('queryHandler', queryHandler);
+                
+                // Setup query event handlers
+                queryHandler.on('querySubmitted', (data) => {
+                    this.handleQuerySubmitted(data);
+                });
+                
+                queryHandler.on('responseReceived', (data) => {
+                    this.handleResponseReceived(data);
+                });
+                
+                console.log('✅ Query Handler initialized');
+            } else {
+                console.warn('⚠️ Query Handler not available');
+                console.log('🔍 DEBUG: Available window objects:', Object.keys(window).filter(k => k.includes('Query') || k.includes('Handler')));
+            }
+        } catch (error) {
+            console.error('❌ Failed to initialize Query Handler:', error);
+        }
+    }
+
+    /**
+     * Initialize visualization systems
+     */
+    async initializeVisualization() {
+        try {
+            // Initialize knowledge graph visualizer
+            if (window.KnowledgeGraphVisualizer) {
+                const kgVisualizer = new window.KnowledgeGraphVisualizer('knowledgeGraphVisualization');
+                this.modules.set('knowledgeGraphVisualizer', kgVisualizer);
+                // Also set as global for transparency panel access
+                window.knowledgeGraphVisualizer = kgVisualizer;
+            }
+            
+            // Initialize reasoning visualizer
+            if (window.ReasoningVisualizer) {
+                const reasoningVisualizer = new window.ReasoningVisualizer('#reasoningVisualization');
+                this.modules.set('reasoningVisualizer', reasoningVisualizer);
+                // Also set as global for transparency panel access
+                window.reasoningVisualizer = reasoningVisualizer;
+            }
+            
+            // Initialize uncertainty visualizer
+            if (window.UncertaintyVisualizer) {
+                const uncertaintyVisualizer = new window.UncertaintyVisualizer('#uncertaintyVisualization');
+                this.modules.set('uncertaintyVisualizer', uncertaintyVisualizer);
+                // Also set as global for transparency panel access
+                window.uncertaintyVisualizer = uncertaintyVisualizer;
+            }
+            
+            // Initialize metacognitive dashboard
+            if (window.MetacognitiveDashboard) {
+                const metacognitiveDashboard = new window.MetacognitiveDashboard('metacognitiveDashboard');
+                this.modules.set('metacognitiveDashboard', metacognitiveDashboard);
+                // Also set as global for transparency panel access
+                window.metacognitiveDashboard = metacognitiveDashboard;
+            }
+            
+            // Initialize provenance explorer
+            if (window.ProvenanceExplorer) {
+                const provenanceExplorer = new window.ProvenanceExplorer('provenanceExploration');
+                this.modules.set('provenanceExplorer', provenanceExplorer);
+                // Also set as global for transparency panel access
+                window.provenanceExplorer = provenanceExplorer;
+            }
+            
+            console.log('✅ Visualization systems initialized');
+            console.log('🔍 DEBUG: Available visualizers:', {
+                knowledgeGraphVisualizer: !!window.knowledgeGraphVisualizer,
+                reasoningVisualizer: !!window.reasoningVisualizer,
+                uncertaintyVisualizer: !!window.uncertaintyVisualizer,
+                metacognitiveDashboard: !!window.metacognitiveDashboard,
+                provenanceExplorer: !!window.provenanceExplorer
+            });
+        } catch (error) {
+            console.error('❌ Failed to initialize visualization systems:', error);
+        }
+    }
+
+    /**
+     * Initialize cognitive layers
+     */
+    async initializeCognitiveLayers() {
+        try {
+            console.log('🔍 DEBUG: Checking for window.CognitiveLayers...', typeof window.CognitiveLayers);
+            if (window.CognitiveLayers) {
+                const cognitiveLayers = new window.CognitiveLayers('#cognitiveLayers');
+                this.modules.set('cognitiveLayers', cognitiveLayers);
+                console.log('✅ Cognitive Layers initialized');
+            } else {
+                console.warn('⚠️ Cognitive Layers not available');
+                console.log('🔍 DEBUG: Available window objects:', Object.keys(window).filter(k => k.includes('Cognitive') || k.includes('Layer')));
+            }
+        } catch (error) {
+            console.error('❌ Failed to initialize Cognitive Layers:', error);
+        }
+    }
+
+    /**
+     * Initialize knowledge management
+     */
+    async initializeKnowledgeManagement() {
+        try {
+            console.log('🔍 Initializing Knowledge Management interfaces...');
+            
+            // Initialize knowledge ingestion
+            if (window.KnowledgeIngestionInterface) {
+                const knowledgeIngestionInterface = new window.KnowledgeIngestionInterface('knowledgeIngestion');
+                
+                // Initialize the interface if the container exists
+                if (document.getElementById('knowledgeIngestion')) {
+                    knowledgeIngestionInterface.initializeInterface();
+                    console.log('✅ Knowledge Ingestion Interface initialized');
+                } else {
+                    console.warn('⚠️ Knowledge Ingestion container not found, will initialize later');
+                }
+                
+                this.modules.set('knowledgeIngestion', knowledgeIngestionInterface);
+                window.knowledgeIngestionInterface = knowledgeIngestionInterface;
+            } else {
+                console.warn('⚠️ KnowledgeIngestionInterface not available');
+            }
+            
+            // Initialize knowledge management
+            if (window.KnowledgeManagementInterface) {
+                const knowledgeManagementInterface = new window.KnowledgeManagementInterface();
+                this.modules.set('knowledgeManagement', knowledgeManagementInterface);
+                window.knowledgeManagementInterface = knowledgeManagementInterface;
+                console.log('✅ Knowledge Management Interface initialized');
+            } else {
+                console.warn('⚠️ KnowledgeManagementInterface not available');
+            }
+            
+            // Initialize knowledge search
+            if (window.KnowledgeSearchInterface) {
+                const knowledgeSearchInterface = new window.KnowledgeSearchInterface();
+                this.modules.set('knowledgeSearch', knowledgeSearchInterface);
+                window.knowledgeSearchInterface = knowledgeSearchInterface;
+                console.log('✅ Knowledge Search Interface initialized');
+            } else {
+                console.warn('⚠️ KnowledgeSearchInterface not available');
+            }
+            
+            console.log('✅ Knowledge Management systems initialized');
+        } catch (error) {
+            console.error('❌ Failed to initialize Knowledge Management:', error);
+        }
+    }
+
+    /**
+     * Initialize educational features
+     */
+    async initializeEducationalFeatures() {
+        try {
+            console.log('🔍 DEBUG: Checking for window.EducationalFeatures...', typeof window.EducationalFeatures);
+            if (window.EducationalFeatures) {
+                const educational = new window.EducationalFeatures();
+                this.modules.set('educational', educational);
+                console.log('✅ Educational Features initialized');
+            } else {
+                console.warn('⚠️ Educational Features not available');
+                console.log('🔍 DEBUG: Available window objects:', Object.keys(window).filter(k => k.includes('Educational') || k.includes('Feature')));
+            }
+        } catch (error) {
+            console.error('❌ Failed to initialize Educational Features:', error);
+        }
+    }
+
+    /**
+     * Setup global event handlers
+     */
+    setupEventHandlers() {
+        // Tutorial button
+        const tutorialButton = document.getElementById('tutorialButton');
+        if (tutorialButton) {
+            tutorialButton.addEventListener('click', () => {
+                const adaptiveInterface = this.modules.get('adaptiveInterface');
+                if (adaptiveInterface) {
+                    adaptiveInterface.restartOnboarding();
+                }
+            });
+        }
+
+        // Help button
+        const helpButton = document.getElementById('helpButton');
+        if (helpButton) {
+            helpButton.addEventListener('click', () => {
+                this.showHelpModal();
+            });
+        }
+
+        // Settings button
+        const settingsButton = document.getElementById('settingsButton');
+        if (settingsButton) {
+            settingsButton.addEventListener('click', () => {
+                this.showSettingsModal();
+            });
+        }
+
+        // Query form
+        const queryForm = document.getElementById('queryForm');
+        if (queryForm) {
+            queryForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.handleQuerySubmit();
+            });
+        }
+
+        // Character count for query textarea
+        const queryTextarea = document.getElementById('naturalLanguageQuery');
+        if (queryTextarea) {
+            queryTextarea.addEventListener('input', (e) => {
+                this.updateCharacterCount(e.target.value.length);
+            });
+        }
+
+        // Confidence slider
+        const confidenceSlider = document.getElementById('confidenceThreshold');
+        if (confidenceSlider) {
+            confidenceSlider.addEventListener('input', (e) => {
+                this.updateConfidenceDisplay(e.target.value);
+            });
+        }
+
+        // Query type selector
+        const queryTypeSelect = document.getElementById('queryType');
+        if (queryTypeSelect) {
+            queryTypeSelect.addEventListener('change', (e) => {
+                this.updateQueryTypeDescription(e.target.value);
+            });
+        }
+    }
+
+    /**
+     * Setup keyboard shortcuts
+     */
+    setupKeyboardShortcuts() {
         document.addEventListener('keydown', (e) => {
-            this.handleKeyboardShortcuts(e);
-        });
-
-        // Visibility change (tab switching)
-        document.addEventListener('visibilitychange', () => {
-            this.handleVisibilityChange();
-        });
-
-        // Before unload (cleanup)
-        window.addEventListener('beforeunload', () => {
-            this.cleanup();
-        });
-
-        // Error handling
-        window.addEventListener('error', (e) => {
-            console.error('Global error:', e.error);
-            this.handleGlobalError(e.error);
-        });
-
-        // Unhandled promise rejections
-        window.addEventListener('unhandledrejection', (e) => {
-            console.error('Unhandled promise rejection:', e.reason);
-            this.handleGlobalError(e.reason);
-        });
-    }
-
-    /**
-     * Setup UI interactions
-     */
-    setupUIInteractions() {
-        // Panel toggles
-        this.setupPanelToggles();
-        
-        // Theme switching (if implemented)
-        this.setupThemeToggle();
-        
-        // Responsive menu (if needed)
-        this.setupResponsiveMenu();
-        
-        // Tooltip initialization
-        this.initializeTooltips();
-    }
-
-    /**
-     * Setup panel toggle functionality
-     */
-    setupPanelToggles() {
-        const toggleButtons = document.querySelectorAll('.panel-toggle');
-        
-        toggleButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const panelName = e.target.getAttribute('data-panel');
-                this.togglePanel(panelName);
-            });
-        });
-    }
-
-    /**
-     * Toggle panel visibility
-     * @param {string} panelName - Name of panel to toggle
-     */
-    togglePanel(panelName) {
-        const panel = document.getElementById(`${panelName}Panel`);
-        const button = document.querySelector(`[data-panel="${panelName}"]`);
-        
-        if (panel && button) {
-            const isCollapsed = panel.classList.contains('collapsed');
-            
-            if (isCollapsed) {
-                panel.classList.remove('collapsed');
-                button.textContent = '−';
-                this.animatePanel(panel, 'expand');
-            } else {
-                panel.classList.add('collapsed');
-                button.textContent = '+';
-                this.animatePanel(panel, 'collapse');
+            // Ctrl+Enter to submit query
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                this.handleQuerySubmit();
             }
-        }
-    }
-
-    /**
-     * Animate panel expand/collapse
-     * @param {HTMLElement} panel - Panel element
-     * @param {string} action - 'expand' or 'collapse'
-     */
-    animatePanel(panel, action) {
-        const content = panel.querySelector('.panel-content');
-        if (!content) return;
-
-        if (action === 'collapse') {
-            content.style.maxHeight = content.scrollHeight + 'px';
-            requestAnimationFrame(() => {
-                content.style.maxHeight = '0';
-                content.style.opacity = '0';
-            });
-        } else {
-            content.style.maxHeight = '0';
-            content.style.opacity = '0';
-            requestAnimationFrame(() => {
-                content.style.maxHeight = content.scrollHeight + 'px';
-                content.style.opacity = '1';
-            });
             
-            // Reset max-height after animation
-            setTimeout(() => {
-                content.style.maxHeight = 'none';
-            }, 300);
-        }
+            // Escape to close modals
+            if (e.key === 'Escape') {
+                this.closeAllModals();
+            }
+            
+            // Alt+H for help
+            if (e.altKey && e.key === 'h') {
+                e.preventDefault();
+                this.showHelpModal();
+            }
+            
+            // Alt+T for tutorial
+            if (e.altKey && e.key === 't') {
+                e.preventDefault();
+                const adaptiveInterface = this.modules.get('adaptiveInterface');
+                if (adaptiveInterface) {
+                    adaptiveInterface.restartOnboarding();
+                }
+            }
+        });
     }
 
     /**
-     * Setup theme toggle (placeholder for future implementation)
+     * Setup error handling
      */
-    setupThemeToggle() {
-        // Could implement light/dark theme switching here
-        const savedTheme = localStorage.getItem('godelOS_theme');
-        if (savedTheme) {
-            document.body.setAttribute('data-theme', savedTheme);
-        }
+    setupErrorHandling() {
+        // Global error handler
+        window.addEventListener('error', (event) => {
+            console.error('Global error:', event.error);
+            this.handleGlobalError(event.error);
+        });
+
+        // Unhandled promise rejection handler
+        window.addEventListener('unhandledrejection', (event) => {
+            console.error('Unhandled promise rejection:', event.reason);
+            this.handleGlobalError(event.reason);
+        });
     }
 
     /**
-     * Setup responsive menu
+     * Initialize UI components
      */
-    setupResponsiveMenu() {
-        // Handle mobile menu if needed
-        const isMobile = window.innerWidth <= 768;
-        if (isMobile) {
-            this.enableMobileLayout();
-        }
+    initializeUIComponents() {
+        // Initialize tooltips
+        this.initializeTooltips();
+        
+        // Initialize tabs
+        this.initializeTabs();
+        
+        // Initialize modals
+        this.initializeModals();
+        
+        // Initialize visualization controls
+        this.initializeVisualizationControls();
     }
 
     /**
      * Initialize tooltips
      */
     initializeTooltips() {
-        const tooltipElements = document.querySelectorAll('[data-tooltip]');
-        
-        tooltipElements.forEach(element => {
-            element.classList.add('tooltip');
-        });
+        // Enhanced tooltips are handled by the adaptive interface
+        console.log('✅ Tooltips initialized');
     }
 
     /**
-     * Connect to backend
+     * Initialize tabs
      */
-    connectToBackend() {
-        if (this.components.websocket) {
-            // Use default WebSocket URL or from environment
-            const wsUrl = this.getWebSocketURL();
-            this.components.websocket.connect(wsUrl);
-            
-            // Update connection state
-            this.components.websocket.on('connect', () => {
-                this.updateConnectionState(true);
+    initializeTabs() {
+        const tabButtons = document.querySelectorAll('.tab-button');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const tabId = e.target.getAttribute('data-tab');
+                this.switchTab(tabId);
             });
-            
-            this.components.websocket.on('disconnect', () => {
-                this.updateConnectionState(false);
+        });
+    }
+
+    /**
+     * Initialize modals
+     */
+    initializeModals() {
+        // Modal close buttons
+        document.querySelectorAll('.modal-close').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const modal = e.target.closest('.modal-overlay');
+                if (modal) {
+                    this.closeModal(modal);
+                }
+            });
+        });
+
+        // Modal backdrop clicks
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    this.closeModal(modal);
+                }
+            });
+        });
+    }
+
+    /**
+     * Initialize visualization controls
+     */
+    initializeVisualizationControls() {
+        // Zoom controls
+        const zoomIn = document.getElementById('zoomIn');
+        const zoomOut = document.getElementById('zoomOut');
+        const resetZoom = document.getElementById('resetZoom');
+        const centerGraph = document.getElementById('centerGraph');
+
+        if (zoomIn) {
+            zoomIn.addEventListener('click', () => {
+                const visualizer = this.modules.get('knowledgeGraphVisualizer');
+                if (visualizer && visualizer.zoomIn) {
+                    visualizer.zoomIn();
+                }
+            });
+        }
+
+        if (zoomOut) {
+            zoomOut.addEventListener('click', () => {
+                const visualizer = this.modules.get('knowledgeGraphVisualizer');
+                if (visualizer && visualizer.zoomOut) {
+                    visualizer.zoomOut();
+                }
+            });
+        }
+
+        if (resetZoom) {
+            resetZoom.addEventListener('click', () => {
+                const visualizer = this.modules.get('knowledgeGraphVisualizer');
+                if (visualizer && visualizer.resetZoom) {
+                    visualizer.resetZoom();
+                }
+            });
+        }
+
+        if (centerGraph) {
+            centerGraph.addEventListener('click', () => {
+                const visualizer = this.modules.get('knowledgeGraphVisualizer');
+                if (visualizer && visualizer.centerGraph) {
+                    visualizer.centerGraph();
+                }
             });
         }
     }
 
     /**
-     * Get WebSocket URL from environment or use default
-     * @returns {string} WebSocket URL
+     * Load and display knowledge graph data
      */
-    getWebSocketURL() {
-        // In a real app, this might come from environment variables
-        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-        const host = window.location.hostname;
-        const port = process?.env?.WS_PORT || '8080';
-        
-        return `${protocol}//${host}:${port}`;
-    }
+    async loadKnowledgeGraphData() {
+        const kgVisualizer = this.modules.get('knowledgeGraphVisualizer');
+        if (!kgVisualizer) {
+            console.warn('Knowledge graph visualizer not available');
+            return;
+        }
 
-    /**
-     * Update connection state
-     * @param {boolean} connected - Connection status
-     */
-    updateConnectionState(connected) {
-        this.state.connected = connected;
-        
-        if (connected) {
-            this.showNotification('Connected to GödelOS backend', 'success');
-        } else {
-            this.showNotification('Disconnected from backend', 'warning');
-        }
-    }
-
-    /**
-     * Handle keyboard shortcuts
-     * @param {KeyboardEvent} e - Keyboard event
-     */
-    handleKeyboardShortcuts(e) {
-        // Ctrl/Cmd + Enter: Submit query
-        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-            if (this.components.query && !this.state.processing) {
-                this.components.query.handleQuerySubmission();
-            }
-        }
-        
-        // Escape: Clear current operation
-        if (e.key === 'Escape') {
-            this.handleEscapeKey();
-        }
-        
-        // Ctrl/Cmd + K: Focus search
-        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-            e.preventDefault();
-            const queryInput = document.getElementById('naturalLanguageQuery');
-            if (queryInput) {
-                queryInput.focus();
-            }
-        }
-    }
-
-    /**
-     * Handle escape key press
-     */
-    handleEscapeKey() {
-        // Close any open modals or overlays
-        const modals = document.querySelectorAll('.modal-overlay.active');
-        modals.forEach(modal => {
-            modal.classList.remove('active');
-        });
-        
-        // Clear any active selections
-        if (this.components.visualization) {
-            // Clear node selections in visualization
-            const svg = document.querySelector('#knowledgeGraph');
-            if (svg) {
-                svg.querySelectorAll('.node.selected').forEach(node => {
-                    node.classList.remove('selected');
+        try {
+            console.log('🔄 Loading knowledge graph data...');
+            const data = await window.apiClient.getKnowledgeGraph();
+            
+            if (data && data.graph_data) {
+                console.log('✅ Knowledge graph data loaded:', {
+                    nodes: data.graph_data.nodes?.length || 0,
+                    edges: data.graph_data.edges?.length || 0
                 });
-                svg.querySelectorAll('.link.highlighted').forEach(link => {
-                    link.classList.remove('highlighted');
-                });
+                
+                kgVisualizer.updateVisualization(data);
+                
+                // Update the knowledge pane status
+                const knowledgePane = document.getElementById('knowledgePane');
+                if (knowledgePane) {
+                    const statusMessage = knowledgePane.querySelector('.status-message');
+                    if (statusMessage) {
+                        statusMessage.innerHTML = `
+                            <span class="status-icon">✅</span>
+                            <span class="status-text">Knowledge graph loaded with ${data.graph_data.nodes?.length || 0} concepts and ${data.graph_data.edges?.length || 0} relationships.</span>
+                        `;
+                    }
+                }
+                
+                return data;
+            } else {
+                console.warn('No knowledge graph data available');
+                return null;
+            }
+        } catch (error) {
+            console.error('Failed to load knowledge graph data:', error);
+            
+            // Update the knowledge pane with error status
+            const knowledgePane = document.getElementById('knowledgePane');
+            if (knowledgePane) {
+                const statusMessage = knowledgePane.querySelector('.status-message');
+                if (statusMessage) {
+                    statusMessage.innerHTML = `
+                        <span class="status-icon">❌</span>
+                        <span class="status-text">Failed to load knowledge graph data. Please check system status.</span>
+                    `;
+                }
+            }
+            
+            return null;
+        }
+    }
+
+    /**
+     * Start application services
+     */
+    startServices() {
+        // Start heartbeat
+        this.startHeartbeat();
+        
+        // Start performance monitoring
+        this.startPerformanceMonitoring();
+        
+        console.log('✅ Application services started');
+    }
+
+    /**
+     * Start heartbeat service
+     */
+    startHeartbeat() {
+        setInterval(() => {
+            const websocket = this.modules.get('websocket');
+            if (websocket && websocket.isConnected()) {
+                // Check if sendHeartbeat method exists before calling it
+                if (typeof websocket.sendHeartbeat === 'function') {
+                    websocket.sendHeartbeat();
+                } else {
+                    console.log('🔍 HEARTBEAT: sendHeartbeat method not available on websocket');
+                }
+            }
+        }, this.config.heartbeatInterval);
+    }
+
+    /**
+     * Start performance monitoring
+     */
+    startPerformanceMonitoring() {
+        // Monitor performance metrics
+        if ('performance' in window) {
+            setInterval(() => {
+                const navigation = performance.getEntriesByType('navigation')[0];
+                if (navigation) {
+                    this.updatePerformanceMetrics(navigation);
+                }
+            }, 10000); // Every 10 seconds
+        }
+    }
+
+    /**
+     * Handle complexity level change
+     */
+    handleComplexityChange(detail) {
+        // Prevent recursion by checking if this is already the current level
+        if (this.state.complexityLevel === detail.currentLevel) {
+            return;
+        }
+        
+        this.state.complexityLevel = detail.currentLevel;
+        
+        // Update all modules that support complexity changes (except the one that triggered this)
+        this.modules.forEach((module, name) => {
+            if (module.setComplexityLevel && name !== 'adaptiveInterface') {
+                module.setComplexityLevel(detail.currentLevel);
+            }
+        });
+        
+        console.log(`🎯 Complexity level changed to: ${detail.currentLevel}`);
+    }
+
+    /**
+     * Handle query submission
+     */
+    async handleQuerySubmit() {
+        const queryTextarea = document.getElementById('naturalLanguageQuery');
+        const queryType = document.getElementById('queryType');
+        const confidence = document.getElementById('confidenceThreshold');
+        
+        if (!queryTextarea || !queryTextarea.value.trim()) {
+            this.showError('Please enter a query');
+            return;
+        }
+
+        const queryData = {
+            query: queryTextarea.value.trim(),
+            type: queryType ? queryType.value : 'knowledge',
+            confidence: confidence ? parseFloat(confidence.value) : 0.7,
+            complexity: this.state.complexityLevel
+        };
+
+        const queryHandler = this.modules.get('queryHandler');
+        if (queryHandler) {
+            try {
+                await queryHandler.submitQuery(queryData);
+            } catch (error) {
+                this.handleError('Failed to submit query', error);
+            }
+        } else {
+            this.handleError('Query handler not available');
+        }
+    }
+
+    /**
+     * Handle query submitted event
+     */
+    handleQuerySubmitted(data) {
+        this.state.currentQuery = data;
+        this.showLoadingState();
+        console.log('📤 Query submitted:', data);
+    }
+
+    /**
+     * Handle response received event
+     */
+    handleResponseReceived(data) {
+        this.state.lastResponse = data;
+        this.hideLoadingState();
+        this.displayResponse(data);
+        console.log('📥 Response received:', data);
+    }
+
+    /**
+     * Handle cognitive update
+     */
+    handleCognitiveUpdate(data) {
+        this.state.cognitiveState = data;
+        
+        // Update cognitive layers display
+        const cognitiveLayers = this.modules.get('cognitiveLayers');
+        if (cognitiveLayers) {
+            cognitiveLayers.updateState(data);
+        }
+        
+        // Update visualizations if needed
+        this.updateVisualizationsWithCognitiveData(data);
+    }
+
+    /**
+     * Update connection status
+     */
+    updateConnectionStatus(status) {
+        this.state.isConnected = status === 'connected';
+        
+        const statusElement = document.getElementById('connectionStatus');
+        if (statusElement) {
+            statusElement.setAttribute('data-status', status);
+            const statusText = statusElement.querySelector('.status-text');
+            if (statusText) {
+                statusText.textContent = status === 'connected' ? 'Connected' : 'Disconnected';
             }
         }
-    }
-
-    /**
-     * Handle window resize
-     */
-    handleWindowResize() {
-        // Update visualization dimensions
-        if (this.components.visualization) {
-            this.components.visualization.handleResize();
-        }
         
-        // Update responsive layout
-        const isMobile = window.innerWidth <= 768;
-        if (isMobile) {
-            this.enableMobileLayout();
+        // Update connection quality if connected
+        if (status === 'connected') {
+            this.updateConnectionQuality('excellent');
         } else {
-            this.enableDesktopLayout();
+            this.updateConnectionQuality('poor');
         }
     }
 
     /**
-     * Enable mobile layout
+     * Update connection quality
      */
-    enableMobileLayout() {
-        document.body.classList.add('mobile-layout');
-        
-        // Collapse panels by default on mobile
-        const panels = document.querySelectorAll('.panel');
-        panels.forEach(panel => {
-            if (!panel.classList.contains('response-panel')) {
-                panel.classList.add('collapsed');
-            }
-        });
-    }
-
-    /**
-     * Enable desktop layout
-     */
-    enableDesktopLayout() {
-        document.body.classList.remove('mobile-layout');
-        
-        // Expand panels on desktop
-        const panels = document.querySelectorAll('.panel.collapsed');
-        panels.forEach(panel => {
-            panel.classList.remove('collapsed');
-        });
-    }
-
-    /**
-     * Handle visibility change (tab switching)
-     */
-    handleVisibilityChange() {
-        if (document.hidden) {
-            // Page is hidden - pause non-essential animations
-            this.pauseAnimations();
-        } else {
-            // Page is visible - resume animations
-            this.resumeAnimations();
+    updateConnectionQuality(quality) {
+        const qualityElement = document.getElementById('connectionQuality');
+        if (qualityElement) {
+            qualityElement.setAttribute('data-quality', quality);
         }
     }
 
     /**
-     * Pause animations when page is hidden
+     * Update character count
      */
-    pauseAnimations() {
-        const animatedElements = document.querySelectorAll('[style*="animation"]');
-        animatedElements.forEach(element => {
-            element.style.animationPlayState = 'paused';
-        });
+    updateCharacterCount(count) {
+        const charCountElement = document.getElementById('charCount');
+        if (charCountElement) {
+            charCountElement.textContent = `${count} characters`;
+        }
     }
 
     /**
-     * Resume animations when page is visible
+     * Update confidence display
      */
-    resumeAnimations() {
-        const animatedElements = document.querySelectorAll('[style*="animation"]');
-        animatedElements.forEach(element => {
-            element.style.animationPlayState = 'running';
-        });
-    }
-
-    /**
-     * Handle global errors
-     * @param {Error} error - Error object
-     */
-    handleGlobalError(error) {
-        console.error('Global error handled:', error);
+    updateConfidenceDisplay(value) {
+        const confidenceValue = document.getElementById('confidenceValue');
+        const confidenceLabel = document.getElementById('confidenceLabel');
         
-        // Show user-friendly error message
-        this.showNotification('An unexpected error occurred', 'error');
+        if (confidenceValue) {
+            confidenceValue.textContent = value;
+        }
         
-        // Log error for debugging (in production, this might send to error tracking service)
-        this.logError(error);
+        if (confidenceLabel) {
+            let label = 'Low';
+            if (value >= 0.7) label = 'High';
+            else if (value >= 0.4) label = 'Medium';
+            confidenceLabel.textContent = `(${label})`;
+        }
     }
 
     /**
-     * Log error for debugging
-     * @param {Error} error - Error to log
+     * Update query type description
      */
-    logError(error) {
-        const errorData = {
-            message: error.message,
-            stack: error.stack,
-            timestamp: new Date().toISOString(),
-            userAgent: navigator.userAgent,
-            url: window.location.href,
-            state: this.state
+    updateQueryTypeDescription(type) {
+        const descriptions = {
+            'knowledge': 'Retrieve and synthesize information from the knowledge base',
+            'reasoning': 'Apply logical reasoning and inference to solve problems',
+            'learning': 'Learn new concepts and update the knowledge base',
+            'metacognition': 'Analyze and reflect on the reasoning process'
         };
         
-        // In production, this might send to an error tracking service
-        console.log('Error logged:', errorData);
+        const descElement = document.getElementById('query-type-desc');
+        if (descElement) {
+            descElement.textContent = descriptions[type] || descriptions['knowledge'];
+        }
     }
 
     /**
-     * Show notification to user
-     * @param {string} message - Notification message
-     * @param {string} type - Notification type
+     * Show loading state
      */
-    showNotification(message, type = 'info') {
-        if (this.components.query) {
-            this.components.query.showNotification(message, type);
-        } else {
-            console.log(`${type.toUpperCase()}: ${message}`);
+    showLoadingState() {
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        if (loadingOverlay) {
+            loadingOverlay.style.display = 'flex';
+        }
+        
+        // Show loading in visualizations
+        const visualizationLoading = document.getElementById('visualizationLoading');
+        if (visualizationLoading) {
+            visualizationLoading.style.display = 'flex';
+        }
+    }
+
+    /**
+     * Hide loading state
+     */
+    hideLoadingState() {
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        if (loadingOverlay) {
+            loadingOverlay.style.display = 'none';
+        }
+        
+        const visualizationLoading = document.getElementById('visualizationLoading');
+        if (visualizationLoading) {
+            visualizationLoading.style.display = 'none';
+        }
+    }
+
+    /**
+     * Display response
+     */
+    displayResponse(response) {
+        // Update natural language response
+        const naturalResponse = document.getElementById('naturalResponse');
+        if (naturalResponse && response.natural_language) {
+            naturalResponse.innerHTML = `
+                <div class="response-content">
+                    <p>${response.natural_language}</p>
+                </div>
+            `;
+        }
+        
+        // Update metadata if available
+        if (response.metadata) {
+            this.updateResponseMetadata(response.metadata);
+        }
+        
+        // Update visualizations
+        this.updateVisualizationsWithResponse(response);
+    }
+
+    /**
+     * Update response metadata
+     */
+    updateResponseMetadata(metadata) {
+        const confidenceElement = document.getElementById('responseConfidence');
+        const processingTimeElement = document.getElementById('processingTime');
+        
+        if (confidenceElement && metadata.confidence) {
+            confidenceElement.textContent = `${(metadata.confidence * 100).toFixed(1)}%`;
+        }
+        
+        if (processingTimeElement && metadata.processing_time) {
+            processingTimeElement.textContent = `${metadata.processing_time.toFixed(2)}ms`;
+        }
+    }
+
+    /**
+     * Update visualizations with response data
+     */
+    updateVisualizationsWithResponse(response) {
+        // Update knowledge graph
+        const kgVisualizer = this.modules.get('knowledgeGraphVisualizer');
+        if (kgVisualizer && (response.knowledge_graph || response.graph_data)) {
+            // Handle both response formats for compatibility
+            const graphData = response.knowledge_graph || response.graph_data;
+            kgVisualizer.updateVisualization({ graph_data: graphData });
+        }
+        
+        // Update reasoning visualizer
+        const reasoningVisualizer = this.modules.get('reasoningVisualizer');
+        if (reasoningVisualizer && response.reasoning_trace) {
+            reasoningVisualizer.displayTrace(response.reasoning_trace);
+        }
+    }
+
+    /**
+     * Update visualizations with cognitive data
+     */
+    updateVisualizationsWithCognitiveData(data) {
+        // This method updates visualizations based on cognitive state changes
+        // Implementation depends on the specific cognitive data structure
+    }
+
+    /**
+     * Switch tab
+     */
+    switchTab(tabId) {
+        // Hide all tab panes
+        document.querySelectorAll('.tab-pane').forEach(pane => {
+            pane.classList.remove('active');
+        });
+        
+        // Remove active state from all tab buttons
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.classList.remove('active');
+            button.setAttribute('aria-selected', 'false');
+        });
+        
+        // Show selected tab pane
+        const targetPane = document.getElementById(`${tabId}Tab`);
+        if (targetPane) {
+            targetPane.classList.add('active');
+        }
+        
+        // Activate selected tab button
+        const targetButton = document.querySelector(`[data-tab="${tabId}"]`);
+        if (targetButton) {
+            targetButton.classList.add('active');
+            targetButton.setAttribute('aria-selected', 'true');
+        }
+    }
+
+    /**
+     * Show help modal
+     */
+    showHelpModal() {
+        const helpModal = document.getElementById('helpModal');
+        if (helpModal) {
+            helpModal.style.display = 'flex';
+            helpModal.setAttribute('aria-hidden', 'false');
+            
+            // Focus management
+            const firstFocusable = helpModal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (firstFocusable) {
+                firstFocusable.focus();
+            }
+        }
+    }
+
+    /**
+     * Show settings modal
+     */
+    showSettingsModal() {
+        // Implementation for settings modal
+        console.log('Settings modal would be shown here');
+    }
+
+    /**
+     * Close modal
+     */
+    closeModal(modal) {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+    }
+
+    /**
+     * Close all modals
+     */
+    closeAllModals() {
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            this.closeModal(modal);
+        });
+        
+        // Also close onboarding if active
+        const adaptiveInterface = this.modules.get('adaptiveInterface');
+        if (adaptiveInterface && adaptiveInterface.onboarding && adaptiveInterface.onboarding.isActive) {
+            adaptiveInterface.skipOnboarding();
         }
     }
 
     /**
      * Show error message
-     * @param {string} message - Error message
      */
     showError(message) {
-        this.showNotification(message, 'error');
+        const adaptiveInterface = this.modules.get('adaptiveInterface');
+        if (adaptiveInterface) {
+            adaptiveInterface.announceToScreenReader(`Error: ${message}`);
+        }
+        
+        // Could also show a toast notification or modal
+        console.error('User Error:', message);
     }
 
     /**
-     * Show welcome message
+     * Handle error
      */
-    showWelcomeMessage() {
-        setTimeout(() => {
-            this.showNotification('Welcome to GödelOS! Enter a query to begin exploring the knowledge base.', 'info');
-        }, 1000);
+    handleError(message, error = null) {
+        console.error(message, error);
+        this.showError(message);
+        this.hideLoadingState();
     }
 
     /**
-     * Debounce function for performance
-     * @param {Function} func - Function to debounce
-     * @param {number} wait - Wait time in milliseconds
-     * @returns {Function} Debounced function
+     * Handle global error
      */
-    debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
+    handleGlobalError(error) {
+        console.error('Global application error:', error);
+        
+        // Could implement error reporting here
+        // For now, just log and continue
+    }
+
+    /**
+     * Handle initialization error
+     */
+    handleInitializationError(error) {
+        console.error('Initialization error:', error);
+        
+        // Show error message to user
+        document.body.innerHTML = `
+            <div style="padding: 2rem; text-align: center; font-family: Arial, sans-serif;">
+                <h1 style="color: #e74c3c;">GödelOS Initialization Error</h1>
+                <p>Failed to initialize the application. Please refresh the page and try again.</p>
+                <p style="color: #7f8c8d; font-size: 0.9em;">Error: ${error.message}</p>
+                <button onclick="location.reload()" style="padding: 0.5rem 1rem; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    Refresh Page
+                </button>
+            </div>
+        `;
+    }
+
+    /**
+     * Update performance metrics
+     */
+    updatePerformanceMetrics(navigation) {
+        // Log performance metrics for monitoring
+        const metrics = {
+            loadTime: navigation.loadEventEnd - navigation.loadEventStart,
+            domContentLoaded: navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart,
+            firstPaint: performance.getEntriesByName('first-paint')[0]?.startTime || 0,
+            firstContentfulPaint: performance.getEntriesByName('first-contentful-paint')[0]?.startTime || 0
+        };
+        
+        console.log('📊 Performance metrics:', metrics);
+    }
+
+    /**
+     * Create fallback API client
+     */
+    createFallbackAPIClient() {
+        return {
+            async submitQuery(query) {
+                console.warn('Using fallback API client - no real backend connection');
+                return {
+                    natural_language: 'This is a fallback response. The backend is not connected.',
+                    metadata: {
+                        confidence: 0.5,
+                        processing_time: 100
+                    }
+                };
+            }
         };
     }
 
     /**
-     * Cleanup when page unloads
+     * Dispatch custom event
      */
-    cleanup() {
-        console.log('Cleaning up GödelOS Frontend...');
-        
-        // Disconnect WebSocket
-        if (this.components.websocket) {
-            this.components.websocket.disconnect();
-        }
-        
-        // Clean up cognitive animations
-        if (this.components.cognitive) {
-            this.components.cognitive.destroy();
-        }
-        
-        // Save any pending data
-        this.savePendingData();
-    }
-
-    /**
-     * Save any pending data before unload
-     */
-    savePendingData() {
-        // Save current session state
-        try {
-            const sessionData = {
+    dispatchEvent(eventName, detail = {}) {
+        const event = new CustomEvent(eventName, {
+            detail: {
+                ...detail,
                 timestamp: Date.now(),
-                state: this.state,
-                currentQuery: this.state.currentQuery
-            };
-            sessionStorage.setItem('godelOS_session_state', JSON.stringify(sessionData));
-        } catch (error) {
-            console.warn('Failed to save session data:', error);
-        }
-    }
-
-    /**
-     * Restore session data
-     */
-    restoreSessionData() {
-        try {
-            const sessionData = sessionStorage.getItem('godelOS_session_state');
-            if (sessionData) {
-                const data = JSON.parse(sessionData);
-                // Restore relevant state if session is recent (within 1 hour)
-                if (Date.now() - data.timestamp < 3600000) {
-                    this.state = { ...this.state, ...data.state };
-                }
+                source: 'GödelOSApp'
             }
-        } catch (error) {
-            console.warn('Failed to restore session data:', error);
-        }
+        });
+        document.dispatchEvent(event);
     }
 
     /**
      * Get application state
-     * @returns {Object} Current application state
      */
     getState() {
         return { ...this.state };
     }
 
     /**
-     * Update application state
-     * @param {Object} newState - State updates
+     * Get module by name
      */
-    updateState(newState) {
-        this.state = { ...this.state, ...newState };
+    getModule(name) {
+        return this.modules.get(name);
     }
-}
 
-// Initialize the application
-const app = new GödelOSApp();
+    /**
+     * Check if application is initialized
+     */
+    isReady() {
+        return this.isInitialized;
+    }
 
-// Make app globally available for debugging
-window.godelOSApp = app;
+    /**
+     * Run comprehensive backend diagnostics
+     */
+    async runBackendDiagnostics() {
+        console.log('🔍 DIAGNOSTIC: Running backend health checks...');
+        
+        try {
+            // Check basic health endpoint
+            const healthStatus = await window.apiClient.getHealthStatus();
+            if (healthStatus.status === 'unhealthy') {
+                console.warn('⚠️ DIAGNOSTIC: Backend reports unhealthy status:', healthStatus);
+                console.log('🔍 DIAGNOSTIC: Backend health details:', healthStatus.details);
+            } else {
+                console.log('✅ DIAGNOSTIC: Backend health check passed:', healthStatus);
+            }
+        } catch (error) {
+            console.error('❌ DIAGNOSTIC: Backend health check failed:', error);
+        }
 
-// Export for module systems
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = GödelOSApp;
-}
+        try {
+            // Check knowledge graph data availability
+            const kgData = await window.apiClient.getKnowledgeGraph({
+                format: 'visualization',
+                include_statistics: true,
+                node_limit: 10
+            });
+            console.log('🔍 DIAGNOSTIC: Knowledge graph data check:', {
+                node_count: kgData.node_count,
+                edge_count: kgData.edge_count,
+                has_graph_data: !!kgData.graph_data
+            });
+        } catch (error) {
+            console.error('❌ DIAGNOSTIC: Knowledge graph check failed:', error);
+        }
+
+        try {
+            // Check knowledge categories
+            const categories = await window.apiClient.get('/api/transparency/knowledge/categories');
+            console.log('🔍 DIAGNOSTIC: Knowledge categories check:', {
+                success: categories.success,
+                category_count: categories.categories ? categories.categories.length : 0,
+                categories: categories.categories
+            });
+        } catch (error) {
+            console.error('❌ DIAGNOSTIC: Knowledge categories check failed:', error);
+        }
+
+        try {
+            // Check knowledge statistics
+            const stats = await window.apiClient.get('/api/transparency/knowledge/statistics');
+            console.log('🔍 DIAGNOSTIC: Knowledge statistics check:', {
+                success: stats.success,
+                has_statistics: !!stats.statistics,
+                statistics_keys: stats.statistics ? Object.keys(stats.statistics) : []
+            });
+        } catch (error) {
+            console.error('❌ DIAGNOSTIC: Knowledge statistics check failed:', error);
+        }
+
+        console.log('🔍 DIAGNOSTIC: Backend diagnostics completed');
+    }
+
+    /**
+     * Load and display knowledge graph data
+     */
+    async loadKnowledgeGraphData() {
+        const kgVisualizer = this.modules.get('knowledgeGraphVisualizer');
+        if (!kgVisualizer) {
+            console.warn('Knowledge graph visualizer not available');
+            return;
+        }
+
+        try {
+            console.log('🔄 Loading knowledge graph data...');
+            const data = await window.apiClient.getKnowledgeGraph();
+            
+            if (data && data.graph_data) {
+                console.log('✅ Knowledge graph data loaded:', {
+                    nodes: data.graph_data.nodes?.length || 0,
+                    edges: data.graph_data.edges?.length || 0
+                });
+                
+                kgVisualizer.updateVisualization(data);
+                
+                // Update the knowledge pane status
+                const knowledgePane = document.getElementById('knowledgePane');
+                if

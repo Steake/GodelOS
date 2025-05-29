@@ -29,7 +29,7 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
         logging.StreamHandler(sys.stdout),
-        logging.FileHandler('backend/logs/godelos_backend.log', mode='a')
+        logging.FileHandler('logs/godelos_backend.log', mode='a')
     ]
 )
 
@@ -48,7 +48,7 @@ class GödelOSServer:
         self.shutdown_event = asyncio.Event()
         
         # Ensure log directory exists
-        log_dir = Path("backend/logs")
+        log_dir = Path("logs")
         log_dir.mkdir(exist_ok=True)
     
     def setup_signal_handlers(self):

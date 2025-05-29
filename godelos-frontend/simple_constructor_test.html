@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Constructor Test</title>
+</head>
+<body>
+    <h1>🔍 Simple Constructor Test</h1>
+    
+    <div id="results"></div>
+    
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+        // Test script loading step by step
+        console.log('=== Starting Simple Constructor Test ===');
+        console.log('1. D3 loaded:', typeof d3);
+        
+        // Load API client first
+        const apiScript = document.createElement('script');
+        apiScript.src = '/src/scripts/api-client.js';
+        apiScript.onload = () => {
+            console.log('2. API Client loaded:', typeof window.APIClient);
+            
+            // Load knowledge graph visualizer
+            const kgScript = document.createElement('script');
+            kgScript.src = '/src/scripts/knowledge-graph-visualizer.js';
+            kgScript.onload = () => {
+                console.log('3. KG Visualizer script loaded');
+                console.log('4. KnowledgeGraphVisualizer type:', typeof window.KnowledgeGraphVisualizer);
+                console.log('5. knowledgeGraphVisualizer instance:', !!window.knowledgeGraphVisualizer);
+                
+                // Test results
+                const results = document.getElementById('results');
+                if (typeof window.KnowledgeGraphVisualizer === 'function') {
+                    results.innerHTML = '<div style="color: green;">✅ Constructor Available!</div>';
+                    
+                    // Try to create an instance
+                    try {
+                        const testInstance = new window.KnowledgeGraphVisualizer('nonexistent');
+                        results.innerHTML += '<div style="color: green;">✅ Can create instances!</div>';
+                    } catch (error) {
+                        results.innerHTML += `<div style="color: red;">❌ Error creating instance: ${error.message}</div>`;
+                    }
+                } else {
+                    results.innerHTML = '<div style="color: red;">❌ Constructor Not Available</div>';
+                }
+            };
+            kgScript.onerror = (error) => {
+                console.error('Error loading KG script:', error);
+            };
+            document.head.appendChild(kgScript);
+        };
+        apiScript.onerror = (error) => {
+            console.error('Error loading API script:', error);
+        };
+        document.head.appendChild(apiScript);
+    </script>
+</body>
+</html>

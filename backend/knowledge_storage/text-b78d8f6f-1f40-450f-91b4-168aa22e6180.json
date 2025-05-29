@@ -1,0 +1,54 @@
+{
+  "id": "text-b78d8f6f-1f40-450f-91b4-168aa22e6180",
+  "content": "Artificial Intelligence is a branch of computer science that deals with creating intelligent machines. Machine Learning is a subset of AI that focuses on algorithms that can learn from data. Deep Learning uses neural networks with multiple layers.",
+  "knowledge_type": "fact",
+  "title": "Introduction to AI and Machine Learning",
+  "source": {
+    "source_type": "text",
+    "source_identifier": "test-ai-ml-intro",
+    "metadata": {
+      "test": true,
+      "created_by": "knowledge_graph_test"
+    }
+  },
+  "import_id": "b78d8f6f-1f40-450f-91b4-168aa22e6180",
+  "extracted_at": 1748455564.131999,
+  "chunks": [],
+  "relationships": [],
+  "confidence": 0.9,
+  "validation_status": "pending",
+  "quality_score": 0.85,
+  "categories": [
+    "artificial-intelligence",
+    "machine-learning",
+    "technology"
+  ],
+  "auto_categories": [],
+  "manual_categories": [
+    "artificial-intelligence",
+    "machine-learning",
+    "technology"
+  ],
+  "access_count": 0,
+  "last_accessed": null,
+  "usage_context": [],
+  "metadata": {
+    "word_count": 38,
+    "char_count": 247,
+    "chunks": 1,
+    "keywords": [
+      "learning",
+      "artificial",
+      "intelligence",
+      "branch",
+      "computer",
+      "science",
+      "deals",
+      "creating",
+      "intelligent",
+      "machines"
+    ],
+    "language": "en"
+  },
+  "annotations": []
+}

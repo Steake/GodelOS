@@ -1,0 +1,456 @@
+/**
+ * GödelOS Design System - Design Tokens
+ * 
+ * Comprehensive design tokens following the UI/UX overhaul plan
+ * These tokens form the foundation of the new adaptive interface
+ */
+
+:root {
+  /* ===== COLOR SYSTEM ===== */
+  
+  /* Primary Colors - Cognitive Architecture Theme */
+  --primary-50: #eff6ff;
+  --primary-100: #dbeafe;
+  --primary-200: #bfdbfe;
+  --primary-300: #93c5fd;
+  --primary-400: #60a5fa;
+  --primary-500: #4facfe;
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+  --primary-800: #1e40af;
+  --primary-900: #1e3a8a;
+  --primary-950: #172554;
+  
+  /* Secondary Colors - Neural Network Inspired */
+  --secondary-50: #fdf4ff;
+  --secondary-100: #fae8ff;
+  --secondary-200: #f5d0fe;
+  --secondary-300: #f0abfc;
+  --secondary-400: #e879f9;
+  --secondary-500: #d946ef;
+  --secondary-600: #c026d3;
+  --secondary-700: #a21caf;
+  --secondary-800: #86198f;
+  --secondary-900: #701a75;
+  --secondary-950: #4a044e;
+  
+  /* Neutral Colors - Dark Theme Optimized */
+  --neutral-50: #f8fafc;
+  --neutral-100: #f1f5f9;
+  --neutral-200: #e2e8f0;
+  --neutral-300: #cbd5e1;
+  --neutral-400: #94a3b8;
+  --neutral-500: #64748b;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1e293b;
+  --neutral-900: #0f172a;
+  --neutral-950: #020617;
+  
+  /* Dark Theme Specific */
+  --dark-50: #374151;
+  --dark-100: #1f2937;
+  --dark-200: #111827;
+  --dark-300: #0f0f23;
+  --dark-400: #1a1a2e;
+  --dark-500: #16213e;
+  --dark-600: #0d1421;
+  --dark-700: #0a0f1c;
+  --dark-800: #070b14;
+  --dark-900: #04070f;
+  
+  /* Accent Colors */
+  --accent-blue: #4facfe;
+  --accent-purple: #764ba2;
+  --accent-cyan: #00f2fe;
+  --accent-pink: #f093fb;
+  --accent-orange: #ff9a56;
+  --accent-green: #2ed573;
+  
+  /* Semantic Colors */
+  --success-50: #ecfdf5;
+  --success-100: #d1fae5;
+  --success-200: #a7f3d0;
+  --success-300: #6ee7b7;
+  --success-400: #34d399;
+  --success-500: #2ed573;
+  --success-600: #059669;
+  --success-700: #047857;
+  --success-800: #065f46;
+  --success-900: #064e3b;
+  
+  --warning-50: #fffbeb;
+  --warning-100: #fef3c7;
+  --warning-200: #fde68a;
+  --warning-300: #fcd34d;
+  --warning-400: #fbbf24;
+  --warning-500: #ffa502;
+  --warning-600: #d97706;
+  --warning-700: #b45309;
+  --warning-800: #92400e;
+  --warning-900: #78350f;
+  
+  --error-50: #fef2f2;
+  --error-100: #fee2e2;
+  --error-200: #fecaca;
+  --error-300: #fca5a5;
+  --error-400: #f87171;
+  --error-500: #ff4757;
+  --error-600: #dc2626;
+  --error-700: #b91c1c;
+  --error-800: #991b1b;
+  --error-900: #7f1d1d;
+  
+  --info-50: #eff6ff;
+  --info-100: #dbeafe;
+  --info-200: #bfdbfe;
+  --info-300: #93c5fd;
+  --info-400: #60a5fa;
+  --info-500: #3742fa;
+  --info-600: #2563eb;
+  --info-700: #1d4ed8;
+  --info-800: #1e40af;
+  --info-900: #1e3a8a;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--primary-500) 0%, var(--secondary-500) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--secondary-400) 0%, var(--primary-600) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+  --gradient-neural: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-cognitive: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-dark: linear-gradient(135deg, var(--dark-400) 0%, var(--dark-600) 100%);
+  
+  /* ===== TYPOGRAPHY SYSTEM ===== */
+  
+  /* Font Families */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  --font-display: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  
+  /* Font Sizes - Type Scale */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+  --text-5xl: 3rem;        /* 48px */
+  --text-6xl: 3.75rem;     /* 60px */
+  --text-7xl: 4.5rem;      /* 72px */
+  --text-8xl: 6rem;        /* 96px */
+  --text-9xl: 8rem;        /* 128px */
+  
+  /* Line Heights */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+  
+  /* Font Weights */
+  --font-thin: 100;
+  --font-extralight: 200;
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
+  
+  /* Letter Spacing */
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+  
+  /* ===== SPACING SYSTEM ===== */
+  
+  /* Spacing Scale - Based on 0.25rem (4px) */
+  --space-px: 1px;
+  --space-0: 0px;
+  --space-0-5: 0.125rem;   /* 2px */
+  --space-1: 0.25rem;      /* 4px */
+  --space-1-5: 0.375rem;   /* 6px */
+  --space-2: 0.5rem;       /* 8px */
+  --space-2-5: 0.625rem;   /* 10px */
+  --space-3: 0.75rem;      /* 12px */
+  --space-3-5: 0.875rem;   /* 14px */
+  --space-4: 1rem;         /* 16px */
+  --space-5: 1.25rem;      /* 20px */
+  --space-6: 1.5rem;       /* 24px */
+  --space-7: 1.75rem;      /* 28px */
+  --space-8: 2rem;         /* 32px */
+  --space-9: 2.25rem;      /* 36px */
+  --space-10: 2.5rem;      /* 40px */
+  --space-11: 2.75rem;     /* 44px */
+  --space-12: 3rem;        /* 48px */
+  --space-14: 3.5rem;      /* 56px */
+  --space-16: 4rem;        /* 64px */
+  --space-20: 5rem;        /* 80px */
+  --space-24: 6rem;        /* 96px */
+  --space-28: 7rem;        /* 112px */
+  --space-32: 8rem;        /* 128px */
+  --space-36: 9rem;        /* 144px */
+  --space-40: 10rem;       /* 160px */
+  --space-44: 11rem;       /* 176px */
+  --space-48: 12rem;       /* 192px */
+  --space-52: 13rem;       /* 208px */
+  --space-56: 14rem;       /* 224px */
+  --space-60: 15rem;       /* 240px */
+  --space-64: 16rem;       /* 256px */
+  --space-72: 18rem;       /* 288px */
+  --space-80: 20rem;       /* 320px */
+  --space-96: 24rem;       /* 384px */
+  
+  /* ===== BORDER RADIUS ===== */
+  
+  --radius-none: 0px;
+  --radius-sm: 0.125rem;   /* 2px */
+  --radius-base: 0.25rem;  /* 4px */
+  --radius-md: 0.375rem;   /* 6px */
+  --radius-lg: 0.5rem;     /* 8px */
+  --radius-xl: 0.75rem;    /* 12px */
+  --radius-2xl: 1rem;      /* 16px */
+  --radius-3xl: 1.5rem;    /* 24px */
+  --radius-full: 9999px;
+  
+  /* ===== SHADOWS ===== */
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --shadow-none: 0 0 #0000;
+  
+  /* Colored Shadows */
+  --shadow-primary: 0 10px 15px -3px rgba(79, 172, 254, 0.1), 0 4px 6px -2px rgba(79, 172, 254, 0.05);
+  --shadow-secondary: 0 10px 15px -3px rgba(217, 70, 239, 0.1), 0 4px 6px -2px rgba(217, 70, 239, 0.05);
+  --shadow-success: 0 10px 15px -3px rgba(46, 213, 115, 0.1), 0 4px 6px -2px rgba(46, 213, 115, 0.05);
+  --shadow-warning: 0 10px 15px -3px rgba(255, 165, 2, 0.1), 0 4px 6px -2px rgba(255, 165, 2, 0.05);
+  --shadow-error: 0 10px 15px -3px rgba(255, 71, 87, 0.1), 0 4px 6px -2px rgba(255, 71, 87, 0.05);
+  
+  /* ===== Z-INDEX SCALE ===== */
+  
+  --z-auto: auto;
+  --z-0: 0;
+  --z-10: 10;
+  --z-20: 20;
+  --z-30: 30;
+  --z-40: 40;
+  --z-50: 50;
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+  
+  /* ===== BREAKPOINTS ===== */
+  
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  
+  /* ===== TRANSITIONS & ANIMATIONS ===== */
+  
+  /* Transition Durations */
+  --duration-75: 75ms;
+  --duration-100: 100ms;
+  --duration-150: 150ms;
+  --duration-200: 200ms;
+  --duration-300: 300ms;
+  --duration-500: 500ms;
+  --duration-700: 700ms;
+  --duration-1000: 1000ms;
+  
+  /* Transition Timing Functions */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  /* Common Transitions */
+  --transition-all: all var(--duration-150) var(--ease-in-out);
+  --transition-colors: color var(--duration-150) var(--ease-in-out), background-color var(--duration-150) var(--ease-in-out), border-color var(--duration-150) var(--ease-in-out);
+  --transition-opacity: opacity var(--duration-150) var(--ease-in-out);
+  --transition-shadow: box-shadow var(--duration-150) var(--ease-in-out);
+  --transition-transform: transform var(--duration-150) var(--ease-in-out);
+  
+  /* ===== COMPONENT-SPECIFIC TOKENS ===== */
+  
+  /* Button Tokens */
+  --button-height-sm: var(--space-8);
+  --button-height-md: var(--space-10);
+  --button-height-lg: var(--space-12);
+  --button-height-xl: var(--space-14);
+  
+  --button-padding-x-sm: var(--space-3);
+  --button-padding-x-md: var(--space-4);
+  --button-padding-x-lg: var(--space-6);
+  --button-padding-x-xl: var(--space-8);
+  
+  /* Input Tokens */
+  --input-height-sm: var(--space-8);
+  --input-height-md: var(--space-10);
+  --input-height-lg: var(--space-12);
+  --input-height-xl: var(--space-14);
+  
+  --input-padding-x-sm: var(--space-3);
+  --input-padding-x-md: var(--space-3);
+  --input-padding-x-lg: var(--space-4);
+  --input-padding-x-xl: var(--space-4);
+  
+  /* Panel Tokens */
+  --panel-padding: var(--space-6);
+  --panel-gap: var(--space-4);
+  --panel-border-width: 1px;
+  --panel-border-color: rgba(255, 255, 255, 0.1);
+  --panel-bg: rgba(255, 255, 255, 0.05);
+  --panel-backdrop-blur: 16px;
+  
+  /* Cognitive Layer Tokens */
+  --cognitive-layer-height: var(--space-16);
+  --cognitive-layer-gap: var(--space-2);
+  --cognitive-process-height: var(--space-8);
+  --cognitive-indicator-size: var(--space-3);
+  
+  /* Visualization Tokens */
+  --viz-node-size-sm: var(--space-4);
+  --viz-node-size-md: var(--space-6);
+  --viz-node-size-lg: var(--space-8);
+  --viz-edge-width: 2px;
+  --viz-edge-width-thick: 4px;
+  
+  /* ===== ACCESSIBILITY TOKENS ===== */
+  
+  /* Focus Ring */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --focus-ring-color: var(--primary-500);
+  --focus-ring-opacity: 0.5;
+  
+  /* High Contrast Support */
+  --high-contrast-border: 2px solid;
+  --high-contrast-outline: 3px solid;
+  
+  /* Reduced Motion */
+  --reduced-motion-duration: 0.01ms;
+  --reduced-motion-scale: 1;
+}
+
+/* ===== THEME VARIANTS ===== */
+
+/* Light Theme Override */
+[data-theme="light"] {
+  --bg-primary: var(--neutral-50);
+  --bg-secondary: var(--neutral-100);
+  --bg-tertiary: var(--neutral-200);
+  --text-primary: var(--neutral-900);
+  --text-secondary: var(--neutral-700);
+  --text-tertiary: var(--neutral-500);
+  --border-primary: var(--neutral-200);
+  --border-secondary: var(--neutral-300);
+}
+
+/* Dark Theme (Default) */
+[data-theme="dark"], :root {
+  --bg-primary: var(--dark-500);
+  --bg-secondary: var(--dark-400);
+  --bg-tertiary: var(--dark-300);
+  --text-primary: var(--neutral-100);
+  --text-secondary: var(--neutral-300);
+  --text-tertiary: var(--neutral-500);
+  --border-primary: rgba(255, 255, 255, 0.1);
+  --border-secondary: rgba(255, 255, 255, 0.2);
+}
+
+/* High Contrast Theme */
+[data-theme="high-contrast"] {
+  --bg-primary: #000000;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #333333;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-tertiary: #999999;
+  --border-primary: #ffffff;
+  --border-secondary: #cccccc;
+  --primary-500: #00ff00;
+  --secondary-500: #ff00ff;
+  --error-500: #ff0000;
+  --warning-500: #ffff00;
+  --success-500: #00ff00;
+}
+
+/* ===== RESPONSIVE DESIGN TOKENS ===== */
+
+/* Mobile-first breakpoint mixins will be handled in CSS-in-JS or utility classes */
+@media (max-width: 640px) {
+  :root {
+    --panel-padding: var(--space-4);
+    --panel-gap: var(--space-2);
+    --text-base: 0.875rem;
+    --space-safe-area-inset-top: env(safe-area-inset-top);
+    --space-safe-area-inset-bottom: env(safe-area-inset-bottom);
+    --space-safe-area-inset-left: env(safe-area-inset-left);
+    --space-safe-area-inset-right: env(safe-area-inset-right);
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  :root {
+    --bg-primary: white;
+    --bg-secondary: white;
+    --bg-tertiary: #f5f5f5;
+    --text-primary: black;
+    --text-secondary: #333333;
+    --text-tertiary: #666666;
+    --border-primary: #cccccc;
+    --border-secondary: #999999;
+  }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-75: var(--reduced-motion-duration);
+    --duration-100: var(--reduced-motion-duration);
+    --duration-150: var(--reduced-motion-duration);
+    --duration-200: var(--reduced-motion-duration);
+    --duration-300: var(--reduced-motion-duration);
+    --duration-500: var(--reduced-motion-duration);
+    --duration-700: var(--reduced-motion-duration);
+    --duration-1000: var(--reduced-motion-duration);
+  }
+}
+
+/* ===== FORCED COLORS (Windows High Contrast) ===== */
+@media (forced-colors: active) {
+  :root {
+    --bg-primary: Canvas;
+    --bg-secondary: Canvas;
+    --bg-tertiary: Canvas;
+    --text-primary: CanvasText;
+    --text-secondary: CanvasText;
+    --text-tertiary: CanvasText;
+    --border-primary: CanvasText;
+    --border-secondary: CanvasText;
+    --primary-500: Highlight;
+    --focus-ring-color: Highlight;
+  }
+}

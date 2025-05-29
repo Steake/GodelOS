@@ -52,7 +52,7 @@ PORT=${GODELOS_PORT:-8000}
 if lsof -Pi :$PORT -sTCP:LISTEN -t >/dev/null 2>&1; then
     echo -e "${RED}Error: Port $PORT is already in use${NC}"
     echo "Please stop the existing service or use a different port:"
-    echo "  export GODELOS_PORT=8001"
+    echo "  export GODELOS_PORT=3001"
     exit 1
 fi
 

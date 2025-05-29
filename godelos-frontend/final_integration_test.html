@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Integration Test - Knowledge Graph Fix</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        .warning { background-color: #fff3cd; border-color: #ffeaa7; }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            max-height: 200px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #0056b3; }
+        .test-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .visualization-test {
+            height: 300px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #f8f9fa;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Final Integration Test - Knowledge Graph Unification</h1>
+        
+        <div class="test-section info">
+            <h2>📋 Test Overview</h2>
+            <p>This test validates that the knowledge graph visualization fix is working correctly with real backend data.</p>
+            <p><strong>Expected Results:</strong></p>
+            <ul>
+                <li>✅ API Client connects to correct transparency endpoint</li>
+                <li>✅ Knowledge graph data is fetched and processed</li>
+                <li>✅ Visualization displays real nodes and edges</li>
+                <li>✅ Interactive features work properly</li>
+            </ul>
+        </div>
+        
+        <div class="test-grid">
+            <div class="test-section" id="apiTest">
+                <h3>🔌 API Connection Test</h3>
+                <button onclick="testAPIConnection()">Test API</button>
+                <div id="apiResults"></div>
+            </div>
+            
+            <div class="test-section" id="dataTest">
+                <h3>📊 Data Structure Test</h3>
+                <button onclick="testDataStructure()">Test Data</button>
+                <div id="dataResults"></div>
+            </div>
+        </div>
+        
+        <div class="test-section" id="visualizationTest">
+            <h3>🎨 Visualization Test</h3>
+            <button onclick="testVisualization()">Test Visualization</button>
+            <div class="visualization-test" id="testKnowledgeGraph"></div>
+            <div id="vizResults"></div>
+        </div>
+        
+        <div class="test-section" id="integrationTest">
+            <h3>🔗 Full Integration Test</h3>
+            <button onclick="testFullIntegration()">Run Complete Test</button>
+            <div id="integrationResults"></div>
+        </div>
+    </div>
+
+    <!-- Load required scripts -->
+    <script src="/src/scripts/api-client.js"></script>
+    <script src="/src/scripts/knowledge-graph-visualizer.js"></script>
+
+    <script>
+        // Initialize global objects
+        window.apiClient = new APIClient('http://localhost:8000');
+        
+        async function testAPIConnection() {
+            const resultsDiv = document.getElementById('apiResults');
+            resultsDiv.innerHTML = '<p>⏳ Testing API connection...</p>';
+            
+            try {
+                // Test the corrected endpoint
+                const response = await fetch('http://localhost:8000/api/transparency/knowledge-graph/export');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                resultsDiv.innerHTML = `
+                    <div class="success">
+                        <h4>✅ API Connection Successful</h4>
+                        <p><strong>Endpoint:</strong> /api/transparency/knowledge-graph/export</p>
+                        <p><strong>Response Status:</strong> ${response.status}</p>
+                        <p><strong>Data Present:</strong> ${data && data.graph_data ? 'Yes' : 'No'}</p>
+                    </div>
+                `;
+                
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <div class="error">
+                        <h4>❌ API Connection Failed</h4>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+        
+        async function testDataStructure() {
+            const resultsDiv = document.getElementById('dataResults');
+            resultsDiv.innerHTML = '<p>⏳ Testing data structure...</p>';
+            
+            try {
+                const data = await window.apiClient.getKnowledgeGraph();
+                
+                if (!data || !data.graph_data) {
+                    throw new Error('No graph_data in response');
+                }
+                
+                const { nodes, links } = data.graph_data;
+                
+                if (!Array.isArray(nodes) || !Array.isArray(links)) {
+                    throw new Error('Invalid data structure');
+                }
+                
+                resultsDiv.innerHTML = `
+                    <div class="success">
+                        <h4>✅ Data Structure Valid</h4>
+                        <p><strong>Nodes:</strong> ${nodes.length}</p>
+                        <p><strong>Links:</strong> ${links.length}</p>
+                        <p><strong>Node Sample:</strong> ${nodes[0]?.concept || nodes[0]?.label || 'N/A'}</p>
+                    </div>
+                `;
+                
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <div class="error">
+                        <h4>❌ Data Structure Test Failed</h4>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+        
+        async function testVisualization() {
+            const resultsDiv = document.getElementById('vizResults');
+            const container = document.getElementById('testKnowledgeGraph');
+            
+            resultsDiv.innerHTML = '<p>⏳ Testing visualization...</p>';
+            
+            try {
+                // Create a new visualizer instance for testing
+                const visualizer = new window.KnowledgeGraphVisualizer('testKnowledgeGraph');
+                
+                // Wait a bit for initialization
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // Check if visualization was created
+                const svg = container.querySelector('svg');
+                const nodes = container.querySelectorAll('.node');
+                const links = container.querySelectorAll('.link');
+                
+                resultsDiv.innerHTML = `
+                    <div class="success">
+                        <h4>✅ Visualization Created</h4>
+                        <p><strong>SVG Element:</strong> ${svg ? 'Present' : 'Missing'}</p>
+                        <p><strong>Nodes Rendered:</strong> ${nodes.length}</p>
+                        <p><strong>Links Rendered:</strong> ${links.length}</p>
+                    </div>
+                `;
+                
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <div class="error">
+                        <h4>❌ Visualization Test Failed</h4>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+        
+        async function testFullIntegration() {
+            const resultsDiv = document.getElementById('integrationResults');
+            resultsDiv.innerHTML = '<p>⏳ Running full integration test...</p>';
+            
+            const results = {
+                api: false,
+                data: false,
+                visualization: false
+            };
+            
+            try {
+                // Test 1: API Connection
+                console.log('Testing API connection...');
+                const apiResponse = await fetch('http://localhost:8000/api/transparency/knowledge-graph/export');
+                results.api = apiResponse.ok;
+                
+                // Test 2: Data Structure
+                console.log('Testing data structure...');
+                const data = await window.apiClient.getKnowledgeGraph();
+                results.data = !!(data && data.graph_data && data.graph_data.nodes && data.graph_data.links);
+                
+                // Test 3: Visualization
+                console.log('Testing visualization...');
+                const testContainer = document.createElement('div');
+                testContainer.id = 'tempTestContainer';
+                testContainer.style.display = 'none';
+                document.body.appendChild(testContainer);
+                
+                const visualizer = new window.KnowledgeGraphVisualizer('tempTestContainer');
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                results.visualization = !!testContainer.querySelector('svg');
+                document.body.removeChild(testContainer);
+                
+                const allPassed = Object.values(results).every(r => r);
+                
+                resultsDiv.innerHTML = `
+                    <div class="${allPassed ? 'success' : 'warning'}">
+                        <h4>${allPassed ? '✅ Full Integration Test Passed' : '⚠️ Some Tests Failed'}</h4>
+                        <p><strong>API Connection:</strong> ${results.api ? '✅ Pass' : '❌ Fail'}</p>
+                        <p><strong>Data Structure:</strong> ${results.data ? '✅ Pass' : '❌ Fail'}</p>
+                        <p><strong>Visualization:</strong> ${results.visualization ? '✅ Pass' : '❌ Fail'}</p>
+                        <br>
+                        <p><strong>Overall Status:</strong> ${allPassed ? 'Knowledge Graph Fix Successful!' : 'Some issues remain'}</p>
+                    </div>
+                `;
+                
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <div class="error">
+                        <h4>❌ Integration Test Failed</h4>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                        <pre>${error.stack}</pre>
+                    </div>
+                `;
+            }
+        }
+        
+        // Auto-run tests on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                console.log('🧪 Starting automatic test sequence...');
+                testAPIConnection();
+                setTimeout(testDataStructure, 1000);
+                setTimeout(testVisualization, 2000);
+                setTimeout(testFullIntegration, 3000);
+            }, 500);
+        });
+    </script>
+</body>
+</html>

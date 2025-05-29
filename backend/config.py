@@ -34,7 +34,7 @@ class Settings(BaseSettings):
     
     # Logging configuration
     log_level: str = Field(default="INFO", env="GODELOS_LOG_LEVEL")
-    log_file: Optional[str] = Field(default="backend/logs/godelos_backend.log", env="GODELOS_LOG_FILE")
+    log_file: Optional[str] = Field(default="logs/godelos_backend.log", env="GODELOS_LOG_FILE")
     
     # GödelOS system configuration
     godelos_initialization_timeout: int = Field(default=60, env="GODELOS_INIT_TIMEOUT")

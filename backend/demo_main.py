@@ -1,19 +1,38 @@
 #!/usr/bin/env python3
 """
-Simplified GödelOS Backend API for Demo
-Provides mock responses to test frontend integration
+GödelOS Demo Main Application
+Integrates GödelOS with cognitive transparency system for demonstration
 """
 
 import asyncio
 import json
 import logging
+import os
+import sys
 import time
+from contextlib import asynccontextmanager
 from typing import Dict, List, Optional, Any
 
 import uvicorn
 from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+
+# Add the parent directory to Python path for GödelOS imports
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+try:
+    from backend.godelos_integration import GödelOSIntegration
+    from backend.websocket_manager import WebSocketManager
+    from backend.cognitive_transparency_integration import cognitive_transparency_api
+    from backend.models import (
+        QueryRequest, QueryResponse, KnowledgeRequest, KnowledgeResponse,
+        CognitiveStateResponse, ErrorResponse
+    )
+    FULL_INTEGRATION = True
+except ImportError as e:
+    logging.warning(f"Full GödelOS integration not available: {e}")
+    FULL_INTEGRATION = False
 
 # Configure logging
 logging.basicConfig(
@@ -68,11 +87,146 @@ class CognitiveStateResponse(BaseModel):
     metacognitive_state: Dict[str, Any] = {}
     timestamp: float
 
+# Global instances
+godelos_integration: Optional[GödelOSIntegration] = None
+websocket_manager: Optional[WebSocketManager] = None
+cognitive_streaming_task: Optional[asyncio.Task] = None
+
+
+async def continuous_cognitive_streaming():
+    """Background task to continuously stream cognitive state updates."""
+    global godelos_integration, websocket_manager
+    
+    logger.info("Starting continuous cognitive streaming...")
+    
+    while True:
+        try:
+            # Only stream if there are active WebSocket connections and full integration is available
+            if FULL_INTEGRATION and websocket_manager and websocket_manager.has_connections() and godelos_integration:
+                # Get current cognitive state from GödelOS
+                cognitive_state = await godelos_integration.get_cognitive_state()
+                
+                # Format the data to match frontend expectations
+                formatted_data = {
+                    "timestamp": time.time(),
+                    "manifest_consciousness": {
+                        "attention_focus": cognitive_state.get("attention_focus", [{}])[0].get("salience", 0.5) * 100,
+                        "working_memory": [
+                            item.get("content", "Processing...")
+                            for item in cognitive_state.get("working_memory", {}).get("active_items", [])
+                        ] or ["System monitoring", "Background processing"]
+                    },
+                    "agentic_processes": [
+                        {
+                            "name": process.get("description", "Unknown Process"),
+                            "status": "active" if process.get("status") == "active" else "idle",
+                            "cpu_usage": process.get("progress", 0.5) * 100,
+                            "memory_usage": 50 + (process.get("priority", 5) * 5)
+                        }
+                        for process in cognitive_state.get("agentic_processes", [])
+                    ] or [
+                        {"name": "Query Parser", "status": "idle", "cpu_usage": 20, "memory_usage": 30},
+                        {"name": "Knowledge Retriever", "status": "idle", "cpu_usage": 15, "memory_usage": 25},
+                        {"name": "Inference Engine", "status": "active", "cpu_usage": 45, "memory_usage": 60},
+                        {"name": "Response Generator", "status": "idle", "cpu_usage": 10, "memory_usage": 20},
+                        {"name": "Meta-Reasoner", "status": "active", "cpu_usage": 35, "memory_usage": 40}
+                    ],
+                    "daemon_threads": [
+                        {
+                            "name": process.get("description", "Unknown Daemon"),
+                            "active": process.get("status") == "running",
+                            "activity_level": process.get("progress", 0.5) * 100
+                        }
+                        for process in cognitive_state.get("daemon_threads", [])
+                    ] or [
+                        {"name": "Memory Consolidation", "active": True, "activity_level": 60},
+                        {"name": "Background Learning", "active": True, "activity_level": 40},
+                        {"name": "System Monitoring", "active": True, "activity_level": 80},
+                        {"name": "Knowledge Indexing", "active": False, "activity_level": 10},
+                        {"name": "Pattern Recognition", "active": True, "activity_level": 70}
+                    ]
+                }
+                
+                # Broadcast cognitive state update
+                await websocket_manager.broadcast({
+                    "type": "cognitive_state_update",
+                    "timestamp": time.time(),
+                    "data": formatted_data
+                })
+                
+                logger.debug("Broadcasted cognitive state update")
+            
+            # Wait 4 seconds before next update
+            await asyncio.sleep(4)
+            
+        except Exception as e:
+            logger.error(f"Error in cognitive streaming: {e}")
+            await asyncio.sleep(5)  # Wait longer on error
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Application lifespan manager."""
+    global godelos_integration, websocket_manager, cognitive_streaming_task
+    
+    # Startup
+    logger.info("Initializing GödelOS Demo system...")
+    try:
+        if FULL_INTEGRATION:
+            # Initialize full GödelOS integration
+            godelos_integration = GödelOSIntegration()
+            await godelos_integration.initialize()
+            logger.info("GödelOS system initialized successfully")
+            
+            # Initialize websocket manager
+            websocket_manager = WebSocketManager()
+            
+            # Initialize cognitive transparency system
+            await cognitive_transparency_api.initialize(godelos_integration)
+            logger.info("Cognitive transparency system initialized successfully")
+            
+            # Start continuous cognitive streaming
+            cognitive_streaming_task = asyncio.create_task(continuous_cognitive_streaming())
+            logger.info("Started continuous cognitive streaming task")
+        else:
+            # Fallback to mock mode
+            logger.info("Running in mock mode - full GödelOS integration not available")
+        
+    except Exception as e:
+        logger.error(f"Failed to initialize system: {e}")
+        if not FULL_INTEGRATION:
+            logger.info("Continuing in mock mode...")
+        else:
+            raise
+    
+    yield
+    
+    # Shutdown
+    logger.info("Shutting down GödelOS Demo system...")
+    
+    # Stop cognitive streaming task
+    if cognitive_streaming_task:
+        cognitive_streaming_task.cancel()
+        try:
+            await cognitive_streaming_task
+        except asyncio.CancelledError:
+            pass
+        logger.info("Stopped cognitive streaming task")
+    
+    # Shutdown cognitive transparency system
+    if FULL_INTEGRATION:
+        await cognitive_transparency_api.shutdown()
+    
+    if godelos_integration:
+        await godelos_integration.shutdown()
+
+
 # Create FastAPI app
 app = FastAPI(
     title="GödelOS Demo API",
-    description="Simplified backend API for GödelOS web demonstration",
-    version="1.0.0"
+    description="Demo backend API for GödelOS web demonstration with cognitive transparency",
+    version="1.0.0",
+    lifespan=lifespan
 )
 
 # Configure CORS
@@ -84,7 +238,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# WebSocket connection manager
+# Include cognitive transparency routes if full integration is available
+if FULL_INTEGRATION:
+    app.include_router(cognitive_transparency_api.router)
+
+# WebSocket connection manager for fallback mode
 class ConnectionManager:
     def __init__(self):
         self.active_connections: List[WebSocket] = []
@@ -94,7 +252,8 @@ class ConnectionManager:
         self.active_connections.append(websocket)
 
     def disconnect(self, websocket: WebSocket):
-        self.active_connections.remove(websocket)
+        if websocket in self.active_connections:
+            self.active_connections.remove(websocket)
 
     async def broadcast(self, message: dict):
         for connection in self.active_connections:
@@ -103,7 +262,11 @@ class ConnectionManager:
             except:
                 pass
 
-manager = ConnectionManager()
+    def has_connections(self):
+        return len(self.active_connections) > 0
+
+# Fallback manager for when full integration is not available
+fallback_manager = ConnectionManager()
 
 @app.get("/")
 async def root():
@@ -132,82 +295,120 @@ async def health_check():
 
 @app.post("/api/query", response_model=QueryResponse)
 async def process_query(request: QueryRequest):
-    """Process a natural language query with mock responses."""
-    start_time = time.time()
+    """Process a natural language query."""
+    if FULL_INTEGRATION and godelos_integration:
+        # Use full GödelOS integration
+        try:
+            logger.info(f"Processing query: {request.query}")
+            
+            # Process the query through GödelOS
+            result = await godelos_integration.process_natural_language_query(
+                request.query,
+                context=request.context,
+                include_reasoning=request.include_reasoning
+            )
+            
+            # Broadcast cognitive events if WebSocket clients are connected
+            if websocket_manager and websocket_manager.has_connections():
+                cognitive_event = {
+                    "type": "query_processed",
+                    "timestamp": time.time(),
+                    "query": request.query,
+                    "response": result["response"],
+                    "reasoning_steps": result.get("reasoning_steps", []),
+                    "inference_time_ms": result.get("inference_time_ms", 0)
+                }
+                await websocket_manager.broadcast(cognitive_event)
+            
+            return QueryResponse(
+                response=result["response"],
+                confidence=result.get("confidence", 1.0),
+                reasoning_steps=result.get("reasoning_steps", []),
+                inference_time_ms=result.get("inference_time_ms", 0),
+                knowledge_used=result.get("knowledge_used", [])
+            )
+            
+        except Exception as e:
+            logger.error(f"Error processing query: {e}")
+            raise HTTPException(status_code=500, detail=f"Query processing failed: {str(e)}")
     
-    # Generate mock response based on query
-    query_lower = request.query.lower()
-    
-    if "consciousness" in query_lower:
-        response_text = "Consciousness in GödelOS is modeled as a multi-layered architecture with manifest consciousness at the top level, supported by agentic processes and daemon threads that handle various cognitive functions."
-        knowledge_used = ["consciousness_model", "cognitive_architecture", "awareness_theory"]
-    elif "artificial intelligence" in query_lower or "ai" in query_lower:
-        response_text = "Artificial Intelligence in the GödelOS framework combines symbolic reasoning, probabilistic inference, and metacognitive monitoring to create a comprehensive cognitive system."
-        knowledge_used = ["ai_definition", "symbolic_reasoning", "probabilistic_logic"]
-    elif "reasoning" in query_lower:
-        response_text = "The reasoning system employs multiple inference engines including resolution-based theorem proving, modal logic reasoning, and analogical reasoning to process complex logical queries."
-        knowledge_used = ["inference_engines", "logical_reasoning", "theorem_proving"]
     else:
-        response_text = f"I've processed your query about '{request.query}' using the GödelOS knowledge base and reasoning systems. The system analyzed the semantic content and retrieved relevant information."
-        knowledge_used = ["general_knowledge", "semantic_analysis", "query_processing"]
-    
-    # Generate reasoning steps
-    reasoning_steps = [
-        ReasoningStep(
-            step_number=1,
-            operation="parse",
-            description="Parse and analyze the natural language query",
-            premises=["natural_language_input"],
-            conclusion="structured_query_representation",
-            confidence=0.95
-        ),
-        ReasoningStep(
-            step_number=2,
-            operation="retrieve",
-            description="Search knowledge base for relevant information",
-            premises=["structured_query", "knowledge_base"],
-            conclusion="relevant_knowledge_items",
-            confidence=0.88
-        ),
-        ReasoningStep(
-            step_number=3,
-            operation="reason",
-            description="Apply inference rules to derive conclusions",
-            premises=["relevant_knowledge", "inference_rules"],
-            conclusion="logical_conclusions",
-            confidence=0.82
-        ),
-        ReasoningStep(
-            step_number=4,
-            operation="generate",
-            description="Generate natural language response",
-            premises=["logical_conclusions", "language_model"],
-            conclusion="natural_language_response",
-            confidence=0.90
+        # Fallback to mock responses
+        start_time = time.time()
+        
+        # Generate mock response based on query
+        query_lower = request.query.lower()
+        
+        if "consciousness" in query_lower:
+            response_text = "Consciousness in GödelOS is modeled as a multi-layered architecture with manifest consciousness at the top level, supported by agentic processes and daemon threads that handle various cognitive functions."
+            knowledge_used = ["consciousness_model", "cognitive_architecture", "awareness_theory"]
+        elif "artificial intelligence" in query_lower or "ai" in query_lower:
+            response_text = "Artificial Intelligence in the GödelOS framework combines symbolic reasoning, probabilistic inference, and metacognitive monitoring to create a comprehensive cognitive system."
+            knowledge_used = ["ai_definition", "symbolic_reasoning", "probabilistic_logic"]
+        elif "reasoning" in query_lower:
+            response_text = "The reasoning system employs multiple inference engines including resolution-based theorem proving, modal logic reasoning, and analogical reasoning to process complex logical queries."
+            knowledge_used = ["inference_engines", "logical_reasoning", "theorem_proving"]
+        else:
+            response_text = f"I've processed your query about '{request.query}' using the GödelOS knowledge base and reasoning systems. The system analyzed the semantic content and retrieved relevant information."
+            knowledge_used = ["general_knowledge", "semantic_analysis", "query_processing"]
+        
+        # Generate reasoning steps
+        reasoning_steps = [
+            ReasoningStep(
+                step_number=1,
+                operation="parse",
+                description="Parse and analyze the natural language query",
+                premises=["natural_language_input"],
+                conclusion="structured_query_representation",
+                confidence=0.95
+            ),
+            ReasoningStep(
+                step_number=2,
+                operation="retrieve",
+                description="Search knowledge base for relevant information",
+                premises=["structured_query", "knowledge_base"],
+                conclusion="relevant_knowledge_items",
+                confidence=0.88
+            ),
+            ReasoningStep(
+                step_number=3,
+                operation="reason",
+                description="Apply inference rules to derive conclusions",
+                premises=["relevant_knowledge", "inference_rules"],
+                conclusion="logical_conclusions",
+                confidence=0.82
+            ),
+            ReasoningStep(
+                step_number=4,
+                operation="generate",
+                description="Generate natural language response",
+                premises=["logical_conclusions", "language_model"],
+                conclusion="natural_language_response",
+                confidence=0.90
+            )
+        ]
+        
+        inference_time = (time.time() - start_time) * 1000
+        
+        # Broadcast cognitive event via WebSocket
+        if fallback_manager.has_connections():
+            cognitive_event = {
+                "type": "query_processed",
+                "timestamp": time.time(),
+                "query": request.query,
+                "response": response_text,
+                "reasoning_steps": [step.dict() for step in reasoning_steps],
+                "inference_time_ms": inference_time
+            }
+            await fallback_manager.broadcast(cognitive_event)
+        
+        return QueryResponse(
+            response=response_text,
+            confidence=0.85,
+            reasoning_steps=reasoning_steps,
+            inference_time_ms=inference_time,
+            knowledge_used=knowledge_used
         )
-    ]
-    
-    inference_time = (time.time() - start_time) * 1000
-    
-    # Broadcast cognitive event via WebSocket
-    if manager.active_connections:
-        cognitive_event = {
-            "type": "query_processed",
-            "timestamp": time.time(),
-            "query": request.query,
-            "response": response_text,
-            "reasoning_steps": [step.dict() for step in reasoning_steps],
-            "inference_time_ms": inference_time
-        }
-        await manager.broadcast(cognitive_event)
-    
-    return QueryResponse(
-        response=response_text,
-        confidence=0.85,
-        reasoning_steps=reasoning_steps,
-        inference_time_ms=inference_time,
-        knowledge_used=knowledge_used
-    )
 
 @app.get("/api/knowledge", response_model=KnowledgeResponse)
 async def get_knowledge(
@@ -381,38 +582,84 @@ async def get_cognitive_state():
 @app.websocket("/ws/cognitive-stream")
 async def cognitive_stream_websocket(websocket: WebSocket):
     """WebSocket endpoint for streaming real-time cognitive events."""
-    await manager.connect(websocket)
-    
-    try:
-        # Send initial cognitive state
-        initial_state = await get_cognitive_state()
-        await websocket.send_text(json.dumps({
-            "type": "initial_state",
-            "timestamp": time.time(),
-            "data": initial_state.dict()
-        }))
+    if FULL_INTEGRATION and websocket_manager:
+        # Use full integration WebSocket manager
+        await websocket_manager.connect(websocket)
         
-        # Keep connection alive
-        while True:
-            try:
-                data = await websocket.receive_text()
-                message = json.loads(data)
-                
-                if message.get("type") == "subscribe":
-                    await websocket.send_text(json.dumps({
-                        "type": "subscription_confirmed",
-                        "event_types": message.get("event_types", [])
-                    }))
-                
-            except WebSocketDisconnect:
-                break
-            except Exception as e:
-                logger.error(f"WebSocket error: {e}")
-                
-    except WebSocketDisconnect:
-        pass
-    finally:
-        manager.disconnect(websocket)
+        try:
+            # Send initial cognitive state
+            if godelos_integration:
+                initial_state = await godelos_integration.get_cognitive_state()
+                await websocket.send_json({
+                    "type": "initial_state",
+                    "timestamp": time.time(),
+                    "data": initial_state
+                })
+            
+            # Keep connection alive and handle incoming messages
+            while True:
+                try:
+                    # Wait for messages from client (e.g., subscription preferences)
+                    data = await websocket.receive_text()
+                    message = json.loads(data)
+                    
+                    if message.get("type") == "subscribe":
+                        # Handle subscription to specific event types
+                        event_types = message.get("event_types", [])
+                        await websocket_manager.subscribe_to_events(websocket, event_types)
+                        await websocket.send_json({
+                            "type": "subscription_confirmed",
+                            "event_types": event_types
+                        })
+                    
+                except WebSocketDisconnect:
+                    break
+                except Exception as e:
+                    logger.error(f"WebSocket error: {e}")
+                    await websocket.send_json({
+                        "type": "error",
+                        "message": str(e)
+                    })
+                    
+        except WebSocketDisconnect:
+            pass
+        finally:
+            websocket_manager.disconnect(websocket)
+    
+    else:
+        # Fallback to mock WebSocket manager
+        await fallback_manager.connect(websocket)
+        
+        try:
+            # Send initial cognitive state
+            initial_state = await get_cognitive_state()
+            await websocket.send_text(json.dumps({
+                "type": "initial_state",
+                "timestamp": time.time(),
+                "data": initial_state.dict()
+            }))
+            
+            # Keep connection alive
+            while True:
+                try:
+                    data = await websocket.receive_text()
+                    message = json.loads(data)
+                    
+                    if message.get("type") == "subscribe":
+                        await websocket.send_text(json.dumps({
+                            "type": "subscription_confirmed",
+                            "event_types": message.get("event_types", [])
+                        }))
+                    
+                except WebSocketDisconnect:
+                    break
+                except Exception as e:
+                    logger.error(f"WebSocket error: {e}")
+                    
+        except WebSocketDisconnect:
+            pass
+        finally:
+            fallback_manager.disconnect(websocket)
 
 if __name__ == "__main__":
     uvicorn.run(

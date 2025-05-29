@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Fix Verification</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test { margin: 10px 0; padding: 10px; border: 1px solid #ddd; }
+        .success { background: #d4edda; }
+        .error { background: #f8d7da; }
+    </style>
+</head>
+<body>
+    <h1>🔧 Quick Fix Verification</h1>
+    
+    <div id="test1" class="test">
+        <h3>Test 1: KnowledgeGraphVisualizer Constructor</h3>
+        <div id="result1">Testing...</div>
+    </div>
+    
+    <div id="test2" class="test">
+        <h3>Test 2: API Client Data Structure</h3>
+        <div id="result2">Testing...</div>
+    </div>
+    
+    <div id="test3" class="test">
+        <h3>Test 3: Basic Visualization Creation</h3>
+        <div id="result3">Testing...</div>
+        <div id="testViz" style="width: 200px; height: 100px; border: 1px solid #ccc;"></div>
+    </div>
+
+    <!-- Load required scripts -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="/src/scripts/api-client.js"></script>
+    <script src="/src/scripts/knowledge-graph-visualizer.js"></script>
+
+    <script>
+        async function runTests() {
+            // Wait for scripts to load
+            console.log('Starting tests...');
+            console.log('KnowledgeGraphVisualizer type:', typeof window.KnowledgeGraphVisualizer);
+            console.log('knowledgeGraphVisualizer instance:', !!window.knowledgeGraphVisualizer);
+            
+            // Test 1: Constructor availability
+            const test1 = document.getElementById('test1');
+            const result1 = document.getElementById('result1');
+            
+            if (typeof window.KnowledgeGraphVisualizer === 'function') {
+                result1.innerHTML = '✅ KnowledgeGraphVisualizer constructor is available';
+                test1.className = 'test success';
+            } else {
+                result1.innerHTML = `❌ KnowledgeGraphVisualizer constructor not found (type: ${typeof window.KnowledgeGraphVisualizer})`;
+                test1.className = 'test error';
+            }
+            
+            // Test 2: API Client data
+            const test2 = document.getElementById('test2');
+            const result2 = document.getElementById('result2');
+            
+            try {
+                const apiClient = new APIClient('http://localhost:8000');
+                const data = await apiClient.getKnowledgeGraph();
+                
+                if (data && data.graph_data && data.graph_data.nodes && data.graph_data.links) {
+                    result2.innerHTML = `✅ API Client returns data: ${data.graph_data.nodes.length} nodes, ${data.graph_data.links.length} links`;
+                    test2.className = 'test success';
+                } else {
+                    result2.innerHTML = '❌ API Client returns empty or invalid data';
+                    test2.className = 'test error';
+                }
+            } catch (error) {
+                result2.innerHTML = `❌ API Client error: ${error.message}`;
+                test2.className = 'test error';
+            }
+            
+            // Test 3: Basic visualization
+            const test3 = document.getElementById('test3');
+            const result3 = document.getElementById('result3');
+            
+            try {
+                if (typeof window.KnowledgeGraphVisualizer === 'function') {
+                    const viz = new window.KnowledgeGraphVisualizer('testViz');
+                    setTimeout(() => {
+                        const svg = document.querySelector('#testViz svg');
+                        if (svg) {
+                            result3.innerHTML = '✅ Visualization SVG created successfully';
+                            test3.className = 'test success';
+                        } else {
+                            result3.innerHTML = '❌ Visualization SVG not created';
+                            test3.className = 'test error';
+                        }
+                    }, 1000);
+                } else {
+                    result3.innerHTML = '❌ Cannot test visualization - constructor not available';
+                    test3.className = 'test error';
+                }
+            } catch (error) {
+                result3.innerHTML = `❌ Visualization error: ${error.message}`;
+                test3.className = 'test error';
+            }
+        }
+        
+        // Wait for all scripts to load properly
+        function waitForScripts() {
+            console.log('Checking if scripts are loaded...');
+            
+            // Check if all required globals are available
+            if (typeof window.APIClient === 'function' && 
+                typeof d3 !== 'undefined') {
+                
+                console.log('Core scripts loaded, running tests...');
+                runTests();
+            } else {
+                console.log('Still waiting for scripts...');
+                setTimeout(waitForScripts, 100);
+            }
+        }
+        
+        // Start checking when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(waitForScripts, 500);
+        });
+    </script>
+</body>
+</html>

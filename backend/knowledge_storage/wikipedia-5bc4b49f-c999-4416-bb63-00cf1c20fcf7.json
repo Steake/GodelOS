@@ -1,0 +1,36 @@
+{
+  "id": "wikipedia-5bc4b49f-c999-4416-bb63-00cf1c20fcf7",
+  "content": "Wikipedia content for: Test Article",
+  "knowledge_type": "fact",
+  "title": "Test Article",
+  "source": {
+    "source_type": "wikipedia",
+    "source_identifier": "Test Article",
+    "metadata": {
+      "source": "debug_test"
+    }
+  },
+  "import_id": "5bc4b49f-c999-4416-bb63-00cf1c20fcf7",
+  "extracted_at": 1748449023.675767,
+  "chunks": [],
+  "relationships": [],
+  "confidence": 0.8,
+  "validation_status": "pending",
+  "quality_score": 0.8,
+  "categories": [
+    "wikipedia"
+  ],
+  "auto_categories": [],
+  "manual_categories": [
+    "wikipedia"
+  ],
+  "access_count": 0,
+  "last_accessed": null,
+  "usage_context": [],
+  "metadata": {
+    "source": "debug_test",
+    "wikipedia_page": "Test Article",
+    "language": "en"
+  },
+  "annotations": []
+}

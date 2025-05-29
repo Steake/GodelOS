@@ -1,0 +1,44 @@
+{
+  "id": "text-f0a5f275-89e4-4bd5-a06a-c073486f7b65",
+  "content": "Consciousness is awareness. Cognition involves thinking.",
+  "knowledge_type": "fact",
+  "title": "Test Concepts",
+  "source": {
+    "source_type": "text",
+    "source_identifier": "test_data",
+    "metadata": {
+      "type": "educational"
+    }
+  },
+  "import_id": "f0a5f275-89e4-4bd5-a06a-c073486f7b65",
+  "extracted_at": 1748463639.680099,
+  "chunks": [],
+  "relationships": [],
+  "confidence": 0.9,
+  "validation_status": "pending",
+  "quality_score": 0.85,
+  "categories": [
+    "manual"
+  ],
+  "auto_categories": [],
+  "manual_categories": [
+    "manual"
+  ],
+  "access_count": 0,
+  "last_accessed": null,
+  "usage_context": [],
+  "metadata": {
+    "word_count": 6,
+    "char_count": 56,
+    "chunks": 1,
+    "keywords": [
+      "consciousness",
+      "awareness",
+      "cognition",
+      "involves",
+      "thinking"
+    ],
+    "language": "en"
+  },
+  "annotations": []
+}
