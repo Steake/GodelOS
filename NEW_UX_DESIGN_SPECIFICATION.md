@@ -549,53 +549,3121 @@ src/scripts/
 .text-code { font-family: 'JetBrains Mono'; }            /* Code/data */
 ```
 
-#### Component System
-```css
-/* Unified Button System */
-.btn {
-  padding: 0.5rem 1rem;
-  border-radius: 0.375rem;
-  font-weight: 500;
-  transition: all 0.15s ease;
+## Svelte-Based Architecture Design
+
+### Why Svelte for GödelOS
+
+**Perfect Match for Cognitive Transparency:**
+- **Reactive by Default**: Cognitive state changes automatically propagate through UI
+- **No Virtual DOM Overhead**: Critical for real-time cognitive monitoring performance
+- **Component-Based**: Natural fit for modular cognitive interfaces
+- **Small Bundle Size**: Essential for fast cognitive transparency loading
+- **Built-in State Management**: Svelte stores perfect for cognitive state tracking
+
+### Svelte Component Architecture
+
+```
+src/
+├── components/
+│   ├── core/
+│   │   ├── QueryInterface.svelte        // Main query input with modes
+│   │   ├── ResponseDisplay.svelte       // Primary response area
+│   │   └── CognitiveStateMonitor.svelte // Live cognitive transparency
+│   ├── transparency/
+│   │   ├── ReflectionVisualization.svelte    // Multi-level reflection
+│   │   ├── ResourceAllocation.svelte         // Cognitive load display
+│   │   ├── ProcessInsight.svelte             // Expandable reasoning
+│   │   └── UncertaintyIndicator.svelte       // Confidence visualization
+│   ├── knowledge/
+│   │   ├── SmartImport.svelte           // Auto-detecting import
+│   │   ├── KnowledgeGraph.svelte        // Interactive knowledge network
+│   │   ├── ConceptEvolution.svelte      // Knowledge development timeline
+│   │   └── SourceTracker.svelte         // Knowledge provenance
+│   ├── evolution/
+│   │   ├── CapabilityDashboard.svelte   // Real-time capability assessment
+│   │   ├── ModificationProposals.svelte // Self-improvement suggestions
+│   │   ├── ArchitectureTimeline.svelte  // System evolution history
+│   │   └── CollaborativeSession.svelte  // Human-AI partnership
+│   └── ui/
+│       ├── Button.svelte                // Unified button component
+│       ├── Card.svelte                  // Flexible card container
+│       ├── ProgressBar.svelte           // Confidence/progress display
+│       ├── Disclosure.svelte            // Progressive disclosure
+│       └── LoadingSpinner.svelte        // Cognitive processing indicator
+├── stores/
+│   ├── cognitive.js                     // Cognitive state management
+│   ├── knowledge.js                     // Knowledge base state
+│   ├── evolution.js                     // System evolution tracking
+│   └── ui.js                           // UI state and preferences
+├── utils/
+│   ├── websocket.js                     // WebSocket cognitive streaming
+│   ├── api.js                          // Backend API integration
+│   ├── formatting.js                   // Data display utilities
+│   └── animations.js                   // Smooth transition helpers
+└── App.svelte                          // Main application container
+```
+
+### Reactive Cognitive State Management
+
+```javascript
+// stores/cognitive.js - Svelte store for real-time cognitive state
+import { writable, derived } from 'svelte/store';
+
+// Core cognitive state
+export const cognitiveState = writable({
+  manifestConsciousness: {
+    attention: null,
+    workingMemory: [],
+    processingLoad: 0
+  },
+  agenticProcesses: [],
+  daemonThreads: [],
+  systemHealth: {
+    inferenceEngine: 0,
+    knowledgeStore: 0,
+    reflectionEngine: 0,
+    learningModules: 0
+  },
+  alerts: []
+});
+
+// Derived stores for specific UI components
+export const attentionFocus = derived(
+  cognitiveState,
+  $state => $state.manifestConsciousness.attention
+);
+
+export const processingLoad = derived(
+  cognitiveState,
+  $state => $state.manifestConsciousness.processingLoad
+);
+
+export const activeAgents = derived(
+  cognitiveState,
+  $state => $state.agenticProcesses.filter(agent => agent.status === 'active')
+);
+
+// WebSocket integration for real-time updates
+export function initCognitiveStream() {
+  const ws = new WebSocket('ws://localhost:8000/ws/cognitive_state');
+  
+  ws.onmessage = (event) => {
+    const update = JSON.parse(event.data);
+    cognitiveState.update(state => ({
+      ...state,
+      ...update
+    }));
+  };
+  
+  return ws;
 }
+```
 
-.btn-primary { /* Query actions */ }
-.btn-secondary { /* Supporting actions */ }
-.btn-ghost { /* Subtle actions */ }
+### Svelte Component Examples
 
-/* Card System */
-.card {
-  background: var(--bg-secondary);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  border: 1px solid rgba(255,255,255,0.1);
-}
+#### 1. Real-Time Cognitive State Monitor
 
-.card-response { /* Main response cards */ }
-.card-process { /* Transparency cards */ }
-.card-knowledge { /* Knowledge cards */ }
+```svelte
+<!-- components/core/CognitiveStateMonitor.svelte -->
+<script>
+  import { cognitiveState, attentionFocus, activeAgents } from '../../stores/cognitive.js';
+  import { slide } from 'svelte/transition';
+  import { quintOut } from 'svelte/easing';
+  
+  export let expanded = false;
+  
+  $: manifestConsciousness = $cognitiveState.manifestConsciousness;
+  $: daemonThreads = $cognitiveState.daemonThreads;
+  $: systemHealth = $cognitiveState.systemHealth;
+</script>
 
-/* Progressive Disclosure */
-.disclosure {
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 0.375rem;
-}
+<div class="cognitive-monitor" class:expanded>
+  <button 
+    class="monitor-toggle"
+    on:click={() => expanded = !expanded}
+  >
+    📊 Live Cognitive State
+    <span class="toggle-icon" class:rotated={expanded}>▼</span>
+  </button>
+  
+  {#if expanded}
+    <div class="monitor-content" transition:slide={{ duration: 300, easing: quintOut }}>
+      <!-- Manifest Consciousness -->
+      <section class="consciousness-section">
+        <h3>🧠 Manifest Consciousness</h3>
+        <div class="attention-display">
+          <span class="label">🎯 Attention:</span>
+          <span class="value">{$attentionFocus || 'Idle'}</span>
+        </div>
+        <div class="working-memory">
+          <span class="label">🧮 Working Memory:</span>
+          <span class="value">
+            {manifestConsciousness.workingMemory.length}/12 slots occupied
+          </span>
+        </div>
+        <div class="processing-load">
+          <span class="label">⚡ Processing Load:</span>
+          <div class="progress-bar">
+            <div 
+              class="progress-fill" 
+              style="width: {manifestConsciousness.processingLoad}%"
+            ></div>
+          </div>
+          <span class="percentage">{manifestConsciousness.processingLoad}%</span>
+        </div>
+      </section>
+      
+      <!-- Agentic Processes -->
+      <section class="agents-section">
+        <h3>🤖 Agentic Processes ({$activeAgents.length} active)</h3>
+        {#each $activeAgents as agent (agent.id)}
+          <div class="agent-item" transition:slide>
+            <span class="agent-name">{agent.name}</span>
+            <span class="agent-task">{agent.currentTask}</span>
+            <span class="agent-domain">[{agent.domain}]</span>
+          </div>
+        {/each}
+      </section>
+      
+      <!-- Daemon Threads -->
+      <section class="daemons-section">
+        <h3>🔄 Daemon Threads ({daemonThreads.length} running)</h3>
+        {#each daemonThreads as daemon (daemon.id)}
+          <div class="daemon-item">
+            <span class="daemon-icon">{daemon.icon}</span>
+            <span class="daemon-name">{daemon.name}</span>
+            <span class="daemon-status" class:active={daemon.status === 'active'}>
+              {daemon.status}
+            </span>
+          </div>
+        {/each}
+      </section>
+      
+      <!-- System Health -->
+      <section class="health-section">
+        <h3>💚 System Health</h3>
+        {#each Object.entries(systemHealth) as [component, health]}
+          <div class="health-item">
+            <span class="component-name">{component}:</span>
+            <div class="health-bar">
+              <div 
+                class="health-fill" 
+                class:healthy={health >= 80}
+                class:warning={health >= 60 && health < 80}
+                class:critical={health < 60}
+                style="width: {health}%"
+              ></div>
+            </div>
+            <span class="health-percentage">{health}% healthy</span>
+          </div>
+        {/each}
+      </section>
+    </div>
+  {/if}
+</div>
 
-.disclosure-trigger {
-  padding: 0.75rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+<style>
+  .cognitive-monitor {
+    background: var(--bg-secondary);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    margin: 1rem 0;
+  }
+  
+  .monitor-toggle {
+    width: 100%;
+    padding: 0.75rem;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .toggle-icon {
+    transition: transform 0.2s ease;
+  }
+  
+  .toggle-icon.rotated {
+    transform: rotate(180deg);
+  }
+  
+  .monitor-content {
+    padding: 0 0.75rem 0.75rem;
+  }
+  
+  .consciousness-section,
+  .agents-section,
+  .daemons-section,
+  .health-section {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: var(--bg-tertiary);
+    border-radius: 0.375rem;
+  }
+  
+  .consciousness-section h3,
+  .agents-section h3,
+  .daemons-section h3,
+  .health-section h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+  }
+  
+  .attention-display,
+  .working-memory {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .processing-load {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .progress-bar {
+    flex: 1;
+    height: 0.5rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: var(--primary-blue);
+    transition: width 0.3s ease;
+  }
+  
+  .agent-item,
+  .daemon-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  
+  .daemon-status.active {
+    color: var(--confidence-high);
+  }
+  
+  .health-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+  }
+  
+  .health-bar {
+    flex: 1;
+    height: 0.375rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+  
+  .health-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+  }
+  
+  .health-fill.healthy {
+    background: var(--confidence-high);
+  }
+  
+  .health-fill.warning {
+    background: var(--confidence-med);
+  }
+  
+  .health-fill.critical {
+    background: var(--confidence-low);
+  }
+</style>
+```
 
-.disclosure-content {
-  padding: 0 0.75rem 0.75rem;
-  display: none;
-}
+#### 2. Smart Knowledge Import Component
 
-.disclosure[data-state="open"] .disclosure-content {
-  display: block;
+```svelte
+<!-- components/knowledge/SmartImport.svelte -->
+<script>
+  import { createEventDispatcher } from 'svelte';
+  import { knowledgeStore } from '../../stores/knowledge.js';
+  import { fade, scale } from 'svelte/transition';
+  
+  const dispatch = createEventDispatcher();
+  
+  let dragActive = false;
+  let inputValue = '';
+  let detectedType = null;
+  let importOptions = {
+    includeReferences: true,
+    extractConcepts: true,
+    technicalOnly: false
+  };
+  let importing = false;
+  let importProgress = 0;
+  
+  // Auto-detect content type
+  $: {
+    if (inputValue) {
+      detectedType = detectContentType(inputValue);
+    } else {
+      detectedType = null;
+    }
+  }
+  
+  function detectContentType(input) {
+    if (input.includes('wikipedia.org')) {
+      return { type: 'wikipedia', title: extractWikipediaTitle(input) };
+    } else if (input.includes('arxiv.org')) {
+      return { type: 'academic', title: 'Academic Paper' };
+    } else if (input.startsWith('http')) {
+      return { type: 'webpage', title: 'Web Page' };
+    } else if (input.length > 100) {
+      return { type: 'text', title: 'Text Content' };
+    }
+    return null;
+  }
+  
+  function extractWikipediaTitle(url) {
+    const match = url.match(/\/wiki\/([^#?]+)/);
+    return match ? decodeURIComponent(match[1]).replace(/_/g, ' ') : 'Wikipedia Article';
+  }
+  
+  function handleDrop(event) {
+    event.preventDefault();
+    dragActive = false;
+    
+    const files = Array.from(event.dataTransfer.files);
+    if (files.length > 0) {
+      handleFileImport(files[0]);
+    }
+  }
+  
+  function handleDragOver(event) {
+    event.preventDefault();
+    dragActive = true;
+  }
+  
+  function handleDragLeave() {
+    dragActive = false;
+  }
+  
+  async function handleImport() {
+    if (!inputValue && !detectedType) return;
+    
+    importing = true;
+    importProgress = 0;
+    
+    try {
+      const response = await fetch('/api/knowledge/import', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: inputValue,
+          type: detectedType?.type,
+          options: importOptions
+        })
+      });
+      
+      if (response.ok) {
+        const result = await response.json();
+        knowledgeStore.update(store => ({
+          ...store,
+          items: [...store.items, result]
+        }));
+        
+        dispatch('imported', result);
+        inputValue = '';
+        importProgress = 100;
+        
+        setTimeout(() => {
+          importing = false;
+          importProgress = 0;
+        }, 1000);
+      }
+    } catch (error) {
+      console.error('Import failed:', error);
+      importing = false;
+    }
+  }
+</script>
+
+<div class="smart-import">
+  <div 
+    class="import-area"
+    class:drag-active={dragActive}
+    on:drop={handleDrop}
+    on:dragover={handleDragOver}
+    on:dragleave={handleDragLeave}
+  >
+    <textarea
+      bind:value={inputValue}
+      placeholder="Paste URL or text, or drag files here"
+      class="import-input"
+      rows="3"
+    ></textarea>
+    
+    {#if detectedType}
+      <div class="detection-result" transition:fade>
+        <span class="detection-icon">🔍</span>
+        <span class="detection-text">
+          Auto-detected: {detectedType.type} 
+          <strong>"{detectedType.title}"</strong>
+        </span>
+      </div>
+    {/if}
+    
+    {#if detectedType}
+      <div class="import-options" transition:scale>
+        <label>
+          <input type="checkbox" bind:checked={importOptions.includeReferences}>
+          Include references
+        </label>
+        <label>
+          <input type="checkbox" bind:checked={importOptions.extractConcepts}>
+          Extract key concepts
+        </label>
+        <label>
+          <input type="checkbox" bind:checked={importOptions.technicalOnly}>
+          Technical details only
+        </label>
+      </div>
+    {/if}
+    
+    <div class="import-actions">
+      <button 
+        class="btn btn-primary"
+        disabled={!inputValue || importing}
+        on:click={handleImport}
+      >
+        {importing ? 'Importing...' : 'Import to GödelOS'}
+      </button>
+      
+      {#if inputValue}
+        <button 
+          class="btn btn-ghost"
+          on:click={() => inputValue = ''}
+        >
+          Cancel
+        </button>
+      {/if}
+    </div>
+    
+    {#if importing}
+      <div class="import-progress" transition:fade>
+        <div class="progress-bar">
+          <div 
+            class="progress-fill" 
+            style="width: {importProgress}%"
+          ></div>
+        </div>
+        <div class="progress-text">
+          Processing knowledge and extracting concepts...
+        </div>
+      </div>
+    {/if}
+  </div>
+</div>
+
+<style>
+  .smart-import {
+    background: var(--bg-secondary);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .import-area {
+    position: relative;
+  }
+  
+  .import-area.drag-active {
+    border: 2px dashed var(--primary-blue);
+    background: rgba(37, 99, 235, 0.1);
+  }
+  
+  .import-input {
+    width: 100%;
+    min-height: 4rem;
+    padding: 0.75rem;
+    background: var(--bg-tertiary);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0.375rem;
+    color: var(--text-primary);
+    font-family: inherit;
+    resize: vertical;
+  }
+  
+  .import-input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+  }
+  
+  .detection-result {
+    margin: 0.75rem 0;
+    padding: 0.5rem;
+    background: rgba(13, 148, 136, 0.1);
+    border: 1px solid var(--primary-teal);
+    border-radius: 0.375rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .import-options {
+    display: flex;
+    gap: 1rem;
+    margin: 0.75rem 0;
+    font-size: 0.875rem;
+  }
+  
+  .import-options label {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--text-secondary);
+  }
+  
+  .import-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  
+  .import-progress {
+    margin-top: 0.75rem;
+  }
+  
+  .progress-bar {
+    height: 0.5rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 0.25rem;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: var(--primary-teal);
+    transition: width 0.3s ease;
+  }
+  
+  .progress-text {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+</style>
+```
+
+### Comprehensive Svelte Architecture
+
+#### Core Store Architecture
+```javascript
+// stores/cognitive.js - Primary cognitive state management
+import { writable, derived, readable } from 'svelte/store';
+import { browser } from '$app/environment';
+
+// Primary cognitive state store
+export const cognitiveState = writable({
+  manifestConsciousness: {
+    attention: null,
+    workingMemory: { slots: 0, capacity: 12 },
+    processingLoad: 0
+  },
+  agenticProcesses: [],
+  daemonThreads: [],
+  systemHealth: {
+    inferenceEngine: 0,
+    knowledgeStore: 0,
+    reflectionEngine: 0,
+    learningModules: 0
+  },
+  alerts: []
+});
+
+// Real-time WebSocket connection store
+export const wsConnection = readable(null, (set) => {
+  if (!browser) return;
+  
+  const ws = new WebSocket('ws://localhost:8080/api/cognitive/stream');
+  
+  ws.onopen = () => {
+    console.log('Cognitive state WebSocket connected');
+    set(ws);
+  };
+  
+  ws.onmessage = (event) => {
+    const update = JSON.parse(event.data);
+    cognitiveState.update(state => ({ ...state, ...update }));
+  };
+  
+  ws.onclose = () => {
+    console.log('Cognitive state WebSocket disconnected');
+    set(null);
+  };
+  
+  return () => ws.close();
+});
+
+// stores/evolution.js - System evolution and self-modification state
+export const evolutionState = writable({
+  capabilities: {},
+  proposals: [],
+  architectureHistory: [],
+  currentVersion: '2.3.7',
+  learningProgress: {},
+  modificationQueue: []
+});
+
+// Derived stores for reactive UI updates
+export const pendingProposals = derived(
+  evolutionState,
+  $state => $state.proposals.filter(p => p.status === 'pending')
+);
+
+export const capabilityTrends = derived(
+  evolutionState,
+  $state => {
+    const trends = {};
+    Object.entries($state.capabilities).forEach(([capability, data]) => {
+      if (data.history && data.history.length > 1) {
+        const recent = data.history.slice(-7); // Last 7 days
+        const change = recent[recent.length - 1].value - recent[0].value;
+        trends[capability] = {
+          change,
+          direction: change > 0 ? 'up' : change < 0 ? 'down' : 'stable',
+          percentage: Math.abs(change)
+        };
+      }
+    });
+    return trends;
+  }
+);
+
+export const systemHealthStatus = derived(
+  cognitiveState,
+  $state => {
+    const health = $state.systemHealth;
+    const average = Object.values(health).reduce((a, b) => a + b, 0) / Object.keys(health).length;
+    return {
+      overall: average,
+      status: average >= 80 ? 'healthy' : average >= 60 ? 'warning' : 'critical',
+      components: health
+    };
+  }
+);
+
+// stores/knowledge.js - Knowledge state with reactive graph updates
+export const knowledgeStore = writable({
+  items: [],
+  connections: [],
+  conceptEvolution: {},
+  importQueue: [],
+  graphLayout: null
+});
+
+export const activeKnowledgeGraph = derived(
+  knowledgeStore,
+  $store => {
+    // Transform knowledge items into graph format for visualization
+    const nodes = $store.items.map(item => ({
+      id: item.id,
+      label: item.title,
+      group: item.type,
+      level: item.confidence || 0.5
+    }));
+    
+    const edges = $store.connections.map(conn => ({
+      from: conn.source,
+      to: conn.target,
+      strength: conn.weight
+    }));
+    
+    return { nodes, edges };
+  }
+);
+
+// stores/reflection.js - Multi-level reflection state
+export const reflectionState = writable({
+  currentQuery: null,
+  reflectionLevels: [],
+  maxDepth: 3,
+  perspectiveShifts: [],
+  uncertaintyTracking: []
+});
+
+export const reflectionDepth = derived(
+  reflectionState,
+  $state => $state.reflectionLevels.length
+);
+
+// stores/collaboration.js - Human-AI collaboration state
+export const collaborationState = writable({
+  activeSessions: [],
+  sharedInsights: [],
+  learningPoints: [],
+  cognitiveUpdates: [],
+  feedbackLoop: {
+    corrections: 0,
+    confirmations: 0,
+    newPatterns: 0
+  }
+});
+```
+
+#### Advanced Svelte Component Architecture
+
+```svelte
+<!-- CognitiveStateMonitor.svelte - Real-time cognitive transparency -->
+<script>
+  import { onMount } from 'svelte';
+  import { cognitiveState, wsConnection, systemHealthStatus } from '../stores/cognitive.js';
+  import { fade, slide } from 'svelte/transition';
+  import { tweened } from 'svelte/motion';
+  import { cubicOut } from 'svelte/easing';
+  
+  export let expanded = false;
+  
+  // Tweened values for smooth animations
+  const processingLoad = tweened(0, { duration: 400, easing: cubicOut });
+  const memoryUsage = tweened(0, { duration: 400, easing: cubicOut });
+  
+  // Reactive updates from cognitive state
+  $: if ($cognitiveState.manifestConsciousness) {
+    processingLoad.set($cognitiveState.manifestConsciousness.processingLoad);
+    memoryUsage.set($cognitiveState.manifestConsciousness.workingMemory.slots / 12);
+  }
+  
+  // Connection status indicator
+  $: connectionStatus = $wsConnection ? 'connected' : 'disconnected';
+  
+  function formatAgentName(agent) {
+    return agent.name.replace(/^Agent-/, '');
+  }
+  
+  function getHealthColor(percentage) {
+    if (percentage >= 80) return 'var(--success-green)';
+    if (percentage >= 60) return 'var(--warning-yellow)';
+    return 'var(--danger-red)';
+  }
+</script>
+
+<div class="cognitive-monitor">
+  <button 
+    class="monitor-toggle" 
+    on:click={() => expanded = !expanded}
+    class:connected={connectionStatus === 'connected'}
+  >
+    <span class="monitor-title">
+      📊 Live Cognitive State
+      <span class="connection-indicator" class:connected={connectionStatus === 'connected'}>
+        {connectionStatus === 'connected' ? '🟢' : '🔴'}
+      </span>
+    </span>
+    <span class="toggle-icon" class:rotated={expanded}>▼</span>
+  </button>
+  
+  {#if expanded}
+    <div class="monitor-content" transition:slide={{ duration: 300 }}>
+      <!-- Manifest Consciousness Section -->
+      <section class="consciousness-section">
+        <h3>🎯 Manifest Consciousness</h3>
+        {#if $cognitiveState.manifestConsciousness?.attention}
+          <div class="attention-display" transition:fade>
+            <strong>Current Focus:</strong> {$cognitiveState.manifestConsciousness.attention}
+          </div>
+        {/if}
+        
+        <div class="metrics-grid">
+          <div class="metric">
+            <label>Working Memory</label>
+            <div class="memory-slots">
+              {#each Array(12) as _, i}
+                <div 
+                  class="memory-slot" 
+                  class:filled={i < $cognitiveState.manifestConsciousness?.workingMemory?.slots}
+                  transition:fade={{ delay: i * 50 }}
+                ></div>
+              {/each}
+            </div>
+            <span class="metric-value">
+              {$cognitiveState.manifestConsciousness?.workingMemory?.slots || 0}/12
+            </span>
+          </div>
+          
+          <div class="metric">
+            <label>Processing Load</label>
+            <div class="progress-bar">
+              <div 
+                class="progress-fill" 
+                style="width: {$processingLoad}%; background-color: {getHealthColor($processingLoad)}"
+              ></div>
+            </div>
+            <span class="metric-value">{Math.round($processingLoad)}%</span>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Active Agents Section -->
+      {#if $cognitiveState.agenticProcesses?.length > 0}
+        <section class="agents-section">
+          <h3>🤖 Agentic Processes ({$cognitiveState.agenticProcesses.length} active)</h3>
+          <div class="agents-list">
+            {#each $cognitiveState.agenticProcesses as agent (agent.id)}
+              <div class="agent-item" transition:slide={{ duration: 200 }}>
+                <span class="agent-name">{formatAgentName(agent)}</span>
+                <span class="agent-task">{agent.currentTask}</span>
+                <span class="agent-domain">[{agent.domain}]</span>
+              </div>
+            {/each}
+          </div>
+        </section>
+      {/if}
+      
+      <!-- Daemon Threads Section -->
+      {#if $cognitiveState.daemonThreads?.length > 0}
+        <section class="daemons-section">
+          <h3>🔄 Background Processes</h3>
+          <div class="daemons-grid">
+            {#each $cognitiveState.daemonThreads as daemon (daemon.name)}
+              <div class="daemon-item" class:active={daemon.status === 'active'}>
+                <span class="daemon-icon">{daemon.icon}</span>
+                <span class="daemon-name">{daemon.name}</span>
+                <span class="daemon-status status-{daemon.status}">{daemon.status}</span>
+              </div>
+            {/each}
+          </div>
+        </section>
+      {/if}
+      
+      <!-- System Health Section -->
+      <section class="health-section">
+        <h3>🏥 System Health</h3>
+        <div class="health-overview">
+          <div class="overall-health">
+            <span class="health-label">Overall:</span>
+            <div class="health-bar">
+              <div 
+                class="health-fill" 
+                style="width: {$systemHealthStatus.overall}%; background-color: {getHealthColor($systemHealthStatus.overall)}"
+              ></div>
+            </div>
+            <span class="health-value">{Math.round($systemHealthStatus.overall)}%</span>
+          </div>
+        </div>
+        
+        <div class="components-health">
+          {#each Object.entries($systemHealthStatus.components) as [component, health] (component)}
+            <div class="component-health">
+              <span class="component-name">{component}:</span>
+              <div class="health-bar small">
+                <div 
+                  class="health-fill" 
+                  style="width: {health}%; background-color: {getHealthColor(health)}"
+                ></div>
+              </div>
+              <span class="health-value">{health}%</span>
+            </div>
+          {/each}
+        </div>
+      </section>
+      
+      <!-- Alerts Section -->
+      {#if $cognitiveState.alerts?.length > 0}
+        <section class="alerts-section">
+          <h3>⚠️ System Alerts</h3>
+          <div class="alerts-list">
+            {#each $cognitiveState.alerts as alert (alert.id)}
+              <div class="alert-item severity-{alert.severity}" transition:slide>
+                <span class="alert-icon">⚠️</span>
+                <span class="alert-message">{alert.message}</span>
+                <span class="alert-time">{alert.timestamp}</span>
+              </div>
+            {/each}
+          </div>
+        </section>
+      {/if}
+    </div>
+  {/if}
+</div>
+
+<style>
+  .cognitive-monitor {
+    background: var(--bg-secondary);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    margin: 1rem 0;
+    overflow: hidden;
+  }
+  
+  .monitor-toggle {
+    width: 100%;
+    padding: 0.75rem;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.2s ease;
+  }
+  
+  .monitor-toggle:hover {
+    background: rgba(255,255,255,0.05);
+  }
+  
+  .monitor-toggle.connected {
+    border-left: 3px solid var(--success-green);
+  }
+  
+  .monitor-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .connection-indicator {
+    font-size: 0.75rem;
+  }
+  
+  .toggle-icon {
+    transition: transform 0.2s ease;
+  }
+  
+  .toggle-icon.rotated {
+    transform: rotate(180deg);
+  }
+  
+  .monitor-content {
+    padding: 0 0.75rem 0.75rem;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .consciousness-section,
+  .agents-section,
+  .daemons-section,
+  .health-section,
+  .alerts-section {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .consciousness-section h3,
+  .agents-section h3,
+  .daemons-section h3,
+  .health-section h3,
+  .alerts-section h3 {
+    margin: 0 0 0.75rem 0;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  
+  .attention-display {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid var(--primary-blue);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+  }
+  
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  .metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .metric label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  
+  .memory-slots {
+    display: flex;
+    gap: 2px;
+    margin: 0.25rem 0;
+  }
+  
+  .memory-slot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .memory-slot.filled {
+    background: var(--primary-teal);
+  }
+  
+  .progress-bar {
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0.25rem 0;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: var(--primary-teal);
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .metric-value {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-align: center;
+  }
+  
+  .agents-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .agent-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 0.25rem;
+    font-size: 0.85rem;
+  }
+  
+  .agent-name {
+    font-weight: 600;
+    color: var(--primary-blue);
+  }
+  
+  .agent-task {
+    flex: 1;
+    color: var(--text-primary);
+  }
+  
+  .agent-domain {
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+  
+  .daemons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
+  }
+  
+  .daemon-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 0.25rem;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+  }
+  
+  .daemon-item.active {
+    opacity: 1;
+    border-left: 2px solid var(--primary-teal);
+  }
+  
+  .daemon-icon {
+    font-size: 1rem;
+  }
+  
+  .daemon-name {
+    flex: 1;
+    color: var(--text-primary);
+  }
+  
+  .daemon-status {
+    font-size: 0.75rem;
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.15rem;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  
+  .status-active {
+    background: rgba(34, 197, 94, 0.2);
+    color: var(--success-green);
+  }
+  
+  .status-idle {
+    background: rgba(156, 163, 175, 0.2);
+    color: var(--text-secondary);
+  }
+  
+  .status-scheduled {
+    background: rgba(251, 191, 36, 0.2);
+    color: var(--warning-yellow);
+  }
+  
+  .health-overview {
+    margin-bottom: 0.75rem;
+  }
+  
+  .overall-health {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .health-label {
+    color: var(--text-secondary);
+    min-width: 60px;
+  }
+  
+  .health-bar {
+    flex: 1;
+    height: 12px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  
+  .health-bar.small {
+    height: 8px;
+    border-radius: 4px;
+  }
+  
+  .health-fill {
+    height: 100%;
+    transition: width 0.4s ease, background-color 0.3s ease;
+  }
+  
+  .health-value {
+    min-width: 40px;
+    text-align: right;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+  
+  .components-health {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .component-health {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .component-name {
+    color: var(--text-secondary);
+    min-width: 120px;
+  }
+  
+  .alerts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .alert-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.85rem;
+  }
+  
+  .severity-low {
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid var(--warning-yellow);
+  }
+  
+  .severity-medium {
+    background: rgba(249, 115, 22, 0.1);
+    border: 1px solid #f97316;
+  }
+  
+  .severity-high {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--danger-red);
+  }
+  
+  .alert-icon {
+    font-size: 1rem;
+  }
+  
+  .alert-message {
+    flex: 1;
+    color: var(--text-primary);
+  }
+  
+  .alert-time {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+  }
+</style>
+
+#### Self-Modification Interface Components
+
+```svelte
+<!-- SystemEvolutionDashboard.svelte - System evolution and capability tracking -->
+<script>
+  import { onMount, onDestroy } from 'svelte';
+  import { evolutionState, pendingProposals, capabilityTrends } from '../stores/evolution.js';
+  import { fade, fly, scale } from 'svelte/transition';
+  import { quintOut } from 'svelte/easing';
+  import CapabilityProgress from './CapabilityProgress.svelte';
+  import ProposalCard from './ProposalCard.svelte';
+  import ArchitectureTimeline from './ArchitectureTimeline.svelte';
+  
+  export let activeTab = 'capabilities';
+  
+  let autoRefreshInterval;
+  
+  onMount(() => {
+    // Auto-refresh capability data every 30 seconds
+    autoRefreshInterval = setInterval(refreshCapabilities, 30000);
+  });
+  
+  onDestroy(() => {
+    if (autoRefreshInterval) clearInterval(autoRefreshInterval);
+  });
+  
+  async function refreshCapabilities() {
+    try {
+      const response = await fetch('/api/cognitive/capabilities');
+      const capabilities = await response.json();
+      evolutionState.update(state => ({ ...state, capabilities }));
+    } catch (error) {
+      console.error('Failed to refresh capabilities:', error);
+    }
+  }
+  
+  async function approveProposal(proposalId) {
+    try {
+      await fetch(`/api/modifications/proposals/${proposalId}/approve`, {
+        method: 'POST'
+      });
+      evolutionState.update(state => ({
+        ...state,
+        proposals: state.proposals.map(p => 
+          p.id === proposalId ? { ...p, status: 'approved' } : p
+        )
+      }));
+    } catch (error) {
+      console.error('Failed to approve proposal:', error);
+    }
+  }
+  
+  async function declineProposal(proposalId) {
+    try {
+      await fetch(`/api/modifications/proposals/${proposalId}/decline`, {
+        method: 'POST'
+      });
+      evolutionState.update(state => ({
+        ...state,
+        proposals: state.proposals.filter(p => p.id !== proposalId)
+      }));
+    } catch (error) {
+      console.error('Failed to decline proposal:', error);
+    }
+  }
+  
+  function formatImpact(impact) {
+    if (impact > 0) return `+${impact}%`;
+    return `${impact}%`;
+  }
+  
+  function getRiskColor(riskLevel) {
+    switch (riskLevel.toLowerCase()) {
+      case 'low': return 'var(--success-green)';
+      case 'medium': return 'var(--warning-yellow)';
+      case 'high': return 'var(--danger-red)';
+      default: return 'var(--text-secondary)';
+    }
+  }
+</script>
+
+<div class="evolution-dashboard">
+  <header class="dashboard-header">
+    <h2>🧠 System Evolution & Self-Modification</h2>
+    <div class="version-info">
+      <span class="version-label">Current Version:</span>
+      <span class="version-number">{$evolutionState.currentVersion}</span>
+    </div>
+  </header>
+  
+  <nav class="dashboard-tabs">
+    <button 
+      class="tab-button"
+      class:active={activeTab === 'capabilities'}
+      on:click={() => activeTab = 'capabilities'}
+    >
+      🎯 Capabilities
+    </button>
+    <button 
+      class="tab-button"
+      class:active={activeTab === 'proposals'}
+      on:click={() => activeTab = 'proposals'}
+    >
+      🔧 Proposals ({$pendingProposals.length})
+    </button>
+    <button 
+      class="tab-button"
+      class:active={activeTab === 'timeline'}
+      on:click={() => activeTab = 'timeline'}
+    >
+      📈 Evolution Timeline
+    </button>
+  </nav>
+  
+  <main class="dashboard-content">
+    {#if activeTab === 'capabilities'}
+      <div class="capabilities-view" transition:fade={{ duration: 200 }}>
+        <section class="capability-overview">
+          <h3>Current Cognitive Capabilities</h3>
+          <div class="capabilities-grid">
+            {#each Object.entries($evolutionState.capabilities) as [name, data] (name)}
+              <div class="capability-card" transition:fly={{ y: 20, duration: 300, delay: 100 }}>
+                <CapabilityProgress 
+                  {name}
+                  value={data.current}
+                  trend={$capabilityTrends[name]}
+                  description={data.description}
+                />
+              </div>
+            {/each}
+          </div>
+        </section>
+        
+        <section class="learning-focus">
+          <h3>🎯 Active Learning Focus Areas</h3>
+          <div class="focus-areas">
+            {#each $evolutionState.learningProgress?.focusAreas || [] as area (area.id)}
+              <div class="focus-area" transition:scale={{ duration: 200 }}>
+                <span class="area-name">{area.name}</span>
+                <div class="progress-indicator">
+                  <div class="progress-bar">
+                    <div 
+                      class="progress-fill" 
+                      style="width: {area.progress}%"
+                    ></div>
+                  </div>
+                  <span class="progress-text">{area.progress}%</span>
+                </div>
+                <span class="area-priority priority-{area.priority}">{area.priority}</span>
+              </div>
+            {/each}
+          </div>
+        </section>
+      </div>
+    {/if}
+    
+    {#if activeTab === 'proposals'}
+      <div class="proposals-view" transition:fade={{ duration: 200 }}>
+        <section class="proposals-header">
+          <h3>🔧 System Improvement Proposals</h3>
+          <button class="propose-button">
+            + Propose Custom Modification
+          </button>
+        </section>
+        
+        {#if $pendingProposals.length > 0}
+          <div class="proposals-list">
+            {#each $pendingProposals as proposal (proposal.id)}
+              <div class="proposal-card" transition:fly={{ x: -20, duration: 300 }}>
+                <ProposalCard 
+                  {proposal}
+                  on:approve={() => approveProposal(proposal.id)}
+                  on:decline={() => declineProposal(proposal.id)}
+                />
+              </div>
+            {/each}
+          </div>
+        {:else}
+          <div class="no-proposals" transition:fade>
+            <p>No pending proposals. System is running optimally.</p>
+          </div>
+        {/if}
+        
+        <section class="implementation-history">
+          <h3>📊 Recent Implementation History</h3>
+          <div class="history-list">
+            {#each $evolutionState.proposals?.filter(p => p.status !== 'pending') || [] as proposal (proposal.id)}
+              <div class="history-item status-{proposal.status}">
+                <span class="history-title">{proposal.title}</span>
+                <span class="history-status">{proposal.status}</span>
+                <span class="history-date">{new Date(proposal.implementedAt).toLocaleDateString()}</span>
+              </div>
+            {/each}
+          </div>
+        </section>
+      </div>
+    {/if}
+    
+    {#if activeTab === 'timeline'}
+      <div class="timeline-view" transition:fade={{ duration: 200 }}>
+        <ArchitectureTimeline 
+          history={$evolutionState.architectureHistory}
+          currentVersion={$evolutionState.currentVersion}
+        />
+      </div>
+    {/if}
+  </main>
+</div>
+
+<style>
+  .evolution-dashboard {
+    background: var(--bg-primary);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .dashboard-header {
+    padding: 1rem 1.5rem;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .dashboard-header h2 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .version-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .version-label {
+    color: var(--text-secondary);
+  }
+  
+  .version-number {
+    color: var(--primary-teal);
+    font-weight: 600;
+    font-family: monospace;
+  }
+  
+  .dashboard-tabs {
+    display: flex;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .tab-button {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .tab-button:hover {
+    background: rgba(255,255,255,0.05);
+    color: var(--text-primary);
+  }
+  
+  .tab-button.active {
+    color: var(--primary-teal);
+    border-bottom-color: var(--primary-teal);
+    background: rgba(13, 148, 136, 0.1);
+  }
+  
+  .dashboard-content {
+    padding: 1.5rem;
+    min-height: 400px;
+  }
+  
+  .capability-overview h3,
+  .learning-focus h3,
+  .proposals-header h3,
+  .implementation-history h3 {
+    margin: 0 0 1rem 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .capability-card {
+    background: var(--bg-secondary);
+    border-radius: 0.375rem;
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .focus-areas {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .focus-area {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: var(--bg-secondary);
+    border-radius: 0.375rem;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .area-name {
+    flex: 1;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+  
+  .progress-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 120px;
+  }
+  
+  .progress-bar {
+    width: 80px;
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: var(--primary-teal);
+    transition: width 0.3s ease;
+  }
+  
+  .progress-text {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+  
+  .area-priority {
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .priority-high {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--danger-red);
+  }
+  
+  .priority-medium {
+    background: rgba(251, 191, 36, 0.2);
+    color: var(--warning-yellow);
+  }
+  
+  .priority-low {
+    background: rgba(34, 197, 94, 0.2);
+    color: var(--success-green);
+  }
+  
+  .proposals-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .propose-button {
+    padding: 0.5rem 1rem;
+    background: var(--primary-teal);
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+  
+  .propose-button:hover {
+    background: #0f766e;
+  }
+  
+  .proposals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .proposal-card {
+    background: var(--bg-secondary);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .no-proposals {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .history-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: var(--bg-secondary);
+    border-radius: 0.375rem;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .history-title {
+    flex: 1;
+    color: var(--text-primary);
+  }
+  
+  .history-status {
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .status-approved .history-status {
+    background: rgba(34, 197, 94, 0.2);
+    color: var(--success-green);
+  }
+  
+  .status-declined .history-status {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--danger-red);
+  }
+  
+  .status-testing .history-status {
+    background: rgba(251, 191, 36, 0.2);
+    color: var(--warning-yellow);
+  }
+  
+  .history-date {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+</style>
+```
+
+#### Collaborative Intelligence Components
+
+```svelte
+<!-- CollaborativeReasoningSession.svelte - Human-AI cognitive partnership -->
+<script>
+  import { onMount, createEventDispatcher } from 'svelte';
+  import { collaborationState } from '../stores/collaboration.js';
+  import { fade, fly, scale } from 'svelte/transition';
+  import { writable } from 'svelte/store';
+  
+  const dispatch = createEventDispatcher();
+  
+  export let sessionId = null;
+  export let topic = '';
+  
+  let currentSession = null;
+  let humanInput = '';
+  let sessionActive = false;
+  let contributions = [];
+  let sharedInsights = [];
+  
+  const inputFocused = writable(false);
+  
+  onMount(() => {
+    if (sessionId) {
+      loadSession(sessionId);
+    }
+  });
+  
+  async function startSession() {
+    try {
+      const response = await fetch('/api/collaboration/sessions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic })
+      });
+      
+      if (response.ok) {
+        currentSession = await response.json();
+        sessionActive = true;
+        sessionId = currentSession.id;
+        
+        collaborationState.update(state => ({
+          ...state,
+          activeSessions: [...state.activeSessions, currentSession]
+        }));
+        
+        dispatch('sessionStarted', currentSession);
+      }
+    } catch (error) {
+      console.error('Failed to start session:', error);
+    }
+  }
+  
+  async function addHumanContribution() {
+    if (!humanInput.trim() || !sessionActive) return;
+    
+    const contribution = {
+      type: 'human',
+      content: humanInput.trim(),
+      timestamp: new Date().toISOString()
+    };
+    
+    try {
+      const response = await fetch(`/api/collaboration/sessions/${sessionId}/contribute`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(contribution)
+      });
+      
+      if (response.ok) {
+        const result = await response.json();
+        contributions = [...contributions, contribution];
+        
+        // Add AI response if generated
+        if (result.aiResponse) {
+          contributions = [...contributions, {
+            type: 'ai',
+            content: result.aiResponse,
+            timestamp: new Date().toISOString(),
+            confidence: result.confidence,
+            reasoning: result.reasoning
+          }];
+        }
+        
+        // Update shared insights
+        if (result.newInsights) {
+          sharedInsights = [...sharedInsights, ...result.newInsights];
+        }
+        
+        humanInput = '';
+      }
+    } catch (error) {
+      console.error('Failed to add contribution:', error);
+    }
+  }
+  
+  async function endSession() {
+    if (!sessionActive) return;
+    
+    try {
+      const response = await fetch(`/api/collaboration/sessions/${sessionId}/end`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          summary: generateSessionSummary(),
+          insights: sharedInsights 
+        })
+      });
+      
+      if (response.ok) {
+        sessionActive = false;
+        dispatch('sessionEnded', { 
+          sessionId, 
+          summary: generateSessionSummary(),
+          insights: sharedInsights 
+        });
+      }
+    } catch (error) {
+      console.error('Failed to end session:', error);
+    }
+  }
+  
+  function generateSessionSummary() {
+    const humanContributions = contributions.filter(c => c.type === 'human').length;
+    const aiContributions = contributions.filter(c => c.type === 'ai').length;
+    
+    return {
+      topic,
+      duration: currentSession ? Date.now() - new Date(currentSession.startedAt).getTime() : 0,
+      humanContributions,
+      aiContributions,
+      insightsGenerated: sharedInsights.length,
+      totalExchanges: contributions.length
+    };
+  }
+  
+  function handleKeydown(event) {
+    if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
+      addHumanContribution();
+    }
+  }
+</script>
+
+<div class="collaboration-session">
+  <header class="session-header">
+    <h3>🤝 Collaborative Reasoning Session</h3>
+    {#if sessionActive}
+      <div class="session-status">
+        <span class="status-indicator active"></span>
+        <span class="status-text">Active Session</span>
+        <button class="end-session-btn" on:click={endSession}>
+          End Session
+        </button>
+      </div>
+    {/if}
+  </header>
+  
+  {#if !sessionActive}
+    <div class="session-setup" transition:fade>
+      <div class="setup-form">
+        <label for="topic-input">Session Topic:</label>
+        <input 
+          id="topic-input"
+          bind:value={topic} 
+          placeholder="Enter the topic for collaborative analysis..."
+          class="topic-input"
+        />
+        <button 
+          class="start-session-btn" 
+          on:click={startSession}
+          disabled={!topic.trim()}
+        >
+          Start Collaborative Session
+        </button>
+      </div>
+    </div>
+  {:else}
+    <div class="session-content" transition:fade>
+      <div class="topic-display">
+        <strong>Topic:</strong> {topic}
+      </div>
+      
+      <div class="contributions-area">
+        <div class="contributions-list" id="contributions-scroll">
+          {#each contributions as contribution, index (index)}
+            <div 
+              class="contribution contribution-{contribution.type}"
+              transition:fly={{ y: 20, duration: 300, delay: index * 50 }}
+            >
+              <div class="contribution-header">
+                <span class="contributor-icon">
+                  {contribution.type === 'human' ? '👤' : '🤖'}
+                </span>
+                <span class="contributor-type">
+                  {contribution.type === 'human' ? 'Human' : 'GödelOS'}
+                </span>
+                {#if contribution.confidence}
+                  <span class="confidence-indicator">
+                    Confidence: {Math.round(contribution.confidence * 100)}%
+                  </span>
+                {/if}
+                <span class="contribution-time">
+                  {new Date(contribution.timestamp).toLocaleTimeString()}
+                </span>
+              </div>
+              
+              <div class="contribution-content">
+                {contribution.content}
+              </div>
+              
+              {#if contribution.reasoning}
+                <div class="ai-reasoning">
+                  <details>
+                    <summary>View Reasoning Process</summary>
+                    <div class="reasoning-content">
+                      {contribution.reasoning}
+                    </div>
+                  </details>
+                </div>
+              {/if}
+            </div>
+          {/each}
+        </div>
+        
+        <div class="input-area">
+          <textarea
+            bind:value={humanInput}
+            placeholder="Share your thoughts, insights, or questions..."
+            class="human-input"
+            class:focused={$inputFocused}
+            on:focus={() => inputFocused.set(true)}
+            on:blur={() => inputFocused.set(false)}
+            on:keydown={handleKeydown}
+            rows="3"
+          ></textarea>
+          
+          <div class="input-controls">
+            <span class="input-hint">⌘+Enter to send</span>
+            <button 
+              class="send-btn"
+              on:click={addHumanContribution}
+              disabled={!humanInput.trim()}
+            >
+              Send
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      {#if sharedInsights.length > 0}
+        <div class="insights-panel" transition:scale>
+          <h4>🎯 Collaborative Insights</h4>
+          <div class="insights-list">
+            {#each sharedInsights as insight, index (index)}
+              <div 
+                class="insight-item"
+                transition:fly={{ x: -20, duration: 200, delay: index * 100 }}
+              >
+                <span class="insight-icon">💡</span>
+                <span class="insight-text">{insight.text}</span>
+                <span class="insight-source">
+                  ({insight.source === 'collaborative' ? 'Joint Discovery' : insight.source})
+                </span>
+              </div>
+            {/each}
+          </div>
+        </div>
+      {/if}
+    </div>
+  {/if}
+</div>
+
+<style>
+  .collaboration-session {
+    background: var(--bg-secondary);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    overflow: hidden;
+  }
+  
+  .session-header {
+    padding: 1rem 1.5rem;
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .session-header h3 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .session-status {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--text-secondary);
+  }
+  
+  .status-indicator.active {
+    background: var(--success-green);
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  
+  .status-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+  
+  .end-session-btn {
+    padding: 0.375rem 0.75rem;
+    background: var(--danger-red);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+  
+  .end-session-btn:hover {
+    background: #dc2626;
+  }
+  
+  .session-setup {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .setup-form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .setup-form label {
+    color: var(--text-primary);
+    font-weight: 500;
+    text-align: left;
+  }
+  
+  .topic-input {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--bg-primary);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 0.375rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+  }
+  
+  .topic-input:focus {
+    outline: none;
+    border-color: var(--primary-teal);
+  }
+  
+  .start-session-btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-teal);
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .start-session-btn:hover:not(:disabled) {
+    background: #0f766e;
+  }
+  
+  .start-session-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .session-content {
+    padding: 1.5rem;
+  }
+  
+  .topic-display {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid var(--primary-blue);
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+  }
+  
+  .contributions-area {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .contributions-list {
+    max-height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-right: 0.5rem;
+  }
+  
+  .contribution {
+    background: var(--bg-primary);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .contribution-human {
+    border-left: 3px solid var(--primary-blue);
+  }
+  
+  .contribution-ai {
+    border-left: 3px solid var(--primary-teal);
+  }
+  
+  .contribution-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+  }
+  
+  .contributor-icon {
+    font-size: 1.1rem;
+  }
+  
+  .contributor-type {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  .confidence-indicator {
+    background: rgba(34, 197, 94, 0.2);
+    color: var(--success-green);
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  
+  .contribution-time {
+    color: var(--text-secondary);
+    margin-left: auto;
+  }
+  
+  .contribution-content {
+    color: var(--text-primary);
+    line-height: 1.5;
+    white-space: pre-wrap;
+  }
+  
+  .ai-reasoning {
+    margin-top: 0.75rem;
+  }
+  
+  .ai-reasoning details {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0.25rem;
+  }
+  
+  .ai-reasoning summary {
+    padding: 0.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+  
+  .ai-reasoning summary:hover {
+    color: var(--text-primary);
+  }
+  
+  .reasoning-content {
+    padding: 0.75rem;
+    background: var(--bg-tertiary);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  
+  .input-area {
+    background: var(--bg-primary);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    overflow: hidden;
+  }
+  
+  .human-input {
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: none;
+    outline: none;
+  }
+  
+  .human-input.focused {
+    border-color: var(--primary-teal);
+  }
+  
+  .input-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: var(--bg-tertiary);
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .input-hint {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+  }
+  
+  .send-btn {
+    padding: 0.5rem 1rem;
+    background: var(--primary-teal);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+  
+  .send-btn:hover:not(:disabled) {
+    background: #0f766e;
+  }
+  
+  .send-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .insights-panel {
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .insights-panel h4 {
+    margin: 0 0 0.75rem 0;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  .insights-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .insight-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 0.25rem;
+    font-size: 0.9rem;
+  }
+  
+  .insight-icon {
+    font-size: 1rem;
+  }
+  
+  .insight-text {
+    flex: 1;
+    color: var(--text-primary);
+  }
+  
+  .insight-source {
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 0.8rem;
+  }
+</style>
+```
+
+#### Smart Knowledge Import Component
+
+```svelte
+<!-- SmartKnowledgeImport.svelte - Enhanced knowledge import with cognitive analysis -->
+<script>
+  import { createEventDispatcher } from 'svelte';
+  import { knowledgeStore } from '../stores/knowledge.js';
+  import { fade, scale, fly } from 'svelte/transition';
+  import { tweened } from 'svelte/motion';
+  import { cubicOut } from 'svelte/easing';
+  
+  const dispatch = createEventDispatcher();
+  
+  let dragActive = false;
+  let inputValue = '';
+  let detectedType = null;
+  let importOptions = {
+    includeReferences: true,
+    extractConcepts: true,
+    technicalOnly: false,
+    cognitiveAnalysis: true,
+    autoConnect: true
+  };
+  let importing = false;
+  let importStage = '';
+  let cognitiveInsights = [];
+  let conceptsExtracted = [];
+  let connectionsSuggested = [];
+  
+  const importProgress = tweened(0, { duration: 400, easing: cubicOut });
+  
+  // Auto-detect content type with enhanced analysis
+  $: {
+    if (inputValue) {
+      detectedType = detectContentType(inputValue);
+    } else {
+      detectedType = null;
+    }
+  }
+  
+  function detectContentType(input) {
+    const trimmed = input.trim();
+    
+    if (trimmed.includes('wikipedia.org')) {
+      return { 
+        type: 'wikipedia', 
+        title: extractWikipediaTitle(trimmed),
+        icon: '📚',
+        description: 'Wikipedia article with structured knowledge'
+      };
+    } else if (trimmed.includes('arxiv.org') || trimmed.includes('doi.org')) {
+      return { 
+        type: 'academic', 
+        title: 'Academic Paper',
+        icon: '🎓',
+        description: 'Research paper with citations and methodology'
+      };
+    } else if (trimmed.startsWith('http')) {
+      return { 
+        type: 'webpage', 
+        title: 'Web Page',
+        icon: '🌐',
+        description: 'Web content with potential knowledge extraction'
+      };
+    } else if (trimmed.length > 500) {
+      return { 
+        type: 'longtext', 
+        title: 'Long Text Content',
+        icon: '📄',
+        description: 'Extended text requiring deep analysis'
+      };
+    } else if (trimmed.length > 50) {
+      return { 
+        type: 'text', 
+        title: 'Text Content',
+        icon: '📝',
+        description: 'Short text content for quick processing'
+      };
+    }
+    return null;
+  }
+  
+  function extractWikipediaTitle(url) {
+    const match = url.match(/\/wiki\/([^#?]+)/);
+    return match ? decodeURIComponent(match[1]).replace(/_/g, ' ') : 'Wikipedia Article';
+  }
+  
+  function handleDrop(event) {
+    event.preventDefault();
+    dragActive = false;
+    
+    const files = Array.from(event.dataTransfer.files);
+    if (files.length > 0) {
+      handleFileImport(files[0]);
+    }
+  }
+  
+  function handleDragOver(event) {
+    event.preventDefault();
+    dragActive = true;
+  }
+  
+  function handleDragLeave() {
+    dragActive = false;
+  }
+  
+  async function handleFileImport(file) {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('options', JSON.stringify(importOptions));
+    
+    importing = true;
+    importStage = 'Reading file...';
+    importProgress.set(10);
+    
+    try {
+      const response = await fetch('/api/knowledge/import/file', {
+        method: 'POST',
+        body: formData
+      });
+      
+      if (response.ok) {
+        const result = await response.json();
+        await processImportResult(result);
+      }
+    } catch (error) {
+      console.error('File import failed:', error);
+      importing = false;
+    }
+  }
+  
+  async function handleImport() {
+    if (!inputValue.trim() || !detectedType) return;
+    
+    importing = true;
+    importStage = 'Analyzing content...';
+    importProgress.set(0);
+    cognitiveInsights = [];
+    conceptsExtracted = [];
+    connectionsSuggested = [];
+    
+    try {
+      const response = await fetch('/api/knowledge/import', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: inputValue,
+          type: detectedType.type,
+          options: importOptions
+        })
+      });
+      
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        
+        const chunk = decoder.decode(value);
+        const lines = chunk.split('\n').filter(line => line.trim());
+        
+        for (const line of lines) {
+          try {
+            const update = JSON.parse(line);
+            await processImportUpdate(update);
+          } catch (e) {
+            // Skip invalid JSON lines
+          }
+        }
+      }
+      
+      await finishImport();
+      
+    } catch (error) {
+      console.error('Import failed:', error);
+      importing = false;
+    }
+  }
+  
+  async function processImportUpdate(update) {
+    switch (update.type) {
+      case 'progress':
+        importProgress.set(update.progress);
+        importStage = update.stage;
+        break;
+        
+      case 'cognitive_insight':
+        cognitiveInsights = [...cognitiveInsights, update.insight];
+        break;
+        
+      case 'concept_extracted':
+        conceptsExtracted = [...conceptsExtracted, update.concept];
+        break;
+        
+      case 'connection_suggested':
+        connectionsSuggested = [...connectionsSuggested, update.connection];
+        break;
+    }
+  }
+  
+  async function finishImport() {
+    importProgress.set(100);
+    importStage = 'Import complete';
+    
+    // Update knowledge store
+    knowledgeStore.update(store => ({
+      ...store,
+      items: [...store.items, {
+        id: Date.now().toString(),
+        source: inputValue,
+        type: detectedType.type,
+        concepts: conceptsExtracted,
+        insights: cognitiveInsights,
+        suggestedConnections: connectionsSuggested,
+        timestamp: new Date().toISOString()
+      }]
+    }));
+    
+    dispatch('imported', {
+      concepts: conceptsExtracted,
+      insights: cognitiveInsights,
+      connections: connectionsSuggested
+    });
+    
+    setTimeout(() => {
+      importing = false;
+      inputValue = '';
+      cognitiveInsights = [];
+      conceptsExtracted = [];
+      connectionsSuggested = [];
+      importProgress.set(0);
+    }, 2000);
+  }
+</script>
+
+<div class="smart-import">
+  <header class="import-header">
+    <h3>🧠 Smart Knowledge Import</h3>
+    <div class="import-options-toggle">
+      <span class="options-label">AI Analysis:</span>
+      <label class="toggle-switch">
+        <input type="checkbox" bind:checked={importOptions.cognitiveAnalysis} />
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </header>
+  
+  <div class="import-content">
+    <div 
+      class="drop-zone"
+      class:drag-active={dragActive}
+      on:drop={handleDrop}
+      on:dragover={handleDragOver}
+      on:dragleave={handleDragLeave}
+    >
+      <div class="drop-zone-content">
+        {#if !importing}
+          <div class="input-section">
+            <textarea
+              bind:value={inputValue}
+              placeholder="Paste URL, text content, or drag & drop files here..."
+              class="import-input"
+              rows="4"
+            ></textarea>
+            
+            {#if detectedType}
+              <div class="detection-result" transition:scale>
+                <span class="detection-icon">{detectedType.icon}</span>
+                <div class="detection-info">
+                  <span class="detection-title">{detectedType.title}</span>
+                  <span class="detection-description">{detectedType.description}</span>
+                </div>
+              </div>
+            {/if}
+          </div>
+          
+          <div class="import-options">
+            <label>
+              <input type="checkbox" bind:checked={importOptions.includeReferences} />
+              Include references
+            </label>
+            <label>
+              <input type="checkbox" bind:checked={importOptions.extractConcepts} />
+              Extract concepts
+            </label>
+            <label>
+              <input type="checkbox" bind:checked={importOptions.autoConnect} />
+              Auto-connect to existing knowledge
+            </label>
+          </div>
+          
+          <div class="import-actions">
+            <button 
+              class="import-btn"
+              on:click={handleImport}
+              disabled={!inputValue.trim() || !detectedType}
+            >
+              <span class="btn-icon">🚀</span>
+              Start Smart Import
+            </button>
+          </div>
+        {:else}
+          <div class="import-progress" transition:fade>
+            <div class="progress-header">
+              <h4>🔄 Processing Import</h4>
+              <span class="progress-percentage">{Math.round($importProgress)}%</span>
+            </div>
+            
+            <div class="progress-bar">
+              <div 
+                class="progress-fill" 
+                style="width: {$importProgress}%"
+              ></div>
+            </div>
+            
+            <div class="progress-stage">{importStage}</div>
+            
+            {#if cognitiveInsights.length > 0}
+              <div class="live-insights" transition:fly={{ y: 20 }}>
+                <h5>💡 Cognitive Insights</h5>
+                <div class="insights-stream">
+                  {#each cognitiveInsights as insight, index (index)}
+                    <div 
+                      class="insight-item"
+                      transition:fly={{ x: -20, duration: 200, delay: index * 100 }}
+                    >
+                      {insight}
+                    </div>
+                  {/each}
+                </div>
+              </div>
+            {/if}
+            
+            {#if conceptsExtracted.length > 0}
+              <div class="live-concepts" transition:fly={{ y: 20 }}>
+                <h5>🏷️ Concepts Extracted</h5>
+                <div class="concepts-stream">
+                  {#each conceptsExtracted as concept, index (index)}
+                    <span 
+                      class="concept-tag"
+                      transition:scale={{ duration: 200, delay: index * 50 }}
+                    >
+                      {concept}
+                    </span>
+                  {/each}
+                </div>
+              </div>
+            {/if}
+            
+            {#if connectionsSuggested.length > 0}
+              <div class="live-connections" transition:fly={{ y: 20 }}>
+                <h5>🔗 Suggested Connections</h5>
+                <div class="connections-stream">
+                  {#each connectionsSuggested as connection, index (index)}
+                    <div 
+                      class="connection-item"
+                      transition:fly={{ x: -20, duration: 200, delay: index * 100 }}
+                    >
+                      <span class="connection-from">{connection.from}</span>
+                      <span class="connection-arrow">↔</span>
+                      <span class="connection-to">{connection.to}</span>
+                      <span class="connection-strength">({connection.strength})</span>
+                    </div>
+                  {/each}
+                </div>
+              </div>
+            {/if}
+          </div>
+        {/if}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .smart-import {
+    background: var(--bg-secondary);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    overflow: hidden;
+  }
+  
+  .import-header {
+    padding: 1rem 1.5rem;
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .import-header h3 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .import-options-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .options-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+  
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+  }
+  
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.2);
+    transition: 0.3s;
+    border-radius: 24px;
+  }
+  
+  .toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .toggle-slider {
+    background-color: var(--primary-teal);
+  }
+  
+  input:checked + .toggle-slider:before {
+    transform: translateX(20px);
+  }
+  
+  .import-content {
+    padding: 1.5rem;
+  }
+  
+  .drop-zone {
+    border: 2px dashed rgba(255,255,255,0.2);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    min-height: 200px;
+  }
+  
+  .drop-zone.drag-active {
+    border-color: var(--primary-teal);
+    background: rgba(13, 148, 136, 0.1);
+  }
+  
+  .input-section {
+    margin-bottom: 1rem;
+  }
+  
+  .import-input {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--bg-primary);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0.375rem;
+    color: var(--text-primary);
+    font-family: inherit;
+    resize: vertical;
+    font-size: 0.95rem;
+  }
+  
+  .import-input:focus {
+    outline: none;
+    border-color: var(--primary-teal);
+  }
+  
+  .detection-result {
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(13, 148, 136, 0.1);
+    border: 1px solid var(--primary-teal);
+    border-radius: 0.375rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .detection-icon {
+    font-size: 1.5rem;
+  }
+  
+  .detection-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .detection-title {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  
+  .detection-description {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+  
+  .import-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .import-options label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+  
+  .import-options input[type="checkbox"] {
+    accent-color: var(--primary-teal);
+  }
+  
+  .import-actions {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .import-btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-teal);
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .import-btn:hover:not(:disabled) {
+    background: #0f766e;
+  }
+  
+  .import-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .btn-icon {
+    font-size: 1.1rem;
+  }
+  
+  .import-progress {
+    text-align: center;
+  }
+  
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .progress-header h4 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+  }
+  
+  .progress-percentage {
+    color: var(--primary-teal);
+    font-weight: 600;
+    font-family: monospace;
+  }
+  
+  .progress-bar {
+    height: 12px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-teal), var(--primary-blue));
+    transition: width 0.4s ease;
+  }
+  
+  .progress-stage {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .live-insights,
+  .live-concepts,
+  .live-connections {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 0.375rem;
+    text-align: left;
+  }
+  
+  .live-insights h5,
+  .live-concepts h5,
+  .live-connections h5 {
+    margin: 0 0 0.75rem 0;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  
+  .insights-stream {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .insight-item {
+    padding: 0.5rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-left: 2px solid var(--primary-blue);
+    border-radius: 0.25rem;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+  }
+  
+  .concepts-stream {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .concept-tag {
+    padding: 0.25rem 0.5rem;
+    background: var(--primary-teal);
+    color: white;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  
+  .connections-stream {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .connection-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(139, 92, 246, 0.1);
+    border-radius: 0.25rem;
+    font-size: 0.85rem;
+  }
+  
+  .connection-from,
+  .connection-to {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+  
+  .connection-arrow {
+    color: var(--primary-purple);
+    font-weight: bold;
+  }
+  
+  .connection-strength {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+  }
+</style>
+```
+        };
+      }
+    });
+    return trends;
+  }
+);
+
+// WebSocket integration for evolution events
+export function initEvolutionStream() {
+  const ws = new WebSocket('ws://localhost:8000/ws/evolution_events');
+  
+  ws.onmessage = (event) => {
+    const update = JSON.parse(event.data);
+    
+    switch(update.type) {
+      case 'capability_updated':
+        evolutionState.update(state => ({
+          ...state,
+          capabilities: {
+            ...state.capabilities,
+            [update.capability]: update.data
+          }
+        }));
+        break;
+        
+      case 'proposal_generated':
+        evolutionState.update(state => ({
+          ...state,
+          proposals: [...state.proposals, update.proposal]
+        }));
+        break;
+        
+      case 'architecture_evolved':
+        evolutionState.update(state => ({
+          ...state,
+          architectureHistory: [...state.architectureHistory, update.event],
+          currentVersion: update.newVersion
+        }));
+        break;
+    }
+  };
+  
+  return ws;
 }
 ```
 
