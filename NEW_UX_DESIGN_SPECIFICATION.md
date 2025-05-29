@@ -3667,6 +3667,2660 @@ export function initEvolutionStream() {
 }
 ```
 
+### ReflectionVisualizer.svelte
+
+```svelte
+<script>
+  import { onMount, createEventDispatcher } from 'svelte';
+  import { cognitiveState, reflectionHistory, systemCapabilities } from '../stores/cognitiveStore.js';
+  import { fade, fly, scale } from 'svelte/transition';
+  import { cubicOut } from 'svelte/easing';
+
+  const dispatch = createEventDispatcher();
+
+  // Component state
+  let selectedReflection = null;
+  let viewMode = 'timeline'; // 'timeline', 'graph', 'insights'
+  let timeRange = '24h';
+  let reflectionDepth = 'surface'; // 'surface', 'deep', 'meta'
+  let isAnalyzing = false;
+  let searchQuery = '';
+  let filteredReflections = [];
+  let insightPatterns = [];
+  let cognitiveGraph = { nodes: [], links: [] };
+
+  // Reactive declarations
+  $: filteredReflections = filterReflections($reflectionHistory, searchQuery, timeRange, reflectionDepth);
+  $: insightPatterns = extractInsightPatterns(filteredReflections);
+  $: cognitiveGraph = buildCognitiveGraph(filteredReflections);
+
+  onMount(() => {
+    // Initialize reflection analysis
+    analyzeReflectionPatterns();
+  });
+
+  function filterReflections(reflections, query, timeRange, depth) {
+    const now = Date.now();
+    const timeMs = {
+      '1h': 60 * 60 * 1000,
+      '6h': 6 * 60 * 60 * 1000,
+      '24h': 24 * 60 * 60 * 1000,
+      '7d': 7 * 24 * 60 * 60 * 1000,
+      '30d': 30 * 24 * 60 * 60 * 1000
+    }[timeRange];
+
+    return reflections.filter(reflection => {
+      const timeMatch = now - reflection.timestamp <= timeMs;
+      const depthMatch = depth === 'surface' || reflection.depth >= {
+        'surface': 1,
+        'deep': 2,
+        'meta': 3
+      }[depth];
+      const queryMatch = !query || 
+        reflection.content.toLowerCase().includes(query.toLowerCase()) ||
+        reflection.insights.some(insight => 
+          insight.toLowerCase().includes(query.toLowerCase())
+        );
+      
+      return timeMatch && depthMatch && queryMatch;
+    });
+  }
+
+  function extractInsightPatterns(reflections) {
+    const patterns = new Map();
+    
+    reflections.forEach(reflection => {
+      reflection.insights.forEach(insight => {
+        const key = insight.category || 'general';
+        if (!patterns.has(key)) {
+          patterns.set(key, {
+            category: key,
+            count: 0,
+            confidence: 0,
+            examples: [],
+            trend: 'stable'
+          });
+        }
+        
+        const pattern = patterns.get(key);
+        pattern.count++;
+        pattern.confidence = Math.max(pattern.confidence, insight.confidence || 0.5);
+        pattern.examples.push(insight);
+      });
+    });
+
+    return Array.from(patterns.values())
+      .sort((a, b) => b.confidence * b.count - a.confidence * a.count)
+      .slice(0, 10);
+  }
+
+  function buildCognitiveGraph(reflections) {
+    const nodes = new Map();
+    const links = [];
+
+    reflections.forEach(reflection => {
+      // Add reflection as node
+      if (!nodes.has(reflection.id)) {
+        nodes.set(reflection.id, {
+          id: reflection.id,
+          label: reflection.title || reflection.content.substring(0, 50) + '...',
+          type: 'reflection',
+          depth: reflection.depth,
+          confidence: reflection.confidence,
+          timestamp: reflection.timestamp
+        });
+      }
+
+      // Add concepts as nodes and create links
+      reflection.concepts?.forEach(concept => {
+        if (!nodes.has(concept.id)) {
+          nodes.set(concept.id, {
+            id: concept.id,
+            label: concept.name,
+            type: 'concept',
+            weight: concept.weight || 1
+          });
+        }
+
+        links.push({
+          source: reflection.id,
+          target: concept.id,
+          strength: concept.relevance || 0.5,
+          type: 'relates_to'
+        });
+      });
+
+      // Link related reflections
+      reflection.related?.forEach(relatedId => {
+        if (nodes.has(relatedId)) {
+          links.push({
+            source: reflection.id,
+            target: relatedId,
+            strength: 0.7,
+            type: 'builds_on'
+          });
+        }
+      });
+    });
+
+    return {
+      nodes: Array.from(nodes.values()),
+      links
+    };
+  }
+
+  async function analyzeReflectionPatterns() {
+    isAnalyzing = true;
+    try {
+      // Simulate pattern analysis
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Update cognitive state with new insights
+      cognitiveState.update(state => ({
+        ...state,
+        reflectionInsights: insightPatterns,
+        lastAnalysis: Date.now()
+      }));
+    } catch (error) {
+      console.error('Reflection analysis failed:', error);
+    } finally {
+      isAnalyzing = false;
+    }
+  }
+
+  function selectReflection(reflection) {
+    selectedReflection = reflection;
+    dispatch('reflectionSelected', { reflection });
+  }
+
+  function exportReflections() {
+    const exportData = {
+      reflections: filteredReflections,
+      insights: insightPatterns,
+      metadata: {
+        exportDate: new Date().toISOString(),
+        timeRange,
+        reflectionDepth,
+        query: searchQuery
+      }
+    };
+
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], {
+      type: 'application/json'
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `reflections-export-${Date.now()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+</script>
+
+<div class="reflection-visualizer" transition:fade={{ duration: 300 }}>
+  <!-- Header Controls -->
+  <div class="visualizer-header">
+    <div class="header-left">
+      <h2>Reflection Visualizer</h2>
+      <div class="reflection-stats">
+        <span class="stat">
+          <span class="count">{filteredReflections.length}</span>
+          <span class="label">Reflections</span>
+        </span>
+        <span class="stat">
+          <span class="count">{insightPatterns.length}</span>
+          <span class="label">Patterns</span>
+        </span>
+        <span class="stat">
+          <span class="count">{cognitiveGraph.nodes.length}</span>
+          <span class="label">Concepts</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="header-controls">
+      <div class="search-container">
+        <input 
+          type="text" 
+          placeholder="Search reflections..."
+          bind:value={searchQuery}
+          class="search-input"
+        />
+        <button class="search-clear" on:click={() => searchQuery = ''}>×</button>
+      </div>
+
+      <div class="filter-controls">
+        <select bind:value={timeRange} class="time-filter">
+          <option value="1h">Last Hour</option>
+          <option value="6h">Last 6 Hours</option>
+          <option value="24h">Last 24 Hours</option>
+          <option value="7d">Last Week</option>
+          <option value="30d">Last Month</option>
+        </select>
+
+        <select bind:value={reflectionDepth} class="depth-filter">
+          <option value="surface">Surface</option>
+          <option value="deep">Deep</option>
+          <option value="meta">Meta</option>
+        </select>
+
+        <div class="view-mode-toggle">
+          <button 
+            class="mode-btn" 
+            class:active={viewMode === 'timeline'}
+            on:click={() => viewMode = 'timeline'}
+          >
+            Timeline
+          </button>
+          <button 
+            class="mode-btn" 
+            class:active={viewMode === 'graph'}
+            on:click={() => viewMode = 'graph'}
+          >
+            Graph
+          </button>
+          <button 
+            class="mode-btn" 
+            class:active={viewMode === 'insights'}
+            on:click={() => viewMode = 'insights'}
+          >
+            Insights
+          </button>
+        </div>
+      </div>
+
+      <div class="action-controls">
+        <button 
+          class="analyze-btn"
+          class:analyzing={isAnalyzing}
+          on:click={analyzeReflectionPatterns}
+          disabled={isAnalyzing}
+        >
+          {#if isAnalyzing}
+            <div class="spinner"></div>
+            Analyzing...
+          {:else}
+            Analyze Patterns
+          {/if}
+        </button>
+
+        <button class="export-btn" on:click={exportReflections}>
+          Export
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Visualization Area -->
+  <div class="visualization-container">
+    {#if viewMode === 'timeline'}
+      <div class="timeline-view" transition:fly={{ x: -20, duration: 300 }}>
+        <div class="timeline-container">
+          {#each filteredReflections as reflection, index (reflection.id)}
+            <div 
+              class="timeline-item"
+              transition:scale={{ duration: 200, delay: index * 50 }}
+              on:click={() => selectReflection(reflection)}
+              class:selected={selectedReflection?.id === reflection.id}
+            >
+              <div class="timeline-marker">
+                <div class="marker-dot" style="background-color: {reflection.color || '#4f46e5'}"></div>
+                <div class="marker-line"></div>
+              </div>
+              
+              <div class="timeline-content">
+                <div class="reflection-header">
+                  <h4>{reflection.title || 'Untitled Reflection'}</h4>
+                  <span class="timestamp">
+                    {new Date(reflection.timestamp).toLocaleString()}
+                  </span>
+                </div>
+                
+                <p class="reflection-preview">
+                  {reflection.content.substring(0, 150)}...
+                </p>
+                
+                <div class="reflection-meta">
+                  <span class="depth-indicator depth-{reflection.depth}">
+                    Depth {reflection.depth}
+                  </span>
+                  <span class="confidence-indicator">
+                    {Math.round((reflection.confidence || 0.5) * 100)}% confidence
+                  </span>
+                  {#if reflection.insights?.length > 0}
+                    <span class="insights-count">
+                      {reflection.insights.length} insights
+                    </span>
+                  {/if}
+                </div>
+
+                {#if reflection.insights?.length > 0}
+                  <div class="insights-preview">
+                    {#each reflection.insights.slice(0, 2) as insight}
+                      <span class="insight-tag">{insight.category || insight}</span>
+                    {/each}
+                    {#if reflection.insights.length > 2}
+                      <span class="more-insights">+{reflection.insights.length - 2} more</span>
+                    {/if}
+                  </div>
+                {/if}
+              </div>
+            </div>
+          {/each}
+        </div>
+      </div>
+
+    {:else if viewMode === 'graph'}
+      <div class="graph-view" transition:fly={{ x: 0, y: 20, duration: 300 }}>
+        <div class="graph-container">
+          <svg class="cognitive-graph" viewBox="0 0 800 600">
+            <!-- Graph nodes -->
+            {#each cognitiveGraph.nodes as node, index}
+              <g class="node-group" 
+                 transform="translate({100 + (index % 8) * 80}, {100 + Math.floor(index / 8) * 80})">
+                <circle 
+                  class="node"
+                  class:reflection-node={node.type === 'reflection'}
+                  class:concept-node={node.type === 'concept'}
+                  r={node.type === 'reflection' ? 8 : 5}
+                  on:click={() => node.type === 'reflection' && selectReflection(filteredReflections.find(r => r.id === node.id))}
+                />
+                <text class="node-label" x="0" y="20">{node.label.substring(0, 15)}...</text>
+              </g>
+            {/each}
+
+            <!-- Graph links -->
+            {#each cognitiveGraph.links as link}
+              {@const sourceNode = cognitiveGraph.nodes.find(n => n.id === link.source)}
+              {@const targetNode = cognitiveGraph.nodes.find(n => n.id === link.target)}
+              {#if sourceNode && targetNode}
+                {@const sourceIndex = cognitiveGraph.nodes.indexOf(sourceNode)}
+                {@const targetIndex = cognitiveGraph.nodes.indexOf(targetNode)}
+                <line 
+                  class="link"
+                  class:builds-on={link.type === 'builds_on'}
+                  class:relates-to={link.type === 'relates_to'}
+                  x1={100 + (sourceIndex % 8) * 80}
+                  y1={100 + Math.floor(sourceIndex / 8) * 80}
+                  x2={100 + (targetIndex % 8) * 80}
+                  y2={100 + Math.floor(targetIndex / 8) * 80}
+                  stroke-width={link.strength * 3}
+                />
+              {/if}
+            {/each}
+          </svg>
+
+          <div class="graph-legend">
+            <div class="legend-item">
+              <div class="legend-marker reflection-node"></div>
+              <span>Reflections</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-marker concept-node"></div>
+              <span>Concepts</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-line builds-on"></div>
+              <span>Builds On</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-line relates-to"></div>
+              <span>Relates To</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {:else if viewMode === 'insights'}
+      <div class="insights-view" transition:fly={{ x: 20, duration: 300 }}>
+        <div class="insights-grid">
+          {#each insightPatterns as pattern, index (pattern.category)}
+            <div 
+              class="insight-card"
+              transition:scale={{ duration: 200, delay: index * 100 }}
+            >
+              <div class="insight-header">
+                <h4>{pattern.category}</h4>
+                <div class="insight-metrics">
+                  <span class="count-badge">{pattern.count}</span>
+                  <span class="confidence-bar">
+                    <div class="confidence-fill" style="width: {pattern.confidence * 100}%"></div>
+                  </span>
+                </div>
+              </div>
+
+              <div class="insight-examples">
+                {#each pattern.examples.slice(0, 3) as example}
+                  <div class="example-item">
+                    {typeof example === 'string' ? example : example.content || example.description}
+                  </div>
+                {/each}
+                {#if pattern.examples.length > 3}
+                  <div class="more-examples">
+                    +{pattern.examples.length - 3} more examples
+                  </div>
+                {/if}
+              </div>
+
+              <div class="insight-trend">
+                <span class="trend-indicator trend-{pattern.trend}">
+                  {pattern.trend}
+                </span>
+              </div>
+            </div>
+          {/each}
+        </div>
+      </div>
+    {/if}
+  </div>
+
+  <!-- Selected Reflection Detail Panel -->
+  {#if selectedReflection}
+    <div 
+      class="detail-panel"
+      transition:fly={{ x: 300, duration: 300, easing: cubicOut }}
+    >
+      <div class="detail-header">
+        <h3>{selectedReflection.title || 'Reflection Details'}</h3>
+        <button class="close-detail" on:click={() => selectedReflection = null}>×</button>
+      </div>
+
+      <div class="detail-content">
+        <div class="reflection-metadata">
+          <div class="meta-item">
+            <label>Timestamp:</label>
+            <span>{new Date(selectedReflection.timestamp).toLocaleString()}</span>
+          </div>
+          <div class="meta-item">
+            <label>Depth:</label>
+            <span class="depth-{selectedReflection.depth}">Level {selectedReflection.depth}</span>
+          </div>
+          <div class="meta-item">
+            <label>Confidence:</label>
+            <span>{Math.round((selectedReflection.confidence || 0.5) * 100)}%</span>
+          </div>
+        </div>
+
+        <div class="reflection-content">
+          <h4>Content</h4>
+          <p>{selectedReflection.content}</p>
+        </div>
+
+        {#if selectedReflection.insights?.length > 0}
+          <div class="reflection-insights">
+            <h4>Insights</h4>
+            <div class="insights-list">
+              {#each selectedReflection.insights as insight}
+                <div class="insight-item">
+                  <span class="insight-category">{insight.category || 'General'}</span>
+                  <span class="insight-content">{insight.content || insight}</span>
+                </div>
+              {/each}
+            </div>
+          </div>
+        {/if}
+
+        {#if selectedReflection.related?.length > 0}
+          <div class="related-reflections">
+            <h4>Related Reflections</h4>
+            <div class="related-list">
+              {#each selectedReflection.related as relatedId}
+                {@const related = $reflectionHistory.find(r => r.id === relatedId)}
+                {#if related}
+                  <button 
+                    class="related-item"
+                    on:click={() => selectReflection(related)}
+                  >
+                    {related.title || related.content.substring(0, 50)}...
+                  </button>
+                {/if}
+              {/each}
+            </div>
+          </div>
+        {/if}
+      </div>
+    </div>
+  {/if}
+</div>
+
+<style>
+  .reflection-visualizer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .visualizer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .header-left h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  .reflection-stats {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .count {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #a7f3d0;
+  }
+
+  .label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+
+  .header-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .search-container {
+    position: relative;
+  }
+
+  .search-input {
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    backdrop-filter: blur(10px);
+    width: 250px;
+  }
+
+  .search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .search-clear {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+
+  .filter-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .time-filter, .depth-filter {
+    padding: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.375rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    backdrop-filter: blur(10px);
+  }
+
+  .view-mode-toggle {
+    display: flex;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+  }
+
+  .mode-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.375rem;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .mode-btn.active {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+
+  .action-controls {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .analyze-btn, .export-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.375rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .analyze-btn:hover, .export-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .analyze-btn.analyzing {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .spinner {
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .visualization-container {
+    flex: 1;
+    padding: 1rem 2rem;
+    overflow: auto;
+    position: relative;
+  }
+
+  .timeline-view {
+    height: 100%;
+  }
+
+  .timeline-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .timeline-item {
+    display: flex;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .timeline-item:hover {
+    transform: translateY(-2px);
+  }
+
+  .timeline-item.selected {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(167, 243, 208, 0.3);
+  }
+
+  .timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 1.5rem;
+  }
+
+  .marker-dot {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+  }
+
+  .marker-line {
+    width: 2px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-top: 0.5rem;
+  }
+
+  .timeline-content {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .reflection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .reflection-header h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .timestamp {
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+
+  .reflection-preview {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+
+  .reflection-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .depth-indicator, .confidence-indicator, .insights-count {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.8rem;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .depth-1 { background: rgba(34, 197, 94, 0.3); }
+  .depth-2 { background: rgba(249, 115, 22, 0.3); }
+  .depth-3 { background: rgba(239, 68, 68, 0.3); }
+
+  .insights-preview {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .insight-tag {
+    padding: 0.25rem 0.5rem;
+    background: rgba(167, 243, 208, 0.3);
+    border-radius: 0.375rem;
+    font-size: 0.8rem;
+  }
+
+  .more-insights {
+    padding: 0.25rem 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 0.375rem;
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+
+  .graph-view {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .graph-container {
+    flex: 1;
+    position: relative;
+  }
+
+  .cognitive-graph {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.75rem;
+  }
+
+  .node {
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .reflection-node {
+    fill: #a7f3d0;
+    stroke: #059669;
+    stroke-width: 2;
+  }
+
+  .concept-node {
+    fill: #fbbf24;
+    stroke: #d97706;
+    stroke-width: 1;
+  }
+
+  .node:hover {
+    transform: scale(1.2);
+  }
+
+  .node-label {
+    fill: white;
+    font-size: 0.7rem;
+    text-anchor: middle;
+    pointer-events: none;
+  }
+
+  .link {
+    stroke: rgba(255, 255, 255, 0.3);
+    transition: all 0.2s ease;
+  }
+
+  .link.builds-on {
+    stroke: #a7f3d0;
+    stroke-dasharray: 5,5;
+  }
+
+  .link.relates-to {
+    stroke: #fbbf24;
+  }
+
+  .graph-legend {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .legend-marker {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+  }
+
+  .legend-marker.reflection-node {
+    background: #a7f3d0;
+  }
+
+  .legend-marker.concept-node {
+    background: #fbbf24;
+  }
+
+  .legend-line {
+    width: 1.5rem;
+    height: 2px;
+  }
+
+  .legend-line.builds-on {
+    background: #a7f3d0;
+  }
+
+  .legend-line.relates-to {
+    background: #fbbf24;
+  }
+
+  .insights-view {
+    height: 100%;
+  }
+
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .insight-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .insight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .insight-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .insight-header h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .insight-metrics {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .count-badge {
+    background: rgba(167, 243, 208, 0.3);
+    color: #a7f3d0;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+
+  .confidence-bar {
+    width: 50px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .confidence-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #fbbf24, #a7f3d0);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+  .insight-examples {
+    margin-bottom: 1rem;
+  }
+
+  .example-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .more-examples {
+    font-style: italic;
+    opacity: 0.7;
+    font-size: 0.8rem;
+  }
+
+  .insight-trend {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .trend-indicator {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .trend-stable {
+    background: rgba(156, 163, 175, 0.3);
+    color: #d1d5db;
+  }
+
+  .trend-increasing {
+    background: rgba(34, 197, 94, 0.3);
+    color: #a7f3d0;
+  }
+
+  .trend-decreasing {
+    background: rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
+  }
+
+  .detail-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+
+  .detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .detail-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .close-detail {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+
+  .detail-content {
+    space-y: 1.5rem;
+  }
+
+  .reflection-metadata {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .meta-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  .meta-item label {
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  .reflection-content {
+    margin-bottom: 1.5rem;
+  }
+
+  .reflection-content h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .reflection-content p {
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .reflection-insights {
+    margin-bottom: 1.5rem;
+  }
+
+  .reflection-insights h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .insights-list {
+    space-y: 0.5rem;
+  }
+
+  .insight-item {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .insight-category {
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #a7f3d0;
+    margin-bottom: 0.25rem;
+  }
+
+  .insight-content {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .related-reflections h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .related-list {
+    space-y: 0.5rem;
+  }
+
+  .related-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 0.5rem;
+  }
+
+  .related-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+  }
+</style>
+```
+
+### ArchitectureTimeline.svelte
+
+```svelte
+<script>
+  import { onMount, createEventDispatcher } from 'svelte';
+  import { systemCapabilities, architectureHistory, evolutionMetrics } from '../stores/cognitiveStore.js';
+  import { fade, fly, scale, slide } from 'svelte/transition';
+  import { quintOut, cubicOut } from 'svelte/easing';
+
+  const dispatch = createEventDispatcher();
+
+  // Component state
+  let timelineData = [];
+  let selectedEvent = null;
+  let viewMode = 'chronological'; // 'chronological', 'impact', 'category'
+  let timeRange = 'all'; // 'all', '1d', '1w', '1m', '3m', '1y'
+  let filterCategory = 'all'; // 'all', 'capability', 'performance', 'integration', 'bug-fix'
+  let isLoading = false;
+  let searchQuery = '';
+  let showMetrics = true;
+  let animationSpeed = 'normal'; // 'slow', 'normal', 'fast'
+  let groupByPeriod = 'day'; // 'hour', 'day', 'week', 'month'
+
+  // Reactive declarations
+  $: filteredEvents = filterTimelineEvents(timelineData, searchQuery, timeRange, filterCategory);
+  $: groupedEvents = groupEventsByPeriod(filteredEvents, groupByPeriod);
+  $: evolutionStats = calculateEvolutionStats(filteredEvents);
+  $: impactAnalysis = analyzeImpact(filteredEvents);
+
+  onMount(() => {
+    loadArchitectureHistory();
+  });
+
+  async function loadArchitectureHistory() {
+    isLoading = true;
+    try {
+      // Simulate loading architecture events
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      timelineData = [
+        {
+          id: '1',
+          timestamp: Date.now() - 7 * 24 * 60 * 60 * 1000,
+          title: 'Cognitive State Monitoring Implementation',
+          description: 'Implemented real-time cognitive state tracking with WebSocket integration',
+          category: 'capability',
+          impact: 'high',
+          type: 'feature',
+          author: 'System',
+          changes: [
+            'Added CognitiveStateMonitor component',
+            'Implemented WebSocket real-time updates',
+            'Created cognitive state store'
+          ],
+          metrics: {
+            performance: { before: 0.6, after: 0.85 },
+            reliability: { before: 0.7, after: 0.92 },
+            complexity: { before: 0.4, after: 0.6 }
+          },
+          files: ['CognitiveStateMonitor.svelte', 'cognitiveStore.js', 'websocket.js']
+        },
+        {
+          id: '2',
+          timestamp: Date.now() - 5 * 24 * 60 * 60 * 1000,
+          title: 'System Evolution Dashboard',
+          description: 'Created comprehensive dashboard for tracking system evolution and capabilities',
+          category: 'capability',
+          impact: 'high',
+          type: 'feature',
+          author: 'System',
+          changes: [
+            'Built SystemEvolutionDashboard component',
+            'Added capability tracking metrics',
+            'Implemented evolution timeline visualization'
+          ],
+          metrics: {
+            performance: { before: 0.85, after: 0.88 },
+            usability: { before: 0.6, after: 0.9 },
+            insights: { before: 0.5, after: 0.85 }
+          },
+          files: ['SystemEvolutionDashboard.svelte', 'evolutionStore.js']
+        },
+        {
+          id: '3',
+          timestamp: Date.now() - 3 * 24 * 60 * 60 * 1000,
+          title: 'Collaborative Reasoning Integration',
+          description: 'Added multi-agent reasoning capabilities with real-time collaboration',
+          category: 'integration',
+          impact: 'high',
+          type: 'feature',
+          author: 'System',
+          changes: [
+            'Implemented CollaborativeReasoningSession component',
+            'Added multi-agent communication protocol',
+            'Created shared reasoning state management'
+          ],
+          metrics: {
+            collaboration: { before: 0.3, after: 0.85 },
+            reasoning: { before: 0.7, after: 0.9 },
+            efficiency: { before: 0.6, after: 0.8 }
+          },
+          files: ['CollaborativeReasoningSession.svelte', 'collaborationStore.js']
+        },
+        {
+          id: '4',
+          timestamp: Date.now() - 2 * 24 * 60 * 60 * 1000,
+          title: 'Smart Knowledge Import System',
+          description: 'Built intelligent knowledge import with auto-detection and processing',
+          category: 'capability',
+          impact: 'medium',
+          type: 'feature',
+          author: 'System',
+          changes: [
+            'Created SmartKnowledgeImport component',
+            'Implemented auto-format detection',
+            'Added knowledge graph integration'
+          ],
+          metrics: {
+            automation: { before: 0.4, after: 0.85 },
+            accuracy: { before: 0.6, after: 0.9 },
+            speed: { before: 0.5, after: 0.8 }
+          },
+          files: ['SmartKnowledgeImport.svelte', 'knowledgeStore.js']
+        },
+        {
+          id: '5',
+          timestamp: Date.now() - 1 * 24 * 60 * 60 * 1000,
+          title: 'Performance Optimization',
+          description: 'Optimized rendering and state management for better performance',
+          category: 'performance',
+          impact: 'medium',
+          type: 'optimization',
+          author: 'System',
+          changes: [
+            'Optimized component re-rendering',
+            'Implemented store subscriptions cleanup',
+            'Added virtual scrolling for large datasets'
+          ],
+          metrics: {
+            performance: { before: 0.75, after: 0.92 },
+            memory: { before: 0.6, after: 0.85 },
+            responsiveness: { before: 0.7, after: 0.95 }
+          },
+          files: ['multiple components', 'stores optimization']
+        },
+        {
+          id: '6',
+          timestamp: Date.now() - 6 * 60 * 60 * 1000,
+          title: 'Reflection Visualizer',
+          description: 'Added comprehensive reflection analysis and visualization',
+          category: 'capability',
+          impact: 'high',
+          type: 'feature',
+          author: 'System',
+          changes: [
+            'Implemented ReflectionVisualizer component',
+            'Added pattern recognition algorithms',
+            'Created insight extraction system'
+          ],
+          metrics: {
+            insights: { before: 0.5, after: 0.9 },
+            visualization: { before: 0.6, after: 0.95 },
+            analysis: { before: 0.4, after: 0.85 }
+          },
+          files: ['ReflectionVisualizer.svelte', 'reflectionStore.js']
+        }
+      ];
+
+      // Update architecture history store
+      architectureHistory.set(timelineData);
+    } catch (error) {
+      console.error('Failed to load architecture history:', error);
+    } finally {
+      isLoading = false;
+    }
+  }
+
+  function filterTimelineEvents(events, query, timeRange, category) {
+    const now = Date.now();
+    const timeMs = {
+      '1d': 24 * 60 * 60 * 1000,
+      '1w': 7 * 24 * 60 * 60 * 1000,
+      '1m': 30 * 24 * 60 * 60 * 1000,
+      '3m': 90 * 24 * 60 * 60 * 1000,
+      '1y': 365 * 24 * 60 * 60 * 1000
+    }[timeRange];
+
+    return events.filter(event => {
+      const timeMatch = timeRange === 'all' || (now - event.timestamp) <= timeMs;
+      const categoryMatch = category === 'all' || event.category === category;
+      const queryMatch = !query || 
+        event.title.toLowerCase().includes(query.toLowerCase()) ||
+        event.description.toLowerCase().includes(query.toLowerCase()) ||
+        event.changes.some(change => change.toLowerCase().includes(query.toLowerCase()));
+      
+      return timeMatch && categoryMatch && queryMatch;
+    }).sort((a, b) => {
+      if (viewMode === 'chronological') {
+        return b.timestamp - a.timestamp;
+      } else if (viewMode === 'impact') {
+        const impactOrder = { 'high': 3, 'medium': 2, 'low': 1 };
+        return impactOrder[b.impact] - impactOrder[a.impact];
+      } else {
+        return a.category.localeCompare(b.category);
+      }
+    });
+  }
+
+  function groupEventsByPeriod(events, period) {
+    const groups = new Map();
+    
+    events.forEach(event => {
+      const date = new Date(event.timestamp);
+      let key;
+      
+      switch (period) {
+        case 'hour':
+          key = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-${date.getHours()}`;
+          break;
+        case 'day':
+          key = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+          break;
+        case 'week':
+          const weekStart = new Date(date);
+          weekStart.setDate(date.getDate() - date.getDay());
+          key = `${weekStart.getFullYear()}-W${Math.floor(weekStart.getTime() / (7 * 24 * 60 * 60 * 1000))}`;
+          break;
+        case 'month':
+          key = `${date.getFullYear()}-${date.getMonth()}`;
+          break;
+        default:
+          key = date.toDateString();
+      }
+      
+      if (!groups.has(key)) {
+        groups.set(key, {
+          period: key,
+          events: [],
+          metrics: { performance: 0, impact: 0, complexity: 0 }
+        });
+      }
+      
+      groups.get(key).events.push(event);
+    });
+
+    return Array.from(groups.values()).sort((a, b) => 
+      new Date(b.events[0].timestamp) - new Date(a.events[0].timestamp)
+    );
+  }
+
+  function calculateEvolutionStats(events) {
+    const total = events.length;
+    const byCategory = events.reduce((acc, event) => {
+      acc[event.category] = (acc[event.category] || 0) + 1;
+      return acc;
+    }, {});
+
+    const byImpact = events.reduce((acc, event) => {
+      acc[event.impact] = (acc[event.impact] || 0) + 1;
+      return acc;
+    }, {});
+
+    const averageMetrics = events.reduce((acc, event) => {
+      Object.entries(event.metrics || {}).forEach(([key, value]) => {
+        if (!acc[key]) acc[key] = { before: 0, after: 0, count: 0 };
+        acc[key].before += value.before || 0;
+        acc[key].after += value.after || 0;
+        acc[key].count++;
+      });
+      return acc;
+    }, {});
+
+    Object.keys(averageMetrics).forEach(key => {
+      const metric = averageMetrics[key];
+      metric.before /= metric.count;
+      metric.after /= metric.count;
+      metric.improvement = ((metric.after - metric.before) / metric.before * 100).toFixed(1);
+    });
+
+    return {
+      total,
+      byCategory,
+      byImpact,
+      averageMetrics
+    };
+  }
+
+  function analyzeImpact(events) {
+    const impactScore = events.reduce((score, event) => {
+      const weights = { 'high': 3, 'medium': 2, 'low': 1 };
+      return score + weights[event.impact];
+    }, 0);
+
+    const recentEvents = events.filter(event => 
+      Date.now() - event.timestamp < 7 * 24 * 60 * 60 * 1000
+    );
+
+    const momentum = recentEvents.length / Math.max(events.length, 1);
+
+    return {
+      score: impactScore,
+      momentum: momentum * 100,
+      recentCount: recentEvents.length,
+      trend: momentum > 0.3 ? 'accelerating' : momentum > 0.1 ? 'steady' : 'slowing'
+    };
+  }
+
+  function selectEvent(event) {
+    selectedEvent = event;
+    dispatch('eventSelected', { event });
+  }
+
+  function exportTimeline() {
+    const exportData = {
+      events: filteredEvents,
+      stats: evolutionStats,
+      impact: impactAnalysis,
+      metadata: {
+        exportDate: new Date().toISOString(),
+        filters: { timeRange, filterCategory, viewMode },
+        query: searchQuery
+      }
+    };
+
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], {
+      type: 'application/json'
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `architecture-timeline-${Date.now()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function getImpactColor(impact) {
+    return {
+      'high': '#ef4444',
+      'medium': '#f59e0b',
+      'low': '#10b981'
+    }[impact] || '#6b7280';
+  }
+
+  function getCategoryIcon(category) {
+    return {
+      'capability': '🚀',
+      'performance': '⚡',
+      'integration': '🔗',
+      'bug-fix': '🐛',
+      'optimization': '⚙️'
+    }[category] || '📝';
+  }
+</script>
+
+<div class="architecture-timeline" transition:fade={{ duration: 300 }}>
+  <!-- Header Section -->
+  <div class="timeline-header">
+    <div class="header-left">
+      <h2>Architecture Timeline</h2>
+      <div class="timeline-stats">
+        <div class="stat-card">
+          <span class="stat-value">{evolutionStats.total}</span>
+          <span class="stat-label">Total Events</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">{impactAnalysis.recentCount}</span>
+          <span class="stat-label">Recent Changes</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">{impactAnalysis.momentum.toFixed(0)}%</span>
+          <span class="stat-label">Momentum</span>
+        </div>
+        <div class="stat-card trend-{impactAnalysis.trend}">
+          <span class="stat-value">{impactAnalysis.trend}</span>
+          <span class="stat-label">Trend</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-controls">
+      <div class="search-container">
+        <input 
+          type="text" 
+          placeholder="Search timeline events..."
+          bind:value={searchQuery}
+          class="search-input"
+        />
+        <button class="search-clear" on:click={() => searchQuery = ''}>×</button>
+      </div>
+
+      <div class="filter-controls">
+        <select bind:value={timeRange} class="filter-select">
+          <option value="all">All Time</option>
+          <option value="1d">Last Day</option>
+          <option value="1w">Last Week</option>
+          <option value="1m">Last Month</option>
+          <option value="3m">Last 3 Months</option>
+          <option value="1y">Last Year</option>
+        </select>
+
+        <select bind:value={filterCategory} class="filter-select">
+          <option value="all">All Categories</option>
+          <option value="capability">Capability</option>
+          <option value="performance">Performance</option>
+          <option value="integration">Integration</option>
+          <option value="bug-fix">Bug Fix</option>
+          <option value="optimization">Optimization</option>
+        </select>
+
+        <select bind:value={viewMode} class="filter-select">
+          <option value="chronological">Chronological</option>
+          <option value="impact">By Impact</option>
+          <option value="category">By Category</option>
+        </select>
+
+        <select bind:value={groupByPeriod} class="filter-select">
+          <option value="hour">Group by Hour</option>
+          <option value="day">Group by Day</option>
+          <option value="week">Group by Week</option>
+          <option value="month">Group by Month</option>
+        </select>
+      </div>
+
+      <div class="action-controls">
+        <button 
+          class="toggle-metrics"
+          class:active={showMetrics}
+          on:click={() => showMetrics = !showMetrics}
+        >
+          {showMetrics ? 'Hide' : 'Show'} Metrics
+        </button>
+
+        <button class="export-btn" on:click={exportTimeline}>
+          Export Timeline
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Metrics Panel -->
+  {#if showMetrics}
+    <div class="metrics-panel" transition:slide={{ duration: 300 }}>
+      <div class="metrics-grid">
+        <div class="metric-group">
+          <h4>Evolution Metrics</h4>
+          <div class="metrics-list">
+            {#each Object.entries(evolutionStats.averageMetrics) as [key, metric]}
+              <div class="metric-item">
+                <span class="metric-name">{key}</span>
+                <div class="metric-progress">
+                  <div class="progress-bar">
+                    <div 
+                      class="progress-fill before" 
+                      style="width: {metric.before * 100}%"
+                    ></div>
+                    <div 
+                      class="progress-fill after" 
+                      style="width: {metric.after * 100}%"
+                    ></div>
+                  </div>
+                  <span class="metric-improvement" class:positive={metric.improvement > 0}>
+                    {metric.improvement > 0 ? '+' : ''}{metric.improvement}%
+                  </span>
+                </div>
+              </div>
+            {/each}
+          </div>
+        </div>
+
+        <div class="metric-group">
+          <h4>Category Distribution</h4>
+          <div class="category-chart">
+            {#each Object.entries(evolutionStats.byCategory) as [category, count]}
+              <div class="category-bar">
+                <span class="category-name">
+                  {getCategoryIcon(category)} {category}
+                </span>
+                <div class="bar-container">
+                  <div 
+                    class="bar-fill"
+                    style="width: {(count / evolutionStats.total) * 100}%"
+                  ></div>
+                  <span class="count">{count}</span>
+                </div>
+              </div>
+            {/each}
+          </div>
+        </div>
+
+        <div class="metric-group">
+          <h4>Impact Analysis</h4>
+          <div class="impact-chart">
+            {#each Object.entries(evolutionStats.byImpact) as [impact, count]}
+              <div class="impact-item">
+                <span class="impact-label" style="color: {getImpactColor(impact)}">
+                  {impact} impact
+                </span>
+                <div class="impact-bar">
+                  <div 
+                    class="impact-fill"
+                    style="width: {(count / evolutionStats.total) * 100}%; background: {getImpactColor(impact)}"
+                  ></div>
+                  <span class="impact-count">{count}</span>
+                </div>
+              </div>
+            {/each}
+          </div>
+        </div>
+      </div>
+    </div>
+  {/if}
+
+  <!-- Timeline Content -->
+  <div class="timeline-content">
+    {#if isLoading}
+      <div class="loading-state" transition:fade>
+        <div class="loading-spinner"></div>
+        <p>Loading architecture timeline...</p>
+      </div>
+    {:else if filteredEvents.length === 0}
+      <div class="empty-state" transition:fade>
+        <div class="empty-icon">📅</div>
+        <h3>No events found</h3>
+        <p>Try adjusting your filters or search criteria</p>
+      </div>
+    {:else}
+      <div class="timeline-container">
+        {#each groupedEvents as group, groupIndex (group.period)}
+          <div 
+            class="timeline-group"
+            transition:fly={{ y: 20, duration: 300, delay: groupIndex * 100 }}
+          >
+            <div class="group-header">
+              <h3 class="group-title">{group.period}</h3>
+              <span class="group-count">{group.events.length} events</span>
+            </div>
+
+            <div class="group-events">
+              {#each group.events as event, eventIndex (event.id)}
+                <div 
+                  class="timeline-event"
+                  class:selected={selectedEvent?.id === event.id}
+                  transition:scale={{ 
+                    duration: 200, 
+                    delay: (groupIndex * 100) + (eventIndex * 50),
+                    easing: quintOut 
+                  }}
+                  on:click={() => selectEvent(event)}
+                >
+                  <div class="event-marker">
+                    <div 
+                      class="marker-dot"
+                      style="background: {getImpactColor(event.impact)}"
+                    ></div>
+                    <div class="marker-line"></div>
+                  </div>
+
+                  <div class="event-content">
+                    <div class="event-header">
+                      <div class="event-title-row">
+                        <span class="event-icon">{getCategoryIcon(event.category)}</span>
+                        <h4 class="event-title">{event.title}</h4>
+                        <span class="event-category">{event.category}</span>
+                      </div>
+                      <div class="event-meta">
+                        <span class="event-time">
+                          {new Date(event.timestamp).toLocaleString()}
+                        </span>
+                        <span class="event-impact impact-{event.impact}">
+                          {event.impact} impact
+                        </span>
+                        <span class="event-type">{event.type}</span>
+                      </div>
+                    </div>
+
+                    <p class="event-description">{event.description}</p>
+
+                    <div class="event-changes">
+                      <h5>Changes:</h5>
+                      <ul>
+                        {#each event.changes as change}
+                          <li>{change}</li>
+                        {/each}
+                      </ul>
+                    </div>
+
+                    {#if event.metrics && Object.keys(event.metrics).length > 0}
+                      <div class="event-metrics">
+                        <h5>Impact Metrics:</h5>
+                        <div class="metrics-row">
+                          {#each Object.entries(event.metrics) as [key, metric]}
+                            <div class="metric-badge">
+                              <span class="metric-key">{key}</span>
+                              <div class="metric-change">
+                                <span class="before">{(metric.before * 100).toFixed(0)}%</span>
+                                <span class="arrow">→</span>
+                                <span class="after">{(metric.after * 100).toFixed(0)}%</span>
+                              </div>
+                            </div>
+                          {/each}
+                        </div>
+                      </div>
+                    {/if}
+
+                    <div class="event-footer">
+                      <div class="event-files">
+                        <span class="files-label">Files:</span>
+                        {#each event.files as file}
+                          <span class="file-tag">{file}</span>
+                        {/each}
+                      </div>
+                      <span class="event-author">by {event.author}</span>
+                    </div>
+                  </div>
+                </div>
+              {/each}
+            </div>
+          </div>
+        {/each}
+      </div>
+    {/if}
+  </div>
+
+  <!-- Event Detail Modal -->
+  {#if selectedEvent}
+    <div 
+      class="event-detail-modal"
+      transition:fly={{ y: 50, duration: 300, easing: cubicOut }}
+      on:click|self={() => selectedEvent = null}
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title-row">
+            <span class="modal-icon">{getCategoryIcon(selectedEvent.category)}</span>
+            <h3>{selectedEvent.title}</h3>
+            <button class="close-modal" on:click={() => selectedEvent = null}>×</button>
+          </div>
+          <div class="modal-meta">
+            <span class="modal-time">
+              {new Date(selectedEvent.timestamp).toLocaleString()}
+            </span>
+            <span class="modal-category">{selectedEvent.category}</span>
+            <span class="modal-impact impact-{selectedEvent.impact}">
+              {selectedEvent.impact} impact
+            </span>
+          </div>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-description">
+            <h4>Description</h4>
+            <p>{selectedEvent.description}</p>
+          </div>
+
+          <div class="modal-changes">
+            <h4>Detailed Changes</h4>
+            <ul>
+              {#each selectedEvent.changes as change}
+                <li>{change}</li>
+              {/each}
+            </ul>
+          </div>
+
+          {#if selectedEvent.metrics}
+            <div class="modal-metrics">
+              <h4>Performance Impact</h4>
+              <div class="detailed-metrics">
+                {#each Object.entries(selectedEvent.metrics) as [key, metric]}
+                  <div class="detailed-metric">
+                    <div class="metric-header">
+                      <span class="metric-name">{key}</span>
+                      <span class="metric-improvement">
+                        {((metric.after - metric.before) / metric.before * 100).toFixed(1)}% improvement
+                      </span>
+                    </div>
+                    <div class="metric-bars">
+                      <div class="metric-bar before">
+                        <label>Before</label>
+                        <div class="bar">
+                          <div 
+                            class="bar-fill"
+                            style="width: {metric.before * 100}%"
+                          ></div>
+                        </div>
+                        <span>{(metric.before * 100).toFixed(0)}%</span>
+                      </div>
+                      <div class="metric-bar after">
+                        <label>After</label>
+                        <div class="bar">
+                          <div 
+                            class="bar-fill"
+                            style="width: {metric.after * 100}%"
+                          ></div>
+                        </div>
+                        <span>{(metric.after * 100).toFixed(0)}%</span>
+                      </div>
+                    </div>
+                  </div>
+                {/each}
+              </div>
+            </div>
+          {/if}
+
+          <div class="modal-files">
+            <h4>Modified Files</h4>
+            <div class="files-grid">
+              {#each selectedEvent.files as file}
+                <div class="file-card">
+                  <span class="file-icon">📄</span>
+                  <span class="file-name">{file}</span>
+                </div>
+              {/each}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {/if}
+</div>
+
+<style>
+  .architecture-timeline {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #581c87 100%);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.5rem 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+  }
+
+  .header-left h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  .timeline-stats {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    min-width: 80px;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #a7f3d0;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    text-align: center;
+  }
+
+  .trend-accelerating .stat-value { color: #34d399; }
+  .trend-steady .stat-value { color: #fbbf24; }
+  .trend-slowing .stat-value { color: #f87171; }
+
+  .header-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+  }
+
+  .search-container {
+    position: relative;
+  }
+
+  .search-input {
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    backdrop-filter: blur(10px);
+    width: 300px;
+  }
+
+  .search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .search-clear {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+
+  .filter-controls {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-select {
+    padding: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.375rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    backdrop-filter: blur(10px);
+    font-size: 0.9rem;
+  }
+
+  .action-controls {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .toggle-metrics, .export-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.375rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+  }
+
+  .toggle-metrics:hover, .export-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .toggle-metrics.active {
+    background: rgba(167, 243, 208, 0.3);
+    color: #a7f3d0;
+  }
+
+  .metrics-panel {
+    padding: 1.5rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .metric-group h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #a7f3d0;
+  }
+
+  .metric-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .metric-name {
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+
+  .metric-progress {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .progress-bar {
+    width: 100px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .progress-fill {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+  }
+
+  .progress-fill.before {
+    background: rgba(239, 68, 68, 0.6);
+  }
+
+  .progress-fill.after {
+    background: linear-gradient(90deg, #34d399, #a7f3d0);
+  }
+
+  .metric-improvement {
+    font-size: 0.8rem;
+    font-weight: 600;
+    min-width: 50px;
+    text-align: right;
+  }
+
+  .metric-improvement.positive {
+    color: #34d399;
+  }
+
+  .category-chart, .impact-chart {
+    space-y: 0.75rem;
+  }
+
+  .category-bar, .impact-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .category-name, .impact-label {
+    font-weight: 500;
+    min-width: 120px;
+  }
+
+  .bar-container, .impact-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+  }
+
+  .bar-fill, .impact-fill {
+    height: 6px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+  }
+
+  .count, .impact-count {
+    font-size: 0.8rem;
+    font-weight: 600;
+    min-width: 30px;
+    text-align: right;
+  }
+
+  .timeline-content {
+    flex: 1;
+    padding: 1rem 2rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .loading-state, .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .loading-spinner {
+    width: 3rem;
+    height: 3rem;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+  }
+
+  .empty-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  .empty-state h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .empty-state p {
+    margin: 0;
+    opacity: 0.7;
+  }
+
+  .timeline-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .timeline-group {
+    margin-bottom: 3rem;
+  }
+
+  .group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .group-title {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #a7f3d0;
+  }
+
+  .group-count {
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+
+  .group-events {
+    position: relative;
+  }
+
+  .timeline-event {
+    display: flex;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .timeline-event:hover {
+    transform: translateY(-2px);
+  }
+
+  .timeline-event.selected {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 15px rgba(167, 243, 208, 0.3));
+  }
+
+  .event-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 2rem;
+    z-index: 1;
+  }
+
+  .marker-dot {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .marker-line {
+    width: 2px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-top: 0.5rem;
+  }
+
+  .event-content {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .event-header {
+    margin-bottom: 1rem;
+  }
+
+  .event-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .event-icon {
+    font-size: 1.5rem;
+  }
+
+  .event-title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    flex: 1;
+  }
+
+  .event-category {
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 0.375rem;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+  }
+
+  .event-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .event-time, .event-type {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+
+  .event-impact {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .impact-high {
+    background: rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
+  }
+
+  .impact-medium {
+    background: rgba(249, 115, 22, 0.3);
+    color: #fdba74;
+  }
+
+  .impact-low {
+    background: rgba(34, 197, 94, 0.3);
+    color: #a7f3d0;
+  }
+
+  .event-description {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+
+  .event-changes {
+    margin-bottom: 1rem;
+  }
+
+  .event-changes h5 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #a7f3d0;
+  }
+
+  .event-changes ul {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .event-changes li {
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .event-metrics {
+    margin-bottom: 1rem;
+  }
+
+  .event-metrics h5 {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #a7f3d0;
+  }
+
+  .metrics-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .metric-badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+
+  .metric-key {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    text-transform: capitalize;
+  }
+
+  .metric-change {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.8rem;
+  }
+
+  .before {
+    opacity: 0.7;
+  }
+
+  .arrow {
+    color: #a7f3d0;
+  }
+
+  .after {
+    color: #34d399;
+    font-weight: 600;
+  }
+
+  .event-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .event-files {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .files-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  .file-tag {
+    padding: 0.25rem 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 0.375rem;
+    font-size: 0.7rem;
+    font-family: 'Monaco', monospace;
+  }
+
+  .event-author {
+    font-size: 0.8rem;
+    font-style: italic;
+    opacity: 0.7;
+  }
+
+  .event-detail-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+  }
+
+  .modal-content {
+    background: rgba(30, 58, 138, 0.95);
+    border-radius: 1rem;
+    max-width: 800px;
+    max-height: 90vh;
+    margin: 2rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+  }
+
+  .modal-header {
+    padding: 2rem 2rem 1rem 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .modal-title-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .modal-icon {
+    font-size: 2rem;
+  }
+
+  .modal-title-row h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    flex: 1;
+  }
+
+  .close-modal {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+  }
+
+  .close-modal:hover {
+    opacity: 1;
+  }
+
+  .modal-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .modal-time, .modal-category {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .modal-impact {
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .modal-body {
+    padding: 1.5rem 2rem 2rem 2rem;
+    overflow-y: auto;
+    max-height: calc(90vh - 200px);
+  }
+
+  .modal-description, .modal-changes, .modal-metrics, .modal-files {
+    margin-bottom: 2rem;
+  }
+
+  .modal-body h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #a7f3d0;
+  }
+
+  .modal-description p {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+
+  .modal-changes ul {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .modal-changes li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .detailed-metrics {
+    space-y: 1.5rem;
+  }
+
+  .detailed-metric {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .metric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .metric-name {
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  .metric-improvement {
+    color: #34d399;
+    font-weight: 600;
+  }
+
+  .metric-bars {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .metric-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .metric-bar label {
+    min-width: 60px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .bar {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .metric-bar .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+
+  .metric-bar.before .bar-fill {
+    background: rgba(239, 68, 68, 0.6);
+  }
+
+  .metric-bar.after .bar-fill {
+    background: linear-gradient(90deg, #34d399, #a7f3d0);
+  }
+
+  .metric-bar span {
+    min-width: 50px;
+    text-align: right;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .files-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .file-card {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+  }
+
+  .file-icon {
+    font-size: 1.2rem;
+  }
+
+  .file-name {
+    font-family: 'Monaco', monospace;
+    font-size: 0.8rem;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+```
+
 ## Implementation Strategy
 
 ### Phase 1: Structure Cleanup (Week 1)
