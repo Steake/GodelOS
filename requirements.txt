@@ -4,6 +4,8 @@ psutil>=5.9.0
 spacy>=3.5.0
 nltk>=3.8.0
 semver>=3.0.0
+networkx>=2.8.0
+requests>=2.31.0
 
 # Development dependencies
 pytest>=7.0.0
