@@ -11,6 +11,8 @@ setup(
     install_requires=[
         # Core dependencies
         "typing-extensions>=4.0.0",
+        "networkx>=2.8.0",
+        "requests>=2.31.0",
     ],
     extras_require={
         "dev": [
