@@ -598,6 +598,42 @@ class WorkingMemory:
             
             # Remove expired items
             for item_id in expired_ids:
+                del self.items[item_id]
+                
+                if item_id in self.priorities:
+                    del self.priorities[item_id]
+                
+                if item_id in self.expiration_times:
+                    del self.expiration_times[item_id]
+            
+            return len(expired_ids)
+    
+    async def _evict_items(self) -> None:
+        """Evict items to make room for new ones."""
+        # First, clear expired items
+        await self.clear_expired_items()
+        
+        # If still at capacity, evict lowest priority items
+        if len(self.items) >= self.capacity:
+            # Sort items by priority
+            sorted_items = sorted(
+                self.items.keys(),
+                key=lambda x: self.priorities.get(x, 0)
+            )
+            
+            # Remove lowest priority items
+            items_to_remove = sorted_items[:len(self.items) - self.capacity + 1]
+            
+            for item_id in items_to_remove:
+                del self.items[item_id]
+                
+                if item_id in self.priorities:
+                    del self.priorities[item_id]
+                
+                if item_id in self.expiration_times:
+                    del self.expiration_times[item_id]
+
+
 class UnifiedKnowledgeStore(AbstractUnifiedKnowledgeStore):
     """
     UnifiedKnowledgeStore implementation for GodelOS.
@@ -1098,37 +1134,3 @@ class UnifiedKnowledgeStore(AbstractUnifiedKnowledgeStore):
         knowledge_items.append(experience)
         
         return knowledge_items
-                del self.items[item_id]
-                
-                if item_id in self.priorities:
-                    del self.priorities[item_id]
-                
-                if item_id in self.expiration_times:
-                    del self.expiration_times[item_id]
-            
-            return len(expired_ids)
-    
-    async def _evict_items(self) -> None:
-        """Evict items to make room for new ones."""
-        # First, clear expired items
-        await self.clear_expired_items()
-        
-        # If still at capacity, evict lowest priority items
-        if len(self.items) >= self.capacity:
-            # Sort items by priority
-            sorted_items = sorted(
-                self.items.keys(),
-                key=lambda x: self.priorities.get(x, 0)
-            )
-            
-            # Remove lowest priority items
-            items_to_remove = sorted_items[:len(self.items) - self.capacity + 1]
-            
-            for item_id in items_to_remove:
-                del self.items[item_id]
-                
-                if item_id in self.priorities:
-                    del self.priorities[item_id]
-                
-                if item_id in self.expiration_times:
-                    del self.expiration_times[item_id]

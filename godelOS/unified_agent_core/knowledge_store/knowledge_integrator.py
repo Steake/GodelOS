@@ -733,3 +733,283 @@ class KnowledgeIntegrator(KnowledgeIntegratorInterface):
         """
         # This is a placeholder implementation
         return []
+    
+    # Missing conflict resolution methods
+    
+    async def _resolve_by_recency(self, item: Knowledge, conflicts: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """
+        Resolve conflicts by choosing the most recent item.
+        
+        Args:
+            item: The knowledge item
+            conflicts: List of conflicting items
+            
+        Returns:
+            Dictionary with resolution results
+        """
+        most_recent = item
+        most_recent_time = item.created_at
+        
+        for conflict in conflicts:
+            conflict_item = conflict["item"]
+            if conflict_item.created_at > most_recent_time:
+                most_recent = conflict_item
+                most_recent_time = conflict_item.created_at
+        
+        if most_recent.id == item.id:
+            return {"success": True, "resolution": "keep_original"}
+        else:
+            return {"success": False, "resolution": "keep_conflict", "preferred_item": most_recent}
+    
+    async def _resolve_by_confidence(self, item: Knowledge, conflicts: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """
+        Resolve conflicts by choosing the item with highest confidence.
+        
+        Args:
+            item: The knowledge item
+            conflicts: List of conflicting items
+            
+        Returns:
+            Dictionary with resolution results
+        """
+        highest_confidence = item
+        max_confidence = item.confidence
+        
+        for conflict in conflicts:
+            conflict_item = conflict["item"]
+            if conflict_item.confidence > max_confidence:
+                highest_confidence = conflict_item
+                max_confidence = conflict_item.confidence
+        
+        if highest_confidence.id == item.id:
+            return {"success": True, "resolution": "keep_original"}
+        else:
+            return {"success": False, "resolution": "keep_conflict", "preferred_item": highest_confidence}
+    
+    async def _resolve_by_evidence(self, item: Knowledge, conflicts: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """
+        Resolve conflicts by choosing the item with most evidence.
+        
+        Args:
+            item: The knowledge item
+            conflicts: List of conflicting items
+            
+        Returns:
+            Dictionary with resolution results
+        """
+        best_item = item
+        max_evidence = len(getattr(item, 'evidence', []))
+        
+        for conflict in conflicts:
+            conflict_item = conflict["item"]
+            evidence_count = len(getattr(conflict_item, 'evidence', []))
+            if evidence_count > max_evidence:
+                best_item = conflict_item
+                max_evidence = evidence_count
+        
+        if best_item.id == item.id:
+            return {"success": True, "resolution": "keep_original"}
+        else:
+            return {"success": False, "resolution": "keep_conflict", "preferred_item": best_item}
+    
+    async def _resolve_by_consensus(self, item: Knowledge, conflicts: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """
+        Resolve conflicts by consensus (placeholder implementation).
+        
+        Args:
+            item: The knowledge item
+            conflicts: List of conflicting items
+            
+        Returns:
+            Dictionary with resolution results
+        """
+        # For now, fall back to confidence-based resolution
+        return await self._resolve_by_confidence(item, conflicts)
+    
+    # Helper methods for conflict detection and resolution
+    
+    def _determine_target_memory(self, item: Knowledge) -> MemoryType:
+        """
+        Determine the target memory type for a knowledge item.
+        
+        Args:
+            item: The knowledge item
+            
+        Returns:
+            The target memory type
+        """
+        return self.knowledge_type_mapping.get(item.type, MemoryType.WORKING)
+    
+    async def _check_for_conflicts(self, item: Knowledge, memory_type: MemoryType) -> List[Dict[str, Any]]:
+        """
+        Check for conflicts before integration.
+        
+        Args:
+            item: The knowledge item
+            memory_type: The target memory type
+            
+        Returns:
+            List of conflicts found
+        """
+        conflicts = []
+        
+        # Simple conflict detection based on content similarity
+        if memory_type == MemoryType.SEMANTIC and self.semantic_memory:
+            # Query for similar items
+            query = {
+                "content": item.content if hasattr(item, 'content') else {},
+                "knowledge_types": [item.type],
+                "max_results": 10
+            }
+            
+            result = await self.semantic_memory.query(query)
+            for existing_item in result.items:
+                if await self._is_conflicting(item, existing_item):
+                    conflicts.append({
+                        "item": existing_item,
+                        "conflict_type": "content_conflict"
+                    })
+        
+        return conflicts
+    
+    async def _is_conflicting(self, item1: Knowledge, item2: Knowledge) -> bool:
+        """
+        Check if two knowledge items are conflicting.
+        
+        Args:
+            item1: First knowledge item
+            item2: Second knowledge item
+            
+        Returns:
+            True if the items are conflicting
+        """
+        # Simple conflict detection based on content
+        if not hasattr(item1, 'content') or not hasattr(item2, 'content'):
+            return False
+        
+        if not item1.content or not item2.content:
+            return False
+        
+        # For facts and beliefs, check if they contradict
+        if item1.type in [KnowledgeType.FACT, KnowledgeType.BELIEF] and item2.type in [KnowledgeType.FACT, KnowledgeType.BELIEF]:
+            # Check if they have the same subject but different predicates that contradict
+            if (item1.content.get("subject") == item2.content.get("subject") and
+                item1.content.get("predicate") != item2.content.get("predicate")):
+                # Simple contradiction detection (this could be more sophisticated)
+                pred1 = str(item1.content.get("predicate", "")).lower()
+                pred2 = str(item2.content.get("predicate", "")).lower()
+                
+                contradictory_pairs = [
+                    ("is", "is not"),
+                    ("exists", "does not exist"),
+                    ("true", "false"),
+                    ("yes", "no")
+                ]
+                
+                for pair in contradictory_pairs:
+                    if (pred1 in pair[0] and pred2 in pair[1]) or (pred1 in pair[1] and pred2 in pair[0]):
+                        return True
+        
+        return False
+    
+    async def _resolve_conflicts_for_item(self, item: Knowledge, conflicts: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """
+        Resolve conflicts for a specific item.
+        
+        Args:
+            item: The knowledge item
+            conflicts: List of conflicts
+            
+        Returns:
+            Dictionary with resolution results
+        """
+        if not conflicts:
+            return {"success": True}
+        
+        # Use the default resolution strategy (confidence)
+        strategy = self.conflict_resolution_strategies.get("confidence")
+        if strategy:
+            return await strategy(item, conflicts)
+        else:
+            return {"success": False, "reason": "No resolution strategy available"}
+    
+    async def _store_in_memory(self, item: Knowledge, memory_type: MemoryType) -> bool:
+        """
+        Store an item in the appropriate memory.
+        
+        Args:
+            item: The knowledge item
+            memory_type: The target memory type
+            
+        Returns:
+            True if storage was successful
+        """
+        try:
+            if memory_type == MemoryType.SEMANTIC and self.semantic_memory:
+                return await self.semantic_memory.store(item)
+            elif memory_type == MemoryType.EPISODIC and self.episodic_memory:
+                return await self.episodic_memory.store(item)
+            elif memory_type == MemoryType.WORKING and self.working_memory:
+                return await self.working_memory.store(item)
+            else:
+                logger.error(f"Unknown memory type or memory not available: {memory_type}")
+                return False
+        except Exception as e:
+            logger.error(f"Error storing item {item.id} in {memory_type.value}: {e}")
+            return False
+    
+    async def _generate_and_store_inferences(self, item: Knowledge, memory_type: MemoryType) -> None:
+        """
+        Generate and store inferences for an item.
+        
+        Args:
+            item: The knowledge item
+            memory_type: The memory type where the item was stored
+        """
+        try:
+            inferences = []
+            
+            # Generate specific inferences based on item type
+            if item.type == KnowledgeType.FACT:
+                inferences.extend(await self._generate_fact_inferences(item))
+            elif item.type == KnowledgeType.CONCEPT:
+                inferences.extend(await self._generate_concept_inferences(item))
+            elif item.type == KnowledgeType.RULE:
+                inferences.extend(await self._generate_rule_inferences(item))
+            
+            # Store inferences in working memory
+            for inference in inferences:
+                if self.working_memory:
+                    await self.working_memory.store(inference)
+            
+            if inferences:
+                logger.debug(f"Generated and stored {len(inferences)} inferences for item {item.id}")
+        except Exception as e:
+            logger.error(f"Error generating inferences for item {item.id}: {e}")
+    
+    def _should_consolidate(self, item: Knowledge) -> bool:
+        """
+        Check if an item should be consolidated to long-term memory.
+        
+        Args:
+            item: The knowledge item
+            
+        Returns:
+            True if the item should be consolidated
+        """
+        # Check access count
+        access_count = item.metadata.get("access_count", 0)
+        if access_count < self.min_access_count:
+            return False
+        
+        # Check time since creation
+        time_since_creation = time.time() - item.created_at
+        min_age = self.config.get("min_consolidation_age", 3600)  # 1 hour default
+        if time_since_creation < min_age:
+            return False
+        
+        # Check confidence
+        if item.confidence < self.consolidation_threshold:
+            return False
+        
+        return True

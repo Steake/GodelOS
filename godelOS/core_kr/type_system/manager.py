@@ -338,3 +338,27 @@ class TypeSystemManager:
         # Otherwise define a new type
         parent_types = [parent_type] if parent_type is not None else None
         return self.define_atomic_type(type_name, parent_types)
+    
+    def get_function_signature(self, symbol_name: str) -> Optional[Type]:
+        """
+        Get a function signature by symbol name.
+        
+        Args:
+            symbol_name: The name of the function/symbol
+            
+        Returns:
+            The function type signature, or None if not found
+        """
+        return self._signatures.get(symbol_name)
+    
+    def has_function_signature(self, symbol_name: str) -> bool:
+        """
+        Check if a function signature exists.
+        
+        Args:
+            symbol_name: The name of the function/symbol
+            
+        Returns:
+            True if the function signature exists, False otherwise
+        """
+        return symbol_name in self._signatures

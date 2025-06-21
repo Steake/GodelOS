@@ -27,7 +27,10 @@ class Settings(BaseSettings):
     
     # CORS configuration
     cors_origins: List[str] = Field(
-        default=["http://localhost:3000", "http://127.0.0.1:3000"],
+        default=[
+            "http://localhost:3000", "http://127.0.0.1:3000",
+            "http://localhost:3002", "http://127.0.0.1:3002"
+        ],
         env="GODELOS_CORS_ORIGINS"
     )
     cors_allow_credentials: bool = Field(default=True, env="GODELOS_CORS_CREDENTIALS")

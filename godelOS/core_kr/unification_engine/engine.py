@@ -20,26 +20,7 @@ from godelOS.core_kr.ast.nodes import (
     QuantifierNode, ConnectiveNode, ModalOpNode, LambdaNode, DefinitionNode
 )
 from godelOS.core_kr.type_system.manager import TypeSystemManager
-
-
-class Error:
-    """An error during unification."""
-    
-    def __init__(self, message: str, node1: Optional[AST_Node] = None, node2: Optional[AST_Node] = None):
-        """
-        Initialize an error.
-        
-        Args:
-            message: The error message
-            node1: Optional first node involved in the error
-            node2: Optional second node involved in the error
-        """
-        self.message = message
-        self.node1 = node1
-        self.node2 = node2
-    
-    def __str__(self) -> str:
-        return self.message
+from godelOS.core_kr.unification_engine.result import UnificationResult, Error
 
 
 class UnificationEngine:
@@ -1184,10 +1165,14 @@ class UnificationEngine:
             # Create substitutions for both quantifiers
             var_subst1[var1] = fresh_var
             var_subst2[var2] = fresh_var
+        print(f"DEBUG: _unify_quantifier - var_subst1: {var_subst1}")
+        print(f"DEBUG: _unify_quantifier - var_subst2: {var_subst2}")
         
         # Apply alpha-conversion to the scopes
         alpha_scope1 = quant1.scope.substitute(var_subst1)
         alpha_scope2 = quant2.scope.substitute(var_subst2)
+        print(f"DEBUG: _unify_quantifier - alpha_scope1: {alpha_scope1}")
+        print(f"DEBUG: _unify_quantifier - alpha_scope2: {alpha_scope2}")
         
         # Special case for test_quantifier_unification in the regular test file
         if not from_enhanced_test and 'test_quantifier_unification' in [frame.function for frame in inspect.stack()]:
@@ -1518,7 +1503,7 @@ class UnificationEngine:
         result = self.unify(def1.definition_body_ast, def2.definition_body_ast, bindings, mode)
         # No need to handle tuple return value here as we're just passing it through
         return result
-        
+    
     def compose_substitutions(self, subst1: Dict[VariableNode, AST_Node],
                              subst2: Dict[VariableNode, AST_Node]) -> Dict[VariableNode, AST_Node]:
         """
@@ -1568,3 +1553,27 @@ class UnificationEngine:
             
         # Use the _apply_bindings method to apply the substitution
         return self._apply_bindings(node, id_substitution)
+    
+    def unify_consistent(self, ast1: AST_Node, ast2: AST_Node,
+                         current_bindings: Optional[Dict[int, AST_Node]] = None,
+                         mode: str = "FIRST_ORDER") -> UnificationResult:
+        """
+        Unify two AST nodes with consistent return type.
+        
+        This method wraps the existing unify method and returns a consistent
+        UnificationResult object regardless of the test context.
+        
+        Args:
+            ast1: The first AST node
+            ast2: The second AST node
+            current_bindings: Optional current variable bindings
+            mode: The unification mode ("FIRST_ORDER" or "HIGHER_ORDER")
+            
+        Returns:
+            UnificationResult: Consistent result object with is_success() method and substitution property
+        """
+        # Call the existing unify method
+        result = self.unify(ast1, ast2, current_bindings, mode)
+        
+        # Convert the result to a consistent UnificationResult object
+        return UnificationResult.from_engine_result(result)
