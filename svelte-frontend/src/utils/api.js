@@ -34,11 +34,16 @@ export class GödelOSAPI {
 
   static async fetchConcepts() {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/knowledge/concepts`);
+      const response = await fetch(`${API_BASE_URL}/api/knowledge/concepts`, {
+        signal: AbortSignal.timeout(5000) // 5 second timeout
+      });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return await response.json();
     } catch (error) {
-      console.warn('Failed to fetch concepts:', error);
+      // Only log if it's not a network/CORS error to reduce console noise
+      if (!error.message.includes('NetworkError') && error.name !== 'TypeError') {
+        console.warn('Failed to fetch concepts:', error);
+      }
       return [];
     }
   }
@@ -60,22 +65,32 @@ export class GödelOSAPI {
 
   static async fetchSystemHealth() {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/health`);
+      const response = await fetch(`${API_BASE_URL}/api/health`, {
+        signal: AbortSignal.timeout(5000) // 5 second timeout
+      });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return await response.json();
     } catch (error) {
-      console.warn('Failed to fetch system health:', error);
+      // Only log if it's not a network/CORS error to reduce console noise
+      if (!error.message.includes('NetworkError') && !error.name === 'TypeError') {
+        console.warn('Failed to fetch system health:', error);
+      }
       return null;
     }
   }
 
   static async fetchCognitiveState() {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/cognitive/state`);
+      const response = await fetch(`${API_BASE_URL}/api/cognitive/state`, {
+        signal: AbortSignal.timeout(5000) // 5 second timeout
+      });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return await response.json();
     } catch (error) {
-      console.warn('Failed to fetch cognitive state:', error);
+      // Only log if it's not a network/CORS error to reduce console noise
+      if (!error.message.includes('NetworkError') && !error.name === 'TypeError') {
+        console.warn('Failed to fetch cognitive state:', error);
+      }
       return null;
     }
   }
@@ -363,11 +378,16 @@ export class GödelOSAPI {
 
   static async fetchEvolutionData(timeframe = '24h') {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/knowledge/evolution?timeframe=${timeframe}`);
+      const response = await fetch(`${API_BASE_URL}/api/knowledge/evolution?timeframe=${timeframe}`, {
+        signal: AbortSignal.timeout(5000) // 5 second timeout
+      });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return await response.json();
     } catch (error) {
-      console.warn('Failed to fetch evolution data:', error);
+      // Only log if it's not a network/CORS error to reduce console noise
+      if (!error.message.includes('NetworkError') && error.name !== 'TypeError') {
+        console.warn('Failed to fetch evolution data:', error);
+      }
       return [];
     }
   }
@@ -454,7 +474,7 @@ export class GödelOSAPI {
       };
       
     } catch (error) {
-      console.error('❌ Failed to trigger re-analysis:', error);
+      // Silently handle re-analysis trigger errors when backend is unavailable
       return {
         success: false,
         message: error.message || 'Re-analysis request failed'

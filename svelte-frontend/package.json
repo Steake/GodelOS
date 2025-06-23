@@ -1,14 +1,24 @@
 {
   "name": "godelos-svelte-frontend",
   "version": "1.0.0",
-  "description": "GödelOS Cognitive Interface - Svelte Implementation",
   "type": "module",
+  "description": "GödelOS Cognitive Interface - Svelte Implementation",
   "scripts": {
     "build": "vite build",
     "dev": "vite dev",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:enhanced": "playwright test tests/enhanced-cognitive-features.spec.js tests/enhanced-cognitive-components.spec.js",
+    "test:api": "playwright test tests/api-connectivity.spec.js",
+    "test:integration": "playwright test tests/system-integration.spec.js",
+    "test:interactions": "playwright test tests/user-interactions.spec.js",
+    "test:report": "playwright show-report"
   },
   "devDependencies": {
+    "@playwright/test": "^1.53.1",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "svelte": "^4.2.7",
     "vite": "^5.0.3"

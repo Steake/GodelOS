@@ -61,9 +61,8 @@ def init_cognitive_models():
         
         return False
 
-COGNITIVE_MODELS_AVAILABLE = init_cognitive_models()
-
-COGNITIVE_MODELS_AVAILABLE = init_cognitive_models()
+# Defer cognitive models initialization to avoid import-time hanging
+COGNITIVE_MODELS_AVAILABLE = False
 
 logger = logging.getLogger(__name__)
 
@@ -770,7 +769,7 @@ class WebSocketManager:
     
     def _parse_granularity(self, granularity: str):
         """Parse granularity string to enum if available."""
-        if not COGNITIVE_MODELS_AVAILABLE:
+        if not self._ensure_cognitive_models_initialized():
             return granularity
         
         try:
@@ -780,7 +779,7 @@ class WebSocketManager:
     
     def _parse_subscriptions(self, subscriptions: List[str]):
         """Parse subscription list to event type set if available."""
-        if not COGNITIVE_MODELS_AVAILABLE:
+        if not self._ensure_cognitive_models_initialized():
             return set(subscriptions)
         
         try:
@@ -795,3 +794,10 @@ class WebSocketManager:
             return subscription_set
         except ImportError:
             return set(subscriptions)
+    
+    def _ensure_cognitive_models_initialized(self):
+        """Ensure cognitive models are initialized when needed."""
+        global COGNITIVE_MODELS_AVAILABLE
+        if not COGNITIVE_MODELS_AVAILABLE:
+            COGNITIVE_MODELS_AVAILABLE = init_cognitive_models()
+        return COGNITIVE_MODELS_AVAILABLE

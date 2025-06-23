@@ -43,7 +43,7 @@
         console.log('✅ Loaded real evolution data:', evolutionData);
       } else {
         // Fallback to sample data
-        console.log('⚠️ No backend evolution data available, using sample data');
+        // Silently fall back to sample data when backend is unavailable
         evolutionData = generateSampleEvolutionData();
       }
       

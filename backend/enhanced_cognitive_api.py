@@ -11,7 +11,7 @@ This module provides API endpoints for:
 import asyncio
 import logging
 from typing import Any, Dict, List, Optional, Set
-from datetime import datetime
+from datetime import datetime, timezone
 
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect, HTTPException, Query, Depends
 from pydantic import BaseModel, Field
@@ -56,7 +56,7 @@ class CognitiveEventFilter(BaseModel):
 
 
 # API Router
-router = APIRouter(prefix="/api/cognitive", tags=["cognitive"])
+router = APIRouter(tags=["Enhanced Cognitive"])
 
 # Global reference to enhanced metacognition manager
 enhanced_metacognition_manager: Optional[EnhancedMetacognitionManager] = None
@@ -428,6 +428,57 @@ async def get_cognitive_event_history(
         
     except Exception as e:
         logger.error(f"Error getting cognitive event history: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# Cognitive Event Management
+
+class CognitiveEventInput(BaseModel):
+    """Input model for cognitive events."""
+    type: str = Field(description="Type of cognitive event")
+    data: Dict[str, Any] = Field(description="Event data")
+    timestamp: Optional[str] = Field(default=None, description="Event timestamp")
+    scenario: Optional[str] = Field(default=None, description="Scenario name")
+    sequence: Optional[int] = Field(default=None, description="Sequence number")
+    total_in_sequence: Optional[int] = Field(default=None, description="Total in sequence")
+
+
+@router.post("/events")
+async def send_cognitive_event(
+    event_input: CognitiveEventInput,
+    ws_manager = Depends(get_websocket_manager)
+):
+    """Send a cognitive event to the streaming system."""
+    try:
+        # Add metadata to the event data
+        enhanced_data = {
+            **event_input.data,
+            "timestamp": event_input.timestamp or datetime.now(timezone.utc).isoformat(),
+            "scenario": event_input.scenario,
+            "sequence": event_input.sequence,
+            "total_in_sequence": event_input.total_in_sequence
+        }
+        
+        # Send to all connected cognitive stream clients
+        if hasattr(ws_manager, 'broadcast_cognitive_event'):
+            await ws_manager.broadcast_cognitive_event(event_input.type, enhanced_data)
+        else:
+            # Fallback: send as regular message
+            event_data = {
+                "event_type": event_input.type,
+                "data": enhanced_data,
+                "timestamp": datetime.now(timezone.utc).isoformat()
+            }
+            await ws_manager.broadcast_message(event_data, message_type="cognitive_event")
+        
+        return {
+            "status": "success",
+            "message": f"Cognitive event '{event_input.type}' sent",
+            "event_id": f"{event_input.type}_{int(datetime.now(timezone.utc).timestamp())}"
+        }
+        
+    except Exception as e:
+        logger.error(f"Error sending cognitive event: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 

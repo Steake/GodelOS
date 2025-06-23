@@ -1,6 +1,7 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
   import { cognitiveState, knowledgeState, evolutionState, uiState } from './stores/cognitive.js';
+  import { enhancedCognitiveState, autonomousLearningState, streamState } from './stores/enhanced-cognitive.js';
   import { setupWebSocket, connectToCognitiveStream } from './utils/websocket.js';
   import { GödelOSAPI } from './utils/api.js';
   
@@ -8,6 +9,11 @@
   import CognitiveStateMonitor from './components/core/CognitiveStateMonitor.svelte';
   import QueryInterface from './components/core/QueryInterface.svelte';
   import ResponseDisplay from './components/core/ResponseDisplay.svelte';
+  
+  // Enhanced Metacognition Components
+  import StreamOfConsciousnessMonitor from './components/core/StreamOfConsciousnessMonitor.svelte';
+  import AutonomousLearningMonitor from './components/core/AutonomousLearningMonitor.svelte';
+  import EnhancedCognitiveDashboard from './components/dashboard/EnhancedCognitiveDashboard.svelte';
   
   // Transparency Components
   import ReflectionVisualization from './components/transparency/ReflectionVisualization.svelte';
@@ -35,6 +41,21 @@
   let fullscreenMode = false;
   let pollInterval;
   
+  // Check URL parameters for direct view access
+  onMount(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const viewParam = urlParams.get('view');
+    if (viewParam && viewConfig[viewParam]) {
+      activeView = viewParam;
+      console.log(`🎯 Direct navigation to view: ${viewParam}`);
+    }
+    
+    // Debug navigation sections
+    console.log('🧭 Available view sections:', Object.keys(viewSections));
+    console.log('🧭 Enhanced section views:', Object.keys(viewSections.enhanced?.views || {}));
+    console.log('🧭 Total views available:', Object.keys(viewConfig).length);
+  });
+  
   // Modal state management
   let showProcessInsightModal = false;
   let showKnowledgeGraphModal = false;
@@ -50,12 +71,15 @@
       await setupWebSocket();
       websocketConnected = true;
       
+      // Initialize enhanced cognitive features
+      await initializeEnhancedCognitive();
+      
       // Start real-time data polling
       pollInterval = await GödelOSAPI.pollForUpdates(handleDataUpdate, 3000);
       
-      console.log('✅ GödelOS cognitive interface connected');
+      console.log('✅ GödelOS cognitive interface connected with enhanced features');
     } catch (error) {
-      console.error('❌ Failed to connect to GödelOS backend:', error);
+      // Silently handle WebSocket connection errors when backend is unavailable
       websocketConnected = false;
     }
   });
@@ -99,75 +123,127 @@
     // We could add additional processing here if needed
   }
   
-  // Enhanced view configuration with better UX
-  const viewConfig = {
-    dashboard: { 
-      icon: '🏠', 
-      title: 'Dashboard', 
-      description: 'System overview and key metrics',
-      component: 'dashboard'
+  // Enhanced view configuration with better UX organization
+  const viewSections = {
+    core: {
+      title: 'Core Features',
+      icon: '⭐',
+      views: {
+        dashboard: {
+          icon: '🏠',
+          title: 'Dashboard',
+          description: 'System overview and key metrics',
+          component: 'dashboard'
+        },
+        cognitive: {
+          icon: '🧠',
+          title: 'Cognitive State',
+          description: 'Real-time cognitive processing monitor',
+          component: CognitiveStateMonitor
+        },
+        knowledge: {
+          icon: '🕸️',
+          title: 'Knowledge Graph',
+          description: 'Interactive knowledge visualization',
+          component: KnowledgeGraph
+        },
+        query: {
+          icon: '💬',
+          title: 'Query Interface',
+          description: 'Natural language interaction',
+          component: QueryInterface
+        }
+      }
     },
-    cognitive: { 
-      icon: '🧠', 
-      title: 'Cognitive State', 
-      description: 'Real-time cognitive processing monitor',
-      component: CognitiveStateMonitor 
+    enhanced: {
+      title: 'Enhanced Cognition',
+      icon: '🚀',
+      badge: 'NEW',
+      views: {
+        enhanced: {
+          icon: '🚀',
+          title: 'Enhanced Dashboard',
+          description: 'Unified cognitive enhancement overview',
+          component: EnhancedCognitiveDashboard,
+          featured: true
+        },
+        stream: {
+          icon: '🌊',
+          title: 'Stream of Consciousness',
+          description: 'Real-time cognitive event streaming',
+          component: StreamOfConsciousnessMonitor,
+          featured: true
+        },
+        autonomous: {
+          icon: '🤖',
+          title: 'Autonomous Learning',
+          description: 'Self-directed knowledge acquisition',
+          component: AutonomousLearningMonitor,
+          featured: true
+        }
+      }
     },
-    knowledge: { 
-      icon: '🕸️', 
-      title: 'Knowledge Graph', 
-      description: 'Interactive knowledge visualization',
-      component: KnowledgeGraph
+    analysis: {
+      title: 'Analysis & Tools',
+      icon: '🔬',
+      views: {
+        transparency: {
+          icon: '🔍',
+          title: 'Transparency',
+          description: 'Cognitive transparency and reasoning insights',
+          component: TransparencyDashboard
+        },
+        reasoning: {
+          icon: '🎯',
+          title: 'Reasoning Sessions',
+          description: 'Live reasoning session monitoring',
+          component: ReasoningSessionViewer
+        },
+        reflection: {
+          icon: '🪞',
+          title: 'Reflection',
+          description: 'System introspection and analysis',
+          component: ReflectionVisualization
+        },
+        provenance: {
+          icon: '🔗',
+          title: 'Provenance',
+          description: 'Data lineage and attribution tracking',
+          component: ProvenanceTracker
+        }
+      }
     },
-    query: { 
-      icon: '💬', 
-      title: 'Query Interface', 
-      description: 'Natural language interaction',
-      component: QueryInterface
-    },
-    import: { 
-      icon: '📥', 
-      title: 'Knowledge Import', 
-      description: 'Import and process documents',
-      component: SmartImport
-    },
-    reflection: { 
-      icon: '🪞', 
-      title: 'Reflection', 
-      description: 'System introspection and analysis',
-      component: ReflectionVisualization 
-    },
-    capabilities: { 
-      icon: '📈', 
-      title: 'Capabilities', 
-      description: 'System capabilities and evolution',
-      component: CapabilityDashboard
-    },
-    resources: { 
-      icon: '⚡', 
-      title: 'Resources', 
-      description: 'Resource allocation and performance',
-      component: ResourceAllocation 
-    },
-    transparency: { 
-      icon: '🔍', 
-      title: 'Transparency', 
-      description: 'Cognitive transparency and reasoning insights',
-      component: TransparencyDashboard 
-    },
-    reasoning: { 
-      icon: '🎯', 
-      title: 'Reasoning Sessions', 
-      description: 'Live reasoning session monitoring and analysis',
-      component: ReasoningSessionViewer 
-    },
-    provenance: { 
-      icon: '🔗', 
-      title: 'Provenance & Attribution', 
-      description: 'Data lineage tracking and knowledge attribution',
-      component: ProvenanceTracker 
+    system: {
+      title: 'System Management',
+      icon: '⚙️',
+      views: {
+        import: {
+          icon: '📥',
+          title: 'Knowledge Import',
+          description: 'Import and process documents',
+          component: SmartImport
+        },
+        capabilities: {
+          icon: '📈',
+          title: 'Capabilities',
+          description: 'System capabilities and evolution',
+          component: CapabilityDashboard
+        },
+        resources: {
+          icon: '⚡',
+          title: 'Resources',
+          description: 'Resource allocation and performance',
+          component: ResourceAllocation
+        }
+      }
     }
   };
+
+  // Flatten views for backward compatibility
+  const viewConfig = {};
+  Object.values(viewSections).forEach(section => {
+    Object.assign(viewConfig, section.views);
+  });
 
   function toggleSidebar() {
     sidebarCollapsed = !sidebarCollapsed;
@@ -188,9 +264,94 @@
     if (value >= 0.4) return '#ff7043';
     return '#ef5350';
   }
+  
+  async function initializeEnhancedCognitive() {
+    try {
+      console.log('🧠 Initializing enhanced cognitive features...');
+      
+      // Check if enhanced cognitive API is available
+      const response = await fetch('http://localhost:8000/api/enhanced-cognitive/health');
+      if (response.ok) {
+        const cognitiveState = await response.json();
+        console.log('✅ Enhanced cognitive API connected');
+        
+        // Initialize enhanced cognitive store
+        enhancedCognitiveState.update(state => ({
+          ...state,
+          apiConnected: true,
+          lastUpdate: new Date().toISOString()
+        }));
+        
+        // Start cognitive streaming if enabled
+        await setupCognitiveStreaming();
+        
+        // Initialize autonomous learning monitoring
+        await initializeAutonomousLearning();
+        
+      } else {
+        console.log('⚠️ Enhanced cognitive API not available, using fallback mode');
+      }
+    } catch (error) {
+      // Silently handle initialization errors when backend is unavailable
+      enhancedCognitiveState.update(state => ({
+        ...state,
+        apiConnected: false,
+        lastUpdate: new Date().toISOString()
+      }));
+    }
+  }
+  
+  async function setupCognitiveStreaming() {
+    try {
+      // Connect to cognitive event stream
+      const streamResponse = await fetch('http://localhost:8000/api/enhanced-cognitive/stream/status');
+      if (streamResponse.ok) {
+        console.log('🌊 Cognitive streaming available');
+        
+        // Update stream state
+        streamState.update(state => ({
+          ...state,
+          available: true,
+          connected: false
+        }));
+      }
+    } catch (error) {
+      // Silently handle streaming setup errors when backend is unavailable
+      streamState.update(state => ({
+        ...state,
+        available: false,
+        connected: false
+      }));
+    }
+  }
+  
+  async function initializeAutonomousLearning() {
+    try {
+      // Check autonomous learning status
+      const learningResponse = await fetch('http://localhost:8000/api/enhanced-cognitive/autonomous/status');
+      if (learningResponse.ok) {
+        const learningData = await learningResponse.json();
+        console.log('🤖 Autonomous learning status:', learningData);
+        
+        // Update autonomous learning state
+        autonomousLearningState.update(state => ({
+          ...state,
+          enabled: learningData.enabled || false,
+          available: true
+        }));
+      }
+    } catch (error) {
+      // Silently handle autonomous learning initialization errors when backend is unavailable
+      autonomousLearningState.update(state => ({
+        ...state,
+        enabled: false,
+        available: false
+      }));
+    }
+  }
 </script>
 
-<main class="godelos-interface" class:fullscreen={fullscreenMode}>
+<main class="godelos-interface" class:fullscreen={fullscreenMode} data-testid="app-container">
   <!-- Modern Header -->
   <header class="interface-header">
     <div class="header-content">
@@ -230,7 +391,7 @@
   <!-- Main application layout -->
   <div class="app-layout">
     <!-- Enhanced Sidebar Navigation -->
-    <nav class="sidebar" class:collapsed={sidebarCollapsed}>
+    <nav class="sidebar" class:collapsed={sidebarCollapsed} data-testid="sidebar-nav">
       {#if !sidebarCollapsed}
         <div class="sidebar-header">
           <h3>🧭 Navigation</h3>
@@ -239,21 +400,41 @@
       {/if}
       
       <div class="nav-sections">
-        {#each Object.entries(viewConfig) as [key, config], index}
-          <button 
-            class="nav-item {activeView === key ? 'active' : ''}"
-            on:click={() => {
-              activeView = key;
-            }}
-            title={config.description}
-          >
-            <span class="nav-icon">{config.icon}</span>
+        {#each Object.entries(viewSections) as [sectionKey, section]}
+          <div class="nav-section" data-testid="nav-section-{sectionKey}">
             {#if !sidebarCollapsed}
-              <div class="nav-content">
-                <span class="nav-title">{config.title}</span>
+              <div class="section-header">
+                <span class="section-icon">{section.icon}</span>
+                <span class="section-title">{section.title}</span>
+                {#if section.badge}
+                  <span class="section-badge">{section.badge}</span>
+                {/if}
               </div>
             {/if}
-          </button>
+            
+            <div class="section-items">
+              {#each Object.entries(section.views) as [key, config]}
+                <button
+                  class="nav-item {activeView === key ? 'active' : ''} {config.featured ? 'featured' : ''}"
+                  data-testid="nav-item-{key}"
+                  on:click={() => {
+                    activeView = key;
+                  }}
+                  title={config.description}
+                >
+                  <span class="nav-icon">{config.icon}</span>
+                  {#if !sidebarCollapsed}
+                    <div class="nav-content">
+                      <span class="nav-title">{config.title}</span>
+                      {#if config.featured}
+                        <span class="featured-indicator">✨</span>
+                      {/if}
+                    </div>
+                  {/if}
+                </button>
+              {/each}
+            </div>
+          </div>
         {/each}
       </div>
       
@@ -302,7 +483,7 @@
     <section class="main-content">
       {#if activeView === 'dashboard'}
         <!-- Enhanced Dashboard View -->
-        <div class="dashboard-layout">
+        <div class="dashboard-layout" data-testid="dashboard-view">
           <div class="dashboard-top">
             <div class="query-panel">
               <QueryInterface 
@@ -378,7 +559,7 @@
         
       {:else if viewConfig[activeView]?.component && typeof viewConfig[activeView].component !== 'string'}
         <!-- Standard Component Views -->
-        <div class="expanded-view">
+        <div class="expanded-view" data-testid="{activeView}-view">
           <div class="view-header">
             <h2>{viewConfig[activeView].title}</h2>
             <p class="view-description">{viewConfig[activeView].description}</p>
@@ -389,7 +570,7 @@
         </div>
       {:else}
         <!-- Fallback for unmatched views -->
-        <div class="expanded-view">
+        <div class="expanded-view" data-testid="fallback-view">
           <div class="view-header">
             <h2>View Not Found</h2>
             <div class="debug-info" style="background: rgba(255,0,0,0.1); padding: 1rem; border-radius: 8px;">
@@ -730,7 +911,7 @@
     background: transparent;
     border: 1px solid transparent;
     border-radius: 12px;
-    color: #e1e5e9;
+    color: #e1e5f9;
     cursor: pointer;
     transition: all 0.2s ease;
     text-align: left;
@@ -746,6 +927,96 @@
     background: rgba(100, 181, 246, 0.2);
     border-color: rgba(100, 181, 246, 0.5);
     color: #64b5f6;
+  }
+
+  /* Navigation Sections */
+  .nav-section {
+    margin-bottom: 1rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: rgba(100, 181, 246, 0.05);
+    border: 1px solid rgba(100, 181, 246, 0.2);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #64b5f6;
+  }
+
+  .section-icon {
+    font-size: 1.1rem;
+  }
+
+  .section-title {
+    flex: 1;
+  }
+
+  .section-badge {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  .section-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-left: 0.5rem;
+  }
+
+  .nav-item.featured {
+    background: linear-gradient(135deg, rgba(100, 181, 246, 0.1), rgba(156, 39, 176, 0.1));
+    border: 1px solid rgba(100, 181, 246, 0.4);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nav-item.featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .nav-item.featured:hover::before {
+    left: 100%;
+  }
+
+  .nav-item.featured:hover {
+    background: linear-gradient(135deg, rgba(100, 181, 246, 0.2), rgba(156, 39, 176, 0.2));
+    border-color: rgba(100, 181, 246, 0.6);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(100, 181, 246, 0.3);
+  }
+
+  .featured-indicator {
+    font-size: 0.8rem;
+    animation: sparkle 1.5s infinite;
+  }
+
+  @keyframes sparkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.2); }
   }
 
   .nav-icon {

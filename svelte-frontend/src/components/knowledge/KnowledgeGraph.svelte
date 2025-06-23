@@ -271,11 +271,11 @@
     window.addEventListener('resize', handleResize);
     
     // Cleanup resize listener
+    console.log('⚠️ Knowledge state subscription disabled to prevent reload loops');
+    
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-    
-    console.log('⚠️ Knowledge state subscription disabled to prevent reload loops');
   });
 
   onDestroy(() => {

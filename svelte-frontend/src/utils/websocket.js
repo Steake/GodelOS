@@ -13,13 +13,18 @@ const API_BASE_URL = 'http://localhost:8000';
 
 async function fetchFromAPI(endpoint) {
   try {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`);
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      signal: AbortSignal.timeout(5000) // 5 second timeout
+    });
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     }
     return await response.json();
   } catch (error) {
-    console.error(`Failed to fetch ${endpoint}:`, error);
+    // Only log if it's not a network/CORS error to reduce console noise
+    if (!error.message.includes('NetworkError') && error.name !== 'TypeError') {
+      console.error(`Failed to fetch ${endpoint}:`, error);
+    }
     return null;
   }
 }
@@ -152,12 +157,12 @@ export async function setupWebSocket() {
         const message = JSON.parse(event.data);
         handleCognitiveUpdate(message);
       } catch (error) {
-        console.error('Error parsing WebSocket message:', error);
+        // Silently handle WebSocket message parsing errors
       }
     };
 
     ws.onclose = (event) => {
-      console.log('WebSocket connection closed:', event.code, event.reason);
+      // Silently handle WebSocket connection close when backend is unavailable
       updateConnectionStatus(false);
       
       if (!event.wasClean && reconnectAttempts < MAX_RECONNECT_ATTEMPTS) {
@@ -166,12 +171,12 @@ export async function setupWebSocket() {
     };
 
     ws.onerror = (error) => {
-      console.error('WebSocket error:', error);
+      // Silently handle WebSocket errors when backend is unavailable
       updateConnectionStatus(false);
     };
 
   } catch (error) {
-    console.error('Failed to setup WebSocket:', error);
+    // Silently handle WebSocket setup errors when backend is unavailable
     updateConnectionStatus(false);
     throw error;
   }

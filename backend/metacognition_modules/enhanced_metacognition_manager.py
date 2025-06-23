@@ -134,11 +134,51 @@ class EnhancedMetacognitionManager(BaseMetacognitionManager):
         self.current_cycle_id: Optional[str] = None
         self.cycle_start_time: Optional[float] = None
         self.is_running = False
+        self.is_initialized = False  # Required by base class
+        self.godelos_integration = None  # GödelOS integration instance
         
         # Async task management
         self.background_tasks: Set[asyncio.Task] = set()
         
         logger.info("EnhancedMetacognitionManager initialized")
+    
+    async def initialize(self, godelos_integration=None):
+        """
+        Initialize the enhanced metacognition manager with optional GödelOS integration.
+        
+        Args:
+            godelos_integration: Optional GödelOS integration instance
+        """
+        try:
+            # Initialize base class if available and has initialize method
+            if GODELOS_AVAILABLE and hasattr(super(), 'initialize'):
+                try:
+                    # Call base initialize without parameters
+                    await super().initialize()
+                except Exception as base_init_error:
+                    logger.warning(f"Base class initialization failed: {base_init_error}")
+                    # Set required attributes manually
+                    self.is_initialized = True
+            else:
+                # Set initialized flag if no base class
+                self.is_initialized = True
+            
+            # Store GödelOS integration if provided
+            if godelos_integration:
+                self.godelos_integration = godelos_integration
+                logger.info("GödelOS integration provided to enhanced metacognition manager")
+            else:
+                self.godelos_integration = None
+                logger.info("Enhanced metacognition manager initialized without GödelOS integration")
+            
+            # Start the enhanced manager
+            await self.start()
+            
+            logger.info("Enhanced metacognition manager initialization complete")
+            
+        except Exception as e:
+            logger.error(f"Failed to initialize enhanced metacognition manager: {e}")
+            raise
     
     async def start(self) -> bool:
         """
@@ -154,6 +194,11 @@ class EnhancedMetacognitionManager(BaseMetacognitionManager):
         try:
             # Start core components
             await self.stream_coordinator.start()
+            
+            # Connect stream coordinator to WebSocket manager
+            if self.websocket_manager and hasattr(self.websocket_manager, 'set_stream_coordinator'):
+                self.websocket_manager.set_stream_coordinator(self.stream_coordinator)
+                logger.info("Stream coordinator connected to WebSocket manager")
             
             # Start autonomous learning if enabled
             if self.autonomous_config.enabled:
@@ -396,6 +441,69 @@ class EnhancedMetacognitionManager(BaseMetacognitionManager):
         """Start cognitive streaming capabilities."""
         # Stream coordinator is already started in start() method
         logger.info("Cognitive streaming started")
+        
+        # Start a background task to generate test cognitive events (controlled)
+        test_events_task = asyncio.create_task(self._generate_test_events())
+        self.background_tasks.add(test_events_task)
+        logger.info("Test cognitive events generation started (controlled)")
+    
+    async def _generate_test_events(self) -> None:
+        """Generate test cognitive events for demonstration purposes."""
+        # Wait a bit after startup to ensure everything is initialized
+        await asyncio.sleep(5)
+        
+        event_count = 0
+        max_events = 20  # Limit number of test events
+        
+        while self.is_running and event_count < max_events:
+            try:
+                # Generate different types of test events
+                events = [
+                    {
+                        "type": CognitiveEventType.REASONING,
+                        "data": {
+                            "reasoning_step": f"Analyzing concept #{event_count}",
+                            "confidence": 0.8 + (event_count % 5) * 0.04,
+                            "context": ["knowledge_integration", "pattern_recognition"]
+                        },
+                        "granularity": GranularityLevel.STANDARD
+                    },
+                    {
+                        "type": CognitiveEventType.KNOWLEDGE_GAP,
+                        "data": {
+                            "gap_concept": f"missing_knowledge_area_{event_count % 3}",
+                            "priority": 0.5 + (event_count % 6) * 0.08,
+                            "context": ["autonomous_learning", "gap_detection"]
+                        },
+                        "granularity": GranularityLevel.DETAILED
+                    },
+                    {
+                        "type": CognitiveEventType.REFLECTION,
+                        "data": {
+                            "reflection_content": f"Metacognitive insight #{event_count}",
+                            "learning_impact": 0.7,
+                            "context": ["self_monitoring", "cognitive_enhancement"]
+                        },
+                        "granularity": GranularityLevel.STANDARD
+                    }
+                ]
+                
+                # Emit one of the test events
+                event = events[event_count % len(events)]
+                await self._emit_cognitive_event(
+                    event["type"],
+                    event["data"],
+                    event["granularity"]
+                )
+                
+                event_count += 1
+                
+                # Wait 3-5 seconds between events
+                await asyncio.sleep(3 + (event_count % 3))
+                
+            except Exception as e:
+                logger.error(f"Error generating test cognitive events: {e}")
+                await asyncio.sleep(10)  # Wait before retrying
     
     async def _gap_detection_loop(self) -> None:
         """Background loop for autonomous gap detection."""
@@ -453,95 +561,4 @@ class EnhancedMetacognitionManager(BaseMetacognitionManager):
                 if plan.approved:
                     self.active_acquisitions[plan.plan_id] = plan
                     
-                    # Start acquisition task
-                    acquisition_task = asyncio.create_task(
-                        self._execute_acquisition_plan(plan)
-                    )
-                    self.background_tasks.add(acquisition_task)
-                    
-                    await self._emit_cognitive_event(
-                        CognitiveEventType.ACQUISITION_STARTED,
-                        {"plan_id": plan.plan_id, "gap_id": gap.id},
-                        GranularityLevel.STANDARD
-                    )
-    
-    async def _execute_acquisition_plan(self, plan: AcquisitionPlan) -> None:
-        """
-        Execute a knowledge acquisition plan.
-        
-        Args:
-            plan: The acquisition plan to execute
-        """
-        try:
-            # Execute the plan
-            result = await self.autonomous_knowledge_acquisition.execute_plan(plan)
-            
-            # Store result
-            self.acquisition_history.append(result)
-            
-            # Remove from active acquisitions
-            if plan.plan_id in self.active_acquisitions:
-                del self.active_acquisitions[plan.plan_id]
-            
-            # Emit completion event
-            await self._emit_cognitive_event(
-                CognitiveEventType.ACQUISITION_COMPLETED,
-                {
-                    "plan_id": plan.plan_id,
-                    "success": result.success,
-                    "execution_time": result.execution_time,
-                    "acquired_concepts": len(result.acquired_concepts)
-                },
-                GranularityLevel.STANDARD
-            )
-            
-        except Exception as e:
-            logger.error(f"Error executing acquisition plan {plan.plan_id}: {e}")
-            
-            # Create error result
-            error_result = AcquisitionResult(
-                plan_id=plan.plan_id,
-                success=False,
-                error=str(e),
-                execution_time=0.0,
-                acquired_concepts=[],
-                metadata={}
-            )
-            
-            self.acquisition_history.append(error_result)
-            
-            # Remove from active acquisitions
-            if plan.plan_id in self.active_acquisitions:
-                del self.active_acquisitions[plan.plan_id]
-            
-            # Emit error event
-            await self._emit_cognitive_event(
-                CognitiveEventType.ACQUISITION_FAILED,
-                {"plan_id": plan.plan_id, "error": str(e)},
-                GranularityLevel.MINIMAL
-            )
-    
-    async def _emit_cognitive_event(
-        self,
-        event_type: CognitiveEventType,
-        data: Dict[str, Any],
-        granularity: GranularityLevel
-    ) -> None:
-        """
-        Emit a cognitive event through the stream coordinator.
-        
-        Args:
-            event_type: Type of cognitive event
-            data: Event data
-            granularity: Event granularity level
-        """
-        event = CognitiveEvent(
-            type=event_type,
-            timestamp=datetime.now(),
-            data=data,
-            source="EnhancedMetacognitionManager",
-            granularity_level=granularity,
-            processing_context=self.current_cycle_id
-        )
-        
-        await self.stream_coordinator.emit_event(event)
+                    #

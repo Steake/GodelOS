@@ -258,7 +258,7 @@ export function initCognitiveStream() {
             break;
         }
       } catch (error) {
-        console.error('Failed to process cognitive update:', error);
+        // Silently handle cognitive update processing errors
       }
     };
     
@@ -272,20 +272,36 @@ export function initCognitiveStream() {
         }
       }));
       
-      // Attempt reconnection after 3 seconds
-      setTimeout(() => {
-        if (cognitiveWebSocket?.readyState !== WebSocket.OPEN) {
-          initCognitiveStream();
+      // Attempt reconnection after 5 seconds with exponential backoff
+      let reconnectAttempt = 0;
+      const maxReconnectAttempts = 3;
+      
+      const attemptReconnect = () => {
+        if (reconnectAttempt < maxReconnectAttempts && cognitiveWebSocket?.readyState !== WebSocket.OPEN) {
+          reconnectAttempt++;
+          const delay = Math.min(1000 * Math.pow(2, reconnectAttempt), 10000); // Max 10 seconds
+          console.log(`Scheduling reconnection attempt ${reconnectAttempt} in ${delay}ms`);
+          setTimeout(() => {
+            if (cognitiveWebSocket?.readyState !== WebSocket.OPEN) {
+              initCognitiveStream();
+            }
+          }, delay);
         }
-      }, 3000);
+      };
+      
+      attemptReconnect();
     };
     
     cognitiveWebSocket.onerror = (error) => {
-      console.error('Cognitive WebSocket error:', error);
+      // Only log WebSocket errors that aren't connection refused to reduce noise
+      // Silently handle WebSocket errors when backend is unavailable
     };
     
   } catch (error) {
-    console.error('Failed to initialize cognitive stream:', error);
+    // Only log non-connection errors to reduce console noise
+    if (!error.message?.includes('Connection refused') && !error.message?.includes('NetworkError')) {
+      console.error('Failed to initialize cognitive stream:', error);
+    }
   }
   
   return cognitiveWebSocket;

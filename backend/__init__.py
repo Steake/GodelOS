@@ -12,10 +12,24 @@ __version__ = "1.0.0"
 __author__ = "GödelOS Team"
 __description__ = "Backend API for the GödelOS web demonstration interface"
 
-from .main import app
+# Lazy imports to avoid circular dependencies
+def get_app():
+    """Get the FastAPI app instance."""
+    from .main import app
+    return app
+
+def get_integration():
+    """Get the GödelOS integration instance."""
+    from .godelos_integration import GödelOSIntegration
+    return GödelOSIntegration
+
+def get_websocket_manager():
+    """Get the WebSocket manager instance."""
+    from .websocket_manager import WebSocketManager
+    return WebSocketManager
+
+# Only import models (no circular dependencies)
 from .models import *
-from .godelos_integration import GödelOSIntegration
-from .websocket_manager import WebSocketManager
 
 __all__ = [
     "app",
