@@ -27,6 +27,7 @@ class CognitiveEventType(Enum):
     QUERY_FAILED = "query_failed"
     
     # Knowledge gap events
+    KNOWLEDGE_GAP = "knowledge_gap"
     GAPS_DETECTED = "gaps_detected"
     AUTONOMOUS_GAPS_DETECTED = "autonomous_gaps_detected"
     GAP_ANALYSIS_COMPLETED = "gap_analysis_completed"
@@ -44,6 +45,10 @@ class CognitiveEventType(Enum):
     PLANNING_PHASE = "planning_phase"
     MODIFYING_PHASE = "modifying_phase"
     CYCLE_COMPLETED = "cycle_completed"
+    REFLECTION = "reflection"
+    
+    # External API events
+    EXTERNAL_EVENT = "external_event"
 
 
 class GranularityLevel(Enum):

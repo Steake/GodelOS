@@ -34,7 +34,27 @@
 
         // Initialize enhanced cognitive systems
         enhancedCognitive.initializeEnhancedSystems();
+        
+        // Start automatic data fetching
+        startAutoRefresh();
     });
+    
+    function startAutoRefresh() {
+        // Initial fetch
+        refreshAllSystems();
+        
+        // Set up automatic refresh every 5 seconds if enabled
+        if (autoRefresh) {
+            const interval = setInterval(() => {
+                if (autoRefresh) {
+                    refreshAllSystems();
+                }
+            }, 5000);
+            
+            // Store interval for cleanup
+            return () => clearInterval(interval);
+        }
+    }
 
     onDestroy(() => {
         if (unsubscribe) unsubscribe();
@@ -69,9 +89,17 @@
 
     function refreshAllSystems() {
         isLoading = true;
+        
+        // Call all the enhanced cognitive store update methods
         enhancedCognitive.refreshSystemHealth();
         enhancedCognitive.refreshAutonomousState();
         enhancedCognitive.refreshStreamingState();
+        
+        // Also manually call the update methods
+        enhancedCognitive.updateHealthStatus();
+        enhancedCognitive.updateAutonomousLearningState();
+        enhancedCognitive.updateStreamingStatus();
+        
         setTimeout(() => isLoading = false, 1000);
     }
 

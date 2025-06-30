@@ -15,7 +15,6 @@ from concurrent.futures import ThreadPoolExecutor
 
 logger = logging.getLogger(__name__)
 
-
 class GödelOSIntegration:
     """Minimal working integration class for GödelOS API."""
     
@@ -453,16 +452,123 @@ class GödelOSIntegration:
                 "timestamp": time.time()
             }
 
-    def shutdown(self):
-        """Shutdown the integration."""
-        logger.info("Shutting down minimal GödelOS integration...")
-        
-        if self.executor:
-            self.executor.shutdown(wait=True)
-        
-        self.initialized = False
-        logger.info("✅ Shutdown complete")
+    async def add_knowledge(
+        self, 
+        content: str, 
+        knowledge_type: str = "concept",
+        context_id: Optional[str] = None,
+        metadata: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
+        """Add new knowledge to the system."""
+        try:
+            logger.info(f"🔍 KNOWLEDGE ADD: Adding knowledge: {content[:100]}...")
+            
+            # Generate a key for the knowledge
+            key = content.lower().replace(" ", "_")[:50]
+            if key in self.simple_knowledge_store:
+                key = f"{key}_{int(time.time())}"
+            
+            # Create knowledge item
+            knowledge_item = {
+                "title": content[:100],
+                "content": content,
+                "categories": [context_id or "general"],
+                "source": "user_input",
+                "knowledge_type": knowledge_type,
+                "created_at": time.time(),
+                "metadata": metadata or {}
+            }
+            
+            # Store the knowledge
+            self.simple_knowledge_store[key] = knowledge_item
+            
+            logger.info(f"🔍 KNOWLEDGE ADD: Successfully added knowledge with key: {key}")
+            
+            return {
+                "status": "success",
+                "message": "Knowledge added successfully",
+                "knowledge_id": key,
+                "total_items": len(self.simple_knowledge_store)
+            }
+            
+        except Exception as e:
+            logger.error(f"🔍 KNOWLEDGE ADD: Error adding knowledge: {e}")
+            self.error_count += 1
+            return {
+                "status": "error",
+                "message": f"Failed to add knowledge: {str(e)}"
+            }
     
+    async def get_knowledge(
+        self,
+        context_id: Optional[str] = None,
+        knowledge_type: Optional[str] = None,
+        limit: int = 100
+    ) -> Dict[str, Any]:
+        """Retrieve knowledge from the system."""
+        try:
+            logger.info(f"🔍 KNOWLEDGE GET: Retrieving knowledge (context: {context_id}, type: {knowledge_type})")
+            
+            # Filter knowledge based on criteria
+            filtered_items = []
+            for key, item in self.simple_knowledge_store.items():
+                # Apply filters
+                if context_id and context_id not in item.get("categories", []):
+                    continue
+                if knowledge_type and item.get("knowledge_type") != knowledge_type:
+                    continue
+                
+                filtered_items.append({
+                    "id": key,
+                    "title": item["title"],
+                    "content": item["content"],
+                    "categories": item["categories"],
+                    "knowledge_type": item.get("knowledge_type", "concept"),
+                    "source": item.get("source", "unknown"),
+                    "created_at": item.get("created_at", 0)
+                })
+            
+            # Apply limit
+            filtered_items = filtered_items[:limit]
+            
+            logger.info(f"🔍 KNOWLEDGE GET: Found {len(filtered_items)} items")
+            
+            return {
+                "facts": [item for item in filtered_items if item["knowledge_type"] == "fact"],
+                "rules": [item for item in filtered_items if item["knowledge_type"] == "rule"],
+                "concepts": [item for item in filtered_items if item["knowledge_type"] == "concept"],
+                "total_count": len(filtered_items)
+            }
+            
+        except Exception as e:
+            logger.error(f"🔍 KNOWLEDGE GET: Error retrieving knowledge: {e}")
+            return {
+                "facts": [],
+                "rules": [],
+                "concepts": [],
+                "total_count": 0
+            }
+    
+    async def get_concepts(self) -> List[Dict[str, Any]]:
+        """Get all concepts from the knowledge base."""
+        try:
+            concepts = []
+            for key, item in self.simple_knowledge_store.items():
+                if item.get("knowledge_type", "concept") == "concept":
+                    concepts.append({
+                        "id": key,
+                        "name": item["title"],
+                        "description": item["content"][:200],
+                        "categories": item["categories"]
+                    })
+            
+            logger.info(f"🔍 CONCEPTS: Found {len(concepts)} concepts")
+            return concepts
+            
+        except Exception as e:
+            logger.error(f"🔍 CONCEPTS: Error getting concepts: {e}")
+            return []
+
     async def _handle_system_state_query(self, query: str, include_reasoning: bool = False) -> Dict[str, Any]:
         """Handle system state queries - questions about current processes, cognitive state, etc."""
         logger.info(f"🔍 SYSTEM STATE: Handling query: {query}")
@@ -614,6 +720,16 @@ class GödelOSIntegration:
             "sources": ["System Status"],
             "knowledge_used": ["System State"]
         }
+
+    def shutdown(self):
+        """Shutdown the integration."""
+        logger.info("Shutting down minimal GödelOS integration...")
+        
+        if self.executor:
+            self.executor.shutdown(wait=True)
+        
+        self.initialized = False
+        logger.info("✅ Shutdown complete")
 
 # Global instance
 godelos_integration = GödelOSIntegration()

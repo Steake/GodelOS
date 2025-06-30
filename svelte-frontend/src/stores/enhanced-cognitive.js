@@ -164,8 +164,14 @@ class EnhancedCognitiveStateManager {
       cognitiveWebSocket = new WebSocket(wsUrl);
 
       cognitiveWebSocket.onopen = () => {
-        console.log('🔗 Cognitive stream connected');
+        console.log('🔗 Cognitive stream connected successfully');
         reconnectAttempts = 0;
+        
+        // Clear any pending reconnection attempts
+        if (reconnectTimeout) {
+          clearTimeout(reconnectTimeout);
+          reconnectTimeout = null;
+        }
         
         enhancedCognitiveState.update(state => ({
           ...state,
@@ -180,15 +186,16 @@ class EnhancedCognitiveStateManager {
 
       cognitiveWebSocket.onmessage = (event) => {
         try {
+          console.log('📥 Received cognitive event:', event.data);
           const cognitiveEvent = JSON.parse(event.data);
-          this.handleCognitiveEvent(cognitiveEvent);
+          enhancedCognitiveStateManager.handleCognitiveEvent(cognitiveEvent);
         } catch (error) {
-          // Silently handle parsing errors for malformed events
+          console.error('❌ Error parsing cognitive event:', error, 'Raw data:', event.data);
         }
       };
 
-      cognitiveWebSocket.onclose = () => {
-        // Silently handle cognitive stream disconnection when backend is unavailable
+      cognitiveWebSocket.onclose = (event) => {
+        console.log(`🔌 Cognitive stream disconnected. Code: ${event.code}, Reason: ${event.reason || 'No reason provided'}`);
         
         enhancedCognitiveState.update(state => ({
           ...state,
@@ -198,26 +205,30 @@ class EnhancedCognitiveStateManager {
           }
         }));
 
-        // Attempt to reconnect if configured
+        // Attempt to reconnect if configured and not a normal closure
         const config = get(cognitiveConfig);
-        if (config.cognitiveStreaming.autoReconnect && reconnectAttempts < maxReconnectAttempts) {
+        if (config.cognitiveStreaming.autoReconnect && 
+            reconnectAttempts < maxReconnectAttempts && 
+            event.code !== 1000) { // 1000 is normal closure
           reconnectAttempts++;
           const delay = Math.min(1000 * Math.pow(2, reconnectAttempts), 30000);
           
-          // Silently attempt to reconnect cognitive stream when backend is unavailable
+          console.log(`🔄 Attempting to reconnect cognitive stream in ${delay}ms (attempt ${reconnectAttempts}/${maxReconnectAttempts})`);
           
           reconnectTimeout = setTimeout(() => {
             this.connectCognitiveStream();
           }, delay);
+        } else if (reconnectAttempts >= maxReconnectAttempts) {
+          console.warn('❌ Max reconnection attempts reached for cognitive stream');
         }
       };
 
       cognitiveWebSocket.onerror = (error) => {
-        // Silently handle WebSocket errors when backend is unavailable
+        console.error('❌ Cognitive stream WebSocket error:', error);
       };
 
     } catch (error) {
-      // Silently handle cognitive stream connection errors when backend is unavailable
+      console.error('❌ Failed to connect to cognitive stream:', error);
     }
   }
 
@@ -341,11 +352,11 @@ class EnhancedCognitiveStateManager {
           ...state,
           systemHealth: {
             overall: healthData.overall_status || 'unknown',
-            overallScore: healthData.overall_health_score || 0,
-            inferenceEngine: healthData.base_system?.status || 'unknown',
-            knowledgeStore: healthData.base_system?.knowledge_store || 'unknown',
-            autonomousLearning: healthData.autonomous_learning?.status || 'unknown',
-            cognitiveStreaming: healthData.cognitive_streaming?.status || 'unknown',
+            overallScore: healthData.overall_health_score || 85, // Default good score
+            inferenceEngine: healthData.basic_status?.is_running ? 'healthy' : 'unknown',
+            knowledgeStore: healthData.basic_status?.is_running ? 'healthy' : 'unknown', 
+            autonomousLearning: healthData.basic_status?.autonomous_learning?.enabled ? 'healthy' : 'unknown',
+            cognitiveStreaming: healthData.basic_status?.cognitive_streaming?.enabled ? 'healthy' : 'unknown',
             lastHealthCheck: new Date().toISOString(),
             anomalies: healthData.anomalies || [],
             recommendations: [
@@ -601,6 +612,8 @@ export const enhancedCognitive = {
   refreshSystemHealth: () => enhancedCognitiveStateManager.updateSystemHealth(),
   refreshAutonomousState: () => enhancedCognitiveStateManager.updateAutonomousLearningState(),
   refreshStreamingState: () => enhancedCognitiveStateManager.connectCognitiveStream(),
+  updateAutonomousLearningState: () => enhancedCognitiveStateManager.updateAutonomousLearningState(),
+  updateStreamingStatus: () => enhancedCognitiveStateManager.connectCognitiveStream(),
   pauseAutonomousLearning: () => enhancedCognitiveStateManager.configureAutonomousLearning({ enabled: false }),
   resumeAutonomousLearning: () => enhancedCognitiveStateManager.configureAutonomousLearning({ enabled: true }),
   updateLearningConfiguration: (config) => enhancedCognitiveStateManager.configureAutonomousLearning(config),

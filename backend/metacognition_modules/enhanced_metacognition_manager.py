@@ -460,7 +460,7 @@ class EnhancedMetacognitionManager(BaseMetacognitionManager):
                 # Generate different types of test events
                 events = [
                     {
-                        "type": CognitiveEventType.REASONING,
+                        "type": CognitiveEventType.MONITORING_PHASE,
                         "data": {
                             "reasoning_step": f"Analyzing concept #{event_count}",
                             "confidence": 0.8 + (event_count % 5) * 0.04,

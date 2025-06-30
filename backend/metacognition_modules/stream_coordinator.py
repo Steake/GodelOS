@@ -340,6 +340,58 @@ class StreamOfConsciousnessCoordinator:
         self.config = config
         logger.info("Stream coordinator configuration updated")
     
+    async def broadcast_external_event(
+        self, 
+        event_type: str, 
+        data: Dict[str, Any],
+        source: str = "ExternalAPI",
+        granularity_level: GranularityLevel = GranularityLevel.STANDARD
+    ) -> None:
+        """
+        Broadcast an external event to all connected clients.
+        
+        Args:
+            event_type: Type of the event
+            data: Event data
+            source: Source of the event
+            granularity_level: Event granularity level
+        """
+        if not self.is_streaming:
+            logger.warning("Cannot broadcast event: stream coordinator not running")
+            return
+        
+        try:
+            # Create a CognitiveEvent from the external data
+            cognitive_event = CognitiveEvent(
+                type=CognitiveEventType.EXTERNAL_EVENT,  # We'll use a generic type
+                timestamp=datetime.now(),
+                data={
+                    "event_type": event_type,
+                    **data
+                },
+                source=source,
+                granularity_level=granularity_level,
+                processing_context={
+                    "external_api": True,
+                    "original_type": event_type
+                }
+            )
+            
+            # Add to event buffer and history
+            self.event_buffer.append(cognitive_event)
+            self.event_history.append(cognitive_event)
+            
+            # Broadcast to all clients
+            await self._broadcast_event(cognitive_event)
+            
+            # Update metrics
+            self.metrics.total_events_sent += 1
+            
+            logger.debug(f"Broadcasted external event: {event_type}")
+            
+        except Exception as e:
+            logger.error(f"Error broadcasting external event: {e}")
+
     # Private methods
     
     def _default_config(self):

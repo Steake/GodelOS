@@ -459,8 +459,14 @@ async def send_cognitive_event(
             "total_in_sequence": event_input.total_in_sequence
         }
         
-        # Send to all connected cognitive stream clients
-        if hasattr(ws_manager, 'broadcast_cognitive_event'):
+        # Send to all connected cognitive stream clients via stream coordinator
+        if hasattr(ws_manager, 'stream_coordinator') and ws_manager.stream_coordinator:
+            await ws_manager.stream_coordinator.broadcast_external_event(
+                event_type=event_input.type,
+                data=enhanced_data,
+                source="EnhancedCognitiveAPI"
+            )
+        elif hasattr(ws_manager, 'broadcast_cognitive_event'):
             await ws_manager.broadcast_cognitive_event(event_input.type, enhanced_data)
         else:
             # Fallback: send as regular message

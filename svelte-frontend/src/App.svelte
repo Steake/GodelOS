@@ -35,7 +35,7 @@
   // UI Components
   import Modal from './components/ui/Modal.svelte';
   
-  let activeView = 'dashboard';
+  let activeView = 'enhanced'; // Start with enhanced dashboard by default
   let websocketConnected = false;
   let sidebarCollapsed = false;
   let fullscreenMode = false;
