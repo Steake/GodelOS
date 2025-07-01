@@ -1,12 +1,49 @@
-# Python
+### Environments ###
+# Virtual environments
+.env
+.env.test
+.venv
+*.venv
+venv/
+venv.bak/
+godel_venv/
+godelos_venv/
+env/
+env.bak/
+ENV/
+.venv.bak/
+
+# Python versioning
+.python-version
+
+# PEP 582
+__pypackages__/
+
+# pipenv
+Pipfile.lock
+
+### Python Artifacts ###
+# Bytecode and cache
 __pycache__/
 *.py[cod]
+*.pyc
+*.pyo
+*.pyd
 *$py.class
 *.so
-.Python
+
+# Build and distribution
 build/
-develop-eggs/
 dist/
+*.egg
+*.egg-info/
+*.egg-info
+*.manifest
+*.spec
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+develop-eggs/
 downloads/
 eggs/
 .eggs/
@@ -15,26 +52,16 @@ lib64/
 parts/
 sdist/
 var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
 .installed.cfg
-*.egg
 MANIFEST
-
-# PyInstaller
-*.manifest
-*.spec
+.Python
 
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
+### Testing & Coverage ###
+# General
 .coverage
 .coverage.*
 .cache
@@ -42,184 +69,69 @@ nosetests.xml
 coverage.xml
 *.cover
 *.py,cover
-.hypothesis/
+htmlcov/
+.tox/
+.nox/
+
+# Pytest
 .pytest_cache/
 
-# Translations
-*.mo
-*.pot
+# Hypothesis
+.hypothesis/
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-.python-version
-
-# pipenv
-Pipfile.lock
-
-# PEP 582
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-godel_venv/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# Node.js and npm
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-
-# Logs
-logs/
+### Logs ###
 *.log
 backend.log
 server.log
+logs/
+celerybeat-schedule
+celerybeat.pid
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
+### Frameworks ###
+# Django
+db.sqlite3
+db.sqlite3-journal
+local_settings.py
 
-# Coverage directory used by tools like istanbul
-coverage/
+# Flask
+instance/
+.webassets-cache
 
-# nyc test coverage
-.nyc_output
+# Scrapy
+.scrapy
 
-# Grunt intermediate storage
-.grunt
+# Celery
+celerybeat-schedule
+celerybeat.pid
 
-# Bower dependency directory
-bower_components
+### Documentation ###
+# Sphinx
+docs/_build/
 
-# node-waf configuration
-.lock-wscript
+# MkDocs
+/site
 
-# Compiled binary addons
-build/Release
-
-# Dependency directories
-jspm_packages/
-
-# TypeScript v1 declaration files
-typings/
-
-# TypeScript cache
-*.tsbuildinfo
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-# Microbundle cache
-.rpt2_cache/
-.rts2_cache_cjs/
-.rts2_cache_es/
-.rts2_cache_umd/
-
-# Optional REPL history
-.node_repl_history
-
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# dotenv environment variables file
-.env.test
-
-# parcel-bundler cache
-.cache
-.parcel-cache
-
-# Next.js build output
-.next
-
-# Nuxt.js build / generate output
-.nuxt
-dist
-
-# Gatsby files
-.cache/
-public
-
-# Storybook build outputs
-.out
-.storybook-out
-
-# Temporary folders
-tmp/
-temp/
-
-# Editor directories and files
+### IDEs & Editors ###
+# VS Code
 .vscode/
+
+# PyCharm/IntelliJ
 .idea/
+.idea
+.spyderproject
+.spyproject
+.ropeproject
+
+# Vim
 *.swp
 *.swo
 *~
 
-# OS generated files
+# Spyder
+.spyderproject
+.spyproject
+
+### OS Generated ###
 .DS_Store
 .DS_Store?
 ._*
@@ -228,13 +140,74 @@ temp/
 ehthumbs.db
 Thumbs.db
 
-# Test outputs and results
-test_output/
-test_results/
-*.json
-!package.json
-!tsconfig.json
-!jsconfig.json
+### Node.js/Web ###
+# Dependencies
+node_modules/
+bower_components/
+jspm_packages/
+
+# Build artifacts
+dist/
+.next/
+.nuxt/
+public/
+.cache/
+.parcel-cache
+.out
+.storybook-out
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Coverage
+coverage/
+.nyc_output
+
+# Cache
+.npm
+.eslintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Configs
+.lock-wscript
+
+# Output
+*.tgz
+.yarn-integrity
+
+# TypeScript
+*.tsbuildinfo
+typings/
+
+### Other ###
+# Pyre
+.pyre/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# PyBuilder
+target/
+
+# Jupyter
+.ipynb_checkpoints
+profile_default/
+ipython_config.py
+
+# SageMath
+*.sage.py
+
+# Temporary files
+tmp/
+temp/
 
 # Backup files
 *.bak
@@ -242,9 +215,12 @@ test_results/
 *_backup.*
 *_old.*
 
-# HTML test files
-*.html
-!index.html
-!godelos-frontend/index.html
-!svelte-frontend/index.html
-backend/knowledge_storage
+# Test outputs
+test_output/
+test_results/
+
+# Backend storage
+backend/knowledge_storage/
+knowledge_storage/*
+metacognition_modules/backups/
+backend/metacognition_modules/backups

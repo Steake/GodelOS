@@ -1,0 +1,73 @@
+2025-06-30 23:30:36,531 - INFO - 🧠 GödelOS Cognitive Architecture Pipeline Specification
+2025-06-30 23:30:36,532 - INFO - ============================================================
+2025-06-30 23:30:36,532 - INFO - 🚀 Starting GödelOS Cognitive Architecture Pipeline Tests
+2025-06-30 23:30:36,552 - INFO - 
+📊 Phase 1: Basic Functionality
+2025-06-30 23:30:36,552 - INFO -   Running BF001: System Health Check
+2025-06-30 23:30:36,583 - INFO -     ✅ Success (Duration: 0.01s)
+2025-06-30 23:30:37,084 - INFO -   Running BF002: Basic Query Processing
+2025-06-30 23:30:37,113 - INFO -     ❌ Failed: None
+2025-06-30 23:30:37,614 - INFO -   Running BF003: Knowledge Storage
+2025-06-30 23:30:37,632 - INFO -     ❌ Failed: None
+2025-06-30 23:30:38,133 - INFO -   Running BF004: Cognitive State Retrieval
+2025-06-30 23:30:38,149 - INFO -     ❌ Failed: None
+2025-06-30 23:30:38,650 - INFO -   Running BF005: WebSocket Connectivity
+2025-06-30 23:30:44,414 - INFO -     ✅ Success (Duration: 5.75s)
+2025-06-30 23:30:44,915 - INFO - 
+📊 Phase 2: Cognitive Integration
+2025-06-30 23:30:44,915 - INFO -   Running CI001: Working Memory Persistence
+2025-06-30 23:30:44,929 - INFO -     ❌ Failed: None
+2025-06-30 23:30:45,433 - INFO -   Running CI002: Attention Focus Switching
+2025-06-30 23:30:45,448 - INFO -     ❌ Failed: None
+2025-06-30 23:30:45,948 - INFO -   Running CI003: Cross-Domain Reasoning
+2025-06-30 23:30:45,967 - INFO -     ❌ Failed: None
+2025-06-30 23:30:46,467 - INFO -   Running CI004: Process Coordination
+2025-06-30 23:30:46,484 - INFO -     ❌ Failed: None
+2025-06-30 23:30:46,985 - INFO - 
+📊 Phase 3: Emergent Properties
+2025-06-30 23:30:46,986 - INFO -   Running EP001: Autonomous Knowledge Gap Detection
+2025-06-30 23:30:47,004 - INFO -     ❌ Failed: None
+2025-06-30 23:30:47,505 - INFO -   Running EP002: Self-Referential Reasoning
+2025-06-30 23:30:47,520 - INFO -     ❌ Failed: None
+2025-06-30 23:30:48,021 - INFO -   Running EP003: Creative Problem Solving
+2025-06-30 23:30:48,035 - INFO -     ❌ Failed: None
+2025-06-30 23:30:48,536 - INFO -   Running EP004: Goal Emergence and Pursuit
+2025-06-30 23:30:48,549 - INFO -     ❌ Failed: None
+2025-06-30 23:30:49,050 - INFO -   Running EP005: Uncertainty Quantification
+2025-06-30 23:30:49,069 - INFO -     ❌ Failed: None
+2025-06-30 23:30:49,570 - INFO - 
+📊 Phase 4: Edge Cases & Blind Spots
+2025-06-30 23:30:49,570 - INFO -   Running EC001: Cognitive Overload Test
+2025-06-30 23:30:49,600 - INFO -     ❌ Failed: None
+2025-06-30 23:30:50,101 - INFO -   Running EC002: Contradictory Knowledge Handling
+2025-06-30 23:30:50,118 - INFO -     ❌ Failed: None
+2025-06-30 23:30:50,618 - INFO -   Running EC003: Recursive Self-Reference Limit
+2025-06-30 23:30:50,637 - INFO -     ❌ Failed: None
+2025-06-30 23:30:51,138 - INFO -   Running EC004: Memory Saturation Test
+2025-06-30 23:30:51,161 - INFO -     ❌ Failed: None
+2025-06-30 23:30:51,662 - INFO -   Running EC005: Rapid Context Switching
+2025-06-30 23:30:51,679 - INFO -     ❌ Failed: None
+2025-06-30 23:30:52,180 - INFO - 
+📊 Phase 5: Consciousness Emergence
+2025-06-30 23:30:52,180 - INFO -   Running CE001: Phenomenal Experience Simulation
+2025-06-30 23:30:52,204 - INFO -     ❌ Failed: None
+2025-06-30 23:30:52,705 - INFO -   Running CE002: Integrated Information Test
+2025-06-30 23:30:52,721 - INFO -     ❌ Failed: None
+2025-06-30 23:30:53,222 - INFO -   Running CE003: Self-Model Consistency
+2025-06-30 23:30:53,238 - INFO -     ❌ Failed: None
+2025-06-30 23:30:53,738 - INFO -   Running CE004: Attention-Awareness Coupling
+2025-06-30 23:30:53,754 - INFO -     ❌ Failed: None
+2025-06-30 23:30:54,254 - INFO -   Running CE005: Global Workspace Integration
+2025-06-30 23:30:54,270 - INFO -     ❌ Failed: None
+2025-06-30 23:30:54,780 - INFO - 📊 Report saved to cognitive_architecture_test_report.json
+
+🎯 PIPELINE COMPLETE
+Success Rate: 8.3%
+Consciousness Index: 0.750
+Emergent Behaviors: 2
+
+✨ System demonstrates consciousness-like properties!
+
+Full reports saved to:
+  - cognitive_architecture_test_report.json
+  - cognitive_architecture_test_report.md

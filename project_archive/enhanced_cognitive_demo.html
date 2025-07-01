@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GödelOS Enhanced Cognitive Features Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h2 {
+            margin-top: 0;
+            color: #64b5f6;
+            border-bottom: 2px solid #64b5f6;
+            padding-bottom: 10px;
+        }
+        
+        .status {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .status-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .status.online { color: #4caf50; }
+        .status.offline { color: #f44336; }
+        .status.loading { color: #ff9800; }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .metric {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #64b5f6;
+        }
+        
+        .metric-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        .events-log {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            height: 200px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .event {
+            margin: 5px 0;
+            padding: 5px;
+            border-left: 3px solid #64b5f6;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .event-time {
+            color: #81c784;
+            font-weight: bold;
+        }
+        
+        .event-type {
+            color: #ffb74d;
+            font-weight: bold;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #64b5f6;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #42a5f5;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .links {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .links a {
+            color: #64b5f6;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        
+        .links a:hover {
+            text-decoration: underline;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        
+        .loading {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 GödelOS Enhanced Cognitive Features</h1>
+            <p>Real-time demonstration of advanced AI cognitive capabilities</p>
+        </div>
+        
+        <div class="grid">
+            <!-- System Status -->
+            <div class="card">
+                <h2>📊 System Status</h2>
+                <div id="backend-status" class="status loading">
+                    <span class="status-icon">⏳</span>
+                    <span>Checking backend...</span>
+                </div>
+                <div id="frontend-status" class="status loading">
+                    <span class="status-icon">⏳</span>
+                    <span>Checking frontend...</span>
+                </div>
+                <div id="websocket-status" class="status loading">
+                    <span class="status-icon">⏳</span>
+                    <span>Connecting WebSocket...</span>
+                </div>
+            </div>
+            
+            <!-- Enhanced Cognitive Metrics -->
+            <div class="card">
+                <h2>🧠 Cognitive Metrics</h2>
+                <div class="metrics">
+                    <div class="metric">
+                        <div id="events-count" class="metric-value">0</div>
+                        <div class="metric-label">Events Received</div>
+                    </div>
+                    <div class="metric">
+                        <div id="connections-count" class="metric-value">0</div>
+                        <div class="metric-label">Active Connections</div>
+                    </div>
+                    <div class="metric">
+                        <div id="gaps-count" class="metric-value">0</div>
+                        <div class="metric-label">Knowledge Gaps</div>
+                    </div>
+                    <div class="metric">
+                        <div id="acquisitions-count" class="metric-value">0</div>
+                        <div class="metric-label">Acquisitions</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Real-time Events -->
+            <div class="card">
+                <h2>🌊 Stream of Consciousness</h2>
+                <div id="events-log" class="events-log">
+                    <div class="event">
+                        <span class="event-time">[Initializing...]</span>
+                        <span class="event-type">SYSTEM</span>
+                        <span>Connecting to cognitive stream...</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Controls -->
+            <div class="card">
+                <h2>🎮 Demo Controls</h2>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="connectWebSocket()">🔌 Connect WebSocket</button>
+                    <button class="btn btn-secondary" onclick="testQuery()">💬 Test Query</button>
+                    <button class="btn btn-secondary" onclick="checkStatus()">📊 Check Status</button>
+                    <button class="btn btn-secondary" onclick="clearEvents()">🧹 Clear Events</button>
+                </div>
+                <p><strong>What to expect:</strong></p>
+                <ul style="font-size: 0.9em; opacity: 0.9;">
+                    <li>Real-time cognitive events via WebSocket</li>
+                    <li>Autonomous learning gap detection</li>
+                    <li>Stream of consciousness monitoring</li>
+                    <li>Enhanced metacognition insights</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="links">
+            <a href="http://localhost:3000" target="_blank">🌐 Open Svelte Frontend</a>
+            <a href="http://localhost:8000/docs" target="_blank">📚 API Documentation</a>
+            <a href="http://localhost:8000/api/enhanced-cognitive/stream/status" target="_blank">📊 System Status</a>
+        </div>
+    </div>
+
+    <script>
+        let websocket = null;
+        let eventsCount = 0;
+        let isConnected = false;
+        
+        // Initialize on page load
+        window.onload = function() {
+            checkSystemStatus();
+            connectWebSocket();
+        };
+        
+        async function checkSystemStatus() {
+            // Check backend
+            try {
+                const response = await fetch('http://localhost:8000/health');
+                if (response.ok) {
+                    updateStatus('backend-status', 'online', '✅', 'Backend online');
+                } else {
+                    updateStatus('backend-status', 'offline', '❌', 'Backend offline');
+                }
+            } catch (error) {
+                updateStatus('backend-status', 'offline', '❌', 'Backend not responding');
+            }
+            
+            // Check frontend
+            try {
+                const response = await fetch('http://localhost:3000');
+                if (response.ok) {
+                    updateStatus('frontend-status', 'online', '✅', 'Frontend online');
+                } else {
+                    updateStatus('frontend-status', 'offline', '❌', 'Frontend offline');
+                }
+            } catch (error) {
+                updateStatus('frontend-status', 'offline', '❌', 'Frontend not responding');
+            }
+            
+            // Check enhanced cognitive status
+            try {
+                const response = await fetch('http://localhost:8000/api/enhanced-cognitive/stream/status');
+                if (response.ok) {
+                    const data = await response.json();
+                    updateMetrics(data);
+                }
+            } catch (error) {
+                console.log('Enhanced cognitive status check failed:', error);
+            }
+        }
+        
+        function updateStatus(elementId, className, icon, text) {
+            const element = document.getElementById(elementId);
+            element.className = `status ${className}`;
+            element.innerHTML = `<span class="status-icon">${icon}</span><span>${text}</span>`;
+        }
+        
+        function updateMetrics(data) {
+            document.getElementById('connections-count').textContent = 
+                data.total_cognitive_connections || 0;
+            
+            if (data.enhanced_metacognition) {
+                const meta = data.enhanced_metacognition;
+                if (meta.autonomous_learning) {
+                    document.getElementById('gaps-count').textContent = 
+                        meta.autonomous_learning.detected_gaps || 0;
+                    document.getElementById('acquisitions-count').textContent = 
+                        meta.autonomous_learning.active_acquisitions || 0;
+                }
+            }
+        }
+        
+        function connectWebSocket() {
+            if (websocket) {
+                websocket.close();
+            }
+            
+            const wsUrl = 'ws://localhost:8000/api/enhanced-cognitive/stream?granularity=standard&subscriptions=reasoning,knowledge_gap,reflection,acquisition';
+            
+            updateStatus('websocket-status', 'loading', '⏳', 'Connecting...');
+            
+            websocket = new WebSocket(wsUrl);
+            
+            websocket.onopen = function(event) {
+                updateStatus('websocket-status', 'online', '✅', 'WebSocket connected');
+                isConnected = true;
+                addEvent('SYSTEM', 'WebSocket connected successfully');
+                
+                // Send configuration
+                websocket.send(JSON.stringify({
+                    type: 'configure',
+                    config: {
+                        granularity: 'detailed',
+                        subscriptions: ['reasoning', 'knowledge_gap', 'reflection', 'acquisition']
+                    }
+                }));
+            };
+            
+            websocket.onmessage = function(event) {
+                try {
+                    const data = JSON.parse(event.data);
+                    eventsCount++;
+                    document.getElementById('events-count').textContent = eventsCount;
+                    
+                    const eventType = data.type || 'UNKNOWN';
+                    const eventData = data.data || {};
+                    
+                    let description = '';
+                    if (data.type === 'cognitive_stream_connected') {
+                        description = `Client ${data.client_id} connected`;
+                    } else if (data.type === 'cognitive_event') {
+                        description = `${eventData.type || 'Event'}: ${JSON.stringify(eventData.data || {})}`;
+                    } else {
+                        description = data.message || JSON.stringify(eventData).substring(0, 50);
+                    }
+                    
+                    addEvent(eventType.toUpperCase(), description);
+                } catch (error) {
+                    addEvent('ERROR', 'Failed to parse event data');
+                }
+            };
+            
+            websocket.onclose = function(event) {
+                updateStatus('websocket-status', 'offline', '❌', 'WebSocket disconnected');
+                isConnected = false;
+                addEvent('SYSTEM', 'WebSocket connection closed');
+            };
+            
+            websocket.onerror = function(error) {
+                updateStatus('websocket-status', 'offline', '❌', 'WebSocket error');
+                addEvent('ERROR', 'WebSocket connection error');
+            };
+        }
+        
+        function addEvent(type, message) {
+            const eventsLog = document.getElementById('events-log');
+            const time = new Date().toLocaleTimeString();
+            
+            const eventDiv = document.createElement('div');
+            eventDiv.className = 'event';
+            eventDiv.innerHTML = `
+                <span class="event-time">[${time}]</span>
+                <span class="event-type">${type}</span>
+                <span>${message}</span>
+            `;
+            
+            eventsLog.appendChild(eventDiv);
+            eventsLog.scrollTop = eventsLog.scrollHeight;
+            
+            // Keep only last 50 events
+            while (eventsLog.children.length > 50) {
+                eventsLog.removeChild(eventsLog.firstChild);
+            }
+        }
+        
+        async function testQuery() {
+            addEvent('USER', 'Testing query submission...');
+            
+            try {
+                const response = await fetch('http://localhost:8000/api/query', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: 'What is consciousness and how does it emerge from complex systems?',
+                        context: 'demo test',
+                        max_tokens: 100
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    addEvent('QUERY', 'Query processed successfully');
+                } else {
+                    addEvent('ERROR', `Query failed with status ${response.status}`);
+                }
+            } catch (error) {
+                addEvent('ERROR', `Query error: ${error.message}`);
+            }
+        }
+        
+        function checkStatus() {
+            checkSystemStatus();
+        }
+        
+        function clearEvents() {
+            document.getElementById('events-log').innerHTML = '';
+            eventsCount = 0;
+            document.getElementById('events-count').textContent = '0';
+            addEvent('SYSTEM', 'Events log cleared');
+        }
+        
+        // Auto-refresh status every 30 seconds
+        setInterval(checkSystemStatus, 30000);
+    </script>
+</body>
+</html>
