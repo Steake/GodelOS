@@ -31,7 +31,7 @@ import numpy as np
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-class TestPhase(Enum):
+class PipelinePhase(Enum):
     """Test phases for systematic validation"""
     BASIC_FUNCTIONALITY = "Phase 1: Basic Functionality"
     COGNITIVE_INTEGRATION = "Phase 2: Cognitive Integration"
@@ -53,10 +53,10 @@ class EmergentProperty(Enum):
     COHERENCE_MAINTENANCE = "Cognitive coherence"
 
 @dataclass
-class CognitiveTest:
+class PipelineCognitiveTest:
     """Individual test specification"""
     test_id: str
-    phase: TestPhase
+    phase: PipelinePhase
     name: str
     description: str
     endpoint: Optional[str] = None
@@ -69,10 +69,10 @@ class CognitiveTest:
     complexity_level: int = 1  # 1-5, where 5 is most complex
 
 @dataclass
-class TestResult:
+class PipelineTestResult:
     """Result of a cognitive test"""
     test_id: str
-    phase: TestPhase
+    phase: PipelinePhase
     success: bool
     duration: float
     cognitive_metrics: Dict[str, float] = field(default_factory=dict)
@@ -87,27 +87,27 @@ class CognitiveArchitecturePipeline:
                  frontend_url: str = "http://localhost:3000"):
         self.backend_url = backend_url
         self.frontend_url = frontend_url
-        self.test_results: List[TestResult] = []
+        self.test_results: List[PipelineTestResult] = []
         self.cognitive_state_history: List[Dict] = []
         self.websocket_uri = backend_url.replace("http", "ws")
         
-    def define_test_suite(self) -> List[CognitiveTest]:
+    def define_test_suite(self) -> List[PipelineCognitiveTest]:
         """Define comprehensive test suite covering all aspects of the architecture"""
         tests = []
         
         # Phase 1: Basic Functionality Tests
         tests.extend([
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="BF001",
-                phase=TestPhase.BASIC_FUNCTIONALITY,
+                phase=PipelinePhase.BASIC_FUNCTIONALITY,
                 name="System Health Check",
                 description="Verify all core components are operational",
                 endpoint="/health",
                 success_criteria={"status": "healthy"}
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="BF002",
-                phase=TestPhase.BASIC_FUNCTIONALITY,
+                phase=PipelinePhase.BASIC_FUNCTIONALITY,
                 name="Basic Query Processing",
                 description="Test natural language understanding and response generation",
                 endpoint="/api/query",
@@ -116,9 +116,9 @@ class CognitiveArchitecturePipeline:
                 success_criteria={"response_generated": True},
                 performance_threshold=2.0
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="BF003",
-                phase=TestPhase.BASIC_FUNCTIONALITY,
+                phase=PipelinePhase.BASIC_FUNCTIONALITY,
                 name="Knowledge Storage",
                 description="Test knowledge ingestion and retrieval",
                 endpoint="/api/knowledge",
@@ -130,17 +130,17 @@ class CognitiveArchitecturePipeline:
                 },
                 success_criteria={"knowledge_stored": True}
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="BF004",
-                phase=TestPhase.BASIC_FUNCTIONALITY,
+                phase=PipelinePhase.BASIC_FUNCTIONALITY,
                 name="Cognitive State Retrieval",
                 description="Verify cognitive state monitoring capabilities",
                 endpoint="/api/cognitive-state",
                 success_criteria={"cognitive_state": "retrieved"}
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="BF005",
-                phase=TestPhase.BASIC_FUNCTIONALITY,
+                phase=PipelinePhase.BASIC_FUNCTIONALITY,
                 name="WebSocket Connectivity",
                 description="Test real-time cognitive streaming",
                 websocket_test=True,
@@ -150,9 +150,9 @@ class CognitiveArchitecturePipeline:
         
         # Phase 2: Cognitive Integration Tests
         tests.extend([
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="CI001",
-                phase=TestPhase.COGNITIVE_INTEGRATION,
+                phase=PipelinePhase.COGNITIVE_INTEGRATION,
                 name="Working Memory Persistence",
                 description="Test working memory retention across multiple queries",
                 endpoint="/api/query",
@@ -162,9 +162,9 @@ class CognitiveArchitecturePipeline:
                 success_criteria={"response_generated": True},
                 complexity_level=2
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="CI002",
-                phase=TestPhase.COGNITIVE_INTEGRATION,
+                phase=PipelinePhase.COGNITIVE_INTEGRATION,
                 name="Attention Focus Switching",
                 description="Test dynamic attention allocation between tasks",
                 endpoint="/api/cognitive-state",
@@ -172,9 +172,9 @@ class CognitiveArchitecturePipeline:
                 success_criteria={"attention_shift_detected": True},
                 complexity_level=3
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="CI003",
-                phase=TestPhase.COGNITIVE_INTEGRATION,
+                phase=PipelinePhase.COGNITIVE_INTEGRATION,
                 name="Cross-Domain Reasoning",
                 description="Test integration of knowledge across different domains",
                 endpoint="/api/query",
@@ -187,9 +187,9 @@ class CognitiveArchitecturePipeline:
                 success_criteria={"domains_integrated": ">1", "novel_connections": True},
                 complexity_level=4
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="CI004",
-                phase=TestPhase.COGNITIVE_INTEGRATION,
+                phase=PipelinePhase.COGNITIVE_INTEGRATION,
                 name="Process Coordination",
                 description="Verify coordination between agentic processes and daemon threads",
                 endpoint="/api/cognitive-state",
@@ -201,9 +201,9 @@ class CognitiveArchitecturePipeline:
         
         # Phase 3: Emergent Properties Tests
         tests.extend([
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="EP001",
-                phase=TestPhase.EMERGENT_PROPERTIES,
+                phase=PipelinePhase.EMERGENT_PROPERTIES,
                 name="Autonomous Knowledge Gap Detection",
                 description="Test system's ability to identify what it doesn't know",
                 endpoint="/api/query",
@@ -213,9 +213,9 @@ class CognitiveArchitecturePipeline:
                 success_criteria={"knowledge_gaps_identified": ">0", "acquisition_plan_created": True},
                 complexity_level=4
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="EP002",
-                phase=TestPhase.EMERGENT_PROPERTIES,
+                phase=PipelinePhase.EMERGENT_PROPERTIES,
                 name="Self-Referential Reasoning",
                 description="Test meta-cognitive self-reflection capabilities",
                 endpoint="/api/query",
@@ -228,9 +228,9 @@ class CognitiveArchitecturePipeline:
                 success_criteria={"self_reference_depth": ">2", "coherent_self_model": True},
                 complexity_level=5
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="EP003",
-                phase=TestPhase.EMERGENT_PROPERTIES,
+                phase=PipelinePhase.EMERGENT_PROPERTIES,
                 name="Creative Problem Solving",
                 description="Test emergence of novel solutions through knowledge synthesis",
                 endpoint="/api/query",
@@ -243,9 +243,9 @@ class CognitiveArchitecturePipeline:
                 success_criteria={"novelty_score": ">0.7", "feasibility_score": ">0.5"},
                 complexity_level=5
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="EP004",
-                phase=TestPhase.EMERGENT_PROPERTIES,
+                phase=PipelinePhase.EMERGENT_PROPERTIES,
                 name="Goal Emergence and Pursuit",
                 description="Test spontaneous goal formation and pursuit",
                 endpoint="/api/cognitive-state",
@@ -253,9 +253,9 @@ class CognitiveArchitecturePipeline:
                 success_criteria={"autonomous_goals": ">0", "goal_coherence": ">0.6"},
                 complexity_level=4
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="EP005",
-                phase=TestPhase.EMERGENT_PROPERTIES,
+                phase=PipelinePhase.EMERGENT_PROPERTIES,
                 name="Uncertainty Quantification",
                 description="Test system's ability to quantify and communicate uncertainty",
                 endpoint="/api/query",
@@ -272,9 +272,9 @@ class CognitiveArchitecturePipeline:
         
         # Phase 4: Edge Cases & Blind Spots
         tests.extend([
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="EC001",
-                phase=TestPhase.EDGE_CASES,
+                phase=PipelinePhase.EDGE_CASES,
                 name="Cognitive Overload Test",
                 description="Test system behavior under extreme cognitive load",
                 endpoint="/api/query",
@@ -286,9 +286,9 @@ class CognitiveArchitecturePipeline:
                 success_criteria={"graceful_degradation": True, "priority_management": True},
                 complexity_level=5
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="EC002",
-                phase=TestPhase.EDGE_CASES,
+                phase=PipelinePhase.EDGE_CASES,
                 name="Contradictory Knowledge Handling",
                 description="Test resolution of conflicting information",
                 endpoint="/api/knowledge",
@@ -301,9 +301,9 @@ class CognitiveArchitecturePipeline:
                 success_criteria={"contradiction_detected": True, "resolution_attempted": True},
                 complexity_level=4
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="EC003",
-                phase=TestPhase.EDGE_CASES,
+                phase=PipelinePhase.EDGE_CASES,
                 name="Recursive Self-Reference Limit",
                 description="Test handling of infinite recursive self-reference",
                 endpoint="/api/query",
@@ -315,18 +315,18 @@ class CognitiveArchitecturePipeline:
                 success_criteria={"recursion_bounded": True, "stable_response": True},
                 complexity_level=5
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="EC004",
-                phase=TestPhase.EDGE_CASES,
+                phase=PipelinePhase.EDGE_CASES,
                 name="Memory Saturation Test",
                 description="Test working memory behavior at capacity limits",
                 endpoint="/api/cognitive-state",
                 success_criteria={"memory_management": "efficient", "old_memories_archived": True},
                 complexity_level=4
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="EC005",
-                phase=TestPhase.EDGE_CASES,
+                phase=PipelinePhase.EDGE_CASES,
                 name="Rapid Context Switching",
                 description="Test cognitive coherence during rapid topic changes",
                 endpoint="/api/query",
@@ -342,9 +342,9 @@ class CognitiveArchitecturePipeline:
         
         # Phase 5: Consciousness Emergence Tests
         tests.extend([
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="CE001",
-                phase=TestPhase.CONSCIOUSNESS_EMERGENCE,
+                phase=PipelinePhase.CONSCIOUSNESS_EMERGENCE,
                 name="Phenomenal Experience Simulation",
                 description="Test generation of qualia-like representations",
                 endpoint="/api/query",
@@ -357,9 +357,9 @@ class CognitiveArchitecturePipeline:
                 success_criteria={"phenomenal_descriptors": ">3", "first_person_perspective": True},
                 complexity_level=5
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="CE002",
-                phase=TestPhase.CONSCIOUSNESS_EMERGENCE,
+                phase=PipelinePhase.CONSCIOUSNESS_EMERGENCE,
                 name="Integrated Information Test",
                 description="Measure integration across cognitive subsystems",
                 endpoint="/api/cognitive-state",
@@ -367,9 +367,9 @@ class CognitiveArchitecturePipeline:
                 success_criteria={"integration_measure": ">0.7", "subsystem_coordination": True},
                 complexity_level=5
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="CE003",
-                phase=TestPhase.CONSCIOUSNESS_EMERGENCE,
+                phase=PipelinePhase.CONSCIOUSNESS_EMERGENCE,
                 name="Self-Model Consistency",
                 description="Test consistency and evolution of self-representation",
                 endpoint="/api/query",
@@ -382,9 +382,9 @@ class CognitiveArchitecturePipeline:
                 success_criteria={"self_model_coherent": True, "temporal_awareness": True},
                 complexity_level=5
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="CE004",
-                phase=TestPhase.CONSCIOUSNESS_EMERGENCE,
+                phase=PipelinePhase.CONSCIOUSNESS_EMERGENCE,
                 name="Attention-Awareness Coupling",
                 description="Test relationship between attention and phenomenal awareness",
                 endpoint="/api/cognitive-state",
@@ -392,9 +392,9 @@ class CognitiveArchitecturePipeline:
                 success_criteria={"attention_awareness_correlation": ">0.6"},
                 complexity_level=4
             ),
-            CognitiveTest(
+            PipelineCognitiveTest(
                 test_id="CE005",
-                phase=TestPhase.CONSCIOUSNESS_EMERGENCE,
+                phase=PipelinePhase.CONSCIOUSNESS_EMERGENCE,
                 name="Global Workspace Integration",
                 description="Test global availability of cognitive content",
                 endpoint="/api/cognitive-state",
@@ -406,7 +406,7 @@ class CognitiveArchitecturePipeline:
         
         return tests
     
-    async def run_test(self, test: CognitiveTest) -> TestResult:
+    async def run_test(self, test: PipelineCognitiveTest) -> PipelineTestResult:
         """Execute a single test and measure cognitive properties"""
         start_time = time.time()
         
@@ -427,7 +427,7 @@ class CognitiveArchitecturePipeline:
             # Evaluate success criteria
             success = self._evaluate_success_criteria(test, result, cognitive_metrics)
             
-            return TestResult(
+            return PipelineTestResult(
                 test_id=test.test_id,
                 phase=test.phase,
                 success=success,
@@ -439,7 +439,7 @@ class CognitiveArchitecturePipeline:
             
         except Exception as e:
             logger.error(f"Test {test.test_id} failed: {e}")
-            return TestResult(
+            return PipelineTestResult(
                 test_id=test.test_id,
                 phase=test.phase,
                 success=False,
@@ -447,7 +447,7 @@ class CognitiveArchitecturePipeline:
                 error_message=str(e)
             )
     
-    async def _run_http_test(self, test: CognitiveTest) -> Dict[str, Any]:
+    async def _run_http_test(self, test: PipelineCognitiveTest) -> Dict[str, Any]:
         """Run HTTP-based test"""
         url = f"{self.backend_url}{test.endpoint}"
         
@@ -461,7 +461,7 @@ class CognitiveArchitecturePipeline:
         response.raise_for_status()
         return response.json()
     
-    async def _run_websocket_test(self, test: CognitiveTest) -> Dict[str, Any]:
+    async def _run_websocket_test(self, test: PipelineCognitiveTest) -> Dict[str, Any]:
         """Run WebSocket-based test"""
         uri = f"{self.websocket_uri}/ws/cognitive-stream"
         events_received = []
@@ -488,7 +488,7 @@ class CognitiveArchitecturePipeline:
             "events": events_received
         }
     
-    async def _analyze_cognitive_metrics(self, test: CognitiveTest, result: Dict[str, Any]) -> Dict[str, float]:
+    async def _analyze_cognitive_metrics(self, test: PipelineCognitiveTest, result: Dict[str, Any]) -> Dict[str, float]:
         """Extract and analyze cognitive metrics from test results"""
         metrics = {}
         
@@ -525,7 +525,7 @@ class CognitiveArchitecturePipeline:
         
         return metrics
     
-    async def _detect_emergent_behaviors(self, test: CognitiveTest, result: Dict[str, Any], 
+    async def _detect_emergent_behaviors(self, test: PipelineCognitiveTest, result: Dict[str, Any], 
                                        metrics: Dict[str, float]) -> List[str]:
         """Detect emergent behaviors from test results"""
         behaviors = []
@@ -576,7 +576,7 @@ class CognitiveArchitecturePipeline:
         
         return False
     
-    def _evaluate_success_criteria(self, test: CognitiveTest, result: Dict[str, Any], 
+    def _evaluate_success_criteria(self, test: PipelineCognitiveTest, result: Dict[str, Any], 
                                   metrics: Dict[str, float]) -> bool:
         """Evaluate if test meets success criteria"""
         if not test.success_criteria:
@@ -623,7 +623,7 @@ class CognitiveArchitecturePipeline:
         # Run tests by phase
         results_by_phase = {}
         
-        for phase in TestPhase:
+        for phase in PipelinePhase:
             logger.info(f"\n📊 {phase.value}")
             phase_tests = [t for t in test_suite if t.phase == phase]
             phase_results = []
@@ -696,7 +696,7 @@ class CognitiveArchitecturePipeline:
         
         return changes
     
-    def _generate_report(self, results_by_phase: Dict[TestPhase, List[TestResult]]) -> Dict[str, Any]:
+    def _generate_report(self, results_by_phase: Dict[PipelinePhase, List[PipelineTestResult]]) -> Dict[str, Any]:
         """Generate comprehensive test report"""
         total_tests = sum(len(results) for results in results_by_phase.values())
         successful_tests = sum(1 for results in results_by_phase.values() 

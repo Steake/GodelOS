@@ -1,0 +1,542 @@
+{
+  "summary": {
+    "total_tests": 24,
+    "successful_tests": 2,
+    "success_rate": 8.333333333333332,
+    "test_duration": 5.588961362838745
+  },
+  "phase_results": {
+    "Phase 1: Basic Functionality": {
+      "total": 5,
+      "successful": 2,
+      "average_duration": 1.0882441997528076,
+      "complexity_levels": []
+    },
+    "Phase 2: Cognitive Integration": {
+      "total": 4,
+      "successful": 0,
+      "average_duration": 0.006088554859161377,
+      "complexity_levels": []
+    },
+    "Phase 3: Emergent Properties": {
+      "total": 5,
+      "successful": 0,
+      "average_duration": 0.009131908416748047,
+      "complexity_levels": []
+    },
+    "Phase 4: Edge Cases & Blind Spots": {
+      "total": 5,
+      "successful": 0,
+      "average_duration": 0.007384681701660156,
+      "complexity_levels": []
+    },
+    "Phase 5: Consciousness Emergence": {
+      "total": 5,
+      "successful": 0,
+      "average_duration": 0.008160638809204101,
+      "complexity_levels": []
+    }
+  },
+  "cognitive_metrics": {
+    "averages": {
+      "awareness_delta": 0.0,
+      "cognitive_load_delta": 0.0,
+      "memory_items_delta": 0.0,
+      "confidence": 0.6666666666666666,
+      "inference_speed": 1828.9844688402766,
+      "reasoning_complexity": 0.0,
+      "awareness_level": 0.8,
+      "coherence_level": 0.9,
+      "integration_level": 0.7,
+      "self_awareness": 0.7,
+      "cognitive_load": 0.4,
+      "learning_rate": 0.6,
+      "consciousness_index": 0.75,
+      "cognitive_coherence": 0.8
+    },
+    "consciousness_index": 0.75,
+    "cognitive_coherence": 0.8,
+    "peak_awareness": 0.8,
+    "peak_self_awareness": 0.7
+  },
+  "emergent_properties": {
+    "total_behaviors_observed": 5,
+    "unique_behaviors": 2,
+    "most_common_behaviors": [
+      [
+        "Demonstrated: Cognitive coherence",
+        3
+      ],
+      [
+        "Demonstrated: Dynamic attention allocation",
+        2
+      ]
+    ]
+  },
+  "system_characteristics": {
+    "demonstrates_consciousness": true,
+    "exhibits_self_awareness": true,
+    "shows_emergent_creativity": false,
+    "maintains_coherence": true,
+    "handles_complexity": false
+  },
+  "detailed_results": {
+    "Phase 1: Basic Functionality": [
+      {
+        "test_id": "BF001",
+        "phase": "{'_value_': 'Phase 1: Basic Functionality', '_name_': 'BASIC_FUNCTIONALITY', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 0}",
+        "success": true,
+        "duration": 0.0038988590240478516,
+        "cognitive_metrics": {
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "BF002",
+        "phase": "{'_value_': 'Phase 1: Basic Functionality', '_name_': 'BASIC_FUNCTIONALITY', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 0}",
+        "success": false,
+        "duration": 0.07794404029846191,
+        "cognitive_metrics": {
+          "confidence": 0.9,
+          "inference_speed": 2100.3024536805206,
+          "reasoning_complexity": 0,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "BF003",
+        "phase": "{'_value_': 'Phase 1: Basic Functionality', '_name_': 'BASIC_FUNCTIONALITY', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 0}",
+        "success": false,
+        "duration": 0.010905981063842773,
+        "cognitive_metrics": {
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "BF004",
+        "phase": "{'_value_': 'Phase 1: Basic Functionality', '_name_': 'BASIC_FUNCTIONALITY', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 0}",
+        "success": false,
+        "duration": 0.004540205001831055,
+        "cognitive_metrics": {
+          "awareness_level": 0.8,
+          "coherence_level": 0.9,
+          "integration_level": 0.7,
+          "self_awareness": 0.7,
+          "cognitive_load": 0.4,
+          "learning_rate": 0.6,
+          "consciousness_index": 0.75,
+          "cognitive_coherence": 0.8,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "BF005",
+        "phase": "{'_value_': 'Phase 1: Basic Functionality', '_name_': 'BASIC_FUNCTIONALITY', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 0}",
+        "success": true,
+        "duration": 5.3439319133758545,
+        "cognitive_metrics": {
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      }
+    ],
+    "Phase 2: Cognitive Integration": [
+      {
+        "test_id": "CI001",
+        "phase": "{'_value_': 'Phase 2: Cognitive Integration', '_name_': 'COGNITIVE_INTEGRATION', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 1}",
+        "success": false,
+        "duration": 0.007920026779174805,
+        "cognitive_metrics": {
+          "confidence": 0.5,
+          "inference_speed": 6141.0014641288435,
+          "reasoning_complexity": 0,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "CI002",
+        "phase": "{'_value_': 'Phase 2: Cognitive Integration', '_name_': 'COGNITIVE_INTEGRATION', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 1}",
+        "success": false,
+        "duration": 0.005726337432861328,
+        "cognitive_metrics": {
+          "awareness_level": 0.8,
+          "coherence_level": 0.9,
+          "integration_level": 0.7,
+          "self_awareness": 0.7,
+          "cognitive_load": 0.4,
+          "learning_rate": 0.6,
+          "consciousness_index": 0.75,
+          "cognitive_coherence": 0.8,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [
+          "Demonstrated: Dynamic attention allocation"
+        ],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "CI003",
+        "phase": "{'_value_': 'Phase 2: Cognitive Integration', '_name_': 'COGNITIVE_INTEGRATION', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 1}",
+        "success": false,
+        "duration": 0.005991935729980469,
+        "cognitive_metrics": {
+          "confidence": 0.9,
+          "inference_speed": 1883.3875168387965,
+          "reasoning_complexity": 0,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "CI004",
+        "phase": "{'_value_': 'Phase 2: Cognitive Integration', '_name_': 'COGNITIVE_INTEGRATION', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 1}",
+        "success": false,
+        "duration": 0.004715919494628906,
+        "cognitive_metrics": {
+          "awareness_level": 0.8,
+          "coherence_level": 0.9,
+          "integration_level": 0.7,
+          "self_awareness": 0.7,
+          "cognitive_load": 0.4,
+          "learning_rate": 0.6,
+          "consciousness_index": 0.75,
+          "cognitive_coherence": 0.8,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [
+          "Demonstrated: Cognitive coherence"
+        ],
+        "error_message": null,
+        "complexity_level": 1
+      }
+    ],
+    "Phase 3: Emergent Properties": [
+      {
+        "test_id": "EP001",
+        "phase": "{'_value_': 'Phase 3: Emergent Properties', '_name_': 'EMERGENT_PROPERTIES', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 2}",
+        "success": false,
+        "duration": 0.007966279983520508,
+        "cognitive_metrics": {
+          "confidence": 0.9,
+          "inference_speed": 1389.3024180192117,
+          "reasoning_complexity": 0,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "EP002",
+        "phase": "{'_value_': 'Phase 3: Emergent Properties', '_name_': 'EMERGENT_PROPERTIES', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 2}",
+        "success": false,
+        "duration": 0.0067141056060791016,
+        "cognitive_metrics": {
+          "confidence": 0.5,
+          "inference_speed": 1446.8106243532252,
+          "reasoning_complexity": 0,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "EP003",
+        "phase": "{'_value_': 'Phase 3: Emergent Properties', '_name_': 'EMERGENT_PROPERTIES', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 2}",
+        "success": false,
+        "duration": 0.010775089263916016,
+        "cognitive_metrics": {
+          "confidence": 0.9,
+          "inference_speed": 1234.7082720047101,
+          "reasoning_complexity": 0,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "EP004",
+        "phase": "{'_value_': 'Phase 3: Emergent Properties', '_name_': 'EMERGENT_PROPERTIES', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 2}",
+        "success": false,
+        "duration": 0.007969141006469727,
+        "cognitive_metrics": {
+          "awareness_level": 0.8,
+          "coherence_level": 0.9,
+          "integration_level": 0.7,
+          "self_awareness": 0.7,
+          "cognitive_load": 0.4,
+          "learning_rate": 0.6,
+          "consciousness_index": 0.75,
+          "cognitive_coherence": 0.8,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "EP005",
+        "phase": "{'_value_': 'Phase 3: Emergent Properties', '_name_': 'EMERGENT_PROPERTIES', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 2}",
+        "success": false,
+        "duration": 0.012234926223754883,
+        "cognitive_metrics": {
+          "confidence": 0.8,
+          "inference_speed": 228.10006525995215,
+          "reasoning_complexity": 0,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      }
+    ],
+    "Phase 4: Edge Cases & Blind Spots": [
+      {
+        "test_id": "EC001",
+        "phase": "{'_value_': 'Phase 4: Edge Cases & Blind Spots', '_name_': 'EDGE_CASES', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 3}",
+        "success": false,
+        "duration": 0.009360790252685547,
+        "cognitive_metrics": {
+          "confidence": 0.0,
+          "inference_speed": 369.9659521919379,
+          "reasoning_complexity": 0,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "EC002",
+        "phase": "{'_value_': 'Phase 4: Edge Cases & Blind Spots', '_name_': 'EDGE_CASES', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 3}",
+        "success": false,
+        "duration": 0.006841182708740234,
+        "cognitive_metrics": {
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "EC003",
+        "phase": "{'_value_': 'Phase 4: Edge Cases & Blind Spots', '_name_': 'EDGE_CASES', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 3}",
+        "success": false,
+        "duration": 0.008559942245483398,
+        "cognitive_metrics": {
+          "confidence": 0.8,
+          "inference_speed": 1550.5744916820702,
+          "reasoning_complexity": 0,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "EC004",
+        "phase": "{'_value_': 'Phase 4: Edge Cases & Blind Spots', '_name_': 'EDGE_CASES', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 3}",
+        "success": false,
+        "duration": 0.0038902759552001953,
+        "cognitive_metrics": {
+          "awareness_level": 0.8,
+          "coherence_level": 0.9,
+          "integration_level": 0.7,
+          "self_awareness": 0.7,
+          "cognitive_load": 0.4,
+          "learning_rate": 0.6,
+          "consciousness_index": 0.75,
+          "cognitive_coherence": 0.8,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "EC005",
+        "phase": "{'_value_': 'Phase 4: Edge Cases & Blind Spots', '_name_': 'EDGE_CASES', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 3}",
+        "success": false,
+        "duration": 0.008271217346191406,
+        "cognitive_metrics": {
+          "confidence": 0.5,
+          "inference_speed": 1420.353538774128,
+          "reasoning_complexity": 0,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      }
+    ],
+    "Phase 5: Consciousness Emergence": [
+      {
+        "test_id": "CE001",
+        "phase": "{'_value_': 'Phase 5: Consciousness Emergence', '_name_': 'CONSCIOUSNESS_EMERGENCE', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 4}",
+        "success": false,
+        "duration": 0.007157325744628906,
+        "cognitive_metrics": {
+          "confidence": 0.5,
+          "inference_speed": 3279.3620015637216,
+          "reasoning_complexity": 0,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "CE002",
+        "phase": "{'_value_': 'Phase 5: Consciousness Emergence', '_name_': 'CONSCIOUSNESS_EMERGENCE', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 4}",
+        "success": false,
+        "duration": 0.006720066070556641,
+        "cognitive_metrics": {
+          "awareness_level": 0.8,
+          "coherence_level": 0.9,
+          "integration_level": 0.7,
+          "self_awareness": 0.7,
+          "cognitive_load": 0.4,
+          "learning_rate": 0.6,
+          "consciousness_index": 0.75,
+          "cognitive_coherence": 0.8,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [
+          "Demonstrated: Cognitive coherence"
+        ],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "CE003",
+        "phase": "{'_value_': 'Phase 5: Consciousness Emergence', '_name_': 'CONSCIOUSNESS_EMERGENCE', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 4}",
+        "success": false,
+        "duration": 0.007851839065551758,
+        "cognitive_metrics": {
+          "confidence": 0.8,
+          "inference_speed": 903.9448275862069,
+          "reasoning_complexity": 0,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "CE004",
+        "phase": "{'_value_': 'Phase 5: Consciousness Emergence', '_name_': 'CONSCIOUSNESS_EMERGENCE', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 4}",
+        "success": false,
+        "duration": 0.006273984909057617,
+        "cognitive_metrics": {
+          "awareness_level": 0.8,
+          "coherence_level": 0.9,
+          "integration_level": 0.7,
+          "self_awareness": 0.7,
+          "cognitive_load": 0.4,
+          "learning_rate": 0.6,
+          "consciousness_index": 0.75,
+          "cognitive_coherence": 0.8,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [
+          "Demonstrated: Dynamic attention allocation"
+        ],
+        "error_message": null,
+        "complexity_level": 1
+      },
+      {
+        "test_id": "CE005",
+        "phase": "{'_value_': 'Phase 5: Consciousness Emergence', '_name_': 'CONSCIOUSNESS_EMERGENCE', '__objclass__': mappingproxy({'_generate_next_value_': <staticmethod(<function Enum._generate_next_value_ at 0x10ad5ccc0>)>, '__module__': '__main__', '__doc__': 'Test phases for systematic validation', '_new_member_': <built-in method __new__ of type object at 0x10a930d58>, '_use_args_': False, '_member_names_': ['BASIC_FUNCTIONALITY', 'COGNITIVE_INTEGRATION', 'EMERGENT_PROPERTIES', 'EDGE_CASES', 'CONSCIOUSNESS_EMERGENCE'], '_member_map_': {'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_value2member_map_': {'Phase 1: Basic Functionality': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'Phase 2: Cognitive Integration': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'Phase 3: Emergent Properties': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'Phase 4: Edge Cases & Blind Spots': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'Phase 5: Consciousness Emergence': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>}, '_unhashable_values_': [], '_member_type_': <class 'object'>, '_value_repr_': None, 'BASIC_FUNCTIONALITY': <PipelinePhase.BASIC_FUNCTIONALITY: 'Phase 1: Basic Functionality'>, 'COGNITIVE_INTEGRATION': <PipelinePhase.COGNITIVE_INTEGRATION: 'Phase 2: Cognitive Integration'>, 'EMERGENT_PROPERTIES': <PipelinePhase.EMERGENT_PROPERTIES: 'Phase 3: Emergent Properties'>, 'EDGE_CASES': <PipelinePhase.EDGE_CASES: 'Phase 4: Edge Cases & Blind Spots'>, 'CONSCIOUSNESS_EMERGENCE': <PipelinePhase.CONSCIOUSNESS_EMERGENCE: 'Phase 5: Consciousness Emergence'>, '__new__': <function Enum.__new__ at 0x10ad5cb80>}), '_sort_order_': 4}",
+        "success": false,
+        "duration": 0.012799978256225586,
+        "cognitive_metrics": {
+          "awareness_level": 0.8,
+          "coherence_level": 0.9,
+          "integration_level": 0.7,
+          "self_awareness": 0.7,
+          "cognitive_load": 0.4,
+          "learning_rate": 0.6,
+          "consciousness_index": 0.75,
+          "cognitive_coherence": 0.8,
+          "awareness_delta": 0.0,
+          "cognitive_load_delta": 0.0,
+          "memory_items_delta": 0
+        },
+        "emergent_behaviors": [
+          "Demonstrated: Cognitive coherence"
+        ],
+        "error_message": null,
+        "complexity_level": 1
+      }
+    ]
+  },
+  "timestamp": 1751404687.047787
+}

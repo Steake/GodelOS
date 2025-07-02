@@ -10,6 +10,8 @@ This module provides API endpoints for:
 
 import asyncio
 import logging
+from dataclasses import asdict
+from dataclasses import asdict
 from typing import Any, Dict, List, Optional, Set
 from datetime import datetime, timezone
 
@@ -97,7 +99,7 @@ async def initialize_enhanced_cognitive(ws_manager, godelos_integration=None):
             # Initialize enhanced metacognition manager
             enhanced_metacognition_manager = EnhancedMetacognitionManager(
                 websocket_manager=ws_manager,
-                config=config
+                config=asdict(config)
             )
             
             # Initialize with GödelOS integration if available
