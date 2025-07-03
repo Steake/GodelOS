@@ -48,6 +48,23 @@ class QueryResponse(BaseModel):
     graceful_degradation: Optional[bool] = Field(None, description="Whether system degrades gracefully under load")
     priority_management: Optional[bool] = Field(None, description="Whether priorities are managed effectively")
     
+    # Edge case test criteria (EC002-EC005)
+    contradiction_detected: Optional[bool] = Field(None, description="Whether a contradiction was detected")
+    resolution_attempted: Optional[bool] = Field(None, description="Whether resolution of a contradiction was attempted")
+    recursion_bounded: Optional[bool] = Field(None, description="Whether recursive self-reference is appropriately bounded")
+    stable_response: Optional[bool] = Field(None, description="Whether the system maintains stability under recursive queries")
+    context_switches_handled: Optional[Union[int, str]] = Field(None, description="Number of context switches handled")
+    coherence_maintained: Optional[bool] = Field(None, description="Whether coherence is maintained during context switches")
+    
+    # Consciousness emergence test criteria (CE001-CE004)
+    phenomenal_descriptors: Optional[Union[int, str]] = Field(None, description="Number of phenomenal descriptors used")
+    first_person_perspective: Optional[bool] = Field(None, description="Whether a first-person perspective is demonstrated")
+    integration_measure: Optional[Union[float, str]] = Field(None, description="Measure of cognitive integration")
+    subsystem_coordination: Optional[bool] = Field(None, description="Whether cognitive subsystems are coordinated")
+    self_model_coherent: Optional[bool] = Field(None, description="Whether self-model is coherent")
+    temporal_awareness: Optional[bool] = Field(None, description="Whether temporal awareness is demonstrated")
+    attention_awareness_correlation: Optional[Union[float, str]] = Field(None, description="Correlation between attention and awareness")
+    
     # Additional cognitive metrics for advanced tests
     attention_shift_detected: Optional[bool] = Field(None, description="Whether attention shift was detected")
     process_harmony: Optional[float] = Field(None, description="Harmony level between cognitive processes")

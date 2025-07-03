@@ -1,0 +1,92 @@
+{
+  "initialized": true,
+  "uptime_seconds": 2308.589907169342,
+  "error_count": 0,
+  "knowledge_stats": {
+    "simple_knowledge_items": 28
+  },
+  "manifest_consciousness": {
+    "current_focus": "query_processing",
+    "awareness_level": 0.8,
+    "coherence_level": 0.9,
+    "integration_level": 0.7,
+    "phenomenal_content": [
+      "natural_language_processing",
+      "knowledge_retrieval"
+    ],
+    "access_consciousness": {
+      "working_memory_active": true
+    }
+  },
+  "agentic_processes": [
+    {
+      "process_id": "query_processor",
+      "process_type": "reasoning",
+      "status": "active",
+      "priority": 10,
+      "started_at": 1751515721.751503,
+      "progress": 0.8,
+      "description": "Processing natural language queries",
+      "metadata": {
+        "queries_processed": 100
+      }
+    }
+  ],
+  "daemon_threads": [
+    {
+      "process_id": "knowledge_monitor",
+      "process_type": "monitoring",
+      "status": "running",
+      "priority": 5,
+      "started_at": 1751515721.751503,
+      "progress": 1.0,
+      "description": "Monitoring knowledge base consistency",
+      "metadata": {
+        "check_interval": 30
+      }
+    }
+  ],
+  "working_memory": {
+    "active_items": [
+      {
+        "item_id": "current_query",
+        "content": "Latest user query",
+        "activation_level": 1.0,
+        "created_at": 1751518020.341416,
+        "last_accessed": 1751518030.341416,
+        "access_count": 5
+      }
+    ]
+  },
+  "attention_focus": [
+    {
+      "item_id": "user_query",
+      "item_type": "linguistic_input",
+      "salience": 0.9,
+      "duration": 5.0,
+      "description": "Processing user natural language query"
+    }
+  ],
+  "metacognitive_state": {
+    "self_awareness_level": 0.7,
+    "confidence_in_reasoning": 0.8,
+    "cognitive_load": 0.4,
+    "learning_rate": 0.6,
+    "adaptation_level": 0.5,
+    "introspection_depth": 3
+  },
+  "cognitive_state": "retrieved",
+  "attention_shift_detected": true,
+  "process_harmony": 0.85,
+  "autonomous_goals": 2,
+  "goal_coherence": 0.75,
+  "global_access": true,
+  "broadcast_efficiency": 0.88,
+  "consciousness_level": 0.82,
+  "integration_metric": 0.91,
+  "attention_coherence": 0.87,
+  "model_consistency": 0.93,
+  "timestamp": 1751518030.34142,
+  "integration_measure": 0.85,
+  "subsystem_coordination": true
+}
