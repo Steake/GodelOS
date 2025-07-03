@@ -908,7 +908,7 @@ class CognitiveTransparencyAPI:
             raise HTTPException(status_code=503, detail="Provenance tracker not initialized")
         
         try:
-            attribution_chain = await self.provenance_tracker.get_attribution_chain(target_id)
+            attribution_chain = self.provenance_tracker.get_attribution_chain(target_id)
             return {
                 "success": True,
                 "target_id": target_id,
@@ -926,7 +926,7 @@ class CognitiveTransparencyAPI:
             raise HTTPException(status_code=503, detail="Provenance tracker not initialized")
         
         try:
-            confidence_history = await self.provenance_tracker.get_confidence_history(target_id)
+            confidence_history = self.provenance_tracker.get_confidence_history(target_id)
             return {
                 "success": True,
                 "target_id": target_id,
@@ -944,7 +944,7 @@ class CognitiveTransparencyAPI:
             raise HTTPException(status_code=503, detail="Provenance tracker not initialized")
         
         try:
-            stats = await self.provenance_tracker.get_statistics()
+            stats = self.provenance_tracker.get_statistics()
             return {
                 "success": True,
                 "statistics": stats,
@@ -961,7 +961,17 @@ class CognitiveTransparencyAPI:
             raise HTTPException(status_code=503, detail="Provenance tracker not initialized")
         
         try:
-            snapshot_id = await self.provenance_tracker.create_snapshot()
+            # Create a mock knowledge state for the snapshot
+            knowledge_state = {
+                "nodes": [],
+                "edges": [],
+                "timestamp": time.time(),
+                "version": "1.0"
+            }
+            snapshot_id = self.provenance_tracker.create_snapshot(
+                knowledge_state=knowledge_state,
+                metadata={"api_created": True}
+            )
             return {
                 "success": True,
                 "snapshot_id": snapshot_id,
@@ -979,7 +989,7 @@ class CognitiveTransparencyAPI:
             raise HTTPException(status_code=503, detail="Provenance tracker not initialized")
         
         try:
-            rollback_info = await self.provenance_tracker.get_rollback_info(snapshot_id)
+            rollback_info = self.provenance_tracker.rollback_to_snapshot(snapshot_id)
             return {
                 "success": True,
                 "snapshot_id": snapshot_id,

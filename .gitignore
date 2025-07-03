@@ -1,16 +1,49 @@
-# Byte-compiled / optimized / DLL files
+### Environments ###
+# Virtual environments
+.env
+.env.test
+.venv
+*.venv
+venv/
+venv.bak/
+godel_venv/
+godelos_venv/
+env/
+env.bak/
+ENV/
+.venv.bak/
+
+# Python versioning
+.python-version
+
+# PEP 582
+__pypackages__/
+
+# pipenv
+Pipfile.lock
+
+### Python Artifacts ###
+# Bytecode and cache
 __pycache__/
 *.py[cod]
+*.pyc
+*.pyo
+*.pyd
 *$py.class
-
-# C extensions
 *.so
 
-# Distribution / packaging
-.Python
+# Build and distribution
 build/
-develop-eggs/
 dist/
+*.egg
+*.egg-info/
+*.egg-info
+*.manifest
+*.spec
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+develop-eggs/
 downloads/
 eggs/
 .eggs/
@@ -19,133 +52,210 @@ lib64/
 parts/
 sdist/
 var/
-wheels/
-*.egg-info/
 .installed.cfg
-*.egg
 MANIFEST
-
-# PyInstaller
-#  Usually these files are written by a PyInstaller build script
-*.manifest
-*.spec
+.Python
 
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
+### Testing & Coverage ###
+# General
 .coverage
 .coverage.*
 .cache
 nosetests.xml
 coverage.xml
 *.cover
-.hypothesis/
+*.py,cover
+htmlcov/
+.tox/
+.nox/
+
+# Pytest
 .pytest_cache/
 
-# Translations
-*.mo
-*.pot
+# Hypothesis
+.hypothesis/
 
-# Django stuff:
+### Logs ###
 *.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-.python-version
-
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
-__pypackages__/
-
-# Celery stuff
+backend.log
+server.log
+logs/
 celerybeat-schedule
 celerybeat.pid
 
-# SageMath parsed files
-*.sage.py
+### Frameworks ###
+# Django
+db.sqlite3
+db.sqlite3-journal
+local_settings.py
 
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+# Flask
+instance/
+.webassets-cache
 
-# Spyder project settings
+# Scrapy
+.scrapy
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+### Documentation ###
+# Sphinx
+docs/_build/
+
+# MkDocs
+/site
+
+### IDEs & Editors ###
+# VS Code
+.vscode/
+
+# PyCharm/IntelliJ
+.idea/
+.idea
+.spyderproject
+.spyproject
+.ropeproject
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Spyder
 .spyderproject
 .spyproject
 
-# Rope project settings
-.ropeproject
+### OS Generated ###
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# mkdocs documentation
-/site
+### Node.js/Web ###
+# Dependencies
+node_modules/
+bower_components/
+jspm_packages/
+
+# Build artifacts
+dist/
+.next/
+.nuxt/
+public/
+.cache/
+.parcel-cache
+.out
+.storybook-out
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Coverage
+coverage/
+.nyc_output
+
+# Cache
+.npm
+.eslintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Configs
+.lock-wscript
+
+# Output
+*.tgz
+.yarn-integrity
+
+# TypeScript
+*.tsbuildinfo
+typings/
+
+### Other ###
+# Pyre
+.pyre/
 
 # mypy
 .mypy_cache/
 .dmypy.json
 dmypy.json
 
-# Pyre type checker
-.pyre/
-
-# VS Code
-.vscode/
-*.code-workspace
-
-# PyCharm
-.idea/
-*.iml
+# PyBuilder
+target/
 
 # Jupyter
-.ipynb_checkpoints/
+.ipynb_checkpoints
+profile_default/
+ipython_config.py
 
-# macOS
+# SageMath
+*.sage.py
+
+# Temporary files
+tmp/
+temp/
+
+# Backup files
+*.bak
+*.backup
+*_backup.*
+*_old.*
+
+# Test outputs
+test_output/
+test_results/
+
+# Backend storage
+backend/knowledge_storage/
+knowledge_storage/*
+metacognition_modules/backups/
+backend/metacognition_modules/backups
+
+# Additional temporary files
+*.tmp
+*~
+*.orig
+*.rej
+*.patch
+*.diff
+
+# Testing artifacts
+*_test_output*
+*_patch*
+*_patched*
+test_*.py
+final_field_test.py
+debug_responses.py
+patch_responses.py
+analyze_failures.py
+run_individual_tests.py
+
+# Generated reports (unless specifically needed)
+*_report.json
+*_report.md
+cognitive_architecture_test_report.*
+
+# Log files
+*.log
+server.log
+backend.log
+test_output.log
+test_run_output.txt
+
+# OS files
 .DS_Store
-
-# Windows
 Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Project specific
-godelOS.egg-info/./out
-godel_venv
-./test_output/*
-./logs
-logs

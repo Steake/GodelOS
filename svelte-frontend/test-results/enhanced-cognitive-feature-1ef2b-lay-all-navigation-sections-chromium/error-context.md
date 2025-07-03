@@ -1,0 +1,87 @@
+# Page snapshot
+
+```yaml
+- main:
+  - button "◀️"
+  - heading "🦉 GödelOS Cognitive Interface" [level=1]
+  - text: 🏠 Dashboard System overview and key metrics Connected
+  - button "⛶"
+  - navigation:
+    - heading "🧭 Navigation" [level=3]
+    - text: 14 views available ⭐ Core Features
+    - button "🏠 Dashboard"
+    - button "🧠 Cognitive State"
+    - button "🕸️ Knowledge Graph"
+    - button "💬 Query Interface"
+    - text: 🚀 Enhanced Cognition NEW
+    - button "🚀 Enhanced Dashboard ✨"
+    - button "🌊 Stream of Consciousness ✨"
+    - button "🤖 Autonomous Learning ✨"
+    - text: 🔬 Analysis & Tools
+    - button "🔍 Transparency"
+    - button "🎯 Reasoning Sessions"
+    - button "🪞 Reflection"
+    - button "🔗 Provenance"
+    - text: ⚙️ System Management
+    - button "📥 Knowledge Import"
+    - button "📈 Capabilities"
+    - button "⚡ Resources"
+    - heading "System Health" [level=4]
+    - heading "Knowledge Stats" [level=4]
+    - text: 0 Concepts 0 Connections 0 Documents
+  - textbox "Ask GödelOS anything... (Enter to send, Shift+Enter for new line)"
+  - button "⚙️"
+  - button "→" [disabled]
+  - text: "Processing: \"query_processing\" Try asking:"
+  - button "Tell me more about Processing user natural language query"
+  - button "How does Processing user natural language query relate to other concepts?"
+  - button "What are the current agentic processes working on?"
+  - heading "💬 Response Stream" [level=3]
+  - text: 0 responses 💭 No responses yet Ask GödelOS a question to see responses here
+  - heading "🧠 Manifest Consciousness" [level=2]
+  - text: "Health: NaN%"
+  - heading "🧠 Attention Focus" [level=3]
+  - text: "Topic: undefined Context: undefined Intensity: NaN% ○ undefined Mode: undefined"
+  - heading "📊 Recent Focus History" [level=4]
+  - text: Knowledge Graph Analysis 1s ago 85% User interaction with network visualization SmartImport Processing 45s ago 72% File upload and entity extraction Transparency Dashboard 2m ago 64% Cognitive state monitoring update API Response Processing 3m ago 78% Backend knowledge retrieval UI Component Rendering 4m ago 45% Frontend visual updates
+  - heading "Processing Load" [level=3]
+  - text: "80% Intensity: HIGH"
+  - heading "Working Memory" [level=3]
+  - text: undefined items 💭 Working memory clear
+  - heading "Current Query" [level=3]
+  - text: "\"query_processing\" Processing..."
+  - heading "🤖 Agentic Processes" [level=2]
+  - text: 1 active undefined active
+  - strong: "Goal:"
+  - text: "No specific goal Running for: NaNh ago"
+  - heading "⚙️ Daemon Threads" [level=2]
+  - text: "1 running undefined Activity: idle Last active: NaNh ago"
+  - heading "💚 System Health" [level=2]
+  - text: status NaN% timestamp 175064128816% details NaN%
+  - heading "Concept Evolution" [level=3]
+  - combobox:
+    - option "1 Hour"
+    - option "24 Hours" [selected]
+    - option "7 Days"
+    - option "30 Days"
+  - text: "Active Concepts 8 Total Connections 125 Growth Rate +11% Knowledge Graph Core +12% Connections: 20 Strength: Updated: 22 hours ago Inference Patterns Logic +8% Connections: 13 Strength: Updated: 2 hours ago Cognitive Architecture Meta +15% Connections: 21 Strength: Updated: 14 hours ago Type System Core +5% Connections: 23 Strength: Updated: 19 hours ago Metacognition Meta +22% Connections: 11 Strength: Updated: 5 hours ago Unification Logic +7% Connections: 5 Strength: Updated: 3 hours ago Resource Management System +3% Connections: 19 Strength: Updated: 17 hours ago WebSocket Integration System +18% Connections: 13 Strength: Updated: 6 hours ago"
+  - heading "Process Insights" [level=3]
+  - button "Expand 🗗"
+  - heading "🔍 Process Insight & Monitoring" [level=3]
+  - text: System running optimally
+  - heading "Active Processes Overview" [level=4]
+  - img: 🧠 ⚙️ reasoning knowledge reflection monitoring learning daemon
+  - text: 👆 Click on a process bubble to view details
+  - heading "📊 System Metrics" [level=4]
+  - text: Total Processes 2 Active Threads 1 CPU Load 25% Memory Usage 45%
+  - heading "⏱️ Process Timeline (Last 60 seconds)" [level=4]
+  - img: 13:50 13:55 14:00 14:05 14:10 14:15 14:20 14:25 14:30 14:35 14:40 14:45 reasoning-001 knowledge-002 reflection-003 monitor-daemon
+  - heading "🎛️ Process Controls" [level=4]
+  - button "🔄 Refresh"
+  - button "⏸️ Pause Monitoring"
+  - button "📈 Analyze Performance"
+  - button "📄 Export Logs"
+  - heading "Knowledge Graph" [level=3]
+  - button "Open Graph 🕸️"
+  - text: 0 Concepts 0 Connections
+```

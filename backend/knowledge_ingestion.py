@@ -43,6 +43,9 @@ from .external_apis import wikipedia_api, web_scraper, content_processor
 # Will be set by main.py to avoid circular imports
 knowledge_management_service = None
 
+# Import knowledge pipeline service
+from .knowledge_pipeline_service import knowledge_pipeline_service
+
 logger = logging.getLogger(__name__)
 
 
@@ -373,33 +376,73 @@ class KnowledgeIngestionService:
             await self._broadcast_completion(import_id, False, str(e))
     
     async def _process_content(self, content: str, title: str, metadata: Dict[str, Any]) -> Dict[str, Any]:
-        """Process raw content into structured format."""
-        # Clean the content
-        cleaned_content = content_processor.clean_text(content)
-        
-        # Extract sentences
-        sentences = content_processor.extract_sentences(cleaned_content)
-        
-        # Chunk the content
-        chunks = content_processor.chunk_content(cleaned_content)
-        
-        # Extract keywords
-        keywords = content_processor.extract_keywords(cleaned_content)
-        
-        # Detect language
-        language = content_processor.detect_language(cleaned_content)
-        
-        return {
-            'title': title,
-            'content': cleaned_content,
-            'sentences': sentences,
-            'chunks': chunks,
-            'keywords': keywords,
-            'language': language,
-            'metadata': metadata,
-            'word_count': len(cleaned_content.split()),
-            'char_count': len(cleaned_content)
-        }
+        """Process raw content using advanced knowledge extraction pipeline."""
+        try:
+            # Use the advanced knowledge pipeline for processing
+            if knowledge_pipeline_service.initialized:
+                logger.info("🔄 Using advanced knowledge extraction pipeline")
+                
+                # Process through the full pipeline
+                pipeline_result = await knowledge_pipeline_service.process_text_document(
+                    content=content,
+                    title=title,
+                    metadata=metadata
+                )
+                
+                # Also do basic processing for backward compatibility
+                cleaned_content = content_processor.clean_text(content)
+                sentences = content_processor.extract_sentences(cleaned_content)
+                chunks = content_processor.chunk_content(cleaned_content)
+                keywords = content_processor.extract_keywords(cleaned_content)
+                language = content_processor.detect_language(cleaned_content)
+                
+                return {
+                    'title': title,
+                    'content': cleaned_content,
+                    'sentences': sentences,
+                    'chunks': chunks,
+                    'keywords': keywords,
+                    'language': language,
+                    'metadata': metadata,
+                    'word_count': len(cleaned_content.split()),
+                    'char_count': len(cleaned_content),
+                    'pipeline_result': pipeline_result,  # Include advanced processing results
+                    'entities_extracted': pipeline_result.get('entities_extracted', 0),
+                    'relationships_extracted': pipeline_result.get('relationships_extracted', 0),
+                    'knowledge_items': pipeline_result.get('knowledge_items', [])
+                }
+            else:
+                logger.warning("⚠️ Knowledge pipeline not initialized, using basic processing")
+                # Fallback to basic processing
+                cleaned_content = content_processor.clean_text(content)
+                sentences = content_processor.extract_sentences(cleaned_content)
+                chunks = content_processor.chunk_content(cleaned_content)
+                keywords = content_processor.extract_keywords(cleaned_content)
+                language = content_processor.detect_language(cleaned_content)
+                
+                return {
+                    'title': title,
+                    'content': cleaned_content,
+                    'sentences': sentences,
+                    'chunks': chunks,
+                    'keywords': keywords,
+                    'language': language,
+                    'metadata': metadata,
+                    'word_count': len(cleaned_content.split()),
+                    'char_count': len(cleaned_content)
+                }
+        except Exception as e:
+            logger.error(f"❌ Error in content processing: {e}")
+            # Fallback to basic processing on error
+            cleaned_content = content_processor.clean_text(content)
+            return {
+                'title': title,
+                'content': cleaned_content,
+                'metadata': metadata,
+                'word_count': len(cleaned_content.split()),
+                'char_count': len(cleaned_content),
+                'processing_error': str(e)
+            }
     
     async def _load_existing_knowledge(self):
         """Load existing knowledge items from storage."""

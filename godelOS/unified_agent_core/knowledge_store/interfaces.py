@@ -31,6 +31,7 @@ class KnowledgeType(Enum):
     CONCEPT = "concept"
     EXPERIENCE = "experience"
     PROCEDURE = "procedure"
+    RELATIONSHIP = "relationship"
 
 
 @dataclass
@@ -102,6 +103,16 @@ class Procedure(Knowledge):
     type: KnowledgeType = KnowledgeType.PROCEDURE
     content: Dict[str, Any] = field(default_factory=dict)
     steps: List[Dict[str, Any]] = field(default_factory=list)
+
+
+@dataclass
+class Relationship(Knowledge):
+    """Class representing a relationship between two knowledge items."""
+    type: KnowledgeType = KnowledgeType.RELATIONSHIP
+    source_id: str = ""
+    target_id: str = ""
+    relation_type: str = ""
+    content: Dict[str, Any] = field(default_factory=dict) # To store the original sentence/context
 
 
 @dataclass
@@ -195,7 +206,7 @@ class MemoryInterface(Protocol, Generic[T]):
 
 
 @runtime_checkable
-class SemanticMemoryInterface(MemoryInterface[Union[Fact, Belief, Concept, Rule]], Protocol):
+class SemanticMemoryInterface(MemoryInterface[Union[Fact, Belief, Concept, Rule, Relationship]], Protocol):
     """Protocol for semantic memory operations."""
     
     async def get_related_concepts(self, concept_id: str) -> List[Concept]:

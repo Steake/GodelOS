@@ -6,8 +6,8 @@ Manages environment variables, settings, and configuration options.
 
 import os
 from typing import List, Optional
-from pydantic import BaseSettings, Field
-
+from pydantic import Field
+from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     """Application settings."""
@@ -27,7 +27,10 @@ class Settings(BaseSettings):
     
     # CORS configuration
     cors_origins: List[str] = Field(
-        default=["http://localhost:3000", "http://127.0.0.1:3000"],
+        default=[
+            "http://localhost:3000", "http://127.0.0.1:3000",
+            "http://localhost:3002", "http://127.0.0.1:3002"
+        ],
         env="GODELOS_CORS_ORIGINS"
     )
     cors_allow_credentials: bool = Field(default=True, env="GODELOS_CORS_CREDENTIALS")
@@ -71,20 +74,17 @@ class Settings(BaseSettings):
         env_file_encoding = "utf-8"
         case_sensitive = False
 
-
 class DevelopmentSettings(Settings):
     """Development environment settings."""
     debug: bool = True
     log_level: str = "DEBUG"
     cors_origins: List[str] = ["*"]  # Allow all origins in development
 
-
 class ProductionSettings(Settings):
     """Production environment settings."""
     debug: bool = False
     log_level: str = "INFO"
     enable_api_key_auth: bool = True
-
 
 class TestingSettings(Settings):
     """Testing environment settings."""
@@ -93,7 +93,6 @@ class TestingSettings(Settings):
     godelos_initialization_timeout: int = 10
     godelos_query_timeout: int = 5
     websocket_max_connections: int = 10
-
 
 def get_settings() -> Settings:
     """Get application settings based on environment."""
@@ -105,7 +104,6 @@ def get_settings() -> Settings:
         return TestingSettings()
     else:
         return DevelopmentSettings()
-
 
 # Global settings instance
 settings = get_settings()

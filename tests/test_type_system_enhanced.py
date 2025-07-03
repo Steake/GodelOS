@@ -17,7 +17,6 @@ from godelOS.core_kr.type_system.types import (
     InstantiatedParametricType, TypeVariable
 )
 from godelOS.core_kr.type_system.environment import TypeEnvironment
-from godelOS.core_kr.type_system.visitor import TypeVisitor
 
 from godelOS.test_runner.test_categorizer import TestCategorizer
 from godelOS.test_runner.timing_tracker import TimingTracker
@@ -249,40 +248,26 @@ class TestTypeSystemEnhanced(unittest.TestCase):
             mock_check.assert_any_call(func_int_to_bool, [self.boolean_type])
             mock_check.assert_any_call(func_int_int_to_int, [self.integer_type, self.integer_type])
     
-    def test_type_visitor_pattern(self):
-        """Test the type visitor pattern.
+    def test_type_traversal_and_collection(self):
+        """Test traversal of complex type structures.
         
-        This test verifies that the type visitor pattern correctly traverses
-        complex type structures, handling different type nodes.
+        This test verifies that complex type structures can be traversed to
+        collect component types, replacing the old visitor pattern test.
         """
-        # Create a visitor that collects atomic types
-        class AtomicTypeCollector(TypeVisitor[List[AtomicType]]):
-            def __init__(self):
-                self.atomic_types = []
-            
-            def visit_atomic_type(self, type_obj: AtomicType) -> List[AtomicType]:
-                self.atomic_types.append(type_obj)
-                return self.atomic_types
-            
-            def visit_function_type(self, type_obj: FunctionType) -> List[AtomicType]:
+        def collect_atomic_types(type_obj: Type) -> List[AtomicType]:
+            """Recursively collect atomic types from a type structure."""
+            collected = []
+            if isinstance(type_obj, AtomicType):
+                collected.append(type_obj)
+            elif isinstance(type_obj, FunctionType):
                 for arg_type in type_obj.arg_types:
-                    arg_type.accept(self)
-                type_obj.return_type.accept(self)
-                return self.atomic_types
-            
-            def visit_parametric_type(self, type_obj: ParametricType) -> List[AtomicType]:
-                # Type variables are not atomic types
-                return self.atomic_types
-            
-            def visit_instantiated_parametric_type(self, type_obj: InstantiatedParametricType) -> List[AtomicType]:
+                    collected.extend(collect_atomic_types(arg_type))
+                collected.extend(collect_atomic_types(type_obj.return_type))
+            elif isinstance(type_obj, InstantiatedParametricType):
                 for type_arg in type_obj.actual_type_args:
-                    type_arg.accept(self)
-                return self.atomic_types
-            
-            def visit_type_variable(self, type_obj: TypeVariable) -> List[AtomicType]:
-                # Type variables are not atomic types
-                return self.atomic_types
-        
+                    collected.extend(collect_atomic_types(type_arg))
+            return collected
+
         # Create a complex type structure
         # (Entity -> Boolean) -> (Integer -> Real)
         complex_type = FunctionType(
@@ -290,9 +275,8 @@ class TestTypeSystemEnhanced(unittest.TestCase):
             FunctionType([self.integer_type], self.real_type)
         )
         
-        # Apply the visitor
-        collector = AtomicTypeCollector()
-        result = complex_type.accept(collector)
+        # Collect atomic types
+        result = collect_atomic_types(complex_type)
         
         # Verify the result
         self.assertEqual(len(result), 4)

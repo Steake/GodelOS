@@ -20,6 +20,7 @@ from godelOS.core_kr.ast.nodes import (
     QuantifierNode, ApplicationNode
 )
 from godelOS.core_kr.unification_engine.engine import UnificationEngine
+from godelOS.core_kr.unification_engine.result import UnificationResult
 from godelOS.core_kr.knowledge_store.interface import KnowledgeStoreInterface
 from godelOS.inference_engine.base_prover import BaseProver, ResourceLimits
 from godelOS.inference_engine.proof_object import ProofObject, ProofStepNode
@@ -603,7 +604,7 @@ class ResolutionProver(BaseProver):
         self.unification_engine = unification_engine
         self.default_strategy = default_strategy
         self.cnf_converter = CNFConverter(self.unification_engine)
-        self._clause_id_counter = 0
+        self.next_clause_id = 0
 
     def name(self) -> str:
         """Returns the name of the prover."""
@@ -681,15 +682,22 @@ class ResolutionProver(BaseProver):
             A ProofObject representing the result of the proof attempt.
         """
         start_time = time.time()
-        proof_obj = ProofObject(goal=goal, status="pending", prover_name="ResolutionProver")
-
+        
+        # Track proof steps
+        proof_steps: List[ProofStepNode] = []
+        
         if resource_limits is None:
             resource_limits = ResourceLimits() # Default limits
 
         # 1. Negate the goal
         negated_goal = ConnectiveNode("NOT", [goal], goal.type)
         logger.info(f"ResolutionProver: Negated goal: {negated_goal}")
-        proof_obj.add_step(ProofStepNode(f"Negate goal: {goal}", f"¬({goal})"))
+        proof_steps.append(ProofStepNode(
+            formula=negated_goal,
+            rule_name="negation",
+            premises=[],
+            explanation=f"Negate goal: {goal}"
+        ))
 
         # 2. Convert all formulas (context + negated_goal) to CNF
         all_clauses: List[Clause] = []
@@ -701,8 +709,12 @@ class ResolutionProver(BaseProver):
                 for cnf_clause in cnf_clauses:
                     unique_id = self._get_next_clause_id()
                     all_clauses.append(dataclasses.replace(cnf_clause, source=f"context_{i}", clause_id=unique_id))
-                proof_obj.add_step(ProofStepNode(f"Convert context formula {i+1} to CNF: {formula}", 
-                                                 f"Clauses: {[str(c) for c in cnf_clauses]}"))
+                proof_steps.append(ProofStepNode(
+                    formula=formula,
+                    rule_name="CNF conversion",
+                    premises=[],
+                    explanation=f"Convert context formula {i+1} to CNF: {formula}"
+                ))
         
         # Convert negated goal
         negated_goal_cnf_clauses = self.cnf_converter.convert_to_cnf(negated_goal)
@@ -713,18 +725,25 @@ class ResolutionProver(BaseProver):
             clause_with_id = dataclasses.replace(cnf_clause, source="negated_goal", clause_id=unique_id)
             all_clauses.append(clause_with_id)
             set_of_support.add(clause_with_id)
-        proof_obj.add_step(ProofStepNode(f"Convert negated goal to CNF: {negated_goal}",
-                                         f"Clauses: {[str(c) for c in negated_goal_cnf_clauses]}"))
+        proof_steps.append(ProofStepNode(
+            formula=negated_goal,
+            rule_name="CNF conversion",
+            premises=[],
+            explanation=f"Convert negated goal to CNF: {negated_goal}"
+        ))
 
         logger.info(f"ResolutionProver: Initial clauses ({len(all_clauses)} total):")
         for clause in all_clauses:
             logger.info(f"  ID: {clause.clause_id}, Source: {clause.source}, Clause: {clause}")
         
         if not negated_goal_cnf_clauses: # Should not happen if goal is valid
-            proof_obj.status = "failure"
-            proof_obj.message = "ResolutionProver: Negated goal resulted in no clauses."
-            proof_obj.execution_time_ms = (time.time() - start_time) * 1000
-            return proof_obj
+            time_taken_ms = (time.time() - start_time) * 1000
+            return ProofObject.create_failure(
+                status_message="ResolutionProver: Negated goal resulted in no clauses.",
+                inference_engine_used=self.name,
+                time_taken_ms=time_taken_ms,
+                resources_consumed={}
+            )
 
         # --- Resolution Loop ---
         # Use a list for the agenda to allow for different selection strategies if needed (e.g., unit preference)
@@ -733,13 +752,17 @@ class ResolutionProver(BaseProver):
         all_clauses_map: Dict[int, Clause] = {c.clause_id: c for c in all_clauses}
 
         iteration_count = 0
-        max_iterations = resource_limits.max_steps if resource_limits and resource_limits.max_steps else 1000
+        max_iterations = resource_limits.nodes_limit if resource_limits and resource_limits.nodes_limit else 1000
 
         while agenda:
             if iteration_count >= max_iterations:
-                proof_obj.status = "failure"
-                proof_obj.message = f"ResolutionProver: Exceeded max iterations ({max_iterations})."
-                break
+                time_taken_ms = (time.time() - start_time) * 1000
+                return ProofObject.create_failure(
+                    status_message=f"ResolutionProver: Exceeded max iterations ({max_iterations}).",
+                    inference_engine_used=self.name,
+                    time_taken_ms=time_taken_ms,
+                    resources_consumed={"iterations": iteration_count}
+                )
             
             iteration_count += 1
             # Simple FIFO selection, could be replaced with a more sophisticated strategy (e.g. unit preference)
@@ -764,12 +787,22 @@ class ResolutionProver(BaseProver):
                 
                 for resolvent in resolvents:
                     if resolvent.is_empty():
-                        proof_obj.status = "success"
-                        proof_obj.message = "ResolutionProver: Contradiction found (empty clause derived)."
-                        proof_obj.add_step(ProofStepNode(f"Resolved {current_clause.clause_id} ({current_clause.source}) and {other_clause.clause_id} ({other_clause.source})", f"Derived empty clause: {resolvent}"))
-                        proof_obj.execution_time_ms = (time.time() - start_time) * 1000
+                        time_taken_ms = (time.time() - start_time) * 1000
+                        proof_steps.append(ProofStepNode(
+                            formula=goal,  # The proved goal
+                            rule_name="resolution",
+                            premises=[current_clause.clause_id, other_clause.clause_id],
+                            explanation=f"Resolved {current_clause.clause_id} ({current_clause.source}) and {other_clause.clause_id} ({other_clause.source}) to derive empty clause"
+                        ))
                         logger.info(f"ResolutionProver: Success! Empty clause derived from {current_clause.clause_id} and {other_clause.clause_id}.")
-                        return proof_obj
+                        return ProofObject.create_success(
+                            conclusion_ast=goal,
+                            proof_steps=proof_steps,
+                            used_axioms_rules=set(context) if context else set(),
+                            inference_engine_used=self.name,
+                            time_taken_ms=time_taken_ms,
+                            resources_consumed={"iterations": iteration_count}
+                        )
 
                     # Check if the resolvent is new (not subsumed by an existing clause)
                     # Simple check: avoid adding clauses with identical literal sets.
@@ -782,24 +815,35 @@ class ResolutionProver(BaseProver):
                         agenda.append(resolvent_with_id) # Add to agenda for further resolution
                         # set_of_support.add(resolvent_with_id) # Implicitly handled as agenda comes from SoS
                         
-                        proof_obj.add_step(ProofStepNode(f"Resolved {current_clause.clause_id} ({current_clause.source}) and {other_clause.clause_id} ({other_clause.source})", f"Derived ID {unique_id}: {resolvent_with_id}"))
+                        proof_steps.append(ProofStepNode(
+                            formula=resolvent_with_id.literals if hasattr(resolvent_with_id, 'literals') else goal,
+                            rule_name="resolution",
+                            premises=[current_clause.clause_id, other_clause.clause_id],
+                            explanation=f"Resolved {current_clause.clause_id} ({current_clause.source}) and {other_clause.clause_id} ({other_clause.source}) to derive ID {unique_id}: {resolvent_with_id}"
+                        ))
                         logger.info(f"ResolutionProver: Derived new clause {resolvent_with_id.clause_id}: {resolvent_with_id} from {current_clause.clause_id} and {other_clause.clause_id}")
                     else:
                         logger.debug(f"Skipping redundant or already processed resolvent: {resolvent} from {current_clause.clause_id} and {other_clause.clause_id}")
 
             # Check resource limits (time)
             if (time.time() - start_time) * 1000 > resource_limits.max_time_ms:
-                proof_obj.status = "failure"
-                proof_obj.message = f"ResolutionProver: Exceeded time limit ({resource_limits.max_time_ms} ms)."
-                break
+                time_taken_ms = (time.time() - start_time) * 1000
+                return ProofObject.create_failure(
+                    status_message=f"ResolutionProver: Exceeded time limit ({resource_limits.max_time_ms} ms).",
+                    inference_engine_used=self.name,
+                    time_taken_ms=time_taken_ms,
+                    resources_consumed={"iterations": iteration_count}
+                )
         
-        if proof_obj.status == "pending":
-            proof_obj.status = "failure"
-            proof_obj.message = "ResolutionProver: Could not derive empty clause within limits."
-
-        proof_obj.execution_time_ms = (time.time() - start_time) * 1000
-        logger.info(f"ResolutionProver: Proof attempt finished. Status: {proof_obj.status}, Message: {proof_obj.message}")
-        return proof_obj
+        # If we reach here, the proof failed
+        time_taken_ms = (time.time() - start_time) * 1000
+        logger.info(f"ResolutionProver: Proof attempt finished. Could not derive empty clause within limits.")
+        return ProofObject.create_failure(
+            status_message="ResolutionProver: Could not derive empty clause within limits.",
+            inference_engine_used=self.name,
+            time_taken_ms=time_taken_ms,
+            resources_consumed={"iterations": iteration_count}
+        )
 
     def _resolve(self, clause1: Clause, clause2: Clause) -> List[Clause]:
         """
@@ -859,7 +903,7 @@ class ResolutionProver(BaseProver):
                 return node
             elif isinstance(node, ApplicationNode):
                 new_args = [rename_vars_in_ast(arg, var_map, prefix, instance_id) for arg in node.arguments]
-                return ApplicationNode(node.function_name, new_args, node.type)
+                return ApplicationNode(node.operator, new_args, node.type)
             return node # Should not happen for atoms in literals
 
         # Create resolvable versions of clauses with variables standardized apart
@@ -893,7 +937,7 @@ class ResolutionProver(BaseProver):
             for lit2_renamed in renamed_c2_literals:
                 if lit1_renamed.is_negated != lit2_renamed.is_negated:
                     # Atoms are already renamed, so they can be unified directly.
-                    unification_result = self.unification_engine.unify(lit1_renamed.atom, lit2_renamed.atom)
+                    unification_result = self.unification_engine.unify_consistent(lit1_renamed.atom, lit2_renamed.atom)
 
                     if unification_result.is_success():
                         substitution = unification_result.substitution
