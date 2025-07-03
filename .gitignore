@@ -224,3 +224,38 @@ backend/knowledge_storage/
 knowledge_storage/*
 metacognition_modules/backups/
 backend/metacognition_modules/backups
+
+# Additional temporary files
+*.tmp
+*~
+*.orig
+*.rej
+*.patch
+*.diff
+
+# Testing artifacts
+*_test_output*
+*_patch*
+*_patched*
+test_*.py
+final_field_test.py
+debug_responses.py
+patch_responses.py
+analyze_failures.py
+run_individual_tests.py
+
+# Generated reports (unless specifically needed)
+*_report.json
+*_report.md
+cognitive_architecture_test_report.*
+
+# Log files
+*.log
+server.log
+backend.log
+test_output.log
+test_run_output.txt
+
+# OS files
+.DS_Store
+Thumbs.db
