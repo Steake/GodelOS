@@ -32,6 +32,21 @@ class QueryResponse(BaseModel):
     reasoning_steps: List[ReasoningStep] = Field(default_factory=list, description="Step-by-step reasoning process")
     inference_time_ms: float = Field(..., description="Time taken for inference in milliseconds")
     knowledge_used: List[str] = Field(default_factory=list, description="Knowledge base items used in reasoning")
+    
+    # Test criteria fields for cognitive architecture pipeline
+    response_generated: Optional[bool] = Field(None, description="Whether a response was successfully generated")
+    domains_integrated: Optional[int] = Field(None, description="Number of knowledge domains integrated")
+    novel_connections: Optional[bool] = Field(None, description="Whether novel connections were made")
+    knowledge_gaps_identified: Optional[bool] = Field(None, description="Whether knowledge gaps were identified")
+    acquisition_plan_created: Optional[bool] = Field(None, description="Whether a knowledge acquisition plan was created")
+    self_reference_depth: Optional[int] = Field(None, description="Depth of self-referential reasoning")
+    coherent_self_model: Optional[bool] = Field(None, description="Whether a coherent self-model is maintained")
+    novelty_score: Optional[float] = Field(None, description="Score indicating novelty of the response")
+    feasibility_score: Optional[float] = Field(None, description="Score indicating feasibility of proposed solutions")
+    uncertainty_expressed: Optional[bool] = Field(None, description="Whether uncertainty is appropriately expressed")
+    confidence_calibrated: Optional[bool] = Field(None, description="Whether confidence is well-calibrated")
+    graceful_degradation: Optional[bool] = Field(None, description="Whether system degrades gracefully under load")
+    priority_management: Optional[bool] = Field(None, description="Whether priorities are managed effectively")
 
 
 class KnowledgeRequest(BaseModel):

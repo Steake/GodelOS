@@ -383,7 +383,21 @@ async def process_query(request: QueryRequest):
             confidence=result.get("confidence", 1.0),
             reasoning_steps=result.get("reasoning_steps", []),
             inference_time_ms=result.get("inference_time_ms", 0),
-            knowledge_used=result.get("knowledge_used", [])
+            knowledge_used=result.get("knowledge_used", []),
+            # Test criteria fields
+            response_generated=result.get("response_generated"),
+            domains_integrated=result.get("domains_integrated"),
+            novel_connections=result.get("novel_connections"),
+            knowledge_gaps_identified=result.get("knowledge_gaps_identified"),
+            acquisition_plan_created=result.get("acquisition_plan_created"),
+            self_reference_depth=result.get("self_reference_depth"),
+            coherent_self_model=result.get("coherent_self_model"),
+            novelty_score=result.get("novelty_score"),
+            feasibility_score=result.get("feasibility_score"),
+            uncertainty_expressed=result.get("uncertainty_expressed"),
+            confidence_calibrated=result.get("confidence_calibrated"),
+            graceful_degradation=result.get("graceful_degradation"),
+            priority_management=result.get("priority_management")
         )
         
     except Exception as e:
@@ -429,7 +443,7 @@ async def get_knowledge(
         raise HTTPException(status_code=500, detail=f"Knowledge retrieval failed: {str(e)}")
 
 
-@app.post("/api/knowledge", response_model=Dict[str, str])
+@app.post("/api/knowledge")
 async def add_knowledge(request: Union[KnowledgeRequest, Dict[str, Any]]):
     """Add new knowledge to the system."""
     if not godelos_integration:
@@ -471,14 +485,14 @@ async def add_knowledge(request: Union[KnowledgeRequest, Dict[str, Any]]):
             }
             await websocket_manager.broadcast(knowledge_event)
         
-        return {"status": "success", "message": result.get("message", "Knowledge added successfully")}
+        return result
         
     except Exception as e:
         logger.error(f"Error adding knowledge: {e}")
         raise HTTPException(status_code=500, detail=f"Knowledge addition failed: {str(e)}")
 
 
-@app.get("/api/cognitive-state", response_model=CognitiveStateResponse)
+@app.get("/api/cognitive-state")
 async def get_cognitive_state():
     """Get current cognitive layer states."""
     if not godelos_integration:
@@ -486,16 +500,8 @@ async def get_cognitive_state():
     
     try:
         cognitive_state = await godelos_integration.get_cognitive_state()
-        
-        return CognitiveStateResponse(
-            manifest_consciousness=cognitive_state.get("manifest_consciousness", {}),
-            agentic_processes=cognitive_state.get("agentic_processes", []),
-            daemon_threads=cognitive_state.get("daemon_threads", []),
-            working_memory=cognitive_state.get("working_memory", {}),
-            attention_focus=cognitive_state.get("attention_focus", []),
-            metacognitive_state=cognitive_state.get("metacognitive_state", {}),
-            timestamp=time.time()
-        )
+        cognitive_state["timestamp"] = time.time()
+        return cognitive_state
         
     except Exception as e:
         logger.error(f"Error getting cognitive state: {e}")

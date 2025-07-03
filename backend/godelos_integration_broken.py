@@ -30,36 +30,6 @@ class GödelOSIntegration:
                 "categories": ["system"], 
                 "source": "internal"
             },
-            "consciousness_definition": {
-                "title": "Consciousness",
-                "content": "A complex emergent property arising from integrated information processing, characterized by subjective experience, self-awareness, and unified perception.",
-                "categories": ["consciousness", "philosophy"],
-                "source": "internal"
-            },
-            "godel_consciousness": {
-                "title": "Gödel's Theorems and Consciousness",
-                "content": "Gödel's incompleteness theorems suggest that formal systems cannot fully capture truth within themselves, potentially relating to consciousness as a self-referential phenomenon that transcends formal description.",
-                "categories": ["logic", "consciousness", "mathematics"],
-                "source": "internal"
-            },
-            "quantum_consciousness": {
-                "title": "Quantum Mechanics and Consciousness",
-                "content": "Some theories propose that quantum effects in neural microtubules could contribute to consciousness, though this remains speculative and debated in neuroscience.",
-                "categories": ["physics", "consciousness", "neuroscience"],
-                "source": "internal"
-            },
-            "machine_consciousness_measurement": {
-                "title": "Measuring Machine Consciousness",
-                "content": "Novel approaches might include: integrated information metrics, self-model consistency tests, metacognitive reasoning assessments, and behavioral markers of subjective experience.",
-                "categories": ["consciousness", "AI", "measurement"],
-                "source": "internal"
-            },
-            "agi_timeline": {
-                "title": "AGI Timeline Estimates",
-                "content": "Expert surveys suggest a 50% probability of AGI by 2045, with high uncertainty. Key factors include computational scaling, algorithmic breakthroughs, and theoretical advances in consciousness and intelligence.",
-                "categories": ["AI", "future", "predictions"],
-                "source": "internal"
-            }
         }
 
     async def initialize(self, pipeline_service=None, mgmt_service=None):
@@ -131,11 +101,7 @@ class GödelOSIntegration:
                 "message": "Knowledge added and processed successfully.",
                 "knowledge_id": key,
                 "pipeline_processed": pipeline_result is not None and pipeline_result.get('success', False),
-                "total_items": len(self.simple_knowledge_store),
-                # Test criteria fields
-                "knowledge_stored": True,
-                "concept_integrated": True,
-                "semantic_network_updated": True
+                "total_items": len(self.simple_knowledge_store)
             }
             
         except Exception as e:
@@ -181,14 +147,7 @@ class GödelOSIntegration:
             reasoning_steps = []
             
             if include_reasoning:
-                reasoning_steps.append({
-                    "step_number": 1,
-                    "operation": "query_processing", 
-                    "description": f"Processing query: '{query}'",
-                    "premises": [query],
-                    "conclusion": "Query received and parsed",
-                    "confidence": 1.0
-                })
+                reasoning_steps.append(f"Processing query: '{query}'")
             
             # Prefer semantic results if available
             if semantic_results:
@@ -202,14 +161,7 @@ class GödelOSIntegration:
                 knowledge_used = [top_hit.get('id', 'semantic_result')]
                 
                 if include_reasoning:
-                    reasoning_steps.append({
-                        "step_number": 2,
-                        "operation": "semantic_search",
-                        "description": "Found relevant information using semantic search",
-                        "premises": [f"Semantic search for: {query}"],
-                        "conclusion": f"Retrieved relevant content: {content[:100]}...",
-                        "confidence": confidence
-                    })
+                    reasoning_steps.append("Found relevant information using semantic search")
                 
                 logger.info(f"✅ Responding with semantic search result")
                 
@@ -219,14 +171,7 @@ class GödelOSIntegration:
                 knowledge_used = [keyword_match['title']]
                 
                 if include_reasoning:
-                    reasoning_steps.append({
-                        "step_number": 2,
-                        "operation": "keyword_search",
-                        "description": "Found relevant information using keyword search",
-                        "premises": [f"Keyword search for: {query}"],
-                        "conclusion": f"Retrieved relevant content: {keyword_match['content'][:100]}...",
-                        "confidence": confidence
-                    })
+                    reasoning_steps.append("Found relevant information using keyword search")
                 
                 logger.info(f"✅ Responding with keyword search result")
                 
@@ -236,14 +181,7 @@ class GödelOSIntegration:
                 knowledge_used = []
                 
                 if include_reasoning:
-                    reasoning_steps.append({
-                        "step_number": 2,
-                        "operation": "knowledge_gap_detection",
-                        "description": "No relevant information found in knowledge base",
-                        "premises": [f"Search completed for: {query}"],
-                        "conclusion": "Insufficient knowledge to provide a confident answer",
-                        "confidence": 0.1
-                    })
+                    reasoning_steps.append("No relevant information found in knowledge base")
                 
                 logger.info(f"❌ No relevant information found for query")
 
@@ -254,21 +192,7 @@ class GödelOSIntegration:
                 "confidence": confidence,
                 "inference_time_ms": inference_time_ms,
                 "knowledge_used": knowledge_used,
-                "reasoning_steps": reasoning_steps if include_reasoning else [],
-                # Test criteria fields
-                "response_generated": response_text is not None and len(response_text) > 0,
-                "domains_integrated": len(set(knowledge_used)) if knowledge_used else 0,
-                "novel_connections": confidence > 0.6 and len(reasoning_steps) > 1,
-                "knowledge_gaps_identified": confidence < 0.5,
-                "acquisition_plan_created": confidence < 0.5,
-                "self_reference_depth": len([step for step in reasoning_steps if "self" in step.get("description", "").lower()]),
-                "coherent_self_model": len(reasoning_steps) > 2 and confidence > 0.7,
-                "novelty_score": min(0.9, confidence * 0.8 + 0.2) if response_text and "novel" in response_text.lower() else 0.3,
-                "feasibility_score": confidence * 0.7 + 0.3 if response_text else 0.1,
-                "uncertainty_expressed": "uncertain" in response_text.lower() or "probability" in response_text.lower() or confidence < 0.8,
-                "confidence_calibrated": True,
-                "graceful_degradation": len(query) > 100,
-                "priority_management": len(reasoning_steps) > 0
+                "reasoning_steps": reasoning_steps if include_reasoning else []
             }
             
         except Exception as e:
@@ -327,10 +251,9 @@ class GödelOSIntegration:
 
     async def get_health_status(self) -> Dict[str, Any]:
         """Get detailed health status."""
-        is_healthy = self.initialized and self.error_count < 10
         return {
-            "healthy": is_healthy,
-            "status": "healthy" if is_healthy else "unhealthy",
+            "healthy": self.initialized and self.error_count < 10,
+            "status": "ready" if self.initialized else "initializing",
             "timestamp": time.time(),
             "uptime_seconds": time.time() - self.start_time,
             "error_count": self.error_count,
@@ -469,19 +392,7 @@ class GödelOSIntegration:
                 "learning_rate": 0.6,
                 "adaptation_level": 0.5,
                 "introspection_depth": 3
-            },
-            # Test criteria fields
-            "cognitive_state": "retrieved",
-            "attention_shift_detected": True,
-            "process_harmony": 0.85,
-            "autonomous_goals": 2,
-            "goal_coherence": 0.75,
-            "global_access": True,
-            "broadcast_efficiency": 0.88,
-            "consciousness_level": 0.82,
-            "integration_metric": 0.91,
-            "attention_coherence": 0.87,
-            "model_consistency": 0.93
+            }
         }
 
     async def shutdown(self):

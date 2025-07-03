@@ -561,4 +561,32 @@ class EnhancedMetacognitionManager(BaseMetacognitionManager):
                 if plan.approved:
                     self.active_acquisitions[plan.plan_id] = plan
                     
-                    #
+                    # Execute acquisition plan asynchronously
+                    asyncio.create_task(self._execute_acquisition_plan(plan))
+
+    async def _emit_cognitive_event(self, event_type: str, data: Dict[str, Any], metadata: Optional[Dict[str, Any]] = None):
+        """
+        Emit a cognitive event to the WebSocket manager for real-time streaming.
+        
+        Args:
+            event_type: Type of cognitive event
+            data: Event data
+            metadata: Optional metadata for the event
+        """
+        try:
+            if self.websocket_manager and hasattr(self.websocket_manager, 'emit_cognitive_event'):
+                event = {
+                    "type": event_type,
+                    "data": data,
+                    "metadata": metadata or {},
+                    "timestamp": time.time(),
+                    "source": "enhanced_metacognition_manager"
+                }
+                await self.websocket_manager.emit_cognitive_event(event)
+        except Exception as e:
+            logger.warning(f"Failed to emit cognitive event {event_type}: {e}")
+
+    async def _execute_acquisition_plan(self, plan):
+        """Execute an autonomous knowledge acquisition plan."""
+        # Implementation placeholder for autonomous knowledge acquisition
+        logger.info(f"Executing acquisition plan: {plan.plan_id}")
