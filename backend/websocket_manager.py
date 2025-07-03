@@ -17,6 +17,25 @@ from enum import Enum
 # Lazy imports to avoid circular dependencies
 _cognitive_models = None
 
+# Define fallback classes at module level to ensure global availability
+class GranularityLevel(Enum):
+    MINIMAL = "minimal"
+    STANDARD = "standard"
+    DETAILED = "detailed"
+    DEBUG = "debug"
+
+class CognitiveEventType(Enum):
+    REASONING = "reasoning"
+    KNOWLEDGE_GAP = "knowledge_gap"
+    ACQUISITION = "acquisition"
+    REFLECTION = "reflection"
+
+class CognitiveEvent:
+    """Simple fallback event class."""
+    def __init__(self, **kwargs):
+        for k, v in kwargs.items():
+            setattr(self, k, v)
+
 def get_cognitive_models():
     """Lazy import of cognitive models to avoid circular dependencies."""
     global _cognitive_models
@@ -29,36 +48,18 @@ def get_cognitive_models():
             _cognitive_models = False
     return _cognitive_models if _cognitive_models else None
 
-# Initialize cognitive models availability
 def init_cognitive_models():
     """Initialize cognitive models and return availability status."""
     models = get_cognitive_models()
     if models:
+        # Override with actual models if available
         global GranularityLevel, CognitiveEventType, CognitiveEvent
         GranularityLevel = models.GranularityLevel
         CognitiveEventType = models.CognitiveEventType
         CognitiveEvent = models.CognitiveEvent
         return True
     else:
-        # Fallback definitions
-        class GranularityLevel(Enum):
-            MINIMAL = "minimal"
-            STANDARD = "standard"
-            DETAILED = "detailed"
-            DEBUG = "debug"
-        
-        class CognitiveEventType(Enum):
-            REASONING = "reasoning"
-            KNOWLEDGE_GAP = "knowledge_gap"
-            ACQUISITION = "acquisition"
-            REFLECTION = "reflection"
-        
-        # Create simple fallback event class
-        class CognitiveEvent:
-            def __init__(self, **kwargs):
-                for k, v in kwargs.items():
-                    setattr(self, k, v)
-        
+        # Use fallback definitions (already defined at module level)
         return False
 
 # Defer cognitive models initialization to avoid import-time hanging

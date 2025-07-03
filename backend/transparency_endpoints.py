@@ -3,6 +3,7 @@ Missing Transparency API Endpoints for GödelOS
 These endpoints support the cognitive architecture pipeline tests
 """
 
+import asyncio
 from fastapi import APIRouter, HTTPException, Query
 from typing import Dict, List, Optional, Any
 import time
@@ -41,7 +42,8 @@ class ProvenanceSnapshot(BaseModel):
     """Provenance snapshot model."""
     description: str
 
-# Global state for mock data
+# Thread-safe global state with locks
+_state_lock = asyncio.Lock()
 active_sessions = {}
 knowledge_graph_nodes = []
 knowledge_graph_relationships = []
@@ -61,14 +63,15 @@ async def start_reasoning_session(session: ReasoningSession):
     """Start a new reasoning session."""
     session_id = f"session_{int(time.time())}"
     
-    active_sessions[session_id] = {
-        "id": session_id,
-        "query": session.query,
-        "transparency_level": session.transparency_level,
-        "start_time": time.time(),
-        "status": "active",
-        "reasoning_steps": []
-    }
+    async with _state_lock:
+        active_sessions[session_id] = {
+            "id": session_id,
+            "query": session.query,
+            "transparency_level": session.transparency_level,
+            "start_time": time.time(),
+            "status": "active",
+            "reasoning_steps": []
+        }
     
     return {
         "session_id": session_id,
@@ -79,25 +82,29 @@ async def start_reasoning_session(session: ReasoningSession):
 @router.post("/session/{session_id}/complete")
 async def complete_reasoning_session(session_id: str):
     """Complete a reasoning session."""
-    if session_id not in active_sessions:
-        raise HTTPException(status_code=404, detail="Session not found")
-    
-    active_sessions[session_id]["status"] = "completed"
-    active_sessions[session_id]["completion_time"] = time.time()
+    async with _state_lock:
+        if session_id not in active_sessions:
+            raise HTTPException(status_code=404, detail="Session not found")
+        
+        active_sessions[session_id]["status"] = "completed"
+        active_sessions[session_id]["completion_time"] = time.time()
+        
+        start_time = active_sessions[session_id]["start_time"]
     
     return {
         "session_id": session_id,
         "status": "completed",
-        "duration": time.time() - active_sessions[session_id]["start_time"]
+        "duration": time.time() - start_time
     }
 
 @router.get("/session/{session_id}/trace")
 async def get_reasoning_trace(session_id: str):
     """Get the reasoning trace for a session."""
-    if session_id not in active_sessions:
-        raise HTTPException(status_code=404, detail="Session not found")
-    
-    session = active_sessions[session_id]
+    async with _state_lock:
+        if session_id not in active_sessions:
+            raise HTTPException(status_code=404, detail="Session not found")
+        
+        session = active_sessions[session_id].copy()  # Create a copy to avoid holding lock
     
     # Generate mock reasoning trace
     trace = {
@@ -142,27 +149,35 @@ async def get_reasoning_trace(session_id: str):
 @router.get("/sessions/active")
 async def get_active_sessions():
     """Get all active reasoning sessions."""
-    active_list = [
-        {
-            "session_id": sid,
-            "query": session["query"],
-            "start_time": session["start_time"],
-            "status": session["status"]
-        }
-        for sid, session in active_sessions.items()
-        if session["status"] == "active"
-    ]
+    async with _state_lock:
+        active_list = [
+            {
+                "session_id": sid,
+                "query": session["query"],
+                "start_time": session["start_time"],
+                "status": session["status"]
+            }
+            for sid, session in active_sessions.items()
+            if session["status"] == "active"
+        ]
     
     return {
         "active_sessions": active_list,
         "total_active": len(active_list)
     }
 
+# Alternative consistent route for better API design
+@router.get("/session/active")
+async def get_active_sessions_consistent():
+    """Get all active reasoning sessions (consistent naming)."""
+    return await get_active_sessions()
+
 @router.get("/statistics")
 async def get_transparency_statistics():
     """Get transparency system statistics."""
-    total_sessions = len(active_sessions)
-    completed_sessions = len([s for s in active_sessions.values() if s["status"] == "completed"])
+    async with _state_lock:
+        total_sessions = len(active_sessions)
+        completed_sessions = len([s for s in active_sessions.values() if s["status"] == "completed"])
     
     return {
         "total_sessions": total_sessions,
@@ -179,11 +194,12 @@ async def get_transparency_statistics():
 @router.get("/session/{session_id}/statistics")
 async def get_session_statistics(session_id: str):
     """Get statistics for a specific session."""
-    if session_id not in active_sessions:
-        raise HTTPException(status_code=404, detail="Session not found")
-    
-    session = active_sessions[session_id]
-    duration = (session.get("completion_time", time.time()) - session["start_time"])
+    async with _state_lock:
+        if session_id not in active_sessions:
+            raise HTTPException(status_code=404, detail="Session not found")
+        
+        session = active_sessions[session_id]
+        duration = (session.get("completion_time", time.time()) - session["start_time"])
     
     return {
         "session_id": session_id,
@@ -197,14 +213,15 @@ async def get_session_statistics(session_id: str):
 @router.post("/knowledge-graph/node")
 async def add_knowledge_graph_node(node: KnowledgeGraphNode):
     """Add a node to the knowledge graph."""
-    node_data = {
-        "id": f"node_{len(knowledge_graph_nodes)}",
-        "concept": node.concept,
-        "node_type": node.node_type,
-        "created_at": time.time()
-    }
-    
-    knowledge_graph_nodes.append(node_data)
+    async with _state_lock:
+        node_data = {
+            "id": f"node_{len(knowledge_graph_nodes)}",
+            "concept": node.concept,
+            "node_type": node.node_type,
+            "created_at": time.time()
+        }
+        
+        knowledge_graph_nodes.append(node_data)
     
     return {
         "status": "created",
@@ -215,15 +232,16 @@ async def add_knowledge_graph_node(node: KnowledgeGraphNode):
 @router.post("/knowledge-graph/relationship")
 async def add_knowledge_graph_relationship(relationship: KnowledgeGraphRelationship):
     """Add a relationship to the knowledge graph."""
-    rel_data = {
-        "id": f"rel_{len(knowledge_graph_relationships)}",
-        "source": relationship.source,
-        "target": relationship.target,
-        "relationship_type": relationship.relationship_type,
-        "created_at": time.time()
-    }
-    
-    knowledge_graph_relationships.append(rel_data)
+    async with _state_lock:
+        rel_data = {
+            "id": f"rel_{len(knowledge_graph_relationships)}",
+            "source": relationship.source,
+            "target": relationship.target,
+            "relationship_type": relationship.relationship_type,
+            "created_at": time.time()
+        }
+        
+        knowledge_graph_relationships.append(rel_data)
     
     return {
         "status": "created",
@@ -234,12 +252,16 @@ async def add_knowledge_graph_relationship(relationship: KnowledgeGraphRelations
 @router.get("/knowledge-graph/export")
 async def export_knowledge_graph():
     """Export the knowledge graph."""
+    async with _state_lock:
+        nodes_copy = knowledge_graph_nodes.copy()
+        relationships_copy = knowledge_graph_relationships.copy()
+    
     return {
-        "nodes": knowledge_graph_nodes,
-        "relationships": knowledge_graph_relationships,
+        "nodes": nodes_copy,
+        "relationships": relationships_copy,
         "statistics": {
-            "node_count": len(knowledge_graph_nodes),
-            "relationship_count": len(knowledge_graph_relationships)
+            "node_count": len(nodes_copy),
+            "relationship_count": len(relationships_copy)
         },
         "export_time": time.time()
     }
@@ -247,13 +269,17 @@ async def export_knowledge_graph():
 @router.get("/knowledge-graph/statistics")
 async def get_knowledge_graph_statistics():
     """Get knowledge graph statistics."""
+    async with _state_lock:
+        nodes_copy = knowledge_graph_nodes.copy()
+        relationships_copy = knowledge_graph_relationships.copy()
+    
     return {
-        "node_count": len(knowledge_graph_nodes),
-        "relationship_count": len(knowledge_graph_relationships),
+        "node_count": len(nodes_copy),
+        "relationship_count": len(relationships_copy),
         "node_types": {
-            "concept": len([n for n in knowledge_graph_nodes if n["node_type"] == "concept"]),
-            "entity": len([n for n in knowledge_graph_nodes if n["node_type"] == "entity"]),
-            "fact": len([n for n in knowledge_graph_nodes if n["node_type"] == "fact"])
+            "concept": len([n for n in nodes_copy if n["node_type"] == "concept"]),
+            "entity": len([n for n in nodes_copy if n["node_type"] == "entity"]),
+            "fact": len([n for n in nodes_copy if n["node_type"] == "fact"])
         },
         "density": 0.45,
         "clustering_coefficient": 0.62
@@ -360,15 +386,16 @@ async def create_provenance_snapshot(snapshot: ProvenanceSnapshot):
     """Create a provenance snapshot."""
     snapshot_id = f"snapshot_{int(time.time())}"
     
-    snapshot_data = {
-        "id": snapshot_id,
-        "description": snapshot.description,
-        "created_at": time.time(),
-        "item_count": 1247,
-        "status": "created"
-    }
-    
-    provenance_snapshots.append(snapshot_data)
+    async with _state_lock:
+        snapshot_data = {
+            "id": snapshot_id,
+            "description": snapshot.description,
+            "created_at": time.time(),
+            "item_count": 1247,
+            "status": "created"
+        }
+        
+        provenance_snapshots.append(snapshot_data)
     
     return {
         "snapshot_id": snapshot_id,
@@ -379,10 +406,11 @@ async def create_provenance_snapshot(snapshot: ProvenanceSnapshot):
 @router.get("/provenance/rollback/{snapshot_id}")
 async def rollback_to_snapshot(snapshot_id: str):
     """Rollback to a provenance snapshot."""
-    snapshot = next((s for s in provenance_snapshots if s["id"] == snapshot_id), None)
-    
-    if not snapshot:
-        raise HTTPException(status_code=404, detail="Snapshot not found")
+    async with _state_lock:
+        snapshot = next((s for s in provenance_snapshots if s["id"] == snapshot_id), None)
+        
+        if not snapshot:
+            raise HTTPException(status_code=404, detail="Snapshot not found")
     
     return {
         "snapshot_id": snapshot_id,
