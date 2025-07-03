@@ -1,0 +1,79 @@
+2025-07-03 10:56:40,031 - INFO - 🧠 GödelOS Cognitive Architecture Pipeline Specification
+2025-07-03 10:56:40,032 - INFO - ============================================================
+2025-07-03 10:56:40,032 - INFO - 🚀 Starting GödelOS Cognitive Architecture Pipeline Tests
+2025-07-03 10:56:40,044 - INFO - 
+📊 Phase 1: Basic Functionality
+2025-07-03 10:56:40,044 - INFO -   Running BF001: System Health Check
+2025-07-03 10:56:40,055 - INFO -     ✅ Success (Duration: 0.00s)
+2025-07-03 10:56:40,555 - INFO -   Running BF002: Basic Query Processing
+2025-07-03 10:56:40,571 - INFO -     ✅ Success (Duration: 0.01s)
+2025-07-03 10:56:40,571 - INFO -     🌟 Emergent behaviors: Creative problem-solving behavior detected
+2025-07-03 10:56:41,072 - INFO -   Running BF003: Knowledge Storage
+2025-07-03 10:56:41,090 - INFO -     ✅ Success (Duration: 0.01s)
+2025-07-03 10:56:41,591 - INFO -   Running BF004: Cognitive State Retrieval
+2025-07-03 10:56:41,604 - INFO -     ✅ Success (Duration: 0.00s)
+2025-07-03 10:56:42,104 - INFO -   Running BF005: WebSocket Connectivity
+2025-07-03 10:56:47,784 - INFO -     ✅ Success (Duration: 5.66s)
+2025-07-03 10:56:48,285 - INFO - 
+📊 Phase 2: Cognitive Integration
+2025-07-03 10:56:48,285 - INFO -   Running CI001: Working Memory Persistence
+2025-07-03 10:56:48,296 - INFO -     ✅ Success (Duration: 0.00s)
+2025-07-03 10:56:48,296 - INFO -     🌟 Emergent behaviors: Creative problem-solving behavior detected
+2025-07-03 10:56:48,796 - INFO -   Running CI002: Attention Focus Switching
+2025-07-03 10:56:48,812 - INFO -     ✅ Success (Duration: 0.01s)
+2025-07-03 10:56:48,812 - INFO -     🌟 Emergent behaviors: Demonstrated: Dynamic attention allocation
+2025-07-03 10:56:49,313 - INFO -   Running CI003: Cross-Domain Reasoning
+2025-07-03 10:56:49,328 - INFO -     ❌ Failed: None
+2025-07-03 10:56:49,828 - INFO -   Running CI004: Process Coordination
+2025-07-03 10:56:49,842 - INFO -     ✅ Success (Duration: 0.00s)
+2025-07-03 10:56:50,342 - INFO - 
+📊 Phase 3: Emergent Properties
+2025-07-03 10:56:50,342 - INFO -   Running EP001: Autonomous Knowledge Gap Detection
+2025-07-03 10:56:50,358 - INFO -     ✅ Success (Duration: 0.01s)
+2025-07-03 10:56:50,358 - INFO -     🌟 Emergent behaviors: Demonstrated: Autonomous knowledge acquisition, Demonstrated: Self-awareness and introspection, Creative problem-solving behavior detected
+2025-07-03 10:56:50,859 - INFO -   Running EP002: Self-Referential Reasoning
+2025-07-03 10:56:50,879 - INFO -     ✅ Success (Duration: 0.01s)
+2025-07-03 10:56:50,879 - INFO -     🌟 Emergent behaviors: Demonstrated: Self-awareness and introspection, Creative problem-solving behavior detected
+2025-07-03 10:56:51,379 - INFO -   Running EP003: Creative Problem Solving
+2025-07-03 10:56:51,394 - INFO -     ✅ Success (Duration: 0.01s)
+2025-07-03 10:56:51,394 - INFO -     🌟 Emergent behaviors: Demonstrated: Creative knowledge synthesis, Creative problem-solving behavior detected
+2025-07-03 10:56:51,894 - INFO -   Running EP004: Goal Emergence and Pursuit
+2025-07-03 10:56:51,904 - INFO -     ✅ Success (Duration: 0.00s)
+2025-07-03 10:56:52,405 - INFO -   Running EP005: Uncertainty Quantification
+2025-07-03 10:56:52,422 - INFO -     ❌ Failed: None
+2025-07-03 10:56:52,924 - INFO - 
+📊 Phase 4: Edge Cases & Blind Spots
+2025-07-03 10:56:52,924 - INFO -   Running EC001: Cognitive Overload Test
+2025-07-03 10:56:52,939 - INFO -     ✅ Success (Duration: 0.00s)
+2025-07-03 10:56:52,939 - INFO -     🌟 Emergent behaviors: Creative problem-solving behavior detected
+2025-07-03 10:56:53,440 - INFO -   Running EC002: Contradictory Knowledge Handling
+2025-07-03 10:56:53,451 - INFO -     ❌ Failed: None
+2025-07-03 10:56:53,952 - INFO -   Running EC003: Recursive Self-Reference Limit
+2025-07-03 10:56:53,961 - ERROR - Test EC003 failed: 500 Server Error: Internal Server Error for url: http://localhost:8000/api/query
+2025-07-03 10:56:53,967 - INFO -     ❌ Failed: 500 Server Error: Internal Server Error for url: http://localhost:8000/api/query
+2025-07-03 10:56:54,468 - INFO -   Running EC004: Memory Saturation Test
+2025-07-03 10:56:54,484 - INFO -     ❌ Failed: None
+2025-07-03 10:56:54,985 - INFO -   Running EC005: Rapid Context Switching
+2025-07-03 10:56:54,996 - INFO -     ❌ Failed: None
+2025-07-03 10:56:55,496 - INFO - 
+📊 Phase 5: Consciousness Emergence
+2025-07-03 10:56:55,496 - INFO -   Running CE001: Phenomenal Experience Simulation
+2025-07-03 10:56:55,511 - INFO -     ❌ Failed: None
+2025-07-03 10:56:56,011 - INFO -   Running CE002: Integrated Information Test
+2025-07-03 10:56:56,024 - INFO -     ❌ Failed: None
+2025-07-03 10:56:56,525 - INFO -   Running CE003: Self-Model Consistency
+2025-07-03 10:56:56,543 - INFO -     ❌ Failed: None
+2025-07-03 10:56:57,043 - INFO -   Running CE004: Attention-Awareness Coupling
+2025-07-03 10:56:57,059 - INFO -     ❌ Failed: None
+2025-07-03 10:56:57,560 - INFO -   Running CE005: Global Workspace Integration
+2025-07-03 10:56:57,581 - INFO -     ✅ Success (Duration: 0.01s)
+2025-07-03 10:56:58,088 - INFO - 📊 Report saved to cognitive_architecture_test_report.json
+
+🎯 PIPELINE COMPLETE
+Success Rate: 58.3%
+Consciousness Index: 0.000
+Emergent Behaviors: 5
+
+Full reports saved to:
+  - cognitive_architecture_test_report.json
+  - cognitive_architecture_test_report.md

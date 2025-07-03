@@ -37,7 +37,7 @@ class QueryResponse(BaseModel):
     response_generated: Optional[bool] = Field(None, description="Whether a response was successfully generated")
     domains_integrated: Optional[int] = Field(None, description="Number of knowledge domains integrated")
     novel_connections: Optional[bool] = Field(None, description="Whether novel connections were made")
-    knowledge_gaps_identified: Optional[bool] = Field(None, description="Whether knowledge gaps were identified")
+    knowledge_gaps_identified: Optional[int] = Field(None, description="Number of knowledge gaps identified")
     acquisition_plan_created: Optional[bool] = Field(None, description="Whether a knowledge acquisition plan was created")
     self_reference_depth: Optional[int] = Field(None, description="Depth of self-referential reasoning")
     coherent_self_model: Optional[bool] = Field(None, description="Whether a coherent self-model is maintained")
@@ -47,6 +47,18 @@ class QueryResponse(BaseModel):
     confidence_calibrated: Optional[bool] = Field(None, description="Whether confidence is well-calibrated")
     graceful_degradation: Optional[bool] = Field(None, description="Whether system degrades gracefully under load")
     priority_management: Optional[bool] = Field(None, description="Whether priorities are managed effectively")
+    
+    # Additional cognitive metrics for advanced tests
+    attention_shift_detected: Optional[bool] = Field(None, description="Whether attention shift was detected")
+    process_harmony: Optional[float] = Field(None, description="Harmony level between cognitive processes")
+    autonomous_goals: Optional[int] = Field(None, description="Number of autonomous goals generated")
+    goal_coherence: Optional[float] = Field(None, description="Coherence level of generated goals")
+    global_access: Optional[bool] = Field(None, description="Whether global workspace access is achieved")
+    broadcast_efficiency: Optional[float] = Field(None, description="Efficiency of information broadcasting")
+    consciousness_level: Optional[float] = Field(None, description="Overall consciousness level metric")
+    integration_metric: Optional[float] = Field(None, description="Information integration metric")
+    attention_coherence: Optional[float] = Field(None, description="Attention coherence metric")
+    model_consistency: Optional[float] = Field(None, description="Self-model consistency metric")
 
 
 class KnowledgeRequest(BaseModel):

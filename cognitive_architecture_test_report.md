@@ -1,11 +1,11 @@
 # GödelOS Cognitive Architecture Test Report
-Generated: 2025-07-03 10:35:12
+Generated: 2025-07-03 11:09:20
 
 ## Executive Summary
 
 - **Total Tests**: 24
-- **Success Rate**: 50.0%
-- **Total Duration**: 6.05 seconds
+- **Success Rate**: 66.7%
+- **Total Duration**: 5.37 seconds
 - **Consciousness Index**: 0.000
 - **Cognitive Coherence**: 0.000
 
@@ -22,16 +22,16 @@ Generated: 2025-07-03 10:35:12
 ### Phase 1: Basic Functionality
 - Tests: 5
 - Success Rate: 100.0%
-- Average Duration: 1.18s
+- Average Duration: 1.04s
 
 ### Phase 2: Cognitive Integration
 - Tests: 4
-- Success Rate: 75.0%
+- Success Rate: 100.0%
 - Average Duration: 0.01s
 
 ### Phase 3: Emergent Properties
 - Tests: 5
-- Success Rate: 40.0%
+- Success Rate: 100.0%
 - Average Duration: 0.01s
 
 ### Phase 4: Edge Cases & Blind Spots
@@ -61,7 +61,7 @@ Generated: 2025-07-03 10:35:12
 
 - Peak Awareness Level: 0.000
 - Peak Self-Awareness: 0.000
-- Average Reasoning Complexity: 1.7
+- Average Reasoning Complexity: 2.9
 
 ## Conclusions
 
