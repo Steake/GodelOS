@@ -25,7 +25,7 @@ GödelOS isn't just another AI system—it's a **transparent cognitive architect
 
 ```bash
 # Clone the future of AI transparency
-git clone https://github.com/yourusername/godelos.git
+git clone https://github.com/steake/godelos.git
 cd godelos
 
 # Set up the cognitive environment
@@ -132,4 +132,4 @@ MIT © [GödelOS Team](LICENSE)
 
 ---
 
-*"The question is not whether machines think, but whether machines can think transparently."*
+*"The question is not whether machines _can_ think, it is what _should_ machines think about?."*
