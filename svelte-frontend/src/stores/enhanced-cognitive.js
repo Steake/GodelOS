@@ -206,7 +206,10 @@ class EnhancedCognitiveStateManager {
         subscriptions: config.cognitiveStreaming.subscriptions?.join(',') || ''
       });
 
-      const wsUrl = `ws://localhost:8000/ws/cognitive-stream?${params}`;
+      // Derive WebSocket URL dynamically from API_BASE_URL
+      const apiUrl = new URL(API_BASE_URL);
+      const wsProtocol = apiUrl.protocol === 'https:' ? 'wss:' : 'ws:';
+      const wsUrl = `${wsProtocol}//${apiUrl.host}/ws/cognitive-stream?${params}`;
       
       console.log('🔗 Connecting to cognitive stream:', wsUrl);
       cognitiveWebSocket = new WebSocket(wsUrl);
