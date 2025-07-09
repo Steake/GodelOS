@@ -4,6 +4,7 @@
   import { enhancedCognitiveState, autonomousLearningState, streamState } from './stores/enhanced-cognitive.js';
   import { setupWebSocket, connectToCognitiveStream } from './utils/websocket.js';
   import { GödelOSAPI } from './utils/api.js';
+  import { initializeMobileEnhancements } from './utils/mobile.js';
   
   // Core UI Components
   import CognitiveStateMonitor from './components/core/CognitiveStateMonitor.svelte';
@@ -40,7 +41,8 @@
   let sidebarCollapsed = false;
   let fullscreenMode = false;
   let pollInterval;
-  
+  let mobileEnhancer;
+
   // Check URL parameters for direct view access
   onMount(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -66,6 +68,9 @@
   onMount(async () => {
     try {
       console.log('🚀 Initializing GödelOS cognitive interface...');
+      
+      // Initialize mobile enhancements first
+      mobileEnhancer = initializeMobileEnhancements();
       
       // Setup WebSocket connection
       await setupWebSocket();
@@ -1421,34 +1426,316 @@
     }
   }
 
+  /* Enhanced Mobile Styles */
   @media (max-width: 768px) {
+    .godelos-interface {
+      /* Enable smooth scrolling for mobile */
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
     .sidebar:not(.collapsed) {
       width: 100%;
-      position: absolute;
+      position: fixed;
       z-index: 200;
-      height: 100%;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      /* Add backdrop for mobile overlay */
+      background: rgba(15, 20, 35, 0.98);
+      backdrop-filter: blur(20px);
+      /* Enable smooth slide animation */
+      transform: translateX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar.collapsed {
+      transform: translateX(-100%);
+    }
+    
+    /* Mobile-optimized header */
+    .interface-header {
+      padding: 0.25rem 0;
+      min-height: 56px; /* Standard mobile header height */
+      position: sticky;
+      top: 0;
+      z-index: 150;
     }
     
     .header-content {
       padding: 0 1rem;
+      gap: 0.5rem;
     }
     
+    .header-left {
+      gap: 0.5rem;
+    }
+
+    .system-title {
+      font-size: 1.2rem;
+      gap: 0.5rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+    }
+
+    .subtitle {
+      display: none; /* Hide subtitle on mobile */
+    }
+    
+    /* Improved mobile navigation */
+    .nav-sections {
+      padding: 0.5rem;
+      gap: 0.25rem;
+    }
+
+    .nav-item {
+      padding: 1rem 0.75rem;
+      min-height: 48px; /* Touch-friendly minimum height */
+      border-radius: 8px;
+      /* Add larger touch target */
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(100, 181, 246, 0.2);
+    }
+
+    .nav-item:active {
+      transform: scale(0.98);
+      background: rgba(100, 181, 246, 0.3);
+    }
+
+    .section-header {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .section-items {
+      padding-left: 0.25rem;
+    }
+    
+    /* Mobile-optimized main content */
     .main-content {
       padding: 0.5rem;
-      margin: 0.25rem;
+      margin: 0;
+      border-radius: 0;
+      /* Enable momentum scrolling on iOS */
+      -webkit-overflow-scrolling: touch;
+      overflow-y: auto;
     }
 
     .dashboard-layout {
       gap: 0.75rem;
+      /* Optimize for vertical scrolling on mobile */
+      grid-template-rows: auto auto auto;
+      height: auto;
+      overflow: visible;
     }
     
     .query-panel, .response-panel, .cognitive-panel, .evolution-panel,
     .insights-panel, .knowledge-preview-panel {
-      padding: 1rem;
+      padding: 0.75rem;
+      border-radius: 12px;
+      /* Ensure touch-friendly interaction */
+      touch-action: manipulation;
     }
 
+    .panel-header {
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .panel-header h3 {
+      font-size: 1rem;
+    }
+
+    .expand-btn {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+      border-radius: 6px;
+      /* Touch-friendly button */
+      min-height: 40px;
+      min-width: 40px;
+    }
+
+    /* Hide view indicator on mobile to save space */
     .header-center {
-      display: none; /* Hide view indicator on mobile to save space */
+      display: none;
+    }
+
+    /* Mobile-specific component container optimization */
+    .component-container {
+      padding: 1rem;
+      border-radius: 12px;
+      /* Enable smooth scrolling within components */
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Optimize buttons for touch */
+    button, .nav-item, .expand-btn, .sidebar-toggle, .fullscreen-toggle {
+      min-height: 44px; /* iOS recommended touch target size */
+      /* Improve touch responsiveness */
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(100, 181, 246, 0.2);
+    }
+
+    button:active, .nav-item:active {
+      transform: scale(0.96);
+      transition: transform 0.1s ease;
+    }
+
+    /* Mobile-specific sidebar status optimization */
+    .sidebar-status {
+      padding: 0.75rem;
+    }
+
+    .status-section {
+      margin-bottom: 1rem;
+    }
+
+    .knowledge-stats {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.25rem;
+    }
+
+    .stat {
+      padding: 0.5rem 0.25rem;
+    }
+
+    .stat-value {
+      font-size: 1rem;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+    }
+
+    /* Alert optimization for mobile */
+    .alert-overlay {
+      top: 60px;
+      right: 0.5rem;
+      left: 0.5rem;
+      max-width: none;
+    }
+
+    .alert {
+      margin-bottom: 0.5rem;
+      padding: 0.75rem;
+    }
+  }
+
+  /* Ultra-small mobile screens */
+  @media (max-width: 480px) {
+    .header-content {
+      padding: 0 0.5rem;
+    }
+
+    .system-title {
+      font-size: 1.1rem;
+    }
+
+    .main-content {
+      padding: 0.25rem;
+    }
+
+    .query-panel, .response-panel, .cognitive-panel, .evolution-panel,
+    .insights-panel, .knowledge-preview-panel {
+      padding: 0.5rem;
+    }
+
+    .knowledge-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .dashboard-layout {
+      gap: 0.5rem;
+    }
+  }
+
+  /* Touch device optimizations */
+  @media (hover: none) and (pointer: coarse) {
+    .nav-item:hover {
+      /* Remove hover effects on touch devices */
+      background: transparent;
+      border-color: transparent;
+    }
+
+    .nav-item:hover::before {
+      /* Disable shimmer effect on touch */
+      left: -100%;
+    }
+
+    .expand-btn:hover,
+    .sidebar-toggle:hover,
+    .fullscreen-toggle:hover {
+      /* Simplify hover states for touch */
+      background: rgba(100, 181, 246, 0.1);
+    }
+
+    /* Add better touch feedback */
+    .nav-item:active,
+    .expand-btn:active,
+    button:active {
+      background: rgba(100, 181, 246, 0.3);
+      transform: scale(0.95);
+    }
+
+    /* Touch-specific active states */
+    .touch-active {
+      background: rgba(100, 181, 246, 0.25) !important;
+      transform: scale(0.96) !important;
+      transition: all 0.1s ease !important;
+    }
+  }
+
+  /* Touch-friendly utility classes */
+  .touch-friendly {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(100, 181, 246, 0.2);
+  }
+
+  /* Network status indicators */
+  body.offline .connection-status {
+    border-color: rgba(255, 152, 0, 0.6) !important;
+    background: rgba(255, 152, 0, 0.1) !important;
+  }
+
+  body.offline .connection-status .status-indicator {
+    background: #ff9800 !important;
+  }
+
+  body.slow-connection::before {
+    content: "Slow connection detected";
+    position: fixed;
+    top: 70px;
+    right: 1rem;
+    background: rgba(255, 152, 0, 0.9);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    z-index: 1001;
+  }
+
+  /* High DPI mobile screens */
+  @media (-webkit-min-device-pixel-ratio: 2) and (max-width: 768px) {
+    .interface-header {
+      /* Optimize for high DPI mobile screens */
+      border-bottom: 0.5px solid rgba(100, 120, 150, 0.2);
+    }
+
+    .nav-item {
+      border-width: 0.5px;
+    }
+
+    .query-panel, .response-panel, .cognitive-panel, .evolution-panel,
+    .insights-panel, .knowledge-preview-panel {
+      border-width: 0.5px;
     }
   }
 </style>

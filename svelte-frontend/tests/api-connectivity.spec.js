@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+import { test, expect } from '@playwright/test';
 
 test.describe('API Connectivity and Backend Integration', () => {
   test.beforeEach(async ({ page }) => {
