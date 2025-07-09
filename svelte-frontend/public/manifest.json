@@ -1,0 +1,67 @@
+{
+  "name": "GödelOS Cognitive Interface",
+  "short_name": "GödelOS",
+  "description": "Advanced cognitive transparency and AI reasoning interface",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#64b5f6",
+  "orientation": "any",
+  "categories": ["productivity", "education", "utilities"],
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Enhanced Dashboard",
+      "short_name": "Enhanced",
+      "description": "Access enhanced cognitive features",
+      "url": "/?view=enhanced",
+      "icons": [
+        {
+          "src": "/icons/shortcut-enhanced.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Query Interface",
+      "short_name": "Query", 
+      "description": "Natural language interaction",
+      "url": "/?view=query",
+      "icons": [
+        {
+          "src": "/icons/shortcut-query.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshots/mobile.png", 
+      "sizes": "375x667",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "prefer_related_applications": false
+}
