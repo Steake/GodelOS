@@ -779,26 +779,26 @@ export function formatEventRate(rate) {
 }
 
 // State Coordination - Bridge between basic and enhanced cognitive stores
-function synchronizeWithBasicCognitive() {
-  // Subscribe to basic cognitive state changes and enhance them
-  cognitiveState.subscribe(basicState => {
-    enhancedCognitiveState.update(enhancedState => ({
-      ...enhancedState,
+const synchronizedCognitiveState = derived(
+  cognitiveState,
+  (basicState, set) => {
+    set({
+      ...get(enhancedCognitiveState),
       // Sync manifest consciousness with enhanced features
       manifestConsciousness: {
-        ...enhancedState.manifestConsciousness,
+        ...get(enhancedCognitiveState).manifestConsciousness,
         currentFocus: basicState.manifestConsciousness?.currentQuery || 
                      basicState.manifestConsciousness?.attention || 
-                     enhancedState.manifestConsciousness.currentFocus,
-        attentionDepth: enhancedState.manifestConsciousness.attentionDepth,
+                     get(enhancedCognitiveState).manifestConsciousness.currentFocus,
+        attentionDepth: get(enhancedCognitiveState).manifestConsciousness.attentionDepth,
         processingMode: basicState.manifestConsciousness?.processingLoad > 0.7 ? 'intensive' :
                        basicState.manifestConsciousness?.processingLoad > 0.3 ? 'active' : 'idle',
-        cognitiveLoad: basicState.manifestConsciousness?.processingLoad || enhancedState.manifestConsciousness.cognitiveLoad,
-        lastActivity: basicState.lastUpdate ? new Date(basicState.lastUpdate).toISOString() : enhancedState.manifestConsciousness.lastActivity
+        cognitiveLoad: basicState.manifestConsciousness?.processingLoad || get(enhancedCognitiveState).manifestConsciousness.cognitiveLoad,
+        lastActivity: basicState.lastUpdate ? new Date(basicState.lastUpdate).toISOString() : get(enhancedCognitiveState).manifestConsciousness.lastActivity
       },
       // Enhance system health with basic cognitive health data
       systemHealth: {
-        ...enhancedState.systemHealth,
+        ...get(enhancedCognitiveState).systemHealth,
         inferenceEngine: basicState.systemHealth?.inferenceEngine > 0.8 ? 'healthy' :
                         basicState.systemHealth?.inferenceEngine > 0.5 ? 'degraded' : 'critical',
         knowledgeStore: basicState.systemHealth?.knowledgeStore > 0.8 ? 'healthy' :
