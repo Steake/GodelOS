@@ -67,27 +67,48 @@
     try {
       console.log('🚀 Initializing GödelOS cognitive interface...');
       
-      // Setup WebSocket connection
-      await setupWebSocket();
-      websocketConnected = true;
-      
-      // Initialize enhanced cognitive features
+      // Initialize enhanced cognitive features first
       await initializeEnhancedCognitive();
       
-      // Start real-time data polling
-      pollInterval = await GödelOSAPI.pollForUpdates(handleDataUpdate, 3000);
+      // Setup WebSocket connection (enhanced store will handle its own WebSocket)
+      try {
+        await setupWebSocket();
+        websocketConnected = true;
+        console.log('✅ Basic WebSocket connection established');
+      } catch (error) {
+        console.log('⚠️ Basic WebSocket unavailable, enhanced store will handle streaming');
+        websocketConnected = false;
+      }
       
-      console.log('✅ GödelOS cognitive interface connected with enhanced features');
+      // Start real-time data polling as fallback
+      try {
+        pollInterval = await GödelOSAPI.pollForUpdates(handleDataUpdate, 5000);
+        console.log('✅ Background data polling started');
+      } catch (error) {
+        console.log('⚠️ Background polling unavailable');
+      }
+      
+      console.log('✅ GödelOS cognitive interface initialized');
     } catch (error) {
-      // Silently handle WebSocket connection errors when backend is unavailable
-      websocketConnected = false;
+      console.warn('GödelOS initialization completed with warnings:', error);
+      // Application should still be usable in fallback mode
     }
   });
 
   onDestroy(() => {
+    // Clean up polling interval
     if (pollInterval) {
       clearInterval(pollInterval);
     }
+    
+    // Clean up enhanced cognitive systems
+    try {
+      enhancedCognitive.disableCognitiveStreaming();
+    } catch (error) {
+      // Ignore cleanup errors
+    }
+    
+    console.log('🛑 GödelOS interface cleaned up');
   });
 
   function handleDataUpdate(data) {
@@ -269,84 +290,32 @@
     try {
       console.log('🧠 Initializing enhanced cognitive features...');
       
-      // Check if enhanced cognitive API is available
-      const response = await fetch('http://localhost:8000/api/enhanced-cognitive/health');
-      if (response.ok) {
-        const cognitiveState = await response.json();
-        console.log('✅ Enhanced cognitive API connected');
+      // Use the enhanced cognitive store initialization
+      await enhancedCognitive.initializeEnhancedSystems();
+      
+      // Set up enhanced state subscriptions for better integration
+      enhancedCognitive.subscribe(enhancedState => {
+        // Update connection indicators
+        websocketConnected = enhancedState.connectionStatus === 'connected';
         
-        // Initialize enhanced cognitive store
-        enhancedCognitiveState.update(state => ({
-          ...state,
-          apiConnected: true,
-          lastUpdate: new Date().toISOString()
-        }));
-        
-        // Start cognitive streaming if enabled
-        await setupCognitiveStreaming();
-        
-        // Initialize autonomous learning monitoring
-        await initializeAutonomousLearning();
-        
-      } else {
-        console.log('⚠️ Enhanced cognitive API not available, using fallback mode');
-      }
+        // Sync enhanced state with basic cognitive state if needed
+        if (enhancedState.manifestConsciousness) {
+          cognitiveState.update(state => ({
+            ...state,
+            manifestConsciousness: {
+              ...state.manifestConsciousness,
+              attention: enhancedState.manifestConsciousness.currentFocus,
+              processingLoad: enhancedState.manifestConsciousness.cognitiveLoad
+            }
+          }));
+        }
+      });
+      
+      console.log('✅ Enhanced cognitive features initialized');
+      
     } catch (error) {
-      // Silently handle initialization errors when backend is unavailable
-      enhancedCognitiveState.update(state => ({
-        ...state,
-        apiConnected: false,
-        lastUpdate: new Date().toISOString()
-      }));
-    }
-  }
-  
-  async function setupCognitiveStreaming() {
-    try {
-      // Connect to cognitive event stream
-      const streamResponse = await fetch('http://localhost:8000/api/enhanced-cognitive/stream/status');
-      if (streamResponse.ok) {
-        console.log('🌊 Cognitive streaming available');
-        
-        // Update stream state
-        streamState.update(state => ({
-          ...state,
-          available: true,
-          connected: false
-        }));
-      }
-    } catch (error) {
-      // Silently handle streaming setup errors when backend is unavailable
-      streamState.update(state => ({
-        ...state,
-        available: false,
-        connected: false
-      }));
-    }
-  }
-  
-  async function initializeAutonomousLearning() {
-    try {
-      // Check autonomous learning status
-      const learningResponse = await fetch('http://localhost:8000/api/enhanced-cognitive/autonomous/status');
-      if (learningResponse.ok) {
-        const learningData = await learningResponse.json();
-        console.log('🤖 Autonomous learning status:', learningData);
-        
-        // Update autonomous learning state
-        autonomousLearningState.update(state => ({
-          ...state,
-          enabled: learningData.enabled || false,
-          available: true
-        }));
-      }
-    } catch (error) {
-      // Silently handle autonomous learning initialization errors when backend is unavailable
-      autonomousLearningState.update(state => ({
-        ...state,
-        enabled: false,
-        available: false
-      }));
+      console.warn('Enhanced cognitive initialization had issues:', error);
+      // Enhanced cognitive store will handle fallback mode internally
     }
   }
 </script>
@@ -378,8 +347,19 @@
       
       <div class="header-right">
         <div class="connection-status {websocketConnected ? 'connected' : 'disconnected'}">
-          <div class="status-indicator"></div>
-          <span class="status-text">{websocketConnected ? 'Connected' : 'Disconnected'}</span>
+          <div class="status-indicator" class:enhanced-connected={$enhancedCognitiveState.apiConnected}></div>
+          <span class="status-text">
+            {#if $enhancedCognitiveState.apiConnected}
+              Enhanced Connected
+            {:else if websocketConnected}
+              Basic Connected  
+            {:else}
+              Disconnected
+            {/if}
+          </span>
+          {#if $enhancedCognitiveState.cognitiveStreaming?.fallbackMode}
+            <span class="fallback-indicator" title="Using fallback polling mode">📡</span>
+          {/if}
         </div>
         <button class="fullscreen-toggle" on:click={toggleFullscreen}>
           <span>{fullscreenMode ? '🗗' : '⛶'}</span>
@@ -455,6 +435,20 @@
                   </div>
                 {/if}
               {/each}
+              
+              <!-- Enhanced Cognitive Health -->
+              {#if $enhancedCognitiveState.systemHealth}
+                {#each Object.entries($enhancedCognitiveState.systemHealth) as [module, status]}
+                  {#if typeof status === 'string' && ['healthy', 'degraded', 'critical', 'connected', 'disconnected'].includes(status)}
+                    <div class="health-item enhanced">
+                      <span class="module-name enhanced-module">{module}</span>
+                      <div class="status-badge {status}">
+                        {status}
+                      </div>
+                    </div>
+                  {/if}
+                {/each}
+              {/if}
             </div>
           </div>
           
@@ -473,6 +467,18 @@
                 <span class="stat-value">{$knowledgeState.totalDocuments}</span>
                 <span class="stat-label">Documents</span>
               </div>
+              
+              <!-- Enhanced Learning Stats -->
+              {#if $enhancedCognitiveState.autonomousLearning}
+                <div class="stat enhanced">
+                  <span class="stat-value">{$enhancedCognitiveState.autonomousLearning.detectedGaps?.length || 0}</span>
+                  <span class="stat-label">Knowledge Gaps</span>
+                </div>
+                <div class="stat enhanced">
+                  <span class="stat-value">{$enhancedCognitiveState.autonomousLearning.statistics?.totalAcquisitions || 0}</span>
+                  <span class="stat-label">Acquisitions</span>
+                </div>
+              {/if}
             </div>
           </div>
         </div>
@@ -1449,6 +1455,178 @@
 
     .header-center {
       display: none; /* Hide view indicator on mobile to save space */
+    }
+  }
+
+  /* Enhanced Cognitive Features Styling */
+  
+  /* Enhanced connection indicator */
+  .status-indicator.enhanced-connected {
+    background: linear-gradient(45deg, #4caf50, #8bc34a);
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+    animation: enhanced-pulse 2s infinite;
+  }
+
+  @keyframes enhanced-pulse {
+    0%, 100% { 
+      box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+    }
+    50% { 
+      box-shadow: 0 0 16px rgba(76, 175, 80, 0.7);
+    }
+  }
+
+  .fallback-indicator {
+    margin-left: 0.5rem;
+    opacity: 0.8;
+    font-size: 0.8rem;
+    animation: fallback-blink 3s infinite;
+  }
+
+  @keyframes fallback-blink {
+    0%, 90%, 100% { opacity: 0.8; }
+    95% { opacity: 0.3; }
+  }
+
+  /* Enhanced health items */
+  .health-item.enhanced {
+    background: rgba(76, 175, 80, 0.05);
+    border: 1px solid rgba(76, 175, 80, 0.1);
+    border-radius: 6px;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+  }
+
+  .enhanced-module {
+    color: #8bc34a !important;
+    font-weight: 500;
+  }
+
+  .status-badge {
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .status-badge.healthy {
+    background: rgba(76, 175, 80, 0.2);
+    color: #4caf50;
+  }
+
+  .status-badge.degraded {
+    background: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+  }
+
+  .status-badge.critical {
+    background: rgba(244, 67, 54, 0.2);
+    color: #f44336;
+  }
+
+  .status-badge.connected {
+    background: rgba(76, 175, 80, 0.2);
+    color: #4caf50;
+  }
+
+  .status-badge.disconnected {
+    background: rgba(158, 158, 158, 0.2);
+    color: #9e9e9e;
+  }
+
+  /* Enhanced stats */
+  .stat.enhanced {
+    background: rgba(76, 175, 80, 0.05);
+    border: 1px solid rgba(76, 175, 80, 0.1);
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat.enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #4caf50, #8bc34a);
+  }
+
+  .stat.enhanced .stat-label {
+    color: #8bc34a;
+  }
+
+  /* Enhanced view indicators */
+  .nav-item.featured {
+    position: relative;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(139, 195, 74, 0.1));
+    border: 1px solid rgba(76, 175, 80, 0.2);
+  }
+
+  .nav-item.featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #4caf50, #8bc34a);
+  }
+
+  .featured-indicator {
+    font-size: 0.8rem;
+    margin-left: 0.25rem;
+    animation: sparkle 2s infinite;
+  }
+
+  @keyframes sparkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
+  }
+
+  /* Enhanced section badges */
+  .section-badge {
+    background: linear-gradient(45deg, #4caf50, #8bc34a);
+    color: white;
+    padding: 0.1rem 0.4rem;
+    border-radius: 8px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-left: auto;
+    box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3);
+  }
+
+  /* Connection status improvements */
+  .connection-status {
+    transition: all 0.3s ease;
+  }
+
+  .connection-status.connected .status-indicator {
+    background: #4caf50;
+  }
+
+  .connection-status.disconnected .status-indicator {
+    background: #9e9e9e;
+  }
+
+  /* Enhanced responsive adjustments */
+  @media (max-width: 768px) {
+    .fallback-indicator {
+      display: none; /* Hide on mobile to save space */
+    }
+    
+    .status-badge {
+      font-size: 0.6rem;
+      padding: 0.15rem 0.4rem;
+    }
+    
+    .enhanced-module {
+      font-size: 0.8rem;
     }
   }
 </style>
