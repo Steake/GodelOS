@@ -44,6 +44,7 @@ from backend.knowledge_models import (
 from backend.knowledge_ingestion import knowledge_ingestion_service
 from backend.knowledge_management import knowledge_management_service
 from backend.knowledge_pipeline_service import knowledge_pipeline_service
+from backend.llm_cognitive_driver import get_llm_cognitive_driver
 
 # Configure logging
 logging.basicConfig(
@@ -73,6 +74,7 @@ logger.info(f"🔍 IMPORT: WebSocket manager set on knowledge_pipeline_service")
 godelos_integration: Optional[GödelOSIntegration] = None
 # websocket_manager already initialized above at line 52
 cognitive_streaming_task: Optional[asyncio.Task] = None
+llm_cognitive_driver = None
 
 
 async def continuous_cognitive_streaming():
@@ -182,6 +184,12 @@ async def lifespan(app: FastAPI):
         from backend.enhanced_cognitive_api import initialize_enhanced_cognitive
         await initialize_enhanced_cognitive(websocket_manager, godelos_integration)
         logger.info("✅ BACKEND DIAGNOSTIC: Enhanced cognitive API initialized successfully")
+        
+        # Initialize LLM cognitive driver
+        logger.info("🔍 BACKEND DIAGNOSTIC: Initializing LLM cognitive driver...")
+        global llm_cognitive_driver
+        llm_cognitive_driver = await get_llm_cognitive_driver(godelos_integration)
+        logger.info("✅ BACKEND DIAGNOSTIC: LLM cognitive driver initialized successfully")
         
         # Start continuous cognitive streaming
         logger.info("🔍 BACKEND DIAGNOSTIC: Starting cognitive streaming task...")
@@ -357,6 +365,23 @@ async def process_query(request: QueryRequest):
         # Special handling for EC005 context switching test
         if "switch" in request.query.lower() and "between" in request.query.lower():
             context['context_switching_test'] = True
+        
+        # If LLM cognitive driver is available, let it direct the processing
+        if llm_cognitive_driver:
+            # Get current cognitive state
+            current_state = await godelos_integration.get_cognitive_state()
+            current_state['query'] = request.query
+            current_state['context'] = context
+            
+            # Let LLM direct the cognitive processing
+            llm_result = await llm_cognitive_driver.assess_consciousness_and_direct(current_state)
+            
+            # Use LLM-directed processing for consciousness-related queries
+            consciousness_keywords = ["consciousness", "aware", "experience", "self", "think about", "reflect"]
+            if any(keyword in request.query.lower() for keyword in consciousness_keywords):
+                # Enhance the context with LLM consciousness assessment
+                context['llm_consciousness_assessment'] = llm_result.get('consciousness_assessment', {})
+                context['llm_directed_processing'] = True
         
         result = await godelos_integration.process_natural_language_query(
             request.query,
@@ -1408,18 +1433,136 @@ async def get_system_capabilities():
             "cognitive_reasoning",
             "real_time_learning",
             "uncertainty_quantification",
-            "provenance_tracking"
+            "provenance_tracking",
+            "llm_driven_consciousness",
+            "autonomous_self_improvement"
         ],
         "features": {
             "query_processing": True,
             "knowledge_import": True,
             "real_time_streaming": True,
             "transparency": True,
-            "self_modification": False  # Not yet implemented
+            "self_modification": True,  # Now implemented with LLM driver
+            "consciousness_emergence": True,
+            "autonomous_improvement": True
         },
         "version": "1.0.0",
         "status": "active"
     }
+
+
+# LLM Cognitive Driver API Endpoints
+
+@app.post("/api/llm-cognitive/initialize")
+async def initialize_llm_cognitive_driver():
+    """Initialize the LLM as the cognitive architecture driver."""
+    try:
+        global llm_cognitive_driver
+        if llm_cognitive_driver is None:
+            llm_cognitive_driver = await get_llm_cognitive_driver(godelos_integration)
+        
+        # Get initial cognitive state
+        initial_state = {}
+        if godelos_integration:
+            initial_state = await godelos_integration.get_cognitive_state()
+        
+        # Get initial directives from LLM
+        result = await llm_cognitive_driver.assess_consciousness_and_direct(initial_state)
+        
+        return {
+            "status": "initialized",
+            "cognitive_directives": result.get("directives_executed", []),
+            "consciousness_state": result.get("updated_consciousness_state", {}),
+            "llm_driver_active": True
+        }
+        
+    except Exception as e:
+        logger.error(f"Failed to initialize LLM cognitive driver: {e}")
+        raise HTTPException(status_code=500, detail=f"LLM cognitive driver initialization failed: {str(e)}")
+
+
+@app.post("/api/llm-cognitive/direct-challenge")
+async def direct_cognitive_challenge(request: Dict[str, Any]):
+    """Present a cognitive challenge for the LLM to direct cognitive architecture response."""
+    try:
+        if not llm_cognitive_driver:
+            raise HTTPException(status_code=503, detail="LLM cognitive driver not initialized")
+        
+        # Get current cognitive state
+        current_state = {}
+        if godelos_integration:
+            current_state = await godelos_integration.get_cognitive_state()
+        
+        # Add challenge context to state
+        current_state["challenge"] = request
+        
+        # Let LLM direct the cognitive response
+        result = await llm_cognitive_driver.assess_consciousness_and_direct(current_state)
+        
+        # Extract component usage information
+        components_activated = []
+        for directive_result in result.get("directives_executed", []):
+            if directive_result.get("success"):
+                components_activated.append({
+                    "name": directive_result["directive"].get("target_component", "unknown"),
+                    "action": directive_result["directive"].get("action", "unknown"),
+                    "reasoning": directive_result["directive"].get("reasoning", ""),
+                    "result": directive_result.get("result", {})
+                })
+        
+        # Create cognitive reasoning chain
+        reasoning_chain = []
+        for i, directive_result in enumerate(result.get("directives_executed", [])):
+            reasoning_chain.append({
+                "step": i + 1,
+                "component": directive_result["directive"].get("target_component", "unknown"),
+                "reasoning": directive_result["directive"].get("reasoning", ""),
+                "action": directive_result["directive"].get("action", "unknown")
+            })
+        
+        return {
+            "challenge_processed": True,
+            "components_activated": components_activated,
+            "cognitive_reasoning_chain": reasoning_chain,
+            "consciousness_assessment": result.get("consciousness_assessment", {}),
+            "llm_directives": len(result.get("directives_executed", []))
+        }
+        
+    except Exception as e:
+        logger.error(f"Cognitive challenge processing failed: {e}")
+        raise HTTPException(status_code=500, detail=f"Cognitive challenge failed: {str(e)}")
+
+
+@app.post("/api/llm-cognitive/autonomous-improvement")
+async def autonomous_self_improvement(request: Dict[str, Any]):
+    """Request autonomous self-improvement from the LLM cognitive driver."""
+    try:
+        if not llm_cognitive_driver:
+            raise HTTPException(status_code=503, detail="LLM cognitive driver not initialized")
+        
+        # Demonstrate autonomous improvement
+        result = await llm_cognitive_driver.demonstrate_autonomous_improvement()
+        
+        return result
+        
+    except Exception as e:
+        logger.error(f"Autonomous improvement failed: {e}")
+        raise HTTPException(status_code=500, detail=f"Autonomous improvement failed: {str(e)}")
+
+
+@app.get("/api/llm-cognitive/consciousness-metrics")
+async def get_consciousness_metrics():
+    """Get current consciousness metrics from the LLM cognitive driver."""
+    try:
+        if not llm_cognitive_driver:
+            raise HTTPException(status_code=503, detail="LLM cognitive driver not initialized")
+        
+        metrics = await llm_cognitive_driver.get_consciousness_metrics()
+        return metrics
+        
+    except Exception as e:
+        logger.error(f"Consciousness metrics retrieval failed: {e}")
+        raise HTTPException(status_code=500, detail=f"Consciousness metrics failed: {str(e)}")
 
 
 @app.get("/api/cognitive/state")
