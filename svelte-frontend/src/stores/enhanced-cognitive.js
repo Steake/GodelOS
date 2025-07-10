@@ -6,9 +6,11 @@
  * - Real-time cognitive event streaming
  * - Enhanced system health monitoring
  * - Stream of consciousness coordination
+ * - Unified state coordination with basic cognitive store
  */
 
 import { writable, derived, get } from 'svelte/store';
+import { cognitiveState } from './cognitive.js';
 
 // API Configuration
 const API_BASE_URL = 'http://localhost:8000';
@@ -97,6 +99,10 @@ class EnhancedCognitiveStateManager {
     this.isInitialized = false;
     this.eventBuffer = [];
     this.maxBufferSize = 1000;
+    this.fallbackPollingInterval = null;
+    this.reconnectAttempts = 0;
+    this.maxReconnectAttempts = 5;
+    this.reconnectTimeout = null;
   }
 
   /**
@@ -106,6 +112,32 @@ class EnhancedCognitiveStateManager {
     if (this.isInitialized) return;
 
     try {
+      console.log('🧠 Initializing enhanced cognitive systems...');
+      
+      // Check backend connectivity first
+      try {
+        const healthResponse = await fetch(`${API_BASE_URL}/api/enhanced-cognitive/health`, {
+          signal: AbortSignal.timeout(5000)
+        });
+        if (healthResponse.ok) {
+          console.log('✅ Enhanced cognitive API is available');
+          enhancedCognitiveState.update(state => ({
+            ...state,
+            apiConnected: true,
+            connectionStatus: 'connected'
+          }));
+        } else {
+          throw new Error('Enhanced cognitive API not available');
+        }
+      } catch (error) {
+        console.log('⚠️ Enhanced cognitive API not available, using fallback mode');
+        enhancedCognitiveState.update(state => ({
+          ...state,
+          apiConnected: false,
+          connectionStatus: 'disconnected'
+        }));
+      }
+
       // Initialize cognitive streaming if enabled
       const config = get(cognitiveConfig);
       if (config.cognitiveStreaming.enabled) {
@@ -133,24 +165,39 @@ class EnhancedCognitiveStateManager {
       console.log('✅ Enhanced cognitive state manager initialized');
 
     } catch (error) {
+      console.warn('Enhanced cognitive initialization failed:', error);
       // Silently handle initialization errors when backend is unavailable
-      state.apiConnected = false;
-      state.lastUpdate = new Date().toISOString();
+      enhancedCognitiveState.update(state => ({
+        ...state,
+        apiConnected: false,
+        connectionStatus: 'disconnected',
+        lastUpdate: new Date().toISOString()
+      }));
     }
   }
 
   /**
-   * Connect to cognitive event stream
+   * Connect to cognitive event stream with enhanced error handling and reconnection
    */
   async connectCognitiveStream() {
     try {
       const config = get(cognitiveConfig);
-      const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-      const host = window.location.host;
       
       // Disconnect existing connection
       if (cognitiveWebSocket) {
         cognitiveWebSocket.close();
+      }
+
+      // Check if WebSocket endpoint is available first
+      try {
+        const streamStatusResponse = await fetch(`${API_BASE_URL}/api/enhanced-cognitive/stream/status`);
+        if (!streamStatusResponse.ok) {
+          throw new Error('Cognitive stream endpoint not available');
+        }
+      } catch (error) {
+        console.log('⚠️ Cognitive streaming not available, using fallback polling');
+        this.enableFallbackPolling();
+        return;
       }
 
       // Build WebSocket URL with parameters
@@ -159,18 +206,22 @@ class EnhancedCognitiveStateManager {
         subscriptions: config.cognitiveStreaming.subscriptions?.join(',') || ''
       });
 
-      const wsUrl = `ws://localhost:8000/api/enhanced-cognitive/stream?${params}`;
+      // Derive WebSocket URL dynamically from API_BASE_URL
+      const apiUrl = new URL(API_BASE_URL);
+      const wsProtocol = apiUrl.protocol === 'https:' ? 'wss:' : 'ws:';
+      const wsUrl = `${wsProtocol}//${apiUrl.host}/ws/cognitive-stream?${params}`;
       
+      console.log('🔗 Connecting to cognitive stream:', wsUrl);
       cognitiveWebSocket = new WebSocket(wsUrl);
 
       cognitiveWebSocket.onopen = () => {
         console.log('🔗 Cognitive stream connected successfully');
-        reconnectAttempts = 0;
+        this.reconnectAttempts = 0;
         
         // Clear any pending reconnection attempts
-        if (reconnectTimeout) {
-          clearTimeout(reconnectTimeout);
-          reconnectTimeout = null;
+        if (this.reconnectTimeout) {
+          clearTimeout(this.reconnectTimeout);
+          this.reconnectTimeout = null;
         }
         
         enhancedCognitiveState.update(state => ({
@@ -178,17 +229,28 @@ class EnhancedCognitiveStateManager {
           cognitiveStreaming: {
             ...state.cognitiveStreaming,
             connected: true,
+            enabled: true,
             connectionId: Date.now().toString(),
             lastEvent: new Date().toISOString()
-          }
+          },
+          connectionStatus: 'connected'
         }));
+
+        // Send initial configuration
+        if (cognitiveWebSocket && cognitiveWebSocket.readyState === WebSocket.OPEN) {
+          cognitiveWebSocket.send(JSON.stringify({
+            type: 'configure',
+            granularity: config.cognitiveStreaming.granularity,
+            subscriptions: config.cognitiveStreaming.subscriptions || []
+          }));
+        }
       };
 
       cognitiveWebSocket.onmessage = (event) => {
         try {
-          console.log('📥 Received cognitive event:', event.data);
           const cognitiveEvent = JSON.parse(event.data);
-          enhancedCognitiveStateManager.handleCognitiveEvent(cognitiveEvent);
+          console.log('📥 Received cognitive event:', cognitiveEvent.type);
+          this.handleCognitiveEvent(cognitiveEvent);
         } catch (error) {
           console.error('❌ Error parsing cognitive event:', error, 'Raw data:', event.data);
         }
@@ -202,34 +264,161 @@ class EnhancedCognitiveStateManager {
           cognitiveStreaming: {
             ...state.cognitiveStreaming,
             connected: false
-          }
+          },
+          connectionStatus: 'disconnected'
         }));
 
-        // Attempt to reconnect if configured and not a normal closure
-        const config = get(cognitiveConfig);
-        if (config.cognitiveStreaming.autoReconnect && 
-            reconnectAttempts < maxReconnectAttempts && 
-            event.code !== 1000) { // 1000 is normal closure
-          reconnectAttempts++;
-          const delay = Math.min(1000 * Math.pow(2, reconnectAttempts), 30000);
-          
-          console.log(`🔄 Attempting to reconnect cognitive stream in ${delay}ms (attempt ${reconnectAttempts}/${maxReconnectAttempts})`);
-          
-          reconnectTimeout = setTimeout(() => {
-            this.connectCognitiveStream();
-          }, delay);
-        } else if (reconnectAttempts >= maxReconnectAttempts) {
-          console.warn('❌ Max reconnection attempts reached for cognitive stream');
+        // Attempt reconnection if not a normal closure
+        if (event.code !== 1000 && this.reconnectAttempts < this.maxReconnectAttempts) {
+          this.scheduleReconnection();
+        } else {
+          console.log('🔄 Falling back to polling mode');
+          this.enableFallbackPolling();
         }
       };
 
       cognitiveWebSocket.onerror = (error) => {
-        console.error('❌ Cognitive stream WebSocket error:', error);
+        console.log('❌ Cognitive stream error, will attempt fallback');
+        
+        enhancedCognitiveState.update(state => ({
+          ...state,
+          cognitiveStreaming: {
+            ...state.cognitiveStreaming,
+            connected: false
+          },
+          connectionStatus: 'error'
+        }));
       };
 
     } catch (error) {
-      console.error('❌ Failed to connect to cognitive stream:', error);
+      console.log('⚠️ WebSocket connection failed, using fallback polling:', error);
+      this.enableFallbackPolling();
     }
+  }
+
+  /**
+   * Enable fallback polling when WebSocket is not available
+   */
+  enableFallbackPolling() {
+    console.log('🔄 Enabling fallback polling for cognitive updates');
+    
+    // Update every 5 seconds as fallback
+    if (!this.fallbackPollingInterval) {
+      this.fallbackPollingInterval = setInterval(async () => {
+        try {
+          await this.updateSystemHealth();
+          await this.updateAutonomousLearningState();
+        } catch (error) {
+          // Silently handle polling errors
+        }
+      }, 5000);
+    }
+
+    enhancedCognitiveState.update(state => ({
+      ...state,
+      cognitiveStreaming: {
+        ...state.cognitiveStreaming,
+        connected: false,
+        enabled: false,
+        fallbackMode: true
+      }
+    }));
+  }
+
+  /**
+   * Disconnect from cognitive stream
+   */
+  disconnectCognitiveStream() {
+    if (cognitiveWebSocket) {
+      cognitiveWebSocket.close(1000, 'Client disconnect');
+      cognitiveWebSocket = null;
+    }
+
+    if (this.reconnectTimeout) {
+      clearTimeout(this.reconnectTimeout);
+      this.reconnectTimeout = null;
+    }
+
+    if (this.fallbackPollingInterval) {
+      clearInterval(this.fallbackPollingInterval);
+      this.fallbackPollingInterval = null;
+    }
+
+    enhancedCognitiveState.update(state => ({
+      ...state,
+      cognitiveStreaming: {
+        ...state.cognitiveStreaming,
+        connected: false,
+        enabled: false,
+        fallbackMode: false
+      }
+    }));
+
+    console.log('🔌 Disconnected from cognitive stream');
+  }
+
+  /**
+   * Configure cognitive streaming settings
+   */
+  async configureCognitiveStreaming(config) {
+    try {
+      // Update local configuration
+      cognitiveConfig.update(state => ({
+        ...state,
+        cognitiveStreaming: { ...state.cognitiveStreaming, ...config }
+      }));
+
+      // If streaming is being enabled, connect
+      if (config.enabled) {
+        await this.connectCognitiveStream();
+      } else {
+        this.disconnectCognitiveStream();
+      }
+
+      // Send configuration to backend if connected
+      if (cognitiveWebSocket && cognitiveWebSocket.readyState === WebSocket.OPEN) {
+        cognitiveWebSocket.send(JSON.stringify({
+          type: 'configure',
+          ...config
+        }));
+      } else {
+        // Use HTTP API as fallback
+        try {
+          const response = await fetch(`${API_BASE_URL}/api/enhanced-cognitive/stream/configure`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(config)
+          });
+          if (response.ok) {
+            console.log('✅ Cognitive streaming configured via HTTP API');
+          }
+        } catch (error) {
+          console.warn('Failed to configure streaming via HTTP API:', error);
+        }
+      }
+
+      return true;
+    } catch (error) {
+      console.error('Failed to configure cognitive streaming:', error);
+      return false;
+    }
+  }
+
+  /**
+   * Schedule reconnection attempt
+   */
+  scheduleReconnection() {
+    if (this.reconnectTimeout) return;
+
+    this.reconnectAttempts++;
+    const delay = Math.min(1000 * Math.pow(2, this.reconnectAttempts), 30000); // Max 30 seconds
+
+    console.log(`🔄 Scheduling reconnection attempt ${this.reconnectAttempts} in ${delay}ms`);
+    
+    this.reconnectTimeout = setTimeout(() => {
+      this.reconnectTimeout = null;
+      this.connectCognitiveStream();
+    }, delay);
   }
 
   /**
@@ -589,9 +778,45 @@ export function formatEventRate(rate) {
   return `${rate.toFixed(1)}/s`;
 }
 
+// State Coordination - Bridge between basic and enhanced cognitive stores
+const synchronizedCognitiveState = derived(
+  cognitiveState,
+  (basicState, set) => {
+    set({
+      ...get(enhancedCognitiveState),
+      // Sync manifest consciousness with enhanced features
+      manifestConsciousness: {
+        ...get(enhancedCognitiveState).manifestConsciousness,
+        currentFocus: basicState.manifestConsciousness?.currentQuery || 
+                     basicState.manifestConsciousness?.attention || 
+                     get(enhancedCognitiveState).manifestConsciousness.currentFocus,
+        attentionDepth: get(enhancedCognitiveState).manifestConsciousness.attentionDepth,
+        processingMode: basicState.manifestConsciousness?.processingLoad > 0.7 ? 'intensive' :
+                       basicState.manifestConsciousness?.processingLoad > 0.3 ? 'active' : 'idle',
+        cognitiveLoad: basicState.manifestConsciousness?.processingLoad || get(enhancedCognitiveState).manifestConsciousness.cognitiveLoad,
+        lastActivity: basicState.lastUpdate ? new Date(basicState.lastUpdate).toISOString() : get(enhancedCognitiveState).manifestConsciousness.lastActivity
+      },
+      // Enhance system health with basic cognitive health data
+      systemHealth: {
+        ...get(enhancedCognitiveState).systemHealth,
+        inferenceEngine: basicState.systemHealth?.inferenceEngine > 0.8 ? 'healthy' :
+                        basicState.systemHealth?.inferenceEngine > 0.5 ? 'degraded' : 'critical',
+        knowledgeStore: basicState.systemHealth?.knowledgeStore > 0.8 ? 'healthy' :
+                       basicState.systemHealth?.knowledgeStore > 0.5 ? 'degraded' : 'critical',
+        websocketConnection: basicState.systemHealth?.websocketConnection > 0.5 ? 'connected' : 'disconnected'
+      },
+      // Update connection status based on basic cognitive state
+      connectionStatus: basicState.systemHealth?.websocketConnection > 0.5 ? 'connected' : 'disconnected',
+      lastUpdate: new Date().toISOString()
+    }));
+  });
+}
+
 // Initialize on module load
 if (typeof window !== 'undefined') {
   enhancedCognitiveStateManager.initialize();
+  // Start state synchronization
+  synchronizeWithBasicCognitive();
 }
 
 // Main enhanced cognitive interface for components
@@ -608,7 +833,7 @@ export const enhancedCognitive = {
   disableAutonomousLearning: () => enhancedCognitiveStateManager.configureAutonomousLearning({ enabled: false }),
   updateHealthStatus: () => enhancedCognitiveStateManager.updateSystemHealth(),
   
-  // Additional missing methods for components
+  // Enhanced methods for better integration
   refreshSystemHealth: () => enhancedCognitiveStateManager.updateSystemHealth(),
   refreshAutonomousState: () => enhancedCognitiveStateManager.updateAutonomousLearningState(),
   refreshStreamingState: () => enhancedCognitiveStateManager.connectCognitiveStream(),
@@ -617,7 +842,13 @@ export const enhancedCognitive = {
   pauseAutonomousLearning: () => enhancedCognitiveStateManager.configureAutonomousLearning({ enabled: false }),
   resumeAutonomousLearning: () => enhancedCognitiveStateManager.configureAutonomousLearning({ enabled: true }),
   updateLearningConfiguration: (config) => enhancedCognitiveStateManager.configureAutonomousLearning(config),
-  triggerManualAcquisition: (concept, context) => enhancedCognitiveStateManager.triggerKnowledgeAcquisition([concept]),
+  
+  // Stream management
+  configureCognitiveStreaming: (config) => enhancedCognitiveStateManager.configureCognitiveStreaming(config),
+  startCognitiveStreaming: (granularity = 'standard') => enhancedCognitiveStateManager.configureCognitiveStreaming({ enabled: true, granularity }),
+  stopCognitiveStreaming: () => enhancedCognitiveStateManager.disconnectCognitiveStream(),
+  
+  // Event management
   clearEventHistory: () => {
     enhancedCognitiveStateManager.eventBuffer = [];
     enhancedCognitiveState.update(state => ({
@@ -629,17 +860,57 @@ export const enhancedCognitive = {
     }));
   },
   
-  // Stream subscription method
-  subscribeToStream: (callback) => {
-    // For now, return a no-op unsubscribe function
-    // This can be enhanced when WebSocket streaming is fully implemented
-    return () => {};
+  // Manual triggers
+  triggerManualAcquisition: async (concept, context) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/enhanced-cognitive/autonomous/acquire`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ concept, context })
+      });
+      return response.ok;
+    } catch (error) {
+      console.warn('Failed to trigger manual acquisition:', error);
+      return false;
+    }
   },
   
-  // Start cognitive streaming method
-  startCognitiveStreaming: (granularity = 'standard') => enhancedCognitiveStateManager.connectCognitiveStream(),
+  triggerSystemRefresh: async () => {
+    try {
+      await Promise.all([
+        enhancedCognitiveStateManager.updateSystemHealth(),
+        enhancedCognitiveStateManager.updateAutonomousLearningState()
+      ]);
+      return true;
+    } catch (error) {
+      console.warn('System refresh failed:', error);
+      return false;
+    }
+  },
   
-  // State access
+  // Stream subscription method for real-time updates
+  subscribeToStream: (callback) => {
+    // Subscribe to cognitive streaming events
+    const unsubscribe = enhancedCognitiveState.subscribe(state => {
+      if (state.cognitiveStreaming?.lastEvent) {
+        callback(state.cognitiveStreaming.lastEvent);
+      }
+    });
+    return unsubscribe;
+  },
+  
+  // Connection status
+  getConnectionStatus: () => {
+    const state = get(enhancedCognitiveState);
+    return {
+      apiConnected: state.apiConnected,
+      streamConnected: state.cognitiveStreaming?.connected || false,
+      connectionStatus: state.connectionStatus,
+      fallbackMode: state.cognitiveStreaming?.fallbackMode || false
+    };
+  },
+  
+  // State access helpers
   autonomousLearning: autonomousLearningState,
   streaming: cognitiveStreamingState,
   health: enhancedSystemHealth,
