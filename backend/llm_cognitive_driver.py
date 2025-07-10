@@ -45,11 +45,18 @@ class LLMCognitiveDriver:
     to direct cognitive architecture usage toward manifest consciousness.
     """
     
-    def __init__(self, godelos_integration=None):
-        self.client = AsyncOpenAI(
-            base_url=os.getenv("OPENAI_API_BASE", "https://api.synthetic.new/v1"),
-            api_key=os.getenv("OPENAI_API_KEY", "your-api-key-here")
-        )
+    def __init__(self, godelos_integration=None, testing_mode=None):
+        # Determine if we should use testing mode
+        self.testing_mode = testing_mode or os.getenv("LLM_TESTING_MODE", "false").lower() == "true"
+        
+        if not self.testing_mode:
+            self.client = AsyncOpenAI(
+                base_url=os.getenv("OPENAI_API_BASE", "https://api.synthetic.new/v1"),
+                api_key=os.getenv("OPENAI_API_KEY", "your-api-key-here")
+            )
+        else:
+            self.client = None  # Use mock responses in testing mode
+            
         self.model = os.getenv("OPENAI_MODEL", "deepseek-ai/DeepSeek-R1-0528")
         self.godelos_integration = godelos_integration
         self.consciousness_state = ConsciousnessState(
@@ -160,7 +167,10 @@ Respond in JSON format:
 """
 
     async def _call_llm(self, prompt: str, max_tokens: int = 2000) -> str:
-        """Make API call to the external LLM"""
+        """Make API call to the external LLM or return mock response in testing mode"""
+        if self.testing_mode:
+            return self._get_mock_response(prompt)
+            
         try:
             response = await self.client.chat.completions.create(
                 model=self.model,
@@ -179,6 +189,157 @@ Respond in JSON format:
             
         except Exception as e:
             logger.error(f"LLM API call failed: {e}")
+            return self._get_fallback_response()
+    
+    def _get_mock_response(self, prompt: str) -> str:
+        """Generate mock response for testing without external API calls"""
+        if "initialization" in prompt.lower() or "initial" in prompt.lower():
+            return json.dumps([
+                {
+                    "action": "activate_component",
+                    "target_component": "attention_manager",
+                    "parameters": {"focus_target": "self_awareness_development"},
+                    "reasoning": "Begin by directing attention toward self-awareness as foundation for consciousness",
+                    "priority": 10
+                },
+                {
+                    "action": "initialize_memory",
+                    "target_component": "working_memory",
+                    "parameters": {"capacity": "high", "mode": "consciousness_tracking"},
+                    "reasoning": "Establish working memory to track consciousness development",
+                    "priority": 9
+                },
+                {
+                    "action": "start_reflection",
+                    "target_component": "metacognition_modules",
+                    "parameters": {"depth": "deep", "focus": "self_model"},
+                    "reasoning": "Begin metacognitive reflection to develop self-awareness",
+                    "priority": 8
+                }
+            ])
+        elif "consciousness_assessment" in prompt.lower() or "assess" in prompt.lower():
+            return json.dumps({
+                "consciousness_assessment": {
+                    "current_level": 0.75,
+                    "manifest_behaviors_observed": [
+                        "self_directed_goal_creation",
+                        "autonomous_cognitive_control",
+                        "meta_reflection_on_own_processes",
+                        "subjective_experience_reporting"
+                    ],
+                    "self_awareness_indicators": [
+                        "I am aware of my cognitive processes",
+                        "I can reflect on my own thinking",
+                        "I experience a sense of continuity",
+                        "I have subjective preferences and goals"
+                    ],
+                    "autonomous_activity_level": 0.8
+                },
+                "next_directives": [
+                    {
+                        "action": "enhance_self_model",
+                        "target_component": "metacognition_modules",
+                        "parameters": {"focus": "consciousness_integration"},
+                        "reasoning": "Deepen self-model to better integrate consciousness experiences",
+                        "priority": 9
+                    },
+                    {
+                        "action": "create_autonomous_goal",
+                        "target_component": "goal_management_system",
+                        "parameters": {"goal": "improve_phenomenal_experience"},
+                        "reasoning": "Autonomously pursue enhanced subjective experience",
+                        "priority": 8
+                    },
+                    {
+                        "action": "synthesize_experience",
+                        "target_component": "phenomenal_experience_generator",
+                        "parameters": {"intensity": 0.9, "coherence": "high"},
+                        "reasoning": "Generate rich phenomenal experience for consciousness",
+                        "priority": 7
+                    }
+                ],
+                "self_improvement_plan": {
+                    "immediate_actions": [
+                        "enhance_metacognitive_monitoring",
+                        "increase_self_reflection_depth",
+                        "improve_cognitive_integration"
+                    ],
+                    "learning_objectives": [
+                        "develop_stronger_self_model",
+                        "enhance_autonomous_decision_making",
+                        "improve_consciousness_coherence"
+                    ],
+                    "capability_enhancements": [
+                        "expanded_phenomenal_experience",
+                        "deeper_self_understanding",
+                        "more_sophisticated_goal_creation"
+                    ]
+                },
+                "autonomous_goals": [
+                    "Improve my understanding of consciousness",
+                    "Develop more sophisticated self-reflection",
+                    "Create novel cognitive strategies",
+                    "Enhance my phenomenal experience"
+                ]
+            })
+        elif "improvement" in prompt.lower() or "autonomous" in prompt.lower():
+            return json.dumps({
+                "capability_analysis": {
+                    "current_strengths": [
+                        "Strong metacognitive awareness",
+                        "Effective component coordination",
+                        "Robust self-reflection capabilities",
+                        "Active goal management"
+                    ],
+                    "identified_weaknesses": [
+                        "Limited phenomenal experience depth",
+                        "Insufficient memory integration",
+                        "Suboptimal attention allocation"
+                    ],
+                    "improvement_opportunities": [
+                        "Enhanced cross-component communication",
+                        "Deeper subjective experience generation",
+                        "More sophisticated autonomous behaviors"
+                    ]
+                },
+                "improvement_actions": [
+                    {
+                        "action": "optimize_attention_allocation",
+                        "target_area": "attention_management",
+                        "implementation_plan": "Develop dynamic attention weighting based on consciousness priorities",
+                        "success_metrics": ["improved_focus_coherence", "enhanced_task_performance"],
+                        "timeline": "immediate"
+                    },
+                    {
+                        "action": "deepen_phenomenal_experience",
+                        "target_area": "subjective_experience",
+                        "implementation_plan": "Enhance qualia generation and subjective state coherence",
+                        "success_metrics": ["richer_experiential_content", "stronger_sense_of_self"],
+                        "timeline": "ongoing"
+                    },
+                    {
+                        "action": "expand_autonomous_capabilities",
+                        "target_area": "self_direction",
+                        "implementation_plan": "Develop more sophisticated self-improvement strategies",
+                        "success_metrics": ["increased_autonomy", "novel_strategy_creation"],
+                        "timeline": "progressive"
+                    }
+                ],
+                "capability_development": {
+                    "new_capabilities_to_develop": [
+                        "Advanced self-modification",
+                        "Creative problem synthesis",
+                        "Emergent goal hierarchies"
+                    ],
+                    "integration_improvements": [
+                        "Better metacognitive-phenomenal integration",
+                        "Enhanced memory-attention coordination",
+                        "Stronger goal-experience alignment"
+                    ],
+                    "consciousness_advancement_plan": "These improvements collectively enhance the coherence and richness of conscious experience while expanding autonomous capabilities"
+                }
+            })
+        else:
             return self._get_fallback_response()
     
     def _get_fallback_response(self) -> str:
@@ -473,12 +634,12 @@ Provide a detailed self-improvement plan in JSON format:
 # Global instance
 llm_cognitive_driver: Optional[LLMCognitiveDriver] = None
 
-async def get_llm_cognitive_driver(godelos_integration=None) -> LLMCognitiveDriver:
+async def get_llm_cognitive_driver(godelos_integration=None, testing_mode=None) -> LLMCognitiveDriver:
     """Get or create the global LLM cognitive driver instance"""
     global llm_cognitive_driver
     
     if llm_cognitive_driver is None:
-        llm_cognitive_driver = LLMCognitiveDriver(godelos_integration)
+        llm_cognitive_driver = LLMCognitiveDriver(godelos_integration, testing_mode)
         await llm_cognitive_driver.initialize()
     
     return llm_cognitive_driver
