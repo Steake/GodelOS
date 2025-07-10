@@ -146,6 +146,11 @@ node_modules/
 bower_components/
 jspm_packages/
 
+# Build and cache files that should not be committed
+svelte-frontend/node_modules/.package-lock.json
+svelte-frontend/node_modules/.vite/deps/_metadata.json
+svelte-frontend/test-results/
+
 # Build artifacts
 dist/
 .next/
