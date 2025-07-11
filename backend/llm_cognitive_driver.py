@@ -46,8 +46,8 @@ class LLMCognitiveDriver:
     """
     
     def __init__(self, godelos_integration=None, testing_mode=None):
-        # Determine if we should use testing mode - default to True to avoid firewall issues
-        self.testing_mode = testing_mode if testing_mode is not None else os.getenv("LLM_TESTING_MODE", "true").lower() == "true"
+        # Determine if we should use testing mode - default to False now that firewall is properly configured
+        self.testing_mode = testing_mode if testing_mode is not None else os.getenv("LLM_TESTING_MODE", "false").lower() == "true"
         
         if not self.testing_mode:
             self.client = AsyncOpenAI(

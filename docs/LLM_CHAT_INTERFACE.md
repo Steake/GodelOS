@@ -81,12 +81,17 @@ The chat interface is seamlessly integrated into the Human Interaction Panel via
 
 ## Firewall Configuration
 
-To avoid external API calls and firewall issues:
+The system requires access to HuggingFace and related ML services. These domains have been configured in the firewall allow list:
 
+- `huggingface.co` and `*.huggingface.co`
+- `hf.co` and `*.hf.co`  
+- `hf-mirror.com` and `*.hf-mirror.com`
+- `cdn-lfs.huggingface.co`
+- `s3.amazonaws.com` and `*.s3.amazonaws.com`
+
+For development testing without external dependencies:
 ```bash
 export LLM_TESTING_MODE=true
-export TRANSFORMERS_OFFLINE=true
-export HF_HUB_OFFLINE=true
 ```
 
 ## Development Testing
