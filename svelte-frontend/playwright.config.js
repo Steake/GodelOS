@@ -1,9 +1,9 @@
-const { defineConfig, devices } = require('@playwright/test');
+import { defineConfig, devices } from '@playwright/test';
 
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
-module.exports = defineConfig({
+export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -48,14 +48,33 @@ module.exports = defineConfig({
     },
 
     /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
+    {
+      name: 'Mobile Chrome',
+      use: { 
+        ...devices['Pixel 5'],
+        // Mobile-specific test settings
+        hasTouch: true,
+        isMobile: true,
+      },
+    },
+    {
+      name: 'Mobile Safari',
+      use: { 
+        ...devices['iPhone 12'],
+        // Mobile-specific test settings  
+        hasTouch: true,
+        isMobile: true,
+      },
+    },
+    {
+      name: 'Tablet',
+      use: {
+        ...devices['iPad Pro'],
+        // Tablet-specific test settings
+        hasTouch: true,
+        isMobile: false,
+      },
+    },
 
     /* Test against branded browsers. */
     // {
