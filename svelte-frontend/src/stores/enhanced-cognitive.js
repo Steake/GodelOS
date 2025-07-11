@@ -781,8 +781,8 @@ export function formatEventRate(rate) {
 // State Coordination - Bridge between basic and enhanced cognitive stores
 const synchronizedCognitiveState = derived(
   cognitiveState,
-  (basicState, set) => {
-    set({
+  (basicState) => {
+    return {
       ...get(enhancedCognitiveState),
       // Sync manifest consciousness with enhanced features
       manifestConsciousness: {
@@ -808,6 +808,17 @@ const synchronizedCognitiveState = derived(
       // Update connection status based on basic cognitive state
       connectionStatus: basicState.systemHealth?.websocketConnection > 0.5 ? 'connected' : 'disconnected',
       lastUpdate: new Date().toISOString()
+    };
+  }
+);
+
+// Function to synchronize enhanced state with basic cognitive state
+function synchronizeWithBasicCognitive() {
+  // Subscribe to synchronization state and update the main enhanced state
+  synchronizedCognitiveState.subscribe(synchronizedState => {
+    enhancedCognitiveState.update(state => ({
+      ...state,
+      ...synchronizedState
     }));
   });
 }

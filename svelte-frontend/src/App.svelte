@@ -10,6 +10,7 @@
   import CognitiveStateMonitor from './components/core/CognitiveStateMonitor.svelte';
   import QueryInterface from './components/core/QueryInterface.svelte';
   import ResponseDisplay from './components/core/ResponseDisplay.svelte';
+  import HumanInteractionPanel from './components/core/HumanInteractionPanel.svelte';
   
   // Enhanced Metacognition Components
   import StreamOfConsciousnessMonitor from './components/core/StreamOfConsciousnessMonitor.svelte';
@@ -178,6 +179,13 @@
           title: 'Query Interface',
           description: 'Natural language interaction',
           component: QueryInterface
+        },
+        interaction: {
+          icon: '🤝',
+          title: 'Human Interaction',
+          description: 'Human-system communication dashboard',
+          component: HumanInteractionPanel,
+          featured: true
         }
       }
     },
@@ -511,12 +519,15 @@
             <div class="cognitive-panel">
               <CognitiveStateMonitor />
             </div>
-            <div class="evolution-panel">
-              <ConceptEvolution />
+            <div class="interaction-panel">
+              <HumanInteractionPanel compactMode={true} />
             </div>
           </div>
           
           <div class="dashboard-bottom">
+            <div class="evolution-panel">
+              <ConceptEvolution />
+            </div>
             <div class="insights-panel">
               <div class="panel-header">
                 <h3>Process Insights</h3>
@@ -1172,7 +1183,7 @@
   }
 
   .query-panel, .response-panel, .cognitive-panel, .evolution-panel,
-  .insights-panel, .knowledge-preview-panel {
+  .insights-panel, .knowledge-preview-panel, .interaction-panel {
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(100, 181, 246, 0.2);
     border-radius: 16px;
