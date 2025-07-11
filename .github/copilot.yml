@@ -44,6 +44,17 @@ firewall:
     - "*.google.com"
     - "*.mozilla.org"
     - "*.w3.org"
+    
+    # Machine Learning and AI services
+    - "huggingface.co"
+    - "*.huggingface.co"
+    - "hf.co"
+    - "*.hf.co"
+    - "hf-mirror.com"
+    - "*.hf-mirror.com"
+    - "cdn-lfs.huggingface.co"
+    - "s3.amazonaws.com"
+    - "*.s3.amazonaws.com"
 
 # Copilot-specific settings
 copilot:
