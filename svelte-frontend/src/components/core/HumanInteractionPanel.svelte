@@ -2,6 +2,7 @@
   import { onMount, onDestroy } from 'svelte';
   import { cognitiveState, uiState } from '../../stores/cognitive.js';
   import { enhancedCognitiveState } from '../../stores/enhanced-cognitive.js';
+  import ChatInterface from './ChatInterface.svelte';
 
   // Component props
   export let compactMode = false;
@@ -9,7 +10,7 @@
   export let autoRefresh = true;
 
   // Local state for human interaction metrics
-  let interactionMode = 'normal'; // normal, enhanced, diagnostic
+  let interactionMode = 'normal'; // normal, enhanced, diagnostic, chat
   let humanPresenceDetected = false;
   let lastInteractionTime = null;
   let systemResponseiveness = 100;
@@ -179,6 +180,13 @@
           on:click={() => setInteractionMode('diagnostic')}
         >
           Diagnostic
+        </button>
+        <button 
+          class="mode-btn" 
+          class:active={interactionMode === 'chat'}
+          on:click={() => setInteractionMode('chat')}
+        >
+          💬 Chat
         </button>
       </div>
     </div>
@@ -372,6 +380,36 @@
           <div class="diagnostic-description">
             Active self-generated objective pursuits
           </div>
+        </div>
+      </div>
+    </section>
+  {/if}
+
+  <!-- LLM Chat Interface -->
+  {#if interactionMode === 'chat'}
+    <section class="chat-section">
+      <h3 class="section-title">🤖 LLM Chat Interface</h3>
+      
+      <div class="chat-container">
+        <ChatInterface 
+          mode={interactionMode === 'chat' ? 'enhanced' : 'normal'}
+          showCognitiveAnalysis={true}
+          autoScroll={true}
+        />
+      </div>
+      
+      <div class="chat-info">
+        <div class="info-item">
+          <span class="info-icon">🧠</span>
+          <span class="info-text">Natural language interface for cognitive state interaction</span>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">🔄</span>
+          <span class="info-text">Real-time cognitive reflection and guidance</span>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">📊</span>
+          <span class="info-text">Advanced consciousness analysis and system optimization</span>
         </div>
       </div>
     </section>
@@ -847,6 +885,63 @@
 
     .footer-stats {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Chat Interface Styles */
+  .chat-section {
+    background: rgba(10, 15, 25, 0.8);
+    border: 1px solid rgba(100, 181, 246, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .chat-container {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .chat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(25, 30, 45, 0.6);
+    border-radius: 8px;
+    border: 1px solid rgba(100, 181, 246, 0.1);
+  }
+
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+    color: #b0c4de;
+  }
+
+  .info-icon {
+    font-size: 1rem;
+    width: 1.25rem;
+    text-align: center;
+  }
+
+  .info-text {
+    line-height: 1.4;
+  }
+
+  /* Responsive adjustments for chat */
+  @media (max-width: 768px) {
+    .chat-section {
+      padding: 1rem;
+    }
+
+    .info-item {
+      font-size: 0.8rem;
     }
   }
 
