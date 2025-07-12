@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { knowledgeState, uiState } from '../../stores/cognitive.js';
   import { GödelOSAPI } from '../../utils/api.js';
+  import LoadingState from '../ui/LoadingState.svelte';
   
   let fileInput;
   let dragActive = false;
@@ -14,6 +15,8 @@
   let apiKeyInput = '';
   let textInput = '';
   let textTitle = 'Manual Text Input';
+  let loadingMessage = '';
+  let importError = null;
   
   // Progress tracking for active imports
   let activeImports = new Map();
@@ -109,6 +112,8 @@
     isUploading = true;
     uploadProgress = 0;
     importResults = null;
+    importError = null;
+    loadingMessage = `Preparing to import ${files.length} file${files.length > 1 ? 's' : ''}...`;
     
     try {
       const results = {
@@ -126,6 +131,7 @@
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         uploadProgress = ((i + 1) / files.length) * 50; // First 50% for uploads
+        loadingMessage = `Uploading ${file.name} (${i + 1}/${files.length})...`;
         
         try {
           // Use real API to import file
@@ -170,12 +176,14 @@
       }
       
       importResults = results;
+      loadingMessage = 'Processing uploaded files...';
       
       // Set upload progress to complete, but keep monitoring imports
       uploadProgress = 100;
       
     } catch (error) {
       console.error('Import error:', error);
+      importError = error.message;
       importResults = {
         error: error.message,
         totalFiles: files.length,
@@ -185,6 +193,7 @@
       };
     } finally {
       isUploading = false;
+      loadingMessage = '';
     }
   }
 
@@ -238,6 +247,8 @@
     
     isUploading = true;
     uploadProgress = 0;
+    importError = null;
+    loadingMessage = `Importing from ${urlInput}...`;
     
     try {
       // Use real API to import from URL
@@ -255,6 +266,7 @@
       
       // Start progress monitoring
       uploadProgress = 50; // Initial progress
+      loadingMessage = 'Processing web content...';
       
       const checkProgress = async () => {
         try {
@@ -649,6 +661,28 @@
 </script>
 
 <div class="smart-import-container">
+  <!-- Loading Overlay -->
+  {#if isUploading && loadingMessage}
+    <LoadingState 
+      loading={true}
+      variant="progress"
+      progress={uploadProgress}
+      message={loadingMessage}
+      overlay={true}
+      retryable={importError !== null}
+      error={importError}
+      on:retry={() => {
+        importError = null;
+        // Retry the last operation based on selectedSource
+        if (selectedSource === 'url') {
+          importFromUrl();
+        } else if (selectedSource === 'text') {
+          importFromText(textInput, textTitle);
+        }
+      }}
+    />
+  {/if}
+
   <!-- Modern Header -->
   <div class="import-header">
     <div class="title-section">

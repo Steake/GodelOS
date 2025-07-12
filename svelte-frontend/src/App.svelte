@@ -36,6 +36,7 @@
   
   // UI Components
   import Modal from './components/ui/Modal.svelte';
+  import ConnectionStatus from './components/ui/ConnectionStatus.svelte';
   
   let activeView = 'enhanced'; // Start with enhanced dashboard by default
   let websocketConnected = false;
@@ -359,21 +360,7 @@
       </div>
       
       <div class="header-right">
-        <div class="connection-status {websocketConnected ? 'connected' : 'disconnected'}">
-          <div class="status-indicator" class:enhanced-connected={$enhancedCognitiveState.apiConnected}></div>
-          <span class="status-text">
-            {#if $enhancedCognitiveState.apiConnected}
-              Enhanced Connected
-            {:else if websocketConnected}
-              Basic Connected  
-            {:else}
-              Disconnected
-            {/if}
-          </span>
-          {#if $enhancedCognitiveState.cognitiveStreaming?.fallbackMode}
-            <span class="fallback-indicator" title="Using fallback polling mode">📡</span>
-          {/if}
-        </div>
+        <ConnectionStatus />
         <button class="fullscreen-toggle" on:click={toggleFullscreen}>
           <span>{fullscreenMode ? '🗗' : '⛶'}</span>
         </button>

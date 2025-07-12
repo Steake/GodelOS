@@ -1,6 +1,0 @@
-2025-07-01 01:00:03,873 - INFO - 🧠 GödelOS Cognitive Architecture Pipeline Specification
-2025-07-01 01:00:03,874 - INFO - ============================================================
-2025-07-01 01:00:03,874 - INFO - 🚀 Starting GödelOS Cognitive Architecture Pipeline Tests
-2025-07-01 01:00:03,891 - ERROR - ❌ Backend not accessible: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1059b1ac0>: Failed to establish a new connection: [Errno 61] Connection refused'))
-
-❌ Pipeline failed: Backend not accessible
