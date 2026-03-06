@@ -12,6 +12,13 @@ from typing import Dict, List, Optional, Any
 
 logger = logging.getLogger(__name__)
 
+# Attempt to import the cognitive pipeline; gracefully degrade if unavailable.
+try:
+    from godelOS.cognitive_pipeline import CognitivePipeline
+    _PIPELINE_AVAILABLE = True
+except Exception:  # noqa: BLE001
+    _PIPELINE_AVAILABLE = False
+
 class GödelOSIntegration:
     """
     A simplified working integration class for GödelOS API.
@@ -21,6 +28,7 @@ class GödelOSIntegration:
         self.initialized = False
         self.start_time = time.time()
         self.error_count = 0
+        self.cognitive_pipeline: Optional["CognitivePipeline"] = None
         
         # Enhanced knowledge store for better search
         self.simple_knowledge_store = {
@@ -70,6 +78,23 @@ class GödelOSIntegration:
             # Store service references if provided
             self.pipeline_service = pipeline_service
             self.mgmt_service = mgmt_service
+            
+            # Activate all cognitive subsystems via the unified pipeline
+            if _PIPELINE_AVAILABLE:
+                try:
+                    self.cognitive_pipeline = CognitivePipeline()
+                    self.cognitive_pipeline.initialize()
+                    logger.info(
+                        "✅ Cognitive pipeline activated — %d subsystems online",
+                        sum(
+                            1
+                            for s in self.cognitive_pipeline.get_subsystem_status().values()
+                            if s["status"] == "active"
+                        ),
+                    )
+                except Exception as exc:  # noqa: BLE001
+                    logger.warning("⚠️ Cognitive pipeline activation failed: %s", exc)
+                    self.cognitive_pipeline = None
             
             await asyncio.sleep(0.1)  # Brief pause to simulate initialization
             
@@ -489,7 +514,7 @@ class GödelOSIntegration:
     async def get_health_status(self) -> Dict[str, Any]:
         """Get detailed health status."""
         is_healthy = self.initialized and self.error_count < 10
-        return {
+        result = {
             "healthy": is_healthy,
             "status": "healthy" if is_healthy else "unhealthy",
             "timestamp": time.time(),
@@ -500,6 +525,23 @@ class GödelOSIntegration:
                 "pipeline_service": hasattr(self, 'pipeline_service') and self.pipeline_service is not None,
                 "management_service": hasattr(self, 'mgmt_service') and self.mgmt_service is not None
             }
+        }
+        # Include cognitive subsystem status when the pipeline is available
+        if self.cognitive_pipeline is not None:
+            result["cognitive_subsystems"] = self.cognitive_pipeline.get_subsystem_status()
+        return result
+
+    async def get_cognitive_subsystem_status(self) -> Dict[str, Any]:
+        """Return per-subsystem activation status from the cognitive pipeline."""
+        if self.cognitive_pipeline is None:
+            return {"available": False, "subsystems": {}}
+        subsystems = self.cognitive_pipeline.get_subsystem_status()
+        active = sum(1 for s in subsystems.values() if s["status"] == "active")
+        return {
+            "available": True,
+            "active_count": active,
+            "total_count": len(subsystems),
+            "subsystems": subsystems,
         }
 
     async def get_knowledge(

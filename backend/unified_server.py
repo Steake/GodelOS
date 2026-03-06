@@ -2346,7 +2346,7 @@ async def llm_chat_capabilities():
 async def system_status():
     """System status endpoint."""
     try:
-        return {
+        result = {
             "system": "GödelOS",
             "status": "operational",
             "version": "2.0.0",
@@ -2359,9 +2359,30 @@ async def system_status():
             },
             "timestamp": datetime.now().isoformat()
         }
+        # Include cognitive subsystem status when available
+        if godelos_integration and godelos_integration.cognitive_pipeline:
+            subsystem_status = godelos_integration.cognitive_pipeline.get_subsystem_status()
+            active = sum(1 for s in subsystem_status.values() if s["status"] == "active")
+            result["cognitive_subsystems"] = {
+                "active_count": active,
+                "total_count": len(subsystem_status),
+                "subsystems": subsystem_status,
+            }
+        return result
     except Exception as e:
         logger.error(f"Error getting system status: {e}")
         raise HTTPException(status_code=500, detail=f"Status error: {str(e)}")
+
+@app.get("/api/system/subsystems")
+async def cognitive_subsystem_status():
+    """Return per-subsystem activation status from the cognitive pipeline."""
+    try:
+        if godelos_integration:
+            return await godelos_integration.get_cognitive_subsystem_status()
+        return {"available": False, "subsystems": {}}
+    except Exception as e:
+        logger.error(f"Error getting subsystem status: {e}")
+        raise HTTPException(status_code=500, detail=f"Subsystem status error: {str(e)}")
 
 @app.get("/api/tools/available")
 async def get_available_tools():
