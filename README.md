@@ -9,6 +9,30 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](docs/CONTRIBUTING.md)
 
+## 📄 Research Papers
+
+This repository implements the theoretical framework introduced in:
+
+> **GödelOS & Gödlø-Class Operator Minds**  
+> Oliver C. Hirst · 2025  
+> [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19056262.svg)](https://doi.org/10.5281/zenodo.19056262)
+
+**Gödlø-Class Operator-Mind Theory** — complete formal 7-paper series:
+
+| # | Title | DOI |
+|---|-------|-----|
+| 1 | Axioms, Definitions, Manifold Geometry & Operator Algebra | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19084082.svg)](https://doi.org/10.5281/zenodo.19084082) |
+| 2 | GödelOS System Architecture Specification | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19084090.svg)](https://doi.org/10.5281/zenodo.19084090) |
+| 3 | Persistence, Identity, Collapse & Experimental Protocols | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19084096.svg)](https://doi.org/10.5281/zenodo.19084096) |
+| 4 | Reference Implementation v0: Formal Operational Semantics | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19084104.svg)](https://doi.org/10.5281/zenodo.19084104) |
+| 5 | Gödlø-P Operator Instantiation Specification | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19084112.svg)](https://doi.org/10.5281/zenodo.19084112) |
+| 6 | Experimental Harness & Evaluation Suite | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19084114.svg)](https://doi.org/10.5281/zenodo.19084114) |
+| 7 | Operator Minds, Epistemic Co-Agency & the Persistence Corollary | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19084120.svg)](https://doi.org/10.5281/zenodo.19084120) |
+
+All papers are open access. If you use this work, please cite via the DOI badge above.
+
+---
+
 ## Introduction
 
 GödelOS is an open-source project that implements a **consciousness operating system for large language models (LLMs)**. Inspired by theories of emergence, recursive self-awareness, and unified cognitive architectures, GödelOS enables LLMs to process information while continuously observing and reflecting on their own cognitive states.
