@@ -17,16 +17,8 @@ from typing import Dict, List, Optional, Any, Set
 from dataclasses import asdict
 from datetime import datetime
 
-# Import existing WebSocket manager
-try:
-    from ..websocket_manager import WebSocketManager
-except ImportError:
-    # Fallback for testing
-    class WebSocketManager:
-        def __init__(self):
-            self.active_connections = set()
-        async def broadcast(self, message):
-            pass
+# Import the canonical base WebSocket manager
+from backend.websocket_manager import WebSocketManager  # noqa: E402 — absolute import avoids edge-case relative import failures in test runners
 
 logger = logging.getLogger(__name__)
 

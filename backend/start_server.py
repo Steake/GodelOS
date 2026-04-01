@@ -20,7 +20,7 @@ parent_dir = current_dir.parent
 sys.path.insert(0, str(parent_dir))
 
 import uvicorn
-from backend.main import app
+from backend.unified_server import app  # canonical entrypoint
 # DEPRECATED: from backend.websocket_manager import WebSocketManager
 
 # Configure logging

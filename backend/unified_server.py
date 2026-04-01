@@ -105,67 +105,10 @@ except ImportError as e:
     GödelOSIntegration = None
     GODELOS_AVAILABLE = False
 
-# Use unified WebSocket manager (no external dependency)
-class WebSocketManager:
-    def __init__(self):
-        self.active_connections: List[WebSocket] = []
-    
-    async def connect(self, websocket: WebSocket):
-        await websocket.accept()
-        self.active_connections.append(websocket)
-    
-    def disconnect(self, websocket: WebSocket):
-        if websocket in self.active_connections:
-            self.active_connections.remove(websocket)
-    
-    async def send_personal_message(self, message: str, websocket: WebSocket):
-        await websocket.send_text(message)
-    
-    async def broadcast(self, message: Union[str, dict]):
-        if isinstance(message, dict):
-            message = json.dumps(message)
-        for connection in self.active_connections:
-            try:
-                await connection.send_text(message)
-            except:
-                pass  # Connection closed
-    
-    async def broadcast_cognitive_update(self, event: dict):
-        """Broadcast cognitive update event to all connected clients"""
-        # Allow callers to send either a raw event dict or an already-wrapped
-        # { type: 'cognitive_event', data: {...} } message. Normalize to raw event.
-        try:
-            inner_event = event
-            if isinstance(event, dict) and event.get("type") == "cognitive_event" and isinstance(event.get("data"), dict):
-                inner_event = event.get("data")
-            message = {
-                "type": "cognitive_event",
-                "timestamp": inner_event.get("timestamp", ""),
-                "data": inner_event
-            }
-        except Exception:
-            # Fallback if anything unexpected
-            message = {
-                "type": "cognitive_event",
-                "timestamp": event.get("timestamp", ""),
-                "data": event
-            }
-        await self.broadcast(message)
-    
-    async def broadcast_consciousness_update(self, consciousness_data: dict):
-        """Broadcast consciousness update to all connected clients"""
-        try:
-            message = {
-                "type": "consciousness_update",
-                "timestamp": consciousness_data.get("timestamp", time.time()),
-                "data": consciousness_data
-            }
-            await self.broadcast(message)
-        except Exception as e:
-            logger.error(f"Error broadcasting consciousness update: {e}")
-    
-    def has_connections(self) -> bool:
-        return len(self.active_connections) > 0
+# Canonical WebSocket manager — imported from backend.websocket_manager (base)
+# and backend.core.enhanced_websocket_manager (consciousness-aware extension).
+# The runtime always uses EnhancedWebSocketManager as the single manager instance.
+from backend.websocket_manager import WebSocketManager  # noqa: E402 — base class
 
 WEBSOCKET_MANAGER_AVAILABLE = True
 
@@ -298,9 +241,13 @@ except ImportError as e:
     DORMANT_MODULE_MANAGER_AVAILABLE = False
 
 # Global service instances - using Any to avoid type annotation issues
+# NOTE: After runtime canonicalization, ``websocket_manager`` and
+# ``enhanced_websocket_manager`` always reference the SAME
+# ``EnhancedWebSocketManager`` instance.  Two names are kept only for
+# backward-compat with existing code that references either.
 godelos_integration = None
 websocket_manager = None
-enhanced_websocket_manager = None
+enhanced_websocket_manager = None  # alias — same object as websocket_manager at runtime
 unified_consciousness_engine = None
 tool_based_llm = None
 cognitive_manager = None
@@ -399,20 +346,22 @@ async def initialize_core_services():
     """Initialize core services with proper error handling."""
     global godelos_integration, websocket_manager, enhanced_websocket_manager, unified_consciousness_engine, tool_based_llm, cognitive_manager, transparency_engine
     
-    # Initialize WebSocket manager
-    websocket_manager = WebSocketManager()
-    logger.info("✅ WebSocket manager initialized")
-    
-    # Initialize enhanced WebSocket manager for consciousness streaming
+    # Initialize the SINGLE canonical WebSocket manager.
+    # EnhancedWebSocketManager inherits WebSocketManager and adds consciousness
+    # streaming.  Both globals point to the same instance.
     if UNIFIED_CONSCIOUSNESS_AVAILABLE:
         try:
             enhanced_websocket_manager = EnhancedWebSocketManager()
-            logger.info("✅ Enhanced WebSocket manager initialized for consciousness streaming")
+            websocket_manager = enhanced_websocket_manager
+            logger.info("✅ Canonical WebSocket manager initialized (EnhancedWebSocketManager)")
         except Exception as e:
-            logger.error(f"❌ Failed to initialize enhanced WebSocket manager: {e}")
-            enhanced_websocket_manager = websocket_manager  # Fallback to basic manager
+            logger.error(f"❌ Failed to initialize EnhancedWebSocketManager, falling back to base: {e}")
+            websocket_manager = WebSocketManager()
+            enhanced_websocket_manager = websocket_manager
     else:
+        websocket_manager = WebSocketManager()
         enhanced_websocket_manager = websocket_manager
+        logger.info("✅ WebSocket manager initialized (base — unified consciousness not available)")
     
     # Initialize transparency engine with websocket manager
     transparency_engine = initialize_transparency_engine(enhanced_websocket_manager)
@@ -1186,16 +1135,37 @@ async def api_health_check():
 # Cognitive state endpoints
 @app.get("/cognitive/state")
 async def get_cognitive_state_endpoint():
-    """Get current cognitive state."""
+    """Get current cognitive state.
+
+    Resolution order (canonical → fallback):
+    1. ``unified_consciousness_engine`` — the authoritative consciousness state
+    2. ``godelos_integration.get_cognitive_state()`` — pipeline-backed cognitive state
+    3. Static ``cognitive_state`` dict — test-only stub (logs warning)
+    """
+    # 1. Prefer the canonical unified consciousness engine
+    if unified_consciousness_engine and hasattr(unified_consciousness_engine, 'consciousness_state'):
+        try:
+            from dataclasses import asdict
+            cs = unified_consciousness_engine.consciousness_state
+            return {
+                "source": "unified_consciousness_engine",
+                "consciousness_state": asdict(cs),
+                "consciousness_score": cs.consciousness_score,
+                "emergence_level": cs.emergence_level,
+                "timestamp": cs.timestamp,
+            }
+        except Exception as e:
+            logger.warning(f"unified_consciousness_engine state read failed, trying next source: {e}")
+
+    # 2. Fall back to GödelOS integration (pipeline-backed)
     if godelos_integration:
         try:
             return await godelos_integration.get_cognitive_state()
         except Exception as e:
             logger.error(f"Error getting cognitive state from GödelOS: {e}")
     
-    # Return fallback state
-    import random
-    cognitive_state["processing_load"] = max(0, min(1, cognitive_state["processing_load"] + random.uniform(-0.1, 0.1)))
+    # 3. Last resort — static stub (test/dev only)
+    logger.warning("Serving synthetic cognitive_state fallback — no canonical engine available")
     return cognitive_state
 
 @app.get("/api/cognitive/state") 
@@ -1205,34 +1175,50 @@ async def api_get_cognitive_state():
 
 @app.get("/api/cognitive-state") 
 async def api_get_cognitive_state_alias():
-    """API cognitive state endpoint with canonical data contract."""
+    """API cognitive state endpoint with canonical data contract.
+
+    Prefers ``unified_consciousness_engine`` for real consciousness metrics
+    when available, falling back to the GödelOS integration data otherwise.
+    """
     try:
-        # Get data from GödelOS integration if available
-        godelos_data = None
-        if godelos_integration:
-            try:
-                godelos_data = await godelos_integration.get_cognitive_state()
-            except Exception as e:
-                logger.error(f"Error getting cognitive state from GödelOS: {e}")
-        
         # Build canonical response with both camelCase and snake_case
         manifest_consciousness = get_manifest_consciousness_canonical()
-        
-        # If we have GödelOS data, merge it with manifest consciousness
-        if godelos_data and "manifest_consciousness" in godelos_data:
-            legacy_manifest = godelos_data["manifest_consciousness"]
-            # Extract relevant data but keep canonical structure
-            if "attention_focus" in legacy_manifest:
-                focus = legacy_manifest["attention_focus"]
-                if isinstance(focus, dict) and "primary" in focus:
-                    manifest_consciousness["attention"]["focus"] = [focus["primary"]]
-                    manifest_consciousness["attention"]["intensity"] = focus.get("intensity", 0.7)
-            
-            if "metacognitive_status" in godelos_data:
-                meta = godelos_data["metacognitive_status"]
-                if isinstance(meta, dict):
-                    manifest_consciousness["metaReflection"]["depth"] = meta.get("self_awareness", 0.6)
-                    manifest_consciousness["metaReflection"]["coherence"] = meta.get("confidence", 0.85)
+
+        # Enrich manifest from unified consciousness engine (canonical source)
+        if unified_consciousness_engine and hasattr(unified_consciousness_engine, 'consciousness_state'):
+            try:
+                cs = unified_consciousness_engine.consciousness_state
+                manifest_consciousness["awareness"]["level"] = getattr(cs, 'consciousness_score', manifest_consciousness["awareness"]["level"])
+                if hasattr(cs, 'global_workspace'):
+                    gw = cs.global_workspace
+                    if isinstance(gw, dict):
+                        manifest_consciousness["attention"]["intensity"] = gw.get("coalition_strength", manifest_consciousness["attention"]["intensity"])
+                if hasattr(cs, 'metacognitive_state'):
+                    meta = cs.metacognitive_state
+                    if isinstance(meta, dict):
+                        obs = meta.get("meta_observations", [])
+                        manifest_consciousness["metaReflection"]["depth"] = min(1.0, len(obs) / 10.0) if obs else manifest_consciousness["metaReflection"]["depth"]
+            except Exception as e:
+                logger.warning(f"Could not enrich manifest from unified consciousness engine: {e}")
+
+        # Fall back to GödelOS integration data if engine not available
+        elif godelos_integration:
+            try:
+                godelos_data = await godelos_integration.get_cognitive_state()
+                if godelos_data and "manifest_consciousness" in godelos_data:
+                    legacy_manifest = godelos_data["manifest_consciousness"]
+                    if "attention_focus" in legacy_manifest:
+                        focus = legacy_manifest["attention_focus"]
+                        if isinstance(focus, dict) and "primary" in focus:
+                            manifest_consciousness["attention"]["focus"] = [focus["primary"]]
+                            manifest_consciousness["attention"]["intensity"] = focus.get("intensity", 0.7)
+                    if "metacognitive_status" in godelos_data:
+                        meta = godelos_data["metacognitive_status"]
+                        if isinstance(meta, dict):
+                            manifest_consciousness["metaReflection"]["depth"] = meta.get("self_awareness", 0.6)
+                            manifest_consciousness["metaReflection"]["coherence"] = meta.get("confidence", 0.85)
+            except Exception as e:
+                logger.error(f"Error getting cognitive state from GödelOS: {e}")
         
         # Build canonical response
         canonical_response = {

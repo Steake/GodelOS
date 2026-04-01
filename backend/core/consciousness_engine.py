@@ -57,8 +57,16 @@ class SelfAwarenessMetrics:
     
 class ConsciousnessEngine:
     """
+    DEPRECATED — Use ``backend.core.unified_consciousness_engine.UnifiedConsciousnessEngine``
+    as the single canonical consciousness computation.
+
+    This class is retained because ``CognitiveManager`` and existing tests
+    reference it, but no new code should instantiate ``ConsciousnessEngine``
+    directly.  The ``ConsciousnessState`` and ``ConsciousnessLevel`` data types
+    defined in this module remain canonical.
+
     Advanced consciousness engine implementing manifest consciousness behaviors
-    and comprehensive self-awareness assessment
+    and comprehensive self-awareness assessment.
     """
     
     def __init__(self, llm_driver=None, knowledge_pipeline=None, websocket_manager=None):

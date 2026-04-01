@@ -35,6 +35,26 @@ jobs:
             nltk \
             pytest pytest-cov pytest-asyncio pytest-timeout
 
+      - name: Enforce single-path runtime
+        run: |
+          echo "--- Verifying no duplicate FastAPI app definitions ---"
+          # Only backend/unified_server.py may define the production FastAPI app.
+          # backend/minimal_server.py is deprecated and backend/main.py is a shim.
+          # Pattern: lines starting with 'app = FastAPI(' (ignoring leading whitespace)
+          # — this anchored regex avoids false positives in comments/docstrings.
+          VIOLATIONS=$(grep -rnP '^(?!\s*#)\s*app\s*=\s*FastAPI\(' backend/ \
+            --include='*.py' \
+            | grep -v unified_server.py \
+            | grep -v minimal_server.py \
+            | grep -v main.py \
+            || true)
+          if [ -n "$VIOLATIONS" ]; then
+            echo "❌ Found duplicate FastAPI app definitions:"
+            echo "$VIOLATIONS"
+            exit 1
+          fi
+          echo "✅ Single entrypoint enforced — only unified_server.py defines app"
+
       - name: Run tests
         id: run_tests
         run: |
