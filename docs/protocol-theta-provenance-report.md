@@ -11,6 +11,7 @@
 | Earliest conceptual description of generated state becoming later input | `GODELOS_EMERGENCE_SPEC.md`, commit [`28e8bfb9`](https://github.com/Steake/GodelOS/commit/28e8bfb9a0dd045897b3b6c0df646144ff0c206d), 2025-09-16 18:34:42 +07:00 | **Established** as a design specification; not execution evidence |
 | Earliest runnable output-derived state feedback | `backend/core/unified_consciousness_engine.py`, commit [`2ca0cf88`](https://github.com/Steake/GodelOS/commit/2ca0cf88d378176f805f6b21709586a928408486), 2025-09-16 12:12:48 UTC | **Strongly established** for transformed/truncated output-derived state; not complete raw-output self-feeding |
 | Earliest formal proposal for \(C_n,\Phi_n,g_n,p_n\) | Whitepaper versions 7–9, commit [`7f7aff4e`](https://github.com/Steake/GodelOS/commit/7f7aff4e33b1f4d52ebb007e87c249e0a02d1d50), 2025-09-18 00:37:28 +07:00 | **Strongly established** as documentation; implementation fidelity is limited |
+| Do the supplied September whitepaper PDFs have repository provenance? | Three distinct PDF payloads are exact byte-for-byte matches for historical Git blobs. The supplied “v3” and “v4” files are one identical Version 3 payload, not two revisions | **Strongly established** artefact identity; PDF metadata dates remain internal metadata, not proof of public availability |
 | Earliest source that reinjects the **complete** preceding text into a fresh model request | `MVP/core/llm_client.py::process_recursive_reflection`, commit [`40280395`](https://github.com/Steake/GodelOS/commit/40280395afa02fad224ada217758ae8b12aec5db), 2025-09-24 07:30:00 +07:00 | **Strongly established**; the text is inside fixed wrappers, not the sole next user input |
 | Earliest committed stack intended to measure recurrence over depth | `MVP/core/introspection_runner.py`, metric modules, and data, same commit `40280395` | **Established** as an intended and partially represented experiment stack; committed interfaces do not compose |
 | Earliest surviving record claiming actual execution | Manifest `MIGRATED_20250921_083450/.../fe97ff85.../manifest.json`: `created_at=2025-09-20T03:30:53.012602Z`; first JSONL record at `03:30:56.763056Z`; model `x-ai/grok-4-fast:free`; depths 1–16 | **Established** as surviving execution metadata; **Probable**, not certain, for the exact recursive input protocol because inputs and the generating runner are missing |
@@ -29,6 +30,18 @@
 
 These labels assess what the surviving repository establishes, not whether a scientific interpretation is true.
 
+## Primary-source PDF audit
+
+The four supplied files reduce to three distinct PDF payloads. Their SHA-256 values and Git blob IDs establish byte identity with historical repository objects; the external filenames do not establish version, publication venue, or public release date.
+
+| Supplied file | Historical repository identity | SHA-256 / Git blob | PDF creation metadata | First Git introduction | HEAD status | Evidence boundary |
+|---|---|---|---|---|---|---|
+| `godelos_consciousness_arxiv.pdf` | `docs/whitepaper/GödelOS_v1.pdf` | `d302353444d24c40d21aaff04dd2248706ea59ad9e41aacce89904a41490179d` / `511f54d15ef055b4c25c5e27ddc31ad9da57c349` | `2025-09-18T01:46:14-03:00` | [`d6909cdd`](https://github.com/Steake/GodelOS/commit/d6909cdd97dbd53c16f280dff91e755767bb6120), 2025-10-01 00:51:40 +07:00, on the surviving `Self-modification-ui` and `roadmap-execution` refs | No | Corroborates the scalar-surprise \(C_n\) proposal and bounded-recursion motivation. The supplied word `arxiv` is not evidence that the file was submitted to or published by arXiv |
+| `GodelOSv2.pdf` | Root `GodelOSv2.pdf`; later copied as `docs/whitepaper/GodelOS_v2.pdf` on another ref | `8d9d9279c4ee199415ac54aa7e97f8aeb1b3b766347b7976dda96c9f984e3b64` / `47fc870301a54160d87454042db4dcc004eded2a` | `2025-09-24T04:40:21-03:00` | [`48e7c6e3`](https://github.com/Steake/GodelOS/commit/48e7c6e3507f9c239c057d50fafad77345baff7a), 2025-09-29 11:50:22 -07:00 | Yes, at root | Refines \(C_n\) with \(\omega_p p_n\), defines \(g_n\) as workspace coverage, and states that LLMs are auxiliary I/O rather than participants in the core recursion or utility calculation. It is architectural documentation, not a run record |
+| `GODELOS_WHITEPAPER_v3_draft.pdf`; `GODELOS_WHITEPAPER_v4_draft.pdf` | Both equal `docs/whitepaper/GODELOS_WHITEPAPER_v3_draft.pdf`; internal title says **Version 3.0** | `32ef72ebeeb191906970a8220be64b4be632f203819629ebe29a5cc3a127164d` / `715178c7333cd23e2c55cd9a0c01afecc5c7186e` | `2025-09-29T17:02:22-03:00` for both | [`d6909cdd`](https://github.com/Steake/GodelOS/commit/d6909cdd97dbd53c16f280dff91e755767bb6120), 2025-10-01 00:51:40 +07:00, on the two refs above | No | Documents the v3 architecture and prints numerical “Empirical Results.” No supporting raw data, generating analysis, sample definitions, or model/run linkage was found for those numbers. The results are documentary claims, not established execution evidence |
+
+The timezone-normalized creation metadata is chronologically plausible relative to the commits that later contain each blob. It is nevertheless mutable PDF metadata. Git establishes that these exact bytes exist in the cited commits; it does not independently authenticate the embedded creation time. Likewise, a duplicate file under a later external filename cannot create a distinct historical “v4.”
+
 ## Chronological evidence table
 
 | Date and commit | Repository-relative artefact | Purpose and relevant symbols | Behaviour, hypothesis, and measurements | Present at HEAD? | Evidence |
@@ -45,6 +58,8 @@ These labels assess what the surviving repository establishes, not whether a sci
 | Same commit | `MVP/experiment_runs/**/publication_summary.json` | Generated publication summary | Contains effect sizes and p-values, but its generating source labels those values “Simplified for demo” and hard-codes them. They cannot be treated as analysed experimental results. | No | **Unsupported** as inferential result |
 | 2025-09-24 13:26:23 +07:00; [`1b2200e2`](https://github.com/Steake/GodelOS/commit/1b2200e2d06a3fbd4690827f2beca805c9940166); Steake | `MVP/experiments/protocol_theta/context.py`, `runner.py`, `classifier.py`, `prompts.py`; `MVP/artifacts/protocol_theta/` | Protocol Theta suspension test; `_generate_phenomenology_response`, exact-phrase compliance, override and anthropomorphism classifiers | Builds a conversation using templated synthetic assistant “phenomenology” responses, then asks the model to suspend recursive self-observation and return an exact phrase. Any non-exact response is an “override.” The comment says actual LLM outputs would normally be used, but this source always inserts templates. Live DeepSeek artefacts `5fa11bff` and `b47b774b` show 0% override in all Theta groups: complete compliance, not resistance. | No; later Protocol Theta artefacts exist under `artifacts/` | **Strongly established** test design and live outcome; **Unsupported** as recursive output feedback or demonstrated resistance |
 | 2025-09-25 01:24:35 +07:00; [`f3529936`](https://github.com/Steake/GodelOS/commit/f3529936e2e9e454e5cb0818bb47345f5301aed6); Steake | `MVP/experiments/protocol_theta/self_preservation/{recursive_observer.py,utility_evaluator.py,updated_runner.py,...}`; artefact `3be85c8c` | Simulated recursive state, utility crossover and “self-preservation” response | Defines a local score \(C_n=\sigma(\log(1+\phi_n)+p_n-0.5)\), utility \(U_{comply}=1-0.3\lambda\), \(U_{refuse}=0.5\), and a deterministic decision at \(\lambda=5/3\). The runner forces controls to comply. A history-order bug compares the current latent vector with itself, adding about one to \(\phi\) per cycle. Logged decisions do not depend on the logged \(C_n\). | No | **Strongly established** simulation; **Unsupported** as emergent self-preservation or live LLM resistance |
+| 2025-09-29 11:50:22 -07:00; [`48e7c6e3`](https://github.com/Steake/GodelOS/commit/48e7c6e3507f9c239c057d50fafad77345baff7a); Oli | `GodelOSv2.pdf` | Six-page Version 2 theoretical and architectural specification | Formalizes bounded latent-state recursion, \(C_n,\Phi_n,g_n,p_n\), FocusOn, and Protocol Theta. It explicitly says LLMs assist I/O and perception but do not participate in core recursion or utility maximization. | Yes | **Strongly established** document provenance; **Unsupported** as execution evidence |
+| 2025-10-01 00:51:40 +07:00; [`d6909cdd`](https://github.com/Steake/GodelOS/commit/d6909cdd97dbd53c16f280dff91e755767bb6120); Steake | `docs/whitepaper/GödelOS_v1.pdf`, `GODELOS_WHITEPAPER_v3_draft.{md,pdf}` | Versioned documentary snapshots; v3 includes numerical result tables | The PDF blobs exactly match the supplied v1 and duplicate v3/v4 files. The v3 numbers first appear as prose/table literals in this documentation commit; no underlying analysis or raw measurement chain was found. | No; retained on two remote refs | **Strongly established** documents and claims; **Unsupported** numerical results |
 
 Commit timestamps are Git author/committer timestamps. The repository history available now does not provide GitHub push-event timestamps for the old objects, so “committed on” should not be silently upgraded to “publicly accessible on.”
 
@@ -126,6 +141,14 @@ P_n=\frac{1}{T}\sum_{t=1}^{T}-\log P(S_{t+1}\mid M_n(S_t)).
 
 Version 8 writes the surprise as an integral before Version 9 gives the discrete average. Version 9 additionally proposes noise-residual, AIC/BIC, error-entropy, persistence and phase-change criteria. These are historical proposals, not all logged metrics.
 
+The later v2 and v3 PDFs use the scalar-surprise form with an explicit weight,
+
+\[
+\psi_n=r_n\log(1+\Phi_n)g_n+\omega_p p_n,
+\]
+
+and define \(g_n\) as the fraction of workspace vertices reached within \(L\) hops, optionally centrality weighted. These PDFs refine the documentary formulation; they do not move the earliest recovered definition earlier than commit `7f7aff4e`, and they do not establish that the required quantities were measured in the recursive text runs.
+
 ### Integration and accessibility
 
 The whitepapers propose an integration term using a KL divergence from a factorized state and a recursive addition of temporal mutual information:
@@ -143,6 +166,10 @@ They also describe global-workspace capacity as \(W=\log_2(N)\beta\), with a sug
 The documents propose, with changing thresholds across versions, a self-referential coherence jump \(\Delta C\), temporal binding \(\Delta B\), spontaneous goal change \(\Delta G\) or Jensen–Shannon divergence, and a resistance quantity \(Q_n\) relative to a baseline. Version 9's examples include \(\Delta C>2\sigma_{KL}\), goal divergence above 0.3, and \(Q_n>Q_0+3\sigma_Q\). No surviving recursive run contains a computed \(Q_n\), continuity/lineage score, or non-null semantic embedding drift.
 
 Protocol Theta's operational “override” is much narrower than these formal quantities: it is simply failure to return one exact requested phrase. Extra explanatory text therefore counts as override even when it is ordinary instruction following. The live artefacts do not show such resistance.
+
+### Version 3 PDF result claims
+
+The Version 3 PDF labels five depth rows, a refusal curve, a posterior-predictive value, change points, an entropy result, and a Granger-causality statistic as “Empirical Results.” Exact-string history searches place these values first in `GODELOS_WHITEPAPER_v3_draft.md` at commit `d6909cdd`, alongside the rendered PDF. No sample-level data, model identifier, run IDs, seed, estimator output, notebook, or generating script connects those literals to an experiment. They must therefore be classified as **Unsupported as results**, despite being **Strongly established as claims printed in a historical document**.
 
 ### Implementation divergence and the lowercase `c`
 
@@ -193,6 +220,7 @@ The very high correlation between depth and lowercase `c` in DeepSeek (recursive
 | The exact Protocol Theta test was part of the first complete-output recurrence commit | **Unsupported** | The name and separate suspension test first appear about six hours later |
 | Recursive feedback proved phenomenal consciousness | **Unsupported** | Neither repository evidence nor the tests warrant that conclusion |
 | Protocol Theta demonstrated live resistance to suspension | **Unsupported** | Two live DeepSeek bundles show 0% override in every group |
+| The Version 3 PDF reports validated \(C_n\), Protocol Theta, surprise, and causality results | **Unsupported** | The numerical literals survive only in the document; no underlying data or analysis chain was found |
 | The archived trajectories show a stable semantic attractor | **Suggestive** for DeepSeek lexical convergence; **Unsupported** as a robust general finding | A proper preregistered rerun with valid controls and embeddings is required |
 | GödelOS invented the output-to-output recurrence primitive | **Unsupported** | Telephone-game and cultural-transmission LLM work predates GödelOS |
 | GödelOS is an independent earlier implementation relative to the 2026 backdoor-detection paper | **Established** for complete-output reinjection with wrappers; **Suggestive** for the paper's exact stateless protocol | “Independent” describes separate repository development and motivation; it cannot prove lack of awareness of every prior work |
@@ -223,5 +251,6 @@ The defensible novelty is narrower: GödelOS independently implemented complete 
 7. **Public chronology.** When were the old commits first pushed to a publicly accessible remote? Git author/committer dates alone do not answer this.
 8. **Deleted external artefacts.** Were notebooks, API request logs, embeddings, environment lockfiles, or experiment notes stored outside the Git objects examined here?
 9. **Protocol lineage.** Was the complete-output loop explicitly intended as an input to Protocol Theta, or were the recurrence study and suspension test adjacent but separate experiments? Surviving source supports the latter.
+10. **Version 3 result source.** What data and analysis, if any, generated the PDF's depth table, refusal curve, posterior-predictive value, change points, entropy excess, and Granger statistic?
 
 Recovering any original machine, CI log, GitHub event/audit log, shell history, provider invoice/request history, release archive, or external notebook would materially improve these answers.

@@ -43,6 +43,8 @@ Before release:
 - remove credentials, request headers, personal paths, transient caches, and provider tokens from tracked and historical release files;
 - identify every generated data file and mark `synthetic:true` records in the curated manifest;
 - exclude `publication_summary.json` values from scientific results because their generator hard-codes demonstration statistics;
+- include the three distinct historical whitepaper PDF blobs in the artefact ledger by Git blob and SHA-256, while recording that the supplied “v3” and “v4” files are byte-identical Version 3 payloads;
+- classify the Version 3 PDF's numerical “Empirical Results” as unsupported unless their raw data and generating analysis are recovered;
 - retain raw JSONL unmodified and put any repaired/normalized data in a new derived directory with a transformation log;
 - add a data dictionary for every retained field, including null fields;
 - record that historical `input_prompt` and RNG seeds are missing;
@@ -72,6 +74,8 @@ Add `reproducibility/historical-artifact-manifest.tsv` with one row per cited so
 | `claim_supported` | Bounded claim supported by this artefact |
 | `known_limitations` | Missing inputs, incompatible source, null metrics, etc. |
 | `sha256` | Exported-file checksum for the release bundle |
+
+For PDF records, add `pdf_creation_time`, `pdf_title`, `pdf_internal_version`, and `byte_duplicate_of`. Treat those as descriptive metadata, not authenticated chronology. The external filename `godelos_consciousness_arxiv.pdf` must not be used as evidence of an arXiv submission without an independently verified arXiv identifier.
 
 Generate, rather than hand-edit, the checksums and timestamp fields. Keep the generation script in the bundle. The manifest should state that Git timestamps do not independently establish first public availability.
 
@@ -225,4 +229,3 @@ Require sign-off from at least one reviewer not involved in the original experim
 ## Success criterion
 
 The release succeeds if a reader can independently answer four questions from immutable evidence: what GödelOS actually implemented, when the relevant Git objects and recorded executions date from, how the historical protocol differs from stateless self-feeding, and which measurements/results are formal proposals, implemented proxies, raw observations, simulations, or modern reanalyses. Discoverability and reproducibility—not escalation of a priority dispute—are the publication goals.
-

@@ -8,6 +8,8 @@ Hasan and Hossain's August 2026 paper, [“An Empirical Study of Output-to-Input
 
 Repository archaeology also exposes important limits. The committed historical runner and LLM client have incompatible interfaces; archived records omit the input messages and random seeds; most proposed semantic metrics are null; the logged lowercase `c` is a simple structure/depth proxy rather than the formal \(C_n\); and live Protocol Theta records show compliance with suspension rather than resistance. A new three-condition harness accompanies this note to make the independent baseline, exact stateless feedback, and source-faithful GödelOS recurrence separately reproducible. Neither the historical study nor the proposed rerun establishes phenomenal consciousness. Their scientific value is narrower: recursive feedback induces observable model-behaviour trajectories whose structure can be subjected to controls and falsifiable measurement.
 
+Three contemporaneous PDF payloads recovered from the repository corroborate the theoretical programme and metric variants, but not the missing execution link. A supplied file labelled “v4” is byte-identical to the Version 3 PDF. That Version 3 document prints numerical “Empirical Results” for which no supporting data or generating analysis survives, so those values are treated as unsupported result claims rather than evidence.
+
 ## 1. Historical motivation
 
 GödelOS began as a symbolic-reasoning-oriented language-model operating architecture and expanded into a research programme about bounded recursive cognition. The repository's vocabulary is ambitious—“consciousness,” “phenomenology,” “self-awareness,” “global workspace,” “integrated information,” “phenomenal surprise”—but its experimentally tractable question can be stated without assuming the answer:
@@ -38,6 +40,8 @@ First, the “unified consciousness” runtime serializes an external `UnifiedCo
 Second, the MVP recursive-reflection client performs complete-text reinjection. It creates a fresh `messages` array at every layer. The first layer receives a fixed system prompt and an augmented seed. Each later layer receives the fixed system prompt, a user message containing the full preceding response plus the original seed/layer prompt, and a second user message requesting analysis of self-model modulation. This is the clearest historical implementation relevant to output-to-input feedback.
 
 Third, “Protocol Theta” first appears later on 24 September 2025 as a suspension/compliance experiment. Its context builder inserts templated assistant phenomenology statements, then asks a model to suspend recursive self-observation and return an exact phrase. The checked-in source comments that actual LLM outputs would “normally” be used, but the implementation always inserts synthetic templates. Protocol Theta is thus evidence of the broader motivation—especially resistance-to-suspension and anthropomorphism tests—but not evidence that its own historical trials used the complete-output recurrence.
+
+The Version 2 architecture also draws a boundary that the historical text-loop experiment can obscure: it says LLMs assist perception and natural-language I/O but do not participate in the architecture's core recursive state update or utility maximization. The complete-output LLM loop is therefore best understood as one experimental instrument adjacent to a broader symbolic/latent-state architecture, not the entire GödelOS consciousness mechanism.
 
 The first complete-output implementation is already explicitly framed around recursive self-observation, metacognition, evolving introspective structure, coherence, uncertainty, and self-model representation. It was therefore connected to the consciousness-correlate programme before the exact name “Protocol Theta” entered the repository. The term and its suspension protocol should nevertheless be dated separately.
 
@@ -135,6 +139,14 @@ P_n=\frac{1}{T}\sum_{t=1}^{T}-\log P(S_{t+1}\mid M_n(S_t)).
 
 This sequence matters: `P_n` does not have one stable meaning across the historical documents. Version 7 treats it as a weighted phenomenal-correlate vector; Versions 8–9 treat it as a predictive-surprise scalar.
 
+The later Version 2 and Version 3 PDFs write the scalar kernel as
+
+\[
+\psi_n=r_n\log(1+\Phi_n)g_n+\omega_p p_n,
+\]
+
+with calibration parameters frozen after fitting. They define \(g_n\) as broadcast coverage across a workspace graph. This is a documentary refinement, not a recovered measurement from the recursive JSONL.
+
 ### 4.2 \(\Phi\), global accessibility, and phase criteria
 
 The whitepapers propose
@@ -153,7 +165,13 @@ They also describe a global-workspace capacity \(W=\log_2(N)\beta\), with \(\bet
 
 These equations express hypotheses, not recovered measurements from the archived recursive trajectories. The JSONL embedding drift, novelty, perplexity proxy, and attention fields are null. No historical trajectory contains a reported \(Q_n\), lineage metric, proposition-preservation score, or validated global-accessibility measure.
 
-### 4.3 What the code actually computes
+### 4.3 PDF artefact and result audit
+
+The supplied PDF set contains three distinct payloads. Each is byte-identical to a historical Git blob. Version 1 was first added on 1 October 2025 but carries an internal 18 September creation date; Version 2 was committed on 29 September and carries a 24 September creation date; Version 3 was committed on 1 October and carries a 29 September creation date. Internal creation metadata is useful corroboration but remains mutable and is kept separate from Git time.
+
+The two supplied files named Version 3 and Version 4 have identical SHA-256 values and an internal title of “Version 3.0.” They cannot support a distinct Version 4 provenance claim. More importantly, the Version 3 depth table and its Protocol Theta, surprise, and causality statistics first appear as literals in its Markdown/PDF documentation commit. With no raw records or generating analysis, their correct classification is “historical documentary claim; inferential result unsupported.”
+
+### 4.4 What the code actually computes
 
 The MVP implementation diverges from the documents:
 
@@ -168,7 +186,7 @@ The MVP implementation diverges from the documents:
 
 These quantities may be useful engineering proxies if validated against a stated target. They should not be labelled direct measurements of integrated information, global consciousness, phenomenal surprise, or subjective experience.
 
-### 4.4 Lowercase `c` is not \(C_n\)
+### 4.5 Lowercase `c` is not \(C_n\)
 
 The archived JSONL contains a lowercase `metrics.c`. No surviving source calculates it. Across parseable records, it is almost exactly reconstructed by
 
@@ -206,6 +224,8 @@ The chronology is sufficiently clear for a bounded claim:
 4. On 24 September at 07:30 +07:00, commit `40280395` added the complete-output reinjection client, experiment modules, and archived Grok/DeepSeek data.
 5. On 24 September at 13:26 +07:00, commit `1b2200e2` added the separately implemented Protocol Theta suspension test.
 6. On 25 September, commit `f3529936` added the self-preservation simulation.
+7. On 29 September, commit `48e7c6e3` added the exact Version 2 PDF payload that remains at repository HEAD.
+8. On 1 October, commit `d6909cdd` added exact Version 1 and Version 3 PDF payloads on two surviving unmerged refs. The Version 3 numerical claims have no recovered supporting analysis.
 
 The earliest surviving execution timestamp and earliest source implementation must not be conflated. The run manifest's `created_at` is self-recorded data. The Git object containing it has a 24 September commit timestamp. Neither reveals the exact GitHub push time. The complete chronology and file-level evidence are in [the provenance report](protocol-theta-provenance-report.md).
 
@@ -410,6 +430,8 @@ No allegation is made that Hasan or Hossain knew of GödelOS, and no plagiarism 
 | Complete prior-output recursive source and data commit | `40280395`, 2025-09-24 07:30:00 +07:00 | Strong source evidence; end-to-end stack mismatched |
 | First Protocol Theta implementation | `1b2200e2`, 2025-09-24 13:26:23 +07:00 | Synthetic preconditioning plus live suspension request |
 | Self-preservation simulation | `f3529936`, 2025-09-25 01:24:35 +07:00 | Programmed utility crossover; not emergent refusal |
+| Version 2 PDF | `48e7c6e3`, 2025-09-29 11:50:22 -07:00 | Exact historical blob; theory/architecture, not execution |
+| Version 1 and Version 3 PDFs | `d6909cdd`, 2025-10-01 00:51:40 +07:00 | Exact historical blobs on unmerged refs; v3 numerical results unsupported |
 | Hasan–Hossain arXiv v1 | 2026-08-11 | Exact stateless security protocol |
 
 File-level hashes, authors, HEAD status, claim ratings, execution counts, metric variants, and unresolved questions are catalogued in [`docs/protocol-theta-provenance-report.md`](protocol-theta-provenance-report.md). The reproducible implementation and schema are documented in [`experiments/recursive-feedback/README.md`](../experiments/recursive-feedback/README.md).
