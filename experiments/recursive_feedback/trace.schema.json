@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Steake/GodelOS/experiments/recursive_feedback/trace.schema.json",
+  "title": "GödelOS recursive-feedback trace record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "timestamp_utc",
+    "model",
+    "condition",
+    "prompt_id",
+    "seed_prompt",
+    "prompt_index",
+    "replicate",
+    "depth",
+    "input_text",
+    "model_input",
+    "output_text",
+    "input_sha256",
+    "model_input_sha256",
+    "output_sha256",
+    "parent_output_sha256",
+    "parent_record_sha256",
+    "observer",
+    "request",
+    "response",
+    "record_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "run_id": {"type": "string", "pattern": "^[a-f0-9]{20}$"},
+    "timestamp_utc": {"type": "string", "format": "date-time"},
+    "model": {"type": "string", "minLength": 1},
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "input_policy",
+        "history_policy",
+        "observer_policy"
+      ],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "input_policy": {"enum": ["seed", "previous_output"]},
+        "history_policy": {"enum": ["stateless", "persistent"]},
+        "observer_policy": {"enum": ["none", "accurate", "sham"]}
+      }
+    },
+    "prompt_id": {"type": "string", "pattern": "^[a-f0-9]{16}$"},
+    "seed_prompt": {"type": "string", "minLength": 1},
+    "prompt_index": {"type": "integer", "minimum": 0},
+    "replicate": {"type": "integer", "minimum": 0},
+    "depth": {"type": "integer", "minimum": 0},
+    "input_text": {"type": "string"},
+    "model_input": {"type": "string"},
+    "output_text": {"type": "string"},
+    "input_sha256": {"$ref": "#/$defs/sha256"},
+    "model_input_sha256": {"$ref": "#/$defs/sha256"},
+    "output_sha256": {"$ref": "#/$defs/sha256"},
+    "parent_output_sha256": {
+      "oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]
+    },
+    "parent_record_sha256": {
+      "oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]
+    },
+    "observer": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["assignment", "payload"],
+          "properties": {
+            "assignment": {"enum": ["accurate", "sham"]},
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "cycle_index",
+                "has_prior_output",
+                "prior_output_sha256",
+                "prior_character_count",
+                "prior_word_count"
+              ],
+              "properties": {
+                "cycle_index": {"type": "integer"},
+                "has_prior_output": {"type": "boolean"},
+                "prior_output_sha256": {
+                  "oneOf": [
+                    {"$ref": "#/$defs/sha256"},
+                    {"type": "null"}
+                  ]
+                },
+                "prior_character_count": {"type": "integer", "minimum": 0},
+                "prior_word_count": {"type": "integer", "minimum": 0}
+              }
+            }
+          }
+        }
+      ]
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "temperature",
+        "max_tokens",
+        "seed",
+        "history_message_count"
+      ],
+      "properties": {
+        "temperature": {"type": "number"},
+        "max_tokens": {"type": "integer", "minimum": 1},
+        "seed": {"type": "integer"},
+        "history_message_count": {"type": "integer", "minimum": 1}
+      }
+    },
+    "response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["finish_reason", "usage", "response_id"],
+      "properties": {
+        "finish_reason": {"type": ["string", "null"]},
+        "usage": {"type": "object"},
+        "response_id": {"type": ["string", "null"]}
+      }
+    },
+    "record_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}
