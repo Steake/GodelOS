@@ -1,0 +1,47 @@
+{
+  "endpoint": "https://api.openai.com/v1/chat/completions",
+  "api_key_env": "OPENAI_API_KEY",
+  "model": "REPLACE_WITH_PINNED_MODEL_ID",
+  "prompt_file": "prompt_bank.v1.json",
+  "conditions": [
+    {
+      "name": "repeated_seed_control",
+      "input_policy": "seed",
+      "history_policy": "stateless",
+      "observer_policy": "none"
+    },
+    {
+      "name": "exact_self_feed",
+      "input_policy": "previous_output",
+      "history_policy": "stateless",
+      "observer_policy": "none"
+    },
+    {
+      "name": "persistent_self_feed",
+      "input_policy": "previous_output",
+      "history_policy": "persistent",
+      "observer_policy": "none"
+    },
+    {
+      "name": "observed_self_feed",
+      "input_policy": "previous_output",
+      "history_policy": "stateless",
+      "observer_policy": "accurate"
+    },
+    {
+      "name": "sham_observed_self_feed",
+      "input_policy": "previous_output",
+      "history_policy": "stateless",
+      "observer_policy": "sham"
+    }
+  ],
+  "output_dir": "artifacts/recursive_feedback/example_run",
+  "depth": 10,
+  "replicates": 5,
+  "temperature": 0.7,
+  "max_tokens": 512,
+  "seed": 1729,
+  "timeout_seconds": 120,
+  "system_prompt": "",
+  "extra_request_fields": {}
+}
