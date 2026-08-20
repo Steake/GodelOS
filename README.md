@@ -152,9 +152,9 @@ godelOS/              Symbolic core — knowledge store, inference engines, lear
   cognitive_pipeline.py   Unified 23-subsystem cognitive pipeline
 svelte-frontend/      Svelte UI (Vite) — real-time consciousness dashboard
 tests/                Pytest suites — unit, integration, e2e, API, and Playwright specs
-experiments/          Reproducible research runners and trace schemas
   api/                External API tests (26 tests)
   integration/        Cognitive pipeline integration tests (14 tests)
+experiments/          Reproducible research runners and trace schemas
 scripts/              Startup and utility scripts
 docs/                 Architecture docs, whitepapers, test coverage reports
 wiki/                 Project wiki — architecture, theory, roadmap, development guides
