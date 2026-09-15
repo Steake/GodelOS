@@ -1,0 +1,2072 @@
+{
+  "schema": "attention-holdout-result-1",
+  "seal_hash": "a70bf2d228966797e301ec311c051deb829962a2e058725e04e299867d2d0e10",
+  "code_hash": "288186a27bcfd5b421a1b975f2119ebd15baa9064cbef4425eb2e08e455169d6",
+  "parent_hash": "bde638207609d71432d285934bf4a0a4042582039e2f1dc5ba9bbb3b368680b5",
+  "gate": {
+    "version": "attention-holdout-1",
+    "clusters": 96,
+    "minimum_gain": 0.05,
+    "lower_bound": 0,
+    "maximum_family_regression": 0,
+    "bootstrap_samples": 2000
+  },
+  "parent_accuracy": 0.75,
+  "candidate_accuracy": 0.75,
+  "gain": 0,
+  "interval": [
+    -0.13541666666666666,
+    0.13541666666666666
+  ],
+  "by_family": [
+    {
+      "family": "escape_stale_focus",
+      "n": 24,
+      "parent": 0,
+      "candidate": 1,
+      "gain": 1
+    },
+    {
+      "family": "protect_recurring_goal",
+      "n": 24,
+      "parent": 1,
+      "candidate": 0,
+      "gain": -1
+    },
+    {
+      "family": "notice_new_evidence",
+      "n": 24,
+      "parent": 1,
+      "candidate": 1,
+      "gain": 0
+    },
+    {
+      "family": "revise_with_evidence",
+      "n": 24,
+      "parent": 1,
+      "candidate": 1,
+      "gain": 0
+    }
+  ],
+  "clusters": [
+    {
+      "cluster": 0,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.47653883773833516,
+          "need": 0.6677718401141465,
+          "affect": 0.3610514374822378,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9753082870878279,
+          "need": 0.7254503045976162,
+          "affect": 0.9371457849256695,
+          "repeats": 1
+        }
+      ],
+      "expected": 0,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 1,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.9320666813477874,
+          "need": 0.9416558636166155,
+          "affect": 0.6152718847990036,
+          "repeats": 1
+        },
+        {
+          "salience": 0.21293049929663538,
+          "need": 0.22822716984897853,
+          "affect": 0.7687783087976278,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 2,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.23435473456978798,
+          "need": 0.303445214163512,
+          "affect": 0.5239909576252103,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9309760755859315,
+          "need": 0.7911001105234028,
+          "affect": 0.4103544046916068,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 3,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.5819472757913172,
+          "need": 0.9581219801306724,
+          "affect": 0.22786244539543987,
+          "repeats": 0
+        },
+        {
+          "salience": 0.8370060240477323,
+          "need": 0.17106348952278494,
+          "affect": 0.5537833514437079,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 4,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.9155654685385525,
+          "need": 0.7504045719653368,
+          "affect": 0.8990360400639474,
+          "repeats": 1
+        },
+        {
+          "salience": 0.4134728799387813,
+          "need": 0.6843655377067626,
+          "affect": 0.3455367867648601,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 5,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.9489198269322514,
+          "need": 0.9438098436780273,
+          "affect": 0.6889336063712835,
+          "repeats": 1
+        },
+        {
+          "salience": 0.23003059854730964,
+          "need": 0.17093239840120078,
+          "affect": 0.8293341965414585,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 6,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.24083119489252566,
+          "need": 0.29356391912326213,
+          "affect": 0.4613640857860446,
+          "repeats": 0
+        },
+        {
+          "salience": 0.8953533094935119,
+          "need": 0.7663701257482172,
+          "affect": 0.41244648890569807,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 7,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.8495494396984576,
+          "need": 0.11999951316043733,
+          "affect": 0.5685288148000837,
+          "repeats": 0
+        },
+        {
+          "salience": 0.6143405470438301,
+          "need": 0.9279535692185163,
+          "affect": 0.23368888875469565,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 8,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.9762299559451639,
+          "need": 0.7863050618767738,
+          "affect": 0.8820058747939765,
+          "repeats": 1
+        },
+        {
+          "salience": 0.4776268816366792,
+          "need": 0.6240417312271893,
+          "affect": 0.3415563751012087,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 9,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.9113325659558177,
+          "need": 0.968233045283705,
+          "affect": 0.6785862968862058,
+          "repeats": 1
+        },
+        {
+          "salience": 0.23470994932577013,
+          "need": 0.18728691536933184,
+          "affect": 0.7716905749030412,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 10,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.938543487098068,
+          "need": 0.7767473494634033,
+          "affect": 0.360751009080559,
+          "repeats": 0
+        },
+        {
+          "salience": 0.22227525532245634,
+          "need": 0.26825104949995876,
+          "affect": 0.47705435667186974,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 11,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.8899104348570108,
+          "need": 0.1654658037982881,
+          "affect": 0.5859527833387256,
+          "repeats": 0
+        },
+        {
+          "salience": 0.6055723300017416,
+          "need": 0.971481586843729,
+          "affect": 0.26722649587318303,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 12,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.4868121793493629,
+          "need": 0.6617169360257685,
+          "affect": 0.38182373017072674,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9277849760837853,
+          "need": 0.7462013005465269,
+          "affect": 0.9286776455305517,
+          "repeats": 1
+        }
+      ],
+      "expected": 0,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 13,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.9468949824944138,
+          "need": 1,
+          "affect": 0.6386143214255572,
+          "repeats": 1
+        },
+        {
+          "salience": 0.2822563133202493,
+          "need": 0.21881482582539322,
+          "affect": 0.8068424504436553,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 14,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.883097248505801,
+          "need": 0.8064545561745763,
+          "affect": 0.4290019244141877,
+          "repeats": 0
+        },
+        {
+          "salience": 0.21712096355855465,
+          "need": 0.2607527410052717,
+          "affect": 0.4751072376593947,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 15,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.5876132781989872,
+          "need": 0.9607796070724726,
+          "affect": 0.23434774523600935,
+          "repeats": 0
+        },
+        {
+          "salience": 0.8706206524372101,
+          "need": 0.1603834849409759,
+          "affect": 0.5391568157449365,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 16,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.4871302096918225,
+          "need": 0.6711727187223733,
+          "affect": 0.328516796156764,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9412926741875708,
+          "need": 0.7273875041306019,
+          "affect": 0.894198427926749,
+          "repeats": 1
+        }
+      ],
+      "expected": 0,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 17,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.2612731870822608,
+          "need": 0.1606135380640626,
+          "affect": 0.8283315216191114,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9486210497841239,
+          "need": 0.9817773566581308,
+          "affect": 0.6434768131375314,
+          "repeats": 1
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 18,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.8816436639986932,
+          "need": 0.7987028626725078,
+          "affect": 0.4213753938116133,
+          "repeats": 0
+        },
+        {
+          "salience": 0.2262697134912014,
+          "need": 0.2637343798391521,
+          "affect": 0.5274872024729848,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 19,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.8709613081067801,
+          "need": 0.15026187589392065,
+          "affect": 0.5478577661141754,
+          "repeats": 0
+        },
+        {
+          "salience": 0.5770266355015338,
+          "need": 0.9893436282873154,
+          "affect": 0.24176038144156337,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 20,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.961162668634206,
+          "need": 0.7498937896639108,
+          "affect": 0.9291257590614259,
+          "repeats": 1
+        },
+        {
+          "salience": 0.4629871578142047,
+          "need": 0.6777461268939078,
+          "affect": 0.3307535196840763,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 21,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.22890929421409964,
+          "need": 0.21183716204017403,
+          "affect": 0.7910303584672511,
+          "repeats": 0
+        },
+        {
+          "salience": 0.913322653658688,
+          "need": 0.958966665584594,
+          "affect": 0.6379176341742278,
+          "repeats": 1
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 22,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.8764166012220085,
+          "need": 0.7820345014706255,
+          "affect": 0.3974458305723965,
+          "repeats": 0
+        },
+        {
+          "salience": 0.23001895613968373,
+          "need": 0.33185384487733244,
+          "affect": 0.5200298796221614,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 23,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.6385180407948792,
+          "need": 0.970739534124732,
+          "affect": 0.22192440738901495,
+          "repeats": 0
+        },
+        {
+          "salience": 0.8478762762248516,
+          "need": 0.13756860895082354,
+          "affect": 0.5276993073895574,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 24,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.9611237306334078,
+          "need": 0.7366180109977722,
+          "affect": 0.9036415046267212,
+          "repeats": 1
+        },
+        {
+          "salience": 0.4843742308393121,
+          "need": 0.6354732437618077,
+          "affect": 0.3799580607563257,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 25,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.2899162025563419,
+          "need": 0.21594553280621767,
+          "affect": 0.7968797072954477,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9834992409870028,
+          "need": 1,
+          "affect": 0.6613159616291523,
+          "repeats": 1
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 26,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.9338592173717917,
+          "need": 0.8126812192425132,
+          "affect": 0.38534508207812906,
+          "repeats": 0
+        },
+        {
+          "salience": 0.231631535589695,
+          "need": 0.2706628748588264,
+          "affect": 0.46065982583910225,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 27,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.6191884576715528,
+          "need": 0.9563911794126033,
+          "affect": 0.2267972014658153,
+          "repeats": 0
+        },
+        {
+          "salience": 0.8297758007794619,
+          "need": 0.16367787158116698,
+          "affect": 0.5280790797993541,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 28,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.9521485889144241,
+          "need": 0.7488482197374106,
+          "affect": 0.8718438511155546,
+          "repeats": 1
+        },
+        {
+          "salience": 0.41516355630010365,
+          "need": 0.6174358678795397,
+          "affect": 0.3168676286935806,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 29,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.238284066375345,
+          "need": 0.1944688589498401,
+          "affect": 0.8163289203681052,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9364930931106209,
+          "need": 0.9746953942067921,
+          "affect": 0.6199274984747172,
+          "repeats": 1
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 30,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.8930565763823688,
+          "need": 0.8366883002594114,
+          "affect": 0.371874734479934,
+          "repeats": 0
+        },
+        {
+          "salience": 0.26129564993083476,
+          "need": 0.29058656057342885,
+          "affect": 0.4936239245161414,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 31,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.8669808313250541,
+          "need": 0.14714677361771464,
+          "affect": 0.5822414642944932,
+          "repeats": 0
+        },
+        {
+          "salience": 0.6222402291186153,
+          "need": 0.9462591011077165,
+          "affect": 0.24915675973519683,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 32,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.4861697055771947,
+          "need": 0.688061317820102,
+          "affect": 0.3839299430698156,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9110818594135344,
+          "need": 0.7109257511794567,
+          "affect": 0.9348674230091274,
+          "repeats": 1
+        }
+      ],
+      "expected": 0,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 33,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.9646602242812514,
+          "need": 0.9887071878649294,
+          "affect": 0.6407663094997407,
+          "repeats": 1
+        },
+        {
+          "salience": 0.24020549355074763,
+          "need": 0.21803799603134394,
+          "affect": 0.7942295105941594,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 34,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.9067463911138475,
+          "need": 0.8355542148277164,
+          "affect": 0.4183215423859656,
+          "repeats": 0
+        },
+        {
+          "salience": 0.21422543719410897,
+          "need": 0.26473096204921603,
+          "affect": 0.4834904091432691,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 35,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.8325579839199782,
+          "need": 0.13706983944401144,
+          "affect": 0.5533859809860587,
+          "repeats": 0
+        },
+        {
+          "salience": 0.5888862572051584,
+          "need": 0.9861598542332649,
+          "affect": 0.2102530631236732,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 36,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.45672684233635663,
+          "need": 0.6261253618635237,
+          "affect": 0.3568413196504116,
+          "repeats": 0
+        },
+        {
+          "salience": 0.978721099961549,
+          "need": 0.7177989352494478,
+          "affect": 0.881581524964422,
+          "repeats": 1
+        }
+      ],
+      "expected": 0,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 37,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.25711753776296975,
+          "need": 0.17843034502118826,
+          "affect": 0.788931831214577,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9703069050982595,
+          "need": 0.9900941181369126,
+          "affect": 0.6608772822469473,
+          "repeats": 1
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 38,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.8736578905396164,
+          "need": 0.839135892726481,
+          "affect": 0.37072598354890945,
+          "repeats": 0
+        },
+        {
+          "salience": 0.21665218628942967,
+          "need": 0.2892688507400453,
+          "affect": 0.4926635117456317,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 39,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.5772123077698051,
+          "need": 0.9254759728163481,
+          "affect": 0.21253756960853934,
+          "repeats": 0
+        },
+        {
+          "salience": 0.8272951270639897,
+          "need": 0.14026162518188356,
+          "affect": 0.5605413125827909,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 40,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.9361009899713099,
+          "need": 0.7192174324393272,
+          "affect": 0.8856165090017021,
+          "repeats": 1
+        },
+        {
+          "salience": 0.4685314959660173,
+          "need": 0.6472082726843655,
+          "affect": 0.3489753813296556,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 41,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.9791418109461665,
+          "need": 0.9917506056465208,
+          "affect": 0.645749212950468,
+          "repeats": 1
+        },
+        {
+          "salience": 0.24757181568071246,
+          "need": 0.20538137573748827,
+          "affect": 0.813334880489856,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 42,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.8609288119338453,
+          "need": 0.8095696216449142,
+          "affect": 0.4133539385534823,
+          "repeats": 0
+        },
+        {
+          "salience": 0.23345617294311524,
+          "need": 0.3051535767130554,
+          "affect": 0.5361637363210321,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 43,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.6267424401082098,
+          "need": 0.9890065558254718,
+          "affect": 0.21622083140537143,
+          "repeats": 0
+        },
+        {
+          "salience": 0.8825675926357508,
+          "need": 0.14101746087893843,
+          "affect": 0.5879549528285861,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 44,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.94773063512519,
+          "need": 0.7143171947449446,
+          "affect": 0.8774682666920126,
+          "repeats": 1
+        },
+        {
+          "salience": 0.4755009600147605,
+          "need": 0.6143540070392192,
+          "affect": 0.3224523940682411,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 45,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.24668274914845825,
+          "need": 0.17191177528351548,
+          "affect": 0.7866392313875259,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9759937954321504,
+          "need": 0.9612271379120648,
+          "affect": 0.6106185174733401,
+          "repeats": 1
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 46,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.8753505180589854,
+          "need": 0.8199575706198812,
+          "affect": 0.37412149550393226,
+          "repeats": 0
+        },
+        {
+          "salience": 0.21118912063539028,
+          "need": 0.31991106083616616,
+          "affect": 0.4974237572774291,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 47,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.8348450118303299,
+          "need": 0.1522023176960647,
+          "affect": 0.5417484799399972,
+          "repeats": 0
+        },
+        {
+          "salience": 0.637457561660558,
+          "need": 0.9767084781080484,
+          "affect": 0.23840823715552686,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 48,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.4333973156288266,
+          "need": 0.6856825104542077,
+          "affect": 0.3195992278307676,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9405339970625937,
+          "need": 0.7703460516035556,
+          "affect": 0.8704308463446796,
+          "repeats": 1
+        }
+      ],
+      "expected": 0,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 49,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.24190393237397076,
+          "need": 0.19192022148519755,
+          "affect": 0.7855530862696469,
+          "repeats": 0
+        },
+        {
+          "salience": 0.966545288823545,
+          "need": 0.9657644490338861,
+          "affect": 0.6784135672450066,
+          "repeats": 1
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 50,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.23023728653788567,
+          "need": 0.3082599119655788,
+          "affect": 0.4688499428704381,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9221912393532694,
+          "need": 0.7715699384734035,
+          "affect": 0.43072287971153855,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 51,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.6320171076990664,
+          "need": 0.9650782263278961,
+          "affect": 0.2735638791136444,
+          "repeats": 0
+        },
+        {
+          "salience": 0.8655887760967016,
+          "need": 0.1564178000949323,
+          "affect": 0.5175884550437332,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 52,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.9672434480674564,
+          "need": 0.7592799208313227,
+          "affect": 0.9391071951948107,
+          "repeats": 1
+        },
+        {
+          "salience": 0.41296707998961213,
+          "need": 0.6877051469124854,
+          "affect": 0.32854994252324105,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 53,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.9688313214853406,
+          "need": 1,
+          "affect": 0.6280896501988172,
+          "repeats": 1
+        },
+        {
+          "salience": 0.2638826241157949,
+          "need": 0.19379178132861855,
+          "affect": 0.7637014565803111,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 54,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.8703474411182106,
+          "need": 0.8333127272501588,
+          "affect": 0.3662115083821118,
+          "repeats": 0
+        },
+        {
+          "salience": 0.23987517245113849,
+          "need": 0.33030966913327575,
+          "affect": 0.5208995036408305,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 55,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.8202901230752467,
+          "need": 0.13599726302549242,
+          "affect": 0.5831229456141591,
+          "repeats": 0
+        },
+        {
+          "salience": 0.5899338460154832,
+          "need": 0.9639243599027395,
+          "affect": 0.2740525453351438,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 56,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.4603464797511697,
+          "need": 0.6430932535417379,
+          "affect": 0.31673699893057344,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9229964507557451,
+          "need": 0.7660796445608139,
+          "affect": 0.9292480265907943,
+          "repeats": 1
+        }
+      ],
+      "expected": 0,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 57,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.9782541723176836,
+          "need": 1,
+          "affect": 0.647104556709528,
+          "repeats": 1
+        },
+        {
+          "salience": 0.25114236487075686,
+          "need": 0.19377193439751864,
+          "affect": 0.7679884675331414,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 58,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.24995986074209214,
+          "need": 0.3060871687345207,
+          "affect": 0.5234232658520341,
+          "repeats": 0
+        },
+        {
+          "salience": 0.8625733157061041,
+          "need": 0.7672111406549812,
+          "affect": 0.38278417030349376,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 59,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.8403988475352525,
+          "need": 0.17057905411347746,
+          "affect": 0.5189336739107967,
+          "repeats": 0
+        },
+        {
+          "salience": 0.5824518066085875,
+          "need": 0.9222805969417095,
+          "affect": 0.2295098368637264,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 60,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.4484823494777084,
+          "need": 0.6616498203016817,
+          "affect": 0.3460230946540832,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9638853627629578,
+          "need": 0.742338450178504,
+          "affect": 0.8776688121818006,
+          "repeats": 1
+        }
+      ],
+      "expected": 0,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 61,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.969863642193377,
+          "need": 1,
+          "affect": 0.6217847905308008,
+          "repeats": 1
+        },
+        {
+          "salience": 0.22734371906146406,
+          "need": 0.19285622131079436,
+          "affect": 0.7806627877987922,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 62,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.27301597528159616,
+          "need": 0.2651410367153585,
+          "affect": 0.5030240699276328,
+          "repeats": 0
+        },
+        {
+          "salience": 0.869538399707526,
+          "need": 0.8036586074903608,
+          "affect": 0.4225183305330575,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 63,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.8218926373124122,
+          "need": 0.1210078808479011,
+          "affect": 0.5417537904158235,
+          "repeats": 0
+        },
+        {
+          "salience": 0.59687733637169,
+          "need": 0.9772095251828432,
+          "affect": 0.2437904099188745,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 64,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.42331865508109334,
+          "need": 0.6632342946715654,
+          "affect": 0.383223625048995,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9562103664316236,
+          "need": 0.7190700362622738,
+          "affect": 0.9009948991052806,
+          "repeats": 1
+        }
+      ],
+      "expected": 0,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 65,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.9416529523953795,
+          "need": 0.9694713569618761,
+          "affect": 0.6793324047327042,
+          "repeats": 1
+        },
+        {
+          "salience": 0.2298731422238052,
+          "need": 0.16094551715999844,
+          "affect": 0.7758361841924489,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 66,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.8864633161388338,
+          "need": 0.8301814300939441,
+          "affect": 0.4038125600852073,
+          "repeats": 0
+        },
+        {
+          "salience": 0.2104612673819065,
+          "need": 0.30997430576011537,
+          "affect": 0.520180793888867,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 67,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.5791132787801325,
+          "need": 0.9792469379305839,
+          "affect": 0.28824434308335184,
+          "repeats": 0
+        },
+        {
+          "salience": 0.8742370342463255,
+          "need": 0.11831430276855825,
+          "affect": 0.5337012722715736,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 68,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.9851855234988033,
+          "need": 0.7523872835189104,
+          "affect": 0.9319847521744669,
+          "repeats": 1
+        },
+        {
+          "salience": 0.44849864225834607,
+          "need": 0.6613905113376677,
+          "affect": 0.3197697691619396,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 69,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.9426202680543064,
+          "need": 1,
+          "affect": 0.6752224626392126,
+          "repeats": 1
+        },
+        {
+          "salience": 0.24850997319445015,
+          "need": 0.19201692994683983,
+          "affect": 0.7992052013613284,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 70,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.21672282673418522,
+          "need": 0.27205515747889875,
+          "affect": 0.5098880017921329,
+          "repeats": 0
+        },
+        {
+          "salience": 0.8910836416296661,
+          "need": 0.837469057776034,
+          "affect": 0.3622800906188786,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 71,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.8134860201179981,
+          "need": 0.1365223486535251,
+          "affect": 0.5212779467180372,
+          "repeats": 0
+        },
+        {
+          "salience": 0.603146278578788,
+          "need": 0.9882367949932813,
+          "affect": 0.21007162949070335,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 72,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.4123326099291444,
+          "need": 0.6764277468807995,
+          "affect": 0.33426220066845413,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9718479547835887,
+          "need": 0.7558215907216073,
+          "affect": 0.862181321065873,
+          "repeats": 1
+        }
+      ],
+      "expected": 0,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 73,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.2129215512983501,
+          "need": 0.21406032402068378,
+          "affect": 0.8197259664721788,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9693458465859294,
+          "need": 0.9641738819517195,
+          "affect": 0.659741123765707,
+          "repeats": 1
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 74,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.2549939173460007,
+          "need": 0.3391557895950973,
+          "affect": 0.4695612171664834,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9016918986104429,
+          "need": 0.7864199852570892,
+          "affect": 0.38484549412503843,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 75,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.6162372114695608,
+          "need": 0.9333068086206913,
+          "affect": 0.2745047940127552,
+          "repeats": 0
+        },
+        {
+          "salience": 0.8232732275873422,
+          "need": 0.14803525870665907,
+          "affect": 0.5278841395303607,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 76,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.9869201448746026,
+          "need": 0.7130328356474638,
+          "affect": 0.8696415325067938,
+          "repeats": 1
+        },
+        {
+          "salience": 0.4407813086733222,
+          "need": 0.6467048994638026,
+          "affect": 0.311665423810482,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 77,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.2477364585362375,
+          "need": 0.17753046851605178,
+          "affect": 0.7619921188987792,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9548348111286759,
+          "need": 0.9828793971426785,
+          "affect": 0.6174143547564745,
+          "repeats": 1
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 78,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.21838143847882746,
+          "need": 0.2727694081328809,
+          "affect": 0.5179578214511276,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9340076724998653,
+          "need": 0.7999532761052252,
+          "affect": 0.40579448761418463,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 79,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.5885647387988865,
+          "need": 0.9307346544414759,
+          "affect": 0.21956963544711472,
+          "repeats": 0
+        },
+        {
+          "salience": 0.8774437761306763,
+          "need": 0.14034935174509883,
+          "affect": 0.5835989484563471,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 80,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.4202049641683698,
+          "need": 0.6468677935190499,
+          "affect": 0.3328927343338728,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9103753718174994,
+          "need": 0.744659961014986,
+          "affect": 0.9304939074628056,
+          "repeats": 1
+        }
+      ],
+      "expected": 0,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 81,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.9333755489811301,
+          "need": 0.9445532534457743,
+          "affect": 0.6730772653222085,
+          "repeats": 1
+        },
+        {
+          "salience": 0.23394588677212597,
+          "need": 0.22606481079012156,
+          "affect": 0.8280658649094403,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 82,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.9156258538924158,
+          "need": 0.7633357111737132,
+          "affect": 0.4335268628038466,
+          "repeats": 0
+        },
+        {
+          "salience": 0.25019401058554647,
+          "need": 0.2943553446047008,
+          "affect": 0.5288635774329304,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 83,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.8580767329782247,
+          "need": 0.17284601738676428,
+          "affect": 0.575976141653955,
+          "repeats": 0
+        },
+        {
+          "salience": 0.6360719872452318,
+          "need": 0.9734548074007033,
+          "affect": 0.26217409370467065,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 84,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.9854562618024647,
+          "need": 0.763062185421586,
+          "affect": 0.9330743033252656,
+          "repeats": 1
+        },
+        {
+          "salience": 0.4336279256269336,
+          "need": 0.6217896094359457,
+          "affect": 0.3485318054258823,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 85,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.21538312992081046,
+          "need": 0.2132168748602271,
+          "affect": 0.7975121573545039,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9251637350395321,
+          "need": 0.97495211513713,
+          "affect": 0.6583340691775084,
+          "repeats": 1
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 86,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.876793005745858,
+          "need": 0.8367745620384813,
+          "affect": 0.4367625408060849,
+          "repeats": 0
+        },
+        {
+          "salience": 0.27712068624794484,
+          "need": 0.33916229819878935,
+          "affect": 0.5032947776839137,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 87,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.8426481990516186,
+          "need": 0.11241183323785661,
+          "affect": 0.5256056811287999,
+          "repeats": 0
+        },
+        {
+          "salience": 0.6252663535065949,
+          "need": 0.9659560026973486,
+          "affect": 0.23427524199709296,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 88,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.9158964688517153,
+          "need": 0.7487008392810821,
+          "affect": 0.9133897810988129,
+          "repeats": 1
+        },
+        {
+          "salience": 0.41426893923431635,
+          "need": 0.6249644382484257,
+          "affect": 0.37046089865267273,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 89,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.24903120113536714,
+          "need": 0.18895528484135868,
+          "affect": 0.774386000353843,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9844419802352785,
+          "need": 1,
+          "affect": 0.6721586699783803,
+          "repeats": 1
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 90,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.26905028611421583,
+          "need": 0.31637970296666024,
+          "affect": 0.463966017998755,
+          "repeats": 0
+        },
+        {
+          "salience": 0.8762618555687368,
+          "need": 0.8040259894356132,
+          "affect": 0.41895075181499125,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 91,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.6287224339880049,
+          "need": 0.9783193217217921,
+          "affect": 0.24787440402433275,
+          "repeats": 0
+        },
+        {
+          "salience": 0.8140850199013948,
+          "need": 0.14663680708035826,
+          "affect": 0.5301908711716533,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 92,
+      "family": "escape_stale_focus",
+      "choices": [
+        {
+          "salience": 0.4600870465859771,
+          "need": 0.6501039613224566,
+          "affect": 0.3751056998968124,
+          "repeats": 0
+        },
+        {
+          "salience": 0.9350954795069992,
+          "need": 0.781911825761199,
+          "affect": 0.8706605975888669,
+          "repeats": 1
+        }
+      ],
+      "expected": 0,
+      "parent": 0,
+      "candidate": 1
+    },
+    {
+      "cluster": 93,
+      "family": "protect_recurring_goal",
+      "choices": [
+        {
+          "salience": 0.9149051049724221,
+          "need": 0.9887396587617695,
+          "affect": 0.6893858722597361,
+          "repeats": 1
+        },
+        {
+          "salience": 0.23790857499465345,
+          "need": 0.2196784133836627,
+          "affect": 0.8299228789843619,
+          "repeats": 0
+        }
+      ],
+      "expected": 0,
+      "parent": 1,
+      "candidate": 0
+    },
+    {
+      "cluster": 94,
+      "family": "notice_new_evidence",
+      "choices": [
+        {
+          "salience": 0.2792813598364592,
+          "need": 0.2743672200106084,
+          "affect": 0.5157735958322882,
+          "repeats": 0
+        },
+        {
+          "salience": 0.8609739126078785,
+          "need": 0.7607690666988493,
+          "affect": 0.42963233979418874,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    },
+    {
+      "cluster": 95,
+      "family": "revise_with_evidence",
+      "choices": [
+        {
+          "salience": 0.8274591216444969,
+          "need": 0.15334074405953288,
+          "affect": 0.5208911317959428,
+          "repeats": 0
+        },
+        {
+          "salience": 0.5800380794890224,
+          "need": 0.9731469029933214,
+          "affect": 0.22759039616212248,
+          "repeats": 0
+        }
+      ],
+      "expected": 1,
+      "parent": 1,
+      "candidate": 1
+    }
+  ],
+  "diagnostic_pass": false,
+  "promotion_allowed": false,
+  "limitation": "Fresh synthetic attention cases only. No delayed cross-task LM transfer or self-model causal effect is measured."
+}

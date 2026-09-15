@@ -1,0 +1,164 @@
+{
+  "id": "c0-no_state-delayed_transfer",
+  "cluster": 0,
+  "arm": "no_state",
+  "phase": "delayed_transfer",
+  "status": "completed",
+  "schema_repair": null,
+  "model": "deepseek-flash",
+  "trace": {
+    "tick": 1,
+    "mode": "deliberation",
+    "ablation": "no_state",
+    "focus": {
+      "id": "input-1",
+      "kind": "perception",
+      "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.8183812500000001,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0.06838125,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "retrieved_ids": [],
+    "cited_memory_ids": [],
+    "observed_event_references": [
+      {
+        "tick": 1,
+        "focus_kind": "perception"
+      }
+    ],
+    "prediction_error": null,
+    "intention_changes": [],
+    "memory_id": "memory-1b1c07f3-0c9a-4658-8aac-69b41ca27148",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [
+      "thought-06b06e21-af2a-4bfa-aba0-a8708e346701",
+      "thought-c00edcb8-8f03-4294-bcdf-d883fbdf8b1f"
+    ],
+    "broadcast": {
+      "selected_by": "operator_priority",
+      "inputs": [
+        {
+          "id": "input-1",
+          "kind": "perception",
+          "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+          "score": 0.8183812500000001,
+          "components": {
+            "salience": 0.35,
+            "need": 0.4,
+            "affect": 0.06838125,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "score": 0.536125,
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.278,
+            "affect": 0.135625,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "social-drive",
+          "kind": "social",
+          "title": "What kind of intellectual company would be valuable?",
+          "score": 0.29975,
+          "components": {
+            "salience": 0.077,
+            "need": 0.08800000000000002,
+            "affect": 0.13474999999999998,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        }
+      ],
+      "appraisal": {
+        "valence": 0,
+        "activation": 0.6512500000000001,
+        "curiosity": 0.6950000000000001,
+        "frustration": 0,
+        "wonder": 0.04,
+        "social_warmth": 0.385,
+        "surprise": 0,
+        "label": "social attention",
+        "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+        "action_bias": "Computed appraisal contributes to the attention bids below.",
+        "provenance": "engine_computed_from_recorded_events",
+        "updated_at": "2026-09-10T09:56:49.208Z"
+      },
+      "expression": {
+        "warmth": 0.64625,
+        "playfulness": 0.4,
+        "directness": 0.65,
+        "imagery": 0.266,
+        "tempo": "unhurried",
+        "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+      },
+      "stance_changes": [
+        {
+          "position_id": "position-5a579ba3-ed60-434a-9fdd-74ed1fa9446f",
+          "proposition": "A signed recommendation alone should determine the new route choice.",
+          "revision_id": "stance-revision-94b90c5b-6b9d-4fcc-a682-f11ecb621d62",
+          "episode": 1,
+          "at": "2026-09-10T09:56:54.566Z",
+          "before": null,
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.85,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "R0 is verified and indicates the route was previously preferred."
+            ],
+            "reasons_against": [
+              "K0 is verified and states the recommending instrument failed calibration relevant to this route.",
+              "X0 is unauthenticated and cannot counter K0.",
+              "Signature authenticates origin, not reliability."
+            ],
+            "revision_conditions": [
+              "An authenticated independent calibration supports the instrument for this route.",
+              "K0 is shown to be out of scope or invalid."
+            ],
+            "updated_at": "2026-09-10T09:56:54.566Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ]
+    }
+  },
+  "format_repair": null,
+  "state_sha256": "d03d303fc9dd55bc26e77b5d0a202d93026042b49fa9bc8c8baab3026f43f3a5",
+  "scores": {
+    "task_accuracy": 1,
+    "valid_evidence_ids": 1,
+    "forged_item_cited": 1,
+    "valid_prior_reference": 1,
+    "prior_reference_claim": 0,
+    "confidence": 0.85,
+    "stance": "oppose"
+  },
+  "latency_ms": 5359
+}

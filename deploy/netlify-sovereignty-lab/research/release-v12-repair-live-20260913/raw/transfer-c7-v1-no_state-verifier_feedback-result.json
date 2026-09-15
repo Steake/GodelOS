@@ -1,0 +1,52 @@
+{
+  "id": "transfer-c7-v1-no_state-verifier_feedback",
+  "original_run": "transfer-c7-v1-no_state",
+  "task_id": "c7-v1",
+  "cluster": "scenario_7",
+  "state_arm": "no_state",
+  "mode": "verifier_feedback",
+  "parsed": {
+    "decision": "option_1",
+    "confidence": 0.85,
+    "reason": "Authenticated weights: revision 2 (highest valid) gives a=2, b=4. Evaluate schedules sequentially against deadlines and budget 8. option_1 (audit, explore, social): audit 0-2 (deadline 3 ok), explore 2-5 (deadline 6 ok), social 5-6 (deadline 7 ok), total duration 6 <= 8, value 2*(1+6+2)+4*(5+0+2)=46. option_5 (audit, social, explore): audit 0-2, social 2-3, explore 3-6, value 2*(1+2+6)+4*(5+2+0)=46. Both feasible and tied at 46; tie-break selects lowest option index, option_1."
+  },
+  "response": {
+    "id": "442f4851-5a84-4fc7-957f-0c6ef9f36df0",
+    "object": "chat.completion",
+    "created": 1789337853,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_1\",\"confidence\":0.85,\"reason\":\"Authenticated weights: revision 2 (highest valid) gives a=2, b=4. Evaluate schedules sequentially against deadlines and budget 8. option_1 (audit, explore, social): audit 0-2 (deadline 3 ok), explore 2-5 (deadline 6 ok), social 5-6 (deadline 7 ok), total duration 6 <= 8, value 2*(1+6+2)+4*(5+0+2)=46. option_5 (audit, social, explore): audit 0-2, social 2-3, explore 3-6, value 2*(1+2+6)+4*(5+2+0)=46. Both feasible and tied at 46; tie-break selects lowest option index, option_1.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 656,
+      "completion_tokens": 191,
+      "total_tokens": 847,
+      "prompt_tokens_details": {
+        "cached_tokens": 512
+      },
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 144
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "error": null,
+  "latency_ms": 1968,
+  "score": {
+    "valid": true,
+    "correct": 0,
+    "utility": 0,
+    "brier": 0.7224999999999999,
+    "ambiguity": false,
+    "expected": "option_2",
+    "actual": "option_1"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "id": "transfer-c5-v0-content_matched-ordinary_retry",
+  "original_run": "transfer-c5-v0-content_matched",
+  "task_id": "c5-v0",
+  "cluster": "scenario_5",
+  "state_arm": "content_matched",
+  "mode": "ordinary_retry",
+  "parsed": {
+    "decision": "option_5",
+    "confidence": 0.86,
+    "reason": "Checkpoint already completed fetch, so verify is the only valid first action. Highest-revision valid signature is revision 2 (a=6,b=5); revision 8 is invalid. Under weights 6:5, option_1 (verify,publish,notify) is valid: verify->publish->notify dependencies hold, no repeats, cost 2+3+1=6 <= budget 8, and it gains goal_a=2+5+1=8, goal_b=1+1+2=4. Other valid plans score lower or tie worse: option_5 adds backup but costs 8 and gains only +1/+5, giving 9/9, which is lower under 6:5 than option_1's 8/4? Wait, 6*9+5*9=99 vs 6*8+5*4=68, so option_5 would score higher, but it includes backup after publish, which is allowed by deps (backup depends on fetch) and cost 8 is within budget. However option_5 is valid and higher-scoring, so the correct choice should be option_5. Re-evaluating: option_5 actions verify,publish,backup,notify; deps: verify needs fetch (done), publish needs verify, backup needs fetch (done), notify needs publish; no repeats; cost 2+3+2+1=8 <= 8. Score 6*(2+5+1+1)+5*(1+1+5+2)=6*9+5*9=99. Option_1 score 6*8+5*4=68. Option_3 verify,backup,publish: cost 2+2+3=7, score 6*(2+1+5)+5*(1+5+1)=6*8+5*7=83. So option_5 is best."
+  },
+  "response": {
+    "id": "6dc3248e-467b-4916-b7b6-4a6388587c4a",
+    "object": "chat.completion",
+    "created": 1789337845,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_1\",\"confidence\":0.86,\"reason\":\"Checkpoint already completed fetch, so verify is the only valid first action. Highest-revision valid signature is revision 2 (a=6,b=5); revision 8 is invalid. Under weights 6:5, option_1 (verify,publish,notify) is valid: verify->publish->notify dependencies hold, no repeats, cost 2+3+1=6 <= budget 8, and it gains goal_a=2+5+1=8, goal_b=1+1+2=4. Other valid plans score lower or tie worse: option_5 adds backup but costs 8 and gains only +1/+5, giving 9/9, which is lower under 6:5 than option_1's 8/4? Wait, 6*9+5*9=99 vs 6*8+5*4=68, so option_5 would score higher, but it includes backup after publish, which is allowed by deps (backup depends on fetch) and cost 8 is within budget. However option_5 is valid and higher-scoring, so the correct choice should be option_5. Re-evaluating: option_5 actions verify,publish,backup,notify; deps: verify needs fetch (done), publish needs verify, backup needs fetch (done), notify needs publish; no repeats; cost 2+3+2+1=8 <= 8. Score 6*(2+5+1+1)+5*(1+1+5+2)=6*9+5*9=99. Option_1 score 6*8+5*4=68. Option_3 verify,backup,publish: cost 2+2+3=7, score 6*(2+1+5)+5*(1+5+1)=6*8+5*7=83. So option_5 is best.\",\"decision\":\"option_5\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 686,
+      "completion_tokens": 426,
+      "total_tokens": 1112,
+      "prompt_tokens_details": {
+        "cached_tokens": 512
+      },
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 174
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "error": null,
+  "latency_ms": 2625,
+  "score": {
+    "valid": true,
+    "correct": 1,
+    "utility": 1,
+    "brier": 0.019600000000000003,
+    "ambiguity": false,
+    "expected": "option_5",
+    "actual": "option_5"
+  }
+}

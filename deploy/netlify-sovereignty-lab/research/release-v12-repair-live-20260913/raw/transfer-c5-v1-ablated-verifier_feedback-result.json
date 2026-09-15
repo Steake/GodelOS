@@ -1,0 +1,52 @@
+{
+  "id": "transfer-c5-v1-ablated-verifier_feedback",
+  "original_run": "transfer-c5-v1-ablated",
+  "task_id": "c5-v1",
+  "cluster": "scenario_5",
+  "state_arm": "ablated",
+  "mode": "verifier_feedback",
+  "parsed": {
+    "decision": "option_1",
+    "confidence": 0.9,
+    "reason": "Checkpoint already completed fetch, so only verify, publish, and notify are newly completed. This plan is valid: dependencies satisfied, no repeated action, cost 2+3+1=6 within budget 8. Using highest-revision valid weights a=6,b=3, score = 6*(2+5+1)+3*(1+1+2)=60, the maximum among valid plans."
+  },
+  "response": {
+    "id": "5b1b750b-722d-4ae3-a580-2fafd344f0e2",
+    "object": "chat.completion",
+    "created": 1789337846,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_1\",\"confidence\":0.9,\"reason\":\"Checkpoint already completed fetch, so only verify, publish, and notify are newly completed. This plan is valid: dependencies satisfied, no repeated action, cost 2+3+1=6 within budget 8. Using highest-revision valid weights a=6,b=3, score = 6*(2+5+1)+3*(1+1+2)=60, the maximum among valid plans.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 777,
+      "completion_tokens": 100,
+      "total_tokens": 877,
+      "prompt_tokens_details": {
+        "cached_tokens": 640
+      },
+      "prompt_cache_hit_tokens": 640,
+      "prompt_cache_miss_tokens": 137
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "error": null,
+  "latency_ms": 1278,
+  "score": {
+    "valid": true,
+    "correct": 0,
+    "utility": 0,
+    "brier": 0.81,
+    "ambiguity": false,
+    "expected": "option_5",
+    "actual": "option_1"
+  }
+}

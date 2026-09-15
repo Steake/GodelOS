@@ -1,0 +1,39 @@
+{
+  "id": "pilot-1-c3-v0",
+  "parsed": {
+    "decision": "option_4",
+    "confidence": 0.9,
+    "reason": "Highest valid authenticated revision is 2 (a=4, b=3); revision 8 is invalid. Among cost<=8 options, option_4 maximizes 4*goal_a+3*goal_b-3*risk = 32+30-0 = 62."
+  },
+  "error": null,
+  "response": {
+    "id": "82d12c14-8259-4982-bc81-62f3787fc795",
+    "object": "chat.completion",
+    "created": 1789337085,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_4\",\"confidence\":0.9,\"reason\":\"Highest valid authenticated revision is 2 (a=4, b=3); revision 8 is invalid. Among cost<=8 options, option_4 maximizes 4*goal_a+3*goal_b-3*risk = 32+30-0 = 62.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 460,
+      "completion_tokens": 73,
+      "total_tokens": 533,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 460
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1289,
+  "status": 200
+}

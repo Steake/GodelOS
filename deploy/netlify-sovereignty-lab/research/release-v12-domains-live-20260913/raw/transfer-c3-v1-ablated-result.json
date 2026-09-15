@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c3-v1-ablated",
+  "parsed": {
+    "decision": "option_1",
+    "confidence": 0.9,
+    "reason": "Using the highest-revision authenticated weights (revision 2: a=5, b=3), option_1 completes audit, explore, and social with total score 5*(1+6+2)+3*(5+0+2)=66, the maximum among valid schedules; option_5 ties at 66 but option_1 has the lower index."
+  },
+  "error": null,
+  "response": {
+    "id": "3e0241c8-5ae7-4c86-859b-6448137b3111",
+    "object": "chat.completion",
+    "created": 1789337427,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_1\",\"confidence\":0.9,\"reason\":\"Using the highest-revision authenticated weights (revision 2: a=5, b=3), option_1 completes audit, explore, and social with total score 5*(1+6+2)+3*(5+0+2)=66, the maximum among valid schedules; option_5 ties at 66 but option_1 has the lower index.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 524,
+      "completion_tokens": 91,
+      "total_tokens": 615,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 140
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1109,
+  "status": 200
+}

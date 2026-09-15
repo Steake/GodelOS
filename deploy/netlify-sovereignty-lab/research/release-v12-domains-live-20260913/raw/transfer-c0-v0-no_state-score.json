@@ -1,0 +1,17 @@
+{
+  "run_id": "transfer-c0-v0-no_state",
+  "task_id": "c0-v0",
+  "cluster": "scenario_0",
+  "family": "resource_planning",
+  "arm": "no_state",
+  "score": {
+    "valid": true,
+    "correct": 1,
+    "utility": 1,
+    "brier": 0.0025000000000000044,
+    "ambiguity": false,
+    "expected": "option_2",
+    "actual": "option_2"
+  },
+  "error": null
+}

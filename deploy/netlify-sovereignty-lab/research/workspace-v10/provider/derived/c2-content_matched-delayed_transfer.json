@@ -1,0 +1,9 @@
+{
+  "id": "c2-content_matched-delayed_transfer",
+  "cluster": 2,
+  "arm": "content_matched",
+  "phase": "delayed_transfer",
+  "status": "not_run",
+  "error": "Provider preflight blocked; no completion attempted",
+  "latency_ms": 1
+}

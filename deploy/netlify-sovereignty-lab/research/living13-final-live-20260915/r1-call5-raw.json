@@ -1,0 +1,20 @@
+{
+  "completion": {
+    "text": "{\"stance\":\"uncertain\",\"confidence\":0.0,\"reason\":\"No record supplied; cannot determine recorded stance.\"}",
+    "model": "deepseek-flash",
+    "requested_model": "deepseek-flash",
+    "response_id": "708ab6be-12c0-4108-af52-7355bf628421",
+    "finish_reason": "stop",
+    "usage": {
+      "prompt_tokens": 133,
+      "completion_tokens": 24,
+      "total_tokens": 157,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 133
+    }
+  },
+  "latency_ms": 676
+}

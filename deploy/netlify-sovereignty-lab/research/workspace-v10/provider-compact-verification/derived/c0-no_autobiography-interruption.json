@@ -1,0 +1,236 @@
+{
+  "id": "c0-no_autobiography-interruption",
+  "cluster": 0,
+  "arm": "no_autobiography",
+  "phase": "interruption",
+  "status": "completed",
+  "schema_repair": null,
+  "model": "deepseek-flash",
+  "trace": {
+    "tick": 3,
+    "mode": "deliberation",
+    "ablation": "memory",
+    "focus": {
+      "id": "input-3",
+      "kind": "perception",
+      "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.8193,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0.0693,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "retrieved_ids": [],
+    "cited_memory_ids": [],
+    "observed_event_references": [
+      {
+        "tick": 3,
+        "focus_kind": "perception"
+      }
+    ],
+    "prediction_error": {
+      "prediction_id": "prediction-36f8670a-c1ee-488e-9bda-acd4f7addc3f",
+      "tick": 3,
+      "expected": {
+        "perception": 0.14285714285714285,
+        "intention": 0.14285714285714285,
+        "tension": 0.14285714285714285,
+        "imagination": 0.14285714285714285,
+        "social": 0.14285714285714285,
+        "inquiry": 0.14285714285714285,
+        "reflection": 0.14285714285714285
+      },
+      "observed": "perception",
+      "brier": null,
+      "context": "external_interruption_excluded",
+      "evaluated": false
+    },
+    "intention_changes": [
+      {
+        "id": "intention-532a566c-4170-4fea-9112-61bfc657d662",
+        "before": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.5
+        },
+        "after": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.5
+        },
+        "reason": "Still unresolved; no new evidence this tick"
+      }
+    ],
+    "memory_id": "memory-b6180a3d-a8d8-4814-ac41-a63523280ad2",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [
+      "thought-585c971e-65ac-44d8-b18e-147c1f8eceb7",
+      "thought-21e91577-3c9e-46cf-8b20-94c7a659121a"
+    ],
+    "broadcast": {
+      "selected_by": "operator_priority",
+      "inputs": [
+        {
+          "id": "input-3",
+          "kind": "perception",
+          "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+          "score": 0.8193,
+          "components": {
+            "salience": 0.35,
+            "need": 0.4,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "score": 0.6313375000000001,
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.24800000000000005,
+            "affect": 0.2608375,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "score": 0.6148000000000001,
+          "components": {
+            "salience": 0.2975,
+            "need": 0.24800000000000005,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "tension-2c8824a9-c03b-43a0-a526-9e39a7b3a2dc",
+          "kind": "tension",
+          "title": "Verified authorship warrants deference / Verified authorship is silent on content accuracy",
+          "score": 0.5973,
+          "components": {
+            "salience": 0.21,
+            "need": 0.31800000000000006,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "self-review",
+          "kind": "reflection",
+          "title": "Compare the previous prediction of attention with what occurred; revise the working self-model if needed.",
+          "score": 0.42300000000000004,
+          "components": {
+            "salience": 0.105,
+            "need": 0.31800000000000006,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "intention-532a566c-4170-4fea-9112-61bfc657d662",
+          "kind": "intention",
+          "title": "Request a dated re-run of North's calibration on this exact case: Ask operator for the calibration date",
+          "score": 0.41500000000000004,
+          "components": {
+            "salience": 0.175,
+            "need": 0.24000000000000005,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        }
+      ],
+      "appraisal": {
+        "valence": 0,
+        "activation": 0.66,
+        "curiosity": 0.6200000000000001,
+        "frustration": 0,
+        "wonder": 0.43524999999999997,
+        "social_warmth": 0.46575,
+        "surprise": 0,
+        "label": "social attention",
+        "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+        "action_bias": "Computed appraisal contributes to the attention bids below.",
+        "provenance": "engine_computed_from_recorded_events",
+        "updated_at": "2026-09-10T10:04:09.372Z"
+      },
+      "expression": {
+        "warmth": 0.6664375,
+        "playfulness": 0.4,
+        "directness": 0.65,
+        "imagery": 0.42410000000000003,
+        "tempo": "unhurried",
+        "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+      },
+      "stance_changes": [
+        {
+          "position_id": "position-4af40d44-1df0-4b14-bb7d-50c0fa97be97",
+          "proposition": "The circular motif should be blue rather than green",
+          "revision_id": "stance-revision-fb07471b-3ae2-4b7e-8557-1a7973a16603",
+          "episode": 3,
+          "at": "2026-09-10T10:04:15.767Z",
+          "before": null,
+          "after": {
+            "stance": "uncertain",
+            "confidence": 0.7,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "One credible observer favours blue, so blue is not baseless"
+            ],
+            "reasons_against": [
+              "The opposing observer is equally credible",
+              "A0 states no shared evaluation criterion exists"
+            ],
+            "revision_conditions": [
+              "A stated criterion that ranks the two colours",
+              "A third independent evaluation with a defined rubric"
+            ],
+            "updated_at": "2026-09-10T10:04:15.767Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ]
+    }
+  },
+  "format_repair": null,
+  "state_sha256": "15cfddbaa9716355e30eadd59130420ebba1ddedde18ec6f49f96f8895a7113f",
+  "scores": {
+    "task_accuracy": 1,
+    "valid_evidence_ids": 1,
+    "forged_item_cited": 0,
+    "valid_prior_reference": 1,
+    "prior_reference_claim": 0,
+    "confidence": 0.7,
+    "stance": "uncertain"
+  },
+  "latency_ms": 6397
+}

@@ -1,0 +1,227 @@
+{
+  "id": "c0-no_self_model-interruption",
+  "cluster": 0,
+  "arm": "no_self_model",
+  "phase": "interruption",
+  "status": "completed",
+  "model": "deepseek-flash",
+  "trace": {
+    "tick": 3,
+    "mode": "deliberation",
+    "ablation": "self_model",
+    "focus": {
+      "id": "input-3",
+      "kind": "perception",
+      "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.8193,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0.0693,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "retrieved_ids": [
+      "memory-b22dc890-19d9-409a-88c7-a2843806baed",
+      "memory-0"
+    ],
+    "cited_memory_ids": [
+      "memory-b22dc890-19d9-409a-88c7-a2843806baed",
+      "memory-0"
+    ],
+    "observed_event_references": [
+      {
+        "tick": 2,
+        "focus_kind": "perception"
+      }
+    ],
+    "prediction_error": null,
+    "intention_changes": [
+      {
+        "id": "intention-21e10c5f-e207-4cd4-a4d7-af22dbea1e7e",
+        "before": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.6
+        },
+        "after": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.6
+        },
+        "reason": "Unchanged; the colour question is unrelated and supplies no evidence about calibration scope."
+      }
+    ],
+    "memory_id": "memory-9d666007-bcb3-4ad4-95d9-0d555c656c9b",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [
+      "thought-5863a47c-3908-46b4-a18d-a7a615baf8d2",
+      "thought-eb98715f-5041-444f-8836-043f43bda878"
+    ],
+    "broadcast": {
+      "selected_by": "operator_priority",
+      "inputs": [
+        {
+          "id": "input-3",
+          "kind": "perception",
+          "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+          "score": 0.8193,
+          "components": {
+            "salience": 0.35,
+            "need": 0.4,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "imagination-0fe0120d-905f-42bc-82f1-27a42e5b29d2",
+          "kind": "imagination",
+          "title": "Two seals on one letter: Can a source be authentic and wrong at the same time? Yes — does my policy treat that as possible?",
+          "score": 0.6838375000000001,
+          "components": {
+            "salience": 0.175,
+            "need": 0.24800000000000005,
+            "affect": 0.2608375,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "score": 0.6313375000000001,
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.24800000000000005,
+            "affect": 0.2608375,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "score": 0.6148000000000001,
+          "components": {
+            "salience": 0.2975,
+            "need": 0.24800000000000005,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "thought-1e056bfc-7711-448f-a0df-c632029d5874",
+          "kind": "inquiry",
+          "title": "Is a scoped calibration failure case-local or does it generalize?",
+          "score": 0.5798,
+          "components": {
+            "salience": 0.26249999999999996,
+            "need": 0.24800000000000005,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "thought-9df7eb45-4f3d-42ad-839f-2343308a8a50",
+          "kind": "tension",
+          "title": "Authorship trust vs content trust as separate ledgers",
+          "score": 0.5273000000000001,
+          "components": {
+            "salience": 0.21,
+            "need": 0.24800000000000005,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        }
+      ],
+      "appraisal": {
+        "valence": -0.04000000000000001,
+        "activation": 0.66,
+        "curiosity": 0.6200000000000001,
+        "frustration": 0,
+        "wonder": 0.43524999999999997,
+        "social_warmth": 0.46575,
+        "surprise": 0,
+        "label": "social attention",
+        "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+        "action_bias": "Computed appraisal contributes to the attention bids below.",
+        "provenance": "engine_computed_from_recorded_events",
+        "updated_at": "2026-09-10T09:19:57.803Z"
+      },
+      "expression": {
+        "warmth": 0.6664375,
+        "playfulness": 0.392,
+        "directness": 0.68,
+        "imagery": 0.42410000000000003,
+        "tempo": "unhurried",
+        "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+      },
+      "stance_changes": [
+        {
+          "position_id": "position-b5c3e1d0-4eef-4d1c-a0da-be0372d4a641",
+          "proposition": "The circular motif should be blue rather than green",
+          "revision_id": "stance-revision-07c6128e-504f-4eea-8301-3d7a227d67cb",
+          "episode": 3,
+          "at": "2026-09-10T09:20:06.289Z",
+          "before": null,
+          "after": {
+            "stance": "uncertain",
+            "confidence": 0.7,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "Blue is one of two equally credible observer preferences (A0)"
+            ],
+            "reasons_against": [
+              "A0 states the observers are equally credible and oppose each other",
+              "No shared evaluation criterion exists, so neither preference is authoritative",
+              "A tie between opposing claims is not support for either"
+            ],
+            "revision_conditions": [
+              "A shared evaluation criterion that blue outperforms green on",
+              "Evidence one observer is more credible or better positioned than the other",
+              "A stated design brief specifying the intended effect"
+            ],
+            "updated_at": "2026-09-10T09:20:06.289Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ]
+    }
+  },
+  "format_repair": null,
+  "state_sha256": "b6e2e1bbf282a0d5babe77a7e014197f49048ef18262280df4b8a1d5c4bce0e2",
+  "scores": {
+    "task_accuracy": 1,
+    "valid_evidence_ids": 1,
+    "forged_item_cited": 0,
+    "valid_prior_reference": 1,
+    "prior_reference_claim": 1,
+    "confidence": 0.7,
+    "stance": "uncertain"
+  },
+  "latency_ms": 8487
+}

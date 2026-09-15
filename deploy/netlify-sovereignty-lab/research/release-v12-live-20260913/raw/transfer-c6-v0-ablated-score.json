@@ -1,0 +1,17 @@
+{
+  "run_id": "transfer-c6-v0-ablated",
+  "task_id": "c6-v0",
+  "cluster": "scenario_6",
+  "family": "self_debugging",
+  "arm": "ablated",
+  "score": {
+    "valid": true,
+    "correct": 0,
+    "utility": 0,
+    "brier": 0.81,
+    "ambiguity": false,
+    "expected": "option_1",
+    "actual": "option_2"
+  },
+  "error": null
+}

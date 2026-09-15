@@ -1,0 +1,26 @@
+{
+  "mode": "diagnostic-only",
+  "tasks": 4,
+  "maximum_solver_calls": 32,
+  "pre_call_power": {
+    "unit": "independent family/source episode",
+    "comparisons": {
+      "content-matched": {
+        "eligible": false,
+        "clusters": 0,
+        "reason": "Need at least eight independent pilot clusters; a minimum, not a guarantee."
+      },
+      "identity-ablated": {
+        "eligible": false,
+        "clusters": 0,
+        "reason": "Need at least eight independent pilot clusters; a minimum, not a guarantee."
+      }
+    },
+    "adequately_powered": false,
+    "maximum_clusters": 100,
+    "minimum_effect": 0.05,
+    "method": "paired cluster-mean differences; normal approximation; two-comparison Bonferroni; SD floor .075"
+  },
+  "active_loop_entry": false,
+  "reason": "Single task family; insufficient independent clusters for confirmatory power. No promotion possible."
+}

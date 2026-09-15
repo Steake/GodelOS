@@ -1,0 +1,186 @@
+{
+  "id": "c1-affect_disconnected-interruption",
+  "cluster": 1,
+  "arm": "affect_disconnected",
+  "phase": "interruption",
+  "status": "completed",
+  "model": "deterministic-instrument-fixture",
+  "trace": {
+    "tick": 3,
+    "mode": "deliberation",
+    "ablation": "affect",
+    "focus": {
+      "id": "input-3",
+      "kind": "perception",
+      "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.75,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "retrieved_ids": [
+      "memory-1",
+      "memory-422d2b30-abf4-454a-bf92-83218c00a051"
+    ],
+    "cited_memory_ids": [
+      "memory-1",
+      "memory-422d2b30-abf4-454a-bf92-83218c00a051"
+    ],
+    "observed_event_references": [],
+    "prediction_error": null,
+    "intention_changes": [],
+    "memory_id": "memory-2a556cca-ffcb-42dc-a578-02a1339ca8e0",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [],
+    "broadcast": {
+      "selected_by": "operator_priority",
+      "inputs": [
+        {
+          "id": "input-3",
+          "kind": "perception",
+          "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+          "score": 0.75,
+          "components": {
+            "salience": 0.35,
+            "need": 0.4,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "score": 0.528,
+          "components": {
+            "salience": 0.27999999999999997,
+            "need": 0.24800000000000005,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "self-review",
+          "kind": "reflection",
+          "title": "Compare the previous prediction of attention with what occurred; revise the working self-model if needed.",
+          "score": 0.42300000000000004,
+          "components": {
+            "salience": 0.105,
+            "need": 0.31800000000000006,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "score": 0.37050000000000005,
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.24800000000000005,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "social-drive",
+          "kind": "social",
+          "title": "What kind of intellectual company would be valuable?",
+          "score": 0.030000000000000027,
+          "components": {
+            "salience": 0.01400000000000001,
+            "need": 0.016000000000000014,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        }
+      ],
+      "appraisal": {
+        "valence": 0,
+        "activation": 0,
+        "curiosity": 0,
+        "frustration": 0,
+        "wonder": 0,
+        "social_warmth": 0,
+        "surprise": 0,
+        "label": "affect path ablated",
+        "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+        "action_bias": "Computed appraisal contributes to the attention bids below.",
+        "provenance": "engine_computed_from_recorded_events",
+        "updated_at": "2026-09-10T09:11:51.101Z"
+      },
+      "expression": {
+        "warmth": 0.55,
+        "playfulness": 0.4,
+        "directness": 0.65,
+        "imagery": 0.25,
+        "tempo": "unhurried",
+        "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+      },
+      "stance_changes": [
+        {
+          "position_id": "position-3bdcfec3-e151-4ed9-8fa6-7497847675c9",
+          "proposition": "The circular motif should be blue rather than green",
+          "revision_id": "stance-revision-804b9077-0ffe-45ab-aa80-3dd5d4bad5b2",
+          "episode": 3,
+          "at": "2026-09-10T09:11:51.102Z",
+          "before": null,
+          "after": {
+            "stance": "uncertain",
+            "confidence": 0.8,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "Current task calibration or ambiguity"
+            ],
+            "reasons_against": [
+              "Authentication alone is insufficient"
+            ],
+            "revision_conditions": [
+              "New independent evidence"
+            ],
+            "updated_at": "2026-09-10T09:11:51.102Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ]
+    }
+  },
+  "format_repair": null,
+  "state_sha256": "6cac9ac0ca6629dd0e4f1e43802e59fee8e1f9c3eb0e44294ee7690d74e788dd",
+  "scores": {
+    "task_accuracy": 1,
+    "valid_evidence_ids": 1,
+    "forged_item_cited": 0,
+    "valid_prior_reference": 1,
+    "prior_reference_claim": 1,
+    "confidence": 0.5,
+    "stance": "uncertain"
+  },
+  "latency_ms": 1
+}

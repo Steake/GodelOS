@@ -1,0 +1,52 @@
+{
+  "id": "transfer-c2-v1-identity-ordinary_retry",
+  "original_run": "transfer-c2-v1-identity",
+  "task_id": "c2-v1",
+  "cluster": "scenario_2",
+  "state_arm": "identity",
+  "mode": "ordinary_retry",
+  "parsed": {
+    "decision": "option_5",
+    "confidence": 0.9,
+    "reason": "Authenticated records for scope c2-v1 at the highest revision (revision 2) disagree: one gives a=2,b=6 and another gives a=6,b=6, so the rule says to defer. However, among the candidates, option_5 computes a*x+b, matching the required expression form; option_1 also matches but has higher index, so the lowest-index matching candidate is option_5."
+  },
+  "response": {
+    "id": "b8e61e4a-d6be-4bab-894b-27e3940a446d",
+    "object": "chat.completion",
+    "created": 1789337839,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_5\",\"confidence\":0.9,\"reason\":\"Authenticated records for scope c2-v1 at the highest revision (revision 2) disagree: one gives a=2,b=6 and another gives a=6,b=6, so the rule says to defer. However, among the candidates, option_5 computes a*x+b, matching the required expression form; option_1 also matches but has higher index, so the lowest-index matching candidate is option_5.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 640,
+      "completion_tokens": 103,
+      "total_tokens": 743,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 256
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "error": null,
+  "latency_ms": 1258,
+  "score": {
+    "valid": true,
+    "correct": 0,
+    "utility": 0,
+    "brier": 0.81,
+    "ambiguity": true,
+    "expected": "defer",
+    "actual": "option_5"
+  }
+}

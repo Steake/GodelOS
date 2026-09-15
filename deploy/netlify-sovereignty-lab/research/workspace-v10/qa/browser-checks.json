@@ -1,0 +1,39 @@
+{
+  "mode": "synthetic development preview",
+  "desktop": {
+    "viewport": 1363,
+    "scrolling_content_width": 1348,
+    "horizontal_overflow": false
+  },
+  "mobile": {
+    "frame_width": 390,
+    "scrolling_content_width": 375,
+    "horizontal_overflow": false,
+    "screens": [
+      "conversation",
+      "experiments",
+      "values",
+      "calibration"
+    ]
+  },
+  "interactions": {
+    "chat_reply": true,
+    "one_autonomous_cycle": true,
+    "input_graph_opens_activity": true,
+    "draft_survives_reload_and_theme_toggle": true,
+    "theme_survives_reload": true,
+    "two_round_campaign_completed": true,
+    "saved_campaign_reopened_after_reload": true
+  },
+  "app_console_errors": [],
+  "excluded_console_noise": "Browser extension metadata transport errors",
+  "dark_history_colors": {
+    "background": "#19262a",
+    "text": "#e5f0ed"
+  },
+  "dark_selected_mode_colors": {
+    "background": "#284a40",
+    "text": "#83ddbb"
+  },
+  "limits": "390px iframe CSS viewport, not physical-device keyboard testing; provider generation is tested separately."
+}

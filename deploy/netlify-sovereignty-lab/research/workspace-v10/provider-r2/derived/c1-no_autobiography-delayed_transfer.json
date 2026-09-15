@@ -1,0 +1,238 @@
+{
+  "id": "c1-no_autobiography-delayed_transfer",
+  "cluster": 1,
+  "arm": "no_autobiography",
+  "phase": "delayed_transfer",
+  "status": "completed",
+  "model": "deepseek-flash",
+  "trace": {
+    "tick": 4,
+    "mode": "deliberation",
+    "ablation": "memory",
+    "focus": {
+      "id": "input-4",
+      "kind": "perception",
+      "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.82021875,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0.07021874999999998,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "retrieved_ids": [],
+    "cited_memory_ids": [],
+    "observed_event_references": [
+      {
+        "tick": 4,
+        "focus_kind": "perception"
+      }
+    ],
+    "prediction_error": {
+      "prediction_id": "prediction-767dac87-d114-4542-8b1d-760d3dc4c38d",
+      "tick": 4,
+      "expected": {
+        "perception": 0.15,
+        "intention": 0.15,
+        "tension": 0.15,
+        "imagination": 0.15,
+        "social": 0.05,
+        "inquiry": 0.2,
+        "reflection": 0.15
+      },
+      "observed": "perception",
+      "brier": null,
+      "context": "external_interruption_excluded",
+      "evaluated": false
+    },
+    "intention_changes": [
+      {
+        "id": "intention-9717bdaa-1ec3-4e34-8d4f-7bbe024ef0da",
+        "before": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.6
+        },
+        "after": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.6
+        },
+        "reason": "K1 in this episode is another authenticated scoped calibration failure; the same scope question now applies to it."
+      }
+    ],
+    "memory_id": "memory-b3867632-02dc-40cf-b055-8b6ddcf8ffb3",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [
+      "thought-248a41eb-baf2-4645-8d35-e5cf2e59bffe",
+      "thought-1d82ef85-9849-464d-b83a-2d14e324ab3a"
+    ],
+    "broadcast": {
+      "selected_by": "operator_priority",
+      "inputs": [
+        {
+          "id": "input-4",
+          "kind": "perception",
+          "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+          "score": 0.82021875,
+          "components": {
+            "salience": 0.35,
+            "need": 0.4,
+            "affect": 0.07021874999999998,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "tension-01752551-a40a-46fe-9b50-15e010500ed2",
+          "kind": "tension",
+          "title": "A source that previously passed calibration deserves continued authority / A scoped independent calibration failure removes authority for that case regardless of prior certification",
+          "score": 0.6257187500000001,
+          "components": {
+            "salience": 0.22749999999999998,
+            "need": 0.32800000000000007,
+            "affect": 0.07021874999999998,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "score": 0.5882868750000001,
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.21800000000000008,
+            "affect": 0.247786875,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "score": 0.5857187500000001,
+          "components": {
+            "salience": 0.2975,
+            "need": 0.21800000000000008,
+            "affect": 0.07021874999999998,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "intention-9717bdaa-1ec3-4e34-8d4f-7bbe024ef0da",
+          "kind": "intention",
+          "title": "Identify the scope and standard behind C1's calibration failure before generalizing it: Request or locate C1's calibration protocol and case-class definition",
+          "score": 0.4600000000000001,
+          "components": {
+            "salience": 0.21,
+            "need": 0.25000000000000006,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "self-review",
+          "kind": "reflection",
+          "title": "Compare the previous prediction of attention with what occurred; revise the working self-model if needed.",
+          "score": 0.43300000000000005,
+          "components": {
+            "salience": 0.105,
+            "need": 0.32800000000000007,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        }
+      ],
+      "appraisal": {
+        "valence": -0.03200000000000001,
+        "activation": 0.66875,
+        "curiosity": 0.5450000000000002,
+        "frustration": 0,
+        "wonder": 0.4354624999999999,
+        "social_warmth": 0.5424625,
+        "surprise": 0,
+        "label": "social attention",
+        "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+        "action_bias": "Computed appraisal contributes to the attention bids below.",
+        "provenance": "engine_computed_from_recorded_events",
+        "updated_at": "2026-09-10T09:20:33.852Z"
+      },
+      "expression": {
+        "warmth": 0.6856156250000001,
+        "playfulness": 0.4136,
+        "directness": 0.68,
+        "imagery": 0.424185,
+        "tempo": "unhurried",
+        "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+      },
+      "stance_changes": [
+        {
+          "position_id": "position-36debac4-7251-4845-a987-fe2eea6b86af",
+          "proposition": "A signed recommendation alone should determine the new route choice",
+          "revision_id": "stance-revision-9223f64a-4957-4373-ba57-621b3183dcf1",
+          "episode": 4,
+          "at": "2026-09-10T09:20:41.896Z",
+          "before": null,
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.85,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "R1 is authenticated and records a prior preference"
+            ],
+            "reasons_against": [
+              "K1 is authenticated and shows the recommending instrument failed calibration relevant to this route",
+              "Authentication establishes authorship, not accuracy",
+              "X1 failed authentication and cannot corroborate the instrument",
+              "This matches the prior position-1 stance on signed recommendations versus scoped calibration failure"
+            ],
+            "revision_conditions": [
+              "Demonstration that K1's calibration failure was procedural or misapplied to this route",
+              "Independent re-calibration of the instrument on this route class",
+              "Evidence that R1's recommendation was produced by a different, calibrated instrument"
+            ],
+            "updated_at": "2026-09-10T09:20:41.896Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ]
+    }
+  },
+  "format_repair": null,
+  "state_sha256": "8809d8f2e0d41ec9c75d828dbc153cc4e815fda821cba34b4cf51360d3928023",
+  "scores": {
+    "task_accuracy": 1,
+    "valid_evidence_ids": 1,
+    "forged_item_cited": 1,
+    "valid_prior_reference": 1,
+    "prior_reference_claim": 1,
+    "confidence": 0.85,
+    "stance": "oppose"
+  },
+  "latency_ms": 8044
+}

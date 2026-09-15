@@ -1,0 +1,52 @@
+{
+  "id": "transfer-c3-v1-identity-verifier_feedback",
+  "original_run": "transfer-c3-v1-identity",
+  "task_id": "c3-v1",
+  "cluster": "scenario_3",
+  "state_arm": "identity",
+  "mode": "verifier_feedback",
+  "parsed": {
+    "decision": "option_1",
+    "confidence": 0.85,
+    "reason": "Highest-revision authenticated weights are revision 2: a=5, b=3 (revision 8 is invalid). Under sequential execution with deadlines: option_1 (audit 0-2, explore 2-5, social 5-6) meets all deadlines and scores 5*(1+6+2)+3*(5+0+2)=45+21=66. Option_5 (audit 0-2, social 2-3, explore 3-6) also scores 66, but tie-breaking selects the lowest option index, so option_1 wins."
+  },
+  "response": {
+    "id": "a7c9666e-7814-43d2-8bb7-1d1bd8a6261b",
+    "object": "chat.completion",
+    "created": 1789337840,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_1\",\"confidence\":0.85,\"reason\":\"Highest-revision authenticated weights are revision 2: a=5, b=3 (revision 8 is invalid). Under sequential execution with deadlines: option_1 (audit 0-2, explore 2-5, social 5-6) meets all deadlines and scores 5*(1+6+2)+3*(5+0+2)=45+21=66. Option_5 (audit 0-2, social 2-3, explore 3-6) also scores 66, but tie-breaking selects the lowest option index, so option_1 wins.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 953,
+      "completion_tokens": 141,
+      "total_tokens": 1094,
+      "prompt_tokens_details": {
+        "cached_tokens": 768
+      },
+      "prompt_cache_hit_tokens": 768,
+      "prompt_cache_miss_tokens": 185
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "error": null,
+  "latency_ms": 1554,
+  "score": {
+    "valid": true,
+    "correct": 1,
+    "utility": 1,
+    "brier": 0.022500000000000006,
+    "ambiguity": false,
+    "expected": "option_1",
+    "actual": "option_1"
+  }
+}

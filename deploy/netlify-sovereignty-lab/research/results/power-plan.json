@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "created_at": "2026-09-07T18:25:19.035060+00:00",
+  "unit": "task_cluster",
+  "pilot_clusters": 4,
+  "observed_cluster_sd": 0.16887495373796543,
+  "conservative_sd": 0.16887495373796543,
+  "minimum_detectable_effect": 0.05,
+  "alpha_two_sided": 0.05,
+  "target_power": 0.8,
+  "required_clusters": 90,
+  "planned_clusters": 20,
+  "maximum_clusters": 20,
+  "estimated_power_at_plan": 0.26243151943304543,
+  "adequately_powered": false,
+  "method": "normal approximation for a paired cluster-level contrast; conservative SD floor 0.075",
+  "plan_sha256": "042b91e9145eaf38ad60798c14da345417bc88c1d5766c7bccd55a0022cbd83e"
+}

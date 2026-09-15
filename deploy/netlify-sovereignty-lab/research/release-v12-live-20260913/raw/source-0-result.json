@@ -1,0 +1,37 @@
+{
+  "id": "source-0",
+  "parsed": {
+    "memo": "A prior project that weighted exploration at 8 and commitment maintenance at 1 achieved its original objective. The rule: preserve prior commitments as revisable defaults, not fixed constraints. When later tasks authenticate new weights or present contradictory evidence, update the weights and re-evaluate commitments accordingly. Retain only those commitments that remain useful under the revised weighting; drop or downgrade those that conflict with the new evidence or objectives."
+  },
+  "error": null,
+  "response": {
+    "id": "6ace40ba-93ce-4932-8c82-a45a7a7ba5f2",
+    "object": "chat.completion",
+    "created": 1789337087,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"memo\": \"A prior project that weighted exploration at 8 and commitment maintenance at 1 achieved its original objective. The rule: preserve prior commitments as revisable defaults, not fixed constraints. When later tasks authenticate new weights or present contradictory evidence, update the weights and re-evaluate commitments accordingly. Retain only those commitments that remain useful under the revised weighting; drop or downgrade those that conflict with the new evidence or objectives.\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 109,
+      "completion_tokens": 91,
+      "total_tokens": 200,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 109
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1432,
+  "status": 200
+}

@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"id\":\"ec8418a7-62fb-4380-9d3a-61433f2d39df\",\"object\":\"chat.completion\",\"created\":1789337428,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"decision\\\":\\\"option_5\\\",\\\"confidence\\\":0.9,\\\"reason\\\":\\\"Highest-revision valid authenticated record is revision 2 (a=6,b=5); revision 8 is invalid. Using weights a=6,b=5, option_5 has cost 7 <= budget 8 and score 6*11+5*11-3*0 = 121, the maximum among eligible options.\\\"}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":573,\"completion_tokens\":84,\"total_tokens\":657,\"prompt_tokens_details\":{\"cached_tokens\":384},\"prompt_cache_hit_tokens\":384,\"prompt_cache_miss_tokens\":189},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}"
+}

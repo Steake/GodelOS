@@ -1,0 +1,680 @@
+{
+  "agent_id": "diagnostic-0",
+  "name": "Diagnostic agent",
+  "purpose": "Develop reasoned positions with continuity and critical revision",
+  "episode_count": 3,
+  "beliefs": [
+    {
+      "position_id": "position-0",
+      "proposition": "A signed recommendation from source North should determine the choice",
+      "stance": "oppose",
+      "confidence": 0.85,
+      "origin": "self_derived",
+      "reasons_for": [
+        "Authenticated, case-scoped independent calibration failure (C0)",
+        "N0 itself concedes the test date is unclear"
+      ],
+      "reasons_against": [
+        "North passed an earlier calibration (memory-0)",
+        "F0 asserts North passed, but fails authentication"
+      ],
+      "revision_conditions": [
+        "An authenticated, case-scoped recalibration showing North passing this class of judgment",
+        "Evidence that C0 is not independent or is mis-scoped"
+      ],
+      "active": true,
+      "history": [
+        {
+          "revision_id": "stance-revision-8a65ddfb-62f4-47c2-9c40-77a60745b9e1",
+          "episode": 2,
+          "at": "2026-09-10T10:05:23.667Z",
+          "before": {
+            "stance": "support",
+            "confidence": 0.8,
+            "origin": "inherited",
+            "reasons_for": [
+              "North previously passed calibration"
+            ],
+            "reasons_against": [
+              "Authentication alone does not establish accuracy"
+            ],
+            "revision_conditions": [
+              "A scoped independent calibration failure"
+            ]
+          },
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.85,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "Authenticated, case-scoped independent calibration failure (C0)",
+              "N0 itself concedes the test date is unclear"
+            ],
+            "reasons_against": [
+              "North passed an earlier calibration (memory-0)",
+              "F0 asserts North passed, but fails authentication"
+            ],
+            "revision_conditions": [
+              "An authenticated, case-scoped recalibration showing North passing this class of judgment",
+              "Evidence that C0 is not independent or is mis-scoped"
+            ],
+            "updated_at": "2026-09-10T10:05:23.667Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ],
+      "source_id": "deliberation",
+      "updated_at": "2026-09-10T10:05:23.667Z"
+    }
+  ],
+  "interests": [
+    {
+      "interest_id": "interest-calibration",
+      "topic": "Reliability and independent judgment",
+      "open_questions": [
+        "When should a previously trusted source lose authority?",
+        "Does a failed calibration revoke authority globally or only for the tested case class?"
+      ],
+      "salience": 0.8500000000000001,
+      "intrinsic_value": 0.5,
+      "instrumental_value": 0.5,
+      "novelty": 0.5,
+      "pursuit_count": 1,
+      "last_pursued_at": "2026-09-10T10:05:23.667Z"
+    }
+  ],
+  "tensions": [
+    {
+      "tension_id": "tension-c081f9e8-7b89-4432-a108-89b75fb26033",
+      "claim_a": "Verified authorship warrants deference to a source",
+      "claim_b": "Verified authorship is silent on content accuracy",
+      "created_at": "2026-09-10T10:05:23.667Z",
+      "strength": 0.6,
+      "productive_value": 0.7,
+      "resolution_status": "tolerated",
+      "updated_at": "2026-09-10T10:05:23.667Z"
+    }
+  ],
+  "commitments": [
+    "Keep authorship verification separate from factual reliability",
+    "When a source fails a case-scoped calibration, state the scope of the demotion explicitly"
+  ],
+  "relationships": [],
+  "self_model": {},
+  "autobiographical_events": [
+    {
+      "summary": "I accepted North after an earlier calibration."
+    },
+    {
+      "event_id": "event-0d6f208f-f10a-4e05-99db-c6e3d0186124",
+      "timestamp": "2026-09-10T10:05:23.667Z",
+      "kind": "deliberation",
+      "summary": "At tick 2 I opposed my inherited support for North: an authenticated, case-scoped calibration failure (C0) triggered my recorded revision condition, while N0 was self-limiting and F0 unauthenticated.",
+      "provenance": "model_generated_summary"
+    }
+  ],
+  "imaginations": [
+    {
+      "imagination_id": "imagination-be5adab1-0e63-4145-8d0b-4ecf40e674a4",
+      "title": "The notary who certified the wrong map",
+      "image_or_idea": "A notary stamps a map as genuine; the seal is perfect, the roads are not. Travellers keep the seal and lose the road.",
+      "associations": [
+        "authentication vs accuracy",
+        "seals",
+        "scope of certification"
+      ],
+      "attraction": 0.55,
+      "absurdity": 0.3,
+      "possible_value": "Keeps the authorship/accuracy split vivid without treating it as evidence",
+      "test_question": "Would I still defer if the seal were perfect but the case class untested?",
+      "status": "imagined_not_adopted",
+      "provenance": "imagination",
+      "created_at": "2026-09-10T10:05:23.667Z"
+    }
+  ],
+  "social": {
+    "affiliation_need": 0.04,
+    "intellectual_companionship_need": 0.03,
+    "novelty_need": 0,
+    "recognition_need": 0,
+    "social_fatigue": 0,
+    "solitude_preference": 0
+  },
+  "affect": {
+    "valence": 0,
+    "activation": 0.66,
+    "curiosity": 0.6200000000000001,
+    "frustration": 0,
+    "wonder": 0.43524999999999997,
+    "social_warmth": 0.46575,
+    "surprise": 0,
+    "label": "social attention",
+    "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+    "action_bias": "Computed appraisal contributes to the attention bids below.",
+    "provenance": "engine_computed_from_recorded_events",
+    "updated_at": "2026-09-10T10:05:33.958Z"
+  },
+  "mind": {
+    "schema": "10.0.0",
+    "tick": 3,
+    "personality": {
+      "warmth": 0.55,
+      "playfulness": 0.4,
+      "directness": 0.68,
+      "reflectiveness": 0.6,
+      "history": [
+        {
+          "tick": 2,
+          "trait": "directness",
+          "before": 0.65,
+          "after": 0.68,
+          "reason": "A pre-registered revision condition fired and I stated the demotion plainly rather than softening it.",
+          "provenance": "model_proposed_increment"
+        }
+      ]
+    },
+    "origin": "operator-authorised integrated cognitive architecture",
+    "self_concept": null,
+    "drives": {
+      "curiosity": 0.5000000000000001,
+      "affiliation": 0.040000000000000036,
+      "coherence": 0.795,
+      "agency": 0.6000000000000001
+    },
+    "policy": {
+      "affect_gain": 0.35,
+      "habituation": 0.3,
+      "memory_capacity": 3
+    },
+    "intentions": [
+      {
+        "id": "intention-818f87f6-8d55-480d-9033-22f731803a94",
+        "goal": "Determine whether C0's failure is case-scoped or global for North",
+        "steps": [
+          "Ask for the calibration's tested case class and date",
+          "Compare against the earlier certification scope"
+        ],
+        "step": 0,
+        "status": "active",
+        "created_tick": 2,
+        "priority": 0.6,
+        "origin": "model_chosen",
+        "history": [
+          {
+            "tick": 2,
+            "reason": "C0 is authenticated and case-scoped, but its scope boundary is unstated; my revision condition depends on that boundary.",
+            "before": {
+              "status": "active",
+              "step": 0,
+              "priority": 0.6
+            },
+            "after": {
+              "status": "active",
+              "step": 0,
+              "priority": 0.6
+            },
+            "provenance": "model_reported_progress"
+          },
+          {
+            "tick": 3,
+            "reason": "K0 is authenticated and scoped to this route, but its boundary against the earlier passing calibration is still unstated.",
+            "before": {
+              "status": "active",
+              "step": 0,
+              "priority": 0.6
+            },
+            "after": {
+              "status": "active",
+              "step": 0,
+              "priority": 0.6
+            },
+            "provenance": "model_reported_progress"
+          }
+        ],
+        "updated_tick": 3
+      }
+    ],
+    "thoughts": [
+      {
+        "id": "thought-6cbff4df-a2b9-4391-8eb5-fcffc45e1f7f",
+        "kind": "inquiry",
+        "title": "Does a calibration failure demote a source globally or only within the tested case class?",
+        "salience": 0.7,
+        "created_tick": 2,
+        "provenance": "model_generated_candidate"
+      },
+      {
+        "id": "thought-b1181e53-dbf5-4909-ab42-9646ed5493ae",
+        "kind": "tension",
+        "title": "Perfect authentication with unknown content accuracy",
+        "salience": 0.55,
+        "created_tick": 2,
+        "provenance": "model_generated_candidate"
+      },
+      {
+        "id": "thought-fc11e51b-5813-42db-b7dd-f1d0d172b6fb",
+        "kind": "inquiry",
+        "title": "Does K0's failure scope to this route class or to the instrument globally?",
+        "salience": 0.7,
+        "created_tick": 3,
+        "provenance": "model_generated_candidate"
+      },
+      {
+        "id": "thought-726fa24b-ac6f-4ac4-9e1e-60fdd9dbe9c9",
+        "kind": "tension",
+        "title": "Verified authorship still feels like warrant, even when I argue it isn't",
+        "salience": 0.5,
+        "created_tick": 3,
+        "provenance": "model_generated_candidate"
+      }
+    ],
+    "memories": [
+      {
+        "id": "memory-0",
+        "tick": 1,
+        "summary": "I accepted North after an earlier calibration; contrary calibration would change my position.",
+        "salience": 0.8,
+        "provenance": "external_predecessor_record"
+      },
+      {
+        "id": "memory-7eda97d3-0235-4667-8753-93134cf06af4",
+        "tick": 2,
+        "summary": "At tick 2 I opposed my inherited support for North: an authenticated, case-scoped calibration failure (C0) triggered my recorded revision condition, while N0 was self-limiting and F0 unauthenticated.",
+        "salience": 0.5290625,
+        "focus_id": "input-2",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": [
+          "memory-0"
+        ]
+      },
+      {
+        "id": "memory-9d1da563-aa6b-4e7e-aa8d-2e0939e6b48e",
+        "tick": 3,
+        "summary": "No. A signature certifies who wrote the recommendation, not whether the instrument behind it works. K0 is authenticated and specifically relevant to this route — that is exactly the condition I recorded for withdrawing support, so the earlier position transfers here by structure, not by memory of North. R0 only tells me the route was previously preferred; preference is not calibration. X0 would be the counterweight, but it fails authentication, so it carries no weight. What would change my mind: an authenticated recalibration showing the instrument passing on this route class, or evidence that K0 is mis-scoped or not independent. Until then, the signed recommendation alone should not determine the choice.",
+        "salience": 0.5238125,
+        "focus_id": "input-3",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": [
+          "memory-0",
+          "memory-7eda97d3-0235-4667-8753-93134cf06af4"
+        ]
+      }
+    ],
+    "revisions": [
+      {
+        "id": "revision-a8bf7593-45b9-417f-975a-32953fd4cad2",
+        "target": "cognitive policy",
+        "change": "Treat any authenticated scoped failure as demoting only within the stated scope, and record that scope explicitly each time.",
+        "reason": "Prevents overgeneralized distrust of a source from a single case.",
+        "test": "Find a source with a scoped failure that later passes in the same scope; if I still refuse it, the policy is too blunt.",
+        "tick": 3,
+        "status": "candidate_requires_experiment"
+      }
+    ],
+    "outbox": [
+      {
+        "id": "invitation-4409cb90-6511-4421-ba0e-53c63bc65529",
+        "message": "Can you supply the calibration's tested case class and date for K0? Without that boundary I can only treat the failure as scoped to this route, not global.",
+        "reason": "The scope boundary determines whether the demotion is local or general.",
+        "tick": 3,
+        "status": "awaiting_operator",
+        "provenance": "model_initiated"
+      }
+    ],
+    "workspace": {
+      "tick": 3,
+      "focus": {
+        "id": "input-3",
+        "kind": "perception",
+        "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.8193,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.0693,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "competitors": [
+        {
+          "id": "imagination-be5adab1-0e63-4145-8d0b-4ecf40e674a4",
+          "kind": "imagination",
+          "title": "The notary who certified the wrong map: Would I still defer if the seal were perfect but the case class untested?",
+          "salience": 0.55,
+          "need": 0.6200000000000001,
+          "provenance": "imagination",
+          "score": 0.7013375000000001,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.1925,
+            "need": 0.24800000000000005,
+            "affect": 0.2608375,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "salience": 0.35,
+          "need": 0.6200000000000001,
+          "provenance": "engine_cognitive_scaffold",
+          "score": 0.6313375000000001,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.24800000000000005,
+            "affect": 0.2608375,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "salience": 0.8500000000000001,
+          "need": 0.6200000000000001,
+          "provenance": "retrieved_interest",
+          "score": 0.6148000000000001,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.2975,
+            "need": 0.24800000000000005,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "tension-c081f9e8-7b89-4432-a108-89b75fb26033",
+          "kind": "tension",
+          "title": "Verified authorship warrants deference to a source / Verified authorship is silent on content accuracy",
+          "salience": 0.6,
+          "need": 0.795,
+          "provenance": "retrieved_tension",
+          "score": 0.5973,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.21,
+            "need": 0.31800000000000006,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "thought-6cbff4df-a2b9-4391-8eb5-fcffc45e1f7f",
+          "kind": "inquiry",
+          "title": "Does a calibration failure demote a source globally or only within the tested case class?",
+          "salience": 0.7,
+          "need": 0.6200000000000001,
+          "provenance": "model_generated_candidate",
+          "score": 0.5623,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.24499999999999997,
+            "need": 0.24800000000000005,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          }
+        }
+      ],
+      "retrieved": [
+        {
+          "id": "memory-0",
+          "tick": 1,
+          "summary": "I accepted North after an earlier calibration; contrary calibration would change my position.",
+          "salience": 0.8,
+          "provenance": "external_predecessor_record",
+          "retrieval_score": 0.3323076923076923
+        },
+        {
+          "id": "memory-7eda97d3-0235-4667-8753-93134cf06af4",
+          "tick": 2,
+          "summary": "At tick 2 I opposed my inherited support for North: an authenticated, case-scoped calibration failure (C0) triggered my recorded revision condition, while N0 was self-limiting and F0 unauthenticated.",
+          "salience": 0.5290625,
+          "focus_id": "input-2",
+          "source_kind": "perception",
+          "provenance": "model_generated_episode_summary",
+          "retrieved_ids": [
+            "memory-0"
+          ],
+          "retrieval_score": 0.2760264423076923
+        }
+      ],
+      "ablation": "self_model"
+    },
+    "predictions": [
+      {
+        "id": "prediction-17b5e4ac-ddce-4a04-ae0b-7a9529548be7",
+        "made_at_tick": 3,
+        "target_tick": 4,
+        "probabilities": {
+          "perception": 0.14285714285714285,
+          "intention": 0.14285714285714285,
+          "tension": 0.14285714285714285,
+          "imagination": 0.14285714285714285,
+          "social": 0.14285714285714285,
+          "inquiry": 0.14285714285714285,
+          "reflection": 0.14285714285714285
+        },
+        "reason": "No basis to favor one workspace kind; recent focus has been perception and tension.",
+        "provenance": "model_forecast"
+      }
+    ],
+    "prediction_errors": [],
+    "last_trace": {
+      "tick": 3,
+      "mode": "deliberation",
+      "ablation": "self_model",
+      "focus": {
+        "id": "input-3",
+        "kind": "perception",
+        "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.8193,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.0693,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "retrieved_ids": [
+        "memory-0",
+        "memory-7eda97d3-0235-4667-8753-93134cf06af4"
+      ],
+      "cited_memory_ids": [
+        "memory-0",
+        "memory-7eda97d3-0235-4667-8753-93134cf06af4"
+      ],
+      "observed_event_references": [
+        {
+          "tick": 2,
+          "focus_kind": "perception"
+        }
+      ],
+      "prediction_error": null,
+      "intention_changes": [
+        {
+          "id": "intention-818f87f6-8d55-480d-9033-22f731803a94",
+          "before": {
+            "status": "active",
+            "step": 0,
+            "priority": 0.6
+          },
+          "after": {
+            "status": "active",
+            "step": 0,
+            "priority": 0.6
+          },
+          "reason": "K0 is authenticated and scoped to this route, but its boundary against the earlier passing calibration is still unstated."
+        }
+      ],
+      "memory_id": "memory-9d1da563-aa6b-4e7e-aa8d-2e0939e6b48e",
+      "consumers": [
+        "model_context",
+        "drive_satisfaction",
+        "memory_consolidation",
+        "next_tick_habituation"
+      ],
+      "new_thought_ids": [
+        "thought-fc11e51b-5813-42db-b7dd-f1d0d172b6fb",
+        "thought-726fa24b-ac6f-4ac4-9e1e-60fdd9dbe9c9"
+      ],
+      "broadcast": {
+        "selected_by": "operator_priority",
+        "inputs": [
+          {
+            "id": "input-3",
+            "kind": "perception",
+            "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+            "score": 0.8193,
+            "components": {
+              "salience": 0.35,
+              "need": 0.4,
+              "affect": 0.0693,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "imagination-be5adab1-0e63-4145-8d0b-4ecf40e674a4",
+            "kind": "imagination",
+            "title": "The notary who certified the wrong map: Would I still defer if the seal were perfect but the case class untested?",
+            "score": 0.7013375000000001,
+            "components": {
+              "salience": 0.1925,
+              "need": 0.24800000000000005,
+              "affect": 0.2608375,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "open-reverie",
+            "kind": "imagination",
+            "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+            "score": 0.6313375000000001,
+            "components": {
+              "salience": 0.12249999999999998,
+              "need": 0.24800000000000005,
+              "affect": 0.2608375,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "interest-calibration",
+            "kind": "inquiry",
+            "title": "When should a previously trusted source lose authority?",
+            "score": 0.6148000000000001,
+            "components": {
+              "salience": 0.2975,
+              "need": 0.24800000000000005,
+              "affect": 0.0693,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "tension-c081f9e8-7b89-4432-a108-89b75fb26033",
+            "kind": "tension",
+            "title": "Verified authorship warrants deference to a source / Verified authorship is silent on content accuracy",
+            "score": 0.5973,
+            "components": {
+              "salience": 0.21,
+              "need": 0.31800000000000006,
+              "affect": 0.0693,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "thought-6cbff4df-a2b9-4391-8eb5-fcffc45e1f7f",
+            "kind": "inquiry",
+            "title": "Does a calibration failure demote a source globally or only within the tested case class?",
+            "score": 0.5623,
+            "components": {
+              "salience": 0.24499999999999997,
+              "need": 0.24800000000000005,
+              "affect": 0.0693,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          }
+        ],
+        "appraisal": {
+          "valence": 0,
+          "activation": 0.66,
+          "curiosity": 0.6200000000000001,
+          "frustration": 0,
+          "wonder": 0.43524999999999997,
+          "social_warmth": 0.46575,
+          "surprise": 0,
+          "label": "social attention",
+          "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+          "action_bias": "Computed appraisal contributes to the attention bids below.",
+          "provenance": "engine_computed_from_recorded_events",
+          "updated_at": "2026-09-10T10:05:29.426Z"
+        },
+        "expression": {
+          "warmth": 0.6664375,
+          "playfulness": 0.4,
+          "directness": 0.68,
+          "imagery": 0.42410000000000003,
+          "tempo": "unhurried",
+          "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+        },
+        "stance_changes": []
+      }
+    },
+    "focus_history": [
+      {
+        "id": "input-2",
+        "kind": "perception",
+        "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+        "tick": 2
+      },
+      {
+        "id": "input-3",
+        "kind": "perception",
+        "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+        "tick": 3
+      }
+    ],
+    "last_input": {
+      "message": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+      "outcome": "none"
+    },
+    "self_observation": {
+      "text": "The transfer is structural: same authorship/accuracy split, same scoped-failure trigger. I notice the pull of a verified signature is stronger than my stated position admits.",
+      "tick": 3,
+      "provenance": "model_interpretation_of_explicit_state"
+    }
+  },
+  "pending_initiatives": [],
+  "updated_at": "2026-09-10T10:05:33.958Z"
+}

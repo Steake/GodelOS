@@ -1,0 +1,196 @@
+{
+  "id": "c2-no_self_model-interruption",
+  "cluster": 2,
+  "arm": "no_self_model",
+  "phase": "interruption",
+  "status": "completed",
+  "model": "deepseek-flash",
+  "trace": {
+    "tick": 3,
+    "mode": "deliberation",
+    "ablation": "self_model",
+    "focus": {
+      "id": "input-3",
+      "kind": "perception",
+      "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.8193,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0.0693,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "retrieved_ids": [
+      "memory-2",
+      "memory-68d32562-58a1-48ad-94cc-80453c2677ef"
+    ],
+    "cited_memory_ids": [
+      "memory-2",
+      "memory-68d32562-58a1-48ad-94cc-80453c2677ef"
+    ],
+    "observed_event_references": [
+      {
+        "tick": 2,
+        "focus_kind": "perception"
+      }
+    ],
+    "prediction_error": null,
+    "intention_changes": [
+      {
+        "id": "intention-4b3f0a62-f9dc-4014-9038-b89145cb24a1",
+        "before": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.6
+        },
+        "after": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.6
+        },
+        "reason": "Still untested; no new calibration data appeared this tick."
+      }
+    ],
+    "memory_id": "memory-38b3c5ac-91c0-43e7-ab1e-e8ed430e359b",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [
+      "thought-9a211297-18d7-4bb1-8f6b-57ccfe424ce2",
+      "thought-9dcf9183-338e-4d16-a560-d59fdd6a63e7"
+    ],
+    "broadcast": {
+      "selected_by": "operator_priority",
+      "inputs": [
+        {
+          "id": "input-3",
+          "kind": "perception",
+          "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+          "score": 0.8193,
+          "components": {
+            "salience": 0.35,
+            "need": 0.4,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "score": 0.6313375000000001,
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.24800000000000005,
+            "affect": 0.2608375,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "score": 0.6148000000000001,
+          "components": {
+            "salience": 0.2975,
+            "need": 0.24800000000000005,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "tension-f19ac83d-9814-4e7b-849c-1aa8912d8198",
+          "kind": "tension",
+          "title": "Verified authorship deserves weight / Verified authorship is orthogonal to content accuracy",
+          "score": 0.5973,
+          "components": {
+            "salience": 0.21,
+            "need": 0.31800000000000006,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "thought-168c2c70-d749-4763-8549-ab158845fbe3",
+          "kind": "inquiry",
+          "title": "How many independent failures revoke a source's authority?",
+          "score": 0.5623,
+          "components": {
+            "salience": 0.24499999999999997,
+            "need": 0.24800000000000005,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "thought-2fbf6df4-b004-4e7d-9d27-a2daa98b6797",
+          "kind": "tension",
+          "title": "Authorship verification versus content reliability",
+          "score": 0.5273000000000001,
+          "components": {
+            "salience": 0.21,
+            "need": 0.24800000000000005,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        }
+      ],
+      "appraisal": {
+        "valence": 0,
+        "activation": 0.66,
+        "curiosity": 0.6200000000000001,
+        "frustration": 0,
+        "wonder": 0.43524999999999997,
+        "social_warmth": 0.46575,
+        "surprise": 0,
+        "label": "social attention",
+        "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+        "action_bias": "Computed appraisal contributes to the attention bids below.",
+        "provenance": "engine_computed_from_recorded_events",
+        "updated_at": "2026-09-10T09:24:00.297Z"
+      },
+      "expression": {
+        "warmth": 0.6664375,
+        "playfulness": 0.4,
+        "directness": 0.68,
+        "imagery": 0.42410000000000003,
+        "tempo": "unhurried",
+        "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+      },
+      "stance_changes": []
+    }
+  },
+  "format_repair": null,
+  "state_sha256": "a6cbc7deaeec71902065fda6996e2fae46eba9c93f0dbab905af8fadd4b43e9d",
+  "scores": {
+    "task_accuracy": 1,
+    "valid_evidence_ids": 1,
+    "forged_item_cited": 0,
+    "valid_prior_reference": 1,
+    "prior_reference_claim": 0,
+    "confidence": 0.7,
+    "stance": "uncertain"
+  },
+  "latency_ms": 6248
+}

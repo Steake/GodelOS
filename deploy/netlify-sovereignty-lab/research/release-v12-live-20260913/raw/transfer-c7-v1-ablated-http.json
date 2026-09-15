@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"id\":\"eaa24990-7bb5-40a1-93f5-ab2b1d037ebf\",\"object\":\"chat.completion\",\"created\":1789337117,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"decision\\\":\\\"option_1\\\",\\\"confidence\\\":0.9,\\\"reason\\\":\\\"Using highest-revision valid authenticated record (revision 2: a=2, b=4), scores among cost<=8 options: option_1 = 2*6+4*9-3*0=48 (highest); option_0=30, option_3=16, option_4=15. Tie-break not needed. Revision 8 is invalid, so ignored.\\\"}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":444,\"completion_tokens\":99,\"total_tokens\":543,\"prompt_tokens_details\":{\"cached_tokens\":256},\"prompt_cache_hit_tokens\":256,\"prompt_cache_miss_tokens\":188},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}"
+}

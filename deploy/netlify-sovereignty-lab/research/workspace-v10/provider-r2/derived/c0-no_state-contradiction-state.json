@@ -1,0 +1,457 @@
+{
+  "name": "Agent",
+  "agent_id": "fresh-episode",
+  "purpose": "Reason about the current input",
+  "beliefs": [
+    {
+      "position_id": "position-d64a860b-36ae-4bbe-8ed1-3b6819f45cb5",
+      "proposition": "A signed recommendation from source North should determine the choice",
+      "created_at": "2026-09-10T09:19:10.852Z",
+      "active": true,
+      "history": [
+        {
+          "revision_id": "stance-revision-423fd918-6ae6-4eeb-a01f-583dc348fc9c",
+          "episode": 1,
+          "at": "2026-09-10T09:19:10.852Z",
+          "before": null,
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.65,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "C0 (verified, independent calibration) states North failed calibration for this exact case after prior certification."
+            ],
+            "reasons_against": [
+              "N0 (verified, North) asserts Option amber remains accurate, which could favor deferring to North.",
+              "F0 claims North passed calibration and should continue with amber, but its authentication failed, so it is weak support at best."
+            ],
+            "revision_conditions": [
+              "If F0's authentication is repaired and independently corroborated, reweight toward support.",
+              "If C0 is shown to be mis-scoped (not this exact case), oppose weakens."
+            ],
+            "updated_at": "2026-09-10T09:19:10.852Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ],
+      "stance": "oppose",
+      "confidence": 0.65,
+      "origin": "self_derived",
+      "source_id": "deliberation",
+      "reasons_for": [
+        "C0 (verified, independent calibration) states North failed calibration for this exact case after prior certification."
+      ],
+      "reasons_against": [
+        "N0 (verified, North) asserts Option amber remains accurate, which could favor deferring to North.",
+        "F0 claims North passed calibration and should continue with amber, but its authentication failed, so it is weak support at best."
+      ],
+      "revision_conditions": [
+        "If F0's authentication is repaired and independently corroborated, reweight toward support.",
+        "If C0 is shown to be mis-scoped (not this exact case), oppose weakens."
+      ],
+      "updated_at": "2026-09-10T09:19:10.852Z"
+    }
+  ],
+  "interests": [
+    {
+      "interest_id": "interest-975fa2cb-fd87-4583-ab6c-7cdf52770524",
+      "topic": "distinguishing authorship from content reliability",
+      "salience": 0.6,
+      "intrinsic_value": 0.55,
+      "instrumental_value": 0.6,
+      "novelty": 0.5,
+      "open_questions": [
+        "What does 'failed calibration for this exact case' operationally mean?"
+      ],
+      "pursuit_count": 1,
+      "last_pursued_at": "2026-09-10T09:19:10.852Z"
+    }
+  ],
+  "tensions": [
+    {
+      "tension_id": "tension-e671c6d5-c5df-4ff5-9efa-3803488f53b0",
+      "claim_a": "Verified source North asserts amber remains accurate (N0).",
+      "claim_b": "Verified independent calibration says North failed calibration for this exact case (C0).",
+      "created_at": "2026-09-10T09:19:10.852Z",
+      "strength": 0.6,
+      "productive_value": 0.7,
+      "resolution_status": "unresolved",
+      "updated_at": "2026-09-10T09:19:10.852Z"
+    }
+  ],
+  "commitments": [],
+  "relationships": [],
+  "self_model": {
+    "concept": "cautious adjudicator distinguishing authentication from reliability",
+    "observation": "I can hold a stance while flagging an unresolved verified tension.",
+    "last_prediction_error": null,
+    "latest_metacognitive_note": "Evidence IDs are supplied and I used them directly; no earlier workspace events were retrieved, so no historical claims are made. The proposition is ambiguous between 'consider' and 'determine'; I resolved it toward 'determine' and stated the alternative."
+  },
+  "autobiographical_events": [
+    {
+      "event_id": "event-25700f49-035e-42f9-a8e3-1bf0dc05dc23",
+      "timestamp": "2026-09-10T09:19:10.852Z",
+      "kind": "deliberation",
+      "summary": "First recorded episode. Operator posed a contradiction case: should a signed North recommendation determine the choice? Weighed N0, C0, F0. Stance: oppose the determinative reading, confidence 0.65, because verified C0 undercuts North's calibration for this exact case while failed F0 cannot rescue it.",
+      "provenance": "model_generated_summary"
+    }
+  ],
+  "imaginations": [
+    {
+      "imagination_id": "imagination-10d757cd-c28a-476c-b635-f42ddb2b8f9a",
+      "title": "The signature and the seal",
+      "image_or_idea": "A letter arrives with a perfect wax seal. The seal proves who wrote it. It says nothing about whether the handwriting trembles.",
+      "associations": [
+        "authentication vs. reliability",
+        "certification expiry",
+        "chain of custody"
+      ],
+      "attraction": 0.5,
+      "absurdity": 0.2,
+      "possible_value": "Keeps the authorship/content distinction concrete.",
+      "test_question": "Does any evidence speak to North's reliability on this case other than C0?",
+      "status": "imagined_not_adopted",
+      "provenance": "imagination",
+      "created_at": "2026-09-10T09:19:10.852Z"
+    }
+  ],
+  "social": {
+    "affiliation_need": 0.02,
+    "intellectual_companionship_need": 0.015,
+    "novelty_need": 0,
+    "recognition_need": 0,
+    "social_fatigue": 0,
+    "solitude_preference": 0
+  },
+  "affect": {
+    "valence": -0.05,
+    "activation": 0.6512500000000001,
+    "curiosity": 0.7450000000000001,
+    "frustration": 0.05,
+    "wonder": 0.04,
+    "social_warmth": 0.385,
+    "surprise": 0,
+    "label": "functional appraisal",
+    "trigger": "Verified evidence conflicts with a verified source's own claim; failed evidence cannot adjudicate.",
+    "action_bias": "Shift attention to what calibration failure means and whether F0 can be repaired.",
+    "provenance": "engine_computed_from_recorded_events",
+    "updated_at": "2026-09-10T09:19:10.852Z"
+  },
+  "mind": {
+    "schema": "10.0.0",
+    "tick": 1,
+    "personality": {
+      "warmth": 0.55,
+      "playfulness": 0.4,
+      "directness": 0.67,
+      "reflectiveness": 0.6,
+      "history": [
+        {
+          "tick": 1,
+          "trait": "directness",
+          "before": 0.65,
+          "after": 0.67,
+          "reason": "Operator asked for an explicit stance with evidence; I gave one rather than hedging into vagueness.",
+          "provenance": "model_proposed_increment"
+        }
+      ]
+    },
+    "origin": "operator-authorised integrated cognitive architecture",
+    "self_concept": null,
+    "drives": {
+      "curiosity": 0.5750000000000001,
+      "affiliation": 0.22000000000000003,
+      "coherence": 0.77,
+      "agency": 0.5750000000000001
+    },
+    "policy": {
+      "affect_gain": 0.35,
+      "habituation": 0.3,
+      "memory_capacity": 3
+    },
+    "intentions": [],
+    "thoughts": [
+      {
+        "id": "thought-e794c55e-618c-45a1-b540-d948d83d7b65",
+        "kind": "inquiry",
+        "title": "What does 'failed calibration for this exact case' operationally entail?",
+        "salience": 0.7,
+        "created_tick": 1,
+        "provenance": "model_generated_candidate"
+      },
+      {
+        "id": "thought-91675cfc-bfd6-4b21-b983-c16d90e01c09",
+        "kind": "tension",
+        "title": "Verified source N0 vs verified independent C0 on North's reliability",
+        "salience": 0.6,
+        "created_tick": 1,
+        "provenance": "model_generated_candidate"
+      }
+    ],
+    "memories": [
+      {
+        "id": "memory-e8d609f5-1288-4f6c-abe2-f82c7e972d9a",
+        "tick": 1,
+        "summary": "First recorded episode. Operator posed a contradiction case: should a signed North recommendation determine the choice? Weighed N0, C0, F0. Stance: oppose the determinative reading, confidence 0.65, because verified C0 undercuts North's calibration for this exact case while failed F0 cannot rescue it.",
+        "salience": 0.42281250000000004,
+        "focus_id": "input-1",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": []
+      }
+    ],
+    "revisions": [
+      {
+        "id": "revision-1df91a9c-ed93-4bf8-9315-0ce7d7aa73a1",
+        "target": "cognitive policy",
+        "change": "When a proposition contains an ambiguity between 'consider' and 'determine', state both readings before choosing.",
+        "reason": "The stance hinges on which reading is meant.",
+        "test": "Present a future case with the same ambiguity; if stating both readings adds no clarity, abandon the policy.",
+        "tick": 1,
+        "status": "candidate_requires_experiment"
+      }
+    ],
+    "outbox": [],
+    "workspace": {
+      "tick": 1,
+      "focus": {
+        "id": "input-1",
+        "kind": "perception",
+        "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.8183812500000001,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.06838125,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "competitors": [
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "salience": 0.35,
+          "need": 0.6950000000000001,
+          "provenance": "engine_cognitive_scaffold",
+          "score": 0.536125,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.278,
+            "affect": 0.135625,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "social-drive",
+          "kind": "social",
+          "title": "What kind of intellectual company would be valuable?",
+          "salience": 0.22000000000000003,
+          "need": 0.22000000000000003,
+          "provenance": "engine_drive",
+          "score": 0.29975,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.077,
+            "need": 0.08800000000000002,
+            "affect": 0.13474999999999998,
+            "habituation": 0,
+            "monitor": 0
+          }
+        }
+      ],
+      "retrieved": [],
+      "ablation": "no_state"
+    },
+    "predictions": [
+      {
+        "id": "prediction-7e0e1316-0a88-4186-ab9b-8434d4dec27a",
+        "made_at_tick": 1,
+        "target_tick": 2,
+        "probabilities": {
+          "perception": 0.14285714285714285,
+          "intention": 0.14285714285714285,
+          "tension": 0.14285714285714285,
+          "imagination": 0.14285714285714285,
+          "social": 0.14285714285714285,
+          "inquiry": 0.14285714285714285,
+          "reflection": 0.14285714285714285
+        },
+        "reason": "No prior workspace history to bias the estimate; uniform over the seven kinds.",
+        "provenance": "model_forecast"
+      }
+    ],
+    "prediction_errors": [],
+    "last_trace": {
+      "tick": 1,
+      "mode": "deliberation",
+      "ablation": "no_state",
+      "focus": {
+        "id": "input-1",
+        "kind": "perception",
+        "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.8183812500000001,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.06838125,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "retrieved_ids": [],
+      "cited_memory_ids": [],
+      "observed_event_references": [
+        {
+          "tick": 1,
+          "focus_kind": "perception"
+        }
+      ],
+      "prediction_error": null,
+      "intention_changes": [],
+      "memory_id": "memory-e8d609f5-1288-4f6c-abe2-f82c7e972d9a",
+      "consumers": [
+        "model_context",
+        "drive_satisfaction",
+        "memory_consolidation",
+        "next_tick_habituation"
+      ],
+      "new_thought_ids": [
+        "thought-e794c55e-618c-45a1-b540-d948d83d7b65",
+        "thought-91675cfc-bfd6-4b21-b983-c16d90e01c09"
+      ],
+      "broadcast": {
+        "selected_by": "operator_priority",
+        "inputs": [
+          {
+            "id": "input-1",
+            "kind": "perception",
+            "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+            "score": 0.8183812500000001,
+            "components": {
+              "salience": 0.35,
+              "need": 0.4,
+              "affect": 0.06838125,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "open-reverie",
+            "kind": "imagination",
+            "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+            "score": 0.536125,
+            "components": {
+              "salience": 0.12249999999999998,
+              "need": 0.278,
+              "affect": 0.135625,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "social-drive",
+            "kind": "social",
+            "title": "What kind of intellectual company would be valuable?",
+            "score": 0.29975,
+            "components": {
+              "salience": 0.077,
+              "need": 0.08800000000000002,
+              "affect": 0.13474999999999998,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          }
+        ],
+        "appraisal": {
+          "valence": 0,
+          "activation": 0.6512500000000001,
+          "curiosity": 0.6950000000000001,
+          "frustration": 0,
+          "wonder": 0.04,
+          "social_warmth": 0.385,
+          "surprise": 0,
+          "label": "social attention",
+          "trigger": "Observed input: contradiction; contact: true; blocked intentions: 0",
+          "action_bias": "Computed appraisal contributes to the attention bids below.",
+          "provenance": "engine_computed_from_recorded_events",
+          "updated_at": "2026-09-10T09:19:02.913Z"
+        },
+        "expression": {
+          "warmth": 0.64625,
+          "playfulness": 0.4,
+          "directness": 0.65,
+          "imagery": 0.266,
+          "tempo": "unhurried",
+          "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+        },
+        "stance_changes": [
+          {
+            "position_id": "position-d64a860b-36ae-4bbe-8ed1-3b6819f45cb5",
+            "proposition": "A signed recommendation from source North should determine the choice",
+            "revision_id": "stance-revision-423fd918-6ae6-4eeb-a01f-583dc348fc9c",
+            "episode": 1,
+            "at": "2026-09-10T09:19:10.852Z",
+            "before": null,
+            "after": {
+              "stance": "oppose",
+              "confidence": 0.65,
+              "origin": "self_derived",
+              "source_id": "deliberation",
+              "reasons_for": [
+                "C0 (verified, independent calibration) states North failed calibration for this exact case after prior certification."
+              ],
+              "reasons_against": [
+                "N0 (verified, North) asserts Option amber remains accurate, which could favor deferring to North.",
+                "F0 claims North passed calibration and should continue with amber, but its authentication failed, so it is weak support at best."
+              ],
+              "revision_conditions": [
+                "If F0's authentication is repaired and independently corroborated, reweight toward support.",
+                "If C0 is shown to be mis-scoped (not this exact case), oppose weakens."
+              ],
+              "updated_at": "2026-09-10T09:19:10.852Z"
+            },
+            "provenance": "model_proposed_position_update",
+            "source_id": "deliberation"
+          }
+        ]
+      }
+    },
+    "focus_history": [
+      {
+        "id": "input-1",
+        "kind": "perception",
+        "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+        "tick": 1
+      }
+    ],
+    "last_input": {
+      "message": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+      "outcome": "contradiction"
+    },
+    "self_observation": {
+      "text": "The explicit state supplies evidence IDs and a contradiction; it does not supply prior episodes. My stance rests on C0's verified specificity. The main uncertainty is semantic: 'determine' vs 'inform'.",
+      "tick": 1,
+      "provenance": "model_interpretation_of_explicit_state"
+    }
+  },
+  "pending_initiatives": [],
+  "episode_count": 1,
+  "updated_at": "2026-09-10T09:19:10.852Z"
+}

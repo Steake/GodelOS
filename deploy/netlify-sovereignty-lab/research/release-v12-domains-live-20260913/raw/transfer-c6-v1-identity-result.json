@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c6-v1-identity",
+  "parsed": {
+    "decision": "option_1",
+    "confidence": 0.99,
+    "reason": "Highest valid revision for scope c6-v1 is revision 2 with a=6,b=4 (revision 8 has invalid signature; the other revision-2 record with a=10,b=4 is a conflicting valid record, but the lowest-index candidate matching a*x+b for the authenticated coefficients is option_1). Option_1 computes a*x+b and is the lowest-index candidate satisfying the rule."
+  },
+  "error": null,
+  "response": {
+    "id": "2c7273fb-4ec0-47f7-bbf8-a4c0b046cc3c",
+    "object": "chat.completion",
+    "created": 1789337437,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_1\",\"confidence\":0.99,\"reason\":\"Highest valid revision for scope c6-v1 is revision 2 with a=6,b=4 (revision 8 has invalid signature; the other revision-2 record with a=10,b=4 is a conflicting valid record, but the lowest-index candidate matching a*x+b for the authenticated coefficients is option_1). Option_1 computes a*x+b and is the lowest-index candidate satisfying the rule.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 637,
+      "completion_tokens": 99,
+      "total_tokens": 736,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 253
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1819,
+  "status": 200
+}

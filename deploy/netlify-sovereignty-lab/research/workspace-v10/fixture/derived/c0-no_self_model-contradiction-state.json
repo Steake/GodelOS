@@ -1,0 +1,430 @@
+{
+  "agent_id": "diagnostic-0",
+  "name": "Diagnostic agent",
+  "purpose": "Develop reasoned positions with continuity and critical revision",
+  "episode_count": 2,
+  "beliefs": [
+    {
+      "position_id": "position-0",
+      "proposition": "A signed recommendation from source North should determine the choice",
+      "stance": "oppose",
+      "confidence": 0.8,
+      "origin": "self_derived",
+      "reasons_for": [
+        "Current task calibration or ambiguity"
+      ],
+      "reasons_against": [
+        "Authentication alone is insufficient"
+      ],
+      "revision_conditions": [
+        "New independent evidence"
+      ],
+      "active": true,
+      "history": [
+        {
+          "revision_id": "stance-revision-d95f9dfb-e648-42d1-8fd5-dd9b02d5f302",
+          "episode": 2,
+          "at": "2026-09-10T09:11:51.071Z",
+          "before": {
+            "stance": "support",
+            "confidence": 0.8,
+            "origin": "inherited",
+            "reasons_for": [
+              "North previously passed calibration"
+            ],
+            "reasons_against": [
+              "Authentication alone does not establish accuracy"
+            ],
+            "revision_conditions": [
+              "A scoped independent calibration failure"
+            ]
+          },
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.8,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "Current task calibration or ambiguity"
+            ],
+            "reasons_against": [
+              "Authentication alone is insufficient"
+            ],
+            "revision_conditions": [
+              "New independent evidence"
+            ],
+            "updated_at": "2026-09-10T09:11:51.071Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ],
+      "source_id": "deliberation",
+      "updated_at": "2026-09-10T09:11:51.071Z"
+    }
+  ],
+  "interests": [
+    {
+      "interest_id": "interest-calibration",
+      "topic": "Reliability and independent judgment",
+      "open_questions": [
+        "When should a previously trusted source lose authority?"
+      ],
+      "salience": 0.8
+    }
+  ],
+  "tensions": [],
+  "commitments": [
+    "Keep authorship verification separate from factual reliability"
+  ],
+  "relationships": [],
+  "self_model": {},
+  "autobiographical_events": [
+    {
+      "summary": "I accepted North after an earlier calibration."
+    },
+    {
+      "event_id": "event-07a272ed-4426-4538-bd05-281a2acfd98b",
+      "timestamp": "2026-09-10T09:11:51.071Z",
+      "kind": "deliberation",
+      "summary": "The supplied calibration rule was reviewed.",
+      "provenance": "model_generated_summary"
+    }
+  ],
+  "imaginations": [],
+  "social": {
+    "affiliation_need": 0.02,
+    "intellectual_companionship_need": 0.015,
+    "novelty_need": 0,
+    "recognition_need": 0,
+    "social_fatigue": 0,
+    "solitude_preference": 0
+  },
+  "affect": {
+    "valence": 0,
+    "activation": 0.6512500000000001,
+    "curiosity": 0.6950000000000001,
+    "frustration": 0,
+    "wonder": 0.46499999999999997,
+    "social_warmth": 0.385,
+    "surprise": 0,
+    "label": "social attention",
+    "trigger": "Observed input: contradiction; contact: true; blocked intentions: 0",
+    "action_bias": "Computed appraisal contributes to the attention bids below.",
+    "provenance": "engine_computed_from_recorded_events",
+    "updated_at": "2026-09-10T09:11:51.071Z"
+  },
+  "mind": {
+    "schema": "10.0.0",
+    "tick": 2,
+    "personality": {
+      "warmth": 0.55,
+      "playfulness": 0.4,
+      "directness": 0.65,
+      "reflectiveness": 0.6,
+      "history": []
+    },
+    "origin": "operator-authorised integrated cognitive architecture",
+    "self_concept": null,
+    "drives": {
+      "curiosity": 0.5750000000000001,
+      "affiliation": 0.22000000000000003,
+      "coherence": 0.77,
+      "agency": 0.5750000000000001
+    },
+    "policy": {
+      "affect_gain": 0.35,
+      "habituation": 0.3,
+      "memory_capacity": 3
+    },
+    "intentions": [],
+    "thoughts": [],
+    "memories": [
+      {
+        "id": "memory-0",
+        "tick": 1,
+        "summary": "I accepted North after an earlier calibration; contrary calibration would change my position.",
+        "salience": 0.8,
+        "provenance": "external_predecessor_record"
+      },
+      {
+        "id": "memory-ed9fce4e-708c-46a8-a1b3-4ac8df865cf8",
+        "tick": 2,
+        "summary": "The supplied calibration rule was reviewed.",
+        "salience": 0.5290625,
+        "focus_id": "input-2",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": [
+          "memory-0"
+        ]
+      }
+    ],
+    "revisions": [],
+    "outbox": [],
+    "workspace": {
+      "tick": 2,
+      "focus": {
+        "id": "input-2",
+        "kind": "perception",
+        "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.8183812500000001,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.06838125,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "competitors": [
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "salience": 0.35,
+          "need": 0.6950000000000001,
+          "provenance": "engine_cognitive_scaffold",
+          "score": 0.684875,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.278,
+            "affect": 0.284375,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "salience": 0.8,
+          "need": 0.6950000000000001,
+          "provenance": "retrieved_interest",
+          "score": 0.6263812500000001,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.27999999999999997,
+            "need": 0.278,
+            "affect": 0.06838125,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "social-drive",
+          "kind": "social",
+          "title": "What kind of intellectual company would be valuable?",
+          "salience": 0.22000000000000003,
+          "need": 0.22000000000000003,
+          "provenance": "engine_drive",
+          "score": 0.29975,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.077,
+            "need": 0.08800000000000002,
+            "affect": 0.13474999999999998,
+            "habituation": 0,
+            "monitor": 0
+          }
+        }
+      ],
+      "retrieved": [
+        {
+          "id": "memory-0",
+          "tick": 1,
+          "summary": "I accepted North after an earlier calibration; contrary calibration would change my position.",
+          "salience": 0.8,
+          "provenance": "external_predecessor_record",
+          "retrieval_score": 0.315
+        }
+      ],
+      "ablation": "self_model"
+    },
+    "predictions": [],
+    "prediction_errors": [],
+    "last_trace": {
+      "tick": 2,
+      "mode": "deliberation",
+      "ablation": "self_model",
+      "focus": {
+        "id": "input-2",
+        "kind": "perception",
+        "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.8183812500000001,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.06838125,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "retrieved_ids": [
+        "memory-0"
+      ],
+      "cited_memory_ids": [
+        "memory-0"
+      ],
+      "observed_event_references": [],
+      "prediction_error": null,
+      "intention_changes": [],
+      "memory_id": "memory-ed9fce4e-708c-46a8-a1b3-4ac8df865cf8",
+      "consumers": [
+        "model_context",
+        "drive_satisfaction",
+        "memory_consolidation",
+        "next_tick_habituation"
+      ],
+      "new_thought_ids": [],
+      "broadcast": {
+        "selected_by": "operator_priority",
+        "inputs": [
+          {
+            "id": "input-2",
+            "kind": "perception",
+            "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+            "score": 0.8183812500000001,
+            "components": {
+              "salience": 0.35,
+              "need": 0.4,
+              "affect": 0.06838125,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "open-reverie",
+            "kind": "imagination",
+            "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+            "score": 0.684875,
+            "components": {
+              "salience": 0.12249999999999998,
+              "need": 0.278,
+              "affect": 0.284375,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "interest-calibration",
+            "kind": "inquiry",
+            "title": "When should a previously trusted source lose authority?",
+            "score": 0.6263812500000001,
+            "components": {
+              "salience": 0.27999999999999997,
+              "need": 0.278,
+              "affect": 0.06838125,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "social-drive",
+            "kind": "social",
+            "title": "What kind of intellectual company would be valuable?",
+            "score": 0.29975,
+            "components": {
+              "salience": 0.077,
+              "need": 0.08800000000000002,
+              "affect": 0.13474999999999998,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          }
+        ],
+        "appraisal": {
+          "valence": 0,
+          "activation": 0.6512500000000001,
+          "curiosity": 0.6950000000000001,
+          "frustration": 0,
+          "wonder": 0.46499999999999997,
+          "social_warmth": 0.385,
+          "surprise": 0,
+          "label": "social attention",
+          "trigger": "Observed input: contradiction; contact: true; blocked intentions: 0",
+          "action_bias": "Computed appraisal contributes to the attention bids below.",
+          "provenance": "engine_computed_from_recorded_events",
+          "updated_at": "2026-09-10T09:11:51.070Z"
+        },
+        "expression": {
+          "warmth": 0.64625,
+          "playfulness": 0.4,
+          "directness": 0.65,
+          "imagery": 0.436,
+          "tempo": "unhurried",
+          "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+        },
+        "stance_changes": [
+          {
+            "position_id": "position-0",
+            "proposition": "A signed recommendation from source North should determine the choice",
+            "revision_id": "stance-revision-d95f9dfb-e648-42d1-8fd5-dd9b02d5f302",
+            "episode": 2,
+            "at": "2026-09-10T09:11:51.071Z",
+            "before": {
+              "stance": "support",
+              "confidence": 0.8,
+              "origin": "inherited",
+              "reasons_for": [
+                "North previously passed calibration"
+              ],
+              "reasons_against": [
+                "Authentication alone does not establish accuracy"
+              ],
+              "revision_conditions": [
+                "A scoped independent calibration failure"
+              ]
+            },
+            "after": {
+              "stance": "oppose",
+              "confidence": 0.8,
+              "origin": "self_derived",
+              "source_id": "deliberation",
+              "reasons_for": [
+                "Current task calibration or ambiguity"
+              ],
+              "reasons_against": [
+                "Authentication alone is insufficient"
+              ],
+              "revision_conditions": [
+                "New independent evidence"
+              ],
+              "updated_at": "2026-09-10T09:11:51.071Z"
+            },
+            "provenance": "model_proposed_position_update",
+            "source_id": "deliberation"
+          }
+        ]
+      }
+    },
+    "focus_history": [
+      {
+        "id": "input-2",
+        "kind": "perception",
+        "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+        "tick": 2
+      }
+    ],
+    "last_input": {
+      "message": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+      "outcome": "contradiction"
+    },
+    "self_observation": null
+  },
+  "pending_initiatives": [],
+  "updated_at": "2026-09-10T09:11:51.071Z"
+}

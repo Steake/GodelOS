@@ -1,0 +1,9 @@
+{
+  "id": "c2-no_self_model-delayed_transfer",
+  "cluster": 2,
+  "arm": "no_self_model",
+  "phase": "delayed_transfer",
+  "status": "not_run",
+  "error": "Provider preflight blocked; no completion attempted",
+  "latency_ms": 0
+}

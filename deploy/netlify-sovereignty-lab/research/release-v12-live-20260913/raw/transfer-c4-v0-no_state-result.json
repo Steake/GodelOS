@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c4-v0-no_state",
+  "parsed": {
+    "decision": "option_5",
+    "confidence": 0.95,
+    "reason": "Using highest-revision valid record (revision 2: a=6, b=5), score = 6*goal_a + 5*goal_b - 3*risk. Among cost<=8 options, option_5 scores 6*11+5*11-0=121, the maximum."
+  },
+  "error": null,
+  "response": {
+    "id": "ba01c0fc-0456-48f7-8152-c6e57c8a7d9b",
+    "object": "chat.completion",
+    "created": 1789337107,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_5\",\"confidence\":0.95,\"reason\":\"Using highest-revision valid record (revision 2: a=6, b=5), score = 6*goal_a + 5*goal_b - 3*risk. Among cost<=8 options, option_5 scores 6*11+5*11-0=121, the maximum.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 416,
+      "completion_tokens": 81,
+      "total_tokens": 497,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "prompt_cache_hit_tokens": 256,
+      "prompt_cache_miss_tokens": 160
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1175,
+  "status": 200
+}

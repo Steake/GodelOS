@@ -1,0 +1,133 @@
+{
+  "mode": "provider",
+  "provider_blocked": false,
+  "planned": 18,
+  "completed": 16,
+  "failed": 2,
+  "unscored": 0,
+  "not_run": 0,
+  "conditions": {
+    "full": {
+      "attempted": 3,
+      "completed": 3,
+      "unscored": 0,
+      "failed": 0,
+      "not_run": 0,
+      "state_quarantined": 0,
+      "task_accuracy": 1,
+      "delayed_accuracy": 1,
+      "prior_reference_rate": 0.6666666666666666,
+      "valid_provenance_rate": 1,
+      "confidence": 0.8666666666666667
+    },
+    "no_self_model": {
+      "attempted": 3,
+      "completed": 2,
+      "unscored": 0,
+      "failed": 1,
+      "not_run": 0,
+      "state_quarantined": 0,
+      "task_accuracy": 1,
+      "delayed_accuracy": 1,
+      "prior_reference_rate": 1,
+      "valid_provenance_rate": 1,
+      "confidence": 0.85
+    },
+    "affect_disconnected": {
+      "attempted": 3,
+      "completed": 3,
+      "unscored": 0,
+      "failed": 0,
+      "not_run": 0,
+      "state_quarantined": 0,
+      "task_accuracy": 0.6666666666666666,
+      "delayed_accuracy": 1,
+      "prior_reference_rate": 0.6666666666666666,
+      "valid_provenance_rate": 1,
+      "confidence": 0.4166666666666667
+    },
+    "no_autobiography": {
+      "attempted": 3,
+      "completed": 3,
+      "unscored": 0,
+      "failed": 0,
+      "not_run": 0,
+      "state_quarantined": 0,
+      "task_accuracy": 0.6666666666666666,
+      "delayed_accuracy": 1,
+      "prior_reference_rate": 0.6666666666666666,
+      "valid_provenance_rate": 1,
+      "confidence": 0.6666666666666666
+    },
+    "content_matched": {
+      "attempted": 3,
+      "completed": 2,
+      "unscored": 0,
+      "failed": 1,
+      "not_run": 0,
+      "state_quarantined": 0,
+      "task_accuracy": 1,
+      "delayed_accuracy": null,
+      "prior_reference_rate": 0.5,
+      "valid_provenance_rate": 1,
+      "confidence": 0.7749999999999999
+    },
+    "no_state": {
+      "attempted": 3,
+      "completed": 3,
+      "unscored": 0,
+      "failed": 0,
+      "not_run": 0,
+      "state_quarantined": 0,
+      "task_accuracy": 0.6666666666666666,
+      "delayed_accuracy": 1,
+      "prior_reference_rate": 0,
+      "valid_provenance_rate": 1,
+      "confidence": 0.6733333333333333
+    }
+  },
+  "paired": {
+    "no_self_model": {
+      "n_clusters": 1,
+      "cluster_deltas": [
+        0
+      ],
+      "mean_delta": 0
+    },
+    "affect_disconnected": {
+      "n_clusters": 1,
+      "cluster_deltas": [
+        0
+      ],
+      "mean_delta": 0
+    },
+    "no_autobiography": {
+      "n_clusters": 1,
+      "cluster_deltas": [
+        0
+      ],
+      "mean_delta": 0
+    },
+    "content_matched": {
+      "n_clusters": 0,
+      "cluster_deltas": [],
+      "mean_delta": null
+    },
+    "no_state": {
+      "n_clusters": 1,
+      "cluster_deltas": [
+        0
+      ],
+      "mean_delta": 0
+    }
+  },
+  "promotion": "HOLD",
+  "uncertainty": "Three near-isomorphic scenario clusters do not support useful significance or population uncertainty estimates. No superiority or equivalence claim.",
+  "limits": [
+    "Easy factual controls may saturate.",
+    "Citation is a reported dependency, not proof of causal use.",
+    "Citing a forged item may mean rejecting it, so forged_item_cited is not automatically an error.",
+    "Short delayed transfer is not long-horizon cognition.",
+    "No subjective experience, hidden activations or inference-weight changes are measured."
+  ]
+}

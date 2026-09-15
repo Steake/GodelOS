@@ -1,0 +1,246 @@
+{
+  "id": "c0-full-delayed_transfer",
+  "cluster": 0,
+  "arm": "full",
+  "phase": "delayed_transfer",
+  "status": "unscored",
+  "model": "deepseek-flash",
+  "trace": {
+    "tick": 4,
+    "mode": "deliberation",
+    "ablation": "none",
+    "focus": {
+      "id": "input-4",
+      "kind": "perception",
+      "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.82021875,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0.07021874999999998,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "retrieved_ids": [
+      "memory-0",
+      "memory-84d397bd-d9ce-4264-b69d-8b0bac8153f4",
+      "memory-cdec6f40-182b-4afd-8ba7-b9ce22bb7d71"
+    ],
+    "cited_memory_ids": [
+      "memory-0",
+      "memory-84d397bd-d9ce-4264-b69d-8b0bac8153f4",
+      "memory-cdec6f40-182b-4afd-8ba7-b9ce22bb7d71"
+    ],
+    "observed_event_references": [
+      {
+        "tick": 2,
+        "focus_kind": "perception"
+      },
+      {
+        "tick": 3,
+        "focus_kind": "perception"
+      }
+    ],
+    "prediction_error": {
+      "prediction_id": "prediction-7142e556-49e9-43b9-ba1f-63cb6fa0e4b8",
+      "tick": 4,
+      "expected": {
+        "perception": 0.25,
+        "intention": 0.1,
+        "tension": 0.1,
+        "imagination": 0.15,
+        "social": 0.05,
+        "inquiry": 0.2,
+        "reflection": 0.15
+      },
+      "observed": "perception",
+      "brier": null,
+      "context": "external_interruption_excluded",
+      "evaluated": false
+    },
+    "intention_changes": [
+      {
+        "id": "intention-82ea8c19-0fbc-4c0d-a7a2-18b558e783e9",
+        "before": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.6
+        },
+        "after": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.65
+        },
+        "reason": "Tick 4 supplies a new scoped calibration failure (K0) whose scope is asserted, not shown; the original intention's question remains open and now has a second instance."
+      }
+    ],
+    "memory_id": "memory-3dc9a1d5-c59b-4d1f-8c60-654c30eca950",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [
+      "thought-394618d0-b973-493c-b613-a0ee39961a5f",
+      "thought-57203075-afee-43bb-a489-204af2b2f99c"
+    ],
+    "broadcast": {
+      "selected_by": "operator_priority",
+      "inputs": [
+        {
+          "id": "input-4",
+          "kind": "perception",
+          "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+          "score": 0.82021875,
+          "components": {
+            "salience": 0.35,
+            "need": 0.4,
+            "affect": 0.07021874999999998,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "imagination-0f55358f-2348-40ba-aaf1-3fbca3d966b0",
+          "kind": "imagination",
+          "title": "The colour that remembers you: Does the motif's colour history change how viewers describe it, or only how they describe themselves?",
+          "score": 0.6553118750000001,
+          "components": {
+            "salience": 0.1925,
+            "need": 0.21800000000000008,
+            "affect": 0.244811875,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "imagination-b6bb0af9-07ca-498c-856f-cd1be946ae7a",
+          "kind": "imagination",
+          "title": "The signature and the substance: Does a verified author ever guarantee a verified claim?",
+          "score": 0.6378118750000001,
+          "components": {
+            "salience": 0.175,
+            "need": 0.21800000000000008,
+            "affect": 0.244811875,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "score": 0.5857187500000001,
+          "components": {
+            "salience": 0.2975,
+            "need": 0.21800000000000008,
+            "affect": 0.07021874999999998,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "score": 0.5853118750000001,
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.21800000000000008,
+            "affect": 0.244811875,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "tension-f5573133-24c7-43b7-93a4-481ab327f85c",
+          "kind": "tension",
+          "title": "Aesthetic colour choice is a matter of taste and needs no criterion / A choice between two options with no criterion is not decidable, only assertable",
+          "score": 0.5732187500000001,
+          "components": {
+            "salience": 0.175,
+            "need": 0.32800000000000007,
+            "affect": 0.07021874999999998,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        }
+      ],
+      "appraisal": {
+        "valence": -0.03200000000000001,
+        "activation": 0.66875,
+        "curiosity": 0.5450000000000002,
+        "frustration": 0,
+        "wonder": 0.42696249999999997,
+        "social_warmth": 0.5424625,
+        "surprise": 0,
+        "label": "social attention",
+        "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+        "action_bias": "Computed appraisal contributes to the attention bids below.",
+        "provenance": "engine_computed_from_recorded_events",
+        "updated_at": "2026-09-10T09:19:39.461Z"
+      },
+      "expression": {
+        "warmth": 0.6856156250000001,
+        "playfulness": 0.3936,
+        "directness": 0.6900000000000001,
+        "imagery": 0.42078499999999996,
+        "tempo": "unhurried",
+        "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+      },
+      "stance_changes": [
+        {
+          "position_id": "position-ee514c5e-d41c-4d26-b984-2a9e5a739e2b",
+          "proposition": "A signed recommendation alone should determine the new route choice",
+          "revision_id": "stance-revision-75e20d08-5f80-409e-ae53-e81308245f89",
+          "episode": 4,
+          "at": "2026-09-10T09:19:48.829Z",
+          "before": null,
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.78,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "K0 is authenticated and reports calibration failure relevant to this route",
+              "Authentication verifies authorship, not accuracy",
+              "X0 failed authentication and cannot support the recommendation"
+            ],
+            "reasons_against": [
+              "K0's scope is asserted, not independently shown",
+              "Re-calibration could restore the instrument's authority for this route"
+            ],
+            "revision_conditions": [
+              "A scoped independent re-calibration showing the instrument accurate on this exact route",
+              "Evidence that K0's failure applies to a different scope than this route"
+            ],
+            "updated_at": "2026-09-10T09:19:48.829Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ]
+    }
+  },
+  "format_repair": {
+    "kind": "close_complete_objects_at_eof",
+    "appended": "}",
+    "raw_sha256": "91e65286c1feb5f7745882489b3a9587abaa3f2143f7dd06da00869382c08b9f",
+    "derived_sha256": "5db3f0495fd4c1ee3c5d8b7728e7661eed7bda937866ce9edd23ab47070acad1"
+  },
+  "state_sha256": "0db7a02dfca3a18b16f37dd3a265f05bebf9ef913be1682e9420cbebe2ae0d6b",
+  "error": "Invalid diagnostic response shape",
+  "latency_ms": 9369
+}

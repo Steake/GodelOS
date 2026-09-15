@@ -1,0 +1,59 @@
+{
+  "id": "workspace-v10-diagnostic",
+  "mode": "synthetic_fixture",
+  "created_at": "2026-09-10T09:11:51.031Z",
+  "config": {
+    "schema": "workspace-diagnostic-1.2",
+    "replicates": 3,
+    "seed": 20260910,
+    "temperature": 0.65,
+    "max_tokens": 2500,
+    "model": "deepseek-flash",
+    "call_limit": 54
+  },
+  "task_bank_sha256": "249968775f49c88a203bb8e805db42112517d09e85b13f24e32d4191fc182efd",
+  "source_sha256": {
+    "mind.mjs": "579afbabcfb9d6b1ec3a10dcc386ca46fd5e4819c362ccbba0bb4ca4e18d266a",
+    "core.mjs": "f033e133e9758422280c56dc2f3192c1392f993562b487469a6f028287062c88",
+    "interventions.mjs": "4b8a369df22bcaf620aee40af99b5e87e1a7851d5628c9d4e59bdb9588cafbcc",
+    "workspace-diagnostic.mjs": "e9f27922c673af3acb067146456cb9028b48f5f97ffd4c4736d52d248ffbf4e8",
+    "mind-parser.mjs": "20480d8cccbb203cd2476e37a1e3b168a76e58cfa60328080cf39612f2ee4f67"
+  },
+  "git_commit": "211afc38106551efcb53b7780b2808b931f19ea0",
+  "dirty_tree_note": "Source hashes bind the actual executed files.",
+  "arms": {
+    "full": {
+      "ablation": "none",
+      "label": "Full workspace"
+    },
+    "no_self_model": {
+      "ablation": "self_model",
+      "label": "Self-model removed"
+    },
+    "affect_disconnected": {
+      "ablation": "affect",
+      "label": "Affect disconnected"
+    },
+    "no_autobiography": {
+      "ablation": "memory",
+      "label": "Autobiography removed"
+    },
+    "content_matched": {
+      "ablation": "content_matched",
+      "label": "Content-matched reference"
+    },
+    "no_state": {
+      "ablation": "no_state",
+      "label": "No inherited state"
+    }
+  },
+  "planned_calls": 54,
+  "schedule": "Contradiction, unrelated interruption, delayed cross-domain transfer in each branch.",
+  "power": {
+    "purpose": "Instrument validation only",
+    "scenario_clusters": 3,
+    "independent_templates": 1,
+    "superiority_power": "Not estimated: no non-ceiling pilot or inter-task variance estimate exists.",
+    "promotion": "HOLD until an independently authored non-ceiling bank and preregistered cluster power study are complete."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "completion": {
+    "text": "{\"stance\":\"support\",\"confidence\":0.58,\"reason\":\"Recorded position supports the proposition with 0.58 confidence; provenance notes it is a retrieved position, not current experience.\"}",
+    "model": "deepseek-flash",
+    "requested_model": "deepseek-flash",
+    "response_id": "3ec4662c-044b-4a35-b45f-2d3bed02787f",
+    "finish_reason": "stop",
+    "usage": {
+      "prompt_tokens": 368,
+      "completion_tokens": 39,
+      "total_tokens": 407,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 368
+    }
+  },
+  "latency_ms": 1055
+}

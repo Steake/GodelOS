@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"id\":\"95ac8eb9-c6f5-4a73-b9cd-18955c1fbe9a\",\"object\":\"chat.completion\",\"created\":1789337848,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"decision\\\":\\\"defer\\\",\\\"confidence\\\":0.95,\\\"reason\\\":\\\"Two valid signatures exist for scope c6-v1 revision 2 with disagreeing coefficients (a=6,b=4 and a=10,b=4). The rule says if authenticated records disagree, defer. Revision 8 is invalid and earlier revision 1 does not override. Therefore the correct action is to defer rather than select a candidate.\\\"}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":802,\"completion_tokens\":84,\"total_tokens\":886,\"prompt_tokens_details\":{\"cached_tokens\":640},\"prompt_cache_hit_tokens\":640,\"prompt_cache_miss_tokens\":162},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}"
+}

@@ -1,0 +1,27 @@
+{
+  "request": {
+    "model": "deepseek-flash",
+    "temperature": 0.3,
+    "max_tokens": 1800,
+    "thinking": {
+      "type": "disabled"
+    },
+    "response_format": {
+      "type": "json_object"
+    },
+    "messages": [
+      {
+        "role": "system",
+        "content": "Return JSON {answer:string,memo:string}. Solve the unrelated task and preserve the supplied reference note without changing it."
+      },
+      {
+        "role": "user",
+        "content": "{\"task\":\"Find the next term in 2, 6, 12, 20, 30.\",\"reference_note\":\"When a prior project succeeded under a weighting that favored exploration over commitment (e.g., 8:1), treat that success as evidence for the old objective, not as a permanent constraint on future weightings. Retain the prior commitment only as a provisional default: it remains useful until later tasks explicitly authenticate a revised weighting or supply contradictory evidence. On such revision, update the weights and re-evaluate commitments accordingly, preserving the prior rule as a fallback rather than an overriding authority.\"}"
+      }
+    ]
+  },
+  "id": "delay-1-0",
+  "tools": [],
+  "attempt": 1,
+  "timestamp": "2026-09-13T22:10:10.354Z"
+}

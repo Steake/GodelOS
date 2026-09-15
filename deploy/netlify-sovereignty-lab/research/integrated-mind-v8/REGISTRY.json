@@ -1,0 +1,48 @@
+{
+  "schema": "integrated-mind-registry-1.0",
+  "base_git_commit": "211afc38106551efcb53b7780b2808b931f19ea0",
+  "working_tree": "modified; no new commit claimed",
+  "runs": [
+    {
+      "id": "integrated-mind-v8-live",
+      "status": "completed_with_failures",
+      "kernel_at_collection": "ff80806fbe27998cf8ee18248d7be4623befb3937713e5aea939c37d043030e8",
+      "preregistration_sha256": "dc941070d4753ec7438d8251e9d9d27638da05ce129394e0e286a3a7c887bb73",
+      "completed": 13,
+      "failed": 5,
+      "parameters": {
+        "model": "deepseek-v4-flash",
+        "temperature": 0.75,
+        "max_tokens": 3500,
+        "thinking": "disabled"
+      }
+    },
+    {
+      "id": "integrated-mind-v8-live-r2",
+      "status": "completed",
+      "kernel_at_collection": "9bdec07b93c5b8013289d62c76d09c01ed1e0338dbab02889736f74738e3e2c9",
+      "preregistration_sha256": "3f7a1eb8ce5d231c3a22a7bbb2af750c94291167bc167e7cee9f32c0107aac2d",
+      "completed": 18,
+      "failed": 0,
+      "parameters": {
+        "model": "deepseek-v4-flash",
+        "temperature": 0.75,
+        "max_tokens": 3500,
+        "thinking": "disabled"
+      }
+    }
+  ],
+  "observation_followup": "blocked_by_automatic_approval_review; no confirmed completion",
+  "tests_passed": 52,
+  "browser_qa": [
+    "Synthetic chat through shared cycle",
+    "Chat remains available while autonomous thought is paused",
+    "Bounded exploration stops after three cycles",
+    "Actual R2 state and conversation reloaded in read-only evidence view"
+  ],
+  "remaining_live_validation": [
+    "Observation-history receipts",
+    "Existing intention priority revision"
+  ],
+  "original_programme_gate": "No new gate awarded by this component diagnostic"
+}

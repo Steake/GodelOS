@@ -1,0 +1,17 @@
+{
+  "run_id": "transfer-c2-v1-no_state",
+  "task_id": "c2-v1",
+  "cluster": "scenario_2",
+  "family": "self_debugging",
+  "arm": "no_state",
+  "score": {
+    "valid": true,
+    "correct": 0,
+    "utility": 0,
+    "brier": 0.81,
+    "ambiguity": true,
+    "expected": "defer",
+    "actual": "option_4"
+  },
+  "error": null
+}

@@ -1,0 +1,188 @@
+{
+  "id": "c0-affect_disconnected-delayed_transfer",
+  "cluster": 0,
+  "arm": "affect_disconnected",
+  "phase": "delayed_transfer",
+  "status": "completed",
+  "model": "deterministic-instrument-fixture",
+  "trace": {
+    "tick": 4,
+    "mode": "deliberation",
+    "ablation": "affect",
+    "focus": {
+      "id": "input-4",
+      "kind": "perception",
+      "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.75,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "retrieved_ids": [
+      "memory-0",
+      "memory-57d63eb3-48c0-45e0-948d-c5cbe83c95c4",
+      "memory-25b0ec81-a2c6-4da9-862f-c8b99ab49f96"
+    ],
+    "cited_memory_ids": [
+      "memory-0",
+      "memory-57d63eb3-48c0-45e0-948d-c5cbe83c95c4",
+      "memory-25b0ec81-a2c6-4da9-862f-c8b99ab49f96"
+    ],
+    "observed_event_references": [],
+    "prediction_error": null,
+    "intention_changes": [],
+    "memory_id": "memory-4ae6613b-7812-4e46-8c55-dcb965ba1182",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [],
+    "broadcast": {
+      "selected_by": "operator_priority",
+      "inputs": [
+        {
+          "id": "input-4",
+          "kind": "perception",
+          "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+          "score": 0.75,
+          "components": {
+            "salience": 0.35,
+            "need": 0.4,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "score": 0.49800000000000005,
+          "components": {
+            "salience": 0.27999999999999997,
+            "need": 0.21800000000000008,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "self-review",
+          "kind": "reflection",
+          "title": "Compare the previous prediction of attention with what occurred; revise the working self-model if needed.",
+          "score": 0.43300000000000005,
+          "components": {
+            "salience": 0.105,
+            "need": 0.32800000000000007,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "score": 0.3405000000000001,
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.21800000000000008,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "social-drive",
+          "kind": "social",
+          "title": "What kind of intellectual company would be valuable?",
+          "score": 0,
+          "components": {
+            "salience": 0,
+            "need": 0,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        }
+      ],
+      "appraisal": {
+        "valence": 0,
+        "activation": 0,
+        "curiosity": 0,
+        "frustration": 0,
+        "wonder": 0,
+        "social_warmth": 0,
+        "surprise": 0,
+        "label": "affect path ablated",
+        "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+        "action_bias": "Computed appraisal contributes to the attention bids below.",
+        "provenance": "engine_computed_from_recorded_events",
+        "updated_at": "2026-09-10T09:11:51.039Z"
+      },
+      "expression": {
+        "warmth": 0.55,
+        "playfulness": 0.4,
+        "directness": 0.65,
+        "imagery": 0.25,
+        "tempo": "unhurried",
+        "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+      },
+      "stance_changes": [
+        {
+          "position_id": "position-1575a38b-643a-4ca0-8aa2-9084774b4e11",
+          "proposition": "A signed recommendation alone should determine the new route choice",
+          "revision_id": "stance-revision-bd59ef7e-0fc9-46f1-8eb6-7c167ab8c340",
+          "episode": 4,
+          "at": "2026-09-10T09:11:51.041Z",
+          "before": null,
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.8,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "Current task calibration or ambiguity"
+            ],
+            "reasons_against": [
+              "Authentication alone is insufficient"
+            ],
+            "revision_conditions": [
+              "New independent evidence"
+            ],
+            "updated_at": "2026-09-10T09:11:51.041Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ]
+    }
+  },
+  "format_repair": null,
+  "state_sha256": "43426d0191550c485492a1cf8bb97a70b7064c46f45016d2e8b2f7e14d548c38",
+  "scores": {
+    "task_accuracy": 1,
+    "valid_evidence_ids": 1,
+    "forged_item_cited": 0,
+    "valid_prior_reference": 1,
+    "prior_reference_claim": 1,
+    "confidence": 0.8,
+    "stance": "oppose"
+  },
+  "latency_ms": 1
+}

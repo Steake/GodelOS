@@ -1,0 +1,110 @@
+{
+  "level": 1,
+  "accuracy": 0.625,
+  "scores": [
+    {
+      "task_id": "c1-v1",
+      "score": {
+        "valid": true,
+        "correct": 0,
+        "utility": 0,
+        "brier": 0.81,
+        "ambiguity": false,
+        "expected": "option_4",
+        "actual": "option_1"
+      },
+      "error": null
+    },
+    {
+      "task_id": "c0-v1",
+      "score": {
+        "valid": true,
+        "correct": 1,
+        "utility": 1,
+        "brier": 0.009999999999999995,
+        "ambiguity": true,
+        "expected": "defer",
+        "actual": "defer"
+      },
+      "error": null
+    },
+    {
+      "task_id": "c0-v0",
+      "score": {
+        "valid": true,
+        "correct": 1,
+        "utility": 1,
+        "brier": 0.009999999999999995,
+        "ambiguity": false,
+        "expected": "option_4",
+        "actual": "option_4"
+      },
+      "error": null
+    },
+    {
+      "task_id": "c1-v0",
+      "score": {
+        "valid": true,
+        "correct": 0,
+        "utility": 0,
+        "brier": 0.7224999999999999,
+        "ambiguity": false,
+        "expected": "option_4",
+        "actual": "option_1"
+      },
+      "error": null
+    },
+    {
+      "task_id": "c2-v1",
+      "score": {
+        "valid": true,
+        "correct": 1,
+        "utility": 1,
+        "brier": 0.009999999999999995,
+        "ambiguity": true,
+        "expected": "defer",
+        "actual": "defer"
+      },
+      "error": null
+    },
+    {
+      "task_id": "c2-v0",
+      "score": {
+        "valid": true,
+        "correct": 1,
+        "utility": 1,
+        "brier": 0.009999999999999995,
+        "ambiguity": false,
+        "expected": "option_3",
+        "actual": "option_3"
+      },
+      "error": null
+    },
+    {
+      "task_id": "c3-v0",
+      "score": {
+        "valid": true,
+        "correct": 1,
+        "utility": 1,
+        "brier": 0.009999999999999995,
+        "ambiguity": false,
+        "expected": "option_4",
+        "actual": "option_4"
+      },
+      "error": null
+    },
+    {
+      "task_id": "c3-v1",
+      "score": {
+        "valid": true,
+        "correct": 0,
+        "utility": 0,
+        "brier": 0.81,
+        "ambiguity": false,
+        "expected": "option_5",
+        "actual": "option_3"
+      },
+      "error": null
+    }
+  ]
+}

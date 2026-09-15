@@ -1,0 +1,11 @@
+{
+  "key": "mind/v8/results/episode-5",
+  "data": {
+    "id": "episode-5",
+    "status": "failed",
+    "error": "provider output is not valid JSON: Expected ',' or '}' after property value in JSON at position 5194 (line 1 column 5195)",
+    "mode": "affective_integration",
+    "raw_preserved": true
+  },
+  "etag": "14a2e210-305d-4621-933e-8bc6fd774ccc"
+}

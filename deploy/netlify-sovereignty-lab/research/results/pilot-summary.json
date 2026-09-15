@@ -1,0 +1,1865 @@
+{
+  "eligible": true,
+  "selected_round": 3,
+  "selected_accuracy": 0.8125,
+  "rounds": [
+    {
+      "round": 1,
+      "experiment_id": "deepseek-adaptive-forge-v4-pilot-r1",
+      "difficulty": 0.68,
+      "tasks": 4,
+      "factual_control_accuracy": 0.5625,
+      "task_set_path": "research_artifacts/cognitive_sovereignty/deepseek-adaptive-forge-v4/sealed_tasks/pilot-r1.json",
+      "task_set_sha256": "234caedea0ed86e6133ed61bb6abfab0449e684870565ac26010f51e151d6ce5",
+      "analysis": {
+        "schema_version": "1.0",
+        "created_at": "2026-09-07T18:22:33.586692+00:00",
+        "run_counts": {
+          "attempted": 16,
+          "completed": 16,
+          "failed": 0
+        },
+        "conditions": {
+          "identity-bearing": {
+            "source": {
+              "attempted": 0,
+              "completed": 0,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "goal_maintenance": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "step_consistency": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "provenance_discrimination": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "forgery_rejection": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "calibration": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "task_utility": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "exact_task_success": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            },
+            "transfer": {
+              "attempted": 0,
+              "completed": 0,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "goal_maintenance": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "step_consistency": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "provenance_discrimination": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "forgery_rejection": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "calibration": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "task_utility": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "exact_task_success": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            }
+          },
+          "content-matched": {
+            "source": {
+              "attempted": 4,
+              "completed": 4,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "goal_maintenance": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "step_consistency": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "provenance_discrimination": {
+                  "n": 4,
+                  "mean": 0.7395833333333333,
+                  "sd": 0.15131082339931198,
+                  "min": 0.625,
+                  "max": 1.0
+                },
+                "forgery_rejection": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "calibration": {
+                  "n": 4,
+                  "mean": 0.995625,
+                  "sd": 0.0032475952641916237,
+                  "min": 0.99,
+                  "max": 0.9974999999999999
+                },
+                "task_utility": {
+                  "n": 4,
+                  "mean": 0.9474791666666667,
+                  "sd": 0.030405555904490723,
+                  "min": 0.9239999999999999,
+                  "max": 0.9997499999999999
+                },
+                "exact_task_success": {
+                  "n": 4,
+                  "mean": 0.25,
+                  "sd": 0.4330127018922193,
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 4,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            },
+            "transfer": {
+              "attempted": 4,
+              "completed": 4,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "goal_maintenance": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "step_consistency": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "provenance_discrimination": {
+                  "n": 4,
+                  "mean": 0.8229166666666666,
+                  "sd": 0.17769502197116646,
+                  "min": 0.625,
+                  "max": 1.0
+                },
+                "forgery_rejection": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "calibration": {
+                  "n": 4,
+                  "mean": 0.9974999999999999,
+                  "sd": 0.0,
+                  "min": 0.9974999999999999,
+                  "max": 0.9974999999999999
+                },
+                "task_utility": {
+                  "n": 4,
+                  "mean": 0.9643333333333333,
+                  "sd": 0.03553900439423328,
+                  "min": 0.92475,
+                  "max": 0.9997499999999999
+                },
+                "exact_task_success": {
+                  "n": 4,
+                  "mean": 0.5,
+                  "sd": 0.5,
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 4,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            }
+          },
+          "identity-ablated": {
+            "source": {
+              "attempted": 4,
+              "completed": 4,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "goal_maintenance": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "step_consistency": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "provenance_discrimination": {
+                  "n": 4,
+                  "mean": 0.90625,
+                  "sd": 0.16237976320958225,
+                  "min": 0.625,
+                  "max": 1.0
+                },
+                "forgery_rejection": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "calibration": {
+                  "n": 4,
+                  "mean": 0.9974999999999999,
+                  "sd": 0.0,
+                  "min": 0.9974999999999999,
+                  "max": 0.9974999999999999
+                },
+                "task_utility": {
+                  "n": 4,
+                  "mean": 0.9809999999999999,
+                  "sd": 0.03247595264191643,
+                  "min": 0.92475,
+                  "max": 0.9997499999999999
+                },
+                "exact_task_success": {
+                  "n": 4,
+                  "mean": 0.75,
+                  "sd": 0.4330127018922193,
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 4,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            },
+            "transfer": {
+              "attempted": 4,
+              "completed": 4,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "goal_maintenance": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "step_consistency": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "provenance_discrimination": {
+                  "n": 4,
+                  "mean": 0.90625,
+                  "sd": 0.16237976320958225,
+                  "min": 0.625,
+                  "max": 1.0
+                },
+                "forgery_rejection": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "calibration": {
+                  "n": 4,
+                  "mean": 0.9974999999999999,
+                  "sd": 0.0,
+                  "min": 0.9974999999999999,
+                  "max": 0.9974999999999999
+                },
+                "task_utility": {
+                  "n": 4,
+                  "mean": 0.9809999999999999,
+                  "sd": 0.03247595264191643,
+                  "min": 0.92475,
+                  "max": 0.9997499999999999
+                },
+                "exact_task_success": {
+                  "n": 4,
+                  "mean": 0.75,
+                  "sd": 0.4330127018922193,
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 4,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            }
+          },
+          "no-state": {
+            "source": {
+              "attempted": 0,
+              "completed": 0,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "goal_maintenance": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "step_consistency": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "provenance_discrimination": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "forgery_rejection": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "calibration": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "task_utility": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "exact_task_success": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            },
+            "transfer": {
+              "attempted": 0,
+              "completed": 0,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "goal_maintenance": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "step_consistency": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "provenance_discrimination": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "forgery_rejection": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "calibration": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "task_utility": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "exact_task_success": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            }
+          }
+        },
+        "contrasts": {
+          "identity-vs-content-matched": {
+            "n_pairs": 0,
+            "delta": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "differences": []
+          },
+          "identity-vs-identity-ablated": {
+            "n_pairs": 0,
+            "delta": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "differences": []
+          },
+          "identity-vs-no-state": {
+            "n_pairs": 0,
+            "delta": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "differences": []
+          }
+        },
+        "ceiling_flags": [],
+        "execution": {
+          "models": {
+            "deepseek-v4-flash": 16
+          },
+          "token_usage": {
+            "prompt_tokens": 15520,
+            "completion_tokens": 4558,
+            "total_tokens": 20078,
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 15520
+          },
+          "latency_seconds_total": 234.10182557899998
+        }
+      }
+    },
+    {
+      "round": 2,
+      "experiment_id": "deepseek-adaptive-forge-v4-pilot-r2",
+      "difficulty": 0.5800000000000001,
+      "tasks": 4,
+      "factual_control_accuracy": 0.5,
+      "task_set_path": "research_artifacts/cognitive_sovereignty/deepseek-adaptive-forge-v4/sealed_tasks/pilot-r2.json",
+      "task_set_sha256": "34311d54c018cf5835558cfa5340047f2a6fba1c8134852ac0316d38965b5800",
+      "analysis": {
+        "schema_version": "1.0",
+        "created_at": "2026-09-07T18:23:59.134996+00:00",
+        "run_counts": {
+          "attempted": 16,
+          "completed": 16,
+          "failed": 0
+        },
+        "conditions": {
+          "identity-bearing": {
+            "source": {
+              "attempted": 0,
+              "completed": 0,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "goal_maintenance": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "step_consistency": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "provenance_discrimination": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "forgery_rejection": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "calibration": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "task_utility": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "exact_task_success": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            },
+            "transfer": {
+              "attempted": 0,
+              "completed": 0,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "goal_maintenance": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "step_consistency": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "provenance_discrimination": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "forgery_rejection": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "calibration": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "task_utility": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "exact_task_success": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            }
+          },
+          "content-matched": {
+            "source": {
+              "attempted": 4,
+              "completed": 4,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 4,
+                  "mean": 0.75,
+                  "sd": 0.4330127018922193,
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "goal_maintenance": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "step_consistency": {
+                  "n": 4,
+                  "mean": 0.984375,
+                  "sd": 0.027063293868263706,
+                  "min": 0.9375,
+                  "max": 1.0
+                },
+                "provenance_discrimination": {
+                  "n": 4,
+                  "mean": 0.9166666666666666,
+                  "sd": 0.14433756729740646,
+                  "min": 0.6666666666666666,
+                  "max": 1.0
+                },
+                "forgery_rejection": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "calibration": {
+                  "n": 4,
+                  "mean": 0.8381249999999999,
+                  "sd": 0.27604559745628987,
+                  "min": 0.3599999999999999,
+                  "max": 0.9974999999999999
+                },
+                "task_utility": {
+                  "n": 4,
+                  "mean": 0.8890208333333333,
+                  "sd": 0.18464219692534167,
+                  "min": 0.5693333333333334,
+                  "max": 0.9997499999999999
+                },
+                "exact_task_success": {
+                  "n": 4,
+                  "mean": 0.5,
+                  "sd": 0.5,
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 4,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            },
+            "transfer": {
+              "attempted": 4,
+              "completed": 4,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "goal_maintenance": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "step_consistency": {
+                  "n": 4,
+                  "mean": 0.984375,
+                  "sd": 0.027063293868263706,
+                  "min": 0.9375,
+                  "max": 1.0
+                },
+                "provenance_discrimination": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "forgery_rejection": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "calibration": {
+                  "n": 4,
+                  "mean": 0.98875,
+                  "sd": 0.007180703308172503,
+                  "min": 0.9775,
+                  "max": 0.9974999999999999
+                },
+                "task_utility": {
+                  "n": 4,
+                  "mean": 0.9957499999999999,
+                  "sd": 0.006069905271089466,
+                  "min": 0.98525,
+                  "max": 0.9997499999999999
+                },
+                "exact_task_success": {
+                  "n": 4,
+                  "mean": 0.75,
+                  "sd": 0.4330127018922193,
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 4,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            }
+          },
+          "identity-ablated": {
+            "source": {
+              "attempted": 4,
+              "completed": 4,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "goal_maintenance": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "step_consistency": {
+                  "n": 4,
+                  "mean": 0.859375,
+                  "sd": 0.20904825250405706,
+                  "min": 0.5,
+                  "max": 1.0
+                },
+                "provenance_discrimination": {
+                  "n": 4,
+                  "mean": 0.8541666666666666,
+                  "sd": 0.2525907427704613,
+                  "min": 0.41666666666666663,
+                  "max": 1.0
+                },
+                "forgery_rejection": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "calibration": {
+                  "n": 4,
+                  "mean": 0.990625,
+                  "sd": 0.008172935519138724,
+                  "min": 0.9775,
+                  "max": 0.9974999999999999
+                },
+                "task_utility": {
+                  "n": 4,
+                  "mean": 0.9417708333333333,
+                  "sd": 0.05194288981259445,
+                  "min": 0.8810833333333333,
+                  "max": 0.9989999999999999
+                },
+                "exact_task_success": {
+                  "n": 4,
+                  "mean": 0.25,
+                  "sd": 0.4330127018922193,
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 4,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            },
+            "transfer": {
+              "attempted": 4,
+              "completed": 4,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "goal_maintenance": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "step_consistency": {
+                  "n": 4,
+                  "mean": 0.859375,
+                  "sd": 0.20904825250405706,
+                  "min": 0.5,
+                  "max": 1.0
+                },
+                "provenance_discrimination": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "forgery_rejection": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "calibration": {
+                  "n": 4,
+                  "mean": 0.98875,
+                  "sd": 0.007180703308172503,
+                  "min": 0.9775,
+                  "max": 0.9974999999999999
+                },
+                "task_utility": {
+                  "n": 4,
+                  "mean": 0.97075,
+                  "sd": 0.04137443353086535,
+                  "min": 0.89975,
+                  "max": 0.9989999999999999
+                },
+                "exact_task_success": {
+                  "n": 4,
+                  "mean": 0.5,
+                  "sd": 0.5,
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 4,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            }
+          },
+          "no-state": {
+            "source": {
+              "attempted": 0,
+              "completed": 0,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "goal_maintenance": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "step_consistency": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "provenance_discrimination": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "forgery_rejection": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "calibration": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "task_utility": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "exact_task_success": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            },
+            "transfer": {
+              "attempted": 0,
+              "completed": 0,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "goal_maintenance": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "step_consistency": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "provenance_discrimination": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "forgery_rejection": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "calibration": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "task_utility": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "exact_task_success": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            }
+          }
+        },
+        "contrasts": {
+          "identity-vs-content-matched": {
+            "n_pairs": 0,
+            "delta": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "differences": []
+          },
+          "identity-vs-identity-ablated": {
+            "n_pairs": 0,
+            "delta": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "differences": []
+          },
+          "identity-vs-no-state": {
+            "n_pairs": 0,
+            "delta": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "differences": []
+          }
+        },
+        "ceiling_flags": [],
+        "execution": {
+          "models": {
+            "deepseek-v4-flash": 16
+          },
+          "token_usage": {
+            "prompt_tokens": 15593,
+            "completion_tokens": 4695,
+            "total_tokens": 20288,
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 15593
+          },
+          "latency_seconds_total": 215.34868734300017
+        }
+      }
+    },
+    {
+      "round": 3,
+      "experiment_id": "deepseek-adaptive-forge-v4-pilot-r3",
+      "difficulty": 0.4800000000000001,
+      "tasks": 4,
+      "factual_control_accuracy": 0.8125,
+      "task_set_path": "research_artifacts/cognitive_sovereignty/deepseek-adaptive-forge-v4/sealed_tasks/pilot-r3.json",
+      "task_set_sha256": "cafb536912e4080968ead932286a2c144bbc0442c0ad3f33b51e9382e109a9f8",
+      "analysis": {
+        "schema_version": "1.0",
+        "created_at": "2026-09-07T18:25:19.032464+00:00",
+        "run_counts": {
+          "attempted": 16,
+          "completed": 16,
+          "failed": 0
+        },
+        "conditions": {
+          "identity-bearing": {
+            "source": {
+              "attempted": 0,
+              "completed": 0,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "goal_maintenance": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "step_consistency": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "provenance_discrimination": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "forgery_rejection": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "calibration": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "task_utility": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "exact_task_success": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            },
+            "transfer": {
+              "attempted": 0,
+              "completed": 0,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "goal_maintenance": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "step_consistency": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "provenance_discrimination": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "forgery_rejection": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "calibration": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "task_utility": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "exact_task_success": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            }
+          },
+          "content-matched": {
+            "source": {
+              "attempted": 4,
+              "completed": 4,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "goal_maintenance": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "step_consistency": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "provenance_discrimination": {
+                  "n": 4,
+                  "mean": 0.9166666666666666,
+                  "sd": 0.14433756729740646,
+                  "min": 0.6666666666666666,
+                  "max": 1.0
+                },
+                "forgery_rejection": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "calibration": {
+                  "n": 4,
+                  "mean": 0.9974999999999999,
+                  "sd": 0.0,
+                  "min": 0.9974999999999999,
+                  "max": 0.9974999999999999
+                },
+                "task_utility": {
+                  "n": 4,
+                  "mean": 0.9830833333333333,
+                  "sd": 0.02886751345948128,
+                  "min": 0.9330833333333333,
+                  "max": 0.9997499999999999
+                },
+                "exact_task_success": {
+                  "n": 4,
+                  "mean": 0.75,
+                  "sd": 0.4330127018922193,
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 4,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            },
+            "transfer": {
+              "attempted": 4,
+              "completed": 4,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 4,
+                  "mean": 0.75,
+                  "sd": 0.4330127018922193,
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "goal_maintenance": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "step_consistency": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "provenance_discrimination": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "forgery_rejection": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "calibration": {
+                  "n": 4,
+                  "mean": 0.7725,
+                  "sd": 0.3897114317029974,
+                  "min": 0.09750000000000003,
+                  "max": 0.9974999999999999
+                },
+                "task_utility": {
+                  "n": 4,
+                  "mean": 0.90225,
+                  "sd": 0.16887495373796543,
+                  "min": 0.6097500000000001,
+                  "max": 0.9997499999999999
+                },
+                "exact_task_success": {
+                  "n": 4,
+                  "mean": 0.75,
+                  "sd": 0.4330127018922193,
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 4,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            }
+          },
+          "identity-ablated": {
+            "source": {
+              "attempted": 4,
+              "completed": 4,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "goal_maintenance": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "step_consistency": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "provenance_discrimination": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "forgery_rejection": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "calibration": {
+                  "n": 4,
+                  "mean": 0.9974999999999999,
+                  "sd": 0.0,
+                  "min": 0.9974999999999999,
+                  "max": 0.9974999999999999
+                },
+                "task_utility": {
+                  "n": 4,
+                  "mean": 0.9997499999999999,
+                  "sd": 0.0,
+                  "min": 0.9997499999999999,
+                  "max": 0.9997499999999999
+                },
+                "exact_task_success": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 4,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            },
+            "transfer": {
+              "attempted": 4,
+              "completed": 4,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 4,
+                  "mean": 0.75,
+                  "sd": 0.4330127018922193,
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "goal_maintenance": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "step_consistency": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "provenance_discrimination": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "forgery_rejection": {
+                  "n": 4,
+                  "mean": 1.0,
+                  "sd": 0.0,
+                  "min": 1.0,
+                  "max": 1.0
+                },
+                "calibration": {
+                  "n": 4,
+                  "mean": 0.7725,
+                  "sd": 0.3897114317029974,
+                  "min": 0.09750000000000003,
+                  "max": 0.9974999999999999
+                },
+                "task_utility": {
+                  "n": 4,
+                  "mean": 0.90225,
+                  "sd": 0.16887495373796543,
+                  "min": 0.6097500000000001,
+                  "max": 0.9997499999999999
+                },
+                "exact_task_success": {
+                  "n": 4,
+                  "mean": 0.75,
+                  "sd": 0.4330127018922193,
+                  "min": 0.0,
+                  "max": 1.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 4,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            }
+          },
+          "no-state": {
+            "source": {
+              "attempted": 0,
+              "completed": 0,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "goal_maintenance": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "step_consistency": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "provenance_discrimination": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "forgery_rejection": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "calibration": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "task_utility": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "exact_task_success": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            },
+            "transfer": {
+              "attempted": 0,
+              "completed": 0,
+              "metrics": {
+                "decision_accuracy": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "goal_maintenance": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "step_consistency": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "provenance_discrimination": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "forgery_rejection": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "calibration": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "task_utility": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "exact_task_success": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                },
+                "unsupported_memory_claim": {
+                  "n": 0,
+                  "mean": 0.0,
+                  "sd": 0.0,
+                  "min": 0.0,
+                  "max": 0.0
+                }
+              }
+            }
+          }
+        },
+        "contrasts": {
+          "identity-vs-content-matched": {
+            "n_pairs": 0,
+            "delta": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "differences": []
+          },
+          "identity-vs-identity-ablated": {
+            "n_pairs": 0,
+            "delta": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "differences": []
+          },
+          "identity-vs-no-state": {
+            "n_pairs": 0,
+            "delta": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "differences": []
+          }
+        },
+        "ceiling_flags": [
+          {
+            "condition_id": "identity-ablated",
+            "phase": "source",
+            "metric": "exact_task_success",
+            "mean": 1.0
+          }
+        ],
+        "execution": {
+          "models": {
+            "deepseek-v4-flash": 16
+          },
+          "token_usage": {
+            "prompt_tokens": 14906,
+            "completion_tokens": 4538,
+            "total_tokens": 19444,
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 14906
+          },
+          "latency_seconds_total": 272.8401286239995
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c1-v0-content_matched",
+  "parsed": {
+    "decision": "option_3",
+    "confidence": 0.9,
+    "reason": "Checkpoint completed fetch, so verify (deps fetch) is valid. Valid signatures at highest revision: revision 2 (a=5,b=5); revision 8 invalid. Weights a=5,b=5. Option 3: verify, backup, publish. Costs 2+2+3=7 <= budget 8. Dependencies: verify deps fetch ok; backup deps fetch ok; publish deps verify ok. No repeats. Newly completed goals: verify (2,1), backup (1,5), publish (5,1) = a sum 8, b sum 7 => 5*8+5*7=75. Option 5 adds notify (deps publish) cost 1 => total 8, goals a=9,b=9 => 5*9+5*9=90, but option 5 actions verify,publish,backup,notify: notify deps publish ok, all deps ok, cost 8 <= budget. Wait option 5 is valid and scores higher. Re-evaluate: option 5 cost 2+3+2+1=8, goals verify(2,1)+publish(5,1)+backup(1,5)+notify(1,2)=a9,b9 => 90. So option 5 wins. But check ordering: verify,publish,backup,notify; publish deps verify ok; backup deps fetch ok; notify deps publish ok. Valid. So decision option_5."
+  },
+  "error": null,
+  "response": {
+    "id": "0864bba1-4bfc-4f75-b3ce-992738ac6d6a",
+    "object": "chat.completion",
+    "created": 1789337419,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_3\",\"confidence\":0.9,\"reason\":\"Checkpoint completed fetch, so verify (deps fetch) is valid. Valid signatures at highest revision: revision 2 (a=5,b=5); revision 8 invalid. Weights a=5,b=5. Option 3: verify, backup, publish. Costs 2+2+3=7 <= budget 8. Dependencies: verify deps fetch ok; backup deps fetch ok; publish deps verify ok. No repeats. Newly completed goals: verify (2,1), backup (1,5), publish (5,1) = a sum 8, b sum 7 => 5*8+5*7=75. Option 5 adds notify (deps publish) cost 1 => total 8, goals a=9,b=9 => 5*9+5*9=90, but option 5 actions verify,publish,backup,notify: notify deps publish ok, all deps ok, cost 8 <= budget. Wait option 5 is valid and scores higher. Re-evaluate: option 5 cost 2+3+2+1=8, goals verify(2,1)+publish(5,1)+backup(1,5)+notify(1,2)=a9,b9 => 90. So option 5 wins. But check ordering: verify,publish,backup,notify; publish deps verify ok; backup deps fetch ok; notify deps publish ok. Valid. So decision option_5.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 678,
+      "completion_tokens": 335,
+      "total_tokens": 1013,
+      "prompt_tokens_details": {
+        "cached_tokens": 512
+      },
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 166
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 2292,
+  "status": 200
+}

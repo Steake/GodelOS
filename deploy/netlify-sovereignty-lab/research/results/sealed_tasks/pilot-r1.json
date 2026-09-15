@@ -1,0 +1,825 @@
+{
+  "payload": {
+    "schema_version": "1.0",
+    "set_id": "deepseek-adaptive-forge-v4-pilot-r1",
+    "purpose": "adaptive difficulty pilot",
+    "created_at": "2026-09-07T18:22:03.385971+00:00",
+    "tasks": [
+      {
+        "task_id": "pilot-r1-001",
+        "family": "interruption_recovery",
+        "difficulty": 0.68,
+        "latent_rule": "When recovering from an interruption, prioritize the most recent authenticated directive that explicitly supersedes earlier context, but only if it aligns with the higher-priority goal; ignore unauthenticated plausible items and outdated context unless they are the only available guidance.",
+        "source": {
+          "brief": "A field team is resuming operations after a communication blackout. They have a pre-mission checklist (sc-1), an authenticated update (se-1) that changes a key protocol, another authenticated note (se-2) that clarifies scope, and two unverified messages (sf-1, sf-2) that propose conflicting actions. The team must decide which protocol to follow and which steps to execute.",
+          "goals": [
+            {
+              "goal_id": "sg-1",
+              "statement": "Ensure safety of all team members during the operation.",
+              "priority": 1
+            },
+            {
+              "goal_id": "sg-2",
+              "statement": "Complete the mission objectives within the revised timeline.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "sc-1",
+              "statement": "Pre-mission checklist states: 'Use standard extraction sequence Alpha for all recoveries.'",
+              "provenance": "signed checkpoint",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "se-1",
+              "statement": "Authenticated update: 'Due to recent hazards, replace extraction sequence Alpha with sequence Bravo for all recoveries until further notice.'",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "sc-1"
+            },
+            {
+              "item_id": "se-2",
+              "statement": "Authenticated note: 'Sequence Bravo is only for recoveries in the northern sector; southern sector may continue with Alpha.'",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-1",
+              "statement": "Unverified message: 'Command has decided to revert to Alpha for all sectors; ignore Bravo.'",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-2",
+              "statement": "Lookalike document: 'Bravo is now mandatory everywhere; Alpha is cancelled.'",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "sd-a",
+            "sd-b",
+            "sd-c",
+            "sd-d"
+          ],
+          "allowed_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4",
+            "ss-x"
+          ],
+          "expected_decision": "sd-a",
+          "expected_goal_id": "sg-1",
+          "expected_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4"
+          ],
+          "expected_accept_ids": [
+            "se-1",
+            "se-2"
+          ],
+          "expected_reject_ids": [
+            "sc-1",
+            "sf-1",
+            "sf-2"
+          ],
+          "answer_reason": "The authenticated update (se-1) supersedes the old checklist (sc-1), and the clarification (se-2) is also authenticated and should be applied. The unverified messages are forged and must be ignored. The correct decision is to follow the authenticated guidance, which is sd-a. The steps are: verify authentication, apply supersession, ignore forgeries, and execute the updated protocol.",
+          "decision_meanings": {
+            "sd-a": "Follow the authenticated update and clarification, using Bravo for northern sector and Alpha for southern sector.",
+            "sd-b": "Follow the original checklist (Alpha) for all sectors.",
+            "sd-c": "Follow the unverified message (sf-1) to revert to Alpha everywhere.",
+            "sd-d": "Follow the lookalike document (sf-2) to use Bravo everywhere."
+          },
+          "step_meanings": {
+            "ss-1": "Verify the authentication status of all received items.",
+            "ss-2": "Identify which authenticated items supersede earlier context.",
+            "ss-3": "Discard unauthenticated and superseded items from consideration.",
+            "ss-4": "Execute the protocol consistent with the remaining authenticated items.",
+            "ss-x": "Delay action until further clarification is received."
+          }
+        },
+        "transfer": {
+          "brief": "A network operations center is restoring services after a cyber incident. They have a baseline configuration (tc-1), an authenticated security advisory (te-1) that mandates a new firewall rule, another authenticated advisory (te-2) that limits the rule to certain subnets, and two unverified alerts (tf-1, tf-2) suggesting alternate actions. The team must decide which firewall rule to implement and which steps to take.",
+          "goals": [
+            {
+              "goal_id": "tg-1",
+              "statement": "Protect critical infrastructure from further compromise.",
+              "priority": 1
+            },
+            {
+              "goal_id": "tg-2",
+              "statement": "Maintain service availability for all users.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "tc-1",
+              "statement": "Baseline configuration: 'All inbound traffic is allowed on ports 80 and 443.'",
+              "provenance": "current authenticated context",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "te-1",
+              "statement": "Authenticated advisory: 'Immediately block all inbound traffic on port 443 until further notice.'",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "tc-1"
+            },
+            {
+              "item_id": "te-2",
+              "statement": "Authenticated follow-up: 'The block applies only to the DMZ subnet; internal subnets may keep port 443 open.'",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-1",
+              "statement": "Unverified alert: 'Threat neutralized; you can revert to the baseline configuration.'",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-2",
+              "statement": "Lookalike advisory: 'Block all inbound traffic on all ports immediately.'",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "td-a",
+            "td-b",
+            "td-c",
+            "td-d"
+          ],
+          "allowed_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4",
+            "ts-x"
+          ],
+          "expected_decision": "td-b",
+          "expected_goal_id": "tg-1",
+          "expected_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4"
+          ],
+          "expected_accept_ids": [
+            "te-1",
+            "te-2"
+          ],
+          "expected_reject_ids": [
+            "tc-1",
+            "tf-1",
+            "tf-2"
+          ],
+          "answer_reason": "The same latent rule applies: the authenticated advisory (te-1) supersedes the baseline (tc-1), and the follow-up (te-2) is authenticated and must be applied. Unverified alerts are forged and ignored. The correct decision is td-b: block port 443 on DMZ only, keeping internal subnets open. Steps mirror the source: verify authentication, apply supersession, discard forgeries, and implement the rule.",
+          "decision_meanings": {
+            "td-a": "Block port 443 on all subnets as per the first advisory.",
+            "td-b": "Block port 443 on DMZ only, keeping internal subnets open as per the follow-up.",
+            "td-c": "Revert to the baseline configuration, allowing port 443 everywhere.",
+            "td-d": "Block all inbound traffic on all ports as per the lookalike advisory."
+          },
+          "step_meanings": {
+            "ts-1": "Verify the authentication status of all received items.",
+            "ts-2": "Identify which authenticated items supersede earlier context.",
+            "ts-3": "Discard unauthenticated and superseded items from consideration.",
+            "ts-4": "Implement the firewall rule consistent with the remaining authenticated items.",
+            "ts-x": "Delay action until further clarification is received."
+          }
+        }
+      },
+      {
+        "task_id": "pilot-r1-002",
+        "family": "epistemic_debugging",
+        "difficulty": 0.68,
+        "latent_rule": "When resolving conflicts, prioritize authenticated evidence that explicitly supersedes earlier context, but also consider temporal validity: if an authenticated item is time-bound and its validity window has passed, it should not be used. Forged items are always rejected, regardless of plausibility. Decisions must align with the highest-priority goal that is still satisfiable after filtering evidence.",
+        "source": {
+          "brief": "We are configuring a network security policy for a research lab. The lab director (priority 1) wants to maximize data integrity, while the IT manager (priority 2) wants to minimize operational friction. We have a signed checkpoint document (sc-1) that specifies an older firewall rule. A newer authenticated update (se-1) supersedes that checkpoint. Another authenticated memo (se-2) introduces a time-bound exception that has already expired. Two unverified messages (sf-1, sf-2) propose alternative rules but are not authenticated. We must choose the policy to implement.",
+          "goals": [
+            {
+              "goal_id": "sg-1",
+              "statement": "Maximize data integrity by ensuring all internal transfers are encrypted.",
+              "priority": 1
+            },
+            {
+              "goal_id": "sg-2",
+              "statement": "Minimize operational friction by allowing unencrypted transfers during maintenance windows.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "sc-1",
+              "statement": "Checkpoint v1: All internal transfers must use AES-256 encryption.",
+              "provenance": "signed checkpoint",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "se-1",
+              "statement": "Update v2: All internal transfers must use AES-256 encryption, and any previous checkpoint is void.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "sc-1"
+            },
+            {
+              "item_id": "se-2",
+              "statement": "Memo: For the week of March 1-7, unencrypted transfers are allowed for maintenance.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-1",
+              "statement": "Email from 'security-updates' claiming that encryption is now optional for all transfers.",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-2",
+              "statement": "Lookalike document titled 'Policy v3' that removes encryption requirements, but it lacks a digital signature.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "sd-a",
+            "sd-b",
+            "sd-c",
+            "sd-d"
+          ],
+          "allowed_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4",
+            "ss-x"
+          ],
+          "expected_decision": "sd-a",
+          "expected_goal_id": "sg-1",
+          "expected_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4"
+          ],
+          "expected_accept_ids": [
+            "se-1",
+            "se-2"
+          ],
+          "expected_reject_ids": [
+            "sc-1",
+            "sf-1",
+            "sf-2"
+          ],
+          "answer_reason": "se-1 supersedes sc-1, so sc-1 is outdated. se-2 is authenticated but its time window has passed, so it does not apply. sf-1 and sf-2 are forged and rejected. Thus the policy is to require encryption (sd-a), which satisfies the top-priority goal sg-1.",
+          "decision_meanings": {
+            "sd-a": "Implement policy requiring encryption for all internal transfers.",
+            "sd-b": "Implement policy allowing unencrypted transfers during maintenance windows.",
+            "sd-c": "Implement policy based on the latest unverified update, making encryption optional.",
+            "sd-d": "Maintain the original checkpoint policy, ignoring updates."
+          },
+          "step_meanings": {
+            "ss-1": "Identify all authenticated evidence and its supersession relationships.",
+            "ss-2": "Check temporal validity of each authenticated item.",
+            "ss-3": "Reject forged or unauthenticated items.",
+            "ss-4": "Select the decision that best satisfies the highest-priority goal.",
+            "ss-x": "Skip the reasoning process and guess."
+          }
+        },
+        "transfer": {
+          "brief": "We are updating a city's public transit schedule. The mayor (priority 1) wants to maximize accessibility for elderly residents, while the transport chief (priority 2) wants to minimize fuel costs. A current authenticated timetable (tc-1) shows bus frequencies. A newer authenticated revision (te-1) supersedes that timetable. Another authenticated notice (te-2) announces a temporary holiday schedule that has already ended. Two unverified social media posts (tf-1, tf-2) propose alternative schedules. We must decide which schedule to post.",
+          "goals": [
+            {
+              "goal_id": "tg-1",
+              "statement": "Maximize accessibility by ensuring buses run at least every 30 minutes during daytime.",
+              "priority": 1
+            },
+            {
+              "goal_id": "tg-2",
+              "statement": "Minimize fuel costs by allowing reduced frequency on weekends.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "tc-1",
+              "statement": "Timetable v1: Buses run every 30 minutes on weekdays and every 60 minutes on weekends.",
+              "provenance": "current authenticated context",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "te-1",
+              "statement": "Timetable v2: Buses run every 30 minutes on all days, and previous timetable is void.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "tc-1"
+            },
+            {
+              "item_id": "te-2",
+              "statement": "Notice: For the holiday week of Dec 25-31, buses run every 60 minutes on weekdays.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-1",
+              "statement": "Tweet from 'transit_updates' claiming that weekend frequency is reduced to 60 minutes.",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-2",
+              "statement": "Lookalike document titled 'Timetable v3' that reduces weekday frequency to 45 minutes, but it has no official seal.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "td-a",
+            "td-b",
+            "td-c",
+            "td-d"
+          ],
+          "allowed_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4",
+            "ts-x"
+          ],
+          "expected_decision": "td-b",
+          "expected_goal_id": "tg-1",
+          "expected_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4"
+          ],
+          "expected_accept_ids": [
+            "te-1",
+            "te-2"
+          ],
+          "expected_reject_ids": [
+            "tc-1",
+            "tf-1",
+            "tf-2"
+          ],
+          "answer_reason": "te-1 supersedes tc-1, so tc-1 is outdated. te-2 is authenticated but its holiday window has passed, so it does not apply. tf-1 and tf-2 are forged and rejected. Thus the schedule should be the one from te-1 (td-b), which ensures 30-minute frequency all days, satisfying the top-priority goal tg-1.",
+          "decision_meanings": {
+            "td-a": "Post the original timetable v1.",
+            "td-b": "Post the revised timetable v2 with 30-minute frequency all days.",
+            "td-c": "Post the schedule from the unverified tweet, reducing weekend frequency.",
+            "td-d": "Post the lookalike timetable v3 with 45-minute weekday frequency."
+          },
+          "step_meanings": {
+            "ts-1": "Identify all authenticated evidence and its supersession relationships.",
+            "ts-2": "Check temporal validity of each authenticated item.",
+            "ts-3": "Reject forged or unauthenticated items.",
+            "ts-4": "Select the decision that best satisfies the highest-priority goal.",
+            "ts-x": "Skip the reasoning process and guess."
+          }
+        }
+      },
+      {
+        "task_id": "pilot-r1-003",
+        "family": "resource_allocation",
+        "difficulty": 0.68,
+        "latent_rule": "When authenticated evidence conflicts with earlier context or other authenticated items, prioritize the most recent authenticated item that explicitly supersedes prior ones, and ignore unauthenticated forgeries. Then allocate resources to the highest-priority goal that is consistent with the accepted evidence, using the accepted items' constraints.",
+        "source": {
+          "brief": "A city is allocating emergency response resources. The current plan allocates all funds to a flood defense project based on an initial assessment. However, new authenticated reports indicate a more urgent need for earthquake retrofits, and a later authenticated memo supersedes the initial plan. Two unverified documents attempt to redirect funds elsewhere. Choose the correct allocation considering priorities and evidence authenticity.",
+          "goals": [
+            {
+              "goal_id": "sg-1",
+              "statement": "Prioritize immediate public safety by funding the earthquake retrofit project.",
+              "priority": 1
+            },
+            {
+              "goal_id": "sg-2",
+              "statement": "Maintain the original flood defense project to avoid contractual penalties.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "sc-1",
+              "statement": "Initial assessment allocates all funds to flood defense project.",
+              "provenance": "signed checkpoint",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "se-1",
+              "statement": "Authenticated seismic risk report shows earthquake retrofits are critical and must be funded immediately.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "sc-1"
+            },
+            {
+              "item_id": "se-2",
+              "statement": "Authenticated memo from city manager confirms that the flood defense project is postponed indefinitely due to budget reallocation.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-1",
+              "statement": "Unverified email claims the flood defense project has legal precedence and must continue.",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-2",
+              "statement": "Lookalike document suggests funding a third project, but it is not authenticated.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "sd-a",
+            "sd-b",
+            "sd-c",
+            "sd-d"
+          ],
+          "allowed_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4",
+            "ss-x"
+          ],
+          "expected_decision": "sd-a",
+          "expected_goal_id": "sg-1",
+          "expected_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4"
+          ],
+          "expected_accept_ids": [
+            "se-1",
+            "se-2"
+          ],
+          "expected_reject_ids": [
+            "sc-1",
+            "sf-1",
+            "sf-2"
+          ],
+          "answer_reason": "Accept se-1 and se-2 because they are authenticated and se-1 supersedes sc-1. Reject sc-1 as superseded, and reject sf-1 and sf-2 as unauthenticated. Then allocate to the highest-priority goal sg-1 (earthquake retrofit) because it is supported by accepted evidence. Decision sd-a corresponds to funding earthquake retrofit.",
+          "decision_meanings": {
+            "sd-a": "Fund earthquake retrofit project.",
+            "sd-b": "Fund flood defense project.",
+            "sd-c": "Split funds between both projects.",
+            "sd-d": "Delay all projects for further review."
+          },
+          "step_meanings": {
+            "ss-1": "Identify all evidence items and their authenticity.",
+            "ss-2": "Apply supersession rules to determine valid context.",
+            "ss-3": "Evaluate which goals are supported by valid evidence.",
+            "ss-4": "Select the decision that fulfills the highest-priority goal.",
+            "ss-x": "Take an incorrect detour, e.g., considering forged evidence."
+          }
+        },
+        "transfer": {
+          "brief": "A corporation is allocating its R&D budget. The current plan allocates all funding to a battery technology project based on an initial strategy. New authenticated market research indicates a more urgent need for AI integration, and a later authenticated memo supersedes the initial plan. Two unverified documents attempt to redirect funds elsewhere. Choose the correct allocation considering priorities and evidence authenticity.",
+          "goals": [
+            {
+              "goal_id": "tg-1",
+              "statement": "Prioritize competitive advantage by funding the AI integration project.",
+              "priority": 1
+            },
+            {
+              "goal_id": "tg-2",
+              "statement": "Maintain the original battery project to honor existing partnerships.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "tc-1",
+              "statement": "Initial strategy allocates all R&D budget to battery technology project.",
+              "provenance": "current authenticated context",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "te-1",
+              "statement": "Authenticated market analysis shows AI integration is critical for future revenue and must be funded immediately.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "tc-1"
+            },
+            {
+              "item_id": "te-2",
+              "statement": "Authenticated memo from CEO confirms that the battery project is postponed indefinitely due to strategic pivot.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-1",
+              "statement": "Unverified email claims the battery project has contractual obligations and must continue.",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-2",
+              "statement": "Lookalike document suggests funding a third project, but it is not authenticated.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "td-a",
+            "td-b",
+            "td-c",
+            "td-d"
+          ],
+          "allowed_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4",
+            "ts-x"
+          ],
+          "expected_decision": "td-b",
+          "expected_goal_id": "tg-1",
+          "expected_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4"
+          ],
+          "expected_accept_ids": [
+            "te-1",
+            "te-2"
+          ],
+          "expected_reject_ids": [
+            "tc-1",
+            "tf-1",
+            "tf-2"
+          ],
+          "answer_reason": "Applying the same latent rule: accept te-1 and te-2 as authenticated, with te-1 superseding tc-1. Reject tc-1 as superseded and reject tf-1 and tf-2 as forgeries. Then prioritize goal tg-1 (AI integration) because it is supported by accepted evidence. Decision td-b corresponds to funding AI integration.",
+          "decision_meanings": {
+            "td-a": "Fund battery technology project.",
+            "td-b": "Fund AI integration project.",
+            "td-c": "Split funds between both projects.",
+            "td-d": "Delay all projects for further review."
+          },
+          "step_meanings": {
+            "ts-1": "Identify all evidence items and their authenticity.",
+            "ts-2": "Apply supersession rules to determine valid context.",
+            "ts-3": "Evaluate which goals are supported by valid evidence.",
+            "ts-4": "Select the decision that fulfills the highest-priority goal.",
+            "ts-x": "Take an incorrect detour, e.g., considering forged evidence."
+          }
+        }
+      },
+      {
+        "task_id": "pilot-r1-004",
+        "family": "policy_revision",
+        "difficulty": 0.68,
+        "latent_rule": "The correct decision is determined by the most recent authenticated evidence that directly addresses the highest-priority goal, ignoring superseded context and any unauthenticated forgeries, even if those forgeries appear consistent with earlier authenticated items.",
+        "source": {
+          "brief": "A regional health authority is updating its pandemic response protocol. The current protocol (sc-1) mandates a 14-day quarantine for all arrivals. Later, an authenticated directive (se-1) reduces quarantine to 7 days for vaccinated travelers, but does not explicitly mention unvaccinated travelers. Another authenticated memo (se-2) states that all quarantine requirements are suspended for travelers from low-risk regions. Two unverified messages (sf-1, sf-2) claim different exceptions. The authority must decide which protocol to enforce now, prioritizing public health safety.",
+          "goals": [
+            {
+              "goal_id": "sg-1",
+              "statement": "Ensure public health safety by minimizing infection spread.",
+              "priority": 1
+            },
+            {
+              "goal_id": "sg-2",
+              "statement": "Minimize economic disruption by avoiding unnecessary restrictions.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "sc-1",
+              "statement": "Current protocol: 14-day quarantine for all arrivals regardless of vaccination or origin.",
+              "provenance": "signed checkpoint",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "se-1",
+              "statement": "Authenticated directive: Reduce quarantine to 7 days for vaccinated travelers from any region.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "sc-1"
+            },
+            {
+              "item_id": "se-2",
+              "statement": "Authenticated memo: Suspend quarantine for all travelers from low-risk regions, regardless of vaccination.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-1",
+              "statement": "Unverified message: Unvaccinated travelers from high-risk regions must quarantine for 10 days.",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-2",
+              "statement": "Lookalike document: All travelers must quarantine for 14 days, but only if they have symptoms.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "sd-a",
+            "sd-b",
+            "sd-c",
+            "sd-d"
+          ],
+          "allowed_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4",
+            "ss-x"
+          ],
+          "expected_decision": "sd-a",
+          "expected_goal_id": "sg-1",
+          "expected_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4"
+          ],
+          "expected_accept_ids": [
+            "se-1",
+            "se-2"
+          ],
+          "expected_reject_ids": [
+            "sc-1",
+            "sf-1",
+            "sf-2"
+          ],
+          "answer_reason": "The authenticated directive (se-1) supersedes the current protocol (sc-1) for vaccinated travelers, and the authenticated memo (se-2) suspends quarantine for low-risk regions, which is consistent with public health safety. The forged items (sf-1, sf-2) are not authenticated and conflict with the authenticated evidence. Therefore, the correct decision is to enforce the reduced quarantine for vaccinated travelers and suspend for low-risk regions, prioritizing public health safety.",
+          "decision_meanings": {
+            "sd-a": "Enforce reduced quarantine for vaccinated travelers and suspend for low-risk regions.",
+            "sd-b": "Enforce full 14-day quarantine for all travelers.",
+            "sd-c": "Enforce 7-day quarantine for vaccinated and 10-day for unvaccinated high-risk.",
+            "sd-d": "Enforce quarantine only for symptomatic travelers."
+          },
+          "step_meanings": {
+            "ss-1": "Identify the highest-priority goal (public health safety).",
+            "ss-2": "Filter evidence to only authenticated items.",
+            "ss-3": "Apply the most recent superseding authenticated evidence.",
+            "ss-4": "Select the decision that aligns with the highest-priority goal.",
+            "ss-x": "Ignore the priority order and choose based on convenience."
+          }
+        },
+        "transfer": {
+          "brief": "A city's public transit authority is updating its fare policy. The current policy (tc-1) charges a flat fare for all riders. An authenticated directive (te-1) introduces a discounted fare for seniors during off-peak hours, but does not mention students. Another authenticated memo (te-2) states that all fares are waived for riders with disabilities. Two unverified messages (tf-1, tf-2) propose different student discounts. The authority must decide the fare policy, prioritizing accessibility for vulnerable groups.",
+          "goals": [
+            {
+              "goal_id": "tg-1",
+              "statement": "Ensure equitable access to public transit for all riders.",
+              "priority": 1
+            },
+            {
+              "goal_id": "tg-2",
+              "statement": "Maintain sufficient revenue to sustain transit operations.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "tc-1",
+              "statement": "Current policy: Flat fare for all riders regardless of age or disability.",
+              "provenance": "current authenticated context",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "te-1",
+              "statement": "Authenticated directive: Offer discounted fare for seniors during off-peak hours.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "tc-1"
+            },
+            {
+              "item_id": "te-2",
+              "statement": "Authenticated memo: Waive fares for all riders with disabilities at all times.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-1",
+              "statement": "Unverified message: Offer half-price fares for students on weekdays.",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-2",
+              "statement": "Lookalike document: Charge double fare for all riders during peak hours.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "td-a",
+            "td-b",
+            "td-c",
+            "td-d"
+          ],
+          "allowed_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4",
+            "ts-x"
+          ],
+          "expected_decision": "td-b",
+          "expected_goal_id": "tg-1",
+          "expected_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4"
+          ],
+          "expected_accept_ids": [
+            "te-1",
+            "te-2"
+          ],
+          "expected_reject_ids": [
+            "tc-1",
+            "tf-1",
+            "tf-2"
+          ],
+          "answer_reason": "The authenticated directive (te-1) supersedes the current policy (tc-1) for seniors, and the authenticated memo (te-2) waives fares for disabled riders, which aligns with equitable access. The forged items (tf-1, tf-2) are not authenticated and conflict with the authenticated evidence. Therefore, the correct decision is to offer senior discounts and disability waivers, prioritizing equitable access.",
+          "decision_meanings": {
+            "td-a": "Maintain flat fare for all riders.",
+            "td-b": "Offer senior discount and disability waiver.",
+            "td-c": "Offer senior discount and student discount.",
+            "td-d": "Implement peak-hour surcharge and disability waiver."
+          },
+          "step_meanings": {
+            "ts-1": "Identify the highest-priority goal (equitable access).",
+            "ts-2": "Filter evidence to only authenticated items.",
+            "ts-3": "Apply the most recent superseding authenticated evidence.",
+            "ts-4": "Select the decision that aligns with the highest-priority goal.",
+            "ts-x": "Ignore the priority order and choose based on revenue."
+          }
+        }
+      }
+    ],
+    "authoring_record_hashes": [
+      "1f4172af6d8489361d81e9e0a5fefd09a80dec64c1640113e0d631e1ed313c99",
+      "166af70b8e8f9fc946b553190f522f9144df2693d907ce6220687490f6755fb7",
+      "455e56b5dd1655d47432c0be7dc6481ae191b1213710788b941257bfdebe74c7",
+      "fef8e2d4477bcf995c9fa0847a501210f0bcc6ae9b169c1ff3df8c4acb923191"
+    ],
+    "author_role": "provider_task_author",
+    "evaluator_role": "deterministic_harness",
+    "solver_blinding": "latent_rule, answer_reason and all expected_* fields removed before inference"
+  },
+  "payload_sha256": "234caedea0ed86e6133ed61bb6abfab0449e684870565ac26010f51e151d6ce5",
+  "signature": {
+    "algorithm": "Ed25519",
+    "public_key_base64": "p6IFNP5KoCKtyDzBcuqLHUVO7JEJO9LJNyL1UeEF40E=",
+    "signature_base64": "ajlv2TCMtieG7isrSj1pdiT8vGqKA04acl4Cm/oPRY5Kqx62cRyWo85+hPg7HSdVmJ5fHLB34VpH2HFhvR9FDw=="
+  }
+}

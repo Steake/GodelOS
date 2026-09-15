@@ -1,0 +1,43 @@
+{
+  "config": {
+    "schema": "release-campaign-12.1",
+    "live": true,
+    "model": "deepseek-flash",
+    "temperature": 0.3,
+    "max_tokens": 1800,
+    "thinking": {
+      "type": "disabled"
+    },
+    "seed": 120913,
+    "clusters": 8,
+    "per_cluster": 2,
+    "concurrency": 4,
+    "max_calls": 112,
+    "timeout_ms": 55000,
+    "retries": 0,
+    "pilot_levels": [
+      1,
+      2,
+      3
+    ],
+    "uncalibrated_exploratory": true
+  },
+  "power": {
+    "method": "Normal approximation for paired cluster means; conservative planning, not observed power",
+    "effect": 0.1,
+    "paired_variance": 0.5,
+    "icc": 0.25,
+    "per_cluster": 2,
+    "clusters": 8,
+    "design_effect": 1.25,
+    "required_clusters": 298,
+    "adequate": false,
+    "alpha_familywise": 0.05,
+    "target_power": 0.8
+  },
+  "git": "bcccf6969be64ebb333e8dd2cc824e31dc6a6ee1",
+  "started_at": "2026-09-13T22:09:53.883Z",
+  "classification": "exploratory; preregistered sample below confirmatory power",
+  "protocol": "Common source episode; two intervening tasks; fresh transfer inference with one of four state projections. No hidden activation access. No provider-call retry after an unknown outcome.",
+  "author_evaluator_separation": "Task author: seeded deterministic generator; evaluator: deterministic exact oracle; LM is the solver only."
+}

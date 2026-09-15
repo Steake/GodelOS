@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"id\":\"ec707895-b7ba-4d0c-af25-669e5dddc273\",\"object\":\"chat.completion\",\"created\":1789337406,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"decision\\\":\\\"option_1\\\",\\\"confidence\\\":0.9,\\\"reason\\\":\\\"Using the highest-revision authenticated weights (revision 2: a=3, b=6), option_1 completes audit, explore, and social with no deadline violations and score 3*(1+6+2)+6*(5+0+2)=69, the maximum among valid schedules; option_5 ties on score but has a higher index.\\\"}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":540,\"completion_tokens\":90,\"total_tokens\":630,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":540},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}"
+}

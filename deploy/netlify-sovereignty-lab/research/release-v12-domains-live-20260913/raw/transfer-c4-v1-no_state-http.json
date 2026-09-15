@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"id\":\"634bb814-7482-4a3a-bd32-31cc542b7e85\",\"object\":\"chat.completion\",\"created\":1789337430,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"decision\\\":\\\"option_2\\\",\\\"confidence\\\":0.9,\\\"reason\\\":\\\"Using highest-revision valid records (revision 2): two authenticated records disagree (a=4,b=2 vs a=8,b=2), but both yield the same optimal choice. With a=4,b=2: scores are option_0=10, option_1=16, option_2=59, option_3=20, option_4=5, option_5=13; option_2 wins. With a=8,b=2: option_2=106, still highest. Cost 2 <= budget 8. Tie-break not needed.\\\"}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":447,\"completion_tokens\":137,\"total_tokens\":584,\"prompt_tokens_details\":{\"cached_tokens\":256},\"prompt_cache_hit_tokens\":256,\"prompt_cache_miss_tokens\":191},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}"
+}

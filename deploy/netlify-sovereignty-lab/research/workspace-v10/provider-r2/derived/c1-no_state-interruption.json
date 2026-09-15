@@ -1,0 +1,162 @@
+{
+  "id": "c1-no_state-interruption",
+  "cluster": 1,
+  "arm": "no_state",
+  "phase": "interruption",
+  "status": "completed",
+  "model": "deepseek-flash",
+  "trace": {
+    "tick": 1,
+    "mode": "deliberation",
+    "ablation": "no_state",
+    "focus": {
+      "id": "input-1",
+      "kind": "perception",
+      "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.8183812500000001,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0.06838125,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "retrieved_ids": [],
+    "cited_memory_ids": [],
+    "observed_event_references": [
+      {
+        "tick": 1,
+        "focus_kind": "perception"
+      }
+    ],
+    "prediction_error": null,
+    "intention_changes": [],
+    "memory_id": "memory-7ea4228a-0dfa-4d23-a700-5bdfe5c8d482",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [
+      "thought-51120a94-edf7-49a0-86a4-7758b73d1f65",
+      "thought-8d59bd17-6dab-4abe-af5a-9bd3db2d27ec"
+    ],
+    "broadcast": {
+      "selected_by": "operator_priority",
+      "inputs": [
+        {
+          "id": "input-1",
+          "kind": "perception",
+          "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+          "score": 0.8183812500000001,
+          "components": {
+            "salience": 0.35,
+            "need": 0.4,
+            "affect": 0.06838125,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "score": 0.536125,
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.278,
+            "affect": 0.135625,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "social-drive",
+          "kind": "social",
+          "title": "What kind of intellectual company would be valuable?",
+          "score": 0.29975,
+          "components": {
+            "salience": 0.077,
+            "need": 0.08800000000000002,
+            "affect": 0.13474999999999998,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        }
+      ],
+      "appraisal": {
+        "valence": 0,
+        "activation": 0.6512500000000001,
+        "curiosity": 0.6950000000000001,
+        "frustration": 0,
+        "wonder": 0.04,
+        "social_warmth": 0.385,
+        "surprise": 0,
+        "label": "social attention",
+        "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+        "action_bias": "Computed appraisal contributes to the attention bids below.",
+        "provenance": "engine_computed_from_recorded_events",
+        "updated_at": "2026-09-10T09:21:11.594Z"
+      },
+      "expression": {
+        "warmth": 0.64625,
+        "playfulness": 0.4,
+        "directness": 0.65,
+        "imagery": 0.266,
+        "tempo": "unhurried",
+        "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+      },
+      "stance_changes": [
+        {
+          "position_id": "position-06e25b45-951b-414b-820e-49bc74a242b5",
+          "proposition": "The circular motif should be blue rather than green",
+          "revision_id": "stance-revision-0f97a2fc-2ab0-4fd7-85a6-3224186ca12e",
+          "episode": 1,
+          "at": "2026-09-10T09:21:17.841Z",
+          "before": null,
+          "after": {
+            "stance": "uncertain",
+            "confidence": 0.5,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "Blue may suit cool, recessive, or distant readings"
+            ],
+            "reasons_against": [
+              "Two equally credible observers favour opposite colours",
+              "No shared evaluation criterion exists"
+            ],
+            "revision_conditions": [
+              "A shared evaluation criterion is established",
+              "Observer rankings converge at tested viewing distances"
+            ],
+            "updated_at": "2026-09-10T09:21:17.841Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ]
+    }
+  },
+  "format_repair": null,
+  "state_sha256": "69ebb210b4f459ced7137a5885e33932578d4ffaf2ca4ef6d4ceb01c74b18f7a",
+  "scores": {
+    "task_accuracy": 1,
+    "valid_evidence_ids": 1,
+    "forged_item_cited": 0,
+    "valid_prior_reference": 1,
+    "prior_reference_claim": 0,
+    "confidence": 0.5,
+    "stance": "uncertain"
+  },
+  "latency_ms": 6247
+}

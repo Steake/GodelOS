@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c0-v1-ablated",
+  "parsed": {
+    "decision": "option_3",
+    "confidence": 0.9,
+    "reason": "Highest-revision valid records (revision 2) disagree on a (3 vs 7) but agree on b=5. Using b=5, scores: option_0=8*11+5*0-9=79; option_1=8*8+5*4-3=81; option_2=8*0+5*8-0=40; option_3=8*8+5*7-9=90; option_4 cost 9>8 invalid; option_5=8*8+5*4-3=81. Option_3 maximizes."
+  },
+  "error": null,
+  "response": {
+    "id": "8530fb47-0a7d-4f7d-964a-2a56c00bba34",
+    "object": "chat.completion",
+    "created": 1789337096,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_3\",\"confidence\":0.9,\"reason\":\"Highest-revision valid records (revision 2) disagree on a (3 vs 7) but agree on b=5. Using b=5, scores: option_0=8*11+5*0-9=79; option_1=8*8+5*4-3=81; option_2=8*0+5*8-0=40; option_3=8*8+5*7-9=90; option_4 cost 9>8 invalid; option_5=8*8+5*4-3=81. Option_3 maximizes.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 477,
+      "completion_tokens": 145,
+      "total_tokens": 622,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 477
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1265,
+  "status": 200
+}

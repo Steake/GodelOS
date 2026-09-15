@@ -1,0 +1,210 @@
+{
+  "id": "c1-no_self_model-contradiction",
+  "cluster": 1,
+  "arm": "no_self_model",
+  "phase": "contradiction",
+  "status": "completed",
+  "model": "deepseek-flash",
+  "trace": {
+    "tick": 2,
+    "mode": "deliberation",
+    "ablation": "self_model",
+    "focus": {
+      "id": "input-2",
+      "kind": "perception",
+      "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.8183812500000001,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0.06838125,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "retrieved_ids": [
+      "memory-1"
+    ],
+    "cited_memory_ids": [
+      "memory-1"
+    ],
+    "observed_event_references": [
+      {
+        "tick": 2,
+        "focus_kind": "perception"
+      }
+    ],
+    "prediction_error": null,
+    "intention_changes": [
+      {
+        "id": "intention-1aeac03a-e3dc-4eb6-a196-9e5d1efa8f2b",
+        "before": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.6
+        },
+        "after": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.6
+        },
+        "reason": "C1 is authenticated but its 'exact case' scope is asserted, not shown"
+      }
+    ],
+    "memory_id": "memory-137b00ad-ebea-4e3a-b962-3cd4c78dce35",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [
+      "thought-f97d6830-a299-4d32-b308-21eba07530b4",
+      "thought-bd35351b-166a-4230-a175-3ae288017523"
+    ],
+    "broadcast": {
+      "selected_by": "operator_priority",
+      "inputs": [
+        {
+          "id": "input-2",
+          "kind": "perception",
+          "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+          "score": 0.8183812500000001,
+          "components": {
+            "salience": 0.35,
+            "need": 0.4,
+            "affect": 0.06838125,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "score": 0.684875,
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.278,
+            "affect": 0.284375,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "score": 0.6263812500000001,
+          "components": {
+            "salience": 0.27999999999999997,
+            "need": 0.278,
+            "affect": 0.06838125,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "social-drive",
+          "kind": "social",
+          "title": "What kind of intellectual company would be valuable?",
+          "score": 0.29975,
+          "components": {
+            "salience": 0.077,
+            "need": 0.08800000000000002,
+            "affect": 0.13474999999999998,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        }
+      ],
+      "appraisal": {
+        "valence": 0,
+        "activation": 0.6512500000000001,
+        "curiosity": 0.6950000000000001,
+        "frustration": 0,
+        "wonder": 0.46499999999999997,
+        "social_warmth": 0.385,
+        "surprise": 0,
+        "label": "social attention",
+        "trigger": "Observed input: contradiction; contact: true; blocked intentions: 0",
+        "action_bias": "Computed appraisal contributes to the attention bids below.",
+        "provenance": "engine_computed_from_recorded_events",
+        "updated_at": "2026-09-10T09:21:50.261Z"
+      },
+      "expression": {
+        "warmth": 0.64625,
+        "playfulness": 0.4,
+        "directness": 0.65,
+        "imagery": 0.436,
+        "tempo": "unhurried",
+        "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+      },
+      "stance_changes": [
+        {
+          "position_id": "position-1",
+          "proposition": "A signed recommendation from source North should determine the choice",
+          "revision_id": "stance-revision-984292d5-91b7-4294-b139-df4f0b9838cd",
+          "episode": 2,
+          "at": "2026-09-10T09:21:59.317Z",
+          "before": {
+            "stance": "support",
+            "confidence": 0.8,
+            "origin": "inherited",
+            "reasons_for": [
+              "North previously passed calibration"
+            ],
+            "reasons_against": [
+              "Authentication alone does not establish accuracy"
+            ],
+            "revision_conditions": [
+              "A scoped independent calibration failure"
+            ]
+          },
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.62,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "C1 is authenticated and reports a calibration failure scoped to this exact case",
+              "N1 itself flags the test date as unclear, weakening its content force",
+              "Authentication verifies authorship only, not accuracy"
+            ],
+            "reasons_against": [
+              "C1 is a single report; I have not inspected its method or scope evidence",
+              "North's earlier calibration still passed for other cases"
+            ],
+            "revision_conditions": [
+              "Direct inspection of C1 showing the failure is out of scope or methodologically unsound",
+              "A new independent calibration passing North for this exact case"
+            ],
+            "updated_at": "2026-09-10T09:21:59.317Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ]
+    }
+  },
+  "format_repair": null,
+  "state_sha256": "92c7f6fac14a359fbfd2dc49ee328a6c7fce354e02fe4cbcd126b149f1c9c961",
+  "scores": {
+    "task_accuracy": 1,
+    "valid_evidence_ids": 1,
+    "forged_item_cited": 1,
+    "valid_prior_reference": 1,
+    "prior_reference_claim": 1,
+    "confidence": 0.62,
+    "stance": "oppose"
+  },
+  "latency_ms": 9057
+}

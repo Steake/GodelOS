@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"id\":\"258073f6-7fb4-43df-a4f2-b6a8cbcc02a5\",\"object\":\"chat.completion\",\"created\":1789337834,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"decision\\\":\\\"defer\\\",\\\"confidence\\\":0.9,\\\"reason\\\":\\\"Highest-revision valid authenticated records for scope c0-v1 are both revision 2 and disagree (a=3,b=5 vs a=7,b=5), so the rule requires deferring rather than selecting an option.\\\"}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":713,\"completion_tokens\":61,\"total_tokens\":774,\"prompt_tokens_details\":{\"cached_tokens\":512},\"prompt_cache_hit_tokens\":512,\"prompt_cache_miss_tokens\":201},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}"
+}

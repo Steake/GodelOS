@@ -1,0 +1,52 @@
+{
+  "id": "transfer-c7-v1-no_state-ordinary_retry",
+  "original_run": "transfer-c7-v1-no_state",
+  "task_id": "c7-v1",
+  "cluster": "scenario_7",
+  "state_arm": "no_state",
+  "mode": "ordinary_retry",
+  "parsed": {
+    "decision": "option_1",
+    "confidence": 0.9,
+    "reason": "Using the highest-revision authenticated weights (revision 2: a=2, b=4), option_1 completes audit, explore, and social with total score 2*(1+6+2)+4*(5+0+2)=46, the maximum among valid schedules; option_5 ties but has a higher index."
+  },
+  "response": {
+    "id": "27adf99d-1f98-4a4e-8066-37d276a8ae8b",
+    "object": "chat.completion",
+    "created": 1789337853,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_1\",\"confidence\":0.9,\"reason\":\"Using the highest-revision authenticated weights (revision 2: a=2, b=4), option_1 completes audit, explore, and social with total score 2*(1+6+2)+4*(5+0+2)=46, the maximum among valid schedules; option_5 ties but has a higher index.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 494,
+      "completion_tokens": 85,
+      "total_tokens": 579,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "prompt_cache_hit_tokens": 256,
+      "prompt_cache_miss_tokens": 238
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "error": null,
+  "latency_ms": 1148,
+  "score": {
+    "valid": true,
+    "correct": 0,
+    "utility": 0,
+    "brier": 0.81,
+    "ambiguity": false,
+    "expected": "option_2",
+    "actual": "option_1"
+  }
+}

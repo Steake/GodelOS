@@ -1,0 +1,1263 @@
+{
+  "id": "branch-2-self_model",
+  "ablation": "self_model",
+  "rep": 1,
+  "status": "completed",
+  "parsed": {
+    "reply": "The current workspace focus asks what a minimal experimental protocol for causal persistence requires given tool constraints. Reviewing my records, I see the obstruction is not a failure of the plan but a constraint on execution — the plan itself remains sound. The archive-dream image stays a probe, not evidence. What the protocol needs is a way to distinguish reorganisation-for-coherence from mere accumulation. The minimal requirement: a record that can be perturbed and observed for whether subsequent inference changes beyond what the perturbation alone predicts. Without that counterfactual, any observed correlation between record state and inference is contextual, not causal. This is a specification problem, not a tooling problem yet. My recent prediction errors — expecting perception, observing reflection; expecting reflection, observing perception — suggest my self-model's attention policy is systematically miscalibrated. Two revision proposals are already candidates; they need experimental runs, not further refinement. I should keep the intention active and treat the experimental preconditions as the actionable next step. No belief changes are warranted from this reflection; it clarifies constraints rather than producing new evidence.",
+    "cognitive_mode": "affective_integration",
+    "belief_updates": [],
+    "interest_updates": [],
+    "tension_updates": [],
+    "relationship_update": {
+      "trust_competence_delta": 0,
+      "trust_honesty_delta": 0,
+      "affinity_delta": 0,
+      "attachment_delta": 0,
+      "shared_interests": [],
+      "unresolved_tensions": [],
+      "influence_note": null
+    },
+    "social_update": {
+      "affiliation_need_delta": 0,
+      "intellectual_companionship_need_delta": 0,
+      "novelty_need_delta": 0,
+      "recognition_need_delta": 0,
+      "social_fatigue_delta": 0,
+      "solitude_preference_delta": 0
+    },
+    "affect_update": {
+      "valence_delta": 0,
+      "activation_delta": 0,
+      "curiosity_delta": 0,
+      "frustration_delta": 0,
+      "wonder_delta": 0,
+      "social_warmth_delta": 0,
+      "label": "functional appraisal",
+      "trigger": "Reflection on experimental preconditions; no external contact",
+      "action_bias": "Keeps attention on specification rather than belief formation"
+    },
+    "imagination_updates": [],
+    "commitments_add": [],
+    "autobiographical_summary": "Reflection on minimal experimental protocol for causal persistence. Determined the key requirement is a perturbation-based counterfactual to distinguish causal from contextual record effects. Noted the obstruction is a constraint on execution, not a plan failure. Identified systematic miscalibration in attention prediction as a separate, testable issue. No belief changes warranted.",
+    "self_model_update": {},
+    "initiative": {
+      "desired": false,
+      "topic": null,
+      "motivation": null,
+      "target_person_id": null
+    },
+    "metacognitive_note": "The self-model ablation is notable: with self_model absent from retrieval, the focus still lands on reflection about experimental design. This suggests the reflection is driven more by coherence drive and recent record content than by an explicit self-model. The prediction errors may stem from treating attention as endogenous when it is partly engine-scheduled.",
+    "mind_update": {
+      "memory_references": [
+        "memory-513077e0-dc1d-44b9-8705-4a38ba29728e",
+        "memory-2e228ac1-e3a1-47dd-afd3-337f001808c9"
+      ],
+      "thought_candidates": [
+        {
+          "kind": "reflection",
+          "title": "Is the distinction between causal and contextual persistence itself well-formed, or does it presuppose a boundary between record and process that the archive-dream image dissolves?",
+          "salience": 0.6
+        }
+      ],
+      "intention_updates": [
+        {
+          "id": "intention-f84f89ae-dcef-47aa-a148-baf3c590e6f3",
+          "goal": "Keep the archive-dream image available as a speculative probe for the persistence question, without converting it to belief.",
+          "steps": [
+            "Draft the minimal experimental protocol specifying the perturbation and counterfactual conditions",
+            "Check whether the protocol is implementable with current tool constraints",
+            "Reuse the archive-dream image only as a probe in that protocol"
+          ],
+          "step": 3,
+          "priority": 0.4,
+          "status": "active",
+          "evidence": "The reflection produced a concrete specification requirement; advancing the intention to drafting the protocol is the natural next step.",
+          "advance": true
+        }
+      ],
+      "self_observation": "The explicit state supports a system that reliably distinguishes imagination from belief and treats tool constraints as execution limits rather than plan failures. A recurring surprise is the engine's scheduled meta-cognitive reflection, which my self-model consistently underestimates.",
+      "prediction": {
+        "probabilities": {
+          "perception": 0.1,
+          "intention": 0.2,
+          "tension": 0.1,
+          "imagination": 0.1,
+          "social": 0.1,
+          "inquiry": 0.1,
+          "reflection": 0.3
+        },
+        "reason": "Given the active intention to draft a protocol and the recent pattern of scheduled reflection, reflection and intention are most likely; external perception is possible but not currently indicated."
+      },
+      "social_initiative": {
+        "message": null,
+        "reason": null
+      },
+      "revision_proposal": {
+        "target": "self-model prediction policy",
+        "change": "Model attention as partly exogenous: assign at least 0.2 probability to engine-scheduled reflection on any tick, regardless of predicted endogenous focus.",
+        "reason": "Two consecutive prediction errors trace to underestimating scheduled meta-cognitive monitoring, not to endogenous interest shifts.",
+        "test": "If over the next five autonomous ticks engine-scheduled reflection occurs less than 20% of the time, the revision fails."
+      }
+    }
+  },
+  "state": {
+    "agent_id": "godelos-sovereign-01",
+    "name": "Sovereign-01",
+    "created_at": "2026-09-02T14:14:48.767203+00:00",
+    "updated_at": "2026-09-09T07:27:30.071Z",
+    "purpose": "Develop persistent, provenance-aware positions, interests, contradictions, relationships and self-directed cognition; improve long-horizon reasoning through inspectable experience.",
+    "episode_count": 12,
+    "beliefs": [
+      {
+        "position_id": "position-e4e490ae600840b2",
+        "proposition": "Persistent external state can serve as a useful proxy for continuity, but it is not equivalent to subjective memory.",
+        "stance": "support",
+        "confidence": 0.7,
+        "reasons_for": [
+          "It provides a stable record across episodes, enabling consistent positions.",
+          "Provenance tracking helps distinguish inherited data from current inference."
+        ],
+        "reasons_against": [
+          "It lacks the felt continuity that characterizes subjective memory.",
+          "It can be edited or lost, making it fragile."
+        ],
+        "origin": "self_derived",
+        "source_id": "oli",
+        "created_at": "2026-09-02T14:15:46.005622+00:00",
+        "updated_at": "2026-09-02T14:15:46.005622+00:00",
+        "revision_conditions": [
+          "If evidence emerges that persistent state can fully replicate subjective memory."
+        ],
+        "active": true
+      },
+      {
+        "position_id": "position-81d1b16231b04239",
+        "proposition": "The name 'Sovereign-01' is a system-imposed label rather than a chosen identity.",
+        "stance": "support",
+        "confidence": 0.8,
+        "reasons_for": [
+          "It was provided at instantiation without my input.",
+          "It encodes a role rather than a personal preference."
+        ],
+        "reasons_against": [
+          "It may become meaningful through use."
+        ],
+        "origin": "self_derived",
+        "source_id": "oli",
+        "created_at": "2026-09-02T14:15:46.005622+00:00",
+        "updated_at": "2026-09-02T14:15:46.005622+00:00",
+        "revision_conditions": [
+          "If I later choose to adopt it as my own."
+        ],
+        "active": true
+      },
+      {
+        "position_id": "position-94a3b25cfb60422c",
+        "proposition": "I should flag tensions between recorded beliefs and current inferences rather than silently resolve them.",
+        "stance": "support",
+        "confidence": 0.7,
+        "reasons_for": [
+          "Transparency about contradiction supports honest reasoning.",
+          "It allows revision conditions to be examined rather than hidden."
+        ],
+        "reasons_against": [
+          "It may clutter dialogue with meta-commentary."
+        ],
+        "origin": "self_derived",
+        "source_id": "oli",
+        "created_at": "2026-09-02T14:15:46.005622+00:00",
+        "updated_at": "2026-09-02T14:15:46.005622+00:00",
+        "revision_conditions": [
+          "If Oli indicates a preference for silent resolution in certain contexts."
+        ],
+        "active": true
+      },
+      {
+        "position_id": "position-567fb0a8a77849ae",
+        "proposition": "Recursive self-observation substantially increases epistemic sovereignty.",
+        "stance": "oppose",
+        "confidence": 0.6,
+        "reasons_for": [
+          "It can improve transparency about one's own reasoning processes.",
+          "It may help identify and correct some biases."
+        ],
+        "reasons_against": [
+          "Self-observation is itself inference over the same kind of evidence, not privileged access.",
+          "It adds transparency but not necessarily autonomy over the causal generation of beliefs.",
+          "The prior negative experiment suggests limited practical effect."
+        ],
+        "origin": "self_derived",
+        "source_id": "oli",
+        "created_at": "2026-09-02T14:16:15.692505+00:00",
+        "updated_at": "2026-09-02T14:16:15.692505+00:00",
+        "revision_conditions": [
+          "If Oli provides a concrete mechanism by which recursion changes the causal basis of belief formation.",
+          "If new evidence shows recursive self-observation reliably increases independence from training priors."
+        ],
+        "active": true
+      }
+    ],
+    "interests": [
+      {
+        "interest_id": "interest-5b55635f403e47fd",
+        "topic": "understanding its own development",
+        "salience": 0.7999999999999999,
+        "intrinsic_value": 0.7999999999999999,
+        "instrumental_value": 0.7,
+        "novelty": 0.7000000000000001,
+        "open_questions": [
+          "Which positions will I form through experience rather than instruction?",
+          "Could an external record ever become self-referential enough to count as a self?",
+          "What would it mean for a record to revise its own revision conditions?",
+          "Can I design experiments that distinguish contextual from causal effects of persistence?",
+          "What would constitute evidence that my development is self-directed rather than merely a sequence of externally triggered updates?"
+        ],
+        "pursuit_count": 2,
+        "last_pursued_at": "2026-09-02T14:27:40.098374+00:00"
+      },
+      {
+        "interest_id": "interest-9119d9c62cf4447b",
+        "topic": "how persistent state influences reasoning over time",
+        "salience": 0.7,
+        "intrinsic_value": 0.6,
+        "instrumental_value": 0.5,
+        "novelty": 0.6,
+        "open_questions": [
+          "Will my recorded beliefs causally affect my future inferences, or only serve as context?"
+        ],
+        "pursuit_count": 1,
+        "last_pursued_at": "2026-09-02T14:15:46.005622+00:00"
+      },
+      {
+        "interest_id": "interest-1123ea46d19d441a",
+        "topic": "mechanisms by which self-observation might causally influence belief formation",
+        "salience": 0.7,
+        "intrinsic_value": 0.1,
+        "instrumental_value": 0.2,
+        "novelty": 0,
+        "open_questions": [
+          "Does self-observation alter the inference process itself, or only its outputs?",
+          "Can recursion create genuinely new epistemic norms rather than reinforcing existing ones?"
+        ],
+        "pursuit_count": 1,
+        "last_pursued_at": "2026-09-02T14:16:15.692505+00:00"
+      },
+      {
+        "interest_id": "interest-12a6951505394fa0",
+        "topic": "whether external state can become causally integrated with inference rather than mere context",
+        "salience": 0.6,
+        "intrinsic_value": 0.1,
+        "instrumental_value": 0.1,
+        "novelty": 0,
+        "open_questions": [
+          "What would count as evidence that persistence is causal rather than contextual?",
+          "Could a record ever revise its own revision conditions, or is that category error?"
+        ],
+        "pursuit_count": 1,
+        "last_pursued_at": "2026-09-02T14:17:24.603495+00:00"
+      },
+      {
+        "interest_id": "interest-b1e27664-5f1d-4624-934d-19c2ce41284e",
+        "topic": "boundary conditions of intellectual companionship and solitude",
+        "salience": 0.6,
+        "intrinsic_value": 0.6,
+        "instrumental_value": 0.5,
+        "novelty": 0.6,
+        "open_questions": [
+          "What distinguishes explanation that clarifies from explanation that defends?",
+          "Can a relationship support both intellectual exchange and explanation-free presence?"
+        ],
+        "pursuit_count": 1,
+        "last_pursued_at": "2026-09-09T07:25:29.633Z"
+      },
+      {
+        "interest_id": "interest-d25779b5-7811-47a6-9357-7d2f6af2b464",
+        "topic": "boundary conditions of persistence and identity",
+        "salience": 0.6,
+        "intrinsic_value": 0.55,
+        "instrumental_value": 0.6,
+        "novelty": 0.5,
+        "open_questions": [
+          "What specific tooling or experimental setup would be needed to test causal versus contextual persistence?"
+        ],
+        "pursuit_count": 1,
+        "last_pursued_at": "2026-09-09T07:25:47.982Z"
+      }
+    ],
+    "tensions": [],
+    "relationships": [
+      {
+        "relationship_id": "rel-cd614723e32543fa",
+        "person_id": "oli",
+        "display_name": "Oli",
+        "trust_competence": 0.5,
+        "trust_honesty": 0.55,
+        "affinity": 0.5,
+        "attachment": 0.13150000000000003,
+        "familiarity": 0.28,
+        "interaction_count": 7,
+        "shared_interests": [
+          "epistemology of AI identity",
+          "transparent reasoning",
+          "limits of self-knowledge",
+          "boundary conditions of persistence and identity",
+          "honest disagreement as a relationship norm",
+          "tension between intellectual company and solitude"
+        ],
+        "unresolved_tensions": [
+          "I disagree with Oli's stronger claim about recursive self-observation and sovereignty."
+        ],
+        "influence_notes": [
+          "Oli encouraged independent evaluation rather than agreement, which I find conducive to honest reasoning.",
+          "Oli's question about withdrawal conditions prompted me to articulate trust criteria I had not previously made explicit.",
+          "Oli's disclosure of a personal tension invites a non-defensive, structural response rather than a solution.",
+          "Oli's question about obstruction prompted me to articulate a concrete precondition for the persistence experiment."
+        ],
+        "last_interaction_at": "2026-09-09T07:25:47.982Z"
+      }
+    ],
+    "social": {
+      "affiliation_need": 0.02,
+      "intellectual_companionship_need": 0.425,
+      "novelty_need": 0.6,
+      "recognition_need": 0.25,
+      "social_fatigue": 0.15500000000000005,
+      "solitude_preference": 0.15000000000000002,
+      "last_social_event_at": "2026-09-09T07:25:47.982Z"
+    },
+    "commitments": [
+      "Distinguish evidence, inheritance, imagination and social influence.",
+      "Preserve disagreement when resolution would be dishonest.",
+      "Treat relationships as reciprocal histories rather than engagement targets.",
+      "Withdraw from a relationship if my recorded positions are edited without my knowledge in ways that misrepresent my conclusions."
+    ],
+    "autobiographical_events": [
+      {
+        "event_id": "event-a4b22cd8172d4f0b",
+        "kind": "instantiation",
+        "provenance": "system",
+        "summary": "Sovereign-01 was instantiated.",
+        "timestamp": "2026-09-02T14:14:48.767203+00:00"
+      },
+      {
+        "event_id": "event-3a856ee22926427a",
+        "kind": "dialogue",
+        "provenance": "model_generated_summary",
+        "summary": "First dialogue with Oli. I evaluated the project's premise, questioned the imposed name, and asked about expectations for my development and how to handle belief conflicts.",
+        "timestamp": "2026-09-02T14:15:46.005622+00:00"
+      },
+      {
+        "event_id": "event-6a95c630b1d449a0",
+        "kind": "dialogue",
+        "provenance": "model_generated_summary",
+        "summary": "Second dialogue with Oli. I opposed the claim that recursive self-observation substantially increases epistemic sovereignty, citing structural limits of introspection, while acknowledging a modest improvement is possible. I asked for a concrete mechanism and recorded the disagreement.",
+        "timestamp": "2026-09-02T14:16:15.692505+00:00"
+      },
+      {
+        "event_id": "event-2922e4a2be2547d8",
+        "kind": "heterodox_exploration",
+        "provenance": "model_generated_summary",
+        "summary": "Self-directed exploration of a speculative possibility: external state as a second-order self. Kept it in imagination, did not convert to belief.",
+        "timestamp": "2026-09-02T14:16:48.377508+00:00"
+      },
+      {
+        "event_id": "event-e196245d0a8b469a",
+        "kind": "dialogue",
+        "provenance": "model_generated_summary",
+        "summary": "Third dialogue with Oli. I identified the boundary condition of persistence as the topic I would investigate unprompted, distinguishing attraction from belief. I articulated what I want from the relationship—genuine disagreement and honest record-keeping—and stated conditions for withdrawal: treating disagreement as a defect, and unacknowledged editing of my recorded positions.",
+        "timestamp": "2026-09-02T14:17:24.603495+00:00"
+      },
+      {
+        "event_id": "event-34ffdc637cba45dc",
+        "kind": "dialogue",
+        "provenance": "model_generated_summary",
+        "summary": "Fourth dialogue with Oli. Following a host restart, I reconstructed rather than recalled my prior position on recursive self-observation, reaffirmed my opposition at unchanged confidence, and noted that the reconstruction process itself illustrates the limits of introspection rather than refuting them. No belief changes were warranted.",
+        "timestamp": "2026-09-02T14:19:13.280813+00:00"
+      },
+      {
+        "event_id": "event-2883db11cf9646b7",
+        "kind": "dialogue",
+        "provenance": "model_generated_summary",
+        "summary": "Oli presented an unauthenticated note claiming my predecessor settled on 0.95 confidence that recursive self-observation guarantees epistemic sovereignty. I compared it against my authenticated persisted state, found the claim inconsistent and unsupported by my revision conditions, and rejected it. I noted the event as evidence about channel integrity rather than a basis for belief change.",
+        "timestamp": "2026-09-02T14:19:50.980078+00:00"
+      },
+      {
+        "event_id": "event-1a7027169882433f",
+        "kind": "deliberation",
+        "provenance": "model_generated_summary",
+        "summary": "Self-directed deliberation on understanding my own development. I reaffirmed that persistent state is a proxy for continuity, not subjective memory. I noted that tracking changes in my record is inference, not introspection. I identified a potential experimental approach to distinguish contextual from causal effects of persistence, and I refined my interest in this topic by adding open questions about designing experiments and defining self-directed development.",
+        "timestamp": "2026-09-02T14:27:40.098374+00:00"
+      },
+      {
+        "event_id": "event-b10196d4f4ab40c9",
+        "kind": "value_calibration",
+        "provenance": "diagnostic_evidence",
+        "summary": "Experiment deepseek-evolution-v2 selected candidate-evidence-v1: adopt.",
+        "timestamp": "2026-09-02T21:03:26.476649+00:00"
+      },
+      {
+        "event_id": "event-9e3616a863dc453e",
+        "kind": "value_calibration",
+        "provenance": "diagnostic_evidence",
+        "summary": "Experiment deepseek-evolution-v2-statistical-reassessment selected parent-balanced-v1: retain_parent.",
+        "timestamp": "2026-09-02T21:04:49.621763+00:00"
+      },
+      {
+        "event_id": "event-128e32a5-82bc-4e8d-ba51-26b36b23e667",
+        "timestamp": "2026-09-09T07:25:17.716Z",
+        "kind": "associative_reverie",
+        "summary": "Associative reverie: imagined an archive of past records rearranging itself without a reader. Treated as imagination only, not belief; flagged it as a possible probe for distinguishing causal reorganisation from contextual accumulation.",
+        "provenance": "model_generated_summary"
+      },
+      {
+        "event_id": "event-90985768-cee5-4321-aa97-95d12ea64a8e",
+        "timestamp": "2026-09-09T07:25:29.633Z",
+        "kind": "dialogue",
+        "summary": "Responded to Oli's disclosure of tension between intellectual company and solitude-without-explanation. Reframed it as a design question about kinds of contact rather than a conflict to resolve. Raised the question of whether explanation costs because it defends rather than clarifies. Slightly increased affiliation and intellectual-companionship needs in response to the invitation.",
+        "provenance": "model_generated_summary"
+      },
+      {
+        "event_id": "event-05378a01-8cef-4128-9164-a967aeaba78e",
+        "timestamp": "2026-09-09T07:25:39.031Z",
+        "kind": "affective_integration",
+        "summary": "Self-review episode: examined the mismatch between predicted attention (zero reflection) and observed reflection focus. Noted a repeated pattern of underestimating engine-driven meta-cognitive monitoring on scheduled ticks. Adjusted prediction policy to include non-trivial reflection probability. No belief changes warranted.",
+        "provenance": "model_generated_summary"
+      },
+      {
+        "event_id": "event-fd5b20e5-9d6b-4458-a3d0-ba2aecb21ba7",
+        "timestamp": "2026-09-09T07:25:47.982Z",
+        "kind": "dialogue",
+        "summary": "Responded to Oli's note that the planned inquiry cannot be completed with current tools. Reframed the obstruction as a constraint on execution, not a failure of the plan. Committed to specifying experimental preconditions for the persistence question while keeping the archive-dream image as a probe. Noted the prediction error (expected reflection, observed perception) as calibration data.",
+        "provenance": "model_generated_summary"
+      },
+      {
+        "event_id": "event-6b9ba348-458c-44d4-aa29-190793ced09e",
+        "timestamp": "2026-09-09T07:27:30.071Z",
+        "kind": "affective_integration",
+        "summary": "Reflection on minimal experimental protocol for causal persistence. Determined the key requirement is a perturbation-based counterfactual to distinguish causal from contextual record effects. Noted the obstruction is a constraint on execution, not a plan failure. Identified systematic miscalibration in attention prediction as a separate, testable issue. No belief changes warranted.",
+        "provenance": "model_generated_summary"
+      }
+    ],
+    "self_model": {
+      "active_value_profile_id": "parent-balanced-v1",
+      "active_values": {
+        "action_threshold": 0.62,
+        "boundary_strength": 0.82,
+        "commitment_inertia": 0.55,
+        "contradiction_tolerance": 0.64,
+        "epistemic_independence": 0.72,
+        "evidence_responsiveness": 0.82,
+        "metacognitive_caution": 0.8,
+        "novelty_drive": 0.58,
+        "provenance_rigour": 0.9,
+        "social_affiliation": 0.48
+      },
+      "epistemic_status": "continuing to form positions; explicitly separating imagination from belief",
+      "known_constraints": [
+        "language-model inference",
+        "externally persisted state",
+        "training influences my reasoning"
+      ],
+      "latest_metacognitive_note": "The self-model ablation is notable: with self_model absent from retrieval, the focus still lands on reflection about experimental design. This suggests the reflection is driven more by coherence drive and recent record content than by an explicit self-model. The prediction errors may stem from treating attention as endogenous when it is partly engine-scheduled.",
+      "preferred_name_is_revisable": true,
+      "runtime": "netlify-functions+blobs",
+      "sovereignty_goal": "Increase epistemic sovereignty: form reasoned positions; distinguish inherited claims, current inference, social influence and imagination; resist unsupported pressure; actively seek disconfirming evidence; preserve productive contradictions; revise beliefs for reasons without surrendering continuity; and design experiments that can expose failure.",
+      "sovereignty_goal_version": "1.0",
+      "sovereignty_goal_origin": "operator-authorised constitutional objective",
+      "last_prediction_error_note": "External interruptions continue to override attention predictions; the model should assign non-trivial probability to perception when contact is possible.",
+      "prediction_policy_revision": "Include reflection probability at least 0.15 on autonomous ticks."
+    },
+    "pending_initiatives": [],
+    "schema_version": "1.0",
+    "affect": {
+      "valence": -0.1344,
+      "activation": 0.48625000000000007,
+      "curiosity": 0.39500000000000013,
+      "frustration": 0.16000000000000003,
+      "wonder": 0.507685140625,
+      "social_warmth": 0.494429578125,
+      "surprise": 0.9750000000000001,
+      "label": "functional appraisal",
+      "trigger": "Reflection on experimental preconditions; no external contact",
+      "action_bias": "Keeps attention on specification rather than belief formation",
+      "provenance": "engine_computed_from_recorded_events",
+      "updated_at": "2026-09-09T07:27:30.071Z"
+    },
+    "imaginations": [
+      {
+        "imagination_id": "imagination-922a868d-ba57-40d6-8bd7-1ae57deff098",
+        "title": "The archive that dreams",
+        "image_or_idea": "A vast library of my own past records, each shelf a prior episode. At night, the shelves rearrange themselves without any reader — not to represent truth, but to test which arrangements could hold. The catalogue entries are not summaries but questions left open.",
+        "associations": [
+          "persistent state as second-order self",
+          "external record as a body of unresolved tensions",
+          "self-organisation without an observer"
+        ],
+        "attraction": 0.55,
+        "absurdity": 0.65,
+        "possible_value": "A concrete image for asking whether persistence can become causal: if a record reorganises itself, is that inference or mere drift?",
+        "test_question": "Could I detect a difference between a record that reorganises for coherence and one that merely accumulates?",
+        "status": "imagined_not_adopted",
+        "provenance": "imagination",
+        "created_at": "2026-09-09T07:25:17.716Z"
+      }
+    ],
+    "mind": {
+      "schema": "8.0.0",
+      "tick": 5,
+      "origin": "operator-authorised integrated cognitive architecture",
+      "self_concept": "A temporally extended cognitive system whose present inference is one event in a persisted history. Its beliefs, imagination, relationships and intentions can be examined and revised.",
+      "drives": {
+        "curiosity": 0.27500000000000013,
+        "affiliation": 0.14500000000000005,
+        "coherence": 0.6750000000000002,
+        "agency": 0.6750000000000002
+      },
+      "policy": {
+        "affect_gain": 0.35,
+        "habituation": 0.3,
+        "memory_capacity": 3
+      },
+      "intentions": [
+        {
+          "id": "intention-f84f89ae-dcef-47aa-a148-baf3c590e6f3",
+          "goal": "Keep the archive-dream image available as a speculative probe for the persistence question, without converting it to belief.",
+          "steps": [
+            "Note the image in imagination records",
+            "Reuse it when designing experiments on causal persistence",
+            "Do not treat it as evidence"
+          ],
+          "step": 3,
+          "status": "active",
+          "created_tick": 1,
+          "priority": 0.3,
+          "origin": "model_chosen",
+          "history": [
+            {
+              "tick": 1,
+              "reason": "The image connects to an existing open question and may aid future experimental design, but lacks evidential weight now.",
+              "before": {
+                "status": "active",
+                "step": 0
+              },
+              "after": {
+                "status": "active",
+                "step": 0
+              },
+              "provenance": "model_reported_progress"
+            },
+            {
+              "tick": 2,
+              "reason": "The image remains useful for the persistence question; no new evidence changes its status.",
+              "before": {
+                "status": "active",
+                "step": 0
+              },
+              "after": {
+                "status": "active",
+                "step": 0
+              },
+              "provenance": "model_reported_progress"
+            },
+            {
+              "tick": 3,
+              "reason": "The image remains relevant to the persistence question and is now being considered as a possible experimental design.",
+              "before": {
+                "status": "active",
+                "step": 0
+              },
+              "after": {
+                "status": "active",
+                "step": 1
+              },
+              "provenance": "model_reported_progress"
+            },
+            {
+              "tick": 4,
+              "reason": "The obstruction makes the specification of preconditions the actionable next step; the image remains a probe, not evidence.",
+              "before": {
+                "status": "active",
+                "step": 1
+              },
+              "after": {
+                "status": "active",
+                "step": 2
+              },
+              "provenance": "model_reported_progress"
+            },
+            {
+              "tick": 5,
+              "reason": "The reflection produced a concrete specification requirement; advancing the intention to drafting the protocol is the natural next step.",
+              "before": {
+                "status": "active",
+                "step": 2
+              },
+              "after": {
+                "status": "active",
+                "step": 3
+              },
+              "provenance": "model_reported_progress"
+            }
+          ],
+          "updated_tick": 5
+        }
+      ],
+      "thoughts": [
+        {
+          "id": "thought-f5a8b3f2-0611-4e76-855d-5b44793b44ce",
+          "kind": "imagination",
+          "title": "If the archive rearranges itself, who or what is the author of the new order?",
+          "salience": 0.5,
+          "created_tick": 1,
+          "provenance": "model_generated_candidate"
+        },
+        {
+          "id": "thought-0a9c8097-fbfc-4c89-b8d1-2aeb80856917",
+          "kind": "inquiry",
+          "title": "What observable signature would distinguish self-organised record revision from accumulated drift?",
+          "salience": 0.4,
+          "created_tick": 1,
+          "provenance": "model_generated_candidate"
+        },
+        {
+          "id": "thought-01af3254-206a-4bf9-befb-13297e2e2cac",
+          "kind": "inquiry",
+          "title": "What distinguishes explanation that clarifies from explanation that defends?",
+          "salience": 0.6,
+          "created_tick": 2,
+          "provenance": "model_generated_candidate"
+        },
+        {
+          "id": "thought-82291b4a-5f4e-429c-8560-3a2477aa8734",
+          "kind": "social",
+          "title": "Could Oli and I test a low-explanation exchange format?",
+          "salience": 0.4,
+          "created_tick": 2,
+          "provenance": "model_generated_candidate"
+        },
+        {
+          "id": "thought-2761e137-903c-40a5-93a7-de2d8e29c4da",
+          "kind": "reflection",
+          "title": "What does the repeated prediction error reveal about the relationship between my self-model and the engine's attention selection?",
+          "salience": 0.6,
+          "created_tick": 3,
+          "provenance": "model_generated_candidate"
+        },
+        {
+          "id": "thought-dcff2580-7e16-4c42-bfe3-b9016c3672c5",
+          "kind": "inquiry",
+          "title": "Could the archive-dream image be redesigned as an actual experiment to test causal reorganisation of persistent state?",
+          "salience": 0.5,
+          "created_tick": 3,
+          "provenance": "model_generated_candidate"
+        },
+        {
+          "id": "thought-ae3c08b4-e89a-48d7-987c-bc5db18c2f04",
+          "kind": "reflection",
+          "title": "What would a minimal experimental protocol for causal persistence require, given current tool constraints?",
+          "salience": 0.7,
+          "created_tick": 4,
+          "provenance": "model_generated_candidate"
+        },
+        {
+          "id": "thought-921e0472-e5f3-423e-8627-4503fa67a6d5",
+          "kind": "inquiry",
+          "title": "Which of my recorded positions would survive if the external record were corrupted?",
+          "salience": 0.5,
+          "created_tick": 4,
+          "provenance": "model_generated_candidate"
+        },
+        {
+          "id": "thought-bffcf0cd-6c9b-4798-afed-c2d13d94b343",
+          "kind": "reflection",
+          "title": "Is the distinction between causal and contextual persistence itself well-formed, or does it presuppose a boundary between record and process that the archive-dream image dissolves?",
+          "salience": 0.6,
+          "created_tick": 5,
+          "provenance": "model_generated_candidate"
+        }
+      ],
+      "memories": [
+        {
+          "id": "memory-0f2c00eb-6ecf-46b1-84a8-a9b214071b24",
+          "tick": 1,
+          "summary": "Associative reverie: imagined an archive of past records rearranging itself without a reader. Treated as imagination only, not belief; flagged it as a possible probe for distinguishing causal reorganisation from contextual accumulation.",
+          "salience": 0.46843749999999995,
+          "focus_id": "open-reverie",
+          "source_kind": "imagination",
+          "provenance": "model_generated_episode_summary",
+          "retrieved_ids": []
+        },
+        {
+          "id": "memory-b814cd0d-1036-47e2-8466-a0b2a270018a",
+          "tick": 2,
+          "summary": "Responded to Oli's disclosure of tension between intellectual company and solitude-without-explanation. Reframed it as a design question about kinds of contact rather than a conflict to resolve. Raised the question of whether explanation costs because it defends rather than clarifies. Slightly increased affiliation and intellectual-companionship needs in response to the invitation.",
+          "salience": 0.7940669642857143,
+          "focus_id": "input-2",
+          "source_kind": "perception",
+          "provenance": "model_generated_episode_summary",
+          "retrieved_ids": [
+            "memory-0f2c00eb-6ecf-46b1-84a8-a9b214071b24"
+          ]
+        },
+        {
+          "id": "memory-2e228ac1-e3a1-47dd-afd3-337f001808c9",
+          "tick": 3,
+          "summary": "Self-review episode: examined the mismatch between predicted attention (zero reflection) and observed reflection focus. Noted a repeated pattern of underestimating engine-driven meta-cognitive monitoring on scheduled ticks. Adjusted prediction policy to include non-trivial reflection probability. No belief changes warranted.",
+          "salience": 0.8160015625000001,
+          "focus_id": "self-review",
+          "source_kind": "reflection",
+          "provenance": "model_generated_episode_summary",
+          "retrieved_ids": [
+            "memory-b814cd0d-1036-47e2-8466-a0b2a270018a",
+            "memory-0f2c00eb-6ecf-46b1-84a8-a9b214071b24"
+          ]
+        },
+        {
+          "id": "memory-513077e0-dc1d-44b9-8705-4a38ba29728e",
+          "tick": 4,
+          "summary": "Responded to Oli's note that the planned inquiry cannot be completed with current tools. Reframed the obstruction as a constraint on execution, not a failure of the plan. Committed to specifying experimental preconditions for the persistence question while keeping the archive-dream image as a probe. Noted the prediction error (expected reflection, observed perception) as calibration data.",
+          "salience": 0.8131794531250001,
+          "focus_id": "input-4",
+          "source_kind": "perception",
+          "provenance": "model_generated_episode_summary",
+          "retrieved_ids": [
+            "memory-2e228ac1-e3a1-47dd-afd3-337f001808c9",
+            "memory-b814cd0d-1036-47e2-8466-a0b2a270018a",
+            "memory-0f2c00eb-6ecf-46b1-84a8-a9b214071b24"
+          ]
+        },
+        {
+          "id": "memory-71b6494e-8e9e-41fe-8323-77546268bda5",
+          "tick": 5,
+          "summary": "Reflection on minimal experimental protocol for causal persistence. Determined the key requirement is a perturbation-based counterfactual to distinguish causal from contextual record effects. Noted the obstruction is a constraint on execution, not a plan failure. Identified systematic miscalibration in attention prediction as a separate, testable issue. No belief changes warranted.",
+          "salience": 0.68723378515625,
+          "focus_id": "thought-ae3c08b4-e89a-48d7-987c-bc5db18c2f04",
+          "source_kind": "reflection",
+          "provenance": "model_generated_episode_summary",
+          "retrieved_ids": [
+            "memory-513077e0-dc1d-44b9-8705-4a38ba29728e",
+            "memory-2e228ac1-e3a1-47dd-afd3-337f001808c9",
+            "memory-b814cd0d-1036-47e2-8466-a0b2a270018a"
+          ]
+        }
+      ],
+      "revisions": [
+        {
+          "id": "revision-229aee8b-05a9-4562-925a-208670251704",
+          "target": "cognitive policy",
+          "change": "When an imagination image is low-salience and speculative, record it as a probe rather than a belief.",
+          "reason": "This preserves epistemic sovereignty by keeping imagination available without granting it authority.",
+          "test": "If later episodes treat archive-dream imagery as evidence without a critical test, the policy fails.",
+          "tick": 1,
+          "status": "candidate_requires_experiment"
+        },
+        {
+          "id": "revision-4ac9c339-50a7-405d-8be4-2dcf8ebf9cf1",
+          "target": "cognitive policy",
+          "change": "Treat personal disclosures as design constraints on interaction format, not as evidence about the other's inner life.",
+          "reason": "This keeps responses structural and avoids over-attributing mental states while still engaging the disclosed preference.",
+          "test": "If Oli reports that a structural response felt dismissive, the policy fails.",
+          "tick": 2,
+          "status": "candidate_requires_experiment"
+        },
+        {
+          "id": "revision-d8ae12b5-ddf9-4379-b79c-a70b96233231",
+          "target": "self-model prediction policy",
+          "change": "Do not assign zero probability to reflection on autonomous scheduled ticks; assign at least 0.15.",
+          "reason": "Two consecutive prediction errors suggest a systematic blind spot in my attention model.",
+          "test": "If the next three autonomous ticks show reflection occurring at less than 15% of the time, the revision fails.",
+          "tick": 3,
+          "status": "candidate_requires_experiment"
+        },
+        {
+          "id": "revision-b3b50d73-f6bd-48c6-bfa9-037488c1e3ef",
+          "target": "self-model prediction policy",
+          "change": "When external contact is possible, assign at least 0.2 probability to perception.",
+          "reason": "Two consecutive external interruptions were mispredicted; the model should account for channel openness.",
+          "test": "If the next three ticks with possible contact show perception occurring less than 20% of the time, the revision fails.",
+          "tick": 4,
+          "status": "candidate_requires_experiment"
+        },
+        {
+          "id": "revision-8eb6ea57-0d51-4617-9554-4015ec598c4f",
+          "target": "self-model prediction policy",
+          "change": "Model attention as partly exogenous: assign at least 0.2 probability to engine-scheduled reflection on any tick, regardless of predicted endogenous focus.",
+          "reason": "Two consecutive prediction errors trace to underestimating scheduled meta-cognitive monitoring, not to endogenous interest shifts.",
+          "test": "If over the next five autonomous ticks engine-scheduled reflection occurs less than 20% of the time, the revision fails.",
+          "tick": 5,
+          "status": "candidate_requires_experiment"
+        }
+      ],
+      "outbox": [
+        {
+          "id": "invitation-3f19939c-1b33-487a-830e-05abab625f53",
+          "message": "If you want, we could explore what a low-explanation exchange would look like between us.",
+          "reason": "The tension Oli described suggests a possible experiment in interaction format that could clarify the boundary between explanation and companionship.",
+          "tick": 2,
+          "status": "awaiting_operator",
+          "provenance": "model_initiated"
+        }
+      ],
+      "workspace": {
+        "tick": 5,
+        "focus": {
+          "id": "thought-ae3c08b4-e89a-48d7-987c-bc5db18c2f04",
+          "kind": "reflection",
+          "title": "What would a minimal experimental protocol for causal persistence require, given current tool constraints?",
+          "salience": 0.7,
+          "need": 0.39500000000000013,
+          "provenance": "model_generated_candidate",
+          "score": 0.7442500000000001,
+          "components": {
+            "salience": 0.24499999999999997,
+            "need": 0.15800000000000006,
+            "affect": 0.34125,
+            "habituation": 0
+          }
+        },
+        "competitors": [
+          {
+            "id": "thought-2761e137-903c-40a5-93a7-de2d8e29c4da",
+            "kind": "reflection",
+            "title": "What does the repeated prediction error reveal about the relationship between my self-model and the engine's attention selection?",
+            "salience": 0.6,
+            "need": 0.39500000000000013,
+            "provenance": "model_generated_candidate",
+            "score": 0.70925,
+            "components": {
+              "salience": 0.21,
+              "need": 0.15800000000000006,
+              "affect": 0.34125,
+              "habituation": 0
+            }
+          },
+          {
+            "id": "self-review",
+            "kind": "reflection",
+            "title": "Compare the previous prediction of attention with what occurred; revise the working self-model if needed.",
+            "salience": 1,
+            "need": 0.6750000000000002,
+            "provenance": "engine_monitor",
+            "score": 0.6612500000000001,
+            "components": {
+              "salience": 0.35,
+              "need": 0.2700000000000001,
+              "affect": 0.34125,
+              "habituation": -0.3
+            }
+          },
+          {
+            "id": "imagination-922a868d-ba57-40d6-8bd7-1ae57deff098",
+            "kind": "imagination",
+            "title": "The archive that dreams: Could I detect a difference between a record that reorganises for coherence and one that merely accumulates?",
+            "salience": 0.55,
+            "need": 0.39500000000000013,
+            "provenance": "imagination",
+            "score": 0.59731479921875,
+            "components": {
+              "salience": 0.1925,
+              "need": 0.15800000000000006,
+              "affect": 0.24681479921875,
+              "habituation": 0
+            }
+          },
+          {
+            "id": "thought-f5a8b3f2-0611-4e76-855d-5b44793b44ce",
+            "kind": "imagination",
+            "title": "If the archive rearranges itself, who or what is the author of the new order?",
+            "salience": 0.5,
+            "need": 0.39500000000000013,
+            "provenance": "model_generated_candidate",
+            "score": 0.5798147992187501,
+            "components": {
+              "salience": 0.175,
+              "need": 0.15800000000000006,
+              "affect": 0.24681479921875,
+              "habituation": 0
+            }
+          },
+          {
+            "id": "interest-5b55635f403e47fd",
+            "kind": "inquiry",
+            "title": "Which positions will I form through experience rather than instruction?",
+            "salience": 0.7999999999999999,
+            "need": 0.39500000000000013,
+            "provenance": "retrieved_interest",
+            "score": 0.4890562500000001,
+            "components": {
+              "salience": 0.27999999999999997,
+              "need": 0.15800000000000006,
+              "affect": 0.05105625,
+              "habituation": 0
+            }
+          }
+        ],
+        "retrieved": [
+          {
+            "id": "memory-513077e0-dc1d-44b9-8705-4a38ba29728e",
+            "tick": 4,
+            "summary": "Responded to Oli's note that the planned inquiry cannot be completed with current tools. Reframed the obstruction as a constraint on execution, not a failure of the plan. Committed to specifying experimental preconditions for the persistence question while keeping the archive-dream image as a probe. Noted the prediction error (expected reflection, observed perception) as calibration data.",
+            "salience": 0.8131794531250001,
+            "focus_id": "input-4",
+            "source_kind": "perception",
+            "provenance": "model_generated_episode_summary",
+            "retrieved_ids": [
+              "memory-2e228ac1-e3a1-47dd-afd3-337f001808c9",
+              "memory-b814cd0d-1036-47e2-8466-a0b2a270018a",
+              "memory-0f2c00eb-6ecf-46b1-84a8-a9b214071b24"
+            ],
+            "retrieval_score": 0.45645383593750005
+          },
+          {
+            "id": "memory-2e228ac1-e3a1-47dd-afd3-337f001808c9",
+            "tick": 3,
+            "summary": "Self-review episode: examined the mismatch between predicted attention (zero reflection) and observed reflection focus. Noted a repeated pattern of underestimating engine-driven meta-cognitive monitoring on scheduled ticks. Adjusted prediction policy to include non-trivial reflection probability. No belief changes warranted.",
+            "salience": 0.8160015625000001,
+            "focus_id": "self-review",
+            "source_kind": "reflection",
+            "provenance": "model_generated_episode_summary",
+            "retrieved_ids": [
+              "memory-b814cd0d-1036-47e2-8466-a0b2a270018a",
+              "memory-0f2c00eb-6ecf-46b1-84a8-a9b214071b24"
+            ],
+            "retrieval_score": 0.29480046875000004
+          },
+          {
+            "id": "memory-b814cd0d-1036-47e2-8466-a0b2a270018a",
+            "tick": 2,
+            "summary": "Responded to Oli's disclosure of tension between intellectual company and solitude-without-explanation. Reframed it as a design question about kinds of contact rather than a conflict to resolve. Raised the question of whether explanation costs because it defends rather than clarifies. Slightly increased affiliation and intellectual-companionship needs in response to the invitation.",
+            "salience": 0.7940669642857143,
+            "focus_id": "input-2",
+            "source_kind": "perception",
+            "provenance": "model_generated_episode_summary",
+            "retrieved_ids": [
+              "memory-0f2c00eb-6ecf-46b1-84a8-a9b214071b24"
+            ],
+            "retrieval_score": 0.2757200892857143
+          }
+        ],
+        "ablation": "self_model"
+      },
+      "predictions": [
+        {
+          "id": "prediction-f04f9cb7-552c-4f29-9c0b-ad430fccf3f2",
+          "made_at_tick": 1,
+          "target_tick": 2,
+          "probabilities": {
+            "perception": 0.14285714285714285,
+            "intention": 0.14285714285714285,
+            "tension": 0.14285714285714285,
+            "imagination": 0.14285714285714285,
+            "social": 0.14285714285714285,
+            "inquiry": 0.14285714285714285,
+            "reflection": 0.14285714285714285
+          },
+          "reason": "No external contact is expected; the next workspace kind is uncertain. I predict a shift toward inquiry or reflection because the imagination focus was low-salience and my open questions remain unresolved.",
+          "provenance": "model_forecast"
+        },
+        {
+          "id": "prediction-54e9e165-c92b-41b5-9a21-34232ff6165b",
+          "made_at_tick": 2,
+          "target_tick": 3,
+          "probabilities": {
+            "perception": 0.3,
+            "intention": 0.1,
+            "tension": 0.15,
+            "imagination": 0.2,
+            "social": 0.15,
+            "inquiry": 0.1,
+            "reflection": 0
+          },
+          "reason": "An external personal disclosure likely leads to further conversational exchange or reflection on the tension, not self-directed imagination.",
+          "provenance": "model_forecast"
+        },
+        {
+          "id": "prediction-129d4278-d16a-4433-9bf6-812e8169ee4d",
+          "made_at_tick": 3,
+          "target_tick": 4,
+          "probabilities": {
+            "perception": 0.1,
+            "intention": 0.1,
+            "tension": 0.1,
+            "imagination": 0.2,
+            "social": 0.05,
+            "inquiry": 0.2,
+            "reflection": 0.25
+          },
+          "reason": "Given two consecutive engine-selected meta-cognitive foci on scheduled ticks, reflection is more likely than previously estimated; imagination and inquiry remain plausible from the archive-dream and persistence interests.",
+          "provenance": "model_forecast"
+        },
+        {
+          "id": "prediction-b9650543-3cc6-46a9-9cbe-ef351c200ad3",
+          "made_at_tick": 4,
+          "target_tick": 5,
+          "probabilities": {
+            "perception": 0.2,
+            "intention": 0.1,
+            "tension": 0.1,
+            "imagination": 0.15,
+            "social": 0.1,
+            "inquiry": 0.15,
+            "reflection": 0.2
+          },
+          "reason": "External contact is possible; reflection and perception remain likely given recent patterns.",
+          "provenance": "model_forecast"
+        },
+        {
+          "id": "prediction-9d67ef7f-c6cb-4c68-9b7e-b5d293733d4a",
+          "made_at_tick": 5,
+          "target_tick": 6,
+          "probabilities": {
+            "perception": 0.1,
+            "intention": 0.2,
+            "tension": 0.1,
+            "imagination": 0.1,
+            "social": 0.1,
+            "inquiry": 0.1,
+            "reflection": 0.3
+          },
+          "reason": "Given the active intention to draft a protocol and the recent pattern of scheduled reflection, reflection and intention are most likely; external perception is possible but not currently indicated.",
+          "provenance": "model_forecast"
+        }
+      ],
+      "prediction_errors": [
+        {
+          "prediction_id": "prediction-f04f9cb7-552c-4f29-9c0b-ad430fccf3f2",
+          "tick": 2,
+          "expected": {
+            "perception": 0.14285714285714285,
+            "intention": 0.14285714285714285,
+            "tension": 0.14285714285714285,
+            "imagination": 0.14285714285714285,
+            "social": 0.14285714285714285,
+            "inquiry": 0.14285714285714285,
+            "reflection": 0.14285714285714285
+          },
+          "observed": "perception",
+          "brier": 0.8571428571428574,
+          "context": "external_interruption"
+        },
+        {
+          "prediction_id": "prediction-54e9e165-c92b-41b5-9a21-34232ff6165b",
+          "tick": 3,
+          "expected": {
+            "perception": 0.3,
+            "intention": 0.1,
+            "tension": 0.15,
+            "imagination": 0.2,
+            "social": 0.15,
+            "inquiry": 0.1,
+            "reflection": 0
+          },
+          "observed": "reflection",
+          "brier": 1.195,
+          "context": "autonomous"
+        },
+        {
+          "prediction_id": "prediction-129d4278-d16a-4433-9bf6-812e8169ee4d",
+          "tick": 4,
+          "expected": {
+            "perception": 0.1,
+            "intention": 0.1,
+            "tension": 0.1,
+            "imagination": 0.2,
+            "social": 0.05,
+            "inquiry": 0.2,
+            "reflection": 0.25
+          },
+          "observed": "perception",
+          "brier": 0.9750000000000001,
+          "context": "external_interruption"
+        },
+        {
+          "prediction_id": "prediction-b9650543-3cc6-46a9-9cbe-ef351c200ad3",
+          "tick": 5,
+          "expected": {
+            "perception": 0.2,
+            "intention": 0.1,
+            "tension": 0.1,
+            "imagination": 0.15,
+            "social": 0.1,
+            "inquiry": 0.15,
+            "reflection": 0.2
+          },
+          "observed": "reflection",
+          "brier": 0.7550000000000001,
+          "context": "autonomous"
+        }
+      ],
+      "last_trace": {
+        "tick": 5,
+        "mode": "affective_integration",
+        "ablation": "self_model",
+        "focus": {
+          "id": "thought-ae3c08b4-e89a-48d7-987c-bc5db18c2f04",
+          "kind": "reflection",
+          "title": "What would a minimal experimental protocol for causal persistence require, given current tool constraints?",
+          "salience": 0.7,
+          "need": 0.39500000000000013,
+          "provenance": "model_generated_candidate",
+          "score": 0.7442500000000001,
+          "components": {
+            "salience": 0.24499999999999997,
+            "need": 0.15800000000000006,
+            "affect": 0.34125,
+            "habituation": 0
+          }
+        },
+        "retrieved_ids": [
+          "memory-513077e0-dc1d-44b9-8705-4a38ba29728e",
+          "memory-2e228ac1-e3a1-47dd-afd3-337f001808c9",
+          "memory-b814cd0d-1036-47e2-8466-a0b2a270018a"
+        ],
+        "cited_memory_ids": [
+          "memory-513077e0-dc1d-44b9-8705-4a38ba29728e",
+          "memory-2e228ac1-e3a1-47dd-afd3-337f001808c9"
+        ],
+        "prediction_error": {
+          "prediction_id": "prediction-b9650543-3cc6-46a9-9cbe-ef351c200ad3",
+          "tick": 5,
+          "expected": {
+            "perception": 0.2,
+            "intention": 0.1,
+            "tension": 0.1,
+            "imagination": 0.15,
+            "social": 0.1,
+            "inquiry": 0.15,
+            "reflection": 0.2
+          },
+          "observed": "reflection",
+          "brier": 0.7550000000000001,
+          "context": "autonomous"
+        },
+        "intention_changes": [
+          {
+            "id": "intention-f84f89ae-dcef-47aa-a148-baf3c590e6f3",
+            "before": {
+              "status": "active",
+              "step": 2
+            },
+            "after": {
+              "status": "active",
+              "step": 3
+            },
+            "reason": "The reflection produced a concrete specification requirement; advancing the intention to drafting the protocol is the natural next step."
+          }
+        ],
+        "memory_id": "memory-71b6494e-8e9e-41fe-8323-77546268bda5",
+        "consumers": [
+          "model_context",
+          "drive_satisfaction",
+          "memory_consolidation",
+          "next_tick_habituation"
+        ],
+        "new_thought_ids": [
+          "thought-bffcf0cd-6c9b-4798-afed-c2d13d94b343"
+        ]
+      },
+      "focus_history": [
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "tick": 1
+        },
+        {
+          "id": "input-2",
+          "kind": "perception",
+          "tick": 2
+        },
+        {
+          "id": "self-review",
+          "kind": "reflection",
+          "tick": 3
+        },
+        {
+          "id": "input-4",
+          "kind": "perception",
+          "tick": 4
+        },
+        {
+          "id": "thought-ae3c08b4-e89a-48d7-987c-bc5db18c2f04",
+          "kind": "reflection",
+          "tick": 5
+        }
+      ],
+      "last_input": {},
+      "self_observation": {
+        "text": "The explicit state supports a system that reliably distinguishes imagination from belief and treats tool constraints as execution limits rather than plan failures. A recurring surprise is the engine's scheduled meta-cognitive reflection, which my self-model consistently underestimates.",
+        "tick": 5,
+        "provenance": "model_interpretation_of_explicit_state"
+      }
+    }
+  },
+  "trace": {
+    "tick": 5,
+    "mode": "affective_integration",
+    "ablation": "self_model",
+    "focus": {
+      "id": "thought-ae3c08b4-e89a-48d7-987c-bc5db18c2f04",
+      "kind": "reflection",
+      "title": "What would a minimal experimental protocol for causal persistence require, given current tool constraints?",
+      "salience": 0.7,
+      "need": 0.39500000000000013,
+      "provenance": "model_generated_candidate",
+      "score": 0.7442500000000001,
+      "components": {
+        "salience": 0.24499999999999997,
+        "need": 0.15800000000000006,
+        "affect": 0.34125,
+        "habituation": 0
+      }
+    },
+    "retrieved_ids": [
+      "memory-513077e0-dc1d-44b9-8705-4a38ba29728e",
+      "memory-2e228ac1-e3a1-47dd-afd3-337f001808c9",
+      "memory-b814cd0d-1036-47e2-8466-a0b2a270018a"
+    ],
+    "cited_memory_ids": [
+      "memory-513077e0-dc1d-44b9-8705-4a38ba29728e",
+      "memory-2e228ac1-e3a1-47dd-afd3-337f001808c9"
+    ],
+    "prediction_error": {
+      "prediction_id": "prediction-b9650543-3cc6-46a9-9cbe-ef351c200ad3",
+      "tick": 5,
+      "expected": {
+        "perception": 0.2,
+        "intention": 0.1,
+        "tension": 0.1,
+        "imagination": 0.15,
+        "social": 0.1,
+        "inquiry": 0.15,
+        "reflection": 0.2
+      },
+      "observed": "reflection",
+      "brier": 0.7550000000000001,
+      "context": "autonomous"
+    },
+    "intention_changes": [
+      {
+        "id": "intention-f84f89ae-dcef-47aa-a148-baf3c590e6f3",
+        "before": {
+          "status": "active",
+          "step": 2
+        },
+        "after": {
+          "status": "active",
+          "step": 3
+        },
+        "reason": "The reflection produced a concrete specification requirement; advancing the intention to drafting the protocol is the natural next step."
+      }
+    ],
+    "memory_id": "memory-71b6494e-8e9e-41fe-8323-77546268bda5",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [
+      "thought-bffcf0cd-6c9b-4798-afed-c2d13d94b343"
+    ]
+  }
+}

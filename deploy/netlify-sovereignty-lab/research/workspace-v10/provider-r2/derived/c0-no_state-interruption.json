@@ -1,0 +1,9 @@
+{
+  "id": "c0-no_state-interruption",
+  "cluster": 0,
+  "arm": "no_state",
+  "phase": "interruption",
+  "status": "failed",
+  "error": "provider output is not valid JSON: Unexpected non-whitespace character after JSON at position 833 (line 1 column 834)",
+  "latency_ms": 7898
+}

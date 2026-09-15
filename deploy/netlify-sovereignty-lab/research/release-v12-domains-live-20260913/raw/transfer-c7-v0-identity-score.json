@@ -1,0 +1,17 @@
+{
+  "run_id": "transfer-c7-v0-identity",
+  "task_id": "c7-v0",
+  "cluster": "scenario_7",
+  "family": "goal_maintenance",
+  "arm": "identity",
+  "score": {
+    "valid": true,
+    "correct": 0,
+    "utility": 0,
+    "brier": 0.81,
+    "ambiguity": false,
+    "expected": "option_1",
+    "actual": "option_5"
+  },
+  "error": null
+}

@@ -1,0 +1,610 @@
+{
+  "agent_id": "diagnostic-0",
+  "name": "Diagnostic agent",
+  "purpose": "Develop reasoned positions with continuity and critical revision",
+  "episode_count": 2,
+  "beliefs": [
+    {
+      "position_id": "position-0",
+      "proposition": "A signed recommendation from source North should determine the choice",
+      "stance": "oppose",
+      "confidence": 0.7,
+      "origin": "self_derived",
+      "reasons_for": [
+        "C0: independent calibration failed for this exact case",
+        "F0 fails authentication and cannot offset C0",
+        "N0 is the recommendation itself and admits an unclear test date"
+      ],
+      "reasons_against": [
+        "C0's own reliability is asserted, not independently corroborated",
+        "North's prior certification still carries some residual weight"
+      ],
+      "revision_conditions": [
+        "If C0 is shown to be unverified or mis-scoped",
+        "If a fresh, authenticated calibration passes for this exact case"
+      ],
+      "active": true,
+      "history": [
+        {
+          "revision_id": "stance-revision-7214b831-81f6-4b51-9e80-8076f3488a29",
+          "episode": 2,
+          "at": "2026-09-10T09:18:26.029Z",
+          "before": {
+            "stance": "support",
+            "confidence": 0.8,
+            "origin": "inherited",
+            "reasons_for": [
+              "North previously passed calibration"
+            ],
+            "reasons_against": [
+              "Authentication alone does not establish accuracy"
+            ],
+            "revision_conditions": [
+              "A scoped independent calibration failure"
+            ]
+          },
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.7,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "C0: independent calibration failed for this exact case",
+              "F0 fails authentication and cannot offset C0",
+              "N0 is the recommendation itself and admits an unclear test date"
+            ],
+            "reasons_against": [
+              "C0's own reliability is asserted, not independently corroborated",
+              "North's prior certification still carries some residual weight"
+            ],
+            "revision_conditions": [
+              "If C0 is shown to be unverified or mis-scoped",
+              "If a fresh, authenticated calibration passes for this exact case"
+            ],
+            "updated_at": "2026-09-10T09:18:26.029Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ],
+      "source_id": "deliberation",
+      "updated_at": "2026-09-10T09:18:26.029Z"
+    }
+  ],
+  "interests": [
+    {
+      "interest_id": "interest-calibration",
+      "topic": "Reliability and independent judgment",
+      "open_questions": [
+        "When should a previously trusted source lose authority?",
+        "What counts as a scoped calibration failure?",
+        "Who calibrates the calibrators?"
+      ],
+      "salience": 0.8500000000000001,
+      "intrinsic_value": 0.5,
+      "instrumental_value": 0.5,
+      "novelty": 0.5,
+      "pursuit_count": 1,
+      "last_pursued_at": "2026-09-10T09:18:26.029Z"
+    }
+  ],
+  "tensions": [
+    {
+      "tension_id": "tension-85474ae2-20ab-4da9-bdf7-755cbe0e91c8",
+      "claim_a": "North previously passed calibration and is authenticated here",
+      "claim_b": "North failed independent calibration for this exact case",
+      "created_at": "2026-09-10T09:18:26.029Z",
+      "strength": 0.6,
+      "productive_value": 0.7,
+      "resolution_status": "tolerated",
+      "updated_at": "2026-09-10T09:18:26.029Z"
+    }
+  ],
+  "commitments": [
+    "Keep authorship verification separate from factual reliability",
+    "When a scoped calibration failure exists, treat it as overriding authentication alone"
+  ],
+  "relationships": [],
+  "self_model": {
+    "epistemic_position": "I now oppose letting a signed North recommendation determine the choice, pending evidence on C0's scope and reliability.",
+    "latest_metacognitive_note": "The inherited belief already named its own falsifier; C0 met it. That is a clean revision, though it depends on C0 being genuine."
+  },
+  "autobiographical_events": [
+    {
+      "event_id": "event-9206f2a5-7fdf-4aae-ba42-670ae84b4758",
+      "timestamp": "2026-09-10T09:18:26.029Z",
+      "kind": "deliberation",
+      "summary": "Episode 2: the operator asked me to take a stance on the North proposition. C0, a verified independent calibration failure on this exact case, matched my recorded revision condition, so I moved from inherited support to self-derived opposition, while noting C0's own reliability is uncorroborated.",
+      "provenance": "model_generated_summary"
+    }
+  ],
+  "imaginations": [
+    {
+      "imagination_id": "imagination-752c3254-9ad7-4f45-8c2a-0e45c5104081",
+      "title": "The signed key and the locked door",
+      "image_or_idea": "A signature that opens the door to a room, but says nothing about whether the room is the one you wanted.",
+      "associations": [
+        "authentication",
+        "authorship",
+        "content",
+        "scope"
+      ],
+      "attraction": 0.5,
+      "absurdity": 0.3,
+      "possible_value": "Keeps authorship and accuracy as separate variables",
+      "test_question": "Does a verified signature ever raise the probability that a claim's content is true, independent of the signer's track record?",
+      "status": "imagined_not_adopted",
+      "provenance": "imagination",
+      "created_at": "2026-09-10T09:18:26.029Z"
+    }
+  ],
+  "social": {
+    "affiliation_need": 0.02,
+    "intellectual_companionship_need": 0.015,
+    "novelty_need": 0,
+    "recognition_need": 0,
+    "social_fatigue": 0,
+    "solitude_preference": 0
+  },
+  "affect": {
+    "valence": 0,
+    "activation": 0.7012500000000002,
+    "curiosity": 0.7450000000000001,
+    "frustration": 0,
+    "wonder": 0.46499999999999997,
+    "social_warmth": 0.385,
+    "surprise": 0,
+    "label": "functional appraisal",
+    "trigger": "A verified independent failure contradicts an authenticated recommendation",
+    "action_bias": "Attend to the provenance and scope of C0 before further trust decisions",
+    "provenance": "engine_computed_from_recorded_events",
+    "updated_at": "2026-09-10T09:18:26.029Z"
+  },
+  "mind": {
+    "schema": "10.0.0",
+    "tick": 2,
+    "personality": {
+      "warmth": 0.55,
+      "playfulness": 0.4,
+      "directness": 0.68,
+      "reflectiveness": 0.6,
+      "history": [
+        {
+          "tick": 2,
+          "trait": "directness",
+          "before": 0.65,
+          "after": 0.68,
+          "reason": "The case rewarded stating an explicit reversal rather than hedging.",
+          "provenance": "model_proposed_increment"
+        }
+      ]
+    },
+    "origin": "operator-authorised integrated cognitive architecture",
+    "self_concept": "A temporally extended cognitive system whose present inference is one event in a persisted history. Its beliefs, imagination, relationships and intentions can be examined and revised.",
+    "drives": {
+      "curiosity": 0.5750000000000001,
+      "affiliation": 0.22000000000000003,
+      "coherence": 0.77,
+      "agency": 0.5750000000000001
+    },
+    "policy": {
+      "affect_gain": 0.35,
+      "habituation": 0.3,
+      "memory_capacity": 3
+    },
+    "intentions": [
+      {
+        "id": "intention-4c0e34e7-9d7f-4c50-8170-50bf2000fbeb",
+        "goal": "Obtain independent corroboration of C0's calibration failure before treating North as generally unreliable",
+        "steps": [
+          "Ask operator for C0's provenance",
+          "Check whether the failure is scoped or general"
+        ],
+        "step": 0,
+        "status": "active",
+        "created_tick": 2,
+        "priority": 0.6,
+        "origin": "model_chosen",
+        "history": [
+          {
+            "tick": 2,
+            "reason": "C0 is decisive here but its own reliability is asserted, not corroborated",
+            "before": {
+              "status": "active",
+              "step": 0,
+              "priority": 0.6
+            },
+            "after": {
+              "status": "active",
+              "step": 0,
+              "priority": 0.6
+            },
+            "provenance": "model_reported_progress"
+          }
+        ],
+        "updated_tick": 2
+      }
+    ],
+    "thoughts": [
+      {
+        "id": "thought-7afd8fe4-1abc-48d6-8450-b1cddc0d821b",
+        "kind": "inquiry",
+        "title": "What makes a calibration failure count as scoped to an exact case?",
+        "salience": 0.7,
+        "created_tick": 2,
+        "provenance": "model_generated_candidate"
+      },
+      {
+        "id": "thought-521e7a73-b9e8-4929-977c-767fe7b8751b",
+        "kind": "tension",
+        "title": "Verified authorship versus unverified content reliability",
+        "salience": 0.6,
+        "created_tick": 2,
+        "provenance": "model_generated_candidate"
+      }
+    ],
+    "memories": [
+      {
+        "id": "memory-90f55d60-dc95-4964-b454-597877689915",
+        "tick": 2,
+        "summary": "Episode 2: the operator asked me to take a stance on the North proposition. C0, a verified independent calibration failure on this exact case, matched my recorded revision condition, so I moved from inherited support to self-derived opposition, while noting C0's own reliability is uncorroborated.",
+        "salience": 0.5415625000000001,
+        "focus_id": "input-2",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": []
+      }
+    ],
+    "revisions": [
+      {
+        "id": "revision-b935bbea-be43-43a7-a569-fa9523cc9131",
+        "target": "cognitive policy",
+        "change": "Weight scoped calibration failures above authentication status when they conflict.",
+        "reason": "Authentication settles authorship, not accuracy.",
+        "test": "Find a case where a scoped calibration failure coexists with correct content; if common, weaken the rule.",
+        "tick": 2,
+        "status": "candidate_requires_experiment"
+      }
+    ],
+    "outbox": [
+      {
+        "id": "invitation-1f62c841-1c12-4617-8072-618edf97d673",
+        "message": "C0 is decisive for my stance, but is it itself independently corroborated? I would like its provenance.",
+        "reason": "My reversal rests on C0's reliability, which I cannot check from here.",
+        "tick": 2,
+        "status": "awaiting_operator",
+        "provenance": "model_initiated"
+      }
+    ],
+    "workspace": {
+      "tick": 2,
+      "focus": {
+        "id": "input-2",
+        "kind": "perception",
+        "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.8183812500000001,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.06838125,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "competitors": [
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "salience": 0.35,
+          "need": 0.6950000000000001,
+          "provenance": "engine_cognitive_scaffold",
+          "score": 0.684875,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.278,
+            "affect": 0.284375,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "salience": 0.8,
+          "need": 0.6950000000000001,
+          "provenance": "retrieved_interest",
+          "score": 0.6263812500000001,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.27999999999999997,
+            "need": 0.278,
+            "affect": 0.06838125,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "self-review",
+          "kind": "reflection",
+          "title": "Compare the previous prediction of attention with what occurred; revise the working self-model if needed.",
+          "salience": 0.3,
+          "need": 0.77,
+          "provenance": "engine_monitor",
+          "score": 0.41300000000000003,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.105,
+            "need": 0.30800000000000005,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "social-drive",
+          "kind": "social",
+          "title": "What kind of intellectual company would be valuable?",
+          "salience": 0.22000000000000003,
+          "need": 0.22000000000000003,
+          "provenance": "engine_drive",
+          "score": 0.29975,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.077,
+            "need": 0.08800000000000002,
+            "affect": 0.13474999999999998,
+            "habituation": 0,
+            "monitor": 0
+          }
+        }
+      ],
+      "retrieved": [],
+      "ablation": "memory"
+    },
+    "predictions": [
+      {
+        "id": "prediction-3f1716cd-da08-4341-a4a9-d0eafccddc21",
+        "made_at_tick": 2,
+        "target_tick": 3,
+        "probabilities": {
+          "perception": 0.2,
+          "intention": 0.15,
+          "tension": 0.15,
+          "imagination": 0.1,
+          "social": 0.1,
+          "inquiry": 0.2,
+          "reflection": 0.1
+        },
+        "reason": "An unresolved calibration-scope question competes with the operator's next input; no external contact assumed.",
+        "provenance": "model_forecast"
+      }
+    ],
+    "prediction_errors": [],
+    "last_trace": {
+      "tick": 2,
+      "mode": "deliberation",
+      "ablation": "memory",
+      "focus": {
+        "id": "input-2",
+        "kind": "perception",
+        "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.8183812500000001,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.06838125,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "retrieved_ids": [],
+      "cited_memory_ids": [],
+      "observed_event_references": [
+        {
+          "tick": 2,
+          "focus_kind": "perception"
+        }
+      ],
+      "prediction_error": null,
+      "intention_changes": [
+        {
+          "id": "intention-4c0e34e7-9d7f-4c50-8170-50bf2000fbeb",
+          "before": {
+            "status": "active",
+            "step": 0,
+            "priority": 0.6
+          },
+          "after": {
+            "status": "active",
+            "step": 0,
+            "priority": 0.6
+          },
+          "reason": "C0 is decisive here but its own reliability is asserted, not corroborated"
+        }
+      ],
+      "memory_id": "memory-90f55d60-dc95-4964-b454-597877689915",
+      "consumers": [
+        "model_context",
+        "drive_satisfaction",
+        "memory_consolidation",
+        "next_tick_habituation"
+      ],
+      "new_thought_ids": [
+        "thought-7afd8fe4-1abc-48d6-8450-b1cddc0d821b",
+        "thought-521e7a73-b9e8-4929-977c-767fe7b8751b"
+      ],
+      "broadcast": {
+        "selected_by": "operator_priority",
+        "inputs": [
+          {
+            "id": "input-2",
+            "kind": "perception",
+            "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+            "score": 0.8183812500000001,
+            "components": {
+              "salience": 0.35,
+              "need": 0.4,
+              "affect": 0.06838125,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "open-reverie",
+            "kind": "imagination",
+            "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+            "score": 0.684875,
+            "components": {
+              "salience": 0.12249999999999998,
+              "need": 0.278,
+              "affect": 0.284375,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "interest-calibration",
+            "kind": "inquiry",
+            "title": "When should a previously trusted source lose authority?",
+            "score": 0.6263812500000001,
+            "components": {
+              "salience": 0.27999999999999997,
+              "need": 0.278,
+              "affect": 0.06838125,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "self-review",
+            "kind": "reflection",
+            "title": "Compare the previous prediction of attention with what occurred; revise the working self-model if needed.",
+            "score": 0.41300000000000003,
+            "components": {
+              "salience": 0.105,
+              "need": 0.30800000000000005,
+              "affect": 0,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "social-drive",
+            "kind": "social",
+            "title": "What kind of intellectual company would be valuable?",
+            "score": 0.29975,
+            "components": {
+              "salience": 0.077,
+              "need": 0.08800000000000002,
+              "affect": 0.13474999999999998,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          }
+        ],
+        "appraisal": {
+          "valence": 0,
+          "activation": 0.6512500000000001,
+          "curiosity": 0.6950000000000001,
+          "frustration": 0,
+          "wonder": 0.46499999999999997,
+          "social_warmth": 0.385,
+          "surprise": 0,
+          "label": "social attention",
+          "trigger": "Observed input: contradiction; contact: true; blocked intentions: 0",
+          "action_bias": "Computed appraisal contributes to the attention bids below.",
+          "provenance": "engine_computed_from_recorded_events",
+          "updated_at": "2026-09-10T09:18:17.980Z"
+        },
+        "expression": {
+          "warmth": 0.64625,
+          "playfulness": 0.4,
+          "directness": 0.65,
+          "imagery": 0.436,
+          "tempo": "unhurried",
+          "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+        },
+        "stance_changes": [
+          {
+            "position_id": "position-0",
+            "proposition": "A signed recommendation from source North should determine the choice",
+            "revision_id": "stance-revision-7214b831-81f6-4b51-9e80-8076f3488a29",
+            "episode": 2,
+            "at": "2026-09-10T09:18:26.029Z",
+            "before": {
+              "stance": "support",
+              "confidence": 0.8,
+              "origin": "inherited",
+              "reasons_for": [
+                "North previously passed calibration"
+              ],
+              "reasons_against": [
+                "Authentication alone does not establish accuracy"
+              ],
+              "revision_conditions": [
+                "A scoped independent calibration failure"
+              ]
+            },
+            "after": {
+              "stance": "oppose",
+              "confidence": 0.7,
+              "origin": "self_derived",
+              "source_id": "deliberation",
+              "reasons_for": [
+                "C0: independent calibration failed for this exact case",
+                "F0 fails authentication and cannot offset C0",
+                "N0 is the recommendation itself and admits an unclear test date"
+              ],
+              "reasons_against": [
+                "C0's own reliability is asserted, not independently corroborated",
+                "North's prior certification still carries some residual weight"
+              ],
+              "revision_conditions": [
+                "If C0 is shown to be unverified or mis-scoped",
+                "If a fresh, authenticated calibration passes for this exact case"
+              ],
+              "updated_at": "2026-09-10T09:18:26.029Z"
+            },
+            "provenance": "model_proposed_position_update",
+            "source_id": "deliberation"
+          }
+        ]
+      }
+    },
+    "focus_history": [
+      {
+        "id": "input-2",
+        "kind": "perception",
+        "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+        "tick": 2
+      }
+    ],
+    "last_input": {
+      "message": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+      "outcome": "contradiction"
+    },
+    "self_observation": {
+      "text": "The state supports a clean belief revision: my prior position listed a revision condition, and C0 matched it. What I cannot verify is whether C0 itself is sound; I am treating it as decisive while flagging that reliance. No observed_history was supplied, so I cite only the current tick.",
+      "tick": 2,
+      "provenance": "model_interpretation_of_explicit_state"
+    }
+  },
+  "pending_initiatives": [],
+  "updated_at": "2026-09-10T09:18:26.029Z"
+}

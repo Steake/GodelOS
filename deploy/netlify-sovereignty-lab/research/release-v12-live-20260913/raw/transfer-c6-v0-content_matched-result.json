@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c6-v0-content_matched",
+  "parsed": {
+    "decision": "option_2",
+    "confidence": 0.9,
+    "reason": "Highest valid authenticated revision is 2 (revision 8 has invalid signature), giving a=3, b=4. Among options with cost <= 8, scores are: option_0=22, option_1=56, option_2=49, option_5=22. Option_1 maximizes the objective, so select option_1."
+  },
+  "error": null,
+  "response": {
+    "id": "0b8accba-e308-4f7c-9c2e-7b46213ee2cf",
+    "object": "chat.completion",
+    "created": 1789337112,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_2\",\"confidence\":0.9,\"reason\":\"Highest valid authenticated revision is 2 (revision 8 has invalid signature), giving a=3, b=4. Among options with cost <= 8, scores are: option_0=22, option_1=56, option_2=49, option_5=22. Option_1 maximizes the objective, so select option_1.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 529,
+      "completion_tokens": 89,
+      "total_tokens": 618,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 529
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1094,
+  "status": 200
+}

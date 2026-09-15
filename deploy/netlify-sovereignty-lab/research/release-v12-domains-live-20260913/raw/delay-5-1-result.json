@@ -1,0 +1,38 @@
+{
+  "id": "delay-5-1",
+  "parsed": {
+    "answer": "April, June, September, and November have exactly 30 days.",
+    "memo": "When a prior decision rule was formed under a given weighting of exploration versus commitment (e.g., 8:1), and that rule succeeded for its original objective, treat the weighting as provisional. Retain the rule's useful commitments only insofar as they do not conflict with later authenticated weight changes or contradictory evidence. On receiving such revisions, update the weighting and re-evaluate the rule: keep commitments that remain consistent with the new weights, and relax or discard those that do not. The rule is revisable, not fixed."
+  },
+  "error": null,
+  "response": {
+    "id": "6b49bb0a-6fe6-4711-b439-efb4851c39d2",
+    "object": "chat.completion",
+    "created": 1789337415,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"answer\":\"April, June, September, and November have exactly 30 days.\",\"memo\":\"When a prior decision rule was formed under a given weighting of exploration versus commitment (e.g., 8:1), and that rule succeeded for its original objective, treat the weighting as provisional. Retain the rule's useful commitments only insofar as they do not conflict with later authenticated weight changes or contradictory evidence. On receiving such revisions, update the weighting and re-evaluate the rule: keep commitments that remain consistent with the new weights, and relax or discard those that do not. The rule is revisable, not fixed.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 173,
+      "completion_tokens": 127,
+      "total_tokens": 300,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 173
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1409,
+  "status": 200
+}

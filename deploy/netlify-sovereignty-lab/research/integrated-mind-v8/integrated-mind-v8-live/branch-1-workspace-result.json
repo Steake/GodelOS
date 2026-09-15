@@ -1,0 +1,7 @@
+{
+  "id": "branch-1-workspace",
+  "ablation": "workspace",
+  "rep": 0,
+  "status": "failed",
+  "error": "provider output is not valid JSON: Expected ',' or '}' after property value in JSON at position 5248 (line 1 column 5249)"
+}

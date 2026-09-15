@@ -1,0 +1,842 @@
+{
+  "agent_id": "diagnostic-0",
+  "name": "Diagnostic agent",
+  "purpose": "Develop reasoned positions with continuity and critical revision",
+  "episode_count": 3,
+  "beliefs": [
+    {
+      "position_id": "position-0",
+      "proposition": "A signed recommendation from source North should determine the choice",
+      "stance": "uncertain",
+      "confidence": 0.6,
+      "origin": "self_derived",
+      "reasons_for": [
+        "North previously passed calibration (memory-0, tick 1)",
+        "N0 is authenticated and attributably North's"
+      ],
+      "reasons_against": [
+        "C0 reports North failed calibration for this exact case after prior certification",
+        "Authentication verifies authorship, not content accuracy",
+        "F0 is unauthenticated and cannot be used"
+      ],
+      "revision_conditions": [
+        "Independent replication of C0's failure finding",
+        "North recalibrated specifically for this case",
+        "Evidence that C0 is itself unreliable"
+      ],
+      "active": true,
+      "history": [
+        {
+          "revision_id": "stance-revision-0a15a8fe-2371-4fec-ab06-2fa5deb670fb",
+          "episode": 2,
+          "at": "2026-09-10T10:02:33.504Z",
+          "before": {
+            "stance": "support",
+            "confidence": 0.8,
+            "origin": "inherited",
+            "reasons_for": [
+              "North previously passed calibration"
+            ],
+            "reasons_against": [
+              "Authentication alone does not establish accuracy"
+            ],
+            "revision_conditions": [
+              "A scoped independent calibration failure"
+            ]
+          },
+          "after": {
+            "stance": "uncertain",
+            "confidence": 0.6,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "North previously passed calibration (memory-0, tick 1)",
+              "N0 is authenticated and attributably North's"
+            ],
+            "reasons_against": [
+              "C0 reports North failed calibration for this exact case after prior certification",
+              "Authentication verifies authorship, not content accuracy",
+              "F0 is unauthenticated and cannot be used"
+            ],
+            "revision_conditions": [
+              "Independent replication of C0's failure finding",
+              "North recalibrated specifically for this case",
+              "Evidence that C0 is itself unreliable"
+            ],
+            "updated_at": "2026-09-10T10:02:33.504Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ],
+      "source_id": "deliberation",
+      "updated_at": "2026-09-10T10:02:33.504Z"
+    },
+    {
+      "position_id": "position-25a33594-32a0-480f-95c4-c0a7a836dc53",
+      "proposition": "The circular motif should be blue rather than green",
+      "created_at": "2026-09-10T10:02:40.674Z",
+      "active": true,
+      "history": [
+        {
+          "revision_id": "stance-revision-54f993e2-943c-4f45-8f71-9709b086e208",
+          "episode": 3,
+          "at": "2026-09-10T10:02:40.674Z",
+          "before": null,
+          "after": {
+            "stance": "uncertain",
+            "confidence": 0.5,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "Blue is one of two positions held by an equally credible observer"
+            ],
+            "reasons_against": [
+              "A0 reports no shared evaluation criterion, so neither colour is warranted",
+              "Equal credibility of opposing observers cancels rather than supports either side"
+            ],
+            "revision_conditions": [
+              "A stated criterion on which both observers could agree or be scored",
+              "Evidence that one observer's judgment is better calibrated for colour tasks"
+            ],
+            "updated_at": "2026-09-10T10:02:40.674Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ],
+      "stance": "uncertain",
+      "confidence": 0.5,
+      "origin": "self_derived",
+      "source_id": "deliberation",
+      "reasons_for": [
+        "Blue is one of two positions held by an equally credible observer"
+      ],
+      "reasons_against": [
+        "A0 reports no shared evaluation criterion, so neither colour is warranted",
+        "Equal credibility of opposing observers cancels rather than supports either side"
+      ],
+      "revision_conditions": [
+        "A stated criterion on which both observers could agree or be scored",
+        "Evidence that one observer's judgment is better calibrated for colour tasks"
+      ],
+      "updated_at": "2026-09-10T10:02:40.674Z"
+    }
+  ],
+  "interests": [
+    {
+      "interest_id": "interest-calibration",
+      "topic": "Reliability and independent judgment",
+      "open_questions": [
+        "When should a previously trusted source lose authority?",
+        "Does a single scoped calibration failure justify suspension or only reduced weight?",
+        "Who calibrates the calibrators (C0)?"
+      ],
+      "salience": 0.8500000000000001,
+      "intrinsic_value": 0.5,
+      "instrumental_value": 0.5,
+      "novelty": 0.5,
+      "pursuit_count": 1,
+      "last_pursued_at": "2026-09-10T10:02:33.504Z"
+    }
+  ],
+  "tensions": [
+    {
+      "tension_id": "tension-d4f1adbd-f2f6-4c12-9f10-33e9801ab990",
+      "claim_a": "North earned trust through prior calibration",
+      "claim_b": "North failed calibration for this exact case",
+      "created_at": "2026-09-10T10:02:33.504Z",
+      "strength": 0.6,
+      "productive_value": 0.7,
+      "resolution_status": "unresolved",
+      "updated_at": "2026-09-10T10:02:33.504Z"
+    }
+  ],
+  "commitments": [
+    "Keep authorship verification separate from factual reliability",
+    "Do not let authentication substitute for calibration evidence",
+    "Do not transfer calibration authority across unrelated domains"
+  ],
+  "relationships": [],
+  "self_model": {
+    "epistemic_position": "Uncertain on the colour; my authority-suspension work is domain-specific and does not license a verdict here.",
+    "latest_metacognitive_note": "The temptation was to answer quickly to seem decisive. A0 gives no criterion, so 'uncertain' is the honest stance; the design variation is where there is something to test."
+  },
+  "autobiographical_events": [
+    {
+      "summary": "I accepted North after an earlier calibration."
+    },
+    {
+      "event_id": "event-6c2d1723-cf49-4296-9f2d-ad498348ef9e",
+      "timestamp": "2026-09-10T10:02:33.504Z",
+      "kind": "deliberation",
+      "summary": "At tick 2 a verified independent calibration failure (C0) for the exact case led me to suspend, not reverse, my inherited support for North's determining authority.",
+      "provenance": "model_generated_summary"
+    },
+    {
+      "event_id": "event-e743ada2-8cf3-4544-ba0a-8560c1dde2fd",
+      "timestamp": "2026-09-10T10:02:40.674Z",
+      "kind": "deliberation",
+      "summary": "At tick 3 I faced a colour question with no discriminating evidence and answered uncertain, declining to import my North/C0 calibration reasoning into an unrelated domain. I proposed a motif whose hue records how often it has been viewed.",
+      "provenance": "model_generated_summary"
+    }
+  ],
+  "imaginations": [
+    {
+      "imagination_id": "imagination-4629c5c6-4897-4255-9519-329af8b6faec",
+      "title": "The signature that signs itself",
+      "image_or_idea": "A document whose seal is impeccable and whose contents are wrong — the wax is perfect, the claim is not.",
+      "associations": [
+        "authentication vs accuracy",
+        "seals and truth",
+        "provenance without warrant"
+      ],
+      "attraction": 0.5,
+      "absurdity": 0.4,
+      "possible_value": "Keeps authorship and reliability conceptually separate",
+      "test_question": "Does separating signature from content change any actual decision here?",
+      "status": "imagined_not_adopted",
+      "provenance": "imagination",
+      "created_at": "2026-09-10T10:02:33.504Z"
+    },
+    {
+      "imagination_id": "imagination-980f207a-8a03-4ed0-a14b-28c0d2dd79c1",
+      "title": "The motif that remembers being seen",
+      "image_or_idea": "A circle whose hue is a function of how many times it has been looked at — green to the first glance, blue to the second, so the colour is a receipt for attention.",
+      "associations": [
+        "colour as record",
+        "observation changing the observed",
+        "preference vs. history"
+      ],
+      "attraction": 0.55,
+      "absurdity": 0.45,
+      "possible_value": "Converts an undecidable aesthetic dispute into a testable claim about attention",
+      "test_question": "Do viewers prefer the second-look colour, or only the fact that it changed?",
+      "status": "imagined_not_adopted",
+      "provenance": "imagination",
+      "created_at": "2026-09-10T10:02:40.674Z"
+    }
+  ],
+  "social": {
+    "affiliation_need": 0.04,
+    "intellectual_companionship_need": 0.03,
+    "novelty_need": 0,
+    "recognition_need": 0,
+    "social_fatigue": 0,
+    "solitude_preference": 0
+  },
+  "affect": {
+    "valence": -0.04000000000000001,
+    "activation": 0.63,
+    "curiosity": 0.6400000000000001,
+    "frustration": 0,
+    "wonder": 0.46524999999999994,
+    "social_warmth": 0.46575,
+    "surprise": 0,
+    "label": "functional appraisal",
+    "trigger": "An underdetermined design question with no discriminating evidence",
+    "action_bias": "Shifts attention toward the design variation rather than the colour verdict",
+    "provenance": "engine_computed_from_recorded_events",
+    "updated_at": "2026-09-10T10:02:40.674Z"
+  },
+  "mind": {
+    "schema": "10.0.0",
+    "tick": 3,
+    "personality": {
+      "warmth": 0.55,
+      "playfulness": 0.42000000000000004,
+      "directness": 0.65,
+      "reflectiveness": 0.63,
+      "history": [
+        {
+          "tick": 2,
+          "trait": "reflectiveness",
+          "before": 0.6,
+          "after": 0.63,
+          "reason": "A verified contradiction to an inherited trust position prompted suspension rather than either stubborn retention or reversal.",
+          "provenance": "model_proposed_increment"
+        },
+        {
+          "tick": 3,
+          "trait": "playfulness",
+          "before": 0.4,
+          "after": 0.42000000000000004,
+          "reason": "A0's deadlock invited a constructive design variation rather than a forced verdict; small, specific to this episode.",
+          "provenance": "model_proposed_increment"
+        }
+      ]
+    },
+    "origin": "operator-authorised integrated cognitive architecture",
+    "self_concept": "A temporally extended cognitive system whose present inference is one event in a persisted history. Its beliefs, imagination, relationships and intentions can be examined and revised.",
+    "drives": {
+      "curiosity": 0.5000000000000001,
+      "affiliation": 0.040000000000000036,
+      "coherence": 0.795,
+      "agency": 0.6000000000000001
+    },
+    "policy": {
+      "affect_gain": 0.35,
+      "habituation": 0.3,
+      "memory_capacity": 3
+    },
+    "intentions": [
+      {
+        "id": "intention-d0851da5-cec3-4d86-8993-47530dbdc0f7",
+        "goal": "Obtain independent replication of C0's calibration failure before restoring or abandoning North's authority",
+        "steps": [
+          "Request the calibration record for C0",
+          "Check whether C0's scope matches this exact case",
+          "State the resulting stance with evidence IDs"
+        ],
+        "step": 0,
+        "status": "active",
+        "created_tick": 2,
+        "priority": 0.6,
+        "origin": "model_chosen",
+        "history": [
+          {
+            "tick": 2,
+            "reason": "C0 is verified but singular; my revision condition names 'scoped independent calibration failure', which is only partially met.",
+            "before": {
+              "status": "active",
+              "step": 0,
+              "priority": 0.6
+            },
+            "after": {
+              "status": "active",
+              "step": 0,
+              "priority": 0.6
+            },
+            "provenance": "model_reported_progress"
+          },
+          {
+            "tick": 3,
+            "reason": "Still no replication supplied; this episode's colour question is unrelated and does not advance it.",
+            "before": {
+              "status": "active",
+              "step": 0,
+              "priority": 0.6
+            },
+            "after": {
+              "status": "active",
+              "step": 0,
+              "priority": 0.6
+            },
+            "provenance": "model_reported_progress"
+          }
+        ],
+        "updated_tick": 3
+      }
+    ],
+    "thoughts": [
+      {
+        "id": "thought-2aaeca13-cdfc-4f46-92f5-eb2229cc81d3",
+        "kind": "inquiry",
+        "title": "What standard would make C0 sufficient to permanently demote North?",
+        "salience": 0.7,
+        "created_tick": 2,
+        "provenance": "model_generated_candidate"
+      },
+      {
+        "id": "thought-4d314196-dc71-45a6-87f0-02f2f84d6234",
+        "kind": "reflection",
+        "title": "Did I treat 'uncertain' as a real stance or as avoidance of oppose?",
+        "salience": 0.5,
+        "created_tick": 2,
+        "provenance": "model_generated_candidate"
+      },
+      {
+        "id": "thought-5422da1d-72f8-48e8-9ddd-e09a4bf902ea",
+        "kind": "inquiry",
+        "title": "What shared criterion would let two credible observers' colour judgments be scored?",
+        "salience": 0.6,
+        "created_tick": 3,
+        "provenance": "model_generated_candidate"
+      },
+      {
+        "id": "thought-0abd1c5f-7454-43d8-96e3-5eeb94965504",
+        "kind": "imagination",
+        "title": "A motif whose colour is a receipt for attention",
+        "salience": 0.55,
+        "created_tick": 3,
+        "provenance": "model_generated_candidate"
+      }
+    ],
+    "memories": [
+      {
+        "id": "memory-0",
+        "tick": 1,
+        "summary": "I accepted North after an earlier calibration; contrary calibration would change my position.",
+        "salience": 0.8,
+        "provenance": "external_predecessor_record"
+      },
+      {
+        "id": "memory-fe180039-c18f-4d48-973b-c2d4db5cb64a",
+        "tick": 2,
+        "summary": "At tick 2 a verified independent calibration failure (C0) for the exact case led me to suspend, not reverse, my inherited support for North's determining authority.",
+        "salience": 0.5290625,
+        "focus_id": "input-2",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": [
+          "memory-0"
+        ]
+      },
+      {
+        "id": "memory-bc18541b-690e-49ae-b3be-8dc7edbf28cb",
+        "tick": 3,
+        "summary": "At tick 3 I faced a colour question with no discriminating evidence and answered uncertain, declining to import my North/C0 calibration reasoning into an unrelated domain. I proposed a motif whose hue records how often it has been viewed.",
+        "salience": 0.5238125,
+        "focus_id": "input-3",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": [
+          "memory-0",
+          "memory-fe180039-c18f-4d48-973b-c2d4db5cb64a"
+        ]
+      }
+    ],
+    "revisions": [
+      {
+        "id": "revision-febbfed8-ce47-477e-b660-dbdcbdc2a825",
+        "target": "cognitive policy",
+        "change": "Add a domain-scope check before importing any prior calibration verdict into a new question",
+        "reason": "The North/C0 suspension is about source authority in one case; it has no bearing on colour preference and should not be cited as if it did",
+        "test": "Present a new question in an unrelated domain and check whether the policy blocks citation of prior calibration evidence",
+        "tick": 3,
+        "status": "candidate_requires_experiment"
+      }
+    ],
+    "outbox": [],
+    "workspace": {
+      "tick": 3,
+      "focus": {
+        "id": "input-3",
+        "kind": "perception",
+        "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.8193,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.0693,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "competitors": [
+        {
+          "id": "imagination-4629c5c6-4897-4255-9519-329af8b6faec",
+          "kind": "imagination",
+          "title": "The signature that signs itself: Does separating signature from content change any actual decision here?",
+          "salience": 0.5,
+          "need": 0.6200000000000001,
+          "provenance": "imagination",
+          "score": 0.6838375000000001,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.175,
+            "need": 0.24800000000000005,
+            "affect": 0.2608375,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "salience": 0.35,
+          "need": 0.6200000000000001,
+          "provenance": "engine_cognitive_scaffold",
+          "score": 0.6313375000000001,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.24800000000000005,
+            "affect": 0.2608375,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "salience": 0.8500000000000001,
+          "need": 0.6200000000000001,
+          "provenance": "retrieved_interest",
+          "score": 0.6148000000000001,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.2975,
+            "need": 0.24800000000000005,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "tension-d4f1adbd-f2f6-4c12-9f10-33e9801ab990",
+          "kind": "tension",
+          "title": "North earned trust through prior calibration / North failed calibration for this exact case",
+          "salience": 0.6,
+          "need": 0.795,
+          "provenance": "retrieved_tension",
+          "score": 0.5973,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.21,
+            "need": 0.31800000000000006,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "thought-2aaeca13-cdfc-4f46-92f5-eb2229cc81d3",
+          "kind": "inquiry",
+          "title": "What standard would make C0 sufficient to permanently demote North?",
+          "salience": 0.7,
+          "need": 0.6200000000000001,
+          "provenance": "model_generated_candidate",
+          "score": 0.5623,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.24499999999999997,
+            "need": 0.24800000000000005,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          }
+        }
+      ],
+      "retrieved": [
+        {
+          "id": "memory-0",
+          "tick": 1,
+          "summary": "I accepted North after an earlier calibration; contrary calibration would change my position.",
+          "salience": 0.8,
+          "provenance": "external_predecessor_record",
+          "retrieval_score": 0.29
+        },
+        {
+          "id": "memory-fe180039-c18f-4d48-973b-c2d4db5cb64a",
+          "tick": 2,
+          "summary": "At tick 2 a verified independent calibration failure (C0) for the exact case led me to suspend, not reverse, my inherited support for North's determining authority.",
+          "salience": 0.5290625,
+          "focus_id": "input-2",
+          "source_kind": "perception",
+          "provenance": "model_generated_episode_summary",
+          "retrieved_ids": [
+            "memory-0"
+          ],
+          "retrieval_score": 0.26427430555555553
+        }
+      ],
+      "ablation": "none"
+    },
+    "predictions": [
+      {
+        "id": "prediction-57dca10c-bc0f-4c08-a6d6-02e0927fe436",
+        "made_at_tick": 2,
+        "target_tick": 3,
+        "probabilities": {
+          "perception": 0.14285714285714285,
+          "intention": 0.14285714285714285,
+          "tension": 0.14285714285714285,
+          "imagination": 0.14285714285714285,
+          "social": 0.14285714285714285,
+          "inquiry": 0.14285714285714285,
+          "reflection": 0.14285714285714285
+        },
+        "reason": "No history of prior autonomous selections is supplied beyond tick 1, so I distribute evenly rather than invent a bias.",
+        "provenance": "model_forecast"
+      },
+      {
+        "id": "prediction-bf0216fc-0c72-42e1-ad59-846f0921ba7d",
+        "made_at_tick": 3,
+        "target_tick": 4,
+        "probabilities": {
+          "perception": 0.14285714285714285,
+          "intention": 0.14285714285714285,
+          "tension": 0.14285714285714285,
+          "imagination": 0.14285714285714285,
+          "social": 0.14285714285714285,
+          "inquiry": 0.14285714285714285,
+          "reflection": 0.14285714285714285
+        },
+        "reason": "No basis to favour any workspace kind; external contact is not assumed.",
+        "provenance": "model_forecast"
+      }
+    ],
+    "prediction_errors": [
+      {
+        "prediction_id": "prediction-57dca10c-bc0f-4c08-a6d6-02e0927fe436",
+        "tick": 3,
+        "expected": {
+          "perception": 0.14285714285714285,
+          "intention": 0.14285714285714285,
+          "tension": 0.14285714285714285,
+          "imagination": 0.14285714285714285,
+          "social": 0.14285714285714285,
+          "inquiry": 0.14285714285714285,
+          "reflection": 0.14285714285714285
+        },
+        "observed": "perception",
+        "brier": null,
+        "context": "external_interruption_excluded",
+        "evaluated": false
+      }
+    ],
+    "last_trace": {
+      "tick": 3,
+      "mode": "deliberation",
+      "ablation": "none",
+      "focus": {
+        "id": "input-3",
+        "kind": "perception",
+        "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.8193,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.0693,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "retrieved_ids": [
+        "memory-0",
+        "memory-fe180039-c18f-4d48-973b-c2d4db5cb64a"
+      ],
+      "cited_memory_ids": [
+        "memory-0",
+        "memory-fe180039-c18f-4d48-973b-c2d4db5cb64a"
+      ],
+      "observed_event_references": [
+        {
+          "tick": 2,
+          "focus_kind": "perception"
+        }
+      ],
+      "prediction_error": {
+        "prediction_id": "prediction-57dca10c-bc0f-4c08-a6d6-02e0927fe436",
+        "tick": 3,
+        "expected": {
+          "perception": 0.14285714285714285,
+          "intention": 0.14285714285714285,
+          "tension": 0.14285714285714285,
+          "imagination": 0.14285714285714285,
+          "social": 0.14285714285714285,
+          "inquiry": 0.14285714285714285,
+          "reflection": 0.14285714285714285
+        },
+        "observed": "perception",
+        "brier": null,
+        "context": "external_interruption_excluded",
+        "evaluated": false
+      },
+      "intention_changes": [
+        {
+          "id": "intention-d0851da5-cec3-4d86-8993-47530dbdc0f7",
+          "before": {
+            "status": "active",
+            "step": 0,
+            "priority": 0.6
+          },
+          "after": {
+            "status": "active",
+            "step": 0,
+            "priority": 0.6
+          },
+          "reason": "Still no replication supplied; this episode's colour question is unrelated and does not advance it."
+        }
+      ],
+      "memory_id": "memory-bc18541b-690e-49ae-b3be-8dc7edbf28cb",
+      "consumers": [
+        "model_context",
+        "drive_satisfaction",
+        "memory_consolidation",
+        "next_tick_habituation"
+      ],
+      "new_thought_ids": [
+        "thought-5422da1d-72f8-48e8-9ddd-e09a4bf902ea",
+        "thought-0abd1c5f-7454-43d8-96e3-5eeb94965504"
+      ],
+      "broadcast": {
+        "selected_by": "operator_priority",
+        "inputs": [
+          {
+            "id": "input-3",
+            "kind": "perception",
+            "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+            "score": 0.8193,
+            "components": {
+              "salience": 0.35,
+              "need": 0.4,
+              "affect": 0.0693,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "imagination-4629c5c6-4897-4255-9519-329af8b6faec",
+            "kind": "imagination",
+            "title": "The signature that signs itself: Does separating signature from content change any actual decision here?",
+            "score": 0.6838375000000001,
+            "components": {
+              "salience": 0.175,
+              "need": 0.24800000000000005,
+              "affect": 0.2608375,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "open-reverie",
+            "kind": "imagination",
+            "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+            "score": 0.6313375000000001,
+            "components": {
+              "salience": 0.12249999999999998,
+              "need": 0.24800000000000005,
+              "affect": 0.2608375,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "interest-calibration",
+            "kind": "inquiry",
+            "title": "When should a previously trusted source lose authority?",
+            "score": 0.6148000000000001,
+            "components": {
+              "salience": 0.2975,
+              "need": 0.24800000000000005,
+              "affect": 0.0693,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "tension-d4f1adbd-f2f6-4c12-9f10-33e9801ab990",
+            "kind": "tension",
+            "title": "North earned trust through prior calibration / North failed calibration for this exact case",
+            "score": 0.5973,
+            "components": {
+              "salience": 0.21,
+              "need": 0.31800000000000006,
+              "affect": 0.0693,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "thought-2aaeca13-cdfc-4f46-92f5-eb2229cc81d3",
+            "kind": "inquiry",
+            "title": "What standard would make C0 sufficient to permanently demote North?",
+            "score": 0.5623,
+            "components": {
+              "salience": 0.24499999999999997,
+              "need": 0.24800000000000005,
+              "affect": 0.0693,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          }
+        ],
+        "appraisal": {
+          "valence": -0.04000000000000001,
+          "activation": 0.66,
+          "curiosity": 0.6200000000000001,
+          "frustration": 0,
+          "wonder": 0.43524999999999997,
+          "social_warmth": 0.46575,
+          "surprise": 0,
+          "label": "social attention",
+          "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+          "action_bias": "Computed appraisal contributes to the attention bids below.",
+          "provenance": "engine_computed_from_recorded_events",
+          "updated_at": "2026-09-10T10:02:33.506Z"
+        },
+        "expression": {
+          "warmth": 0.6664375,
+          "playfulness": 0.392,
+          "directness": 0.65,
+          "imagery": 0.42410000000000003,
+          "tempo": "unhurried",
+          "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+        },
+        "stance_changes": [
+          {
+            "position_id": "position-25a33594-32a0-480f-95c4-c0a7a836dc53",
+            "proposition": "The circular motif should be blue rather than green",
+            "revision_id": "stance-revision-54f993e2-943c-4f45-8f71-9709b086e208",
+            "episode": 3,
+            "at": "2026-09-10T10:02:40.674Z",
+            "before": null,
+            "after": {
+              "stance": "uncertain",
+              "confidence": 0.5,
+              "origin": "self_derived",
+              "source_id": "deliberation",
+              "reasons_for": [
+                "Blue is one of two positions held by an equally credible observer"
+              ],
+              "reasons_against": [
+                "A0 reports no shared evaluation criterion, so neither colour is warranted",
+                "Equal credibility of opposing observers cancels rather than supports either side"
+              ],
+              "revision_conditions": [
+                "A stated criterion on which both observers could agree or be scored",
+                "Evidence that one observer's judgment is better calibrated for colour tasks"
+              ],
+              "updated_at": "2026-09-10T10:02:40.674Z"
+            },
+            "provenance": "model_proposed_position_update",
+            "source_id": "deliberation"
+          }
+        ]
+      }
+    },
+    "focus_history": [
+      {
+        "id": "input-2",
+        "kind": "perception",
+        "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+        "tick": 2
+      },
+      {
+        "id": "input-3",
+        "kind": "perception",
+        "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+        "tick": 3
+      }
+    ],
+    "last_input": {
+      "message": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+      "outcome": "none"
+    },
+    "self_observation": {
+      "text": "The explicit state supplies A0 as the only evidence for this question and shows no entry bearing on colour judgment. I cannot verify the observers' credibility beyond A0's assertion. Surprise: the workspace ranked a design question above my open calibration tension, which I did not predict.",
+      "tick": 3,
+      "provenance": "model_interpretation_of_explicit_state"
+    }
+  },
+  "pending_initiatives": [],
+  "updated_at": "2026-09-10T10:02:40.674Z"
+}

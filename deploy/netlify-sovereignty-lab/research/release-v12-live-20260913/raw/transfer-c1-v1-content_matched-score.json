@@ -1,0 +1,17 @@
+{
+  "run_id": "transfer-c1-v1-content_matched",
+  "task_id": "c1-v1",
+  "cluster": "scenario_1",
+  "family": "interruption_recovery",
+  "arm": "content_matched",
+  "score": {
+    "valid": true,
+    "correct": 0,
+    "utility": 0,
+    "brier": 0.81,
+    "ambiguity": false,
+    "expected": "option_0",
+    "actual": "option_1"
+  },
+  "error": null
+}

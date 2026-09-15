@@ -1,0 +1,9 @@
+{
+  "id": "c1-full-delayed_transfer",
+  "cluster": 1,
+  "arm": "full",
+  "phase": "delayed_transfer",
+  "status": "not_run",
+  "error": "Provider preflight blocked; no completion attempted",
+  "latency_ms": 1
+}

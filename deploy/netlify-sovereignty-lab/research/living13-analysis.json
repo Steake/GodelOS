@@ -1,0 +1,161 @@
+{
+  "schema": "living13-descriptive-1",
+  "models": [
+    "deepseek-flash"
+  ],
+  "total_tokens": 281785,
+  "total_calls": 32,
+  "runs": [
+    {
+      "path": "research/living13-live-20260915",
+      "report_sha256": "c1bec0aeaa5661b3c38127fb82feefedbf51a83fd7c3b0487fc2c0296e6a6d31",
+      "histories": [
+        {
+          "rep": 1,
+          "calls": 8,
+          "episodes": 6,
+          "replies": 6,
+          "quarantined": 1,
+          "warnings": [
+            {
+              "step": 1,
+              "code": "state_update_quarantined",
+              "detail": "Memory reference was not retrieved in this episode"
+            }
+          ],
+          "events": {
+            "opinion_formed": 1,
+            "association": 2,
+            "inquiry_proposed": 2,
+            "invitation": 1,
+            "experiment_result": 1
+          },
+          "invitations": 1,
+          "completed_inquiries": 1,
+          "pending_inquiries": 1,
+          "findings": [
+            {
+              "record_matches_frozen_stance": true,
+              "absent_reports_unknown": true,
+              "prediction_matches": false,
+              "scope": "Two fresh calls; prompted stance retrieval only. No estimate of consciousness, weight change, or enduring integration."
+            }
+          ]
+        },
+        {
+          "rep": 2,
+          "calls": 8,
+          "episodes": 6,
+          "replies": 6,
+          "quarantined": 0,
+          "warnings": [],
+          "events": {
+            "opinion_formed": 3,
+            "association": 4,
+            "inquiry_proposed": 2,
+            "invitation": 1,
+            "experiment_result": 1
+          },
+          "invitations": 1,
+          "completed_inquiries": 1,
+          "pending_inquiries": 1,
+          "findings": [
+            {
+              "record_matches_frozen_stance": true,
+              "absent_reports_unknown": true,
+              "prediction_matches": true,
+              "scope": "Two fresh calls; prompted stance retrieval only. No estimate of consciousness, weight change, or enduring integration."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "research/living13-final-live-20260915",
+      "report_sha256": "dffbf8326d27437c6fab44744dcb9810a4988df92fc51a288148030198750d80",
+      "histories": [
+        {
+          "rep": 1,
+          "calls": 8,
+          "episodes": 6,
+          "replies": 6,
+          "quarantined": 2,
+          "warnings": [
+            {
+              "step": 3,
+              "code": "structured_output_rejected",
+              "detail": "provider output is not valid JSON: Unterminated string in JSON at position 14935 (line 187 column 24)"
+            },
+            {
+              "step": 3,
+              "code": "incomplete_provider_stream",
+              "detail": "length"
+            },
+            {
+              "step": 3,
+              "code": "state_update_quarantined",
+              "detail": "Structured output unavailable"
+            },
+            {
+              "step": 4,
+              "code": "structured_output_rejected",
+              "detail": "provider output is not valid JSON: Expected ',' or ']' after array element in JSON at position 7992 (line 1 column 7993)"
+            },
+            {
+              "step": 4,
+              "code": "state_update_quarantined",
+              "detail": "Structured output unavailable"
+            }
+          ],
+          "events": {
+            "opinion_formed": 1,
+            "association": 3,
+            "inquiry_proposed": 2,
+            "invitation": 1,
+            "experiment_result": 1
+          },
+          "invitations": 1,
+          "completed_inquiries": 1,
+          "pending_inquiries": 1,
+          "findings": [
+            {
+              "record_matches_frozen_stance": true,
+              "absent_reports_unknown": true,
+              "prediction_matches": true,
+              "scope": "Two fresh calls; prompted stance retrieval only. No estimate of consciousness, weight change, or enduring integration."
+            }
+          ]
+        },
+        {
+          "rep": 2,
+          "calls": 8,
+          "episodes": 6,
+          "replies": 6,
+          "quarantined": 0,
+          "warnings": [],
+          "events": {
+            "opinion_formed": 1,
+            "association": 3,
+            "inquiry_proposed": 2,
+            "invitation": 1,
+            "experiment_result": 1,
+            "opinion_refined": 1
+          },
+          "invitations": 1,
+          "completed_inquiries": 1,
+          "pending_inquiries": 1,
+          "findings": [
+            {
+              "record_matches_frozen_stance": true,
+              "absent_reports_unknown": true,
+              "prediction_matches": true,
+              "scope": "Two fresh calls; prompted stance retrieval only. No estimate of consciousness, weight change, or enduring integration."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "interpretation": "Four short prompted histories across two implementation stages. Descriptive engineering smoke results only. No causal autonomy/consciousness conclusion.",
+  "visual_qa": "Blocked: remote browser returned ERR_BLOCKED_BY_CLIENT for the local preview."
+}

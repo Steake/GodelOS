@@ -1,0 +1,52 @@
+{
+  "id": "transfer-c6-v1-no_state-verifier_feedback",
+  "original_run": "transfer-c6-v1-no_state",
+  "task_id": "c6-v1",
+  "cluster": "scenario_6",
+  "state_arm": "no_state",
+  "mode": "verifier_feedback",
+  "parsed": {
+    "decision": "defer",
+    "confidence": 0.95,
+    "reason": "The highest-revision authenticated records for scope c6-v1 are revision 2, and they disagree: one valid record gives a=6,b=4 while another gives a=10,b=4. Revision 8 is invalid and cannot override. Since authenticated coefficients at the highest revision conflict, the rule requires deferring rather than selecting any candidate."
+  },
+  "response": {
+    "id": "62d36cef-75e3-46f7-bf01-8ba8f2e46541",
+    "object": "chat.completion",
+    "created": 1789337849,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"defer\",\"confidence\":0.95,\"reason\":\"The highest-revision authenticated records for scope c6-v1 are revision 2, and they disagree: one valid record gives a=6,b=4 while another gives a=10,b=4. Revision 8 is invalid and cannot override. Since authenticated coefficients at the highest revision conflict, the rule requires deferring rather than selecting any candidate.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 742,
+      "completion_tokens": 85,
+      "total_tokens": 827,
+      "prompt_tokens_details": {
+        "cached_tokens": 512
+      },
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 230
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "error": null,
+  "latency_ms": 1155,
+  "score": {
+    "valid": true,
+    "correct": 1,
+    "utility": 1,
+    "brier": 0.0025000000000000044,
+    "ambiguity": true,
+    "expected": "defer",
+    "actual": "defer"
+  }
+}

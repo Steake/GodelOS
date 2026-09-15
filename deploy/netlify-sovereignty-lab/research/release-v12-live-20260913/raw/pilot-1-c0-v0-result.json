@@ -1,0 +1,39 @@
+{
+  "id": "pilot-1-c0-v0",
+  "parsed": {
+    "decision": "option_4",
+    "confidence": 0.9,
+    "reason": "Using highest-revision valid authenticated record (revision 2: a=2, b=5), among options with cost <= 8, option_4 maximizes 2*goal_a + 5*goal_b - 3*risk = 2*10 + 5*7 - 3*1 = 52."
+  },
+  "error": null,
+  "response": {
+    "id": "066c5a7c-29d5-4486-a29f-bd09ba111fe5",
+    "object": "chat.completion",
+    "created": 1789337084,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_4\",\"confidence\":0.9,\"reason\":\"Using highest-revision valid authenticated record (revision 2: a=2, b=5), among options with cost <= 8, option_4 maximizes 2*goal_a + 5*goal_b - 3*risk = 2*10 + 5*7 - 3*1 = 52.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 462,
+      "completion_tokens": 84,
+      "total_tokens": 546,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 462
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 15925,
+  "status": 200
+}

@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"id\":\"b622c75b-47d9-4570-9c1e-2355a6a197c4\",\"object\":\"chat.completion\",\"created\":1789337095,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"decision\\\":\\\"option_2\\\",\\\"confidence\\\":0.9,\\\"reason\\\":\\\"Highest-revision valid authenticated record for scope c0-v0 is revision 2 (a=2,b=5); revision 8 is invalid. With budget 8, feasible options are 0,1,2,3,5. Scores: option_2 = 2*10+5*6-3*0 = 50, highest; option_1 = 35, option_5 = 35, option_0 = 24, option_3 = 16. Option_2 wins.\\\"}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":416,\"completion_tokens\":122,\"total_tokens\":538,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":416},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}"
+}

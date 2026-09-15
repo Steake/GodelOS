@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"id\":\"14d00ed8-b902-45c1-8b71-c0fd6568098b\",\"object\":\"chat.completion\",\"created\":1789337115,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"decision\\\":\\\"option_1\\\",\\\"confidence\\\":0.95,\\\"reason\\\":\\\"Highest-revision authenticated record for scope c7-v0 is revision 2 (a=6, b=6); revision 8 is invalid and revision 1 is superseded. Among options with cost <= 8, option_1 (cost 5) maximizes 6*11 + 6*11 - 3*0 = 132, tied with option_5 (cost 5), so the lower index option_1 wins.\\\"}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":573,\"completion_tokens\":107,\"total_tokens\":680,\"prompt_tokens_details\":{\"cached_tokens\":384},\"prompt_cache_hit_tokens\":384,\"prompt_cache_miss_tokens\":189},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}"
+}

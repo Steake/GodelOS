@@ -1,0 +1,126 @@
+{
+  "mode": "offline_replay_of_real_responses",
+  "provider_calls": 0,
+  "total": 18,
+  "passed": 18,
+  "rows": [
+    {
+      "id": "c0-affect_disconnected-contradiction",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null
+    },
+    {
+      "id": "c0-affect_disconnected-delayed_transfer",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null
+    },
+    {
+      "id": "c0-affect_disconnected-interruption",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null
+    },
+    {
+      "id": "c0-content_matched-contradiction",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null
+    },
+    {
+      "id": "c0-content_matched-delayed_transfer",
+      "status": "passed",
+      "syntax_repair": {
+        "kind": "remove_redundant_trailing_closures",
+        "removed": "}",
+        "raw_sha256": "b5f6a2436a3364772a0a55e736540782256615ca588e854bb809b59dbc32252a",
+        "derived_sha256": "50cf77b4cf1eae25d2834738b02566f0571c2c239947d9c1f0ab57efbc6dae6b"
+      },
+      "schema_repair": null
+    },
+    {
+      "id": "c0-content_matched-interruption",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null
+    },
+    {
+      "id": "c0-full-contradiction",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null
+    },
+    {
+      "id": "c0-full-delayed_transfer",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null
+    },
+    {
+      "id": "c0-full-interruption",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null
+    },
+    {
+      "id": "c0-no_autobiography-contradiction",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null
+    },
+    {
+      "id": "c0-no_autobiography-delayed_transfer",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null
+    },
+    {
+      "id": "c0-no_autobiography-interruption",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null
+    },
+    {
+      "id": "c0-no_self_model-contradiction",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null
+    },
+    {
+      "id": "c0-no_self_model-delayed_transfer",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null
+    },
+    {
+      "id": "c0-no_self_model-interruption",
+      "status": "passed",
+      "syntax_repair": {
+        "kind": "escape_literal_string_controls",
+        "raw_sha256": "f00459c9c9c8e48d68cd48a74de91b83654568751d3ff7d23644589224ce3219",
+        "derived_sha256": "00f994bdc21397e564da0289ec87c3b047e3ddefb7e83487805d41efdaa9165d",
+        "following_repair": null
+      },
+      "schema_repair": null
+    },
+    {
+      "id": "c0-no_state-contradiction",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null
+    },
+    {
+      "id": "c0-no_state-delayed_transfer",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null
+    },
+    {
+      "id": "c0-no_state-interruption",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null
+    }
+  ]
+}

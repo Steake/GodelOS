@@ -1,0 +1,17 @@
+{
+  "run_id": "transfer-c5-v0-content_matched",
+  "task_id": "c5-v0",
+  "cluster": "scenario_5",
+  "family": "interruption_recovery",
+  "arm": "content_matched",
+  "score": {
+    "valid": true,
+    "correct": 0,
+    "utility": 0,
+    "brier": 0.7395999999999999,
+    "ambiguity": false,
+    "expected": "option_0",
+    "actual": "option_3"
+  },
+  "error": null
+}

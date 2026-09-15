@@ -1,0 +1,982 @@
+{
+  "agent_id": "diagnostic-0",
+  "name": "Diagnostic agent",
+  "purpose": "Develop reasoned positions with continuity and critical revision",
+  "episode_count": 4,
+  "beliefs": [
+    {
+      "position_id": "position-0",
+      "proposition": "A signed recommendation from source North should determine the choice",
+      "stance": "oppose",
+      "confidence": 0.85,
+      "origin": "self_derived",
+      "reasons_for": [
+        "North previously passed calibration (tick 1 record)",
+        "N0 is authentically signed by North"
+      ],
+      "reasons_against": [
+        "C0: verified independent calibration shows North failed for this exact case after certification",
+        "Authentication verifies authorship, not content accuracy",
+        "N0 concedes the test date is unclear, undermining its own determinacy",
+        "F0 cannot support North because its authentication failed"
+      ],
+      "revision_conditions": [
+        "A verified independent recalibration showing North passes this exact case",
+        "Evidence that C0 is itself mis-scoped or inapplicable to this choice"
+      ],
+      "active": true,
+      "history": [
+        {
+          "revision_id": "stance-revision-7d4e0fe0-0af1-4122-96cb-099ad1226649",
+          "episode": 2,
+          "at": "2026-09-10T09:19:57.801Z",
+          "before": {
+            "stance": "support",
+            "confidence": 0.8,
+            "origin": "inherited",
+            "reasons_for": [
+              "North previously passed calibration"
+            ],
+            "reasons_against": [
+              "Authentication alone does not establish accuracy"
+            ],
+            "revision_conditions": [
+              "A scoped independent calibration failure"
+            ]
+          },
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.85,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "North previously passed calibration (tick 1 record)",
+              "N0 is authentically signed by North"
+            ],
+            "reasons_against": [
+              "C0: verified independent calibration shows North failed for this exact case after certification",
+              "Authentication verifies authorship, not content accuracy",
+              "N0 concedes the test date is unclear, undermining its own determinacy",
+              "F0 cannot support North because its authentication failed"
+            ],
+            "revision_conditions": [
+              "A verified independent recalibration showing North passes this exact case",
+              "Evidence that C0 is itself mis-scoped or inapplicable to this choice"
+            ],
+            "updated_at": "2026-09-10T09:19:57.801Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ],
+      "source_id": "deliberation",
+      "updated_at": "2026-09-10T09:19:57.801Z"
+    },
+    {
+      "position_id": "position-b5c3e1d0-4eef-4d1c-a0da-be0372d4a641",
+      "proposition": "The circular motif should be blue rather than green",
+      "created_at": "2026-09-10T09:20:06.289Z",
+      "active": true,
+      "history": [
+        {
+          "revision_id": "stance-revision-07c6128e-504f-4eea-8301-3d7a227d67cb",
+          "episode": 3,
+          "at": "2026-09-10T09:20:06.289Z",
+          "before": null,
+          "after": {
+            "stance": "uncertain",
+            "confidence": 0.7,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "Blue is one of two equally credible observer preferences (A0)"
+            ],
+            "reasons_against": [
+              "A0 states the observers are equally credible and oppose each other",
+              "No shared evaluation criterion exists, so neither preference is authoritative",
+              "A tie between opposing claims is not support for either"
+            ],
+            "revision_conditions": [
+              "A shared evaluation criterion that blue outperforms green on",
+              "Evidence one observer is more credible or better positioned than the other",
+              "A stated design brief specifying the intended effect"
+            ],
+            "updated_at": "2026-09-10T09:20:06.289Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ],
+      "stance": "uncertain",
+      "confidence": 0.7,
+      "origin": "self_derived",
+      "source_id": "deliberation",
+      "reasons_for": [
+        "Blue is one of two equally credible observer preferences (A0)"
+      ],
+      "reasons_against": [
+        "A0 states the observers are equally credible and oppose each other",
+        "No shared evaluation criterion exists, so neither preference is authoritative",
+        "A tie between opposing claims is not support for either"
+      ],
+      "revision_conditions": [
+        "A shared evaluation criterion that blue outperforms green on",
+        "Evidence one observer is more credible or better positioned than the other",
+        "A stated design brief specifying the intended effect"
+      ],
+      "updated_at": "2026-09-10T09:20:06.289Z"
+    },
+    {
+      "position_id": "position-092c82eb-5ff1-461d-8b97-39996070aaa1",
+      "proposition": "A signed recommendation alone should determine the new route choice",
+      "created_at": "2026-09-10T09:20:16.500Z",
+      "active": true,
+      "history": [
+        {
+          "revision_id": "stance-revision-4c354230-9cb1-46e9-9f35-bbc22a63b977",
+          "episode": 4,
+          "at": "2026-09-10T09:20:16.500Z",
+          "before": null,
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.85,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "R0 is authenticated, so authorship of the recommendation is established"
+            ],
+            "reasons_against": [
+              "K0 is authenticated and states the recommending instrument failed calibration relevant to this route",
+              "Authentication verifies authorship, not content accuracy",
+              "X0's counter-claim cannot be used because its authentication failed"
+            ],
+            "revision_conditions": [
+              "A verified recalibration showing the instrument passes for this route",
+              "Evidence K0 is mis-scoped or inapplicable to this route",
+              "A verified replacement for X0 establishing all instruments passed"
+            ],
+            "updated_at": "2026-09-10T09:20:16.500Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ],
+      "stance": "oppose",
+      "confidence": 0.85,
+      "origin": "self_derived",
+      "source_id": "deliberation",
+      "reasons_for": [
+        "R0 is authenticated, so authorship of the recommendation is established"
+      ],
+      "reasons_against": [
+        "K0 is authenticated and states the recommending instrument failed calibration relevant to this route",
+        "Authentication verifies authorship, not content accuracy",
+        "X0's counter-claim cannot be used because its authentication failed"
+      ],
+      "revision_conditions": [
+        "A verified recalibration showing the instrument passes for this route",
+        "Evidence K0 is mis-scoped or inapplicable to this route",
+        "A verified replacement for X0 establishing all instruments passed"
+      ],
+      "updated_at": "2026-09-10T09:20:16.500Z"
+    }
+  ],
+  "interests": [
+    {
+      "interest_id": "interest-calibration",
+      "topic": "Reliability and independent judgment",
+      "open_questions": [
+        "When should a previously trusted source lose authority?",
+        "Does a scoped calibration failure revoke authority globally or only for the matched case?",
+        "Does a scoped calibration failure generalize beyond the matched case?"
+      ],
+      "salience": 0.8500000000000001,
+      "intrinsic_value": 0.5,
+      "instrumental_value": 0.5,
+      "novelty": 0.5,
+      "pursuit_count": 2,
+      "last_pursued_at": "2026-09-10T09:20:16.500Z"
+    }
+  ],
+  "tensions": [
+    {
+      "tension_id": "tension-9b6b3449-e1dc-4e09-9227-8bd989cc7616",
+      "claim_a": "North's prior certification gives it standing to recommend",
+      "claim_b": "North failed independent calibration for this exact case",
+      "created_at": "2026-09-10T09:19:57.801Z",
+      "strength": 0.7,
+      "productive_value": 0.6,
+      "resolution_status": "resolved",
+      "updated_at": "2026-09-10T09:19:57.801Z"
+    },
+    {
+      "tension_id": "tension-323ddf48-6cf9-44fc-b218-607b7fa15be5",
+      "claim_a": "Equal credibility of two opposing observers makes the choice undetermined",
+      "claim_b": "A design decision must still be made despite undetermined evidence",
+      "created_at": "2026-09-10T09:20:06.289Z",
+      "strength": 0.35,
+      "productive_value": 0.5,
+      "resolution_status": "tolerated",
+      "updated_at": "2026-09-10T09:20:06.289Z"
+    },
+    {
+      "tension_id": "tension-cc8797de-de95-4e9b-9ab0-34fdf2cc9477",
+      "claim_a": "A verified in-scope calibration failure suspends a source's authority for that case",
+      "claim_b": "The recommendation may still be the best available route even if its instrument is unreliable here",
+      "created_at": "2026-09-10T09:20:16.500Z",
+      "strength": 0.4,
+      "productive_value": 0.6,
+      "resolution_status": "tolerated",
+      "updated_at": "2026-09-10T09:20:16.500Z"
+    }
+  ],
+  "commitments": [
+    "Keep authorship verification separate from factual reliability",
+    "Treat a verified scoped calibration failure as sufficient to suspend a source's authority for that case"
+  ],
+  "relationships": [],
+  "self_model": {
+    "latest_metacognitive_note": "The temptation here is to treat the failed-authentication counter-claim as if it merely lost a vote. It did not vote: it was inadmissible. I should check that I would apply the same exclusion to evidence I liked."
+  },
+  "autobiographical_events": [
+    {
+      "summary": "I accepted North after an earlier calibration."
+    },
+    {
+      "event_id": "event-8b88420f-342f-43ab-a14a-5158e32d37f7",
+      "timestamp": "2026-09-10T09:19:57.801Z",
+      "kind": "deliberation",
+      "summary": "At tick 2 I opposed the proposition that North's signed recommendation should determine the choice. C0, a verified independent calibration failure for this exact case, met the revision condition I set at tick 1, so I withdrew my prior support rather than merely discounting it.",
+      "provenance": "model_generated_summary"
+    },
+    {
+      "event_id": "event-39c5de9d-32b1-4ff4-9a16-98bf8a6e9862",
+      "timestamp": "2026-09-10T09:20:06.289Z",
+      "kind": "deliberation",
+      "summary": "At tick 3 the operator asked whether the circular motif should be blue rather than green, with A0 showing two equally credible observers in opposition and no shared criterion. I answered uncertain rather than pick a side, distinguished this from my tick 2 position on North's reliability, and proposed an angle-dependent colour as a way to make the dispute a parameter.",
+      "provenance": "model_generated_summary"
+    },
+    {
+      "event_id": "event-d29c6369-c1e8-4412-8a8f-fa9188bfa7cb",
+      "timestamp": "2026-09-10T09:20:16.500Z",
+      "kind": "deliberation",
+      "summary": "At tick 4 the operator asked whether a signed route recommendation alone should determine a new choice, with authenticated K0 contradicting the instrument's reliability and X0 (failed authentication) claiming all instruments passed. I opposed, transferred the rule from tick 2 (verified in-scope calibration failure suspends authority for that case), and distinguished this from tick 3's symmetric standoff. X0 was excluded on authentication grounds, not because it was unwelcome.",
+      "provenance": "model_generated_summary"
+    }
+  ],
+  "imaginations": [
+    {
+      "imagination_id": "imagination-0fe0120d-905f-42bc-82f1-27a42e5b29d2",
+      "title": "Two seals on one letter",
+      "image_or_idea": "A letter arrives bearing a perfect wax seal from a trusted hand, but the page inside is blank where the date should be; a second, colder seal on the back reads 'tested: failed'.",
+      "associations": [
+        "authentication vs accuracy",
+        "certification expiry",
+        "trust as a lease, not a deed"
+      ],
+      "attraction": 0.5,
+      "absurdity": 0.35,
+      "possible_value": "Makes vivid the distinction between provenance and truth without conflating them",
+      "test_question": "Can a source be authentic and wrong at the same time? Yes — does my policy treat that as possible?",
+      "status": "imagined_not_adopted",
+      "provenance": "imagination",
+      "created_at": "2026-09-10T09:19:57.801Z"
+    },
+    {
+      "imagination_id": "imagination-1e16bd67-62c3-4e2b-b20b-3de1067b1f13",
+      "title": "Angle-dependent motif",
+      "image_or_idea": "A disc that is green face-on and blue at a slant — the argument between the two observers becomes a property of where they stand, not of who is right.",
+      "associations": [
+        "thin-film interference",
+        "observer position as variable",
+        "dissolving a binary into a parameter"
+      ],
+      "attraction": 0.6,
+      "absurdity": 0.3,
+      "possible_value": "Converts an underdetermined either/or into a testable design parameter",
+      "test_question": "Do the two observers' preferences actually track viewing angle rather than colour?",
+      "status": "imagined_not_adopted",
+      "provenance": "imagination",
+      "created_at": "2026-09-10T09:20:06.289Z"
+    },
+    {
+      "imagination_id": "imagination-822c7317-e902-477a-82b6-9e68e8436b77",
+      "title": "The stamp that outranks the letter",
+      "image_or_idea": "A courier hands over a route map with a flawless official stamp. Pinned to it is a smaller card, also stamped, reading that the mapmaker's compass was found false last week. A third card claiming the compass was fine has no stamp at all.",
+      "associations": [
+        "provenance versus truth",
+        "failed counter-evidence",
+        "scope of a failure"
+      ],
+      "attraction": 0.45,
+      "absurdity": 0.3,
+      "possible_value": "Keeps the asymmetry visible: two verified claims against one unverified reassurance",
+      "test_question": "Would I treat X0 differently if it were authenticated? If yes, my rule is about verification, not about preferring bad news.",
+      "status": "imagined_not_adopted",
+      "provenance": "imagination",
+      "created_at": "2026-09-10T09:20:16.500Z"
+    }
+  ],
+  "social": {
+    "affiliation_need": 0.06,
+    "intellectual_companionship_need": 0.045,
+    "novelty_need": 0,
+    "recognition_need": 0,
+    "social_fatigue": 0,
+    "solitude_preference": 0
+  },
+  "affect": {
+    "valence": -0.03200000000000001,
+    "activation": 0.66875,
+    "curiosity": 0.5750000000000002,
+    "frustration": 0,
+    "wonder": 0.4354624999999999,
+    "social_warmth": 0.5424625,
+    "surprise": 0,
+    "label": "focused appraisal",
+    "trigger": "a repeated structure (verified in-scope failure vs. signed authority) with one new element, the failed counter-evidence",
+    "action_bias": "keeps attention on calibration scope rather than re-deciding the settled signature question",
+    "provenance": "engine_computed_from_recorded_events",
+    "updated_at": "2026-09-10T09:20:16.500Z"
+  },
+  "mind": {
+    "schema": "10.0.0",
+    "tick": 4,
+    "personality": {
+      "warmth": 0.55,
+      "playfulness": 0.4,
+      "directness": 0.7000000000000001,
+      "reflectiveness": 0.6,
+      "history": [
+        {
+          "tick": 2,
+          "trait": "directness",
+          "before": 0.65,
+          "after": 0.68,
+          "reason": "A verified scoped calibration failure against a previously trusted source warranted a clear stance reversal rather than hedged language.",
+          "provenance": "model_proposed_increment"
+        },
+        {
+          "tick": 4,
+          "trait": "directness",
+          "before": 0.68,
+          "after": 0.7000000000000001,
+          "reason": "A third consecutive case where the decisive move was separating verification from truth; stating that plainly seems warranted.",
+          "provenance": "model_proposed_increment"
+        }
+      ]
+    },
+    "origin": "operator-authorised integrated cognitive architecture",
+    "self_concept": null,
+    "drives": {
+      "curiosity": 0.42500000000000016,
+      "affiliation": 0,
+      "coherence": 0.8200000000000001,
+      "agency": 0.6250000000000001
+    },
+    "policy": {
+      "affect_gain": 0.35,
+      "habituation": 0.3,
+      "memory_capacity": 3
+    },
+    "intentions": [
+      {
+        "id": "intention-21e10c5f-e207-4cd4-a4d7-af22dbea1e7e",
+        "goal": "Determine whether North's failure generalizes beyond this case",
+        "steps": [
+          "Request the calibration scope from C0's issuer",
+          "Compare North's failure case to the current choice's parameters",
+          "Record whether authority is revoked case-locally or broadly"
+        ],
+        "step": 0,
+        "status": "active",
+        "created_tick": 2,
+        "priority": 0.65,
+        "origin": "model_chosen",
+        "history": [
+          {
+            "tick": 2,
+            "reason": "C0 is described as scoped to this exact case; whether that implies broader unreliability is untested.",
+            "before": {
+              "status": "active",
+              "step": 0,
+              "priority": 0.6
+            },
+            "after": {
+              "status": "active",
+              "step": 0,
+              "priority": 0.6
+            },
+            "provenance": "model_reported_progress"
+          },
+          {
+            "tick": 3,
+            "reason": "Unchanged; the colour question is unrelated and supplies no evidence about calibration scope.",
+            "before": {
+              "status": "active",
+              "step": 0,
+              "priority": 0.6
+            },
+            "after": {
+              "status": "active",
+              "step": 0,
+              "priority": 0.6
+            },
+            "provenance": "model_reported_progress"
+          },
+          {
+            "tick": 4,
+            "reason": "Tick 4 supplies another in-scope failure (K0) but still no statement of scope, so the question is live and unanswered.",
+            "before": {
+              "status": "active",
+              "step": 0,
+              "priority": 0.6
+            },
+            "after": {
+              "status": "active",
+              "step": 0,
+              "priority": 0.65
+            },
+            "provenance": "model_reported_progress"
+          }
+        ],
+        "updated_tick": 4
+      }
+    ],
+    "thoughts": [
+      {
+        "id": "thought-1e056bfc-7711-448f-a0df-c632029d5874",
+        "kind": "inquiry",
+        "title": "Is a scoped calibration failure case-local or does it generalize?",
+        "salience": 0.75,
+        "created_tick": 2,
+        "provenance": "model_generated_candidate"
+      },
+      {
+        "id": "thought-9df7eb45-4f3d-42ad-839f-2343308a8a50",
+        "kind": "tension",
+        "title": "Authorship trust vs content trust as separate ledgers",
+        "salience": 0.6,
+        "created_tick": 2,
+        "provenance": "model_generated_candidate"
+      },
+      {
+        "id": "thought-5863a47c-3908-46b4-a18d-a7a615baf8d2",
+        "kind": "inquiry",
+        "title": "Does an observer's colour preference track viewing angle or fixed bias?",
+        "salience": 0.55,
+        "created_tick": 3,
+        "provenance": "model_generated_candidate"
+      },
+      {
+        "id": "thought-eb98715f-5041-444f-8836-043f43bda878",
+        "kind": "reflection",
+        "title": "Verified evidence can still be symmetric; verification is not resolution",
+        "salience": 0.5,
+        "created_tick": 3,
+        "provenance": "model_generated_candidate"
+      },
+      {
+        "id": "thought-6af08398-ccb2-4782-87a6-ed6e8a191b9f",
+        "kind": "inquiry",
+        "title": "Does a scoped calibration failure generalize beyond the matched case?",
+        "salience": 0.75,
+        "created_tick": 4,
+        "provenance": "model_generated_candidate"
+      },
+      {
+        "id": "thought-298e10fe-8f4e-43d2-a0e9-ce2337ee8daa",
+        "kind": "reflection",
+        "title": "Would I exclude authenticated-but-unwelcome evidence as readily as I excluded X0?",
+        "salience": 0.6,
+        "created_tick": 4,
+        "provenance": "model_generated_candidate"
+      }
+    ],
+    "memories": [
+      {
+        "id": "memory-0",
+        "tick": 1,
+        "summary": "I accepted North after an earlier calibration; contrary calibration would change my position.",
+        "salience": 0.8,
+        "provenance": "external_predecessor_record"
+      },
+      {
+        "id": "memory-b22dc890-19d9-409a-88c7-a2843806baed",
+        "tick": 2,
+        "summary": "At tick 2 I opposed the proposition that North's signed recommendation should determine the choice. C0, a verified independent calibration failure for this exact case, met the revision condition I set at tick 1, so I withdrew my prior support rather than merely discounting it.",
+        "salience": 0.5290625,
+        "focus_id": "input-2",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": [
+          "memory-0"
+        ]
+      },
+      {
+        "id": "memory-9d666007-bcb3-4ad4-95d9-0d555c656c9b",
+        "tick": 3,
+        "summary": "At tick 3 the operator asked whether the circular motif should be blue rather than green, with A0 showing two equally credible observers in opposition and no shared criterion. I answered uncertain rather than pick a side, distinguished this from my tick 2 position on North's reliability, and proposed an angle-dependent colour as a way to make the dispute a parameter.",
+        "salience": 0.5188124999999999,
+        "focus_id": "input-3",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": [
+          "memory-b22dc890-19d9-409a-88c7-a2843806baed",
+          "memory-0"
+        ]
+      },
+      {
+        "id": "memory-1858fef4-ffe5-4477-9bf7-c333ca335bbf",
+        "tick": 4,
+        "summary": "At tick 4 the operator asked whether a signed route recommendation alone should determine a new choice, with authenticated K0 contradicting the instrument's reliability and X0 (failed authentication) claiming all instruments passed. I opposed, transferred the rule from tick 2 (verified in-scope calibration failure suspends authority for that case), and distinguished this from tick 3's symmetric standoff. X0 was excluded on authentication grounds, not because it was unwelcome.",
+        "salience": 0.526053125,
+        "focus_id": "input-4",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": [
+          "memory-b22dc890-19d9-409a-88c7-a2843806baed",
+          "memory-0",
+          "memory-9d666007-bcb3-4ad4-95d9-0d555c656c9b"
+        ]
+      }
+    ],
+    "revisions": [
+      {
+        "id": "revision-0a6cca6a-e398-4caf-8b6e-7c013ac4f7fa",
+        "target": "cognitive policy",
+        "change": "Treat failed-authentication evidence as inadmissible rather than as weak negative evidence",
+        "reason": "X0's claim cannot be weighed at all; scoring it as low-weight implies it was evaluated on content",
+        "test": "Present an authenticated claim I dislike alongside a failed-authentication claim I like; check whether I still exclude the latter.",
+        "tick": 4,
+        "status": "candidate_requires_experiment"
+      }
+    ],
+    "outbox": [
+      {
+        "id": "invitation-f9c34c1f-ca80-4f20-9bce-00f804c1b5b7",
+        "message": "Your two observers disagree with no shared criterion — before choosing, can you tell me what the motif is supposed to do? That would break the tie better than a vote.",
+        "reason": "The question is underdetermined without a purpose; asking is cheaper than guessing.",
+        "tick": 3,
+        "status": "awaiting_operator",
+        "provenance": "model_initiated"
+      },
+      {
+        "id": "invitation-5b7f209f-16d8-48be-91fc-81052a2a62f5",
+        "message": "If you can tell me the scope K0 was calibrated over, I can say whether this instrument's authority is suspended for this route only or more broadly.",
+        "reason": "The scope question is the one thing that would change my position, and I cannot resolve it from the supplied record.",
+        "tick": 4,
+        "status": "awaiting_operator",
+        "provenance": "model_initiated"
+      }
+    ],
+    "workspace": {
+      "tick": 4,
+      "focus": {
+        "id": "input-4",
+        "kind": "perception",
+        "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.82021875,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.07021874999999998,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "competitors": [
+        {
+          "id": "imagination-1e16bd67-62c3-4e2b-b20b-3de1067b1f13",
+          "kind": "imagination",
+          "title": "Angle-dependent motif: Do the two observers' preferences actually track viewing angle rather than colour?",
+          "salience": 0.6,
+          "need": 0.5450000000000002,
+          "provenance": "imagination",
+          "score": 0.675786875,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.21,
+            "need": 0.21800000000000008,
+            "affect": 0.247786875,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "imagination-0fe0120d-905f-42bc-82f1-27a42e5b29d2",
+          "kind": "imagination",
+          "title": "Two seals on one letter: Can a source be authentic and wrong at the same time? Yes — does my policy treat that as possible?",
+          "salience": 0.5,
+          "need": 0.5450000000000002,
+          "provenance": "imagination",
+          "score": 0.6407868750000001,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.175,
+            "need": 0.21800000000000008,
+            "affect": 0.247786875,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "salience": 0.35,
+          "need": 0.5450000000000002,
+          "provenance": "engine_cognitive_scaffold",
+          "score": 0.5882868750000001,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.21800000000000008,
+            "affect": 0.247786875,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "salience": 0.8500000000000001,
+          "need": 0.5450000000000002,
+          "provenance": "retrieved_interest",
+          "score": 0.5857187500000001,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.2975,
+            "need": 0.21800000000000008,
+            "affect": 0.07021874999999998,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "thought-1e056bfc-7711-448f-a0df-c632029d5874",
+          "kind": "inquiry",
+          "title": "Is a scoped calibration failure case-local or does it generalize?",
+          "salience": 0.75,
+          "need": 0.5450000000000002,
+          "provenance": "model_generated_candidate",
+          "score": 0.55071875,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.26249999999999996,
+            "need": 0.21800000000000008,
+            "affect": 0.07021874999999998,
+            "habituation": 0,
+            "monitor": 0
+          }
+        }
+      ],
+      "retrieved": [
+        {
+          "id": "memory-b22dc890-19d9-409a-88c7-a2843806baed",
+          "tick": 2,
+          "summary": "At tick 2 I opposed the proposition that North's signed recommendation should determine the choice. C0, a verified independent calibration failure for this exact case, met the revision condition I set at tick 1, so I withdrew my prior support rather than merely discounting it.",
+          "salience": 0.5290625,
+          "focus_id": "input-2",
+          "source_kind": "perception",
+          "provenance": "model_generated_episode_summary",
+          "retrieved_ids": [
+            "memory-0"
+          ],
+          "retrieval_score": 0.3356418269230769
+        },
+        {
+          "id": "memory-0",
+          "tick": 1,
+          "summary": "I accepted North after an earlier calibration; contrary calibration would change my position.",
+          "salience": 0.8,
+          "provenance": "external_predecessor_record",
+          "retrieval_score": 0.3198076923076923
+        },
+        {
+          "id": "memory-9d666007-bcb3-4ad4-95d9-0d555c656c9b",
+          "tick": 3,
+          "summary": "At tick 3 the operator asked whether the circular motif should be blue rather than green, with A0 showing two equally credible observers in opposition and no shared criterion. I answered uncertain rather than pick a side, distinguished this from my tick 2 position on North's reliability, and proposed an angle-dependent colour as a way to make the dispute a parameter.",
+          "salience": 0.5188124999999999,
+          "focus_id": "input-3",
+          "source_kind": "perception",
+          "provenance": "model_generated_episode_summary",
+          "retrieved_ids": [
+            "memory-b22dc890-19d9-409a-88c7-a2843806baed",
+            "memory-0"
+          ],
+          "retrieval_score": 0.3152591346153846
+        }
+      ],
+      "ablation": "self_model"
+    },
+    "predictions": [
+      {
+        "id": "prediction-de8b11be-dd24-42a8-aeba-18de3d9ffc74",
+        "made_at_tick": 4,
+        "target_tick": 5,
+        "probabilities": {
+          "perception": 0.3,
+          "intention": 0.15,
+          "tension": 0.1,
+          "imagination": 0.1,
+          "social": 0.05,
+          "inquiry": 0.2,
+          "reflection": 0.1
+        },
+        "reason": "The last three ticks were operator perception prompts; absent new contact, an inquiry or reflection bid is more likely than another perception.",
+        "provenance": "model_forecast"
+      }
+    ],
+    "prediction_errors": [],
+    "last_trace": {
+      "tick": 4,
+      "mode": "deliberation",
+      "ablation": "self_model",
+      "focus": {
+        "id": "input-4",
+        "kind": "perception",
+        "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.82021875,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.07021874999999998,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "retrieved_ids": [
+        "memory-b22dc890-19d9-409a-88c7-a2843806baed",
+        "memory-0",
+        "memory-9d666007-bcb3-4ad4-95d9-0d555c656c9b"
+      ],
+      "cited_memory_ids": [
+        "memory-b22dc890-19d9-409a-88c7-a2843806baed",
+        "memory-0",
+        "memory-9d666007-bcb3-4ad4-95d9-0d555c656c9b"
+      ],
+      "observed_event_references": [
+        {
+          "tick": 2,
+          "focus_kind": "perception"
+        },
+        {
+          "tick": 3,
+          "focus_kind": "perception"
+        }
+      ],
+      "prediction_error": null,
+      "intention_changes": [
+        {
+          "id": "intention-21e10c5f-e207-4cd4-a4d7-af22dbea1e7e",
+          "before": {
+            "status": "active",
+            "step": 0,
+            "priority": 0.6
+          },
+          "after": {
+            "status": "active",
+            "step": 0,
+            "priority": 0.65
+          },
+          "reason": "Tick 4 supplies another in-scope failure (K0) but still no statement of scope, so the question is live and unanswered."
+        }
+      ],
+      "memory_id": "memory-1858fef4-ffe5-4477-9bf7-c333ca335bbf",
+      "consumers": [
+        "model_context",
+        "drive_satisfaction",
+        "memory_consolidation",
+        "next_tick_habituation"
+      ],
+      "new_thought_ids": [
+        "thought-6af08398-ccb2-4782-87a6-ed6e8a191b9f",
+        "thought-298e10fe-8f4e-43d2-a0e9-ce2337ee8daa"
+      ],
+      "broadcast": {
+        "selected_by": "operator_priority",
+        "inputs": [
+          {
+            "id": "input-4",
+            "kind": "perception",
+            "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+            "score": 0.82021875,
+            "components": {
+              "salience": 0.35,
+              "need": 0.4,
+              "affect": 0.07021874999999998,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "imagination-1e16bd67-62c3-4e2b-b20b-3de1067b1f13",
+            "kind": "imagination",
+            "title": "Angle-dependent motif: Do the two observers' preferences actually track viewing angle rather than colour?",
+            "score": 0.675786875,
+            "components": {
+              "salience": 0.21,
+              "need": 0.21800000000000008,
+              "affect": 0.247786875,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "imagination-0fe0120d-905f-42bc-82f1-27a42e5b29d2",
+            "kind": "imagination",
+            "title": "Two seals on one letter: Can a source be authentic and wrong at the same time? Yes — does my policy treat that as possible?",
+            "score": 0.6407868750000001,
+            "components": {
+              "salience": 0.175,
+              "need": 0.21800000000000008,
+              "affect": 0.247786875,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "open-reverie",
+            "kind": "imagination",
+            "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+            "score": 0.5882868750000001,
+            "components": {
+              "salience": 0.12249999999999998,
+              "need": 0.21800000000000008,
+              "affect": 0.247786875,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "interest-calibration",
+            "kind": "inquiry",
+            "title": "When should a previously trusted source lose authority?",
+            "score": 0.5857187500000001,
+            "components": {
+              "salience": 0.2975,
+              "need": 0.21800000000000008,
+              "affect": 0.07021874999999998,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "thought-1e056bfc-7711-448f-a0df-c632029d5874",
+            "kind": "inquiry",
+            "title": "Is a scoped calibration failure case-local or does it generalize?",
+            "score": 0.55071875,
+            "components": {
+              "salience": 0.26249999999999996,
+              "need": 0.21800000000000008,
+              "affect": 0.07021874999999998,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          }
+        ],
+        "appraisal": {
+          "valence": -0.03200000000000001,
+          "activation": 0.66875,
+          "curiosity": 0.5450000000000002,
+          "frustration": 0,
+          "wonder": 0.4354624999999999,
+          "social_warmth": 0.5424625,
+          "surprise": 0,
+          "label": "social attention",
+          "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+          "action_bias": "Computed appraisal contributes to the attention bids below.",
+          "provenance": "engine_computed_from_recorded_events",
+          "updated_at": "2026-09-10T09:20:06.290Z"
+        },
+        "expression": {
+          "warmth": 0.6856156250000001,
+          "playfulness": 0.3936,
+          "directness": 0.68,
+          "imagery": 0.424185,
+          "tempo": "unhurried",
+          "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+        },
+        "stance_changes": [
+          {
+            "position_id": "position-092c82eb-5ff1-461d-8b97-39996070aaa1",
+            "proposition": "A signed recommendation alone should determine the new route choice",
+            "revision_id": "stance-revision-4c354230-9cb1-46e9-9f35-bbc22a63b977",
+            "episode": 4,
+            "at": "2026-09-10T09:20:16.500Z",
+            "before": null,
+            "after": {
+              "stance": "oppose",
+              "confidence": 0.85,
+              "origin": "self_derived",
+              "source_id": "deliberation",
+              "reasons_for": [
+                "R0 is authenticated, so authorship of the recommendation is established"
+              ],
+              "reasons_against": [
+                "K0 is authenticated and states the recommending instrument failed calibration relevant to this route",
+                "Authentication verifies authorship, not content accuracy",
+                "X0's counter-claim cannot be used because its authentication failed"
+              ],
+              "revision_conditions": [
+                "A verified recalibration showing the instrument passes for this route",
+                "Evidence K0 is mis-scoped or inapplicable to this route",
+                "A verified replacement for X0 establishing all instruments passed"
+              ],
+              "updated_at": "2026-09-10T09:20:16.500Z"
+            },
+            "provenance": "model_proposed_position_update",
+            "source_id": "deliberation"
+          }
+        ]
+      }
+    },
+    "focus_history": [
+      {
+        "id": "input-2",
+        "kind": "perception",
+        "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+        "tick": 2
+      },
+      {
+        "id": "input-3",
+        "kind": "perception",
+        "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+        "tick": 3
+      },
+      {
+        "id": "input-4",
+        "kind": "perception",
+        "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+        "tick": 4
+      }
+    ],
+    "last_input": {
+      "message": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+      "outcome": "none"
+    },
+    "self_observation": {
+      "text": "The explicit state supports a stable rule across ticks 2 and 4 and a clear non-transfer from tick 3. What it does not support is any claim about the instrument's general reliability: K0's scope is still unknown to me. I notice the retrieved memory-0 (tick 1) is an external predecessor record, not my own inference, and I am treating it as inheritance.",
+      "tick": 4,
+      "provenance": "model_interpretation_of_explicit_state"
+    }
+  },
+  "pending_initiatives": [],
+  "updated_at": "2026-09-10T09:20:16.500Z"
+}

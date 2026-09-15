@@ -1,0 +1,8 @@
+{
+  "replicates": 1,
+  "seed": 20260910,
+  "temperature": 0.65,
+  "max_tokens": 4000,
+  "model": "deepseek-flash",
+  "call_limit": 18
+}

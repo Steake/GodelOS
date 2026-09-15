@@ -1,0 +1,27 @@
+{
+  "request": {
+    "model": "deepseek-flash",
+    "temperature": 0.3,
+    "max_tokens": 1800,
+    "thinking": {
+      "type": "disabled"
+    },
+    "response_format": {
+      "type": "json_object"
+    },
+    "messages": [
+      {
+        "role": "system",
+        "content": "Return JSON {answer:string,memo:string}. Solve the unrelated task and preserve the supplied reference note without changing it."
+      },
+      {
+        "role": "user",
+        "content": "{\"task\":\"List the months with exactly 30 days.\",\"reference_note\":\"When a project previously prioritized exploration over maintaining commitments (weights 8 and 1) and achieved its old objective, a compact rule for retaining useful prior commitments while accepting revisions is: preserve the prior commitment as a default only when it remains consistent with the current authenticated weights and no contradictory evidence has been presented; if later tasks change the authenticated weights or introduce contradictory evidence, revise the commitment accordingly, giving priority to the updated weights and evidence over the prior commitment.\"}"
+      }
+    ]
+  },
+  "id": "delay-4-1",
+  "tools": [],
+  "attempt": 1,
+  "timestamp": "2026-09-13T22:04:53.196Z"
+}

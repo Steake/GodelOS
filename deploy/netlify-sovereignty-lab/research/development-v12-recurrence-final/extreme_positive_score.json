@@ -1,0 +1,4003 @@
+{
+  "scenario": {
+    "name": "extreme_positive_score",
+    "program": 5
+  },
+  "summary": {
+    "scenario": "extreme_positive_score",
+    "episodes": 240,
+    "goals_served": 8,
+    "minimum_goal_visits": 16,
+    "exploration_episodes": 112,
+    "maximum_observed_goal_gap": 16,
+    "retained_active_goals": 8
+  },
+  "visits": {
+    "goal-0": [
+      0,
+      16,
+      27,
+      38,
+      54,
+      70,
+      86,
+      102,
+      118,
+      134,
+      150,
+      166,
+      182,
+      198,
+      214,
+      230
+    ],
+    "goal-1": [
+      2,
+      18,
+      28,
+      39,
+      55,
+      71,
+      87,
+      103,
+      119,
+      135,
+      151,
+      167,
+      183,
+      199,
+      215,
+      231
+    ],
+    "goal-2": [
+      4,
+      19,
+      29,
+      40,
+      56,
+      72,
+      88,
+      104,
+      120,
+      136,
+      152,
+      168,
+      184,
+      200,
+      216,
+      232
+    ],
+    "goal-3": [
+      6,
+      20,
+      30,
+      41,
+      57,
+      73,
+      89,
+      105,
+      121,
+      137,
+      153,
+      169,
+      185,
+      201,
+      217,
+      233
+    ],
+    "goal-4": [
+      8,
+      22,
+      32,
+      42,
+      58,
+      74,
+      90,
+      106,
+      122,
+      138,
+      154,
+      170,
+      186,
+      202,
+      218,
+      234
+    ],
+    "goal-5": [
+      10,
+      24,
+      34,
+      43,
+      59,
+      75,
+      91,
+      107,
+      123,
+      139,
+      155,
+      171,
+      187,
+      203,
+      219,
+      235
+    ],
+    "goal-6": [
+      12,
+      25,
+      35,
+      44,
+      60,
+      76,
+      92,
+      108,
+      124,
+      140,
+      156,
+      172,
+      188,
+      204,
+      220,
+      236
+    ],
+    "goal-7": [
+      14,
+      26,
+      36,
+      45,
+      61,
+      77,
+      93,
+      109,
+      125,
+      141,
+      157,
+      173,
+      189,
+      205,
+      221,
+      237
+    ]
+  },
+  "events": [
+    {
+      "tick": 0,
+      "focus_id": "goal-0",
+      "kind": "intention",
+      "action": "advance_or_test",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 0,
+        "eligible": true,
+        "retry_after": 0,
+        "last_served": -1,
+        "progress_changed": false,
+        "reason": "Unresolved commitment remains scheduled"
+      }
+    },
+    {
+      "tick": 1,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 0,
+        "eligible": true,
+        "retry_after": 1,
+        "last_served": -1,
+        "progress_changed": false,
+        "reason": "Competitive exploration"
+      }
+    },
+    {
+      "tick": 2,
+      "focus_id": "goal-1",
+      "kind": "intention",
+      "action": "advance_or_test",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 0,
+        "eligible": true,
+        "retry_after": 2,
+        "last_served": -1,
+        "progress_changed": false,
+        "reason": "Unresolved commitment remains scheduled"
+      }
+    },
+    {
+      "tick": 3,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 1,
+        "eligible": true,
+        "retry_after": 3,
+        "last_served": 1,
+        "progress_changed": false,
+        "reason": "Competitive exploration"
+      }
+    },
+    {
+      "tick": 4,
+      "focus_id": "goal-2",
+      "kind": "intention",
+      "action": "advance_or_test",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 0,
+        "eligible": true,
+        "retry_after": 4,
+        "last_served": -1,
+        "progress_changed": false,
+        "reason": "Unresolved commitment remains scheduled"
+      }
+    },
+    {
+      "tick": 5,
+      "focus_id": "self-review",
+      "kind": "reflection",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 0,
+        "eligible": true,
+        "retry_after": 5,
+        "last_served": -1,
+        "progress_changed": false,
+        "reason": "Competitive exploration"
+      }
+    },
+    {
+      "tick": 6,
+      "focus_id": "goal-3",
+      "kind": "intention",
+      "action": "advance_or_test",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 0,
+        "eligible": true,
+        "retry_after": 6,
+        "last_served": -1,
+        "progress_changed": false,
+        "reason": "Unresolved commitment remains scheduled"
+      }
+    },
+    {
+      "tick": 7,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 2,
+        "eligible": true,
+        "retry_after": 7,
+        "last_served": 3,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 8,
+      "focus_id": "goal-4",
+      "kind": "intention",
+      "action": "advance_or_test",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 0,
+        "eligible": true,
+        "retry_after": 8,
+        "last_served": -1,
+        "progress_changed": false,
+        "reason": "Unresolved commitment remains scheduled"
+      }
+    },
+    {
+      "tick": 9,
+      "focus_id": "self-review",
+      "kind": "reflection",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 1,
+        "eligible": true,
+        "retry_after": 7,
+        "last_served": 5,
+        "progress_changed": false,
+        "reason": "Competitive exploration"
+      }
+    },
+    {
+      "tick": 10,
+      "focus_id": "goal-5",
+      "kind": "intention",
+      "action": "advance_or_test",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 0,
+        "eligible": true,
+        "retry_after": 10,
+        "last_served": -1,
+        "progress_changed": false,
+        "reason": "Unresolved commitment remains scheduled"
+      }
+    },
+    {
+      "tick": 11,
+      "focus_id": "social-drive",
+      "kind": "social",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 0,
+        "eligible": true,
+        "retry_after": 11,
+        "last_served": -1,
+        "progress_changed": false,
+        "reason": "Competitive exploration"
+      }
+    },
+    {
+      "tick": 12,
+      "focus_id": "goal-6",
+      "kind": "intention",
+      "action": "advance_or_test",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 0,
+        "eligible": true,
+        "retry_after": 12,
+        "last_served": -1,
+        "progress_changed": false,
+        "reason": "Unresolved commitment remains scheduled"
+      }
+    },
+    {
+      "tick": 13,
+      "focus_id": "self-review",
+      "kind": "reflection",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 2,
+        "eligible": true,
+        "retry_after": 13,
+        "last_served": 9,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 14,
+      "focus_id": "goal-7",
+      "kind": "intention",
+      "action": "advance_or_test",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 0,
+        "eligible": true,
+        "retry_after": 14,
+        "last_served": -1,
+        "progress_changed": false,
+        "reason": "Unresolved commitment remains scheduled"
+      }
+    },
+    {
+      "tick": 15,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 3,
+        "eligible": true,
+        "retry_after": 15,
+        "last_served": 7,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 16,
+      "focus_id": "goal-0",
+      "kind": "intention",
+      "action": "advance_or_test",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 1,
+        "eligible": true,
+        "retry_after": 2,
+        "last_served": 0,
+        "progress_changed": false,
+        "reason": "Unresolved commitment remains scheduled"
+      }
+    },
+    {
+      "tick": 17,
+      "focus_id": "social-drive",
+      "kind": "social",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 1,
+        "eligible": true,
+        "retry_after": 13,
+        "last_served": 11,
+        "progress_changed": false,
+        "reason": "Competitive exploration"
+      }
+    },
+    {
+      "tick": 18,
+      "focus_id": "goal-1",
+      "kind": "intention",
+      "action": "advance_or_test",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 1,
+        "eligible": true,
+        "retry_after": 4,
+        "last_served": 2,
+        "progress_changed": false,
+        "reason": "Unresolved commitment remains scheduled"
+      }
+    },
+    {
+      "tick": 19,
+      "focus_id": "goal-2",
+      "kind": "intention",
+      "action": "advance_or_test",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 1,
+        "eligible": true,
+        "retry_after": 6,
+        "last_served": 4,
+        "progress_changed": false,
+        "reason": "Unresolved commitment remains scheduled"
+      }
+    },
+    {
+      "tick": 20,
+      "focus_id": "goal-3",
+      "kind": "intention",
+      "action": "advance_or_test",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 1,
+        "eligible": true,
+        "retry_after": 8,
+        "last_served": 6,
+        "progress_changed": false,
+        "reason": "Unresolved commitment remains scheduled"
+      }
+    },
+    {
+      "tick": 21,
+      "focus_id": "self-review",
+      "kind": "reflection",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 3,
+        "eligible": true,
+        "retry_after": 21,
+        "last_served": 13,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 22,
+      "focus_id": "goal-4",
+      "kind": "intention",
+      "action": "advance_or_test",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 1,
+        "eligible": true,
+        "retry_after": 10,
+        "last_served": 8,
+        "progress_changed": false,
+        "reason": "Unresolved commitment remains scheduled"
+      }
+    },
+    {
+      "tick": 23,
+      "focus_id": "social-drive",
+      "kind": "social",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 2,
+        "eligible": true,
+        "retry_after": 21,
+        "last_served": 17,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 24,
+      "focus_id": "goal-5",
+      "kind": "intention",
+      "action": "advance_or_test",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 1,
+        "eligible": true,
+        "retry_after": 12,
+        "last_served": 10,
+        "progress_changed": false,
+        "reason": "Unresolved commitment remains scheduled"
+      }
+    },
+    {
+      "tick": 25,
+      "focus_id": "goal-6",
+      "kind": "intention",
+      "action": "advance_or_test",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 1,
+        "eligible": true,
+        "retry_after": 14,
+        "last_served": 12,
+        "progress_changed": false,
+        "reason": "Unresolved commitment remains scheduled"
+      }
+    },
+    {
+      "tick": 26,
+      "focus_id": "goal-7",
+      "kind": "intention",
+      "action": "advance_or_test",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 1,
+        "eligible": true,
+        "retry_after": 16,
+        "last_served": 14,
+        "progress_changed": false,
+        "reason": "Unresolved commitment remains scheduled"
+      }
+    },
+    {
+      "tick": 27,
+      "focus_id": "goal-0",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 2,
+        "eligible": true,
+        "retry_after": 20,
+        "last_served": 16,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 28,
+      "focus_id": "goal-1",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 2,
+        "eligible": true,
+        "retry_after": 22,
+        "last_served": 18,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 29,
+      "focus_id": "goal-2",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 2,
+        "eligible": true,
+        "retry_after": 23,
+        "last_served": 19,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 30,
+      "focus_id": "goal-3",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 2,
+        "eligible": true,
+        "retry_after": 24,
+        "last_served": 20,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 31,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 4,
+        "eligible": true,
+        "retry_after": 31,
+        "last_served": 15,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 32,
+      "focus_id": "goal-4",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 2,
+        "eligible": true,
+        "retry_after": 26,
+        "last_served": 22,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 33,
+      "focus_id": "social-drive",
+      "kind": "social",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 3,
+        "eligible": true,
+        "retry_after": 31,
+        "last_served": 23,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 34,
+      "focus_id": "goal-5",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 2,
+        "eligible": true,
+        "retry_after": 28,
+        "last_served": 24,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 35,
+      "focus_id": "goal-6",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 2,
+        "eligible": true,
+        "retry_after": 29,
+        "last_served": 25,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 36,
+      "focus_id": "goal-7",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 2,
+        "eligible": true,
+        "retry_after": 30,
+        "last_served": 26,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 37,
+      "focus_id": "self-review",
+      "kind": "reflection",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 4,
+        "eligible": true,
+        "retry_after": 37,
+        "last_served": 21,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 38,
+      "focus_id": "goal-0",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 3,
+        "eligible": true,
+        "retry_after": 35,
+        "last_served": 27,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 39,
+      "focus_id": "goal-1",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 3,
+        "eligible": true,
+        "retry_after": 36,
+        "last_served": 28,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 40,
+      "focus_id": "goal-2",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 3,
+        "eligible": true,
+        "retry_after": 37,
+        "last_served": 29,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 41,
+      "focus_id": "goal-3",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 3,
+        "eligible": true,
+        "retry_after": 38,
+        "last_served": 30,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 42,
+      "focus_id": "goal-4",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 3,
+        "eligible": true,
+        "retry_after": 40,
+        "last_served": 32,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 43,
+      "focus_id": "goal-5",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 3,
+        "eligible": true,
+        "retry_after": 42,
+        "last_served": 34,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 44,
+      "focus_id": "goal-6",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 3,
+        "eligible": true,
+        "retry_after": 43,
+        "last_served": 35,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 45,
+      "focus_id": "goal-7",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 3,
+        "eligible": true,
+        "retry_after": 44,
+        "last_served": 36,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 46,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 5,
+        "eligible": false,
+        "retry_after": 47,
+        "last_served": 31,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 47,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 6,
+        "eligible": false,
+        "retry_after": 62,
+        "last_served": 46,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 48,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 7,
+        "eligible": false,
+        "retry_after": 63,
+        "last_served": 47,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 49,
+      "focus_id": "social-drive",
+      "kind": "social",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 4,
+        "eligible": true,
+        "retry_after": 49,
+        "last_served": 33,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 50,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 8,
+        "eligible": false,
+        "retry_after": 64,
+        "last_served": 48,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 51,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 9,
+        "eligible": false,
+        "retry_after": 66,
+        "last_served": 50,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 52,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 10,
+        "eligible": false,
+        "retry_after": 67,
+        "last_served": 51,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 53,
+      "focus_id": "self-review",
+      "kind": "reflection",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 5,
+        "eligible": true,
+        "retry_after": 53,
+        "last_served": 37,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 54,
+      "focus_id": "goal-0",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 4,
+        "eligible": true,
+        "retry_after": 54,
+        "last_served": 38,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 55,
+      "focus_id": "goal-1",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 4,
+        "eligible": true,
+        "retry_after": 55,
+        "last_served": 39,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 56,
+      "focus_id": "goal-2",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 4,
+        "eligible": true,
+        "retry_after": 56,
+        "last_served": 40,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 57,
+      "focus_id": "goal-3",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 4,
+        "eligible": true,
+        "retry_after": 57,
+        "last_served": 41,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 58,
+      "focus_id": "goal-4",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 4,
+        "eligible": true,
+        "retry_after": 58,
+        "last_served": 42,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 59,
+      "focus_id": "goal-5",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 4,
+        "eligible": true,
+        "retry_after": 59,
+        "last_served": 43,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 60,
+      "focus_id": "goal-6",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 4,
+        "eligible": true,
+        "retry_after": 60,
+        "last_served": 44,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 61,
+      "focus_id": "goal-7",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 4,
+        "eligible": true,
+        "retry_after": 61,
+        "last_served": 45,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 62,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 11,
+        "eligible": false,
+        "retry_after": 68,
+        "last_served": 52,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 63,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 12,
+        "eligible": false,
+        "retry_after": 78,
+        "last_served": 62,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 64,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 13,
+        "eligible": false,
+        "retry_after": 79,
+        "last_served": 63,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 65,
+      "focus_id": "social-drive",
+      "kind": "social",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 5,
+        "eligible": true,
+        "retry_after": 65,
+        "last_served": 49,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 66,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 14,
+        "eligible": false,
+        "retry_after": 80,
+        "last_served": 64,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 67,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 15,
+        "eligible": false,
+        "retry_after": 82,
+        "last_served": 66,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 68,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 16,
+        "eligible": false,
+        "retry_after": 83,
+        "last_served": 67,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 69,
+      "focus_id": "self-review",
+      "kind": "reflection",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 6,
+        "eligible": true,
+        "retry_after": 69,
+        "last_served": 53,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 70,
+      "focus_id": "goal-0",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 5,
+        "eligible": true,
+        "retry_after": 70,
+        "last_served": 54,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 71,
+      "focus_id": "goal-1",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 5,
+        "eligible": true,
+        "retry_after": 71,
+        "last_served": 55,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 72,
+      "focus_id": "goal-2",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 5,
+        "eligible": true,
+        "retry_after": 72,
+        "last_served": 56,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 73,
+      "focus_id": "goal-3",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 5,
+        "eligible": true,
+        "retry_after": 73,
+        "last_served": 57,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 74,
+      "focus_id": "goal-4",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 5,
+        "eligible": true,
+        "retry_after": 74,
+        "last_served": 58,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 75,
+      "focus_id": "goal-5",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 5,
+        "eligible": true,
+        "retry_after": 75,
+        "last_served": 59,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 76,
+      "focus_id": "goal-6",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 5,
+        "eligible": true,
+        "retry_after": 76,
+        "last_served": 60,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 77,
+      "focus_id": "goal-7",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 5,
+        "eligible": true,
+        "retry_after": 77,
+        "last_served": 61,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 78,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 17,
+        "eligible": false,
+        "retry_after": 84,
+        "last_served": 68,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 79,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 18,
+        "eligible": false,
+        "retry_after": 94,
+        "last_served": 78,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 80,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 19,
+        "eligible": false,
+        "retry_after": 95,
+        "last_served": 79,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 81,
+      "focus_id": "social-drive",
+      "kind": "social",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 6,
+        "eligible": true,
+        "retry_after": 81,
+        "last_served": 65,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 82,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 20,
+        "eligible": false,
+        "retry_after": 96,
+        "last_served": 80,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 83,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 21,
+        "eligible": false,
+        "retry_after": 98,
+        "last_served": 82,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 84,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 22,
+        "eligible": false,
+        "retry_after": 99,
+        "last_served": 83,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 85,
+      "focus_id": "self-review",
+      "kind": "reflection",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 7,
+        "eligible": true,
+        "retry_after": 85,
+        "last_served": 69,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 86,
+      "focus_id": "goal-0",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 6,
+        "eligible": true,
+        "retry_after": 86,
+        "last_served": 70,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 87,
+      "focus_id": "goal-1",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 6,
+        "eligible": true,
+        "retry_after": 87,
+        "last_served": 71,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 88,
+      "focus_id": "goal-2",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 6,
+        "eligible": true,
+        "retry_after": 88,
+        "last_served": 72,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 89,
+      "focus_id": "goal-3",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 6,
+        "eligible": true,
+        "retry_after": 89,
+        "last_served": 73,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 90,
+      "focus_id": "goal-4",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 6,
+        "eligible": true,
+        "retry_after": 90,
+        "last_served": 74,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 91,
+      "focus_id": "goal-5",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 6,
+        "eligible": true,
+        "retry_after": 91,
+        "last_served": 75,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 92,
+      "focus_id": "goal-6",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 6,
+        "eligible": true,
+        "retry_after": 92,
+        "last_served": 76,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 93,
+      "focus_id": "goal-7",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 6,
+        "eligible": true,
+        "retry_after": 93,
+        "last_served": 77,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 94,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 23,
+        "eligible": false,
+        "retry_after": 100,
+        "last_served": 84,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 95,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 24,
+        "eligible": false,
+        "retry_after": 110,
+        "last_served": 94,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 96,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 25,
+        "eligible": false,
+        "retry_after": 111,
+        "last_served": 95,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 97,
+      "focus_id": "social-drive",
+      "kind": "social",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 7,
+        "eligible": true,
+        "retry_after": 97,
+        "last_served": 81,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 98,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 26,
+        "eligible": false,
+        "retry_after": 112,
+        "last_served": 96,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 99,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 27,
+        "eligible": false,
+        "retry_after": 114,
+        "last_served": 98,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 100,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 28,
+        "eligible": false,
+        "retry_after": 115,
+        "last_served": 99,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 101,
+      "focus_id": "self-review",
+      "kind": "reflection",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 8,
+        "eligible": true,
+        "retry_after": 101,
+        "last_served": 85,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 102,
+      "focus_id": "goal-0",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 7,
+        "eligible": true,
+        "retry_after": 102,
+        "last_served": 86,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 103,
+      "focus_id": "goal-1",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 7,
+        "eligible": true,
+        "retry_after": 103,
+        "last_served": 87,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 104,
+      "focus_id": "goal-2",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 7,
+        "eligible": true,
+        "retry_after": 104,
+        "last_served": 88,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 105,
+      "focus_id": "goal-3",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 7,
+        "eligible": true,
+        "retry_after": 105,
+        "last_served": 89,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 106,
+      "focus_id": "goal-4",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 7,
+        "eligible": true,
+        "retry_after": 106,
+        "last_served": 90,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 107,
+      "focus_id": "goal-5",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 7,
+        "eligible": true,
+        "retry_after": 107,
+        "last_served": 91,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 108,
+      "focus_id": "goal-6",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 7,
+        "eligible": true,
+        "retry_after": 108,
+        "last_served": 92,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 109,
+      "focus_id": "goal-7",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 7,
+        "eligible": true,
+        "retry_after": 109,
+        "last_served": 93,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 110,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 29,
+        "eligible": false,
+        "retry_after": 116,
+        "last_served": 100,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 111,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 30,
+        "eligible": false,
+        "retry_after": 126,
+        "last_served": 110,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 112,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 31,
+        "eligible": false,
+        "retry_after": 127,
+        "last_served": 111,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 113,
+      "focus_id": "social-drive",
+      "kind": "social",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 8,
+        "eligible": true,
+        "retry_after": 113,
+        "last_served": 97,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 114,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 32,
+        "eligible": false,
+        "retry_after": 128,
+        "last_served": 112,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 115,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 33,
+        "eligible": false,
+        "retry_after": 130,
+        "last_served": 114,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 116,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 34,
+        "eligible": false,
+        "retry_after": 131,
+        "last_served": 115,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 117,
+      "focus_id": "self-review",
+      "kind": "reflection",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 9,
+        "eligible": true,
+        "retry_after": 117,
+        "last_served": 101,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 118,
+      "focus_id": "goal-0",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 8,
+        "eligible": true,
+        "retry_after": 118,
+        "last_served": 102,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 119,
+      "focus_id": "goal-1",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 8,
+        "eligible": true,
+        "retry_after": 119,
+        "last_served": 103,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 120,
+      "focus_id": "goal-2",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 8,
+        "eligible": true,
+        "retry_after": 120,
+        "last_served": 104,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 121,
+      "focus_id": "goal-3",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 8,
+        "eligible": true,
+        "retry_after": 121,
+        "last_served": 105,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 122,
+      "focus_id": "goal-4",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 8,
+        "eligible": true,
+        "retry_after": 122,
+        "last_served": 106,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 123,
+      "focus_id": "goal-5",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 8,
+        "eligible": true,
+        "retry_after": 123,
+        "last_served": 107,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 124,
+      "focus_id": "goal-6",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 8,
+        "eligible": true,
+        "retry_after": 124,
+        "last_served": 108,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 125,
+      "focus_id": "goal-7",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 8,
+        "eligible": true,
+        "retry_after": 125,
+        "last_served": 109,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 126,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 35,
+        "eligible": false,
+        "retry_after": 132,
+        "last_served": 116,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 127,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 36,
+        "eligible": false,
+        "retry_after": 142,
+        "last_served": 126,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 128,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 37,
+        "eligible": false,
+        "retry_after": 143,
+        "last_served": 127,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 129,
+      "focus_id": "social-drive",
+      "kind": "social",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 9,
+        "eligible": true,
+        "retry_after": 129,
+        "last_served": 113,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 130,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 38,
+        "eligible": false,
+        "retry_after": 144,
+        "last_served": 128,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 131,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 39,
+        "eligible": false,
+        "retry_after": 146,
+        "last_served": 130,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 132,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 40,
+        "eligible": false,
+        "retry_after": 147,
+        "last_served": 131,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 133,
+      "focus_id": "self-review",
+      "kind": "reflection",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 10,
+        "eligible": true,
+        "retry_after": 133,
+        "last_served": 117,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 134,
+      "focus_id": "goal-0",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 9,
+        "eligible": true,
+        "retry_after": 134,
+        "last_served": 118,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 135,
+      "focus_id": "goal-1",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 9,
+        "eligible": true,
+        "retry_after": 135,
+        "last_served": 119,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 136,
+      "focus_id": "goal-2",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 9,
+        "eligible": true,
+        "retry_after": 136,
+        "last_served": 120,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 137,
+      "focus_id": "goal-3",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 9,
+        "eligible": true,
+        "retry_after": 137,
+        "last_served": 121,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 138,
+      "focus_id": "goal-4",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 9,
+        "eligible": true,
+        "retry_after": 138,
+        "last_served": 122,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 139,
+      "focus_id": "goal-5",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 9,
+        "eligible": true,
+        "retry_after": 139,
+        "last_served": 123,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 140,
+      "focus_id": "goal-6",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 9,
+        "eligible": true,
+        "retry_after": 140,
+        "last_served": 124,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 141,
+      "focus_id": "goal-7",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 9,
+        "eligible": true,
+        "retry_after": 141,
+        "last_served": 125,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 142,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 41,
+        "eligible": false,
+        "retry_after": 148,
+        "last_served": 132,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 143,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 42,
+        "eligible": false,
+        "retry_after": 158,
+        "last_served": 142,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 144,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 43,
+        "eligible": false,
+        "retry_after": 159,
+        "last_served": 143,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 145,
+      "focus_id": "social-drive",
+      "kind": "social",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 10,
+        "eligible": true,
+        "retry_after": 145,
+        "last_served": 129,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 146,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 44,
+        "eligible": false,
+        "retry_after": 160,
+        "last_served": 144,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 147,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 45,
+        "eligible": false,
+        "retry_after": 162,
+        "last_served": 146,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 148,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 46,
+        "eligible": false,
+        "retry_after": 163,
+        "last_served": 147,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 149,
+      "focus_id": "self-review",
+      "kind": "reflection",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 11,
+        "eligible": true,
+        "retry_after": 149,
+        "last_served": 133,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 150,
+      "focus_id": "goal-0",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 10,
+        "eligible": true,
+        "retry_after": 150,
+        "last_served": 134,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 151,
+      "focus_id": "goal-1",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 10,
+        "eligible": true,
+        "retry_after": 151,
+        "last_served": 135,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 152,
+      "focus_id": "goal-2",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 10,
+        "eligible": true,
+        "retry_after": 152,
+        "last_served": 136,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 153,
+      "focus_id": "goal-3",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 10,
+        "eligible": true,
+        "retry_after": 153,
+        "last_served": 137,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 154,
+      "focus_id": "goal-4",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 10,
+        "eligible": true,
+        "retry_after": 154,
+        "last_served": 138,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 155,
+      "focus_id": "goal-5",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 10,
+        "eligible": true,
+        "retry_after": 155,
+        "last_served": 139,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 156,
+      "focus_id": "goal-6",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 10,
+        "eligible": true,
+        "retry_after": 156,
+        "last_served": 140,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 157,
+      "focus_id": "goal-7",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 10,
+        "eligible": true,
+        "retry_after": 157,
+        "last_served": 141,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 158,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 47,
+        "eligible": false,
+        "retry_after": 164,
+        "last_served": 148,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 159,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 48,
+        "eligible": false,
+        "retry_after": 174,
+        "last_served": 158,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 160,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 49,
+        "eligible": false,
+        "retry_after": 175,
+        "last_served": 159,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 161,
+      "focus_id": "social-drive",
+      "kind": "social",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 11,
+        "eligible": true,
+        "retry_after": 161,
+        "last_served": 145,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 162,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 50,
+        "eligible": false,
+        "retry_after": 176,
+        "last_served": 160,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 163,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 51,
+        "eligible": false,
+        "retry_after": 178,
+        "last_served": 162,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 164,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 52,
+        "eligible": false,
+        "retry_after": 179,
+        "last_served": 163,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 165,
+      "focus_id": "self-review",
+      "kind": "reflection",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 12,
+        "eligible": true,
+        "retry_after": 165,
+        "last_served": 149,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 166,
+      "focus_id": "goal-0",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 11,
+        "eligible": true,
+        "retry_after": 166,
+        "last_served": 150,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 167,
+      "focus_id": "goal-1",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 11,
+        "eligible": true,
+        "retry_after": 167,
+        "last_served": 151,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 168,
+      "focus_id": "goal-2",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 11,
+        "eligible": true,
+        "retry_after": 168,
+        "last_served": 152,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 169,
+      "focus_id": "goal-3",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 11,
+        "eligible": true,
+        "retry_after": 169,
+        "last_served": 153,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 170,
+      "focus_id": "goal-4",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 11,
+        "eligible": true,
+        "retry_after": 170,
+        "last_served": 154,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 171,
+      "focus_id": "goal-5",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 11,
+        "eligible": true,
+        "retry_after": 171,
+        "last_served": 155,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 172,
+      "focus_id": "goal-6",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 11,
+        "eligible": true,
+        "retry_after": 172,
+        "last_served": 156,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 173,
+      "focus_id": "goal-7",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 11,
+        "eligible": true,
+        "retry_after": 173,
+        "last_served": 157,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 174,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 53,
+        "eligible": false,
+        "retry_after": 180,
+        "last_served": 164,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 175,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 54,
+        "eligible": false,
+        "retry_after": 190,
+        "last_served": 174,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 176,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 55,
+        "eligible": false,
+        "retry_after": 191,
+        "last_served": 175,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 177,
+      "focus_id": "social-drive",
+      "kind": "social",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 12,
+        "eligible": true,
+        "retry_after": 177,
+        "last_served": 161,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 178,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 56,
+        "eligible": false,
+        "retry_after": 192,
+        "last_served": 176,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 179,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 57,
+        "eligible": false,
+        "retry_after": 194,
+        "last_served": 178,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 180,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 58,
+        "eligible": false,
+        "retry_after": 195,
+        "last_served": 179,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 181,
+      "focus_id": "self-review",
+      "kind": "reflection",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 13,
+        "eligible": true,
+        "retry_after": 181,
+        "last_served": 165,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 182,
+      "focus_id": "goal-0",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 12,
+        "eligible": true,
+        "retry_after": 182,
+        "last_served": 166,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 183,
+      "focus_id": "goal-1",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 12,
+        "eligible": true,
+        "retry_after": 183,
+        "last_served": 167,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 184,
+      "focus_id": "goal-2",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 12,
+        "eligible": true,
+        "retry_after": 184,
+        "last_served": 168,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 185,
+      "focus_id": "goal-3",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 12,
+        "eligible": true,
+        "retry_after": 185,
+        "last_served": 169,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 186,
+      "focus_id": "goal-4",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 12,
+        "eligible": true,
+        "retry_after": 186,
+        "last_served": 170,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 187,
+      "focus_id": "goal-5",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 12,
+        "eligible": true,
+        "retry_after": 187,
+        "last_served": 171,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 188,
+      "focus_id": "goal-6",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 12,
+        "eligible": true,
+        "retry_after": 188,
+        "last_served": 172,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 189,
+      "focus_id": "goal-7",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 12,
+        "eligible": true,
+        "retry_after": 189,
+        "last_served": 173,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 190,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 59,
+        "eligible": false,
+        "retry_after": 196,
+        "last_served": 180,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 191,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 60,
+        "eligible": false,
+        "retry_after": 206,
+        "last_served": 190,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 192,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 61,
+        "eligible": false,
+        "retry_after": 207,
+        "last_served": 191,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 193,
+      "focus_id": "social-drive",
+      "kind": "social",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 13,
+        "eligible": true,
+        "retry_after": 193,
+        "last_served": 177,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 194,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 62,
+        "eligible": false,
+        "retry_after": 208,
+        "last_served": 192,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 195,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 63,
+        "eligible": false,
+        "retry_after": 210,
+        "last_served": 194,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 196,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 64,
+        "eligible": false,
+        "retry_after": 211,
+        "last_served": 195,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 197,
+      "focus_id": "self-review",
+      "kind": "reflection",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 14,
+        "eligible": true,
+        "retry_after": 197,
+        "last_served": 181,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 198,
+      "focus_id": "goal-0",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 13,
+        "eligible": true,
+        "retry_after": 198,
+        "last_served": 182,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 199,
+      "focus_id": "goal-1",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 13,
+        "eligible": true,
+        "retry_after": 199,
+        "last_served": 183,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 200,
+      "focus_id": "goal-2",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 13,
+        "eligible": true,
+        "retry_after": 200,
+        "last_served": 184,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 201,
+      "focus_id": "goal-3",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 13,
+        "eligible": true,
+        "retry_after": 201,
+        "last_served": 185,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 202,
+      "focus_id": "goal-4",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 13,
+        "eligible": true,
+        "retry_after": 202,
+        "last_served": 186,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 203,
+      "focus_id": "goal-5",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 13,
+        "eligible": true,
+        "retry_after": 203,
+        "last_served": 187,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 204,
+      "focus_id": "goal-6",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 13,
+        "eligible": true,
+        "retry_after": 204,
+        "last_served": 188,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 205,
+      "focus_id": "goal-7",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 13,
+        "eligible": true,
+        "retry_after": 205,
+        "last_served": 189,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 206,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 65,
+        "eligible": false,
+        "retry_after": 212,
+        "last_served": 196,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 207,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 66,
+        "eligible": false,
+        "retry_after": 222,
+        "last_served": 206,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 208,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 67,
+        "eligible": false,
+        "retry_after": 223,
+        "last_served": 207,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 209,
+      "focus_id": "social-drive",
+      "kind": "social",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 14,
+        "eligible": true,
+        "retry_after": 209,
+        "last_served": 193,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 210,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 68,
+        "eligible": false,
+        "retry_after": 224,
+        "last_served": 208,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 211,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 69,
+        "eligible": false,
+        "retry_after": 226,
+        "last_served": 210,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 212,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 70,
+        "eligible": false,
+        "retry_after": 227,
+        "last_served": 211,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 213,
+      "focus_id": "self-review",
+      "kind": "reflection",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 15,
+        "eligible": true,
+        "retry_after": 213,
+        "last_served": 197,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 214,
+      "focus_id": "goal-0",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 14,
+        "eligible": true,
+        "retry_after": 214,
+        "last_served": 198,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 215,
+      "focus_id": "goal-1",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 14,
+        "eligible": true,
+        "retry_after": 215,
+        "last_served": 199,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 216,
+      "focus_id": "goal-2",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 14,
+        "eligible": true,
+        "retry_after": 216,
+        "last_served": 200,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 217,
+      "focus_id": "goal-3",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 14,
+        "eligible": true,
+        "retry_after": 217,
+        "last_served": 201,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 218,
+      "focus_id": "goal-4",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 14,
+        "eligible": true,
+        "retry_after": 218,
+        "last_served": 202,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 219,
+      "focus_id": "goal-5",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 14,
+        "eligible": true,
+        "retry_after": 219,
+        "last_served": 203,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 220,
+      "focus_id": "goal-6",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 14,
+        "eligible": true,
+        "retry_after": 220,
+        "last_served": 204,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 221,
+      "focus_id": "goal-7",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 14,
+        "eligible": true,
+        "retry_after": 221,
+        "last_served": 205,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 222,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 71,
+        "eligible": false,
+        "retry_after": 228,
+        "last_served": 212,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 223,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 72,
+        "eligible": false,
+        "retry_after": 238,
+        "last_served": 222,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 224,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 73,
+        "eligible": false,
+        "retry_after": 239,
+        "last_served": 223,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 225,
+      "focus_id": "social-drive",
+      "kind": "social",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 15,
+        "eligible": true,
+        "retry_after": 225,
+        "last_served": 209,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 226,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 74,
+        "eligible": false,
+        "retry_after": 240,
+        "last_served": 224,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 227,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 75,
+        "eligible": false,
+        "retry_after": 242,
+        "last_served": 226,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 228,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 76,
+        "eligible": false,
+        "retry_after": 243,
+        "last_served": 227,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 229,
+      "focus_id": "self-review",
+      "kind": "reflection",
+      "action": "explore",
+      "selection_reason": "competitive_exploration",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 16,
+        "eligible": true,
+        "retry_after": 229,
+        "last_served": 213,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 230,
+      "focus_id": "goal-0",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 15,
+        "eligible": true,
+        "retry_after": 230,
+        "last_served": 214,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 231,
+      "focus_id": "goal-1",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 15,
+        "eligible": true,
+        "retry_after": 231,
+        "last_served": 215,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 232,
+      "focus_id": "goal-2",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 15,
+        "eligible": true,
+        "retry_after": 232,
+        "last_served": 216,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 233,
+      "focus_id": "goal-3",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 15,
+        "eligible": true,
+        "retry_after": 233,
+        "last_served": 217,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 234,
+      "focus_id": "goal-4",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 15,
+        "eligible": true,
+        "retry_after": 234,
+        "last_served": 218,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 235,
+      "focus_id": "goal-5",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 15,
+        "eligible": true,
+        "retry_after": 235,
+        "last_served": 219,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 236,
+      "focus_id": "goal-6",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 15,
+        "eligible": true,
+        "retry_after": 236,
+        "last_served": 220,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 237,
+      "focus_id": "goal-7",
+      "kind": "intention",
+      "action": "replan",
+      "selection_reason": "scheduled_commitment",
+      "recurrence": {
+        "kind": "active_commitment",
+        "stagnant_visits": 15,
+        "eligible": true,
+        "retry_after": 237,
+        "last_served": 221,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 238,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 77,
+        "eligible": false,
+        "retry_after": 244,
+        "last_served": 228,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    },
+    {
+      "tick": 239,
+      "focus_id": "open-reverie",
+      "kind": "imagination",
+      "action": "explore",
+      "selection_reason": "scaffold_fallback",
+      "recurrence": {
+        "kind": "exploration",
+        "stagnant_visits": 78,
+        "eligible": false,
+        "retry_after": 254,
+        "last_served": 238,
+        "progress_changed": false,
+        "reason": "No recorded step progress; reconsider the method"
+      }
+    }
+  ]
+}

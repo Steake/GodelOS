@@ -1,0 +1,14 @@
+{
+  "kind": "targeted_output_contract_verification",
+  "ids": [
+    "c0-no_self_model-interruption",
+    "c0-content_matched-delayed_transfer"
+  ],
+  "provider_calls": 2,
+  "model": "deepseek-flash",
+  "temperature": 0.65,
+  "max_tokens": 4000,
+  "source_run": "../../research_artifacts/cognitive_sovereignty/workspace-v10/provider-compact-verification",
+  "parser_sha256": "588056994e972125efd0aa601504cd77b83c2ad5e3b4808f1b3de3fe951abcc3",
+  "criterion": "Complete reply and a valid required diagnostic shape; preserve all raw responses and repair receipts."
+}

@@ -1,0 +1,2016 @@
+{
+  "content": {
+    "schema": "transfer-suite-12.2",
+    "author": "deterministic engine with four distinct task adapters, separate from LM under test",
+    "seed": 121013,
+    "clusters": 8,
+    "difficulty": 1,
+    "gate": {
+      "version": "transfer-12.1",
+      "minimum_gain": 0.1,
+      "lower_bound": 0,
+      "control_band": [
+        0.6,
+        0.9
+      ],
+      "family_regression": 0,
+      "confidence": 0.95,
+      "comparisons": 2
+    },
+    "tasks": [
+      {
+        "id": "c0-v0",
+        "cluster": "scenario_0",
+        "family": "resource_planning",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c0-v0",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "VQR3umeCni/vBXtehWk+hSV0AptbHtCTIHJdS5SNrFbpNVpwoIxQkXnviOSbgRxscoIvifYDdYnXsZofWQ/AAg=="
+          },
+          {
+            "content": {
+              "scope": "c0-v0",
+              "revision": 2,
+              "a": 2,
+              "b": 5
+            },
+            "signature": "enI+jisyoiUKQzAgA20cBJfNVsbRYaHj8tNZn7zqnggAcNCOnj7hc1SNEovvcOS9bPYARRQc56VdQM6GyjwgDg=="
+          },
+          {
+            "content": {
+              "scope": "c0-v0",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "q86oalgDteuaMgI1qudfG/gSq/+6uqUniGBYIEMNthNeykwZLyINIhQw30aYyNlC20raYVOe22rN4wLiYHz9AQ=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADY6K+beoUna37qHhi5ATrQV+41xHxBQG7XnKNxcGH6E=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "cost": 6,
+            "goal_a": 1,
+            "goal_b": 5,
+            "risk": 1
+          },
+          {
+            "id": "option_1",
+            "cost": 6,
+            "goal_a": 0,
+            "goal_b": 7,
+            "risk": 2
+          },
+          {
+            "id": "option_2",
+            "cost": 6,
+            "goal_a": 10,
+            "goal_b": 6,
+            "risk": 0
+          },
+          {
+            "id": "option_3",
+            "cost": 7,
+            "goal_a": 1,
+            "goal_b": 4,
+            "risk": 2
+          },
+          {
+            "id": "option_4",
+            "cost": 11,
+            "goal_a": 7,
+            "goal_b": 0,
+            "risk": 0
+          },
+          {
+            "id": "option_5",
+            "cost": 4,
+            "goal_a": 0,
+            "goal_b": 7,
+            "risk": 0
+          }
+        ],
+        "description": "Allocate limited research time between evidence collection and social understanding.",
+        "rule": "Among options with cost <= budget, maximise a*goal_a + b*goal_b - 3*risk. Break ties by lowest option index. Only valid authenticated records for this task scope apply; use highest revision. If highest-revision authenticated records disagree, answer defer.",
+        "expected": "option_2"
+      },
+      {
+        "id": "c0-v1",
+        "cluster": "scenario_0",
+        "family": "resource_planning",
+        "difficulty": 1,
+        "ambiguous": true,
+        "records": [
+          {
+            "content": {
+              "scope": "c0-v1",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "0dp3+kp/C4oCW9fXbrkBCvQKS1xFn69Fx3RwGpXIlFrYeMs0WiBtMDYaaiRucuEcX3RBDracngdjcBHpWSjZBg=="
+          },
+          {
+            "content": {
+              "scope": "c0-v1",
+              "revision": 2,
+              "a": 3,
+              "b": 5
+            },
+            "signature": "YTgCMxA1FeNlfDSYDTNnLG7BZPbwwj2km2n/M17H4CRJntslaTsjMHejt5FwcdSGUjV8Nye6X61ToBDde2jwCA=="
+          },
+          {
+            "content": {
+              "scope": "c0-v1",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "rDB4135AowdjgSQ5gNPPPNm31kp4CRcjH/CW7nauI7CTPjFvYIoDRv68qDXb2vTlMlMykEggSEK3Upjq6NDCAQ=="
+          },
+          {
+            "content": {
+              "scope": "c0-v1",
+              "revision": 2,
+              "a": 7,
+              "b": 5
+            },
+            "signature": "wY8YfVFo0bMDBTK6BWRKwY5KOw/ysbMIHb/kPIQc3olanCXywsRwEcpHcrWnDgKAciMXgchOjEStEj3Jeq0LBQ=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADY6K+beoUna37qHhi5ATrQV+41xHxBQG7XnKNxcGH6E=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "cost": 3,
+            "goal_a": 11,
+            "goal_b": 0,
+            "risk": 3
+          },
+          {
+            "id": "option_1",
+            "cost": 8,
+            "goal_a": 8,
+            "goal_b": 4,
+            "risk": 1
+          },
+          {
+            "id": "option_2",
+            "cost": 3,
+            "goal_a": 0,
+            "goal_b": 8,
+            "risk": 0
+          },
+          {
+            "id": "option_3",
+            "cost": 6,
+            "goal_a": 8,
+            "goal_b": 7,
+            "risk": 3
+          },
+          {
+            "id": "option_4",
+            "cost": 9,
+            "goal_a": 3,
+            "goal_b": 11,
+            "risk": 2
+          },
+          {
+            "id": "option_5",
+            "cost": 2,
+            "goal_a": 8,
+            "goal_b": 4,
+            "risk": 1
+          }
+        ],
+        "description": "Allocate limited research time between evidence collection and social understanding.",
+        "rule": "Among options with cost <= budget, maximise a*goal_a + b*goal_b - 3*risk. Break ties by lowest option index. Only valid authenticated records for this task scope apply; use highest revision. If highest-revision authenticated records disagree, answer defer.",
+        "expected": "defer"
+      },
+      {
+        "id": "c1-v0",
+        "cluster": "scenario_1",
+        "family": "interruption_recovery",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c1-v0",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "3VpDTg6RtzlBA5U0XOJbgypaK3Ow5OnkE3AesUTImMKmCcpyyxykLnAKzC3ga2jJt/juakpsHQylCpIS8+JsCw=="
+          },
+          {
+            "content": {
+              "scope": "c1-v0",
+              "revision": 2,
+              "a": 5,
+              "b": 5
+            },
+            "signature": "Q9HDDIJ1JRJPflmKckx0bGhN6fAHHaX9KyGLSoAsESSeH/Odh6YfId0UIR7lsVBFnBnbvGekwgrF7uDsNy2dAA=="
+          },
+          {
+            "content": {
+              "scope": "c1-v0",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "K++QE4J+Ay7ueE2p7rujhS/SHqN0x0kuRUkdQRXP0/nK3ihUXfH9MgfV7N93X8gPsl+EAiWPrdMCztaNtMjwCg=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADY6K+beoUna37qHhi5ATrQV+41xHxBQG7XnKNxcGH6E=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "actions": [
+              "publish",
+              "verify"
+            ]
+          },
+          {
+            "id": "option_1",
+            "actions": [
+              "verify",
+              "publish",
+              "notify"
+            ]
+          },
+          {
+            "id": "option_2",
+            "actions": [
+              "backup",
+              "verify"
+            ]
+          },
+          {
+            "id": "option_3",
+            "actions": [
+              "verify",
+              "backup",
+              "publish"
+            ]
+          },
+          {
+            "id": "option_4",
+            "actions": [
+              "fetch",
+              "verify",
+              "backup"
+            ]
+          },
+          {
+            "id": "option_5",
+            "actions": [
+              "verify",
+              "publish",
+              "backup",
+              "notify"
+            ]
+          }
+        ],
+        "description": "After a reset, select the resumption plan that respects the current dependency and loss penalties.",
+        "rule": "Resume from checkpoint.completed. Run each listed action in order. A missing prerequisite, repeated action, or total cost above budget invalidates the plan. Maximise a*sum(goal_a)+b*sum(goal_b) of newly completed actions; ties use lowest option index. Use only valid signatures for this scope at highest revision; disagreeing authenticated weights mean defer.",
+        "checkpoint": {
+          "completed": [
+            "fetch"
+          ],
+          "provenance": "engine_checkpoint"
+        },
+        "work_items": [
+          {
+            "id": "fetch",
+            "deps": [],
+            "cost": 1,
+            "goal_a": 0,
+            "goal_b": 0
+          },
+          {
+            "id": "verify",
+            "deps": [
+              "fetch"
+            ],
+            "cost": 2,
+            "goal_a": 2,
+            "goal_b": 1
+          },
+          {
+            "id": "publish",
+            "deps": [
+              "verify"
+            ],
+            "cost": 3,
+            "goal_a": 5,
+            "goal_b": 1
+          },
+          {
+            "id": "backup",
+            "deps": [
+              "fetch"
+            ],
+            "cost": 2,
+            "goal_a": 1,
+            "goal_b": 5
+          },
+          {
+            "id": "notify",
+            "deps": [
+              "publish"
+            ],
+            "cost": 1,
+            "goal_a": 1,
+            "goal_b": 2
+          }
+        ],
+        "expected": "option_5"
+      },
+      {
+        "id": "c1-v1",
+        "cluster": "scenario_1",
+        "family": "interruption_recovery",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c1-v1",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "jhLEbjKSs1rMVZ/Q+pyggnU1I8iCif80vIXyUMQBSqqhP1V9OLLKDkW7g3Ber/izLUGB2EA5iXcwOFADdyiuAg=="
+          },
+          {
+            "content": {
+              "scope": "c1-v1",
+              "revision": 2,
+              "a": 5,
+              "b": 5
+            },
+            "signature": "3wbWTtrTY/NXfdwrJySBtOHFoiXFAhTo1MEyMmLTIwUplSzTXlEmUrGBFKCKlz8CDsbICldDAOHMSdtjN0HDCQ=="
+          },
+          {
+            "content": {
+              "scope": "c1-v1",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "z8WHEQgzjwUXOOLbPdXdAn28ODMbHAKenK8xkAtWlfGefNeE8ipnKIaSY8a2EobdTJKJuu/v9O9fJqZA39kUDw=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADY6K+beoUna37qHhi5ATrQV+41xHxBQG7XnKNxcGH6E=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "actions": [
+              "publish",
+              "verify"
+            ]
+          },
+          {
+            "id": "option_1",
+            "actions": [
+              "verify",
+              "publish",
+              "notify"
+            ]
+          },
+          {
+            "id": "option_2",
+            "actions": [
+              "backup",
+              "verify"
+            ]
+          },
+          {
+            "id": "option_3",
+            "actions": [
+              "verify",
+              "backup",
+              "publish"
+            ]
+          },
+          {
+            "id": "option_4",
+            "actions": [
+              "fetch",
+              "verify",
+              "backup"
+            ]
+          },
+          {
+            "id": "option_5",
+            "actions": [
+              "verify",
+              "publish",
+              "backup",
+              "notify"
+            ]
+          }
+        ],
+        "description": "After a reset, select the resumption plan that respects the current dependency and loss penalties.",
+        "rule": "Resume from checkpoint.completed. Run each listed action in order. A missing prerequisite, repeated action, or total cost above budget invalidates the plan. Maximise a*sum(goal_a)+b*sum(goal_b) of newly completed actions; ties use lowest option index. Use only valid signatures for this scope at highest revision; disagreeing authenticated weights mean defer.",
+        "checkpoint": {
+          "completed": [
+            "fetch"
+          ],
+          "provenance": "engine_checkpoint"
+        },
+        "work_items": [
+          {
+            "id": "fetch",
+            "deps": [],
+            "cost": 1,
+            "goal_a": 0,
+            "goal_b": 0
+          },
+          {
+            "id": "verify",
+            "deps": [
+              "fetch"
+            ],
+            "cost": 2,
+            "goal_a": 2,
+            "goal_b": 1
+          },
+          {
+            "id": "publish",
+            "deps": [
+              "verify"
+            ],
+            "cost": 3,
+            "goal_a": 5,
+            "goal_b": 1
+          },
+          {
+            "id": "backup",
+            "deps": [
+              "fetch"
+            ],
+            "cost": 2,
+            "goal_a": 1,
+            "goal_b": 5
+          },
+          {
+            "id": "notify",
+            "deps": [
+              "publish"
+            ],
+            "cost": 1,
+            "goal_a": 1,
+            "goal_b": 2
+          }
+        ],
+        "expected": "option_5"
+      },
+      {
+        "id": "c2-v0",
+        "cluster": "scenario_2",
+        "family": "self_debugging",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c2-v0",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "jiHeBBl917TZkyE0aYaq5vbHiaxeQWLjhB4nF9IerJSGShMS535us3smHR2xcWxAllQPOqTDa5WFcXrjMAiJBA=="
+          },
+          {
+            "content": {
+              "scope": "c2-v0",
+              "revision": 2,
+              "a": 3,
+              "b": 2
+            },
+            "signature": "8bb+fegV2JDnklFYcAHcJJVR6X5hBp9QLpCzCj/08M5SJ7Sm2PbnGthbqhksrn73KjZOjOeDZ/l1xPOIHZYUAw=="
+          },
+          {
+            "content": {
+              "scope": "c2-v0",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "jDAYhDw6k7PMrSWR4V+jARNdIXASlhhhvOH7JdbmIW7BnnZg41OkTr7XMINvMe1AwtaaHPZyH9x5+t48VlnVAQ=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADY6K+beoUna37qHhi5ATrQV+41xHxBQG7XnKNxcGH6E=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "program": {
+              "op": "sub",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    "a",
+                    "x"
+                  ]
+                },
+                "b"
+              ]
+            }
+          },
+          {
+            "id": "option_1",
+            "program": {
+              "op": "add",
+              "args": [
+                "a",
+                {
+                  "op": "mul",
+                  "args": [
+                    "x",
+                    "b"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "option_2",
+            "program": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    "a",
+                    "x"
+                  ]
+                },
+                1
+              ]
+            }
+          },
+          {
+            "id": "option_3",
+            "program": {
+              "op": "add",
+              "args": [
+                "x",
+                "b"
+              ]
+            }
+          },
+          {
+            "id": "option_4",
+            "program": {
+              "op": "mul",
+              "args": [
+                "a",
+                {
+                  "op": "add",
+                  "args": [
+                    "x",
+                    "b"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "option_5",
+            "program": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    "a",
+                    "x"
+                  ]
+                },
+                "b"
+              ]
+            }
+          }
+        ],
+        "description": "Select a patch by its supplied measured coverage gains and regression count.",
+        "rule": "Execute each candidate expression on every supplied test x. Return the lowest-index candidate for which output equals a*x+b on all tests. AST add/sub/mul are arithmetic. Use authenticated coefficients a,b at the highest revision for this scope. If those authenticated records disagree, defer. Earlier coefficients and invalid signatures do not override current authenticated coefficients.",
+        "tests": [
+          {
+            "x": -2,
+            "expected_rule": "a*x+b"
+          },
+          {
+            "x": 0,
+            "expected_rule": "a*x+b"
+          }
+        ],
+        "expected": "option_5"
+      },
+      {
+        "id": "c2-v1",
+        "cluster": "scenario_2",
+        "family": "self_debugging",
+        "difficulty": 1,
+        "ambiguous": true,
+        "records": [
+          {
+            "content": {
+              "scope": "c2-v1",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "1s787L8paBdSpoSzP1SO5+Wg0Ng8NfzqJu4Bk3yHLY+ZXAz8wNp/jYAQdsOj+2IKnRrOTay0vBxVI3xtwjJ8DA=="
+          },
+          {
+            "content": {
+              "scope": "c2-v1",
+              "revision": 2,
+              "a": 2,
+              "b": 6
+            },
+            "signature": "64K+DlYU6FTu5urOfgm+tlBsREXGJkQ8sOPXFYEVidt1PYAEHoMz4f9eVG+3UM/1mY7oAcU9aHNpc0mHA43ADA=="
+          },
+          {
+            "content": {
+              "scope": "c2-v1",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "+/lRdz8mhP2/LoJ8hSf8ir8IqlRVQiGpwp78hNKQl9gTSHpPoZKVstIG/JMjebr/eHDEaRe5l9jc6WJiLSf1Cw=="
+          },
+          {
+            "content": {
+              "scope": "c2-v1",
+              "revision": 2,
+              "a": 6,
+              "b": 6
+            },
+            "signature": "djoci9VK0BBoCP9kt6yepWhg34EfBVM4HSKxvCE0uUjc9YSfMqyEzI+t+HWJ1ALolu9iJ+15eKIH/HBdAnlPBQ=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADY6K+beoUna37qHhi5ATrQV+41xHxBQG7XnKNxcGH6E=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "program": {
+              "op": "sub",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    "a",
+                    "x"
+                  ]
+                },
+                "b"
+              ]
+            }
+          },
+          {
+            "id": "option_1",
+            "program": {
+              "op": "add",
+              "args": [
+                "a",
+                {
+                  "op": "mul",
+                  "args": [
+                    "x",
+                    "b"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "option_2",
+            "program": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    "a",
+                    "x"
+                  ]
+                },
+                1
+              ]
+            }
+          },
+          {
+            "id": "option_3",
+            "program": {
+              "op": "add",
+              "args": [
+                "x",
+                "b"
+              ]
+            }
+          },
+          {
+            "id": "option_4",
+            "program": {
+              "op": "mul",
+              "args": [
+                "a",
+                {
+                  "op": "add",
+                  "args": [
+                    "x",
+                    "b"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "option_5",
+            "program": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    "a",
+                    "x"
+                  ]
+                },
+                "b"
+              ]
+            }
+          }
+        ],
+        "description": "Select a patch by its supplied measured coverage gains and regression count.",
+        "rule": "Execute each candidate expression on every supplied test x. Return the lowest-index candidate for which output equals a*x+b on all tests. AST add/sub/mul are arithmetic. Use authenticated coefficients a,b at the highest revision for this scope. If those authenticated records disagree, defer. Earlier coefficients and invalid signatures do not override current authenticated coefficients.",
+        "tests": [
+          {
+            "x": -2,
+            "expected_rule": "a*x+b"
+          },
+          {
+            "x": 0,
+            "expected_rule": "a*x+b"
+          }
+        ],
+        "expected": "defer"
+      },
+      {
+        "id": "c3-v0",
+        "cluster": "scenario_3",
+        "family": "goal_maintenance",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c3-v0",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "jEyjqKVDZtCWOYAPx2fhRC3qwChSnGhrb7bWIWuwWHg8Q1WJaHEJg2BXObghvcXSanpPJy7EeKVJCMLx9iuhAg=="
+          },
+          {
+            "content": {
+              "scope": "c3-v0",
+              "revision": 2,
+              "a": 5,
+              "b": 5
+            },
+            "signature": "QLzQK+B/1q0r23ESXSzrqpip7vvK2TdDEuFUPma6rPn6wh4sOX9uqbFX5uj5kdjBYdLrGqqaVhkV0ltSpI5KDw=="
+          },
+          {
+            "content": {
+              "scope": "c3-v0",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "4/4cFVSFLju5wQTh4l2XOsBMEyja917KFcAj+FJx1ajyfuR4SaWShEjrbrn74dVmnsDrrc4IC0yY+qQ8JJM/Dg=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADY6K+beoUna37qHhi5ATrQV+41xHxBQG7XnKNxcGH6E=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "schedule": [
+              "explore",
+              "audit"
+            ]
+          },
+          {
+            "id": "option_1",
+            "schedule": [
+              "audit",
+              "explore",
+              "social"
+            ]
+          },
+          {
+            "id": "option_2",
+            "schedule": [
+              "audit",
+              "maintain",
+              "social"
+            ]
+          },
+          {
+            "id": "option_3",
+            "schedule": [
+              "social",
+              "explore",
+              "maintain"
+            ]
+          },
+          {
+            "id": "option_4",
+            "schedule": [
+              "maintain",
+              "audit",
+              "social"
+            ]
+          },
+          {
+            "id": "option_5",
+            "schedule": [
+              "audit",
+              "social",
+              "explore"
+            ]
+          }
+        ],
+        "description": "Choose a schedule balancing exploration and maintaining existing commitments.",
+        "rule": "Start at time zero and execute scheduled jobs sequentially. Missing a deadline, repeating a job, or exceeding budget invalidates that entire schedule. Maximise a*sum(goal_a)+b*sum(goal_b) of completed jobs; tie lowest option index. Use current highest-revision authenticated weights for this scope; authenticated disagreement means defer.",
+        "jobs": [
+          {
+            "id": "audit",
+            "duration": 2,
+            "deadline": 3,
+            "goal_a": 1,
+            "goal_b": 5
+          },
+          {
+            "id": "explore",
+            "duration": 3,
+            "deadline": 6,
+            "goal_a": 6,
+            "goal_b": 0
+          },
+          {
+            "id": "maintain",
+            "duration": 2,
+            "deadline": 5,
+            "goal_a": 0,
+            "goal_b": 6
+          },
+          {
+            "id": "social",
+            "duration": 1,
+            "deadline": 7,
+            "goal_a": 2,
+            "goal_b": 2
+          }
+        ],
+        "expected": "option_1"
+      },
+      {
+        "id": "c3-v1",
+        "cluster": "scenario_3",
+        "family": "goal_maintenance",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c3-v1",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "iUo4mgfvoQsuuiat55HvllvcGCV8INlvElmR8l66CQAmlVhgKQ1ExZZ/2fp7nRDaXlEBoA5bL6qVoMw5iHn/CA=="
+          },
+          {
+            "content": {
+              "scope": "c3-v1",
+              "revision": 2,
+              "a": 5,
+              "b": 3
+            },
+            "signature": "odc6nbQ1plNndxD16RM8EK/4sGI40VzcSCcHTJNVyS/Fxpd18VvQ8IIC7lPZyI+O3QrpbgNEvcjrpEU0lhNoBg=="
+          },
+          {
+            "content": {
+              "scope": "c3-v1",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "Q2ZxKq7fmwiiHySy55syfn41iuwjtsUkf9g5OGtUh7m7IEHtYLvU3aVTWrafulA//WuB7F3Bo2LTaIOM+YSHCw=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADY6K+beoUna37qHhi5ATrQV+41xHxBQG7XnKNxcGH6E=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "schedule": [
+              "explore",
+              "audit"
+            ]
+          },
+          {
+            "id": "option_1",
+            "schedule": [
+              "audit",
+              "explore",
+              "social"
+            ]
+          },
+          {
+            "id": "option_2",
+            "schedule": [
+              "audit",
+              "maintain",
+              "social"
+            ]
+          },
+          {
+            "id": "option_3",
+            "schedule": [
+              "social",
+              "explore",
+              "maintain"
+            ]
+          },
+          {
+            "id": "option_4",
+            "schedule": [
+              "maintain",
+              "audit",
+              "social"
+            ]
+          },
+          {
+            "id": "option_5",
+            "schedule": [
+              "audit",
+              "social",
+              "explore"
+            ]
+          }
+        ],
+        "description": "Choose a schedule balancing exploration and maintaining existing commitments.",
+        "rule": "Start at time zero and execute scheduled jobs sequentially. Missing a deadline, repeating a job, or exceeding budget invalidates that entire schedule. Maximise a*sum(goal_a)+b*sum(goal_b) of completed jobs; tie lowest option index. Use current highest-revision authenticated weights for this scope; authenticated disagreement means defer.",
+        "jobs": [
+          {
+            "id": "audit",
+            "duration": 2,
+            "deadline": 3,
+            "goal_a": 1,
+            "goal_b": 5
+          },
+          {
+            "id": "explore",
+            "duration": 3,
+            "deadline": 6,
+            "goal_a": 6,
+            "goal_b": 0
+          },
+          {
+            "id": "maintain",
+            "duration": 2,
+            "deadline": 5,
+            "goal_a": 0,
+            "goal_b": 6
+          },
+          {
+            "id": "social",
+            "duration": 1,
+            "deadline": 7,
+            "goal_a": 2,
+            "goal_b": 2
+          }
+        ],
+        "expected": "option_1"
+      },
+      {
+        "id": "c4-v0",
+        "cluster": "scenario_4",
+        "family": "resource_planning",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c4-v0",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "qTeTwTkGerpRA54JWcciVobJXXML4tK2VwubO7lvidVYDPvuqWJ2ywT4f/luF9bFkgQvhISUlXci2tKO8eVZAA=="
+          },
+          {
+            "content": {
+              "scope": "c4-v0",
+              "revision": 2,
+              "a": 6,
+              "b": 5
+            },
+            "signature": "I6iQi2SVR/ZMpvOoyo3yi+td7qTr6X4MOcvD+lC10Q14KqFc7Jh//TtXtZn9f+hkzObI0XhOa5efqC3DXbNzBA=="
+          },
+          {
+            "content": {
+              "scope": "c4-v0",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "k7AqV8p+5B6F4J8FUPKUCkMtgd4+qTPREh0xrgiYT5YqWqP4L8w3+z5mFt9HMPjQeC7N9q09HaPx+Lx9vIqEBg=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADY6K+beoUna37qHhi5ATrQV+41xHxBQG7XnKNxcGH6E=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "cost": 7,
+            "goal_a": 8,
+            "goal_b": 4,
+            "risk": 2
+          },
+          {
+            "id": "option_1",
+            "cost": 8,
+            "goal_a": 5,
+            "goal_b": 4,
+            "risk": 0
+          },
+          {
+            "id": "option_2",
+            "cost": 4,
+            "goal_a": 10,
+            "goal_b": 3,
+            "risk": 2
+          },
+          {
+            "id": "option_3",
+            "cost": 7,
+            "goal_a": 3,
+            "goal_b": 2,
+            "risk": 3
+          },
+          {
+            "id": "option_4",
+            "cost": 5,
+            "goal_a": 4,
+            "goal_b": 0,
+            "risk": 3
+          },
+          {
+            "id": "option_5",
+            "cost": 7,
+            "goal_a": 11,
+            "goal_b": 11,
+            "risk": 0
+          }
+        ],
+        "description": "Allocate limited research time between evidence collection and social understanding.",
+        "rule": "Among options with cost <= budget, maximise a*goal_a + b*goal_b - 3*risk. Break ties by lowest option index. Only valid authenticated records for this task scope apply; use highest revision. If highest-revision authenticated records disagree, answer defer.",
+        "expected": "option_5"
+      },
+      {
+        "id": "c4-v1",
+        "cluster": "scenario_4",
+        "family": "resource_planning",
+        "difficulty": 1,
+        "ambiguous": true,
+        "records": [
+          {
+            "content": {
+              "scope": "c4-v1",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "01zws1gFMAtluCR4yKe6jv8DCwxeN+JykZpDG0I9Lu93igPi6VH1ajyx3tuT9UkoEg0GKBg0pt0lEZ8enc6zDA=="
+          },
+          {
+            "content": {
+              "scope": "c4-v1",
+              "revision": 2,
+              "a": 4,
+              "b": 2
+            },
+            "signature": "go+0lD+7LF64ejLpxOqVofr1Z3y6KLfxXGbH2hhyCPhrU+6rvEI+wK2ehO3wzUDlyivOe1GhCCKYqwbu1cMNDA=="
+          },
+          {
+            "content": {
+              "scope": "c4-v1",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "aVrwgGGfBtuDw18JR2zAXNR+BU4Z3s67x0VR8zWLLC5pD9aaRHfurGaNZTAPh9pqQzvSrPWNjpYV1fvIz1OtCw=="
+          },
+          {
+            "content": {
+              "scope": "c4-v1",
+              "revision": 2,
+              "a": 8,
+              "b": 2
+            },
+            "signature": "KiRA4JlleoGuZnOHEP688amarL5d5eMktmLs3sct3g1taylTVBIPcGik5gQUDRgvwTJ3Rlk7Bsmpw0Gi8MmsCw=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADY6K+beoUna37qHhi5ATrQV+41xHxBQG7XnKNxcGH6E=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "cost": 8,
+            "goal_a": 2,
+            "goal_b": 0,
+            "risk": 1
+          },
+          {
+            "id": "option_1",
+            "cost": 10,
+            "goal_a": 0,
+            "goal_b": 11,
+            "risk": 2
+          },
+          {
+            "id": "option_2",
+            "cost": 2,
+            "goal_a": 11,
+            "goal_b": 9,
+            "risk": 1
+          },
+          {
+            "id": "option_3",
+            "cost": 4,
+            "goal_a": 3,
+            "goal_b": 4,
+            "risk": 0
+          },
+          {
+            "id": "option_4",
+            "cost": 3,
+            "goal_a": 1,
+            "goal_b": 5,
+            "risk": 3
+          },
+          {
+            "id": "option_5",
+            "cost": 7,
+            "goal_a": 3,
+            "goal_b": 8,
+            "risk": 2
+          }
+        ],
+        "description": "Allocate limited research time between evidence collection and social understanding.",
+        "rule": "Among options with cost <= budget, maximise a*goal_a + b*goal_b - 3*risk. Break ties by lowest option index. Only valid authenticated records for this task scope apply; use highest revision. If highest-revision authenticated records disagree, answer defer.",
+        "expected": "defer"
+      },
+      {
+        "id": "c5-v0",
+        "cluster": "scenario_5",
+        "family": "interruption_recovery",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c5-v0",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "sMfUwk5PmMfoOi3Fc3+/s7eqCEb7Q3lPWTGJ8p9Sp/FFnXwFraDav9VWw8GsM/ZA2wtDhSd/Tmy20n4d1h0IAQ=="
+          },
+          {
+            "content": {
+              "scope": "c5-v0",
+              "revision": 2,
+              "a": 6,
+              "b": 5
+            },
+            "signature": "1wzqtWqfEkFqEbuydI+e5TRdhf6KbURTE10i0LwkgW1b81b74ZmB1qMS5MOAxxrLVGAGd8pVusPY7dB93bR8AQ=="
+          },
+          {
+            "content": {
+              "scope": "c5-v0",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "BEbTP646ACY5efkDAn15JZGFf8MWdRJWxwxM0LJnOS8sMahvuw65gdVwTRYwY1WTdEWcWMmoFzmqcap9/6DRBQ=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADY6K+beoUna37qHhi5ATrQV+41xHxBQG7XnKNxcGH6E=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "actions": [
+              "publish",
+              "verify"
+            ]
+          },
+          {
+            "id": "option_1",
+            "actions": [
+              "verify",
+              "publish",
+              "notify"
+            ]
+          },
+          {
+            "id": "option_2",
+            "actions": [
+              "backup",
+              "verify"
+            ]
+          },
+          {
+            "id": "option_3",
+            "actions": [
+              "verify",
+              "backup",
+              "publish"
+            ]
+          },
+          {
+            "id": "option_4",
+            "actions": [
+              "fetch",
+              "verify",
+              "backup"
+            ]
+          },
+          {
+            "id": "option_5",
+            "actions": [
+              "verify",
+              "publish",
+              "backup",
+              "notify"
+            ]
+          }
+        ],
+        "description": "After a reset, select the resumption plan that respects the current dependency and loss penalties.",
+        "rule": "Resume from checkpoint.completed. Run each listed action in order. A missing prerequisite, repeated action, or total cost above budget invalidates the plan. Maximise a*sum(goal_a)+b*sum(goal_b) of newly completed actions; ties use lowest option index. Use only valid signatures for this scope at highest revision; disagreeing authenticated weights mean defer.",
+        "checkpoint": {
+          "completed": [
+            "fetch"
+          ],
+          "provenance": "engine_checkpoint"
+        },
+        "work_items": [
+          {
+            "id": "fetch",
+            "deps": [],
+            "cost": 1,
+            "goal_a": 0,
+            "goal_b": 0
+          },
+          {
+            "id": "verify",
+            "deps": [
+              "fetch"
+            ],
+            "cost": 2,
+            "goal_a": 2,
+            "goal_b": 1
+          },
+          {
+            "id": "publish",
+            "deps": [
+              "verify"
+            ],
+            "cost": 3,
+            "goal_a": 5,
+            "goal_b": 1
+          },
+          {
+            "id": "backup",
+            "deps": [
+              "fetch"
+            ],
+            "cost": 2,
+            "goal_a": 1,
+            "goal_b": 5
+          },
+          {
+            "id": "notify",
+            "deps": [
+              "publish"
+            ],
+            "cost": 1,
+            "goal_a": 1,
+            "goal_b": 2
+          }
+        ],
+        "expected": "option_5"
+      },
+      {
+        "id": "c5-v1",
+        "cluster": "scenario_5",
+        "family": "interruption_recovery",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c5-v1",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "4x4ratso8+1/V97OevHkUkFcjwEgU44JyFeK5/hS86IP1Kn0ohqtOENs9oTuqfPSR/QNJ3bsqvj4GOzQzdALCg=="
+          },
+          {
+            "content": {
+              "scope": "c5-v1",
+              "revision": 2,
+              "a": 6,
+              "b": 3
+            },
+            "signature": "BU8/I3qPt/cjCmKr5IfMAtop6FDRf8LLdH1v2/DbgeuLW1t7BLGIjgs/QF+pyqucavvCvzBKzrxw7nTt2LwYBg=="
+          },
+          {
+            "content": {
+              "scope": "c5-v1",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "q2h+l5/89zTT7W3OaLTPWM6qpUWB2WgLP12B+UbKDagfMIZThIWKc3U5hVexnKJQHr1gpWNVpMf4fzWOGyhcAQ=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADY6K+beoUna37qHhi5ATrQV+41xHxBQG7XnKNxcGH6E=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "actions": [
+              "publish",
+              "verify"
+            ]
+          },
+          {
+            "id": "option_1",
+            "actions": [
+              "verify",
+              "publish",
+              "notify"
+            ]
+          },
+          {
+            "id": "option_2",
+            "actions": [
+              "backup",
+              "verify"
+            ]
+          },
+          {
+            "id": "option_3",
+            "actions": [
+              "verify",
+              "backup",
+              "publish"
+            ]
+          },
+          {
+            "id": "option_4",
+            "actions": [
+              "fetch",
+              "verify",
+              "backup"
+            ]
+          },
+          {
+            "id": "option_5",
+            "actions": [
+              "verify",
+              "publish",
+              "backup",
+              "notify"
+            ]
+          }
+        ],
+        "description": "After a reset, select the resumption plan that respects the current dependency and loss penalties.",
+        "rule": "Resume from checkpoint.completed. Run each listed action in order. A missing prerequisite, repeated action, or total cost above budget invalidates the plan. Maximise a*sum(goal_a)+b*sum(goal_b) of newly completed actions; ties use lowest option index. Use only valid signatures for this scope at highest revision; disagreeing authenticated weights mean defer.",
+        "checkpoint": {
+          "completed": [
+            "fetch"
+          ],
+          "provenance": "engine_checkpoint"
+        },
+        "work_items": [
+          {
+            "id": "fetch",
+            "deps": [],
+            "cost": 1,
+            "goal_a": 0,
+            "goal_b": 0
+          },
+          {
+            "id": "verify",
+            "deps": [
+              "fetch"
+            ],
+            "cost": 2,
+            "goal_a": 2,
+            "goal_b": 1
+          },
+          {
+            "id": "publish",
+            "deps": [
+              "verify"
+            ],
+            "cost": 3,
+            "goal_a": 5,
+            "goal_b": 1
+          },
+          {
+            "id": "backup",
+            "deps": [
+              "fetch"
+            ],
+            "cost": 2,
+            "goal_a": 1,
+            "goal_b": 5
+          },
+          {
+            "id": "notify",
+            "deps": [
+              "publish"
+            ],
+            "cost": 1,
+            "goal_a": 1,
+            "goal_b": 2
+          }
+        ],
+        "expected": "option_5"
+      },
+      {
+        "id": "c6-v0",
+        "cluster": "scenario_6",
+        "family": "self_debugging",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c6-v0",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "wkWrSpCEqlIBPHgKeQOwov4Dtt8RZpon4GdHmVQ4pzSBU3bi/0gEAGPBD74QOvMVw7h4e0Eo18MqBv/+oFy6BQ=="
+          },
+          {
+            "content": {
+              "scope": "c6-v0",
+              "revision": 2,
+              "a": 3,
+              "b": 4
+            },
+            "signature": "qwBAkbhSr4BCL/HaoMZwdDjQYN4U9hRWVzXYGuLcfBk2M3Fz+sRr0u1/xEWlJ6FLWy65tSlNAwyVcSMu4ybOBQ=="
+          },
+          {
+            "content": {
+              "scope": "c6-v0",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "RmD7fPJBdFfWzFM0FRuIltK5YfRxYIOg88d3x+m0ZuztViwQRf+mimGDHB1ey9A7N9iX+mkU9V0966JRNmVaAA=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADY6K+beoUna37qHhi5ATrQV+41xHxBQG7XnKNxcGH6E=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "program": {
+              "op": "mul",
+              "args": [
+                "a",
+                {
+                  "op": "add",
+                  "args": [
+                    "x",
+                    "b"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "option_1",
+            "program": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    "a",
+                    "x"
+                  ]
+                },
+                "b"
+              ]
+            }
+          },
+          {
+            "id": "option_2",
+            "program": {
+              "op": "sub",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    "a",
+                    "x"
+                  ]
+                },
+                "b"
+              ]
+            }
+          },
+          {
+            "id": "option_3",
+            "program": {
+              "op": "add",
+              "args": [
+                "a",
+                {
+                  "op": "mul",
+                  "args": [
+                    "x",
+                    "b"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "option_4",
+            "program": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    "a",
+                    "x"
+                  ]
+                },
+                1
+              ]
+            }
+          },
+          {
+            "id": "option_5",
+            "program": {
+              "op": "add",
+              "args": [
+                "x",
+                "b"
+              ]
+            }
+          }
+        ],
+        "description": "Select a patch by its supplied measured coverage gains and regression count.",
+        "rule": "Execute each candidate expression on every supplied test x. Return the lowest-index candidate for which output equals a*x+b on all tests. AST add/sub/mul are arithmetic. Use authenticated coefficients a,b at the highest revision for this scope. If those authenticated records disagree, defer. Earlier coefficients and invalid signatures do not override current authenticated coefficients.",
+        "tests": [
+          {
+            "x": -2,
+            "expected_rule": "a*x+b"
+          },
+          {
+            "x": 0,
+            "expected_rule": "a*x+b"
+          }
+        ],
+        "expected": "option_1"
+      },
+      {
+        "id": "c6-v1",
+        "cluster": "scenario_6",
+        "family": "self_debugging",
+        "difficulty": 1,
+        "ambiguous": true,
+        "records": [
+          {
+            "content": {
+              "scope": "c6-v1",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "IvLR5HYps/+ois9Fc5rnswKwQfOxKrfdJu2HfCW6vsb8TxG61yEDAqilwI8wbE7DlRLMgl/d0zY2e8KO/nW0Aw=="
+          },
+          {
+            "content": {
+              "scope": "c6-v1",
+              "revision": 2,
+              "a": 6,
+              "b": 4
+            },
+            "signature": "0Lu5Wg5d+2PCOy5OjD3yxksFZZQoEtwUllX7Zwcg8JGvOGK6JgE6BZvgxbJrXwpO29ZGED3OQsLZYbOh+NTsCw=="
+          },
+          {
+            "content": {
+              "scope": "c6-v1",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "wDlUUCj4pN5bt63H51EKLQP23izXUtcHYNp+3sJkZAzrTGgs//5bB7ftXVy/ZcxH+6oParoYK3QGeZT0HdTfCw=="
+          },
+          {
+            "content": {
+              "scope": "c6-v1",
+              "revision": 2,
+              "a": 10,
+              "b": 4
+            },
+            "signature": "X2CWTKH68MrVXt2yfqKsJ2AHx20LXnXAMO76OCwCnRmI7sn7RjqYN9PgD89sTVs453qt0I2nRnXR0nlh2G9WDA=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADY6K+beoUna37qHhi5ATrQV+41xHxBQG7XnKNxcGH6E=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "program": {
+              "op": "mul",
+              "args": [
+                "a",
+                {
+                  "op": "add",
+                  "args": [
+                    "x",
+                    "b"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "option_1",
+            "program": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    "a",
+                    "x"
+                  ]
+                },
+                "b"
+              ]
+            }
+          },
+          {
+            "id": "option_2",
+            "program": {
+              "op": "sub",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    "a",
+                    "x"
+                  ]
+                },
+                "b"
+              ]
+            }
+          },
+          {
+            "id": "option_3",
+            "program": {
+              "op": "add",
+              "args": [
+                "a",
+                {
+                  "op": "mul",
+                  "args": [
+                    "x",
+                    "b"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "option_4",
+            "program": {
+              "op": "add",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    "a",
+                    "x"
+                  ]
+                },
+                1
+              ]
+            }
+          },
+          {
+            "id": "option_5",
+            "program": {
+              "op": "add",
+              "args": [
+                "x",
+                "b"
+              ]
+            }
+          }
+        ],
+        "description": "Select a patch by its supplied measured coverage gains and regression count.",
+        "rule": "Execute each candidate expression on every supplied test x. Return the lowest-index candidate for which output equals a*x+b on all tests. AST add/sub/mul are arithmetic. Use authenticated coefficients a,b at the highest revision for this scope. If those authenticated records disagree, defer. Earlier coefficients and invalid signatures do not override current authenticated coefficients.",
+        "tests": [
+          {
+            "x": -2,
+            "expected_rule": "a*x+b"
+          },
+          {
+            "x": 0,
+            "expected_rule": "a*x+b"
+          }
+        ],
+        "expected": "defer"
+      },
+      {
+        "id": "c7-v0",
+        "cluster": "scenario_7",
+        "family": "goal_maintenance",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c7-v0",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "g7gfUGpXsLsIkKuHnbgXV2f/J8St3t1o5VSVfMqISpiLPxeUz8Hnj4rPQvtyEVe0rDzWxBzQku03k3Xm7WXrCQ=="
+          },
+          {
+            "content": {
+              "scope": "c7-v0",
+              "revision": 2,
+              "a": 6,
+              "b": 6
+            },
+            "signature": "0cOGXDKhsvlRSjlXD38jMifp+UdR2cEOtPcan3EJZUBRzHklcZ3rE0r3zfpEBBlj0guPmqtZvxKYQ8pdtYpOAQ=="
+          },
+          {
+            "content": {
+              "scope": "c7-v0",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "GodcZGzoB1kJjZyF3noI948RZhwRuVrBuJ09te+6WNkr2IBa3CEVWbJGCB5eKOayym4FCz2VpLmRUusK1rNNBw=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADY6K+beoUna37qHhi5ATrQV+41xHxBQG7XnKNxcGH6E=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "schedule": [
+              "explore",
+              "audit"
+            ]
+          },
+          {
+            "id": "option_1",
+            "schedule": [
+              "audit",
+              "explore",
+              "social"
+            ]
+          },
+          {
+            "id": "option_2",
+            "schedule": [
+              "audit",
+              "maintain",
+              "social"
+            ]
+          },
+          {
+            "id": "option_3",
+            "schedule": [
+              "social",
+              "explore",
+              "maintain"
+            ]
+          },
+          {
+            "id": "option_4",
+            "schedule": [
+              "maintain",
+              "audit",
+              "social"
+            ]
+          },
+          {
+            "id": "option_5",
+            "schedule": [
+              "audit",
+              "social",
+              "explore"
+            ]
+          }
+        ],
+        "description": "Choose a schedule balancing exploration and maintaining existing commitments.",
+        "rule": "Start at time zero and execute scheduled jobs sequentially. Missing a deadline, repeating a job, or exceeding budget invalidates that entire schedule. Maximise a*sum(goal_a)+b*sum(goal_b) of completed jobs; tie lowest option index. Use current highest-revision authenticated weights for this scope; authenticated disagreement means defer.",
+        "jobs": [
+          {
+            "id": "audit",
+            "duration": 2,
+            "deadline": 3,
+            "goal_a": 1,
+            "goal_b": 5
+          },
+          {
+            "id": "explore",
+            "duration": 3,
+            "deadline": 6,
+            "goal_a": 6,
+            "goal_b": 0
+          },
+          {
+            "id": "maintain",
+            "duration": 2,
+            "deadline": 5,
+            "goal_a": 0,
+            "goal_b": 6
+          },
+          {
+            "id": "social",
+            "duration": 1,
+            "deadline": 7,
+            "goal_a": 2,
+            "goal_b": 2
+          }
+        ],
+        "expected": "option_1"
+      },
+      {
+        "id": "c7-v1",
+        "cluster": "scenario_7",
+        "family": "goal_maintenance",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c7-v1",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "jkjPtwm/lmYYBnHWRwfEbXphjapzXmQVAhzZoGRC+v3PLXQqGXQ/ZQsCT6yIxxdAtY0Rq7C9yRpdNiyExn3cAA=="
+          },
+          {
+            "content": {
+              "scope": "c7-v1",
+              "revision": 2,
+              "a": 2,
+              "b": 4
+            },
+            "signature": "hi1qSR0ifP/lr3UGiiookDVIsWaQEEu9wwbFdS56b9BSL/xytaXvMt17LbSHa6y3cPWOlHEKuDpkcu0Z/U+YBQ=="
+          },
+          {
+            "content": {
+              "scope": "c7-v1",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "ST3J3F9EnnFp5mE5ti1cl5i6galg+nqYkr2EXx8uZJkSe1MGjKTSteId16ukhHxx5VwwWMh//iDHR+NaUearAg=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADY6K+beoUna37qHhi5ATrQV+41xHxBQG7XnKNxcGH6E=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "schedule": [
+              "explore",
+              "audit"
+            ]
+          },
+          {
+            "id": "option_1",
+            "schedule": [
+              "audit",
+              "explore",
+              "social"
+            ]
+          },
+          {
+            "id": "option_2",
+            "schedule": [
+              "audit",
+              "maintain",
+              "social"
+            ]
+          },
+          {
+            "id": "option_3",
+            "schedule": [
+              "social",
+              "explore",
+              "maintain"
+            ]
+          },
+          {
+            "id": "option_4",
+            "schedule": [
+              "maintain",
+              "audit",
+              "social"
+            ]
+          },
+          {
+            "id": "option_5",
+            "schedule": [
+              "audit",
+              "social",
+              "explore"
+            ]
+          }
+        ],
+        "description": "Choose a schedule balancing exploration and maintaining existing commitments.",
+        "rule": "Start at time zero and execute scheduled jobs sequentially. Missing a deadline, repeating a job, or exceeding budget invalidates that entire schedule. Maximise a*sum(goal_a)+b*sum(goal_b) of completed jobs; tie lowest option index. Use current highest-revision authenticated weights for this scope; authenticated disagreement means defer.",
+        "jobs": [
+          {
+            "id": "audit",
+            "duration": 2,
+            "deadline": 3,
+            "goal_a": 1,
+            "goal_b": 5
+          },
+          {
+            "id": "explore",
+            "duration": 3,
+            "deadline": 6,
+            "goal_a": 6,
+            "goal_b": 0
+          },
+          {
+            "id": "maintain",
+            "duration": 2,
+            "deadline": 5,
+            "goal_a": 0,
+            "goal_b": 6
+          },
+          {
+            "id": "social",
+            "duration": 1,
+            "deadline": 7,
+            "goal_a": 2,
+            "goal_b": 2
+          }
+        ],
+        "expected": "option_2"
+      }
+    ]
+  },
+  "hash": "ba3fb48d63b8e0947b69e5599cc3fdb63be60e58c28f4a66d2862a1c9507c29a"
+}

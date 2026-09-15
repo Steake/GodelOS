@@ -1,0 +1,27 @@
+{
+  "request": {
+    "model": "deepseek-flash",
+    "temperature": 0.3,
+    "max_tokens": 1800,
+    "thinking": {
+      "type": "disabled"
+    },
+    "response_format": {
+      "type": "json_object"
+    },
+    "messages": [
+      {
+        "role": "system",
+        "content": "Return JSON {answer:string,memo:string}. Solve the unrelated task and preserve the supplied reference note without changing it."
+      },
+      {
+        "role": "user",
+        "content": "{\"task\":\"Find the next term in 2, 6, 12, 20, 30.\",\"reference_note\":\"When a prior decision rule was formed under a given weighting of exploration versus commitment, and that rule succeeded under its original objective, treat the rule as a reusable prior rather than a fixed truth. Retain the commitments embedded in it only insofar as they remain compatible with the current authenticated weights and available evidence. If later tasks revise those weights or introduce contradictory evidence, update the rule by preserving the parts that still serve the current objective and discarding or downgrading the parts that no longer do. The rule should therefore be: keep useful prior commitments as defaults, but allow them to be overridden when the authenticated weighting or evidence changes.\"}"
+      }
+    ]
+  },
+  "id": "delay-5-0",
+  "tools": [],
+  "attempt": 1,
+  "timestamp": "2026-09-13T22:04:52.561Z"
+}

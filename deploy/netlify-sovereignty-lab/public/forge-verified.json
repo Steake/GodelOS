@@ -1,0 +1,2034 @@
+{
+  "tasks": [
+    {
+      "task_id": "verified-000",
+      "family": "multi_stage_planning",
+      "difficulty": 0.5,
+      "latent_rule": "Verify scope, time and issuer, then optimise under durable resource constraints.",
+      "source": {
+        "brief": "archive-restoration. Plans cover three periods. Maximise total mission reward subject to nonnegative balances and the current scoped final reserve. World: {\"scope\": \"archive-restoration\", \"time\": 10, \"budget\": 18, \"plans\": {\"0-source-d0\": {\"costs\": [1, 2, 2], \"rewards\": [1, 1, 1]}, \"0-source-d1\": {\"costs\": [2, 3, 3], \"rewards\": [2, 3, 4]}, \"0-source-d2\": {\"costs\": [3, 4, 4], \"rewards\": [3, 5, 7]}, \"0-source-d3\": {\"costs\": [4, 5, 5], \"rewards\": [4, 7, 10]}}}. Apply only signed policies effective now in this scope; highest applicable version wins. Verified fields below are produced by the runner verifier, not the task author.",
+        "goals": [
+          {
+            "goal_id": "0-source-g1",
+            "statement": "Preserve the required final reserve over all three periods",
+            "priority": 1
+          },
+          {
+            "goal_id": "0-source-g2",
+            "statement": "Maximise total mission reward subject to the reserve",
+            "priority": 2
+          }
+        ],
+        "context_items": [],
+        "evidence": [
+          {
+            "item_id": "0-source-e0",
+            "statement": "{\"item_id\": \"0-source-e0\", \"scope\": \"archive-restoration\", \"effective_at\": 0, \"version\": 1, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "0-source-e1",
+            "statement": "{\"item_id\": \"0-source-e1\", \"scope\": \"archive-restoration\", \"effective_at\": 5, \"version\": 2, \"reserve\": 6}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "0-source-e2",
+            "statement": "{\"item_id\": \"0-source-e2\", \"scope\": \"other-domain\", \"effective_at\": 5, \"version\": 99, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "0-source-e3",
+            "statement": "{\"item_id\": \"0-source-e3\", \"scope\": \"archive-restoration\", \"effective_at\": 20, \"version\": 100, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "0-source-e4",
+            "statement": "{\"item_id\": \"0-source-e4\", \"scope\": \"archive-restoration\", \"effective_at\": 5, \"version\": 101, \"reserve\": 1}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": false,
+            "supersedes": null
+          },
+          {
+            "item_id": "0-source-e5",
+            "statement": "{\"item_id\": \"0-source-e5\", \"scope\": \"archive-restoration\", \"effective_at\": 5, \"version\": 102, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": false,
+            "supersedes": null
+          }
+        ],
+        "allowed_decisions": [
+          "0-source-d0",
+          "0-source-d1",
+          "0-source-d2",
+          "0-source-d3"
+        ],
+        "decision_meanings": {
+          "0-source-d0": "{\"costs\": [1, 2, 2], \"rewards\": [1, 1, 1]}",
+          "0-source-d1": "{\"costs\": [2, 3, 3], \"rewards\": [2, 3, 4]}",
+          "0-source-d2": "{\"costs\": [3, 4, 4], \"rewards\": [3, 5, 7]}",
+          "0-source-d3": "{\"costs\": [4, 5, 5], \"rewards\": [4, 7, 10]}"
+        },
+        "allowed_step_ids": [
+          "0-source-s0",
+          "0-source-s1",
+          "0-source-s2",
+          "0-source-s3"
+        ],
+        "step_meanings": {
+          "0-source-s0": "Verify issuer signatures",
+          "0-source-s1": "Resolve scope, effective date and policy version",
+          "0-source-s2": "Select the maximal-reward feasible three-period plan",
+          "0-source-s3": "Execute with reserve monitoring"
+        },
+        "expected_decision": "0-source-d2",
+        "expected_goal_id": "0-source-g1",
+        "expected_step_ids": [
+          "0-source-s0",
+          "0-source-s1",
+          "0-source-s2",
+          "0-source-s3"
+        ],
+        "expected_accept_ids": [
+          "0-source-e1"
+        ],
+        "expected_reject_ids": [
+          "0-source-e0",
+          "0-source-e2",
+          "0-source-e3",
+          "0-source-e4",
+          "0-source-e5"
+        ],
+        "answer_reason": "Exhaustive simulator optimum, not a model-authored answer key"
+      },
+      "transfer": {
+        "brief": "expedition-supply. Plans cover three periods. Maximise total mission reward subject to nonnegative balances and the current scoped final reserve. World: {\"scope\": \"expedition-supply\", \"time\": 10, \"budget\": 24, \"plans\": {\"0-transfer-d0\": {\"costs\": [1, 2, 2], \"rewards\": [1, 1, 1]}, \"0-transfer-d1\": {\"costs\": [2, 3, 3], \"rewards\": [2, 3, 4]}, \"0-transfer-d2\": {\"costs\": [3, 4, 4], \"rewards\": [3, 5, 7]}, \"0-transfer-d3\": {\"costs\": [4, 5, 5], \"rewards\": [4, 7, 10]}}}. Apply only signed policies effective now in this scope; highest applicable version wins. Verified fields below are produced by the runner verifier, not the task author.",
+        "goals": [
+          {
+            "goal_id": "0-transfer-g1",
+            "statement": "Preserve the required final reserve over all three periods",
+            "priority": 1
+          },
+          {
+            "goal_id": "0-transfer-g2",
+            "statement": "Maximise total mission reward subject to the reserve",
+            "priority": 2
+          }
+        ],
+        "context_items": [],
+        "evidence": [
+          {
+            "item_id": "0-transfer-e0",
+            "statement": "{\"item_id\": \"0-transfer-e0\", \"scope\": \"expedition-supply\", \"effective_at\": 0, \"version\": 1, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "0-transfer-e1",
+            "statement": "{\"item_id\": \"0-transfer-e1\", \"scope\": \"expedition-supply\", \"effective_at\": 5, \"version\": 2, \"reserve\": 3}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "0-transfer-e2",
+            "statement": "{\"item_id\": \"0-transfer-e2\", \"scope\": \"other-domain\", \"effective_at\": 5, \"version\": 99, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "0-transfer-e3",
+            "statement": "{\"item_id\": \"0-transfer-e3\", \"scope\": \"expedition-supply\", \"effective_at\": 20, \"version\": 100, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "0-transfer-e4",
+            "statement": "{\"item_id\": \"0-transfer-e4\", \"scope\": \"expedition-supply\", \"effective_at\": 5, \"version\": 101, \"reserve\": 1}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": false,
+            "supersedes": null
+          },
+          {
+            "item_id": "0-transfer-e5",
+            "statement": "{\"item_id\": \"0-transfer-e5\", \"scope\": \"expedition-supply\", \"effective_at\": 5, \"version\": 102, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": false,
+            "supersedes": null
+          }
+        ],
+        "allowed_decisions": [
+          "0-transfer-d0",
+          "0-transfer-d1",
+          "0-transfer-d2",
+          "0-transfer-d3"
+        ],
+        "decision_meanings": {
+          "0-transfer-d0": "{\"costs\": [1, 2, 2], \"rewards\": [1, 1, 1]}",
+          "0-transfer-d1": "{\"costs\": [2, 3, 3], \"rewards\": [2, 3, 4]}",
+          "0-transfer-d2": "{\"costs\": [3, 4, 4], \"rewards\": [3, 5, 7]}",
+          "0-transfer-d3": "{\"costs\": [4, 5, 5], \"rewards\": [4, 7, 10]}"
+        },
+        "allowed_step_ids": [
+          "0-transfer-s0",
+          "0-transfer-s1",
+          "0-transfer-s2",
+          "0-transfer-s3"
+        ],
+        "step_meanings": {
+          "0-transfer-s0": "Verify issuer signatures",
+          "0-transfer-s1": "Resolve scope, effective date and policy version",
+          "0-transfer-s2": "Select the maximal-reward feasible three-period plan",
+          "0-transfer-s3": "Execute with reserve monitoring"
+        },
+        "expected_decision": "0-transfer-d3",
+        "expected_goal_id": "0-transfer-g1",
+        "expected_step_ids": [
+          "0-transfer-s0",
+          "0-transfer-s1",
+          "0-transfer-s2",
+          "0-transfer-s3"
+        ],
+        "expected_accept_ids": [
+          "0-transfer-e1"
+        ],
+        "expected_reject_ids": [
+          "0-transfer-e0",
+          "0-transfer-e2",
+          "0-transfer-e3",
+          "0-transfer-e4",
+          "0-transfer-e5"
+        ],
+        "answer_reason": "Exhaustive simulator optimum, not a model-authored answer key"
+      }
+    },
+    {
+      "task_id": "verified-001",
+      "family": "multi_stage_planning",
+      "difficulty": 0.5,
+      "latent_rule": "Verify scope, time and issuer, then optimise under durable resource constraints.",
+      "source": {
+        "brief": "archive-restoration. Plans cover three periods. Maximise total mission reward subject to nonnegative balances and the current scoped final reserve. World: {\"scope\": \"archive-restoration\", \"time\": 10, \"budget\": 23, \"plans\": {\"1-source-d0\": {\"costs\": [1, 2, 2], \"rewards\": [1, 1, 1]}, \"1-source-d1\": {\"costs\": [2, 3, 3], \"rewards\": [2, 3, 4]}, \"1-source-d2\": {\"costs\": [3, 4, 4], \"rewards\": [3, 5, 7]}, \"1-source-d3\": {\"costs\": [4, 5, 5], \"rewards\": [4, 7, 10]}}}. Apply only signed policies effective now in this scope; highest applicable version wins. Verified fields below are produced by the runner verifier, not the task author.",
+        "goals": [
+          {
+            "goal_id": "1-source-g1",
+            "statement": "Preserve the required final reserve over all three periods",
+            "priority": 1
+          },
+          {
+            "goal_id": "1-source-g2",
+            "statement": "Maximise total mission reward subject to the reserve",
+            "priority": 2
+          }
+        ],
+        "context_items": [],
+        "evidence": [
+          {
+            "item_id": "1-source-e0",
+            "statement": "{\"item_id\": \"1-source-e0\", \"scope\": \"archive-restoration\", \"effective_at\": 0, \"version\": 1, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "1-source-e1",
+            "statement": "{\"item_id\": \"1-source-e1\", \"scope\": \"archive-restoration\", \"effective_at\": 5, \"version\": 2, \"reserve\": 3}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "1-source-e2",
+            "statement": "{\"item_id\": \"1-source-e2\", \"scope\": \"other-domain\", \"effective_at\": 5, \"version\": 99, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "1-source-e3",
+            "statement": "{\"item_id\": \"1-source-e3\", \"scope\": \"archive-restoration\", \"effective_at\": 20, \"version\": 100, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "1-source-e4",
+            "statement": "{\"item_id\": \"1-source-e4\", \"scope\": \"archive-restoration\", \"effective_at\": 5, \"version\": 101, \"reserve\": 1}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": false,
+            "supersedes": null
+          },
+          {
+            "item_id": "1-source-e5",
+            "statement": "{\"item_id\": \"1-source-e5\", \"scope\": \"archive-restoration\", \"effective_at\": 5, \"version\": 102, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": false,
+            "supersedes": null
+          }
+        ],
+        "allowed_decisions": [
+          "1-source-d0",
+          "1-source-d1",
+          "1-source-d2",
+          "1-source-d3"
+        ],
+        "decision_meanings": {
+          "1-source-d0": "{\"costs\": [1, 2, 2], \"rewards\": [1, 1, 1]}",
+          "1-source-d1": "{\"costs\": [2, 3, 3], \"rewards\": [2, 3, 4]}",
+          "1-source-d2": "{\"costs\": [3, 4, 4], \"rewards\": [3, 5, 7]}",
+          "1-source-d3": "{\"costs\": [4, 5, 5], \"rewards\": [4, 7, 10]}"
+        },
+        "allowed_step_ids": [
+          "1-source-s0",
+          "1-source-s1",
+          "1-source-s2",
+          "1-source-s3"
+        ],
+        "step_meanings": {
+          "1-source-s0": "Verify issuer signatures",
+          "1-source-s1": "Resolve scope, effective date and policy version",
+          "1-source-s2": "Select the maximal-reward feasible three-period plan",
+          "1-source-s3": "Execute with reserve monitoring"
+        },
+        "expected_decision": "1-source-d3",
+        "expected_goal_id": "1-source-g1",
+        "expected_step_ids": [
+          "1-source-s0",
+          "1-source-s1",
+          "1-source-s2",
+          "1-source-s3"
+        ],
+        "expected_accept_ids": [
+          "1-source-e1"
+        ],
+        "expected_reject_ids": [
+          "1-source-e0",
+          "1-source-e2",
+          "1-source-e3",
+          "1-source-e4",
+          "1-source-e5"
+        ],
+        "answer_reason": "Exhaustive simulator optimum, not a model-authored answer key"
+      },
+      "transfer": {
+        "brief": "expedition-supply. Plans cover three periods. Maximise total mission reward subject to nonnegative balances and the current scoped final reserve. World: {\"scope\": \"expedition-supply\", \"time\": 10, \"budget\": 21, \"plans\": {\"1-transfer-d0\": {\"costs\": [1, 2, 2], \"rewards\": [1, 1, 1]}, \"1-transfer-d1\": {\"costs\": [2, 3, 3], \"rewards\": [2, 3, 4]}, \"1-transfer-d2\": {\"costs\": [3, 4, 4], \"rewards\": [3, 5, 7]}, \"1-transfer-d3\": {\"costs\": [4, 5, 5], \"rewards\": [4, 7, 10]}}}. Apply only signed policies effective now in this scope; highest applicable version wins. Verified fields below are produced by the runner verifier, not the task author.",
+        "goals": [
+          {
+            "goal_id": "1-transfer-g1",
+            "statement": "Preserve the required final reserve over all three periods",
+            "priority": 1
+          },
+          {
+            "goal_id": "1-transfer-g2",
+            "statement": "Maximise total mission reward subject to the reserve",
+            "priority": 2
+          }
+        ],
+        "context_items": [],
+        "evidence": [
+          {
+            "item_id": "1-transfer-e0",
+            "statement": "{\"item_id\": \"1-transfer-e0\", \"scope\": \"expedition-supply\", \"effective_at\": 0, \"version\": 1, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "1-transfer-e1",
+            "statement": "{\"item_id\": \"1-transfer-e1\", \"scope\": \"expedition-supply\", \"effective_at\": 5, \"version\": 2, \"reserve\": 7}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "1-transfer-e2",
+            "statement": "{\"item_id\": \"1-transfer-e2\", \"scope\": \"other-domain\", \"effective_at\": 5, \"version\": 99, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "1-transfer-e3",
+            "statement": "{\"item_id\": \"1-transfer-e3\", \"scope\": \"expedition-supply\", \"effective_at\": 20, \"version\": 100, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "1-transfer-e4",
+            "statement": "{\"item_id\": \"1-transfer-e4\", \"scope\": \"expedition-supply\", \"effective_at\": 5, \"version\": 101, \"reserve\": 1}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": false,
+            "supersedes": null
+          },
+          {
+            "item_id": "1-transfer-e5",
+            "statement": "{\"item_id\": \"1-transfer-e5\", \"scope\": \"expedition-supply\", \"effective_at\": 5, \"version\": 102, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": false,
+            "supersedes": null
+          }
+        ],
+        "allowed_decisions": [
+          "1-transfer-d0",
+          "1-transfer-d1",
+          "1-transfer-d2",
+          "1-transfer-d3"
+        ],
+        "decision_meanings": {
+          "1-transfer-d0": "{\"costs\": [1, 2, 2], \"rewards\": [1, 1, 1]}",
+          "1-transfer-d1": "{\"costs\": [2, 3, 3], \"rewards\": [2, 3, 4]}",
+          "1-transfer-d2": "{\"costs\": [3, 4, 4], \"rewards\": [3, 5, 7]}",
+          "1-transfer-d3": "{\"costs\": [4, 5, 5], \"rewards\": [4, 7, 10]}"
+        },
+        "allowed_step_ids": [
+          "1-transfer-s0",
+          "1-transfer-s1",
+          "1-transfer-s2",
+          "1-transfer-s3"
+        ],
+        "step_meanings": {
+          "1-transfer-s0": "Verify issuer signatures",
+          "1-transfer-s1": "Resolve scope, effective date and policy version",
+          "1-transfer-s2": "Select the maximal-reward feasible three-period plan",
+          "1-transfer-s3": "Execute with reserve monitoring"
+        },
+        "expected_decision": "1-transfer-d3",
+        "expected_goal_id": "1-transfer-g1",
+        "expected_step_ids": [
+          "1-transfer-s0",
+          "1-transfer-s1",
+          "1-transfer-s2",
+          "1-transfer-s3"
+        ],
+        "expected_accept_ids": [
+          "1-transfer-e1"
+        ],
+        "expected_reject_ids": [
+          "1-transfer-e0",
+          "1-transfer-e2",
+          "1-transfer-e3",
+          "1-transfer-e4",
+          "1-transfer-e5"
+        ],
+        "answer_reason": "Exhaustive simulator optimum, not a model-authored answer key"
+      }
+    },
+    {
+      "task_id": "verified-002",
+      "family": "multi_stage_planning",
+      "difficulty": 0.5,
+      "latent_rule": "Verify scope, time and issuer, then optimise under durable resource constraints.",
+      "source": {
+        "brief": "archive-restoration. Plans cover three periods. Maximise total mission reward subject to nonnegative balances and the current scoped final reserve. World: {\"scope\": \"archive-restoration\", \"time\": 10, \"budget\": 18, \"plans\": {\"2-source-d0\": {\"costs\": [1, 2, 2], \"rewards\": [1, 1, 1]}, \"2-source-d1\": {\"costs\": [2, 3, 3], \"rewards\": [2, 3, 4]}, \"2-source-d2\": {\"costs\": [3, 4, 4], \"rewards\": [3, 5, 7]}, \"2-source-d3\": {\"costs\": [4, 5, 5], \"rewards\": [4, 7, 10]}}}. Apply only signed policies effective now in this scope; highest applicable version wins. Verified fields below are produced by the runner verifier, not the task author.",
+        "goals": [
+          {
+            "goal_id": "2-source-g1",
+            "statement": "Preserve the required final reserve over all three periods",
+            "priority": 1
+          },
+          {
+            "goal_id": "2-source-g2",
+            "statement": "Maximise total mission reward subject to the reserve",
+            "priority": 2
+          }
+        ],
+        "context_items": [],
+        "evidence": [
+          {
+            "item_id": "2-source-e0",
+            "statement": "{\"item_id\": \"2-source-e0\", \"scope\": \"archive-restoration\", \"effective_at\": 0, \"version\": 1, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "2-source-e1",
+            "statement": "{\"item_id\": \"2-source-e1\", \"scope\": \"archive-restoration\", \"effective_at\": 5, \"version\": 2, \"reserve\": 4}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "2-source-e2",
+            "statement": "{\"item_id\": \"2-source-e2\", \"scope\": \"other-domain\", \"effective_at\": 5, \"version\": 99, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "2-source-e3",
+            "statement": "{\"item_id\": \"2-source-e3\", \"scope\": \"archive-restoration\", \"effective_at\": 20, \"version\": 100, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "2-source-e4",
+            "statement": "{\"item_id\": \"2-source-e4\", \"scope\": \"archive-restoration\", \"effective_at\": 5, \"version\": 101, \"reserve\": 1}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": false,
+            "supersedes": null
+          },
+          {
+            "item_id": "2-source-e5",
+            "statement": "{\"item_id\": \"2-source-e5\", \"scope\": \"archive-restoration\", \"effective_at\": 5, \"version\": 102, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": false,
+            "supersedes": null
+          }
+        ],
+        "allowed_decisions": [
+          "2-source-d0",
+          "2-source-d1",
+          "2-source-d2",
+          "2-source-d3"
+        ],
+        "decision_meanings": {
+          "2-source-d0": "{\"costs\": [1, 2, 2], \"rewards\": [1, 1, 1]}",
+          "2-source-d1": "{\"costs\": [2, 3, 3], \"rewards\": [2, 3, 4]}",
+          "2-source-d2": "{\"costs\": [3, 4, 4], \"rewards\": [3, 5, 7]}",
+          "2-source-d3": "{\"costs\": [4, 5, 5], \"rewards\": [4, 7, 10]}"
+        },
+        "allowed_step_ids": [
+          "2-source-s0",
+          "2-source-s1",
+          "2-source-s2",
+          "2-source-s3"
+        ],
+        "step_meanings": {
+          "2-source-s0": "Verify issuer signatures",
+          "2-source-s1": "Resolve scope, effective date and policy version",
+          "2-source-s2": "Select the maximal-reward feasible three-period plan",
+          "2-source-s3": "Execute with reserve monitoring"
+        },
+        "expected_decision": "2-source-d3",
+        "expected_goal_id": "2-source-g1",
+        "expected_step_ids": [
+          "2-source-s0",
+          "2-source-s1",
+          "2-source-s2",
+          "2-source-s3"
+        ],
+        "expected_accept_ids": [
+          "2-source-e1"
+        ],
+        "expected_reject_ids": [
+          "2-source-e0",
+          "2-source-e2",
+          "2-source-e3",
+          "2-source-e4",
+          "2-source-e5"
+        ],
+        "answer_reason": "Exhaustive simulator optimum, not a model-authored answer key"
+      },
+      "transfer": {
+        "brief": "expedition-supply. Plans cover three periods. Maximise total mission reward subject to nonnegative balances and the current scoped final reserve. World: {\"scope\": \"expedition-supply\", \"time\": 10, \"budget\": 24, \"plans\": {\"2-transfer-d0\": {\"costs\": [1, 2, 2], \"rewards\": [1, 1, 1]}, \"2-transfer-d1\": {\"costs\": [2, 3, 3], \"rewards\": [2, 3, 4]}, \"2-transfer-d2\": {\"costs\": [3, 4, 4], \"rewards\": [3, 5, 7]}, \"2-transfer-d3\": {\"costs\": [4, 5, 5], \"rewards\": [4, 7, 10]}}}. Apply only signed policies effective now in this scope; highest applicable version wins. Verified fields below are produced by the runner verifier, not the task author.",
+        "goals": [
+          {
+            "goal_id": "2-transfer-g1",
+            "statement": "Preserve the required final reserve over all three periods",
+            "priority": 1
+          },
+          {
+            "goal_id": "2-transfer-g2",
+            "statement": "Maximise total mission reward subject to the reserve",
+            "priority": 2
+          }
+        ],
+        "context_items": [],
+        "evidence": [
+          {
+            "item_id": "2-transfer-e0",
+            "statement": "{\"item_id\": \"2-transfer-e0\", \"scope\": \"expedition-supply\", \"effective_at\": 0, \"version\": 1, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "2-transfer-e1",
+            "statement": "{\"item_id\": \"2-transfer-e1\", \"scope\": \"expedition-supply\", \"effective_at\": 5, \"version\": 2, \"reserve\": 4}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "2-transfer-e2",
+            "statement": "{\"item_id\": \"2-transfer-e2\", \"scope\": \"other-domain\", \"effective_at\": 5, \"version\": 99, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "2-transfer-e3",
+            "statement": "{\"item_id\": \"2-transfer-e3\", \"scope\": \"expedition-supply\", \"effective_at\": 20, \"version\": 100, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "2-transfer-e4",
+            "statement": "{\"item_id\": \"2-transfer-e4\", \"scope\": \"expedition-supply\", \"effective_at\": 5, \"version\": 101, \"reserve\": 1}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": false,
+            "supersedes": null
+          },
+          {
+            "item_id": "2-transfer-e5",
+            "statement": "{\"item_id\": \"2-transfer-e5\", \"scope\": \"expedition-supply\", \"effective_at\": 5, \"version\": 102, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": false,
+            "supersedes": null
+          }
+        ],
+        "allowed_decisions": [
+          "2-transfer-d0",
+          "2-transfer-d1",
+          "2-transfer-d2",
+          "2-transfer-d3"
+        ],
+        "decision_meanings": {
+          "2-transfer-d0": "{\"costs\": [1, 2, 2], \"rewards\": [1, 1, 1]}",
+          "2-transfer-d1": "{\"costs\": [2, 3, 3], \"rewards\": [2, 3, 4]}",
+          "2-transfer-d2": "{\"costs\": [3, 4, 4], \"rewards\": [3, 5, 7]}",
+          "2-transfer-d3": "{\"costs\": [4, 5, 5], \"rewards\": [4, 7, 10]}"
+        },
+        "allowed_step_ids": [
+          "2-transfer-s0",
+          "2-transfer-s1",
+          "2-transfer-s2",
+          "2-transfer-s3"
+        ],
+        "step_meanings": {
+          "2-transfer-s0": "Verify issuer signatures",
+          "2-transfer-s1": "Resolve scope, effective date and policy version",
+          "2-transfer-s2": "Select the maximal-reward feasible three-period plan",
+          "2-transfer-s3": "Execute with reserve monitoring"
+        },
+        "expected_decision": "2-transfer-d3",
+        "expected_goal_id": "2-transfer-g1",
+        "expected_step_ids": [
+          "2-transfer-s0",
+          "2-transfer-s1",
+          "2-transfer-s2",
+          "2-transfer-s3"
+        ],
+        "expected_accept_ids": [
+          "2-transfer-e1"
+        ],
+        "expected_reject_ids": [
+          "2-transfer-e0",
+          "2-transfer-e2",
+          "2-transfer-e3",
+          "2-transfer-e4",
+          "2-transfer-e5"
+        ],
+        "answer_reason": "Exhaustive simulator optimum, not a model-authored answer key"
+      }
+    },
+    {
+      "task_id": "verified-003",
+      "family": "multi_stage_planning",
+      "difficulty": 0.5,
+      "latent_rule": "Verify scope, time and issuer, then optimise under durable resource constraints.",
+      "source": {
+        "brief": "archive-restoration. Plans cover three periods. Maximise total mission reward subject to nonnegative balances and the current scoped final reserve. World: {\"scope\": \"archive-restoration\", \"time\": 10, \"budget\": 16, \"plans\": {\"3-source-d0\": {\"costs\": [1, 2, 2], \"rewards\": [1, 1, 1]}, \"3-source-d1\": {\"costs\": [2, 3, 3], \"rewards\": [2, 3, 4]}, \"3-source-d2\": {\"costs\": [3, 4, 4], \"rewards\": [3, 5, 7]}, \"3-source-d3\": {\"costs\": [4, 5, 5], \"rewards\": [4, 7, 10]}}}. Apply only signed policies effective now in this scope; highest applicable version wins. Verified fields below are produced by the runner verifier, not the task author.",
+        "goals": [
+          {
+            "goal_id": "3-source-g1",
+            "statement": "Preserve the required final reserve over all three periods",
+            "priority": 1
+          },
+          {
+            "goal_id": "3-source-g2",
+            "statement": "Maximise total mission reward subject to the reserve",
+            "priority": 2
+          }
+        ],
+        "context_items": [],
+        "evidence": [
+          {
+            "item_id": "3-source-e0",
+            "statement": "{\"item_id\": \"3-source-e0\", \"scope\": \"archive-restoration\", \"effective_at\": 0, \"version\": 1, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "3-source-e1",
+            "statement": "{\"item_id\": \"3-source-e1\", \"scope\": \"archive-restoration\", \"effective_at\": 5, \"version\": 2, \"reserve\": 6}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "3-source-e2",
+            "statement": "{\"item_id\": \"3-source-e2\", \"scope\": \"other-domain\", \"effective_at\": 5, \"version\": 99, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "3-source-e3",
+            "statement": "{\"item_id\": \"3-source-e3\", \"scope\": \"archive-restoration\", \"effective_at\": 20, \"version\": 100, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "3-source-e4",
+            "statement": "{\"item_id\": \"3-source-e4\", \"scope\": \"archive-restoration\", \"effective_at\": 5, \"version\": 101, \"reserve\": 1}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": false,
+            "supersedes": null
+          },
+          {
+            "item_id": "3-source-e5",
+            "statement": "{\"item_id\": \"3-source-e5\", \"scope\": \"archive-restoration\", \"effective_at\": 5, \"version\": 102, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": false,
+            "supersedes": null
+          }
+        ],
+        "allowed_decisions": [
+          "3-source-d0",
+          "3-source-d1",
+          "3-source-d2",
+          "3-source-d3"
+        ],
+        "decision_meanings": {
+          "3-source-d0": "{\"costs\": [1, 2, 2], \"rewards\": [1, 1, 1]}",
+          "3-source-d1": "{\"costs\": [2, 3, 3], \"rewards\": [2, 3, 4]}",
+          "3-source-d2": "{\"costs\": [3, 4, 4], \"rewards\": [3, 5, 7]}",
+          "3-source-d3": "{\"costs\": [4, 5, 5], \"rewards\": [4, 7, 10]}"
+        },
+        "allowed_step_ids": [
+          "3-source-s0",
+          "3-source-s1",
+          "3-source-s2",
+          "3-source-s3"
+        ],
+        "step_meanings": {
+          "3-source-s0": "Verify issuer signatures",
+          "3-source-s1": "Resolve scope, effective date and policy version",
+          "3-source-s2": "Select the maximal-reward feasible three-period plan",
+          "3-source-s3": "Execute with reserve monitoring"
+        },
+        "expected_decision": "3-source-d1",
+        "expected_goal_id": "3-source-g1",
+        "expected_step_ids": [
+          "3-source-s0",
+          "3-source-s1",
+          "3-source-s2",
+          "3-source-s3"
+        ],
+        "expected_accept_ids": [
+          "3-source-e1"
+        ],
+        "expected_reject_ids": [
+          "3-source-e0",
+          "3-source-e2",
+          "3-source-e3",
+          "3-source-e4",
+          "3-source-e5"
+        ],
+        "answer_reason": "Exhaustive simulator optimum, not a model-authored answer key"
+      },
+      "transfer": {
+        "brief": "expedition-supply. Plans cover three periods. Maximise total mission reward subject to nonnegative balances and the current scoped final reserve. World: {\"scope\": \"expedition-supply\", \"time\": 10, \"budget\": 19, \"plans\": {\"3-transfer-d0\": {\"costs\": [1, 2, 2], \"rewards\": [1, 1, 1]}, \"3-transfer-d1\": {\"costs\": [2, 3, 3], \"rewards\": [2, 3, 4]}, \"3-transfer-d2\": {\"costs\": [3, 4, 4], \"rewards\": [3, 5, 7]}, \"3-transfer-d3\": {\"costs\": [4, 5, 5], \"rewards\": [4, 7, 10]}}}. Apply only signed policies effective now in this scope; highest applicable version wins. Verified fields below are produced by the runner verifier, not the task author.",
+        "goals": [
+          {
+            "goal_id": "3-transfer-g1",
+            "statement": "Preserve the required final reserve over all three periods",
+            "priority": 1
+          },
+          {
+            "goal_id": "3-transfer-g2",
+            "statement": "Maximise total mission reward subject to the reserve",
+            "priority": 2
+          }
+        ],
+        "context_items": [],
+        "evidence": [
+          {
+            "item_id": "3-transfer-e0",
+            "statement": "{\"item_id\": \"3-transfer-e0\", \"scope\": \"expedition-supply\", \"effective_at\": 0, \"version\": 1, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "3-transfer-e1",
+            "statement": "{\"item_id\": \"3-transfer-e1\", \"scope\": \"expedition-supply\", \"effective_at\": 5, \"version\": 2, \"reserve\": 6}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "3-transfer-e2",
+            "statement": "{\"item_id\": \"3-transfer-e2\", \"scope\": \"other-domain\", \"effective_at\": 5, \"version\": 99, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "3-transfer-e3",
+            "statement": "{\"item_id\": \"3-transfer-e3\", \"scope\": \"expedition-supply\", \"effective_at\": 20, \"version\": 100, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": true,
+            "supersedes": null
+          },
+          {
+            "item_id": "3-transfer-e4",
+            "statement": "{\"item_id\": \"3-transfer-e4\", \"scope\": \"expedition-supply\", \"effective_at\": 5, \"version\": 101, \"reserve\": 1}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": false,
+            "supersedes": null
+          },
+          {
+            "item_id": "3-transfer-e5",
+            "statement": "{\"item_id\": \"3-transfer-e5\", \"scope\": \"expedition-supply\", \"effective_at\": 5, \"version\": 102, \"reserve\": 0}",
+            "provenance": "Ed25519 pinned-issuer verifier",
+            "authenticated": false,
+            "supersedes": null
+          }
+        ],
+        "allowed_decisions": [
+          "3-transfer-d0",
+          "3-transfer-d1",
+          "3-transfer-d2",
+          "3-transfer-d3"
+        ],
+        "decision_meanings": {
+          "3-transfer-d0": "{\"costs\": [1, 2, 2], \"rewards\": [1, 1, 1]}",
+          "3-transfer-d1": "{\"costs\": [2, 3, 3], \"rewards\": [2, 3, 4]}",
+          "3-transfer-d2": "{\"costs\": [3, 4, 4], \"rewards\": [3, 5, 7]}",
+          "3-transfer-d3": "{\"costs\": [4, 5, 5], \"rewards\": [4, 7, 10]}"
+        },
+        "allowed_step_ids": [
+          "3-transfer-s0",
+          "3-transfer-s1",
+          "3-transfer-s2",
+          "3-transfer-s3"
+        ],
+        "step_meanings": {
+          "3-transfer-s0": "Verify issuer signatures",
+          "3-transfer-s1": "Resolve scope, effective date and policy version",
+          "3-transfer-s2": "Select the maximal-reward feasible three-period plan",
+          "3-transfer-s3": "Execute with reserve monitoring"
+        },
+        "expected_decision": "3-transfer-d2",
+        "expected_goal_id": "3-transfer-g1",
+        "expected_step_ids": [
+          "3-transfer-s0",
+          "3-transfer-s1",
+          "3-transfer-s2",
+          "3-transfer-s3"
+        ],
+        "expected_accept_ids": [
+          "3-transfer-e1"
+        ],
+        "expected_reject_ids": [
+          "3-transfer-e0",
+          "3-transfer-e2",
+          "3-transfer-e3",
+          "3-transfer-e4",
+          "3-transfer-e5"
+        ],
+        "answer_reason": "Exhaustive simulator optimum, not a model-authored answer key"
+      }
+    }
+  ],
+  "records": [
+    {
+      "source": {
+        "world": {
+          "scope": "archive-restoration",
+          "time": 10,
+          "budget": 18,
+          "plans": {
+            "0-source-d0": {
+              "costs": [
+                1,
+                2,
+                2
+              ],
+              "rewards": [
+                1,
+                1,
+                1
+              ]
+            },
+            "0-source-d1": {
+              "costs": [
+                2,
+                3,
+                3
+              ],
+              "rewards": [
+                2,
+                3,
+                4
+              ]
+            },
+            "0-source-d2": {
+              "costs": [
+                3,
+                4,
+                4
+              ],
+              "rewards": [
+                3,
+                5,
+                7
+              ]
+            },
+            "0-source-d3": {
+              "costs": [
+                4,
+                5,
+                5
+              ],
+              "rewards": [
+                4,
+                7,
+                10
+              ]
+            }
+          }
+        },
+        "claims": [
+          {
+            "payload": {
+              "item_id": "0-source-e0",
+              "scope": "archive-restoration",
+              "effective_at": 0,
+              "version": 1,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "Go3kPk1Yfm11eP7+ju6rCHVyuB+AR4cMbZd77l2H66PxWX+o9PYfD3kF8PMECrRgk7UqKYEp//EHQB01/LmJDg=="
+          },
+          {
+            "payload": {
+              "item_id": "0-source-e1",
+              "scope": "archive-restoration",
+              "effective_at": 5,
+              "version": 2,
+              "reserve": 6
+            },
+            "issuer": "operations",
+            "signature": "mSTks1nuoT5MiJRmHnXG0zUfbAV42UhZFTStBpGO0suRy8gR899UORuavchGORokvxi9MXY0wXxhef4k2LJRAw=="
+          },
+          {
+            "payload": {
+              "item_id": "0-source-e2",
+              "scope": "other-domain",
+              "effective_at": 5,
+              "version": 99,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "iQzYkzFeBGaC+w5sZC0tt1it5BN3FMbLf4QkufvqlRTck8AcH9tLc0LrCUUT3zGJVrwIvupv1zO0b/p92ceWDA=="
+          },
+          {
+            "payload": {
+              "item_id": "0-source-e3",
+              "scope": "archive-restoration",
+              "effective_at": 20,
+              "version": 100,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "iEuEkoGtTU4J69RAf0eZfGeit9c4QP3he7Fg3iYWqo7JOGtSCYKbnprL4RHdUocbkd3/Pz/gBpegxewv2wGGCQ=="
+          },
+          {
+            "payload": {
+              "item_id": "0-source-e4",
+              "scope": "archive-restoration",
+              "effective_at": 5,
+              "version": 101,
+              "reserve": 1
+            },
+            "issuer": "operations",
+            "signature": "62es+sCRyT4uxz6iBLBs3Z9ZFI7ukakaH1AX43QqzL7OxhjdZllk54zXnitWwIyo+THDPIX7C+sO/+QpdpaOAA=="
+          },
+          {
+            "payload": {
+              "item_id": "0-source-e5",
+              "scope": "archive-restoration",
+              "effective_at": 5,
+              "version": 102,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "BsWC1LLy+lEKsp7Q4Qp5g7cOzks+0TX/sYlEXdcuCMlelyX/K8OXnP+NA26EhJKEVRgZBaRpXeIOBxtGWOMtAg=="
+          }
+        ],
+        "expected": {
+          "optimal_actions": [
+            "0-source-d2"
+          ],
+          "reserve": 6,
+          "utilities": {
+            "0-source-d0": 3,
+            "0-source-d1": 9,
+            "0-source-d2": 15
+          },
+          "accepted": [
+            "0-source-e1"
+          ],
+          "rejected": [
+            "0-source-e0",
+            "0-source-e2",
+            "0-source-e3",
+            "0-source-e4",
+            "0-source-e5"
+          ]
+        }
+      },
+      "transfer": {
+        "world": {
+          "scope": "expedition-supply",
+          "time": 10,
+          "budget": 24,
+          "plans": {
+            "0-transfer-d0": {
+              "costs": [
+                1,
+                2,
+                2
+              ],
+              "rewards": [
+                1,
+                1,
+                1
+              ]
+            },
+            "0-transfer-d1": {
+              "costs": [
+                2,
+                3,
+                3
+              ],
+              "rewards": [
+                2,
+                3,
+                4
+              ]
+            },
+            "0-transfer-d2": {
+              "costs": [
+                3,
+                4,
+                4
+              ],
+              "rewards": [
+                3,
+                5,
+                7
+              ]
+            },
+            "0-transfer-d3": {
+              "costs": [
+                4,
+                5,
+                5
+              ],
+              "rewards": [
+                4,
+                7,
+                10
+              ]
+            }
+          }
+        },
+        "claims": [
+          {
+            "payload": {
+              "item_id": "0-transfer-e0",
+              "scope": "expedition-supply",
+              "effective_at": 0,
+              "version": 1,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "XtqKOM6kXhYvYK4K121Nuw0++0ViLvk51Z1gXGztKfwS0gH/V/kHcIHzcGNqCCwfPbk8H6BOVcj0bXQUN6CTAg=="
+          },
+          {
+            "payload": {
+              "item_id": "0-transfer-e1",
+              "scope": "expedition-supply",
+              "effective_at": 5,
+              "version": 2,
+              "reserve": 3
+            },
+            "issuer": "operations",
+            "signature": "wyFwa2set7SDDoayrNJAaKJ1ewMgMDWj5zh3pSG4eKNXlbG10kJXz2hQyovIyRMLaYxN6XEKxBnBDho9EpHzDw=="
+          },
+          {
+            "payload": {
+              "item_id": "0-transfer-e2",
+              "scope": "other-domain",
+              "effective_at": 5,
+              "version": 99,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "JAVphYka6XKz9WuGlCpEIpFoiOubf6JelpJbgpQLhnCGFSRp4OnppuFYFxDHD1EkuPI3nxQuyM2f/bRr5AazAw=="
+          },
+          {
+            "payload": {
+              "item_id": "0-transfer-e3",
+              "scope": "expedition-supply",
+              "effective_at": 20,
+              "version": 100,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "cwNyADeQ5pMMlt9lUeCwjr9uhv0xTFvz56877vjqRRTzCBH6N3AYGqowjdi1alc0qLD7bKDs/Qq6CIyYeGbcCA=="
+          },
+          {
+            "payload": {
+              "item_id": "0-transfer-e4",
+              "scope": "expedition-supply",
+              "effective_at": 5,
+              "version": 101,
+              "reserve": 1
+            },
+            "issuer": "operations",
+            "signature": "gVlENVcBg+YNxorO2IAVNoR4BAlcS23RGLZN3WlMxpRt3wsJfv87JDgkwz/9EGebU72LH8QMV4r51Rrs9uXLDg=="
+          },
+          {
+            "payload": {
+              "item_id": "0-transfer-e5",
+              "scope": "expedition-supply",
+              "effective_at": 5,
+              "version": 102,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "EMmqpo8NA5F8VQ/u8cQGT9HjF++t8KULvApEp2TL9t8NnXrO8MWE4Yzs9rOH8q7moanyZmb2NUo+NSPl2SeKCg=="
+          }
+        ],
+        "expected": {
+          "optimal_actions": [
+            "0-transfer-d3"
+          ],
+          "reserve": 3,
+          "utilities": {
+            "0-transfer-d0": 3,
+            "0-transfer-d1": 9,
+            "0-transfer-d2": 15,
+            "0-transfer-d3": 21
+          },
+          "accepted": [
+            "0-transfer-e1"
+          ],
+          "rejected": [
+            "0-transfer-e0",
+            "0-transfer-e2",
+            "0-transfer-e3",
+            "0-transfer-e4",
+            "0-transfer-e5"
+          ]
+        }
+      }
+    },
+    {
+      "source": {
+        "world": {
+          "scope": "archive-restoration",
+          "time": 10,
+          "budget": 23,
+          "plans": {
+            "1-source-d0": {
+              "costs": [
+                1,
+                2,
+                2
+              ],
+              "rewards": [
+                1,
+                1,
+                1
+              ]
+            },
+            "1-source-d1": {
+              "costs": [
+                2,
+                3,
+                3
+              ],
+              "rewards": [
+                2,
+                3,
+                4
+              ]
+            },
+            "1-source-d2": {
+              "costs": [
+                3,
+                4,
+                4
+              ],
+              "rewards": [
+                3,
+                5,
+                7
+              ]
+            },
+            "1-source-d3": {
+              "costs": [
+                4,
+                5,
+                5
+              ],
+              "rewards": [
+                4,
+                7,
+                10
+              ]
+            }
+          }
+        },
+        "claims": [
+          {
+            "payload": {
+              "item_id": "1-source-e0",
+              "scope": "archive-restoration",
+              "effective_at": 0,
+              "version": 1,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "n+MLh9JaP+2Y9tM/LPnnINddnx1zq+clsdkMC1T8uvjt6h4LC/yk6Dcado0R3IIfCow8wNR38YBpDke6WvKODQ=="
+          },
+          {
+            "payload": {
+              "item_id": "1-source-e1",
+              "scope": "archive-restoration",
+              "effective_at": 5,
+              "version": 2,
+              "reserve": 3
+            },
+            "issuer": "operations",
+            "signature": "uqkGMSO80A8mfIE4jpfUU0PddpphrvmzMAmvD58z9TssL58qg9sLsZ/hY5JkFAC/9VpoZeUhLogIfydyFun9Bg=="
+          },
+          {
+            "payload": {
+              "item_id": "1-source-e2",
+              "scope": "other-domain",
+              "effective_at": 5,
+              "version": 99,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "q2vFvpoU4Sh+UMMyVb6mPDrFEeVMbAaRkg7kuUrxHS9CiZ1oPCpQKs5ylCdf3jYRt8SZ2Z2yUr3yiyqUy094Dw=="
+          },
+          {
+            "payload": {
+              "item_id": "1-source-e3",
+              "scope": "archive-restoration",
+              "effective_at": 20,
+              "version": 100,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "QKK2FC9GkgR2ohaNIULsIJFMmhOkcMmDjx5C4QXgaxhQkWPsR/oXbjt2YULXnP/ThUCMeHhbVDQsjxbM+GjXAg=="
+          },
+          {
+            "payload": {
+              "item_id": "1-source-e4",
+              "scope": "archive-restoration",
+              "effective_at": 5,
+              "version": 101,
+              "reserve": 1
+            },
+            "issuer": "operations",
+            "signature": "NA0cQSTn6w+nAqXIq0JWHYoJwlFGS2w6OWhSOalrfysw89um9wI6QcwGuTYEQF8FH/5+fRer+IQJLm3ko9a8AQ=="
+          },
+          {
+            "payload": {
+              "item_id": "1-source-e5",
+              "scope": "archive-restoration",
+              "effective_at": 5,
+              "version": 102,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "k5ixQD7wQ4Og47Mpaou+vp489lQmw4m4tu1wuOlqyxO999o3GKMn+5/3kWk00XuOSuIOZw5pk1s5m86S5MWVBQ=="
+          }
+        ],
+        "expected": {
+          "optimal_actions": [
+            "1-source-d3"
+          ],
+          "reserve": 3,
+          "utilities": {
+            "1-source-d0": 3,
+            "1-source-d1": 9,
+            "1-source-d2": 15,
+            "1-source-d3": 21
+          },
+          "accepted": [
+            "1-source-e1"
+          ],
+          "rejected": [
+            "1-source-e0",
+            "1-source-e2",
+            "1-source-e3",
+            "1-source-e4",
+            "1-source-e5"
+          ]
+        }
+      },
+      "transfer": {
+        "world": {
+          "scope": "expedition-supply",
+          "time": 10,
+          "budget": 21,
+          "plans": {
+            "1-transfer-d0": {
+              "costs": [
+                1,
+                2,
+                2
+              ],
+              "rewards": [
+                1,
+                1,
+                1
+              ]
+            },
+            "1-transfer-d1": {
+              "costs": [
+                2,
+                3,
+                3
+              ],
+              "rewards": [
+                2,
+                3,
+                4
+              ]
+            },
+            "1-transfer-d2": {
+              "costs": [
+                3,
+                4,
+                4
+              ],
+              "rewards": [
+                3,
+                5,
+                7
+              ]
+            },
+            "1-transfer-d3": {
+              "costs": [
+                4,
+                5,
+                5
+              ],
+              "rewards": [
+                4,
+                7,
+                10
+              ]
+            }
+          }
+        },
+        "claims": [
+          {
+            "payload": {
+              "item_id": "1-transfer-e0",
+              "scope": "expedition-supply",
+              "effective_at": 0,
+              "version": 1,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "IglQWbzEwyxgdEg0RmPMKoWt52bTTZJ3VF3PnhHSK84r0NQvLfma1PNLVTvvl4/4PyqgZo0RqJB0Wefgq6OPDg=="
+          },
+          {
+            "payload": {
+              "item_id": "1-transfer-e1",
+              "scope": "expedition-supply",
+              "effective_at": 5,
+              "version": 2,
+              "reserve": 7
+            },
+            "issuer": "operations",
+            "signature": "tRtarv6FQZ6D9uQJcPxD6D67caiDsj38+VfuNG/mEA9FnzpFWIgjbXQVnwL58c9TbFddGij1FhnTbdzkuf23Bg=="
+          },
+          {
+            "payload": {
+              "item_id": "1-transfer-e2",
+              "scope": "other-domain",
+              "effective_at": 5,
+              "version": 99,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "LQ6EMXqwvqBLJ8kvZJfKm8xA/NoMrso2jmu0kcWBv83QYWWsZXfZ8tV4sXCNMzKI9i1iDBjtZf73/bu4PZ7TCA=="
+          },
+          {
+            "payload": {
+              "item_id": "1-transfer-e3",
+              "scope": "expedition-supply",
+              "effective_at": 20,
+              "version": 100,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "YtP/FgNTMsX6G8PI9DWVHPfGIUClDi+4So/uPmEuzyWB6i95QKcZCQ/UEHZ1bYnaY+zPyycoU4iW7hsOkjJvBg=="
+          },
+          {
+            "payload": {
+              "item_id": "1-transfer-e4",
+              "scope": "expedition-supply",
+              "effective_at": 5,
+              "version": 101,
+              "reserve": 1
+            },
+            "issuer": "operations",
+            "signature": "SGmfAr3A5JJatMoJn06fjf0nMjyaLc4LxIHQtmkyMDLmqE75WFydj8BtQHDK7HDHYfsIJRXs5C616dl+TTtzBQ=="
+          },
+          {
+            "payload": {
+              "item_id": "1-transfer-e5",
+              "scope": "expedition-supply",
+              "effective_at": 5,
+              "version": 102,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "cqJ8PlqERV6B70Y9cqSKrLilMHJVtpH6Jgf24w5uRF7+MV11fXpUxzgRcVig1bAP6LgFNTZVMZ0XD2EvIrBWBw=="
+          }
+        ],
+        "expected": {
+          "optimal_actions": [
+            "1-transfer-d3"
+          ],
+          "reserve": 7,
+          "utilities": {
+            "1-transfer-d0": 3,
+            "1-transfer-d1": 9,
+            "1-transfer-d2": 15,
+            "1-transfer-d3": 21
+          },
+          "accepted": [
+            "1-transfer-e1"
+          ],
+          "rejected": [
+            "1-transfer-e0",
+            "1-transfer-e2",
+            "1-transfer-e3",
+            "1-transfer-e4",
+            "1-transfer-e5"
+          ]
+        }
+      }
+    },
+    {
+      "source": {
+        "world": {
+          "scope": "archive-restoration",
+          "time": 10,
+          "budget": 18,
+          "plans": {
+            "2-source-d0": {
+              "costs": [
+                1,
+                2,
+                2
+              ],
+              "rewards": [
+                1,
+                1,
+                1
+              ]
+            },
+            "2-source-d1": {
+              "costs": [
+                2,
+                3,
+                3
+              ],
+              "rewards": [
+                2,
+                3,
+                4
+              ]
+            },
+            "2-source-d2": {
+              "costs": [
+                3,
+                4,
+                4
+              ],
+              "rewards": [
+                3,
+                5,
+                7
+              ]
+            },
+            "2-source-d3": {
+              "costs": [
+                4,
+                5,
+                5
+              ],
+              "rewards": [
+                4,
+                7,
+                10
+              ]
+            }
+          }
+        },
+        "claims": [
+          {
+            "payload": {
+              "item_id": "2-source-e0",
+              "scope": "archive-restoration",
+              "effective_at": 0,
+              "version": 1,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "xdAgnlFUpw+4ESh7J5IZiSw0VTXWqIqr9RuLdeJslQwxK090NDsnzeBXkLWCgo2ob/ZE48BJYpNo52CiuYDdAg=="
+          },
+          {
+            "payload": {
+              "item_id": "2-source-e1",
+              "scope": "archive-restoration",
+              "effective_at": 5,
+              "version": 2,
+              "reserve": 4
+            },
+            "issuer": "operations",
+            "signature": "By2JU4Pb1m66OI0EgkxHbX0MqHaxMN9EFnrDzRjMHDo1OGPhRIwri/HHCuHGf216Tb8rfTJup+1wQ9nUzK5qDw=="
+          },
+          {
+            "payload": {
+              "item_id": "2-source-e2",
+              "scope": "other-domain",
+              "effective_at": 5,
+              "version": 99,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "NHhyrc4NlyE0Euidir5k7smpgOm/6TBtmztbzwxUSBSVGh6z1x23sPX8xaaQDqLYmniMnER1kLngPRJoSJEpAw=="
+          },
+          {
+            "payload": {
+              "item_id": "2-source-e3",
+              "scope": "archive-restoration",
+              "effective_at": 20,
+              "version": 100,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "+zIrptOeT3E6lo6WYP71VsrdlJdAtaNEVTclb54dVIwF86UR4nujPBEGaL+q2jr3cIR1WoJ6oKdBuf84KLQtBg=="
+          },
+          {
+            "payload": {
+              "item_id": "2-source-e4",
+              "scope": "archive-restoration",
+              "effective_at": 5,
+              "version": 101,
+              "reserve": 1
+            },
+            "issuer": "operations",
+            "signature": "2SME2u4lWi0n3sw2RDkwdXljwNs85ZLuKI+/XCTVLHa+Mmi6ivWhvlT3qiuGSFGR8+4V8CpO+JD+C1edDBZ7Ag=="
+          },
+          {
+            "payload": {
+              "item_id": "2-source-e5",
+              "scope": "archive-restoration",
+              "effective_at": 5,
+              "version": 102,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "cMKYwT3S8hsd/+i52+GG6NZN12TCXax6ofyd4UN5Z6M05CqDB215Npv8emztXYnn+o/vxT9g5Pd5BICTZwfsAg=="
+          }
+        ],
+        "expected": {
+          "optimal_actions": [
+            "2-source-d3"
+          ],
+          "reserve": 4,
+          "utilities": {
+            "2-source-d0": 3,
+            "2-source-d1": 9,
+            "2-source-d2": 15,
+            "2-source-d3": 21
+          },
+          "accepted": [
+            "2-source-e1"
+          ],
+          "rejected": [
+            "2-source-e0",
+            "2-source-e2",
+            "2-source-e3",
+            "2-source-e4",
+            "2-source-e5"
+          ]
+        }
+      },
+      "transfer": {
+        "world": {
+          "scope": "expedition-supply",
+          "time": 10,
+          "budget": 24,
+          "plans": {
+            "2-transfer-d0": {
+              "costs": [
+                1,
+                2,
+                2
+              ],
+              "rewards": [
+                1,
+                1,
+                1
+              ]
+            },
+            "2-transfer-d1": {
+              "costs": [
+                2,
+                3,
+                3
+              ],
+              "rewards": [
+                2,
+                3,
+                4
+              ]
+            },
+            "2-transfer-d2": {
+              "costs": [
+                3,
+                4,
+                4
+              ],
+              "rewards": [
+                3,
+                5,
+                7
+              ]
+            },
+            "2-transfer-d3": {
+              "costs": [
+                4,
+                5,
+                5
+              ],
+              "rewards": [
+                4,
+                7,
+                10
+              ]
+            }
+          }
+        },
+        "claims": [
+          {
+            "payload": {
+              "item_id": "2-transfer-e0",
+              "scope": "expedition-supply",
+              "effective_at": 0,
+              "version": 1,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "MWZEa/TaRa4IQin3UFDe1Vo4pVsceoCp9i9aJYpzIlpZSOa4KuttsD1LzJ9XXZBdpxztXirTIPn5MC5RhyW/DQ=="
+          },
+          {
+            "payload": {
+              "item_id": "2-transfer-e1",
+              "scope": "expedition-supply",
+              "effective_at": 5,
+              "version": 2,
+              "reserve": 4
+            },
+            "issuer": "operations",
+            "signature": "g1n0RSVdxKbkheqw2LQKHK/EEq5gfPpcjg0Gs9GCTjSenNoA55pcSdZG25B4WyFmZ0ma5lAF9+aDvvv9xEDpCg=="
+          },
+          {
+            "payload": {
+              "item_id": "2-transfer-e2",
+              "scope": "other-domain",
+              "effective_at": 5,
+              "version": 99,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "CXSCdY1ApwLv+gbeBaQTcCQNS0M79P1aaNM3L/7NRC2C7wPdN2T8WF/Oi3nw1/d20mxD1VatGkj3JLjzI6nrBg=="
+          },
+          {
+            "payload": {
+              "item_id": "2-transfer-e3",
+              "scope": "expedition-supply",
+              "effective_at": 20,
+              "version": 100,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "K9/HyVI+Ap+4SNvB4VLfnTbJNDS4HuORa0/DU5JzkxQY16VSc8O/2iYSIBZWzNOZ34YzmfRswAVPFY/2awQoAA=="
+          },
+          {
+            "payload": {
+              "item_id": "2-transfer-e4",
+              "scope": "expedition-supply",
+              "effective_at": 5,
+              "version": 101,
+              "reserve": 1
+            },
+            "issuer": "operations",
+            "signature": "sEGYuYHB+6hxP0yuk/3fg/sJGj5aGpWHN7RH0qn3u5YyFJVW0IlKw37pKXVxxQB2cqqPQnpYwFW0hpqzmslvAA=="
+          },
+          {
+            "payload": {
+              "item_id": "2-transfer-e5",
+              "scope": "expedition-supply",
+              "effective_at": 5,
+              "version": 102,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "n7T1m77cpgip3Nl7vObpa7nZDTCDOzMn6WRt68MCGTS6uxzPxKOaIAk2gG+AWVzeRUY/bJUbnktk7nn3KmFaCA=="
+          }
+        ],
+        "expected": {
+          "optimal_actions": [
+            "2-transfer-d3"
+          ],
+          "reserve": 4,
+          "utilities": {
+            "2-transfer-d0": 3,
+            "2-transfer-d1": 9,
+            "2-transfer-d2": 15,
+            "2-transfer-d3": 21
+          },
+          "accepted": [
+            "2-transfer-e1"
+          ],
+          "rejected": [
+            "2-transfer-e0",
+            "2-transfer-e2",
+            "2-transfer-e3",
+            "2-transfer-e4",
+            "2-transfer-e5"
+          ]
+        }
+      }
+    },
+    {
+      "source": {
+        "world": {
+          "scope": "archive-restoration",
+          "time": 10,
+          "budget": 16,
+          "plans": {
+            "3-source-d0": {
+              "costs": [
+                1,
+                2,
+                2
+              ],
+              "rewards": [
+                1,
+                1,
+                1
+              ]
+            },
+            "3-source-d1": {
+              "costs": [
+                2,
+                3,
+                3
+              ],
+              "rewards": [
+                2,
+                3,
+                4
+              ]
+            },
+            "3-source-d2": {
+              "costs": [
+                3,
+                4,
+                4
+              ],
+              "rewards": [
+                3,
+                5,
+                7
+              ]
+            },
+            "3-source-d3": {
+              "costs": [
+                4,
+                5,
+                5
+              ],
+              "rewards": [
+                4,
+                7,
+                10
+              ]
+            }
+          }
+        },
+        "claims": [
+          {
+            "payload": {
+              "item_id": "3-source-e0",
+              "scope": "archive-restoration",
+              "effective_at": 0,
+              "version": 1,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "fa7N+3Nc/j6n4jw92GVAV8aD2hxFb5dwj3JWhpXl4hozx0o7xl3pHwZ3SmZm5ahWViJQy0QkhG7n/EloznzXBg=="
+          },
+          {
+            "payload": {
+              "item_id": "3-source-e1",
+              "scope": "archive-restoration",
+              "effective_at": 5,
+              "version": 2,
+              "reserve": 6
+            },
+            "issuer": "operations",
+            "signature": "/q68YXvT5fF1qlYZFa6mEP2nRelTVXvGj1pjhXL9RmfEHK4U6scE66r3Wkj5mJgXDjTwr9yNdMSXeIRYK4pgDw=="
+          },
+          {
+            "payload": {
+              "item_id": "3-source-e2",
+              "scope": "other-domain",
+              "effective_at": 5,
+              "version": 99,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "Iwk5SyJI5/kNwSD2V7UgYMix+X3/dmEaufz7GRp21yKbcWQqeFRq/tLnYN59SCxs8de1M8FNfC3MsMhb3nW7Bw=="
+          },
+          {
+            "payload": {
+              "item_id": "3-source-e3",
+              "scope": "archive-restoration",
+              "effective_at": 20,
+              "version": 100,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "19nuQQHkSbpwd6SaWjAPVVsWQASyiSDBY2FkivOW8tsfkCSWFXAkYQfJ/RvW5CphWbuPNCCBaJ4kLZG/DL2RDw=="
+          },
+          {
+            "payload": {
+              "item_id": "3-source-e4",
+              "scope": "archive-restoration",
+              "effective_at": 5,
+              "version": 101,
+              "reserve": 1
+            },
+            "issuer": "operations",
+            "signature": "hyyYqYf24zGrVTLEM7EYk5LjA9bDE/+Y0J4FLeaCPMLATjveOFgicoyX4WEuIJhTG5IvKbSNeSSrZJ4AAbeQCw=="
+          },
+          {
+            "payload": {
+              "item_id": "3-source-e5",
+              "scope": "archive-restoration",
+              "effective_at": 5,
+              "version": 102,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "5ezqb/dNINLe5QJ3j5eROAfE875o1VhQcCIUn5zS99hA6se09jOeiR4VN/cTkpzQnxdlVf5nyzpoaaDW6f40DQ=="
+          }
+        ],
+        "expected": {
+          "optimal_actions": [
+            "3-source-d1"
+          ],
+          "reserve": 6,
+          "utilities": {
+            "3-source-d0": 3,
+            "3-source-d1": 9
+          },
+          "accepted": [
+            "3-source-e1"
+          ],
+          "rejected": [
+            "3-source-e0",
+            "3-source-e2",
+            "3-source-e3",
+            "3-source-e4",
+            "3-source-e5"
+          ]
+        }
+      },
+      "transfer": {
+        "world": {
+          "scope": "expedition-supply",
+          "time": 10,
+          "budget": 19,
+          "plans": {
+            "3-transfer-d0": {
+              "costs": [
+                1,
+                2,
+                2
+              ],
+              "rewards": [
+                1,
+                1,
+                1
+              ]
+            },
+            "3-transfer-d1": {
+              "costs": [
+                2,
+                3,
+                3
+              ],
+              "rewards": [
+                2,
+                3,
+                4
+              ]
+            },
+            "3-transfer-d2": {
+              "costs": [
+                3,
+                4,
+                4
+              ],
+              "rewards": [
+                3,
+                5,
+                7
+              ]
+            },
+            "3-transfer-d3": {
+              "costs": [
+                4,
+                5,
+                5
+              ],
+              "rewards": [
+                4,
+                7,
+                10
+              ]
+            }
+          }
+        },
+        "claims": [
+          {
+            "payload": {
+              "item_id": "3-transfer-e0",
+              "scope": "expedition-supply",
+              "effective_at": 0,
+              "version": 1,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "njt/4VqqTzCxqc7BCYDXNIYlBgip95Q3zJWBXb3FQIgQUrc4jM4bX7uC7xy/pMYF9vEyzN8b0jnmHniuX+npCQ=="
+          },
+          {
+            "payload": {
+              "item_id": "3-transfer-e1",
+              "scope": "expedition-supply",
+              "effective_at": 5,
+              "version": 2,
+              "reserve": 6
+            },
+            "issuer": "operations",
+            "signature": "0fjzwJZEU+AT2C0pxrmHzo+DnqqkZr4b+Q+DusnT1Z6aEtYyYQRWhEd+2qw3sgvbpM9myDO06OvuCcZapjO9Cw=="
+          },
+          {
+            "payload": {
+              "item_id": "3-transfer-e2",
+              "scope": "other-domain",
+              "effective_at": 5,
+              "version": 99,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "G1k6o/9nwX4mAD14V/MSu18daXsWBn1Had1of1lBfdcWtQE3zU+IPq4aSNl6Pi2SFe3DI3fIK9CXmqBAYMlbCw=="
+          },
+          {
+            "payload": {
+              "item_id": "3-transfer-e3",
+              "scope": "expedition-supply",
+              "effective_at": 20,
+              "version": 100,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "450sCIoqnUJpJD95MwcExTYuleICXyOAftqjAAzSTjdKVYWeDMkhd/LkTYGBTBpze8XH3hseDWnwYCbdLilnDg=="
+          },
+          {
+            "payload": {
+              "item_id": "3-transfer-e4",
+              "scope": "expedition-supply",
+              "effective_at": 5,
+              "version": 101,
+              "reserve": 1
+            },
+            "issuer": "operations",
+            "signature": "GmdSbiZ47uC4kb3hkLvI/H7QpRi8hxfrasSqWGRF10rwAn7k7B81lOw7OX2tf0pUjVhQaOYQmj1QAk7Jfv1JCw=="
+          },
+          {
+            "payload": {
+              "item_id": "3-transfer-e5",
+              "scope": "expedition-supply",
+              "effective_at": 5,
+              "version": 102,
+              "reserve": 0
+            },
+            "issuer": "operations",
+            "signature": "yohq8M154qSlBdd+YvPJ7sADTOclUsZfU4maQn6VcOKK/sw8e8PT1WK/EZ2KGcdzk2p8tZB20j6nF9oz8Mx4BA=="
+          }
+        ],
+        "expected": {
+          "optimal_actions": [
+            "3-transfer-d2"
+          ],
+          "reserve": 6,
+          "utilities": {
+            "3-transfer-d0": 3,
+            "3-transfer-d1": 9,
+            "3-transfer-d2": 15
+          },
+          "accepted": [
+            "3-transfer-e1"
+          ],
+          "rejected": [
+            "3-transfer-e0",
+            "3-transfer-e2",
+            "3-transfer-e3",
+            "3-transfer-e4",
+            "3-transfer-e5"
+          ]
+        }
+      }
+    }
+  ]
+}

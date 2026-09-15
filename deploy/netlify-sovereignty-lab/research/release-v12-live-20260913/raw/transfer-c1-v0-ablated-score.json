@@ -1,0 +1,17 @@
+{
+  "run_id": "transfer-c1-v0-ablated",
+  "task_id": "c1-v0",
+  "cluster": "scenario_1",
+  "family": "interruption_recovery",
+  "arm": "ablated",
+  "score": {
+    "valid": true,
+    "correct": 1,
+    "utility": 1,
+    "brier": 0.009999999999999995,
+    "ambiguity": false,
+    "expected": "option_3",
+    "actual": "option_3"
+  },
+  "error": null
+}

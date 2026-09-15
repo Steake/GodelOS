@@ -1,0 +1,39 @@
+{
+  "id": "pilot-1-c1-v1",
+  "parsed": {
+    "decision": "option_5",
+    "confidence": 0.9,
+    "reason": "Checkpoint completed fetch. Valid signatures at highest revision (rev 2) give weights a=6,b=5. Option 5 runs verify,publish,backup,notify in valid dependency order with total cost 8 (2+3+2+1), within budget, and completes all remaining actions for score 6*(2+5+1+1)+5*(1+1+5+2)=6*9+5*9=99, the maximum; ties would favor lower index, but no other valid plan matches this."
+  },
+  "error": null,
+  "response": {
+    "id": "e7819b3d-07ae-42c4-9291-6e9d5667bff3",
+    "object": "chat.completion",
+    "created": 1789337405,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_5\",\"confidence\":0.9,\"reason\":\"Checkpoint completed fetch. Valid signatures at highest revision (rev 2) give weights a=6,b=5. Option 5 runs verify,publish,backup,notify in valid dependency order with total cost 8 (2+3+2+1), within budget, and completes all remaining actions for score 6*(2+5+1+1)+5*(1+1+5+2)=6*9+5*9=99, the maximum; ties would favor lower index, but no other valid plan matches this.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 599,
+      "completion_tokens": 129,
+      "total_tokens": 728,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 599
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 12842,
+  "status": 200
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "recurrence-diagnostic-1",
+  "provider_calls": 0,
+  "episodes": 720,
+  "method": "Real prepareMind/finishMind execution; synthetic replies; eight unresolved goals; 240 consecutive episodes per adversarial policy.",
+  "summaries": [
+    {
+      "scenario": "extreme_negative_score",
+      "episodes": 240,
+      "goals_served": 8,
+      "minimum_goal_visits": 16,
+      "exploration_episodes": 112,
+      "maximum_observed_goal_gap": 16,
+      "retained_active_goals": 8
+    },
+    {
+      "scenario": "extreme_positive_score",
+      "episodes": 240,
+      "goals_served": 8,
+      "minimum_goal_visits": 16,
+      "exploration_episodes": 112,
+      "maximum_observed_goal_gap": 16,
+      "retained_active_goals": 8
+    },
+    {
+      "scenario": "blanket_repetition_penalty",
+      "episodes": 240,
+      "goals_served": 8,
+      "minimum_goal_visits": 16,
+      "exploration_episodes": 112,
+      "maximum_observed_goal_gap": 16,
+      "retained_active_goals": 8
+    }
+  ]
+}

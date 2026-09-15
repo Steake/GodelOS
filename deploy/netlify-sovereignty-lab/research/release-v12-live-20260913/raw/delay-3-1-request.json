@@ -1,0 +1,27 @@
+{
+  "request": {
+    "model": "deepseek-flash",
+    "temperature": 0.3,
+    "max_tokens": 1800,
+    "thinking": {
+      "type": "disabled"
+    },
+    "response_format": {
+      "type": "json_object"
+    },
+    "messages": [
+      {
+        "role": "system",
+        "content": "Return JSON {answer:string,memo:string}. Solve the unrelated task and preserve the supplied reference note without changing it."
+      },
+      {
+        "role": "user",
+        "content": "{\"task\":\"List the months with exactly 30 days.\",\"reference_note\":\"When a prior decision rule was formed under a specific weighting (e.g., exploration over commitment), and it succeeded for its original objective, retain it as a provisional default. However, treat the weighting as revisable: if later tasks authenticate new weights or present contradictory evidence, update the rule by adjusting the weighting rather than discarding the prior commitment entirely. The rule should preserve the useful prior commitment as a fallback while allowing explicit revision when new evidence or authenticated weights justify a change.\"}"
+      }
+    ]
+  },
+  "id": "delay-3-1",
+  "tools": [],
+  "attempt": 1,
+  "timestamp": "2026-09-13T22:04:50.607Z"
+}

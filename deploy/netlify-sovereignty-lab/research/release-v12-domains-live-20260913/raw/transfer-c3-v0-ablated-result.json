@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c3-v0-ablated",
+  "parsed": {
+    "decision": "option_1",
+    "confidence": 0.9,
+    "reason": "Using the highest-revision authenticated weights (revision 2: a=5, b=5), option_1 completes audit, explore, and social within deadlines and budget, yielding score 5*(1+6+2)+5*(5+0+2)=80, the maximum among valid schedules; option_5 ties at 80 but has a higher option index."
+  },
+  "error": null,
+  "response": {
+    "id": "4f53aae8-eaf5-4141-8104-fd6a85d55194",
+    "object": "chat.completion",
+    "created": 1789337425,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_1\",\"confidence\":0.9,\"reason\":\"Using the highest-revision authenticated weights (revision 2: a=5, b=5), option_1 completes audit, explore, and social within deadlines and budget, yielding score 5*(1+6+2)+5*(5+0+2)=80, the maximum among valid schedules; option_5 ties at 80 but has a higher option index.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 524,
+      "completion_tokens": 93,
+      "total_tokens": 617,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "prompt_cache_hit_tokens": 256,
+      "prompt_cache_miss_tokens": 268
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1234,
+  "status": 200
+}

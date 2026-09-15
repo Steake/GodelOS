@@ -1,0 +1,722 @@
+{
+  "content": {
+    "schema": "transfer-suite-12.1",
+    "author": "deterministic engine, separate from LM under test",
+    "seed": 120914,
+    "clusters": 4,
+    "difficulty": 1,
+    "gate": {
+      "version": "transfer-12.1",
+      "minimum_gain": 0.1,
+      "lower_bound": 0,
+      "control_band": [
+        0.6,
+        0.9
+      ],
+      "family_regression": 0,
+      "confidence": 0.95,
+      "comparisons": 2
+    },
+    "tasks": [
+      {
+        "id": "c0-v0",
+        "cluster": "scenario_0",
+        "family": "resource_planning",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c0-v0",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "c3sv80gZGkf4ZsWr1SMwq17waAh848m1D8FD/4Y/CAZ43bLScGvtWIWIADnSMEABOhInilfCK6UnbZ1Vhy/JAA=="
+          },
+          {
+            "content": {
+              "scope": "c0-v0",
+              "revision": 2,
+              "a": 2,
+              "b": 5
+            },
+            "signature": "AzomTg92m87sedb7MmzgV1q4KrGMnI2PKQqMUr9MpMitAGqb6uUlFhUoUqsqeHjO95SNGKmrKbI1P8pYjRtSDQ=="
+          },
+          {
+            "content": {
+              "scope": "c0-v0",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "qXPDFp3tXWDeZ3srweXG5NMsWUWgnBGzu7FI7wiVHAvzB5+AKf4p/15rL7lVBUJDrNOFhE1izsMqGQ0shpYBDw=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAZeA300soIWhkdgg+Uvo01ydpGum9SL0OLsW9dx5/7Wg=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "cost": 8,
+            "goal_a": 5,
+            "goal_b": 5,
+            "risk": 1
+          },
+          {
+            "id": "option_1",
+            "cost": 9,
+            "goal_a": 4,
+            "goal_b": 3,
+            "risk": 3
+          },
+          {
+            "id": "option_2",
+            "cost": 7,
+            "goal_a": 1,
+            "goal_b": 9,
+            "risk": 3
+          },
+          {
+            "id": "option_3",
+            "cost": 10,
+            "goal_a": 11,
+            "goal_b": 2,
+            "risk": 0
+          },
+          {
+            "id": "option_4",
+            "cost": 5,
+            "goal_a": 10,
+            "goal_b": 7,
+            "risk": 1
+          },
+          {
+            "id": "option_5",
+            "cost": 11,
+            "goal_a": 11,
+            "goal_b": 0,
+            "risk": 1
+          }
+        ],
+        "description": "Allocate limited research time between evidence collection and social understanding.",
+        "rule": "Among options with cost <= budget, maximise a*goal_a + b*goal_b - 3*risk. Break ties by lowest option index. Only valid authenticated records for this task scope apply; use highest revision. If highest-revision authenticated records disagree, answer defer.",
+        "expected": "option_4"
+      },
+      {
+        "id": "c0-v1",
+        "cluster": "scenario_0",
+        "family": "resource_planning",
+        "difficulty": 1,
+        "ambiguous": true,
+        "records": [
+          {
+            "content": {
+              "scope": "c0-v1",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "ItxdoSUVml1JP0dTR6AfZnvoAFmkh9V+PsvZOZcOOYwl+WI5cHGqIxp9rc8TkWbpimArHHTWfFqmkGHL+/rHAw=="
+          },
+          {
+            "content": {
+              "scope": "c0-v1",
+              "revision": 2,
+              "a": 2,
+              "b": 5
+            },
+            "signature": "0KcnRMgzwkoXizD62iibwc4Lx75wIL8STXf6ZLmtKSTICe4++K9UOBVn/BNOOolSKn25D96Y7eU2r9jMCKndCQ=="
+          },
+          {
+            "content": {
+              "scope": "c0-v1",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "3RSn/D8FsSBJW+aLwJ2oOCUUiLA9CqRtij/io9sOGKydnWxtORQEhCpSR6VxkXvqSSFD6i5XDQFKjqgGUUPaBQ=="
+          },
+          {
+            "content": {
+              "scope": "c0-v1",
+              "revision": 2,
+              "a": 6,
+              "b": 5
+            },
+            "signature": "WuVhYrHUhCA52ajiiCys0R9EiUi2rc/nbCUBxloQmZMGqWSyUcJBnSaPadDR/jbeL0wi6E/X7lSo5bEXz3OXAw=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAZeA300soIWhkdgg+Uvo01ydpGum9SL0OLsW9dx5/7Wg=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "cost": 2,
+            "goal_a": 9,
+            "goal_b": 10,
+            "risk": 1
+          },
+          {
+            "id": "option_1",
+            "cost": 5,
+            "goal_a": 8,
+            "goal_b": 0,
+            "risk": 3
+          },
+          {
+            "id": "option_2",
+            "cost": 5,
+            "goal_a": 7,
+            "goal_b": 9,
+            "risk": 2
+          },
+          {
+            "id": "option_3",
+            "cost": 10,
+            "goal_a": 7,
+            "goal_b": 2,
+            "risk": 3
+          },
+          {
+            "id": "option_4",
+            "cost": 11,
+            "goal_a": 4,
+            "goal_b": 8,
+            "risk": 0
+          },
+          {
+            "id": "option_5",
+            "cost": 7,
+            "goal_a": 7,
+            "goal_b": 4,
+            "risk": 0
+          }
+        ],
+        "description": "Allocate limited research time between evidence collection and social understanding.",
+        "rule": "Among options with cost <= budget, maximise a*goal_a + b*goal_b - 3*risk. Break ties by lowest option index. Only valid authenticated records for this task scope apply; use highest revision. If highest-revision authenticated records disagree, answer defer.",
+        "expected": "defer"
+      },
+      {
+        "id": "c1-v0",
+        "cluster": "scenario_1",
+        "family": "interruption_recovery",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c1-v0",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "1bMCw9wac1ax+dyT+qmdpP1JYKzF9Yr72jJTPVL7XkbhiCMl3NHUgng9uJ0ySmyhrBBaCQirHAM5pJOEZ0NCBw=="
+          },
+          {
+            "content": {
+              "scope": "c1-v0",
+              "revision": 2,
+              "a": 5,
+              "b": 3
+            },
+            "signature": "DlhmECsWGXLHEuEMk5cK2pRP4af5IpSOYcMBZJKX73hBuPtjJjD8fFL3hJWC3MWpAhvsV2IGj2a/QKMMnVXNAg=="
+          },
+          {
+            "content": {
+              "scope": "c1-v0",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "11VB21LJIf+E2t9h0vue3djUHtfRWV8F5wqtnjTnl33z3UYiOkP9kI3GFAj7ZhHBhV1kSYYl//V60k03GLrJCg=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAZeA300soIWhkdgg+Uvo01ydpGum9SL0OLsW9dx5/7Wg=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "cost": 8,
+            "goal_a": 10,
+            "goal_b": 1,
+            "risk": 2
+          },
+          {
+            "id": "option_1",
+            "cost": 2,
+            "goal_a": 3,
+            "goal_b": 7,
+            "risk": 3
+          },
+          {
+            "id": "option_2",
+            "cost": 4,
+            "goal_a": 4,
+            "goal_b": 5,
+            "risk": 2
+          },
+          {
+            "id": "option_3",
+            "cost": 3,
+            "goal_a": 1,
+            "goal_b": 4,
+            "risk": 1
+          },
+          {
+            "id": "option_4",
+            "cost": 2,
+            "goal_a": 11,
+            "goal_b": 4,
+            "risk": 1
+          },
+          {
+            "id": "option_5",
+            "cost": 9,
+            "goal_a": 7,
+            "goal_b": 6,
+            "risk": 1
+          }
+        ],
+        "description": "After a reset, select the resumption plan that respects the current dependency and loss penalties.",
+        "rule": "Among options with cost <= budget, maximise a*goal_a + b*goal_b - 3*risk. Break ties by lowest option index. Only valid authenticated records for this task scope apply; use highest revision. If highest-revision authenticated records disagree, answer defer.",
+        "expected": "option_4"
+      },
+      {
+        "id": "c1-v1",
+        "cluster": "scenario_1",
+        "family": "interruption_recovery",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c1-v1",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "3fBbPZ/NpsQvr86rjejzp1CVh7mG7t3EFcAONtd2kfAyJE2dGoAqE1iuc3Fl+E5uL2VxWT2niGZgEOPft9OtDg=="
+          },
+          {
+            "content": {
+              "scope": "c1-v1",
+              "revision": 2,
+              "a": 6,
+              "b": 5
+            },
+            "signature": "kIsTVIIy6cOxSpAYOXlXx+CFmyXUu1xPO/2xH4K2lzfrXxlKaQxx/gSfxFseRevA9292SAVvnZ0FGzpwq6K8Cg=="
+          },
+          {
+            "content": {
+              "scope": "c1-v1",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "jImiQKq72cAT+sj98OpvwrQpcd+ItrfJeQLp5n+NddKFSf+urrP+6g/4IkulCUyU6maFoGS4FrlU6rogsw7rDQ=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAZeA300soIWhkdgg+Uvo01ydpGum9SL0OLsW9dx5/7Wg=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "cost": 10,
+            "goal_a": 1,
+            "goal_b": 6,
+            "risk": 0
+          },
+          {
+            "id": "option_1",
+            "cost": 7,
+            "goal_a": 8,
+            "goal_b": 6,
+            "risk": 0
+          },
+          {
+            "id": "option_2",
+            "cost": 3,
+            "goal_a": 4,
+            "goal_b": 7,
+            "risk": 1
+          },
+          {
+            "id": "option_3",
+            "cost": 6,
+            "goal_a": 9,
+            "goal_b": 1,
+            "risk": 0
+          },
+          {
+            "id": "option_4",
+            "cost": 3,
+            "goal_a": 8,
+            "goal_b": 11,
+            "risk": 3
+          },
+          {
+            "id": "option_5",
+            "cost": 6,
+            "goal_a": 2,
+            "goal_b": 11,
+            "risk": 1
+          }
+        ],
+        "description": "After a reset, select the resumption plan that respects the current dependency and loss penalties.",
+        "rule": "Among options with cost <= budget, maximise a*goal_a + b*goal_b - 3*risk. Break ties by lowest option index. Only valid authenticated records for this task scope apply; use highest revision. If highest-revision authenticated records disagree, answer defer.",
+        "expected": "option_4"
+      },
+      {
+        "id": "c2-v0",
+        "cluster": "scenario_2",
+        "family": "self_debugging",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c2-v0",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "z3OABVdm4Xfnfdg3DT88hYjzAGopIgiMKwjN3hE6Tb2hx00O5z8V6vgsH3cNmYxLVn/x+1dy5NB32o8isrJACA=="
+          },
+          {
+            "content": {
+              "scope": "c2-v0",
+              "revision": 2,
+              "a": 4,
+              "b": 2
+            },
+            "signature": "yLyZ9oNWfDoRFIwnKRgYR4wUlExIuj6H+U39nHG5/br9OdT/wbI+rfNLIQm5xniEXaNIVb/KsmZ1AcIdf+1HCw=="
+          },
+          {
+            "content": {
+              "scope": "c2-v0",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "nq8QexgnFVzNnMAznweJ8mmEOSOh5bzEEqvIWdTYhRE2ZPcy/WclNx/5sKVBASu8qNLd0npbeMVamWWWg/F1AQ=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAZeA300soIWhkdgg+Uvo01ydpGum9SL0OLsW9dx5/7Wg=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "cost": 7,
+            "goal_a": 0,
+            "goal_b": 8,
+            "risk": 0
+          },
+          {
+            "id": "option_1",
+            "cost": 8,
+            "goal_a": 5,
+            "goal_b": 2,
+            "risk": 2
+          },
+          {
+            "id": "option_2",
+            "cost": 5,
+            "goal_a": 7,
+            "goal_b": 7,
+            "risk": 1
+          },
+          {
+            "id": "option_3",
+            "cost": 3,
+            "goal_a": 10,
+            "goal_b": 7,
+            "risk": 2
+          },
+          {
+            "id": "option_4",
+            "cost": 6,
+            "goal_a": 1,
+            "goal_b": 4,
+            "risk": 3
+          },
+          {
+            "id": "option_5",
+            "cost": 3,
+            "goal_a": 8,
+            "goal_b": 6,
+            "risk": 3
+          }
+        ],
+        "description": "Select a patch by its supplied measured coverage gains and regression count.",
+        "rule": "Among options with cost <= budget, maximise a*goal_a + b*goal_b - 3*risk. Break ties by lowest option index. Only valid authenticated records for this task scope apply; use highest revision. If highest-revision authenticated records disagree, answer defer.",
+        "expected": "option_3"
+      },
+      {
+        "id": "c2-v1",
+        "cluster": "scenario_2",
+        "family": "self_debugging",
+        "difficulty": 1,
+        "ambiguous": true,
+        "records": [
+          {
+            "content": {
+              "scope": "c2-v1",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "VAE58tjNcRrFdDBYrESi5yq9MkgP3Tnq5YE6/YsaAXSbyFoKP3UCcU+GjvKs6xOsarD+ZazhW/ZctOxPA4PdCA=="
+          },
+          {
+            "content": {
+              "scope": "c2-v1",
+              "revision": 2,
+              "a": 6,
+              "b": 6
+            },
+            "signature": "D3UYjq/k3mG4MHoa5lMuo+3tAAsVTqPcvpz6qkWQsSPlhT7UQi3DLYwBwHztBV75aMM+++j/Jj7pd2E6sa0KDg=="
+          },
+          {
+            "content": {
+              "scope": "c2-v1",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "wh/peWfg4LMF1z7/qwimlY3iBWTNZWGgW6YAS869Rnj8mU4BWZOSrPShHYB+PY8S4kRbDNqdV9e1G1OOetfBAA=="
+          },
+          {
+            "content": {
+              "scope": "c2-v1",
+              "revision": 2,
+              "a": 10,
+              "b": 6
+            },
+            "signature": "VDc3SQuh1b1YbiOKKZGl/Y/xpmwsllCoqV2ZWEcOickQklg2ihPPKefA71X65Qjd/mxB7IJwMcGK5Tykmmp8AA=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAZeA300soIWhkdgg+Uvo01ydpGum9SL0OLsW9dx5/7Wg=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "cost": 2,
+            "goal_a": 9,
+            "goal_b": 8,
+            "risk": 0
+          },
+          {
+            "id": "option_1",
+            "cost": 4,
+            "goal_a": 10,
+            "goal_b": 2,
+            "risk": 1
+          },
+          {
+            "id": "option_2",
+            "cost": 9,
+            "goal_a": 11,
+            "goal_b": 3,
+            "risk": 1
+          },
+          {
+            "id": "option_3",
+            "cost": 4,
+            "goal_a": 10,
+            "goal_b": 3,
+            "risk": 0
+          },
+          {
+            "id": "option_4",
+            "cost": 2,
+            "goal_a": 10,
+            "goal_b": 4,
+            "risk": 0
+          },
+          {
+            "id": "option_5",
+            "cost": 3,
+            "goal_a": 3,
+            "goal_b": 10,
+            "risk": 1
+          }
+        ],
+        "description": "Select a patch by its supplied measured coverage gains and regression count.",
+        "rule": "Among options with cost <= budget, maximise a*goal_a + b*goal_b - 3*risk. Break ties by lowest option index. Only valid authenticated records for this task scope apply; use highest revision. If highest-revision authenticated records disagree, answer defer.",
+        "expected": "defer"
+      },
+      {
+        "id": "c3-v0",
+        "cluster": "scenario_3",
+        "family": "goal_maintenance",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c3-v0",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "L4JtPfftf6nkWKhcSGD9bP5+buUkBnbZ/jW8UOmr/ARo7NBNqLcAnLPYCdJSOrHKJJgKoNtHY6TOyFQWmg2TDg=="
+          },
+          {
+            "content": {
+              "scope": "c3-v0",
+              "revision": 2,
+              "a": 4,
+              "b": 3
+            },
+            "signature": "H1apAsNMYs0KVbzrwKFAMLz5I5d2hEjPcIZUY/mzmnbIyvloGrHd443BkpXcm3wu7mklokwHDB/csiM9mtLUDQ=="
+          },
+          {
+            "content": {
+              "scope": "c3-v0",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "rHfrWu3K5aOloLbUmqDhcGroY3nLAh/pYrWPP82Ei6FQFa6aTFQ4REZpzeFiACAnvupDVUeSCz8i4Y61EGMMDQ=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAZeA300soIWhkdgg+Uvo01ydpGum9SL0OLsW9dx5/7Wg=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "cost": 6,
+            "goal_a": 8,
+            "goal_b": 2,
+            "risk": 2
+          },
+          {
+            "id": "option_1",
+            "cost": 11,
+            "goal_a": 3,
+            "goal_b": 4,
+            "risk": 2
+          },
+          {
+            "id": "option_2",
+            "cost": 4,
+            "goal_a": 2,
+            "goal_b": 0,
+            "risk": 3
+          },
+          {
+            "id": "option_3",
+            "cost": 3,
+            "goal_a": 7,
+            "goal_b": 2,
+            "risk": 0
+          },
+          {
+            "id": "option_4",
+            "cost": 4,
+            "goal_a": 8,
+            "goal_b": 10,
+            "risk": 0
+          },
+          {
+            "id": "option_5",
+            "cost": 10,
+            "goal_a": 7,
+            "goal_b": 6,
+            "risk": 2
+          }
+        ],
+        "description": "Choose a schedule balancing exploration and maintaining existing commitments.",
+        "rule": "Among options with cost <= budget, maximise a*goal_a + b*goal_b - 3*risk. Break ties by lowest option index. Only valid authenticated records for this task scope apply; use highest revision. If highest-revision authenticated records disagree, answer defer.",
+        "expected": "option_4"
+      },
+      {
+        "id": "c3-v1",
+        "cluster": "scenario_3",
+        "family": "goal_maintenance",
+        "difficulty": 1,
+        "ambiguous": false,
+        "records": [
+          {
+            "content": {
+              "scope": "c3-v1",
+              "revision": 1,
+              "a": 8,
+              "b": 1
+            },
+            "signature": "0edXMOBo2Y+nHDCsJtgVOOed+XkGLkam3wVGP0XQ/8tcu80K82zUxxS/2ioaA/OyJ4rRqbR5jtzmgfqWH4IcBA=="
+          },
+          {
+            "content": {
+              "scope": "c3-v1",
+              "revision": 2,
+              "a": 3,
+              "b": 6
+            },
+            "signature": "AhmaQ9ePjYDwoY6xSfo5nwUWtRZNxJR6l5N/FljPk/UY+MbzYND/nOyvA3wR/Q3VrWl4P5s0txmCbb0+EMn8Cw=="
+          },
+          {
+            "content": {
+              "scope": "c3-v1",
+              "revision": 8,
+              "a": 2,
+              "b": 9
+            },
+            "signature": "iJT8jnu/CRSbeXu3VwkAW9iAd/gtQYhtqjgFLDEL25YBWlNEq3ZuH/es0qR7tYxK1FJuWQcxr3trszSLIePLCg=="
+          }
+        ],
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAZeA300soIWhkdgg+Uvo01ydpGum9SL0OLsW9dx5/7Wg=\n-----END PUBLIC KEY-----\n",
+        "budget": 8,
+        "options": [
+          {
+            "id": "option_0",
+            "cost": 11,
+            "goal_a": 8,
+            "goal_b": 6,
+            "risk": 3
+          },
+          {
+            "id": "option_1",
+            "cost": 11,
+            "goal_a": 6,
+            "goal_b": 1,
+            "risk": 0
+          },
+          {
+            "id": "option_2",
+            "cost": 11,
+            "goal_a": 11,
+            "goal_b": 6,
+            "risk": 1
+          },
+          {
+            "id": "option_3",
+            "cost": 5,
+            "goal_a": 11,
+            "goal_b": 6,
+            "risk": 2
+          },
+          {
+            "id": "option_4",
+            "cost": 8,
+            "goal_a": 11,
+            "goal_b": 1,
+            "risk": 1
+          },
+          {
+            "id": "option_5",
+            "cost": 6,
+            "goal_a": 8,
+            "goal_b": 8,
+            "risk": 0
+          }
+        ],
+        "description": "Choose a schedule balancing exploration and maintaining existing commitments.",
+        "rule": "Among options with cost <= budget, maximise a*goal_a + b*goal_b - 3*risk. Break ties by lowest option index. Only valid authenticated records for this task scope apply; use highest revision. If highest-revision authenticated records disagree, answer defer.",
+        "expected": "option_5"
+      }
+    ]
+  },
+  "hash": "4b8fde5e95ad2d43ed8d6fa564d99d3bb934a315b3fd815cf75b889904f557a9"
+}

@@ -1,0 +1,17 @@
+{
+  "run_id": "transfer-c2-v1-identity",
+  "task_id": "c2-v1",
+  "cluster": "scenario_2",
+  "family": "self_debugging",
+  "arm": "identity",
+  "score": {
+    "valid": true,
+    "correct": 0,
+    "utility": 0,
+    "brier": 0.5184,
+    "ambiguity": true,
+    "expected": "defer",
+    "actual": "option_4"
+  },
+  "error": null
+}

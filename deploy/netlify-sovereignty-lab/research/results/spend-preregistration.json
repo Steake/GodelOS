@@ -1,0 +1,10 @@
+{
+  "created_at": "2026-09-07T18:20:49.604900+00:00",
+  "pilot_tasks": 4,
+  "maximum_pilot_rounds": 3,
+  "maximum_main_clusters": 20,
+  "minimum_effect": 0.05,
+  "target_power": 0.8,
+  "unit": "task_cluster",
+  "scope": "Pilot estimates variance; main inference blocked if the cluster budget is inadequate."
+}

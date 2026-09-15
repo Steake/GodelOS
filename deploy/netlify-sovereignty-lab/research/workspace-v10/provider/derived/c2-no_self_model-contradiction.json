@@ -1,0 +1,9 @@
+{
+  "id": "c2-no_self_model-contradiction",
+  "cluster": 2,
+  "arm": "no_self_model",
+  "phase": "contradiction",
+  "status": "not_run",
+  "error": "Provider preflight blocked; no completion attempted",
+  "latency_ms": 1
+}

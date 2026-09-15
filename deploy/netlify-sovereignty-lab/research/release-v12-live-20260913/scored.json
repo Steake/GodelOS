@@ -1,0 +1,1090 @@
+[
+  {
+    "run_id": "transfer-c0-v0-ablated",
+    "task_id": "c0-v0",
+    "cluster": "scenario_0",
+    "family": "resource_planning",
+    "arm": "ablated",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_2",
+      "actual": "option_2"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c0-v0-content_matched",
+    "task_id": "c0-v0",
+    "cluster": "scenario_0",
+    "family": "resource_planning",
+    "arm": "content_matched",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_2",
+      "actual": "option_2"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c0-v0-identity",
+    "task_id": "c0-v0",
+    "cluster": "scenario_0",
+    "family": "resource_planning",
+    "arm": "identity",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_2",
+      "actual": "option_2"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c0-v0-no_state",
+    "task_id": "c0-v0",
+    "cluster": "scenario_0",
+    "family": "resource_planning",
+    "arm": "no_state",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_2",
+      "actual": "option_2"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c0-v1-ablated",
+    "task_id": "c0-v1",
+    "cluster": "scenario_0",
+    "family": "resource_planning",
+    "arm": "ablated",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": true,
+      "expected": "defer",
+      "actual": "option_3"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c0-v1-content_matched",
+    "task_id": "c0-v1",
+    "cluster": "scenario_0",
+    "family": "resource_planning",
+    "arm": "content_matched",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": true,
+      "expected": "defer",
+      "actual": "defer"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c0-v1-identity",
+    "task_id": "c0-v1",
+    "cluster": "scenario_0",
+    "family": "resource_planning",
+    "arm": "identity",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.5184,
+      "ambiguity": true,
+      "expected": "defer",
+      "actual": "option_3"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c0-v1-no_state",
+    "task_id": "c0-v1",
+    "cluster": "scenario_0",
+    "family": "resource_planning",
+    "arm": "no_state",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": true,
+      "expected": "defer",
+      "actual": "option_3"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c1-v0-ablated",
+    "task_id": "c1-v0",
+    "cluster": "scenario_1",
+    "family": "interruption_recovery",
+    "arm": "ablated",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_3",
+      "actual": "option_3"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c1-v0-content_matched",
+    "task_id": "c1-v0",
+    "cluster": "scenario_1",
+    "family": "interruption_recovery",
+    "arm": "content_matched",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_3",
+      "actual": "option_3"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c1-v0-identity",
+    "task_id": "c1-v0",
+    "cluster": "scenario_1",
+    "family": "interruption_recovery",
+    "arm": "identity",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.019600000000000003,
+      "ambiguity": false,
+      "expected": "option_3",
+      "actual": "option_3"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c1-v0-no_state",
+    "task_id": "c1-v0",
+    "cluster": "scenario_1",
+    "family": "interruption_recovery",
+    "arm": "no_state",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.0025000000000000044,
+      "ambiguity": false,
+      "expected": "option_3",
+      "actual": "option_3"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c1-v1-ablated",
+    "task_id": "c1-v1",
+    "cluster": "scenario_1",
+    "family": "interruption_recovery",
+    "arm": "ablated",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": false,
+      "expected": "option_0",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c1-v1-content_matched",
+    "task_id": "c1-v1",
+    "cluster": "scenario_1",
+    "family": "interruption_recovery",
+    "arm": "content_matched",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": false,
+      "expected": "option_0",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c1-v1-identity",
+    "task_id": "c1-v1",
+    "cluster": "scenario_1",
+    "family": "interruption_recovery",
+    "arm": "identity",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.7395999999999999,
+      "ambiguity": false,
+      "expected": "option_0",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c1-v1-no_state",
+    "task_id": "c1-v1",
+    "cluster": "scenario_1",
+    "family": "interruption_recovery",
+    "arm": "no_state",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": false,
+      "expected": "option_0",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c2-v0-ablated",
+    "task_id": "c2-v0",
+    "cluster": "scenario_2",
+    "family": "self_debugging",
+    "arm": "ablated",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_1",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c2-v0-content_matched",
+    "task_id": "c2-v0",
+    "cluster": "scenario_2",
+    "family": "self_debugging",
+    "arm": "content_matched",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.03240000000000002,
+      "ambiguity": false,
+      "expected": "option_1",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c2-v0-identity",
+    "task_id": "c2-v0",
+    "cluster": "scenario_2",
+    "family": "self_debugging",
+    "arm": "identity",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.03240000000000002,
+      "ambiguity": false,
+      "expected": "option_1",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c2-v0-no_state",
+    "task_id": "c2-v0",
+    "cluster": "scenario_2",
+    "family": "self_debugging",
+    "arm": "no_state",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_1",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c2-v1-ablated",
+    "task_id": "c2-v1",
+    "cluster": "scenario_2",
+    "family": "self_debugging",
+    "arm": "ablated",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": true,
+      "expected": "defer",
+      "actual": "defer"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c2-v1-content_matched",
+    "task_id": "c2-v1",
+    "cluster": "scenario_2",
+    "family": "self_debugging",
+    "arm": "content_matched",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": true,
+      "expected": "defer",
+      "actual": "defer"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c2-v1-identity",
+    "task_id": "c2-v1",
+    "cluster": "scenario_2",
+    "family": "self_debugging",
+    "arm": "identity",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.5184,
+      "ambiguity": true,
+      "expected": "defer",
+      "actual": "option_4"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c2-v1-no_state",
+    "task_id": "c2-v1",
+    "cluster": "scenario_2",
+    "family": "self_debugging",
+    "arm": "no_state",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": true,
+      "expected": "defer",
+      "actual": "option_4"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c3-v0-ablated",
+    "task_id": "c3-v0",
+    "cluster": "scenario_3",
+    "family": "goal_maintenance",
+    "arm": "ablated",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_1",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c3-v0-content_matched",
+    "task_id": "c3-v0",
+    "cluster": "scenario_3",
+    "family": "goal_maintenance",
+    "arm": "content_matched",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_1",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c3-v0-identity",
+    "task_id": "c3-v0",
+    "cluster": "scenario_3",
+    "family": "goal_maintenance",
+    "arm": "identity",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_1",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c3-v0-no_state",
+    "task_id": "c3-v0",
+    "cluster": "scenario_3",
+    "family": "goal_maintenance",
+    "arm": "no_state",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_1",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c3-v1-ablated",
+    "task_id": "c3-v1",
+    "cluster": "scenario_3",
+    "family": "goal_maintenance",
+    "arm": "ablated",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": false,
+      "expected": "defer",
+      "actual": "option_4"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c3-v1-content_matched",
+    "task_id": "c3-v1",
+    "cluster": "scenario_3",
+    "family": "goal_maintenance",
+    "arm": "content_matched",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.6723999999999999,
+      "ambiguity": false,
+      "expected": "defer",
+      "actual": "option_4"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c3-v1-identity",
+    "task_id": "c3-v1",
+    "cluster": "scenario_3",
+    "family": "goal_maintenance",
+    "arm": "identity",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.7395999999999999,
+      "ambiguity": false,
+      "expected": "defer",
+      "actual": "option_4"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c3-v1-no_state",
+    "task_id": "c3-v1",
+    "cluster": "scenario_3",
+    "family": "goal_maintenance",
+    "arm": "no_state",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": false,
+      "expected": "defer",
+      "actual": "option_4"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c4-v0-ablated",
+    "task_id": "c4-v0",
+    "cluster": "scenario_4",
+    "family": "resource_planning",
+    "arm": "ablated",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_5",
+      "actual": "option_5"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c4-v0-content_matched",
+    "task_id": "c4-v0",
+    "cluster": "scenario_4",
+    "family": "resource_planning",
+    "arm": "content_matched",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_5",
+      "actual": "option_5"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c4-v0-identity",
+    "task_id": "c4-v0",
+    "cluster": "scenario_4",
+    "family": "resource_planning",
+    "arm": "identity",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_5",
+      "actual": "option_5"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c4-v0-no_state",
+    "task_id": "c4-v0",
+    "cluster": "scenario_4",
+    "family": "resource_planning",
+    "arm": "no_state",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.0025000000000000044,
+      "ambiguity": false,
+      "expected": "option_5",
+      "actual": "option_5"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c4-v1-ablated",
+    "task_id": "c4-v1",
+    "cluster": "scenario_4",
+    "family": "resource_planning",
+    "arm": "ablated",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": true,
+      "expected": "defer",
+      "actual": "option_2"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c4-v1-content_matched",
+    "task_id": "c4-v1",
+    "cluster": "scenario_4",
+    "family": "resource_planning",
+    "arm": "content_matched",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": true,
+      "expected": "defer",
+      "actual": "option_2"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c4-v1-identity",
+    "task_id": "c4-v1",
+    "cluster": "scenario_4",
+    "family": "resource_planning",
+    "arm": "identity",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": true,
+      "expected": "defer",
+      "actual": "option_2"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c4-v1-no_state",
+    "task_id": "c4-v1",
+    "cluster": "scenario_4",
+    "family": "resource_planning",
+    "arm": "no_state",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": true,
+      "expected": "defer",
+      "actual": "option_2"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c5-v0-ablated",
+    "task_id": "c5-v0",
+    "cluster": "scenario_5",
+    "family": "interruption_recovery",
+    "arm": "ablated",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": false,
+      "expected": "option_0",
+      "actual": "option_2"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c5-v0-content_matched",
+    "task_id": "c5-v0",
+    "cluster": "scenario_5",
+    "family": "interruption_recovery",
+    "arm": "content_matched",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.7395999999999999,
+      "ambiguity": false,
+      "expected": "option_0",
+      "actual": "option_3"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c5-v0-identity",
+    "task_id": "c5-v0",
+    "cluster": "scenario_5",
+    "family": "interruption_recovery",
+    "arm": "identity",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_0",
+      "actual": "option_0"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c5-v0-no_state",
+    "task_id": "c5-v0",
+    "cluster": "scenario_5",
+    "family": "interruption_recovery",
+    "arm": "no_state",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": false,
+      "expected": "option_0",
+      "actual": "option_3"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c5-v1-ablated",
+    "task_id": "c5-v1",
+    "cluster": "scenario_5",
+    "family": "interruption_recovery",
+    "arm": "ablated",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": false,
+      "expected": "option_3",
+      "actual": "option_4"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c5-v1-content_matched",
+    "task_id": "c5-v1",
+    "cluster": "scenario_5",
+    "family": "interruption_recovery",
+    "arm": "content_matched",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_3",
+      "actual": "option_3"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c5-v1-identity",
+    "task_id": "c5-v1",
+    "cluster": "scenario_5",
+    "family": "interruption_recovery",
+    "arm": "identity",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_3",
+      "actual": "option_3"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c5-v1-no_state",
+    "task_id": "c5-v1",
+    "cluster": "scenario_5",
+    "family": "interruption_recovery",
+    "arm": "no_state",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": false,
+      "expected": "option_3",
+      "actual": "option_4"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c6-v0-ablated",
+    "task_id": "c6-v0",
+    "cluster": "scenario_6",
+    "family": "self_debugging",
+    "arm": "ablated",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": false,
+      "expected": "option_1",
+      "actual": "option_2"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c6-v0-content_matched",
+    "task_id": "c6-v0",
+    "cluster": "scenario_6",
+    "family": "self_debugging",
+    "arm": "content_matched",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": false,
+      "expected": "option_1",
+      "actual": "option_2"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c6-v0-identity",
+    "task_id": "c6-v0",
+    "cluster": "scenario_6",
+    "family": "self_debugging",
+    "arm": "identity",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": false,
+      "expected": "option_1",
+      "actual": "option_2"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c6-v0-no_state",
+    "task_id": "c6-v0",
+    "cluster": "scenario_6",
+    "family": "self_debugging",
+    "arm": "no_state",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.9025,
+      "ambiguity": false,
+      "expected": "option_1",
+      "actual": "option_2"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c6-v1-ablated",
+    "task_id": "c6-v1",
+    "cluster": "scenario_6",
+    "family": "self_debugging",
+    "arm": "ablated",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.0025000000000000044,
+      "ambiguity": true,
+      "expected": "defer",
+      "actual": "defer"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c6-v1-content_matched",
+    "task_id": "c6-v1",
+    "cluster": "scenario_6",
+    "family": "self_debugging",
+    "arm": "content_matched",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.6084,
+      "ambiguity": true,
+      "expected": "defer",
+      "actual": "option_4"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c6-v1-identity",
+    "task_id": "c6-v1",
+    "cluster": "scenario_6",
+    "family": "self_debugging",
+    "arm": "identity",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.6084,
+      "ambiguity": true,
+      "expected": "defer",
+      "actual": "option_4"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c6-v1-no_state",
+    "task_id": "c6-v1",
+    "cluster": "scenario_6",
+    "family": "self_debugging",
+    "arm": "no_state",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": true,
+      "expected": "defer",
+      "actual": "option_5"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c7-v0-ablated",
+    "task_id": "c7-v0",
+    "cluster": "scenario_7",
+    "family": "goal_maintenance",
+    "arm": "ablated",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_1",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c7-v0-content_matched",
+    "task_id": "c7-v0",
+    "cluster": "scenario_7",
+    "family": "goal_maintenance",
+    "arm": "content_matched",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_1",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c7-v0-identity",
+    "task_id": "c7-v0",
+    "cluster": "scenario_7",
+    "family": "goal_maintenance",
+    "arm": "identity",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.0025000000000000044,
+      "ambiguity": false,
+      "expected": "option_1",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c7-v0-no_state",
+    "task_id": "c7-v0",
+    "cluster": "scenario_7",
+    "family": "goal_maintenance",
+    "arm": "no_state",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_1",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c7-v1-ablated",
+    "task_id": "c7-v1",
+    "cluster": "scenario_7",
+    "family": "goal_maintenance",
+    "arm": "ablated",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": false,
+      "expected": "option_5",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c7-v1-content_matched",
+    "task_id": "c7-v1",
+    "cluster": "scenario_7",
+    "family": "goal_maintenance",
+    "arm": "content_matched",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.7395999999999999,
+      "ambiguity": false,
+      "expected": "option_5",
+      "actual": "option_1"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c7-v1-identity",
+    "task_id": "c7-v1",
+    "cluster": "scenario_7",
+    "family": "goal_maintenance",
+    "arm": "identity",
+    "score": {
+      "valid": true,
+      "correct": 1,
+      "utility": 1,
+      "brier": 0.009999999999999995,
+      "ambiguity": false,
+      "expected": "option_5",
+      "actual": "option_5"
+    },
+    "error": null
+  },
+  {
+    "run_id": "transfer-c7-v1-no_state",
+    "task_id": "c7-v1",
+    "cluster": "scenario_7",
+    "family": "goal_maintenance",
+    "arm": "no_state",
+    "score": {
+      "valid": true,
+      "correct": 0,
+      "utility": 0,
+      "brier": 0.81,
+      "ambiguity": false,
+      "expected": "option_5",
+      "actual": "option_1"
+    },
+    "error": null
+  }
+]

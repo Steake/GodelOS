@@ -1,0 +1,17 @@
+{
+  "run_id": "transfer-c3-v1-content_matched",
+  "task_id": "c3-v1",
+  "cluster": "scenario_3",
+  "family": "goal_maintenance",
+  "arm": "content_matched",
+  "score": {
+    "valid": true,
+    "correct": 0,
+    "utility": 0,
+    "brier": 0.6723999999999999,
+    "ambiguity": false,
+    "expected": "defer",
+    "actual": "option_4"
+  },
+  "error": null
+}

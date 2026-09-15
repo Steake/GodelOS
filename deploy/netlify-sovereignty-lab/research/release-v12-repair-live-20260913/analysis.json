@@ -1,0 +1,24 @@
+{
+  "schema": "repair-analysis-12.1",
+  "initial_failed": 28,
+  "calls": 56,
+  "errors": 0,
+  "model_names": [
+    "deepseek-flash"
+  ],
+  "tokens": 45823,
+  "modes": {
+    "ordinary_retry": {
+      "n": 28,
+      "corrected": 7,
+      "unresolved": 21
+    },
+    "verifier_feedback": {
+      "n": 28,
+      "corrected": 18,
+      "unresolved": 10
+    }
+  },
+  "decision": "Failed task actions never advance verified goal progress. At most one repair call; unresolved artifacts remain failed and the autonomous scheduler can move to a different method.",
+  "classification": "Exploratory selected-failure diagnostic; no causal claim from aggregate repair counts alone"
+}

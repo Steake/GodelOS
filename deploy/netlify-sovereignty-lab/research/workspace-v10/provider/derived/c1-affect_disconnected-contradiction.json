@@ -1,0 +1,9 @@
+{
+  "id": "c1-affect_disconnected-contradiction",
+  "cluster": 1,
+  "arm": "affect_disconnected",
+  "phase": "contradiction",
+  "status": "not_run",
+  "error": "Provider preflight blocked; no completion attempted",
+  "latency_ms": 0
+}

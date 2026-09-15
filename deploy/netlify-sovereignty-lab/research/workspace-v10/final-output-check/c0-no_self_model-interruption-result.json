@@ -1,0 +1,7 @@
+{
+  "id": "c0-no_self_model-interruption",
+  "status": "passed",
+  "syntax_repair": null,
+  "schema_repair": null,
+  "model": "deepseek-flash"
+}

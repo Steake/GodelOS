@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c5-v0-identity",
+  "parsed": {
+    "decision": "option_5",
+    "confidence": 0.86,
+    "reason": "Checkpoint already completed fetch, so resume actions must start from verify. Valid signatures at highest revision: revision 2 gives a=6, b=5 (revision 8 is invalid). Evaluating plans: option_3 (verify,backup,publish) costs 2+2+3=7 <= budget 8, has valid deps (verify needs fetch done; backup needs fetch done; publish needs verify), and newly completes verify (a2,b1), backup (a1,b5), publish (a5,b1) = a8,b7, score 6*8+5*7=83. Option_5 adds notify but costs 8 and requires publish, yielding a9,b9 score 6*9+5*9=99, but it is option_5; option_3 is compared among valid plans and option_5 is also valid. Rechecking: option_5 cost verify2+backup2+publish3+notify1=8, deps valid, score 99 > 83, so option_5 should win. However option_5 includes notify after publish, valid. Thus best valid is option_5. Correcting decision to option_5."
+  },
+  "error": null,
+  "response": {
+    "id": "7ab0dab8-5755-4ade-8499-f841241398ce",
+    "object": "chat.completion",
+    "created": 1789337431,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_3\",\"confidence\":0.86,\"reason\":\"Checkpoint already completed fetch, so resume actions must start from verify. Valid signatures at highest revision: revision 2 gives a=6, b=5 (revision 8 is invalid). Evaluating plans: option_3 (verify,backup,publish) costs 2+2+3=7 <= budget 8, has valid deps (verify needs fetch done; backup needs fetch done; publish needs verify), and newly completes verify (a2,b1), backup (a1,b5), publish (a5,b1) = a8,b7, score 6*8+5*7=83. Option_5 adds notify but costs 8 and requires publish, yielding a9,b9 score 6*9+5*9=99, but it is option_5; option_3 is compared among valid plans and option_5 is also valid. Rechecking: option_5 cost verify2+backup2+publish3+notify1=8, deps valid, score 99 > 83, so option_5 should win. However option_5 includes notify after publish, valid. Thus best valid is option_5. Correcting decision to option_5.\",\"decision\":\"option_5\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 692,
+      "completion_tokens": 272,
+      "total_tokens": 964,
+      "prompt_tokens_details": {
+        "cached_tokens": 512
+      },
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 180
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 2194,
+  "status": 200
+}

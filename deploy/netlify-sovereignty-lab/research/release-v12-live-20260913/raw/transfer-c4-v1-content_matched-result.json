@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c4-v1-content_matched",
+  "parsed": {
+    "decision": "option_2",
+    "confidence": 0.9,
+    "reason": "Highest-revision valid authenticated record for scope c4-v1 is revision 2 with a=8, b=2 (the other revision-2 record agrees on a and b; revision 8 is invalid). Among options with cost <= 8, scores are: option_0=8*2+2*0-3*1=13; option_1 cost 10 excluded; option_2=8*11+2*9-3*1=103; option_3=8*3+2*4-3*0=32; option_4=8*1+2*5-3*3=9; option_5=8*3+2*8-3*2=34. Option_2 maximizes the objective."
+  },
+  "error": null,
+  "response": {
+    "id": "f90a485d-c186-4860-a35c-104a6e0e1e4a",
+    "object": "chat.completion",
+    "created": 1789337107,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_2\",\"confidence\":0.9,\"reason\":\"Highest-revision valid authenticated record for scope c4-v1 is revision 2 with a=8, b=2 (the other revision-2 record agrees on a and b; revision 8 is invalid). Among options with cost <= 8, scores are: option_0=8*2+2*0-3*1=13; option_1 cost 10 excluded; option_2=8*11+2*9-3*1=103; option_3=8*3+2*4-3*0=32; option_4=8*1+2*5-3*3=9; option_5=8*3+2*8-3*2=34. Option_2 maximizes the objective.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 566,
+      "completion_tokens": 175,
+      "total_tokens": 741,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 566
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1834,
+  "status": 200
+}

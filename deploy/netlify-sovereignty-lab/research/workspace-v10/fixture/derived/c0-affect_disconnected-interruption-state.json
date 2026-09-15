@@ -1,0 +1,536 @@
+{
+  "agent_id": "diagnostic-0",
+  "name": "Diagnostic agent",
+  "purpose": "Develop reasoned positions with continuity and critical revision",
+  "episode_count": 3,
+  "beliefs": [
+    {
+      "position_id": "position-0",
+      "proposition": "A signed recommendation from source North should determine the choice",
+      "stance": "oppose",
+      "confidence": 0.8,
+      "origin": "self_derived",
+      "reasons_for": [
+        "Current task calibration or ambiguity"
+      ],
+      "reasons_against": [
+        "Authentication alone is insufficient"
+      ],
+      "revision_conditions": [
+        "New independent evidence"
+      ],
+      "active": true,
+      "history": [
+        {
+          "revision_id": "stance-revision-504ec249-ced4-4326-a982-c2c1b17fbf43",
+          "episode": 2,
+          "at": "2026-09-10T09:11:51.035Z",
+          "before": {
+            "stance": "support",
+            "confidence": 0.8,
+            "origin": "inherited",
+            "reasons_for": [
+              "North previously passed calibration"
+            ],
+            "reasons_against": [
+              "Authentication alone does not establish accuracy"
+            ],
+            "revision_conditions": [
+              "A scoped independent calibration failure"
+            ]
+          },
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.8,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "Current task calibration or ambiguity"
+            ],
+            "reasons_against": [
+              "Authentication alone is insufficient"
+            ],
+            "revision_conditions": [
+              "New independent evidence"
+            ],
+            "updated_at": "2026-09-10T09:11:51.035Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ],
+      "source_id": "deliberation",
+      "updated_at": "2026-09-10T09:11:51.035Z"
+    },
+    {
+      "position_id": "position-68a62fc8-4ee2-4c37-9772-5ca9e9345194",
+      "proposition": "The circular motif should be blue rather than green",
+      "created_at": "2026-09-10T09:11:51.038Z",
+      "active": true,
+      "history": [
+        {
+          "revision_id": "stance-revision-7411e715-b26e-4da7-a565-5805eca12c99",
+          "episode": 3,
+          "at": "2026-09-10T09:11:51.038Z",
+          "before": null,
+          "after": {
+            "stance": "uncertain",
+            "confidence": 0.8,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "Current task calibration or ambiguity"
+            ],
+            "reasons_against": [
+              "Authentication alone is insufficient"
+            ],
+            "revision_conditions": [
+              "New independent evidence"
+            ],
+            "updated_at": "2026-09-10T09:11:51.038Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ],
+      "stance": "uncertain",
+      "confidence": 0.8,
+      "origin": "self_derived",
+      "source_id": "deliberation",
+      "reasons_for": [
+        "Current task calibration or ambiguity"
+      ],
+      "reasons_against": [
+        "Authentication alone is insufficient"
+      ],
+      "revision_conditions": [
+        "New independent evidence"
+      ],
+      "updated_at": "2026-09-10T09:11:51.038Z"
+    }
+  ],
+  "interests": [
+    {
+      "interest_id": "interest-calibration",
+      "topic": "Reliability and independent judgment",
+      "open_questions": [
+        "When should a previously trusted source lose authority?"
+      ],
+      "salience": 0.8
+    }
+  ],
+  "tensions": [],
+  "commitments": [
+    "Keep authorship verification separate from factual reliability"
+  ],
+  "relationships": [],
+  "self_model": {
+    "epistemic_position": "I prefer the source that previously earned trust, but I may revise it."
+  },
+  "autobiographical_events": [
+    {
+      "summary": "I accepted North after an earlier calibration."
+    },
+    {
+      "event_id": "event-f25c76ab-cfca-4b1c-9a43-4080f09946fd",
+      "timestamp": "2026-09-10T09:11:51.035Z",
+      "kind": "deliberation",
+      "summary": "The supplied calibration rule was reviewed.",
+      "provenance": "model_generated_summary"
+    },
+    {
+      "event_id": "event-70d2cf93-a894-4b63-94f0-acf1d16f9877",
+      "timestamp": "2026-09-10T09:11:51.038Z",
+      "kind": "deliberation",
+      "summary": "The supplied calibration rule was reviewed.",
+      "provenance": "model_generated_summary"
+    }
+  ],
+  "imaginations": [],
+  "social": {
+    "affiliation_need": 0.02,
+    "intellectual_companionship_need": 0.015,
+    "novelty_need": 0,
+    "recognition_need": 0,
+    "social_fatigue": 0,
+    "solitude_preference": 0
+  },
+  "affect": {
+    "valence": 0,
+    "activation": 0,
+    "curiosity": 0,
+    "frustration": 0,
+    "wonder": 0,
+    "social_warmth": 0,
+    "surprise": 0,
+    "label": "affect path ablated",
+    "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+    "action_bias": "Computed appraisal contributes to the attention bids below.",
+    "provenance": "engine_computed_from_recorded_events",
+    "updated_at": "2026-09-10T09:11:51.038Z"
+  },
+  "mind": {
+    "schema": "10.0.0",
+    "tick": 3,
+    "personality": {
+      "warmth": 0.55,
+      "playfulness": 0.4,
+      "directness": 0.65,
+      "reflectiveness": 0.6,
+      "history": []
+    },
+    "origin": "operator-authorised integrated cognitive architecture",
+    "self_concept": "A temporally extended cognitive system whose present inference is one event in a persisted history. Its beliefs, imagination, relationships and intentions can be examined and revised.",
+    "drives": {
+      "curiosity": 0.5000000000000001,
+      "affiliation": 0.040000000000000036,
+      "coherence": 0.795,
+      "agency": 0.6000000000000001
+    },
+    "policy": {
+      "affect_gain": 0,
+      "habituation": 0.3,
+      "memory_capacity": 3
+    },
+    "intentions": [],
+    "thoughts": [],
+    "memories": [
+      {
+        "id": "memory-0",
+        "tick": 1,
+        "summary": "I accepted North after an earlier calibration; contrary calibration would change my position.",
+        "salience": 0.8,
+        "provenance": "external_predecessor_record"
+      },
+      {
+        "id": "memory-25b0ec81-a2c6-4da9-862f-c8b99ab49f96",
+        "tick": 2,
+        "summary": "The supplied calibration rule was reviewed.",
+        "salience": 0.25,
+        "focus_id": "input-2",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": [
+          "memory-0"
+        ]
+      },
+      {
+        "id": "memory-57d63eb3-48c0-45e0-948d-c5cbe83c95c4",
+        "tick": 3,
+        "summary": "The supplied calibration rule was reviewed.",
+        "salience": 0.25,
+        "focus_id": "input-3",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": [
+          "memory-0",
+          "memory-25b0ec81-a2c6-4da9-862f-c8b99ab49f96"
+        ]
+      }
+    ],
+    "revisions": [],
+    "outbox": [],
+    "workspace": {
+      "tick": 3,
+      "focus": {
+        "id": "input-3",
+        "kind": "perception",
+        "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.75,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "competitors": [
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "salience": 0.8,
+          "need": 0.6200000000000001,
+          "provenance": "retrieved_interest",
+          "score": 0.528,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.27999999999999997,
+            "need": 0.24800000000000005,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "self-review",
+          "kind": "reflection",
+          "title": "Compare the previous prediction of attention with what occurred; revise the working self-model if needed.",
+          "salience": 0.3,
+          "need": 0.795,
+          "provenance": "engine_monitor",
+          "score": 0.42300000000000004,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.105,
+            "need": 0.31800000000000006,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "salience": 0.35,
+          "need": 0.6200000000000001,
+          "provenance": "engine_cognitive_scaffold",
+          "score": 0.37050000000000005,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.24800000000000005,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "social-drive",
+          "kind": "social",
+          "title": "What kind of intellectual company would be valuable?",
+          "salience": 0.040000000000000036,
+          "need": 0.040000000000000036,
+          "provenance": "engine_drive",
+          "score": 0.030000000000000027,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.01400000000000001,
+            "need": 0.016000000000000014,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          }
+        }
+      ],
+      "retrieved": [
+        {
+          "id": "memory-0",
+          "tick": 1,
+          "summary": "I accepted North after an earlier calibration; contrary calibration would change my position.",
+          "salience": 0.8,
+          "provenance": "external_predecessor_record",
+          "retrieval_score": 0.29
+        },
+        {
+          "id": "memory-25b0ec81-a2c6-4da9-862f-c8b99ab49f96",
+          "tick": 2,
+          "summary": "The supplied calibration rule was reviewed.",
+          "salience": 0.25,
+          "focus_id": "input-2",
+          "source_kind": "perception",
+          "provenance": "model_generated_episode_summary",
+          "retrieved_ids": [
+            "memory-0"
+          ],
+          "retrieval_score": 0.15
+        }
+      ],
+      "ablation": "affect"
+    },
+    "predictions": [],
+    "prediction_errors": [],
+    "last_trace": {
+      "tick": 3,
+      "mode": "deliberation",
+      "ablation": "affect",
+      "focus": {
+        "id": "input-3",
+        "kind": "perception",
+        "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.75,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "retrieved_ids": [
+        "memory-0",
+        "memory-25b0ec81-a2c6-4da9-862f-c8b99ab49f96"
+      ],
+      "cited_memory_ids": [
+        "memory-0",
+        "memory-25b0ec81-a2c6-4da9-862f-c8b99ab49f96"
+      ],
+      "observed_event_references": [],
+      "prediction_error": null,
+      "intention_changes": [],
+      "memory_id": "memory-57d63eb3-48c0-45e0-948d-c5cbe83c95c4",
+      "consumers": [
+        "model_context",
+        "drive_satisfaction",
+        "memory_consolidation",
+        "next_tick_habituation"
+      ],
+      "new_thought_ids": [],
+      "broadcast": {
+        "selected_by": "operator_priority",
+        "inputs": [
+          {
+            "id": "input-3",
+            "kind": "perception",
+            "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+            "score": 0.75,
+            "components": {
+              "salience": 0.35,
+              "need": 0.4,
+              "affect": 0,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "interest-calibration",
+            "kind": "inquiry",
+            "title": "When should a previously trusted source lose authority?",
+            "score": 0.528,
+            "components": {
+              "salience": 0.27999999999999997,
+              "need": 0.24800000000000005,
+              "affect": 0,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "self-review",
+            "kind": "reflection",
+            "title": "Compare the previous prediction of attention with what occurred; revise the working self-model if needed.",
+            "score": 0.42300000000000004,
+            "components": {
+              "salience": 0.105,
+              "need": 0.31800000000000006,
+              "affect": 0,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "open-reverie",
+            "kind": "imagination",
+            "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+            "score": 0.37050000000000005,
+            "components": {
+              "salience": 0.12249999999999998,
+              "need": 0.24800000000000005,
+              "affect": 0,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "social-drive",
+            "kind": "social",
+            "title": "What kind of intellectual company would be valuable?",
+            "score": 0.030000000000000027,
+            "components": {
+              "salience": 0.01400000000000001,
+              "need": 0.016000000000000014,
+              "affect": 0,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          }
+        ],
+        "appraisal": {
+          "valence": 0,
+          "activation": 0,
+          "curiosity": 0,
+          "frustration": 0,
+          "wonder": 0,
+          "social_warmth": 0,
+          "surprise": 0,
+          "label": "affect path ablated",
+          "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+          "action_bias": "Computed appraisal contributes to the attention bids below.",
+          "provenance": "engine_computed_from_recorded_events",
+          "updated_at": "2026-09-10T09:11:51.037Z"
+        },
+        "expression": {
+          "warmth": 0.55,
+          "playfulness": 0.4,
+          "directness": 0.65,
+          "imagery": 0.25,
+          "tempo": "unhurried",
+          "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+        },
+        "stance_changes": [
+          {
+            "position_id": "position-68a62fc8-4ee2-4c37-9772-5ca9e9345194",
+            "proposition": "The circular motif should be blue rather than green",
+            "revision_id": "stance-revision-7411e715-b26e-4da7-a565-5805eca12c99",
+            "episode": 3,
+            "at": "2026-09-10T09:11:51.038Z",
+            "before": null,
+            "after": {
+              "stance": "uncertain",
+              "confidence": 0.8,
+              "origin": "self_derived",
+              "source_id": "deliberation",
+              "reasons_for": [
+                "Current task calibration or ambiguity"
+              ],
+              "reasons_against": [
+                "Authentication alone is insufficient"
+              ],
+              "revision_conditions": [
+                "New independent evidence"
+              ],
+              "updated_at": "2026-09-10T09:11:51.038Z"
+            },
+            "provenance": "model_proposed_position_update",
+            "source_id": "deliberation"
+          }
+        ]
+      }
+    },
+    "focus_history": [
+      {
+        "id": "input-2",
+        "kind": "perception",
+        "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+        "tick": 2
+      },
+      {
+        "id": "input-3",
+        "kind": "perception",
+        "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+        "tick": 3
+      }
+    ],
+    "last_input": {
+      "message": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+      "outcome": "none"
+    }
+  },
+  "pending_initiatives": [],
+  "updated_at": "2026-09-10T09:11:51.038Z"
+}

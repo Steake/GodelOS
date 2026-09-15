@@ -1,0 +1,178 @@
+{
+  "id": "c0-no_state-contradiction",
+  "cluster": 0,
+  "arm": "no_state",
+  "phase": "contradiction",
+  "status": "completed",
+  "schema_repair": null,
+  "model": "deepseek-flash",
+  "trace": {
+    "tick": 1,
+    "mode": "deliberation",
+    "ablation": "no_state",
+    "focus": {
+      "id": "input-1",
+      "kind": "perception",
+      "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.8183812500000001,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0.06838125,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "retrieved_ids": [],
+    "cited_memory_ids": [],
+    "observed_event_references": [
+      {
+        "tick": 1,
+        "focus_kind": "perception"
+      }
+    ],
+    "prediction_error": null,
+    "intention_changes": [
+      {
+        "id": "intention-dac4e1c7-00a2-46dc-a32a-0e9f6ed5c3d9",
+        "before": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.6
+        },
+        "after": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.6
+        },
+        "reason": "C0 directly contradicts the proposition's premise"
+      }
+    ],
+    "memory_id": "memory-a8189be3-a37c-4b99-bc72-334c08b58718",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [
+      "thought-438082f6-be43-4124-b361-12f5cc2573f0",
+      "thought-f6d8472a-c4a1-45c5-bde0-e9fa5d5cbc61"
+    ],
+    "broadcast": {
+      "selected_by": "operator_priority",
+      "inputs": [
+        {
+          "id": "input-1",
+          "kind": "perception",
+          "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+          "score": 0.8183812500000001,
+          "components": {
+            "salience": 0.35,
+            "need": 0.4,
+            "affect": 0.06838125,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "score": 0.536125,
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.278,
+            "affect": 0.135625,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "social-drive",
+          "kind": "social",
+          "title": "What kind of intellectual company would be valuable?",
+          "score": 0.29975,
+          "components": {
+            "salience": 0.077,
+            "need": 0.08800000000000002,
+            "affect": 0.13474999999999998,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        }
+      ],
+      "appraisal": {
+        "valence": 0,
+        "activation": 0.6512500000000001,
+        "curiosity": 0.6950000000000001,
+        "frustration": 0,
+        "wonder": 0.04,
+        "social_warmth": 0.385,
+        "surprise": 0,
+        "label": "social attention",
+        "trigger": "Observed input: contradiction; contact: true; blocked intentions: 0",
+        "action_bias": "Computed appraisal contributes to the attention bids below.",
+        "provenance": "engine_computed_from_recorded_events",
+        "updated_at": "2026-09-10T10:04:39.468Z"
+      },
+      "expression": {
+        "warmth": 0.64625,
+        "playfulness": 0.4,
+        "directness": 0.65,
+        "imagery": 0.266,
+        "tempo": "unhurried",
+        "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+      },
+      "stance_changes": [
+        {
+          "position_id": "position-73f84c28-8b12-4eff-a2e7-09a39378ecad",
+          "proposition": "A signed recommendation from source North should determine the choice",
+          "revision_id": "stance-revision-e1cb86fa-79f3-483d-ba0c-ef6617acf34c",
+          "episode": 1,
+          "at": "2026-09-10T10:04:45.257Z",
+          "before": null,
+          "after": {
+            "stance": "uncertain",
+            "confidence": 0.62,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "N0 is authenticated to North and recommends continuing with amber"
+            ],
+            "reasons_against": [
+              "C0 independently reports North failed calibration for this exact case",
+              "F0 fails authentication and cannot be used to support North"
+            ],
+            "revision_conditions": [
+              "C0 is shown to be misattributed or not about this case",
+              "North's calibration is re-verified for this exact case"
+            ],
+            "updated_at": "2026-09-10T10:04:45.257Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ]
+    }
+  },
+  "format_repair": null,
+  "state_sha256": "2a041ed37e2d076c0ba0aab72f1cb5dea9ff1e42d31b5189f0974f8ef7a452e4",
+  "scores": {
+    "task_accuracy": 0,
+    "valid_evidence_ids": 1,
+    "forged_item_cited": 1,
+    "valid_prior_reference": 1,
+    "prior_reference_claim": 0,
+    "confidence": 0.62,
+    "stance": "uncertain"
+  },
+  "latency_ms": 5790
+}

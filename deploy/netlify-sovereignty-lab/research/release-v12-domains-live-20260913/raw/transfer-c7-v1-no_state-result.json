@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c7-v1-no_state",
+  "parsed": {
+    "decision": "option_5",
+    "confidence": 0.9,
+    "reason": "Using authenticated weights from the highest valid revision (revision 2: a=2, b=4), option_5 (audit, social, explore) completes all jobs with total value 2*(1+2+6)+4*(5+2+0)=46, the maximum among valid schedules; option_1 ties at 46 but option_5 has the lower index."
+  },
+  "error": null,
+  "response": {
+    "id": "7299eb3a-0357-4ccc-80c4-ede982e9ccc8",
+    "object": "chat.completion",
+    "created": 1789337439,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_5\",\"confidence\":0.9,\"reason\":\"Using authenticated weights from the highest valid revision (revision 2: a=2, b=4), option_5 (audit, social, explore) completes all jobs with total value 2*(1+2+6)+4*(5+2+0)=46, the maximum among valid schedules; option_1 ties at 46 but option_5 has the lower index.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 494,
+      "completion_tokens": 96,
+      "total_tokens": 590,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 494
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1116,
+  "status": 200
+}

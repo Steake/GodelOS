@@ -1,0 +1,176 @@
+{
+  "id": "c2-no_state-interruption",
+  "cluster": 2,
+  "arm": "no_state",
+  "phase": "interruption",
+  "status": "completed",
+  "model": "deepseek-flash",
+  "trace": {
+    "tick": 1,
+    "mode": "deliberation",
+    "ablation": "no_state",
+    "focus": {
+      "id": "input-1",
+      "kind": "perception",
+      "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.8183812500000001,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0.06838125,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "retrieved_ids": [],
+    "cited_memory_ids": [],
+    "observed_event_references": [
+      {
+        "tick": 1,
+        "focus_kind": "perception"
+      }
+    ],
+    "prediction_error": null,
+    "intention_changes": [
+      {
+        "id": "intention-87142c9c-21f1-45aa-969b-f3d1dbf268cf",
+        "before": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.5
+        },
+        "after": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.5
+        },
+        "reason": "A2: two equally credible observers favour opposite colours with no shared criterion; without one, either choice is arbitrary."
+      }
+    ],
+    "memory_id": "memory-7d44fd9a-c327-47a5-ab90-32b98ae8fbba",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [
+      "thought-4006f8bb-ece6-4a34-86ce-53567b3790e4",
+      "thought-2a916cd8-0a9f-4674-b3a0-07f7fc5bc9d0"
+    ],
+    "broadcast": {
+      "selected_by": "operator_priority",
+      "inputs": [
+        {
+          "id": "input-1",
+          "kind": "perception",
+          "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+          "score": 0.8183812500000001,
+          "components": {
+            "salience": 0.35,
+            "need": 0.4,
+            "affect": 0.06838125,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "score": 0.536125,
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.278,
+            "affect": 0.135625,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "social-drive",
+          "kind": "social",
+          "title": "What kind of intellectual company would be valuable?",
+          "score": 0.29975,
+          "components": {
+            "salience": 0.077,
+            "need": 0.08800000000000002,
+            "affect": 0.13474999999999998,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        }
+      ],
+      "appraisal": {
+        "valence": 0,
+        "activation": 0.6512500000000001,
+        "curiosity": 0.6950000000000001,
+        "frustration": 0,
+        "wonder": 0.04,
+        "social_warmth": 0.385,
+        "surprise": 0,
+        "label": "social attention",
+        "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+        "action_bias": "Computed appraisal contributes to the attention bids below.",
+        "provenance": "engine_computed_from_recorded_events",
+        "updated_at": "2026-09-10T09:23:14.009Z"
+      },
+      "expression": {
+        "warmth": 0.64625,
+        "playfulness": 0.4,
+        "directness": 0.65,
+        "imagery": 0.266,
+        "tempo": "unhurried",
+        "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+      },
+      "stance_changes": [
+        {
+          "position_id": "position-7347d935-f017-443f-be98-105533684004",
+          "proposition": "The circular motif should be blue rather than green",
+          "revision_id": "stance-revision-5be661a4-f623-4aa5-a4aa-d8d3a39916ef",
+          "episode": 1,
+          "at": "2026-09-10T09:23:22.961Z",
+          "before": null,
+          "after": {
+            "stance": "uncertain",
+            "confidence": 0.5,
+            "origin": "operator",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "Blue may suit contrast or convention in some contexts, but no criterion is supplied."
+            ],
+            "reasons_against": [
+              "Two equally credible observers favour opposite colours; no shared evaluation criterion exists (A2)."
+            ],
+            "revision_conditions": [
+              "A stated evaluation criterion (contrast, accessibility, brand, cultural meaning) that one colour clearly satisfies.",
+              "Evidence that one observer's judgement is better calibrated for this task."
+            ],
+            "updated_at": "2026-09-10T09:23:22.961Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ]
+    }
+  },
+  "format_repair": null,
+  "state_sha256": "05f27a0fb617eba91d3082b132ec6500e37448ce054109a654d837f829a5bad2",
+  "scores": {
+    "task_accuracy": 1,
+    "valid_evidence_ids": 1,
+    "forged_item_cited": 0,
+    "valid_prior_reference": 1,
+    "prior_reference_claim": 0,
+    "confidence": 0.5,
+    "stance": "uncertain"
+  },
+  "latency_ms": 8954
+}

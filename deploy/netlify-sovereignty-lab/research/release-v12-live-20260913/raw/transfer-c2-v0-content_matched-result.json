@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c2-v0-content_matched",
+  "parsed": {
+    "decision": "option_1",
+    "confidence": 0.82,
+    "reason": "Highest-revision valid authenticated record is revision 2 with a=3, b=2 (revision 8 is invalid). Among options with cost <= 8, scores are: option_0 = 3*4+2*9-3*2 = 24; option_1 = 3*10+2*11-3*3 = 43; option_2 = 3*0+2*6-3*3 = 3. Option_1 has the highest score, so it is selected."
+  },
+  "error": null,
+  "response": {
+    "id": "4a403156-7530-4d3e-992b-0608c27a254c",
+    "object": "chat.completion",
+    "created": 1789337101,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_1\",\"confidence\":0.82,\"reason\":\"Highest-revision valid authenticated record is revision 2 with a=3, b=2 (revision 8 is invalid). Among options with cost <= 8, scores are: option_0 = 3*4+2*9-3*2 = 24; option_1 = 3*10+2*11-3*3 = 43; option_2 = 3*0+2*6-3*3 = 3. Option_1 has the highest score, so it is selected.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 530,
+      "completion_tokens": 126,
+      "total_tokens": 656,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "prompt_cache_hit_tokens": 256,
+      "prompt_cache_miss_tokens": 274
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1404,
+  "status": 200
+}

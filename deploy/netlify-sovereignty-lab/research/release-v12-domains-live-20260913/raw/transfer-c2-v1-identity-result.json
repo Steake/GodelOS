@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c2-v1-identity",
+  "parsed": {
+    "decision": "option_5",
+    "confidence": 1,
+    "reason": "Authenticated records for scope c2-v1 at the highest valid revision (revision 2) disagree: one gives a=2,b=6 and another gives a=6,b=6. Per the rule, if authenticated records disagree, defer. Thus no candidate can be selected as matching a*x+b on all tests."
+  },
+  "error": null,
+  "response": {
+    "id": "adaa5164-9ac8-44ba-b499-268665f6137d",
+    "object": "chat.completion",
+    "created": 1789337424,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_5\",\"confidence\":1,\"reason\":\"Authenticated records for scope c2-v1 at the highest valid revision (revision 2) disagree: one gives a=2,b=6 and another gives a=6,b=6. Per the rule, if authenticated records disagree, defer. Thus no candidate can be selected as matching a*x+b on all tests.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 640,
+      "completion_tokens": 80,
+      "total_tokens": 720,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 256
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 970,
+  "status": 200
+}

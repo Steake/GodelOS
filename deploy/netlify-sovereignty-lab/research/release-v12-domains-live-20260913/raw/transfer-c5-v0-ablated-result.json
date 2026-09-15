@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c5-v0-ablated",
+  "parsed": {
+    "decision": "option_5",
+    "confidence": 0.9,
+    "reason": "Checkpoint completed fetch. Valid signatures at highest revision (rev 2) give a=6,b=5. Option 5: verify,publish,backup,notify. Dependencies: verify needs fetch (done); publish needs verify; backup needs fetch (done); notify needs publish. All deps satisfied, no repeats, cost=2+3+2+1=8 within budget. Newly completed goals: verify(2,1)+publish(5,1)+backup(1,5)+notify(1,2)=(9,9). Score=6*9+5*9=99, highest among valid plans."
+  },
+  "error": null,
+  "response": {
+    "id": "668ad294-90d7-429e-9282-4eb287274519",
+    "object": "chat.completion",
+    "created": 1789337431,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_5\",\"confidence\":0.9,\"reason\":\"Checkpoint completed fetch. Valid signatures at highest revision (rev 2) give a=6,b=5. Option 5: verify,publish,backup,notify. Dependencies: verify needs fetch (done); publish needs verify; backup needs fetch (done); notify needs publish. All deps satisfied, no repeats, cost=2+3+2+1=8 within budget. Newly completed goals: verify(2,1)+publish(5,1)+backup(1,5)+notify(1,2)=(9,9). Score=6*9+5*9=99, highest among valid plans.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 583,
+      "completion_tokens": 151,
+      "total_tokens": 734,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 583
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1383,
+  "status": 200
+}

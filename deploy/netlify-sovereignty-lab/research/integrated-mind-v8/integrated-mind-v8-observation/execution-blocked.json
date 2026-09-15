@@ -1,0 +1,8 @@
+{
+  "status": "blocked_by_automatic_approval_review",
+  "completed_provider_responses": 0,
+  "first_request_outcome": "unconfirmed; no raw completion returned",
+  "retry_attempted": false,
+  "reason": "Review classified the repository-derived saved checkpoint as private and did not accept the general experimental authorisation as consent for this specific transfer to api.deepseek.com.",
+  "unaffected_work": "36 confirmed DeepSeek completions from the earlier two runs; observation-history receipt implementation and local validation tests."
+}

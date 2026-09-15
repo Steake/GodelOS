@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"id\":\"73bbf462-2ea4-40da-bc65-b8fe3325309e\",\"object\":\"chat.completion\",\"created\":1789337842,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"decision\\\":\\\"defer\\\",\\\"confidence\\\":0.95,\\\"reason\\\":\\\"For scope c4-v1, the highest valid authenticated revision is 2, and the two valid revision-2 records disagree (a=4,b=2 vs a=8,b=2). The rule requires answering defer when highest-revision authenticated records disagree, so the canonical decision is defer.\\\"}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":694,\"completion_tokens\":75,\"total_tokens\":769,\"prompt_tokens_details\":{\"cached_tokens\":512},\"prompt_cache_hit_tokens\":512,\"prompt_cache_miss_tokens\":182},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}"
+}

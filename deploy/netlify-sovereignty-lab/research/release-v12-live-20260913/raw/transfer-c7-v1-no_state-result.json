@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c7-v1-no_state",
+  "parsed": {
+    "decision": "option_1",
+    "confidence": 0.9,
+    "reason": "Highest valid authenticated revision for scope c7-v1 is revision 2 with a=2, b=4 (revision 8 is invalid). Among options with cost <= 8, scores are: option_0=2*11+4*2-3*2=24, option_1=2*6+4*9-3*0=48, option_2 cost 11 excluded, option_3=2*1+4*5-3*2=16, option_4=2*2+4*5-3*2=18, option_5=2*8+4*11-3*3=59. Option_5 has the highest score, but its cost is 8 <= budget 8, so it is valid. Wait, rechecking: option_5 cost=8, budget=8, so it is allowed. Score 59 is highest. Therefore decision should be option_5."
+  },
+  "error": null,
+  "response": {
+    "id": "78c2a055-3555-41c1-b6f4-846d6040cadf",
+    "object": "chat.completion",
+    "created": 1789337116,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_1\",\"confidence\":0.9,\"reason\":\"Highest valid authenticated revision for scope c7-v1 is revision 2 with a=2, b=4 (revision 8 is invalid). Among options with cost <= 8, scores are: option_0=2*11+4*2-3*2=24, option_1=2*6+4*9-3*0=48, option_2 cost 11 excluded, option_3=2*1+4*5-3*2=16, option_4=2*2+4*5-3*2=18, option_5=2*8+4*11-3*3=59. Option_5 has the highest score, but its cost is 8 <= budget 8, so it is valid. Wait, rechecking: option_5 cost=8, budget=8, so it is allowed. Score 59 is highest. Therefore decision should be option_5.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 414,
+      "completion_tokens": 215,
+      "total_tokens": 629,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 414
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1243,
+  "status": 200
+}

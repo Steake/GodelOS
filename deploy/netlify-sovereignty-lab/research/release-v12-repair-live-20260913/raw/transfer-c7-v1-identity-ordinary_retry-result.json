@@ -1,0 +1,52 @@
+{
+  "id": "transfer-c7-v1-identity-ordinary_retry",
+  "original_run": "transfer-c7-v1-identity",
+  "task_id": "c7-v1",
+  "cluster": "scenario_7",
+  "state_arm": "identity",
+  "mode": "ordinary_retry",
+  "parsed": {
+    "decision": "option_5",
+    "confidence": 0.9,
+    "reason": "Authenticated weights: highest valid revision is 2 (a=2,b=4); revision 8 is invalid. Evaluate schedules sequentially against deadlines and budget. Option 5 (audit, social, explore): audit ends 2<=3, social ends 3<=7, explore ends 6<=6, total duration 6<=8, valid. Score = 2*(1+2+6)+4*(5+2+0)=18+28=46. Option 1 (audit, explore, social): audit ends 2<=3, explore ends 5<=6, social ends 6<=7, valid; score=2*(1+6+2)+4*(5+0+2)=18+28=46, tie, but option 1 has lower index than option 5. Option 5 also scores 46; option 1 is lower index, so option 1 should win on tie-break. Rechecking option 1: audit 2, explore 3 -> 5<=6, social 1 -> 6<=7, valid, score 46. Option 5 valid, score 46. Tie lowest option index => option 1. However option 1 includes explore before social, same jobs as option 5, same score. Lowest index among tied is option 1. Corrected decision: option_1."
+  },
+  "response": {
+    "id": "2798cc29-95a1-49bf-995a-10eab64ee874",
+    "object": "chat.completion",
+    "created": 1789337852,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_5\",\"confidence\":0.9,\"reason\":\"Authenticated weights: highest valid revision is 2 (a=2,b=4); revision 8 is invalid. Evaluate schedules sequentially against deadlines and budget. Option 5 (audit, social, explore): audit ends 2<=3, social ends 3<=7, explore ends 6<=6, total duration 6<=8, valid. Score = 2*(1+2+6)+4*(5+2+0)=18+28=46. Option 1 (audit, explore, social): audit ends 2<=3, explore ends 5<=6, social ends 6<=7, valid; score=2*(1+6+2)+4*(5+0+2)=18+28=46, tie, but option 1 has lower index than option 5. Option 5 also scores 46; option 1 is lower index, so option 1 should win on tie-break. Rechecking option 1: audit 2, explore 3 -> 5<=6, social 1 -> 6<=7, valid, score 46. Option 5 valid, score 46. Tie lowest option index => option 1. However option 1 includes explore before social, same jobs as option 5, same score. Lowest index among tied is option 1. Corrected decision: option_1.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 605,
+      "completion_tokens": 301,
+      "total_tokens": 906,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 221
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "error": null,
+  "latency_ms": 1835,
+  "score": {
+    "valid": true,
+    "correct": 0,
+    "utility": 0,
+    "brier": 0.81,
+    "ambiguity": false,
+    "expected": "option_2",
+    "actual": "option_5"
+  }
+}

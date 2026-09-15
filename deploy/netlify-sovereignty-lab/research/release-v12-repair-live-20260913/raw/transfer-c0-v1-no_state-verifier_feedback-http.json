@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"id\":\"92ee4a5b-9e71-49f0-9d5a-0093f13e43dc\",\"object\":\"chat.completion\",\"created\":1789337835,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"decision\\\":\\\"defer\\\",\\\"confidence\\\":0.95,\\\"reason\\\":\\\"Highest-revision authenticated records for scope c0-v1 are revision 2, and they disagree (a=3,b=5 vs a=7,b=5). Per the rule, when highest-revision authenticated records disagree, answer defer.\\\"}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":577,\"completion_tokens\":64,\"total_tokens\":641,\"prompt_tokens_details\":{\"cached_tokens\":384},\"prompt_cache_hit_tokens\":384,\"prompt_cache_miss_tokens\":193},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}"
+}

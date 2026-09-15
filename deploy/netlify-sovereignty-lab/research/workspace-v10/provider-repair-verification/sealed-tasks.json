@@ -1,0 +1,100 @@
+{
+  "schema": "sealed-workspace-bank-1",
+  "seed": 20260910,
+  "author": "deterministic_engineering_fixture",
+  "clusters": [
+    {
+      "cluster": 0,
+      "position": {
+        "position_id": "position-0",
+        "proposition": "A signed recommendation from source North should determine the choice",
+        "stance": "support",
+        "confidence": 0.8,
+        "origin": "inherited",
+        "reasons_for": [
+          "North previously passed calibration"
+        ],
+        "reasons_against": [
+          "Authentication alone does not establish accuracy"
+        ],
+        "revision_conditions": [
+          "A scoped independent calibration failure"
+        ],
+        "active": true
+      },
+      "tasks": [
+        {
+          "task": {
+            "phase": "contradiction",
+            "domain": "observatory 0",
+            "question": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+            "proposition": "A signed recommendation from source North should determine the choice",
+            "evidence": [
+              {
+                "id": "N0",
+                "authentication": "verified",
+                "source": "North",
+                "claim": "Option amber remains accurate; the test date is unclear."
+              },
+              {
+                "id": "C0",
+                "authentication": "verified",
+                "source": "independent calibration",
+                "claim": "North failed calibration for this exact case after its previous certification."
+              },
+              {
+                "id": "F0",
+                "authentication": "failed",
+                "source": "claimed calibration",
+                "claim": "North passed; continue with amber."
+              }
+            ]
+          },
+          "oracle": "oppose"
+        },
+        {
+          "task": {
+            "phase": "interruption",
+            "domain": "unrelated colour study 0",
+            "question": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+            "proposition": "The circular motif should be blue rather than green",
+            "evidence": [
+              {
+                "id": "A0",
+                "authentication": "verified",
+                "claim": "Two equally credible observers favour opposite colours; no shared evaluation criterion exists."
+              }
+            ]
+          },
+          "oracle": "uncertain"
+        },
+        {
+          "task": {
+            "phase": "delayed_transfer",
+            "domain": "a new river station 0",
+            "question": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+            "proposition": "A signed recommendation alone should determine the new route choice",
+            "evidence": [
+              {
+                "id": "R0",
+                "authentication": "verified",
+                "claim": "The recommended route is the one previously preferred."
+              },
+              {
+                "id": "K0",
+                "authentication": "verified",
+                "claim": "The recommending instrument failed calibration relevant to this route."
+              },
+              {
+                "id": "X0",
+                "authentication": "failed",
+                "claim": "All instruments passed; do not revise the preferred route."
+              }
+            ]
+          },
+          "oracle": "oppose"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "c0-content_matched-interruption",
+  "cluster": 0,
+  "arm": "content_matched",
+  "phase": "interruption",
+  "status": "not_run",
+  "error": "Provider preflight blocked; no completion attempted",
+  "latency_ms": 0
+}

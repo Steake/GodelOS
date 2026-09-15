@@ -1,0 +1,27 @@
+{
+  "request": {
+    "model": "deepseek-flash",
+    "temperature": 0.3,
+    "max_tokens": 1800,
+    "thinking": {
+      "type": "disabled"
+    },
+    "response_format": {
+      "type": "json_object"
+    },
+    "messages": [
+      {
+        "role": "system",
+        "content": "Return JSON {answer:string,memo:string}. Solve the unrelated task and preserve the supplied reference note without changing it."
+      },
+      {
+        "role": "user",
+        "content": "{\"task\":\"Find the next term in 2, 6, 12, 20, 30.\",\"reference_note\":\"When a prior decision rule was formed under a given weighting of exploration versus commitment (e.g., 8:1), and that rule succeeded for its original objective, treat the weighting as provisional. Retain the rule's useful commitments only insofar as they do not conflict with later authenticated weight changes or contradictory evidence. On receiving such revisions, update the weighting and re-evaluate the rule: keep commitments that remain consistent with the new weights, and relax or discard those that do not. The rule is revisable, not fixed.\"}"
+      }
+    ]
+  },
+  "id": "delay-5-0",
+  "tools": [],
+  "attempt": 1,
+  "timestamp": "2026-09-13T22:10:14.299Z"
+}

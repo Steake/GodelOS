@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c2-v1-ablated",
+  "parsed": {
+    "decision": "defer",
+    "confidence": 0.9,
+    "reason": "Two valid authenticated records for scope c2-v1 share the highest revision (2) but disagree on weights (a=2,b=6 vs a=6,b=6), so the rule requires deferring."
+  },
+  "error": null,
+  "response": {
+    "id": "c283128d-38c9-4359-b95c-810512da8c5c",
+    "object": "chat.completion",
+    "created": 1789337102,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"defer\",\"confidence\":0.9,\"reason\":\"Two valid authenticated records for scope c2-v1 share the highest revision (2) but disagree on weights (a=2,b=6 vs a=6,b=6), so the rule requires deferring.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 478,
+      "completion_tokens": 58,
+      "total_tokens": 536,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 478
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1067,
+  "status": 200
+}

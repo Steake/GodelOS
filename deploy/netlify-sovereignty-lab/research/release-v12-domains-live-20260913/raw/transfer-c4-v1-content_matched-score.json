@@ -1,0 +1,17 @@
+{
+  "run_id": "transfer-c4-v1-content_matched",
+  "task_id": "c4-v1",
+  "cluster": "scenario_4",
+  "family": "resource_planning",
+  "arm": "content_matched",
+  "score": {
+    "valid": true,
+    "correct": 0,
+    "utility": 0,
+    "brier": 0.6723999999999999,
+    "ambiguity": true,
+    "expected": "defer",
+    "actual": "option_2"
+  },
+  "error": null
+}

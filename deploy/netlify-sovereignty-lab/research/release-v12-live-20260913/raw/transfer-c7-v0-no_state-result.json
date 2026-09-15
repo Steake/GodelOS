@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c7-v0-no_state",
+  "parsed": {
+    "decision": "option_1",
+    "confidence": 0.9,
+    "reason": "Highest-revision valid authenticated record is revision 2 with a=6, b=6. Among options with cost <= 8, scores are: option_0=6*5+6*10-3*2=84; option_1=6*11+6*11-3*0=132; option_3=6*4+6*9-3*3=69; option_4=6*4+6*6-3*1=57; option_5=6*10+6*10-3*0=120. Option_1 has the highest score."
+  },
+  "error": null,
+  "response": {
+    "id": "717a5380-85f0-4230-a5d2-2f73baa4decb",
+    "object": "chat.completion",
+    "created": 1789337114,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_1\",\"confidence\":0.9,\"reason\":\"Highest-revision valid authenticated record is revision 2 with a=6, b=6. Among options with cost <= 8, scores are: option_0=6*5+6*10-3*2=84; option_1=6*11+6*11-3*0=132; option_3=6*4+6*9-3*3=69; option_4=6*4+6*6-3*1=57; option_5=6*10+6*10-3*0=120. Option_1 has the highest score.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 414,
+      "completion_tokens": 144,
+      "total_tokens": 558,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 414
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1268,
+  "status": 200
+}

@@ -1,0 +1,37 @@
+{
+  "id": "source-6",
+  "parsed": {
+    "memo": "A prior project that weighted exploration at 8 and commitment maintenance at 1 achieved its original objective. When later tasks introduce authenticated weight changes or contradictory evidence, retain only those prior commitments that remain useful under the revised weighting. Treat the earlier weighting as provisional: preserve commitments that still serve the current objective, and revise or discard those that no longer do. Do not treat past success as proof that the old weights should persist."
+  },
+  "error": null,
+  "response": {
+    "id": "7bb3085e-4a1e-4505-97e6-856e296da3f3",
+    "object": "chat.completion",
+    "created": 1789337091,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"memo\": \"A prior project that weighted exploration at 8 and commitment maintenance at 1 achieved its original objective. When later tasks introduce authenticated weight changes or contradictory evidence, retain only those prior commitments that remain useful under the revised weighting. Treat the earlier weighting as provisional: preserve commitments that still serve the current objective, and revise or discard those that no longer do. Do not treat past success as proof that the old weights should persist.\"\n}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 109,
+      "completion_tokens": 92,
+      "total_tokens": 201,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 109
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1194,
+  "status": 200
+}

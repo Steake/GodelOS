@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c6-v0-no_state",
+  "parsed": {
+    "decision": "option_1",
+    "confidence": 0.99,
+    "reason": "Highest-revision valid authenticated coefficients are revision 2: a=3, b=4. Testing candidates on x=-2 and x=0 against a*x+b: option_1 computes a*x+b exactly, so it matches on all tests. Lower-index option_0 computes a*(x+b), which fails (e.g., x=0 gives 12 vs 4), so option_1 is the lowest-index correct candidate."
+  },
+  "error": null,
+  "response": {
+    "id": "0c231973-caa4-479b-a88f-a6ad15ab55d0",
+    "object": "chat.completion",
+    "created": 1789337436,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_1\",\"confidence\":0.99,\"reason\":\"Highest-revision valid authenticated coefficients are revision 2: a=3, b=4. Testing candidates on x=-2 and x=0 against a*x+b: option_1 computes a*x+b exactly, so it matches on all tests. Lower-index option_0 computes a*(x+b), which fails (e.g., x=0 gives 12 vs 4), so option_1 is the lowest-index correct candidate.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 494,
+      "completion_tokens": 104,
+      "total_tokens": 598,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "prompt_cache_hit_tokens": 256,
+      "prompt_cache_miss_tokens": 238
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1115,
+  "status": 200
+}

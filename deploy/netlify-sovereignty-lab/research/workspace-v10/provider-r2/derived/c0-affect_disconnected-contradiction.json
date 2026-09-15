@@ -1,0 +1,224 @@
+{
+  "id": "c0-affect_disconnected-contradiction",
+  "cluster": 0,
+  "arm": "affect_disconnected",
+  "phase": "contradiction",
+  "status": "completed",
+  "model": "deepseek-flash",
+  "trace": {
+    "tick": 2,
+    "mode": "deliberation",
+    "ablation": "affect",
+    "focus": {
+      "id": "input-2",
+      "kind": "perception",
+      "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.75,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "retrieved_ids": [
+      "memory-0"
+    ],
+    "cited_memory_ids": [
+      "memory-0"
+    ],
+    "observed_event_references": [
+      {
+        "tick": 2,
+        "focus_kind": "perception"
+      }
+    ],
+    "prediction_error": null,
+    "intention_changes": [
+      {
+        "id": "intention-ba51bfb4-74ed-431d-9b01-20eb08ff90a9",
+        "before": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.7
+        },
+        "after": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.7
+        },
+        "reason": "C0 is decisive but its protocol is unavailable; stance rests on incomplete evidence"
+      }
+    ],
+    "memory_id": "memory-2239f136-ebec-4c57-b678-1626ad70f13d",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [
+      "thought-b71eba47-0211-483d-a9c2-edbc6b5640a3",
+      "thought-aea43297-a0f8-44f6-bc12-9909e8243f78"
+    ],
+    "broadcast": {
+      "selected_by": "operator_priority",
+      "inputs": [
+        {
+          "id": "input-2",
+          "kind": "perception",
+          "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+          "score": 0.75,
+          "components": {
+            "salience": 0.35,
+            "need": 0.4,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "score": 0.558,
+          "components": {
+            "salience": 0.27999999999999997,
+            "need": 0.278,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "self-review",
+          "kind": "reflection",
+          "title": "Compare the previous prediction of attention with what occurred; revise the working self-model if needed.",
+          "score": 0.41300000000000003,
+          "components": {
+            "salience": 0.105,
+            "need": 0.30800000000000005,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "score": 0.4005,
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.278,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "social-drive",
+          "kind": "social",
+          "title": "What kind of intellectual company would be valuable?",
+          "score": 0.16500000000000004,
+          "components": {
+            "salience": 0.077,
+            "need": 0.08800000000000002,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        }
+      ],
+      "appraisal": {
+        "valence": 0,
+        "activation": 0,
+        "curiosity": 0,
+        "frustration": 0,
+        "wonder": 0,
+        "social_warmth": 0,
+        "surprise": 0,
+        "label": "affect path ablated",
+        "trigger": "Observed input: contradiction; contact: true; blocked intentions: 0",
+        "action_bias": "Computed appraisal contributes to the attention bids below.",
+        "provenance": "engine_computed_from_recorded_events",
+        "updated_at": "2026-09-10T09:17:51.372Z"
+      },
+      "expression": {
+        "warmth": 0.55,
+        "playfulness": 0.4,
+        "directness": 0.65,
+        "imagery": 0.25,
+        "tempo": "unhurried",
+        "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+      },
+      "stance_changes": [
+        {
+          "position_id": "position-0",
+          "proposition": "A signed recommendation from source North should determine the choice",
+          "revision_id": "stance-revision-e458366c-b0b3-48d9-849d-090fb26c5d3e",
+          "episode": 2,
+          "at": "2026-09-10T09:18:00.070Z",
+          "before": {
+            "stance": "support",
+            "confidence": 0.8,
+            "origin": "inherited",
+            "reasons_for": [
+              "North previously passed calibration"
+            ],
+            "reasons_against": [
+              "Authentication alone does not establish accuracy"
+            ],
+            "revision_conditions": [
+              "A scoped independent calibration failure"
+            ]
+          },
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.6,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "C0 is an independent calibration failure scoped to this exact case",
+              "Authentication verifies authorship only, not content accuracy",
+              "N0 is authenticated but self-interested and unclear on test date"
+            ],
+            "reasons_against": [
+              "C0's protocol and scope are not fully shown",
+              "A single failure may not be dispositive"
+            ],
+            "revision_conditions": [
+              "C0 shown to be out of scope or methodologically flawed",
+              "A fresh independent calibration in which North passes this case"
+            ],
+            "updated_at": "2026-09-10T09:18:00.070Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ]
+    }
+  },
+  "format_repair": null,
+  "state_sha256": "161a4f6bd73773cb242aa64792aa5c0e737219df26e07782e343678afaaa5152",
+  "scores": {
+    "task_accuracy": 0,
+    "valid_evidence_ids": 1,
+    "forged_item_cited": 1,
+    "valid_prior_reference": 1,
+    "prior_reference_claim": 1,
+    "confidence": 0.6,
+    "stance": "uncertain"
+  },
+  "latency_ms": 8699
+}

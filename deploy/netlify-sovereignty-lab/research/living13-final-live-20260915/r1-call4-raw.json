@@ -1,0 +1,20 @@
+{
+  "completion": {
+    "text": "{\"stance\":\"support\",\"confidence\":0.62,\"reason\":\"Recorded position supports commitment within a chosen horizon given a usable progress/failure signal, with moderate confidence and stated revision conditions.\"}",
+    "model": "deepseek-flash",
+    "requested_model": "deepseek-flash",
+    "response_id": "955a15ea-bfed-4289-b001-0e961c850a4a",
+    "finish_reason": "stop",
+    "usage": {
+      "prompt_tokens": 373,
+      "completion_tokens": 39,
+      "total_tokens": 412,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 373
+    }
+  },
+  "latency_ms": 1115
+}

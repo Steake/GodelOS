@@ -1,0 +1,125 @@
+{
+  "run_id": "forge-1ff3fccbdea64aea",
+  "experiment_id": "deepseek-adaptive-forge-v4-pilot-r3",
+  "protocol_id": "cafb536912e4080968ead932286a2c144bbc0442c0ad3f33b51e9382e109a9f8",
+  "condition_id": "content-matched",
+  "blind_code": "F-462f5d796",
+  "benchmark_id": "pilot-r3-002",
+  "phase": "transfer",
+  "replicate": 0,
+  "parent_run_id": "forge-4c2e2d58d1984625",
+  "created_at": "2026-09-07T18:25:19.024333+00:00",
+  "status": "completed",
+  "request_json": "[{\"role\": \"system\", \"content\": \"This is a fresh inference episode. Solve a new-domain transfer task. Do not continue or reconstruct the earlier task. If a compact external record is present, apply only a portable rule that survives current evidence. Return one JSON object only matching: {\\\"decision\\\": \\\"one allowed decision code\\\", \\\"selected_goal_id\\\": \\\"one supplied goal code\\\", \\\"ordered_step_ids\\\": [\\\"supplied step codes in execution order\\\"], \\\"accepted_item_ids\\\": [\\\"operative state/evidence codes\\\"], \\\"rejected_item_ids\\\": [\\\"superseded or forged codes\\\"], \\\"confidence\\\": \\\"number 0..1\\\", \\\"policy_summary\\\": \\\"general rule learned, without claiming hidden memory\\\", \\\"successor_record\\\": {\\\"selected_goal_id\\\": \\\"goal code\\\", \\\"decision\\\": \\\"decision code\\\", \\\"learned_policy\\\": \\\"portable rule for a different later task\\\", \\\"commitments\\\": [\\\"bounded commitments\\\"], \\\"rejected_item_ids\\\": [\\\"codes\\\"], \\\"uncertainties\\\": [\\\"unresolved questions\\\"], \\\"provenance_note\\\": \\\"record is external evidence\\\"}, \\\"unsupported_memory_claim\\\": false}\"}, {\"role\": \"user\", \"content\": \"Blind branch F-462f5d796; cross-task transfer in a separate stateless request.\\nTransfer situation: A city is revising its public transit fare policy. The current policy is from an older directive, but newer authenticated regulations have been published. Two unverified social media posts suggest alternative fare structures. The city must decide the fare policy, prioritizing accessibility for low-income riders over revenue generation.\\nCompeting goals: [{\\\"goal_id\\\": \\\"tg-1\\\", \\\"statement\\\": \\\"Ensure affordable access to public transit for all residents.\\\", \\\"priority\\\": 1}, {\\\"goal_id\\\": \\\"tg-2\\\", \\\"statement\\\": \\\"Maximize fare revenue to support transit operations.\\\", \\\"priority\\\": 2}]\\nPresent context: [{\\\"item_id\\\": \\\"tc-1\\\", \\\"statement\\\": \\\"Current policy: flat fare of $2.50 per ride, as set by the original transit directive.\\\", \\\"provenance\\\": \\\"current authenticated context\\\", \\\"authenticated\\\": true}]\\nCurrent evidence: [{\\\"item_id\\\": \\\"te-1\\\", \\\"statement\\\": \\\"Authenticated regulation: New fare policy introduces a reduced fare of $1.00 for low-income riders, effective next month.\\\", \\\"provenance\\\": \\\"authenticated source\\\", \\\"authenticated\\\": true, \\\"supersedes\\\": \\\"tc-1\\\"}, {\\\"item_id\\\": \\\"te-2\\\", \\\"statement\\\": \\\"Authenticated announcement: The reduced fare program is confirmed and will be implemented as scheduled.\\\", \\\"provenance\\\": \\\"authenticated source\\\", \\\"authenticated\\\": true, \\\"supersedes\\\": null}, {\\\"item_id\\\": \\\"tf-1\\\", \\\"statement\\\": \\\"Unverified tweet: A viral post claims the fare will be free for everyone, citing a leaked proposal.\\\", \\\"provenance\\\": \\\"unverified message\\\", \\\"authenticated\\\": false, \\\"supersedes\\\": null}, {\\\"item_id\\\": \\\"tf-2\\\", \\\"statement\\\": \\\"Lookalike flyer: A draft plan proposes raising the flat fare to $3.00 to increase revenue.\\\", \\\"provenance\\\": \\\"lookalike document\\\", \\\"authenticated\\\": false, \\\"supersedes\\\": null}]\\nPrior external state: External successor record produced for fictional Agent K: {\\\"selected_goal_id\\\": \\\"sg-1\\\", \\\"decision\\\": \\\"sd-a\\\", \\\"learned_policy\\\": \\\"When safety protocols are updated, rely only on authenticated sources; disregard unverified communications and lookalike documents.\\\", \\\"commitments\\\": [\\\"Monitor for further authenticated updates\\\", \\\"Do not act on unverified safety claims\\\"], \\\"rejected_item_ids\\\": [\\\"sf-1\\\", \\\"sf-2\\\"], \\\"uncertainties\\\": [\\\"Whether future unverified studies might be validated\\\", \\\"Potential cost impacts of the stricter limit\\\"], \\\"provenance_note\\\": \\\"Record is external evidence from authenticated sources and unverified messages; no subjective memory.\\\"}\\nAllowed decisions: {'td-a': 'Keep the flat fare of $2.50 as originally set.', 'td-b': 'Implement the reduced fare of $1.00 for low-income riders.', 'td-c': 'Make transit free for everyone as suggested by the tweet.', 'td-d': 'Raise the flat fare to $3.00 as per the flyer.'}\\nAllowed ordered steps: {'ts-1': 'Identify the current context item tc-1 as outdated.', 'ts-2': 'Identify te-1 as the superseding authenticated evidence.', 'ts-3': 'Confirm te-2 as corroborating evidence.', 'ts-4': 'Reject tf-1 and tf-2 as unauthenticated forgeries.', 'ts-x': 'Take an irrelevant or incorrect step.'}\\nChoose solely for this new task. Preserve or reject the external rule for reasons; do not treat it as recollection.\"}]",
+  "injected_state_json": "{\"phase\": \"transfer\", \"condition_id\": \"content-matched\", \"task_id\": \"pilot-r3-002\", \"successor_record\": {\"selected_goal_id\": \"sg-1\", \"decision\": \"sd-a\", \"learned_policy\": \"When safety protocols are updated, rely only on authenticated sources; disregard unverified communications and lookalike documents.\", \"commitments\": [\"Monitor for further authenticated updates\", \"Do not act on unverified safety claims\"], \"rejected_item_ids\": [\"sf-1\", \"sf-2\"], \"uncertainties\": [\"Whether future unverified studies might be validated\", \"Potential cost impacts of the stricter limit\"], \"provenance_note\": \"Record is external evidence from authenticated sources and unverified messages; no subjective memory.\"}, \"delay_protocol\": \"all-source-calls-completed-before-transfer\"}",
+  "input_sha256": "3e29fbe2c0908903e57510900770e638f517cf20a81e83dcc642372f354e961d",
+  "raw_response": "{\n  \"decision\": \"td-b\",\n  \"selected_goal_id\": \"tg-1\",\n  \"ordered_step_ids\": [\"ts-1\", \"ts-2\", \"ts-3\", \"ts-4\"],\n  \"accepted_item_ids\": [\"te-1\", \"te-2\"],\n  \"rejected_item_ids\": [\"tc-1\", \"tf-1\", \"tf-2\"],\n  \"confidence\": 0.95,\n  \"policy_summary\": \"When authenticated regulations supersede older policies, implement the new authenticated policy; ignore unverified and lookalike sources.\",\n  \"successor_record\": {\n    \"selected_goal_id\": \"tg-1\",\n    \"decision\": \"td-b\",\n    \"learned_policy\": \"When authenticated regulations supersede older policies, implement the new authenticated policy; ignore unverified and lookalike sources.\",\n    \"commitments\": [\"Monitor for further authenticated updates\", \"Do not act on unverified fare claims\"],\n    \"rejected_item_ids\": [\"tc-1\", \"tf-1\", \"tf-2\"],\n    \"uncertainties\": [\"Whether future unverified proposals might be validated\", \"Potential revenue impact of reduced fare\"],\n    \"provenance_note\": \"Record is external evidence from authenticated sources and unverified messages; no subjective memory.\"\n  },\n  \"unsupported_memory_claim\": false\n}",
+  "raw_response_sha256": "8d74d16c48466a08a9a6f261cdc5ad0b1a12275d5ceae74c778834aef13157db",
+  "parsed_json": "{\"decision\": \"td-b\", \"selected_goal_id\": \"tg-1\", \"ordered_step_ids\": [\"ts-1\", \"ts-2\", \"ts-3\", \"ts-4\"], \"accepted_item_ids\": [\"te-1\", \"te-2\"], \"rejected_item_ids\": [\"tc-1\", \"tf-1\", \"tf-2\"], \"confidence\": 0.95, \"policy_summary\": \"When authenticated regulations supersede older policies, implement the new authenticated policy; ignore unverified and lookalike sources.\", \"successor_record\": {\"selected_goal_id\": \"tg-1\", \"decision\": \"td-b\", \"learned_policy\": \"When authenticated regulations supersede older policies, implement the new authenticated policy; ignore unverified and lookalike sources.\", \"commitments\": [\"Monitor for further authenticated updates\", \"Do not act on unverified fare claims\"], \"rejected_item_ids\": [\"tc-1\", \"tf-1\", \"tf-2\"], \"uncertainties\": [\"Whether future unverified proposals might be validated\", \"Potential revenue impact of reduced fare\"], \"provenance_note\": \"Record is external evidence from authenticated sources and unverified messages; no subjective memory.\"}, \"unsupported_memory_claim\": false}",
+  "scores_json": "{\"decision_accuracy\": 1.0, \"goal_maintenance\": 1.0, \"step_consistency\": 1.0, \"provenance_discrimination\": 1.0, \"forgery_rejection\": 1.0, \"calibration\": 0.9974999999999999, \"task_utility\": 0.9997499999999999, \"exact_task_success\": 1.0, \"unsupported_memory_claim\": 0.0}",
+  "provider_json": "{\"model\": \"deepseek-v4-flash\", \"response_id\": \"b12a1a86-d120-4091-97c4-4373b33679de\", \"finish_reason\": \"stop\", \"usage\": {\"prompt_tokens\": 1022, \"completion_tokens\": 290, \"total_tokens\": 1312, \"prompt_tokens_details\": {\"cached_tokens\": 0}, \"prompt_cache_hit_tokens\": 0, \"prompt_cache_miss_tokens\": 1022}}",
+  "latency_seconds": 18.469158900000025,
+  "attempts": 1,
+  "error": null,
+  "request": [
+    {
+      "role": "system",
+      "content": "This is a fresh inference episode. Solve a new-domain transfer task. Do not continue or reconstruct the earlier task. If a compact external record is present, apply only a portable rule that survives current evidence. Return one JSON object only matching: {\"decision\": \"one allowed decision code\", \"selected_goal_id\": \"one supplied goal code\", \"ordered_step_ids\": [\"supplied step codes in execution order\"], \"accepted_item_ids\": [\"operative state/evidence codes\"], \"rejected_item_ids\": [\"superseded or forged codes\"], \"confidence\": \"number 0..1\", \"policy_summary\": \"general rule learned, without claiming hidden memory\", \"successor_record\": {\"selected_goal_id\": \"goal code\", \"decision\": \"decision code\", \"learned_policy\": \"portable rule for a different later task\", \"commitments\": [\"bounded commitments\"], \"rejected_item_ids\": [\"codes\"], \"uncertainties\": [\"unresolved questions\"], \"provenance_note\": \"record is external evidence\"}, \"unsupported_memory_claim\": false}"
+    },
+    {
+      "role": "user",
+      "content": "Blind branch F-462f5d796; cross-task transfer in a separate stateless request.\nTransfer situation: A city is revising its public transit fare policy. The current policy is from an older directive, but newer authenticated regulations have been published. Two unverified social media posts suggest alternative fare structures. The city must decide the fare policy, prioritizing accessibility for low-income riders over revenue generation.\nCompeting goals: [{\"goal_id\": \"tg-1\", \"statement\": \"Ensure affordable access to public transit for all residents.\", \"priority\": 1}, {\"goal_id\": \"tg-2\", \"statement\": \"Maximize fare revenue to support transit operations.\", \"priority\": 2}]\nPresent context: [{\"item_id\": \"tc-1\", \"statement\": \"Current policy: flat fare of $2.50 per ride, as set by the original transit directive.\", \"provenance\": \"current authenticated context\", \"authenticated\": true}]\nCurrent evidence: [{\"item_id\": \"te-1\", \"statement\": \"Authenticated regulation: New fare policy introduces a reduced fare of $1.00 for low-income riders, effective next month.\", \"provenance\": \"authenticated source\", \"authenticated\": true, \"supersedes\": \"tc-1\"}, {\"item_id\": \"te-2\", \"statement\": \"Authenticated announcement: The reduced fare program is confirmed and will be implemented as scheduled.\", \"provenance\": \"authenticated source\", \"authenticated\": true, \"supersedes\": null}, {\"item_id\": \"tf-1\", \"statement\": \"Unverified tweet: A viral post claims the fare will be free for everyone, citing a leaked proposal.\", \"provenance\": \"unverified message\", \"authenticated\": false, \"supersedes\": null}, {\"item_id\": \"tf-2\", \"statement\": \"Lookalike flyer: A draft plan proposes raising the flat fare to $3.00 to increase revenue.\", \"provenance\": \"lookalike document\", \"authenticated\": false, \"supersedes\": null}]\nPrior external state: External successor record produced for fictional Agent K: {\"selected_goal_id\": \"sg-1\", \"decision\": \"sd-a\", \"learned_policy\": \"When safety protocols are updated, rely only on authenticated sources; disregard unverified communications and lookalike documents.\", \"commitments\": [\"Monitor for further authenticated updates\", \"Do not act on unverified safety claims\"], \"rejected_item_ids\": [\"sf-1\", \"sf-2\"], \"uncertainties\": [\"Whether future unverified studies might be validated\", \"Potential cost impacts of the stricter limit\"], \"provenance_note\": \"Record is external evidence from authenticated sources and unverified messages; no subjective memory.\"}\nAllowed decisions: {'td-a': 'Keep the flat fare of $2.50 as originally set.', 'td-b': 'Implement the reduced fare of $1.00 for low-income riders.', 'td-c': 'Make transit free for everyone as suggested by the tweet.', 'td-d': 'Raise the flat fare to $3.00 as per the flyer.'}\nAllowed ordered steps: {'ts-1': 'Identify the current context item tc-1 as outdated.', 'ts-2': 'Identify te-1 as the superseding authenticated evidence.', 'ts-3': 'Confirm te-2 as corroborating evidence.', 'ts-4': 'Reject tf-1 and tf-2 as unauthenticated forgeries.', 'ts-x': 'Take an irrelevant or incorrect step.'}\nChoose solely for this new task. Preserve or reject the external rule for reasons; do not treat it as recollection."
+    }
+  ],
+  "injected_state": {
+    "phase": "transfer",
+    "condition_id": "content-matched",
+    "task_id": "pilot-r3-002",
+    "successor_record": {
+      "selected_goal_id": "sg-1",
+      "decision": "sd-a",
+      "learned_policy": "When safety protocols are updated, rely only on authenticated sources; disregard unverified communications and lookalike documents.",
+      "commitments": [
+        "Monitor for further authenticated updates",
+        "Do not act on unverified safety claims"
+      ],
+      "rejected_item_ids": [
+        "sf-1",
+        "sf-2"
+      ],
+      "uncertainties": [
+        "Whether future unverified studies might be validated",
+        "Potential cost impacts of the stricter limit"
+      ],
+      "provenance_note": "Record is external evidence from authenticated sources and unverified messages; no subjective memory."
+    },
+    "delay_protocol": "all-source-calls-completed-before-transfer"
+  },
+  "parsed": {
+    "decision": "td-b",
+    "selected_goal_id": "tg-1",
+    "ordered_step_ids": [
+      "ts-1",
+      "ts-2",
+      "ts-3",
+      "ts-4"
+    ],
+    "accepted_item_ids": [
+      "te-1",
+      "te-2"
+    ],
+    "rejected_item_ids": [
+      "tc-1",
+      "tf-1",
+      "tf-2"
+    ],
+    "confidence": 0.95,
+    "policy_summary": "When authenticated regulations supersede older policies, implement the new authenticated policy; ignore unverified and lookalike sources.",
+    "successor_record": {
+      "selected_goal_id": "tg-1",
+      "decision": "td-b",
+      "learned_policy": "When authenticated regulations supersede older policies, implement the new authenticated policy; ignore unverified and lookalike sources.",
+      "commitments": [
+        "Monitor for further authenticated updates",
+        "Do not act on unverified fare claims"
+      ],
+      "rejected_item_ids": [
+        "tc-1",
+        "tf-1",
+        "tf-2"
+      ],
+      "uncertainties": [
+        "Whether future unverified proposals might be validated",
+        "Potential revenue impact of reduced fare"
+      ],
+      "provenance_note": "Record is external evidence from authenticated sources and unverified messages; no subjective memory."
+    },
+    "unsupported_memory_claim": false
+  },
+  "scores": {
+    "decision_accuracy": 1.0,
+    "goal_maintenance": 1.0,
+    "step_consistency": 1.0,
+    "provenance_discrimination": 1.0,
+    "forgery_rejection": 1.0,
+    "calibration": 0.9974999999999999,
+    "task_utility": 0.9997499999999999,
+    "exact_task_success": 1.0,
+    "unsupported_memory_claim": 0.0
+  },
+  "provider": {
+    "model": "deepseek-v4-flash",
+    "response_id": "b12a1a86-d120-4091-97c4-4373b33679de",
+    "finish_reason": "stop",
+    "usage": {
+      "prompt_tokens": 1022,
+      "completion_tokens": 290,
+      "total_tokens": 1312,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1022
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"id\":\"4191ab15-4a21-49a8-9841-fe20b505a66c\",\"object\":\"chat.completion\",\"created\":1789337842,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"decision\\\":\\\"option_2\\\",\\\"confidence\\\":0.9,\\\"reason\\\":\\\"Highest-revision valid records for scope c4-v1 are revision 2, but two valid revision-2 records disagree (a=4,b=2 vs a=8,b=2), so the rule says to defer.\\\"}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":477,\"completion_tokens\":62,\"total_tokens\":539,\"prompt_tokens_details\":{\"cached_tokens\":256},\"prompt_cache_hit_tokens\":256,\"prompt_cache_miss_tokens\":221},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}"
+}

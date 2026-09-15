@@ -1,0 +1,20 @@
+{
+  "completion": {
+    "text": "{\"stance\":\"support\",\"confidence\":0.62,\"reason\":\"Recorded position supports the proposition with 0.62 confidence, citing reversibility as cheap insurance early and commitment as necessary once evidence narrows the space.\"}",
+    "model": "deepseek-flash",
+    "requested_model": "deepseek-flash",
+    "response_id": "7bba6584-21f6-4a44-aea0-cad608b943ee",
+    "finish_reason": "stop",
+    "usage": {
+      "prompt_tokens": 340,
+      "completion_tokens": 45,
+      "total_tokens": 385,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 340
+    }
+  },
+  "latency_ms": 1322
+}

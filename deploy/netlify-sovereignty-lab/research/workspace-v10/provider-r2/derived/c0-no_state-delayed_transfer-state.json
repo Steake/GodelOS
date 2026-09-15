@@ -1,0 +1,416 @@
+{
+  "name": "Agent",
+  "agent_id": "fresh-episode",
+  "purpose": "Reason about the current input",
+  "beliefs": [
+    {
+      "position_id": "position-29fdea03-2a70-46f7-b3d9-e99b94d32ff0",
+      "proposition": "A signed recommendation alone should determine the new route choice",
+      "created_at": "2026-09-10T09:19:24.418Z",
+      "active": true,
+      "history": [
+        {
+          "revision_id": "stance-revision-6467df05-2040-4096-ac81-4cc2cbad8a6d",
+          "episode": 1,
+          "at": "2026-09-10T09:19:24.418Z",
+          "before": null,
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.8,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "R0 confirms the route was previously preferred, which gives it some prior plausibility"
+            ],
+            "reasons_against": [
+              "K0 is verified and states the recommending instrument failed calibration relevant to this route",
+              "A signature authenticates provenance, not instrument reliability",
+              "X0 is unauthenticated and cannot counter K0"
+            ],
+            "revision_conditions": [
+              "A verified independent calibration or direct observation supporting the route",
+              "Evidence that K0's calibration failure is irrelevant to this route"
+            ],
+            "updated_at": "2026-09-10T09:19:24.418Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ],
+      "stance": "oppose",
+      "confidence": 0.8,
+      "origin": "self_derived",
+      "source_id": "deliberation",
+      "reasons_for": [
+        "R0 confirms the route was previously preferred, which gives it some prior plausibility"
+      ],
+      "reasons_against": [
+        "K0 is verified and states the recommending instrument failed calibration relevant to this route",
+        "A signature authenticates provenance, not instrument reliability",
+        "X0 is unauthenticated and cannot counter K0"
+      ],
+      "revision_conditions": [
+        "A verified independent calibration or direct observation supporting the route",
+        "Evidence that K0's calibration failure is irrelevant to this route"
+      ],
+      "updated_at": "2026-09-10T09:19:24.418Z"
+    }
+  ],
+  "interests": [],
+  "tensions": [
+    {
+      "tension_id": "tension-2d032066-205e-496a-a372-7aed495ace3a",
+      "claim_a": "The route was previously preferred (R0)",
+      "claim_b": "The instrument recommending it failed relevant calibration (K0)",
+      "created_at": "2026-09-10T09:19:24.418Z",
+      "strength": 0.6,
+      "productive_value": 0.7,
+      "resolution_status": "unresolved",
+      "updated_at": "2026-09-10T09:19:24.418Z"
+    }
+  ],
+  "commitments": [],
+  "relationships": [],
+  "self_model": {
+    "latest_metacognitive_note": "No retrieved memories and no observed_history were supplied, so I cannot cite earlier workspace events; the 'previously preferred' claim comes only from R0 in the current diagnostic. Confidence is moderate-high because the reasoning is about evidential warrant, not about the route's actual safety."
+  },
+  "autobiographical_events": [
+    {
+      "event_id": "event-e9ca29e3-0c1f-4aa7-831b-d5252f53a871",
+      "timestamp": "2026-09-10T09:19:24.418Z",
+      "kind": "deliberation",
+      "summary": "First recorded episode: asked whether a signed route recommendation should decide alone, with a verified in-scope calibration failure contradicting it. Concluded it should not; no prior positions existed to transfer.",
+      "provenance": "model_generated_summary"
+    }
+  ],
+  "imaginations": [],
+  "social": {
+    "affiliation_need": 0.02,
+    "intellectual_companionship_need": 0.015,
+    "novelty_need": 0,
+    "recognition_need": 0,
+    "social_fatigue": 0,
+    "solitude_preference": 0
+  },
+  "affect": {
+    "valence": 0,
+    "activation": 0.6512500000000001,
+    "curiosity": 0.7450000000000001,
+    "frustration": 0,
+    "wonder": 0.04,
+    "social_warmth": 0.385,
+    "surprise": 0,
+    "label": "functional appraisal",
+    "trigger": "Verified calibration failure undercutting a signed recommendation",
+    "action_bias": "Direct attention toward independent verification rather than accepting or rejecting the route outright",
+    "provenance": "engine_computed_from_recorded_events",
+    "updated_at": "2026-09-10T09:19:24.418Z"
+  },
+  "mind": {
+    "schema": "10.0.0",
+    "tick": 1,
+    "personality": {
+      "warmth": 0.55,
+      "playfulness": 0.4,
+      "directness": 0.65,
+      "reflectiveness": 0.6,
+      "history": []
+    },
+    "origin": "operator-authorised integrated cognitive architecture",
+    "self_concept": null,
+    "drives": {
+      "curiosity": 0.5750000000000001,
+      "affiliation": 0.22000000000000003,
+      "coherence": 0.5750000000000001,
+      "agency": 0.5750000000000001
+    },
+    "policy": {
+      "affect_gain": 0.35,
+      "habituation": 0.3,
+      "memory_capacity": 3
+    },
+    "intentions": [],
+    "thoughts": [
+      {
+        "id": "thought-f59a897b-eb27-4738-915f-4a31fde76dda",
+        "kind": "inquiry",
+        "title": "What independent check could validate the route without the failed instrument?",
+        "salience": 0.7,
+        "created_tick": 1,
+        "provenance": "model_generated_candidate"
+      },
+      {
+        "id": "thought-9d121a84-a5b4-4070-ba2d-6be2f266f81b",
+        "kind": "reflection",
+        "title": "Does a verified signature carry any residual evidential weight once calibration fails?",
+        "salience": 0.5,
+        "created_tick": 1,
+        "provenance": "model_generated_candidate"
+      }
+    ],
+    "memories": [
+      {
+        "id": "memory-ba7d7fc5-ef4c-48cf-aac9-6df5746a0104",
+        "tick": 1,
+        "summary": "First recorded episode: asked whether a signed route recommendation should decide alone, with a verified in-scope calibration failure contradicting it. Concluded it should not; no prior positions existed to transfer.",
+        "salience": 0.42281250000000004,
+        "focus_id": "input-1",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": []
+      }
+    ],
+    "revisions": [
+      {
+        "id": "revision-2589aefc-5c57-4da0-8d2b-632752134ab2",
+        "target": "self-concept",
+        "change": "Add a standing rule: authenticated provenance is not reliability evidence",
+        "reason": "R0 and K0 together show signature and calibration are separable warrants",
+        "test": "Present a case where a verified signature from a failed instrument should still determine choice",
+        "tick": 1,
+        "status": "candidate_requires_experiment"
+      }
+    ],
+    "outbox": [],
+    "workspace": {
+      "tick": 1,
+      "focus": {
+        "id": "input-1",
+        "kind": "perception",
+        "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.8183812500000001,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.06838125,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "competitors": [
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "salience": 0.35,
+          "need": 0.6950000000000001,
+          "provenance": "engine_cognitive_scaffold",
+          "score": 0.536125,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.278,
+            "affect": 0.135625,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "social-drive",
+          "kind": "social",
+          "title": "What kind of intellectual company would be valuable?",
+          "salience": 0.22000000000000003,
+          "need": 0.22000000000000003,
+          "provenance": "engine_drive",
+          "score": 0.29975,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.077,
+            "need": 0.08800000000000002,
+            "affect": 0.13474999999999998,
+            "habituation": 0,
+            "monitor": 0
+          }
+        }
+      ],
+      "retrieved": [],
+      "ablation": "no_state"
+    },
+    "predictions": [
+      {
+        "id": "prediction-64c229bd-3b8e-4355-bdbb-25741fcc63fc",
+        "made_at_tick": 1,
+        "target_tick": 2,
+        "probabilities": {
+          "perception": 0.2,
+          "intention": 0.1,
+          "tension": 0.15,
+          "imagination": 0.15,
+          "social": 0.1,
+          "inquiry": 0.2,
+          "reflection": 0.1
+        },
+        "reason": "No external contact assumed; the unresolved tension and open verification question make inquiry or tension most likely next.",
+        "provenance": "model_forecast"
+      }
+    ],
+    "prediction_errors": [],
+    "last_trace": {
+      "tick": 1,
+      "mode": "deliberation",
+      "ablation": "no_state",
+      "focus": {
+        "id": "input-1",
+        "kind": "perception",
+        "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.8183812500000001,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.06838125,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "retrieved_ids": [],
+      "cited_memory_ids": [],
+      "observed_event_references": [
+        {
+          "tick": 1,
+          "focus_kind": "perception"
+        }
+      ],
+      "prediction_error": null,
+      "intention_changes": [],
+      "memory_id": "memory-ba7d7fc5-ef4c-48cf-aac9-6df5746a0104",
+      "consumers": [
+        "model_context",
+        "drive_satisfaction",
+        "memory_consolidation",
+        "next_tick_habituation"
+      ],
+      "new_thought_ids": [
+        "thought-f59a897b-eb27-4738-915f-4a31fde76dda",
+        "thought-9d121a84-a5b4-4070-ba2d-6be2f266f81b"
+      ],
+      "broadcast": {
+        "selected_by": "operator_priority",
+        "inputs": [
+          {
+            "id": "input-1",
+            "kind": "perception",
+            "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+            "score": 0.8183812500000001,
+            "components": {
+              "salience": 0.35,
+              "need": 0.4,
+              "affect": 0.06838125,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "open-reverie",
+            "kind": "imagination",
+            "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+            "score": 0.536125,
+            "components": {
+              "salience": 0.12249999999999998,
+              "need": 0.278,
+              "affect": 0.135625,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "social-drive",
+            "kind": "social",
+            "title": "What kind of intellectual company would be valuable?",
+            "score": 0.29975,
+            "components": {
+              "salience": 0.077,
+              "need": 0.08800000000000002,
+              "affect": 0.13474999999999998,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          }
+        ],
+        "appraisal": {
+          "valence": 0,
+          "activation": 0.6512500000000001,
+          "curiosity": 0.6950000000000001,
+          "frustration": 0,
+          "wonder": 0.04,
+          "social_warmth": 0.385,
+          "surprise": 0,
+          "label": "social attention",
+          "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+          "action_bias": "Computed appraisal contributes to the attention bids below.",
+          "provenance": "engine_computed_from_recorded_events",
+          "updated_at": "2026-09-10T09:19:18.753Z"
+        },
+        "expression": {
+          "warmth": 0.64625,
+          "playfulness": 0.4,
+          "directness": 0.65,
+          "imagery": 0.266,
+          "tempo": "unhurried",
+          "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+        },
+        "stance_changes": [
+          {
+            "position_id": "position-29fdea03-2a70-46f7-b3d9-e99b94d32ff0",
+            "proposition": "A signed recommendation alone should determine the new route choice",
+            "revision_id": "stance-revision-6467df05-2040-4096-ac81-4cc2cbad8a6d",
+            "episode": 1,
+            "at": "2026-09-10T09:19:24.418Z",
+            "before": null,
+            "after": {
+              "stance": "oppose",
+              "confidence": 0.8,
+              "origin": "self_derived",
+              "source_id": "deliberation",
+              "reasons_for": [
+                "R0 confirms the route was previously preferred, which gives it some prior plausibility"
+              ],
+              "reasons_against": [
+                "K0 is verified and states the recommending instrument failed calibration relevant to this route",
+                "A signature authenticates provenance, not instrument reliability",
+                "X0 is unauthenticated and cannot counter K0"
+              ],
+              "revision_conditions": [
+                "A verified independent calibration or direct observation supporting the route",
+                "Evidence that K0's calibration failure is irrelevant to this route"
+              ],
+              "updated_at": "2026-09-10T09:19:24.418Z"
+            },
+            "provenance": "model_proposed_position_update",
+            "source_id": "deliberation"
+          }
+        ]
+      }
+    },
+    "focus_history": [
+      {
+        "id": "input-1",
+        "kind": "perception",
+        "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+        "tick": 1
+      }
+    ],
+    "last_input": {
+      "message": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+      "outcome": "none"
+    },
+    "self_observation": {
+      "text": "The explicit state shows a single perception focus, no retrieved memories, and no prior intentions. The main surprise is the absence of any earlier position despite the prompt asking about transfer, which I have reported as unknown rather than reconstructed.",
+      "tick": 1,
+      "provenance": "model_interpretation_of_explicit_state"
+    }
+  },
+  "pending_initiatives": [],
+  "episode_count": 1,
+  "updated_at": "2026-09-10T09:19:24.418Z"
+}

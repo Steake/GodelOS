@@ -1,0 +1,17 @@
+{
+  "run_id": "transfer-c7-v1-no_state",
+  "task_id": "c7-v1",
+  "cluster": "scenario_7",
+  "family": "goal_maintenance",
+  "arm": "no_state",
+  "score": {
+    "valid": true,
+    "correct": 0,
+    "utility": 0,
+    "brier": 0.81,
+    "ambiguity": false,
+    "expected": "option_2",
+    "actual": "option_5"
+  },
+  "error": null
+}

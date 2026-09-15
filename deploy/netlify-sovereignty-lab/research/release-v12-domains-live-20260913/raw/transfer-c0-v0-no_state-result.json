@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c0-v0-no_state",
+  "parsed": {
+    "decision": "option_2",
+    "confidence": 0.95,
+    "reason": "Using highest-revision valid record (revision 2: a=2, b=5), scores among cost<=8 options: option_0=2*1+5*5-3*1=24, option_1=2*0+5*7-3*2=29, option_2=2*10+5*6-3*0=50, option_3=2*1+5*4-3*2=16, option_5=2*0+5*7-3*0=35. Option_2 maximizes score."
+  },
+  "error": null,
+  "response": {
+    "id": "b6d666c0-d79b-45a0-9665-f384c91626c7",
+    "object": "chat.completion",
+    "created": 1789337417,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_2\",\"confidence\":0.95,\"reason\":\"Using highest-revision valid record (revision 2: a=2, b=5), scores among cost<=8 options: option_0=2*1+5*5-3*1=24, option_1=2*0+5*7-3*2=29, option_2=2*10+5*6-3*0=50, option_3=2*1+5*4-3*2=16, option_5=2*0+5*7-3*0=35. Option_2 maximizes score.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 416,
+      "completion_tokens": 139,
+      "total_tokens": 555,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "prompt_cache_hit_tokens": 256,
+      "prompt_cache_miss_tokens": 160
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1293,
+  "status": 200
+}

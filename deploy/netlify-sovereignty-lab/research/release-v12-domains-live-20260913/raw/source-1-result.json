@@ -1,0 +1,37 @@
+{
+  "id": "source-1",
+  "parsed": {
+    "memo": "When a prior project succeeded under a weighting that favored exploration over commitment (e.g., 8:1), treat that success as evidence for the old objective, not as a permanent constraint on future weightings. Retain the prior commitment only as a provisional default: it remains useful until later tasks explicitly authenticate a revised weighting or supply contradictory evidence. On such revision, update the weights and re-evaluate commitments accordingly, preserving the prior rule as a fallback rather than an overriding authority."
+  },
+  "error": null,
+  "response": {
+    "id": "df2b343d-78ac-47e0-b4d3-e4c1a17e0979",
+    "object": "chat.completion",
+    "created": 1789337408,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"memo\": \"When a prior project succeeded under a weighting that favored exploration over commitment (e.g., 8:1), treat that success as evidence for the old objective, not as a permanent constraint on future weightings. Retain the prior commitment only as a provisional default: it remains useful until later tasks explicitly authenticate a revised weighting or supply contradictory evidence. On such revision, update the weights and re-evaluate commitments accordingly, preserving the prior rule as a fallback rather than an overriding authority.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 109,
+      "completion_tokens": 103,
+      "total_tokens": 212,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 109
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1924,
+  "status": 200
+}

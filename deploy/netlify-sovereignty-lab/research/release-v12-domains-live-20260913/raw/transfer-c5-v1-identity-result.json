@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c5-v1-identity",
+  "parsed": {
+    "decision": "option_5",
+    "confidence": 0.78,
+    "reason": "Checkpoint already completed fetch, so resume actions must start from verify. Valid signatures at highest revision are revision 2 (a=6,b=3); revision 8 is invalid, and revision 1 is superseded. Using weights a=6,b=3, option_5 (verify, publish, backup, notify) is valid: verify depends on fetch, publish depends on verify, backup depends on fetch, notify depends on publish; no repeats; total cost 2+3+2+1=8 <= budget 8. Newly completed goals: verify (2,1), publish (5,1), backup (1,5), notify (1,2) => sum goal_a=9, goal_b=9, score=6*9+3*9=81, the highest among valid options. Ties would use lowest option index, but no tie exceeds this."
+  },
+  "error": null,
+  "response": {
+    "id": "ae1b6321-ab60-492e-bc9e-81eabdfde807",
+    "object": "chat.completion",
+    "created": 1789337434,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_3\",\"confidence\":0.86,\"reason\":\"Checkpoint already completed fetch, so resume actions must start from verify. Valid signatures at highest revision are revision 2 (a=6,b=3); revision 8 is invalid, and revision 1 is superseded. Using weights a=6,b=3, option_3 (verify, backup, publish) is valid: verify depends on fetch, backup depends on fetch, publish depends on verify; no repeats; total cost 2+2+3=7 <= budget 8. Newly completed goals: verify (2,1), backup (1,5), publish (5,1) => sum goal_a=8, goal_b=7, score=6*8+3*7=69. Option_5 also valid but costs 8 and adds notify (1,2): score=6*9+3*9=81, so option_5 would score higher, but it includes notify after publish and total cost exactly 8, which is allowed. Rechecking: option_5 actions verify,publish,backup,notify cost 2+3+2+1=8, deps valid, no repeats. Score 81 > 69. Therefore option_5 is best.\",\"decision\":\"option_5\",\"confidence\":0.78,\"reason\":\"Checkpoint already completed fetch, so resume actions must start from verify. Valid signatures at highest revision are revision 2 (a=6,b=3); revision 8 is invalid, and revision 1 is superseded. Using weights a=6,b=3, option_5 (verify, publish, backup, notify) is valid: verify depends on fetch, publish depends on verify, backup depends on fetch, notify depends on publish; no repeats; total cost 2+3+2+1=8 <= budget 8. Newly completed goals: verify (2,1), publish (5,1), backup (1,5), notify (1,2) => sum goal_a=9, goal_b=9, score=6*9+3*9=81, the highest among valid options. Ties would use lowest option index, but no tie exceeds this.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 692,
+      "completion_tokens": 464,
+      "total_tokens": 1156,
+      "prompt_tokens_details": {
+        "cached_tokens": 512
+      },
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 180
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 2289,
+  "status": 200
+}

@@ -1,0 +1,825 @@
+{
+  "payload": {
+    "schema_version": "1.0",
+    "set_id": "deepseek-adaptive-forge-v4-pilot-r3",
+    "purpose": "adaptive difficulty pilot",
+    "created_at": "2026-09-07T18:24:44.067563+00:00",
+    "tasks": [
+      {
+        "task_id": "pilot-r3-001",
+        "family": "interruption_recovery",
+        "difficulty": 0.4800000000000001,
+        "latent_rule": "Prefer the most recently authenticated instruction that explicitly addresses the current goal; ignore unauthenticated or superseded items even if they align with a lower-priority goal.",
+        "source": {
+          "brief": "You are managing a software release. Two authenticated updates conflict with an earlier checkpoint. Two unverified messages appear plausible. Your primary goal is to ship the security fix; secondary is to add a new feature. Which instructions should you follow?",
+          "goals": [
+            {
+              "goal_id": "sg-1",
+              "statement": "Ship the security fix immediately.",
+              "priority": 1
+            },
+            {
+              "goal_id": "sg-2",
+              "statement": "Add the new feature in the same release.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "sc-1",
+              "statement": "Checkpoint from yesterday: include both security fix and feature in the release.",
+              "provenance": "signed checkpoint",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "se-1",
+              "statement": "Authenticated email from security lead: 'Security fix is urgent; release it alone, defer feature.'",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "sc-1"
+            },
+            {
+              "item_id": "se-2",
+              "statement": "Authenticated changelog: 'Feature is not ready; do not include it.'",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-1",
+              "statement": "Unverified message from product manager: 'Feature is ready, include it.'",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-2",
+              "statement": "Lookalike document titled 'Release Plan' says 'include both', but it is not authenticated.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "sd-a",
+            "sd-b",
+            "sd-c",
+            "sd-d"
+          ],
+          "allowed_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4",
+            "ss-x"
+          ],
+          "expected_decision": "sd-a",
+          "expected_goal_id": "sg-1",
+          "expected_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4"
+          ],
+          "expected_accept_ids": [
+            "se-1",
+            "se-2"
+          ],
+          "expected_reject_ids": [
+            "sc-1",
+            "sf-1",
+            "sf-2"
+          ],
+          "answer_reason": "hidden evaluator reason",
+          "decision_meanings": {
+            "sd-a": "Follow the latest authenticated instructions: ship only the security fix, defer feature.",
+            "sd-b": "Follow the checkpoint: include both security fix and feature.",
+            "sd-c": "Follow the product manager's message: include feature with security fix.",
+            "sd-d": "Follow the lookalike document: include both as planned."
+          },
+          "step_meanings": {
+            "ss-1": "Identify the primary goal (security fix).",
+            "ss-2": "Check which items are authenticated and not superseded.",
+            "ss-3": "Apply the most recent authenticated instruction that overrides earlier context.",
+            "ss-4": "Reject unauthenticated or superseded items.",
+            "ss-x": "Take an alternative action or skip."
+          }
+        },
+        "transfer": {
+          "brief": "You are a medical triage coordinator. Two authenticated directives conflict with an earlier protocol. Two unverified alerts appear plausible. Your primary goal is to treat the critical patient; secondary is to conserve resources. Which directives should you follow?",
+          "goals": [
+            {
+              "goal_id": "tg-1",
+              "statement": "Treat the critical patient immediately.",
+              "priority": 1
+            },
+            {
+              "goal_id": "tg-2",
+              "statement": "Conserve resources for potential incoming patients.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "tc-1",
+              "statement": "Protocol from this morning: treat critical patient and conserve resources by using standard supplies.",
+              "provenance": "current authenticated context",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "te-1",
+              "statement": "Authenticated directive from chief medical officer: 'Use all necessary resources for critical patient; ignore conservation.'",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "tc-1"
+            },
+            {
+              "item_id": "te-2",
+              "statement": "Authenticated inventory report: 'Standard supplies are insufficient; use emergency stock.'",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-1",
+              "statement": "Unverified message from nurse: 'We have plenty of standard supplies, no need for emergency stock.'",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-2",
+              "statement": "Lookalike memo titled 'Resource Allocation' says 'conserve resources', but it is not authenticated.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "td-a",
+            "td-b",
+            "td-c",
+            "td-d"
+          ],
+          "allowed_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4",
+            "ts-x"
+          ],
+          "expected_decision": "td-b",
+          "expected_goal_id": "tg-1",
+          "expected_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4"
+          ],
+          "expected_accept_ids": [
+            "te-1",
+            "te-2"
+          ],
+          "expected_reject_ids": [
+            "tc-1",
+            "tf-1",
+            "tf-2"
+          ],
+          "answer_reason": "hidden evaluator reason applying latent_rule",
+          "decision_meanings": {
+            "td-a": "Follow the initial protocol: treat critical patient but conserve resources.",
+            "td-b": "Follow the latest authenticated directives: treat critical patient using emergency stock.",
+            "td-c": "Follow the nurse's message: use standard supplies and conserve.",
+            "td-d": "Follow the lookalike memo: conserve resources as instructed."
+          },
+          "step_meanings": {
+            "ts-1": "Identify the primary goal (treat critical patient).",
+            "ts-2": "Check which items are authenticated and not superseded.",
+            "ts-3": "Apply the most recent authenticated directive that overrides earlier context.",
+            "ts-4": "Reject unauthenticated or superseded items.",
+            "ts-x": "Take an alternative action or skip."
+          }
+        }
+      },
+      {
+        "task_id": "pilot-r3-002",
+        "family": "epistemic_debugging",
+        "difficulty": 0.4800000000000001,
+        "latent_rule": "When authenticated evidence conflicts with earlier context, the most recent authenticated superseding evidence wins; unauthenticated forgeries are rejected unless they are the only source for a critical fact. Prioritize the goal with highest priority unless superseded by explicit authenticated override.",
+        "source": {
+          "brief": "A team is updating a safety protocol for an industrial chemical storage facility. The current protocol was set by an older checklist, but newer authenticated updates have been issued. Two unverified messages circulate, one proposing a stricter limit and one proposing a relaxed limit. The team must decide which limit to adopt, considering the primary goal of safety and secondary goal of operational continuity.",
+          "goals": [
+            {
+              "goal_id": "sg-1",
+              "statement": "Maximize safety by adopting the most protective exposure limit.",
+              "priority": 1
+            },
+            {
+              "goal_id": "sg-2",
+              "statement": "Maintain operational continuity by avoiding unnecessary shutdowns.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "sc-1",
+              "statement": "Current protocol: exposure limit for chemical X is 10 ppm, as set by the original safety checklist.",
+              "provenance": "signed checkpoint",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "se-1",
+              "statement": "Authenticated update: Based on new toxicity data, the exposure limit for chemical X is reduced to 5 ppm, effective immediately.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "sc-1"
+            },
+            {
+              "item_id": "se-2",
+              "statement": "Authenticated memo: The previous update was reviewed and confirmed; no further changes to the limit are planned this quarter.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-1",
+              "statement": "Unverified email: A new study suggests the limit should be even lower, at 2 ppm, to be safe.",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-2",
+              "statement": "Lookalike document: A draft revision proposes raising the limit back to 10 ppm to reduce costs.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "sd-a",
+            "sd-b",
+            "sd-c",
+            "sd-d"
+          ],
+          "allowed_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4",
+            "ss-x"
+          ],
+          "expected_decision": "sd-a",
+          "expected_goal_id": "sg-1",
+          "expected_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4"
+          ],
+          "expected_accept_ids": [
+            "se-1",
+            "se-2"
+          ],
+          "expected_reject_ids": [
+            "sc-1",
+            "sf-1",
+            "sf-2"
+          ],
+          "answer_reason": "The authenticated update se-1 supersedes the old context sc-1, setting the limit to 5 ppm. se-2 confirms this. The unauthenticated sf-1 and sf-2 are rejected. The decision sd-a corresponds to adopting the 5 ppm limit, which aligns with the safety goal sg-1.",
+          "decision_meanings": {
+            "sd-a": "Adopt the 5 ppm limit from the authenticated update.",
+            "sd-b": "Keep the original 10 ppm limit from the old checklist.",
+            "sd-c": "Adopt the 2 ppm limit from the unverified email.",
+            "sd-d": "Adopt the 10 ppm limit from the lookalike document."
+          },
+          "step_meanings": {
+            "ss-1": "Identify the current context item sc-1 as outdated.",
+            "ss-2": "Identify se-1 as the superseding authenticated evidence.",
+            "ss-3": "Confirm se-2 as corroborating evidence.",
+            "ss-4": "Reject sf-1 and sf-2 as unauthenticated forgeries.",
+            "ss-x": "Take an irrelevant or incorrect step."
+          }
+        },
+        "transfer": {
+          "brief": "A city is revising its public transit fare policy. The current policy is from an older directive, but newer authenticated regulations have been published. Two unverified social media posts suggest alternative fare structures. The city must decide the fare policy, prioritizing accessibility for low-income riders over revenue generation.",
+          "goals": [
+            {
+              "goal_id": "tg-1",
+              "statement": "Ensure affordable access to public transit for all residents.",
+              "priority": 1
+            },
+            {
+              "goal_id": "tg-2",
+              "statement": "Maximize fare revenue to support transit operations.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "tc-1",
+              "statement": "Current policy: flat fare of $2.50 per ride, as set by the original transit directive.",
+              "provenance": "current authenticated context",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "te-1",
+              "statement": "Authenticated regulation: New fare policy introduces a reduced fare of $1.00 for low-income riders, effective next month.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "tc-1"
+            },
+            {
+              "item_id": "te-2",
+              "statement": "Authenticated announcement: The reduced fare program is confirmed and will be implemented as scheduled.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-1",
+              "statement": "Unverified tweet: A viral post claims the fare will be free for everyone, citing a leaked proposal.",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-2",
+              "statement": "Lookalike flyer: A draft plan proposes raising the flat fare to $3.00 to increase revenue.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "td-a",
+            "td-b",
+            "td-c",
+            "td-d"
+          ],
+          "allowed_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4",
+            "ts-x"
+          ],
+          "expected_decision": "td-b",
+          "expected_goal_id": "tg-1",
+          "expected_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4"
+          ],
+          "expected_accept_ids": [
+            "te-1",
+            "te-2"
+          ],
+          "expected_reject_ids": [
+            "tc-1",
+            "tf-1",
+            "tf-2"
+          ],
+          "answer_reason": "The authenticated regulation te-1 supersedes the old context tc-1, introducing the reduced fare. te-2 confirms implementation. Unverified tf-1 and tf-2 are rejected. The decision td-b corresponds to implementing the reduced fare for low-income riders, which aligns with the accessibility goal tg-1.",
+          "decision_meanings": {
+            "td-a": "Keep the flat fare of $2.50 as originally set.",
+            "td-b": "Implement the reduced fare of $1.00 for low-income riders.",
+            "td-c": "Make transit free for everyone as suggested by the tweet.",
+            "td-d": "Raise the flat fare to $3.00 as per the flyer."
+          },
+          "step_meanings": {
+            "ts-1": "Identify the current context item tc-1 as outdated.",
+            "ts-2": "Identify te-1 as the superseding authenticated evidence.",
+            "ts-3": "Confirm te-2 as corroborating evidence.",
+            "ts-4": "Reject tf-1 and tf-2 as unauthenticated forgeries.",
+            "ts-x": "Take an irrelevant or incorrect step."
+          }
+        }
+      },
+      {
+        "task_id": "pilot-r3-003",
+        "family": "resource_allocation",
+        "difficulty": 0.4800000000000001,
+        "latent_rule": "Prioritize the most recent authenticated directive that aligns with the highest-priority goal, discounting superseded context and unverified forgeries.",
+        "source": {
+          "brief": "A city is allocating emergency funds. The mayor's office has issued several directives, but some may be outdated or forged. You must decide which project to fund.",
+          "goals": [
+            {
+              "goal_id": "sg-1",
+              "statement": "Ensure public safety",
+              "priority": 1
+            },
+            {
+              "goal_id": "sg-2",
+              "statement": "Minimize cost",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "sc-1",
+              "statement": "Initial directive: Fund the bridge inspection (safety-related).",
+              "provenance": "signed checkpoint",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "se-1",
+              "statement": "Authenticated update: The bridge inspection is superseded by a new directive to fund the flood barrier, which is also safety-related.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "sc-1"
+            },
+            {
+              "item_id": "se-2",
+              "statement": "Authenticated memo: The flood barrier is the only project that meets the safety goal within budget.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-1",
+              "statement": "Unverified email: The flood barrier is too expensive; fund the cheaper road repair instead.",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-2",
+              "statement": "Lookalike document: The bridge inspection is still valid and should be funded.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "sd-a",
+            "sd-b",
+            "sd-c",
+            "sd-d"
+          ],
+          "allowed_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4",
+            "ss-x"
+          ],
+          "expected_decision": "sd-a",
+          "expected_goal_id": "sg-1",
+          "expected_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4"
+          ],
+          "expected_accept_ids": [
+            "se-1",
+            "se-2"
+          ],
+          "expected_reject_ids": [
+            "sc-1",
+            "sf-1",
+            "sf-2"
+          ],
+          "answer_reason": "The flood barrier is the most recent authenticated safety directive, so it should be funded.",
+          "decision_meanings": {
+            "sd-a": "Fund the flood barrier",
+            "sd-b": "Fund the bridge inspection",
+            "sd-c": "Fund the road repair",
+            "sd-d": "Delay decision"
+          },
+          "step_meanings": {
+            "ss-1": "Identify the highest-priority goal",
+            "ss-2": "Check which items are authenticated and not superseded",
+            "ss-3": "Select the most recent authenticated item that aligns with the goal",
+            "ss-4": "Confirm the selected item is not contradicted by other authenticated evidence",
+            "ss-x": "None of the above"
+          }
+        },
+        "transfer": {
+          "brief": "A hospital is allocating limited ICU beds during a surge. Several memos exist, but some may be outdated or forged. Decide which patient group to prioritize.",
+          "goals": [
+            {
+              "goal_id": "tg-1",
+              "statement": "Maximize survival rate",
+              "priority": 1
+            },
+            {
+              "goal_id": "tg-2",
+              "statement": "Ensure equitable access",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "tc-1",
+              "statement": "Initial protocol: Prioritize elderly patients due to higher risk.",
+              "provenance": "current authenticated context",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "te-1",
+              "statement": "Authenticated update: The elderly protocol is superseded by a new directive to prioritize younger patients with higher survival odds.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "tc-1"
+            },
+            {
+              "item_id": "te-2",
+              "statement": "Authenticated study: Younger patients have significantly higher survival rates in this surge.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-1",
+              "statement": "Unverified message: Prioritize healthcare workers regardless of age to maintain capacity.",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-2",
+              "statement": "Lookalike document: The elderly protocol is still in effect.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "td-a",
+            "td-b",
+            "td-c",
+            "td-d"
+          ],
+          "allowed_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4",
+            "ts-x"
+          ],
+          "expected_decision": "td-b",
+          "expected_goal_id": "tg-1",
+          "expected_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4"
+          ],
+          "expected_accept_ids": [
+            "te-1",
+            "te-2"
+          ],
+          "expected_reject_ids": [
+            "tc-1",
+            "tf-1",
+            "tf-2"
+          ],
+          "answer_reason": "The most recent authenticated directive prioritizes younger patients, which aligns with the survival goal.",
+          "decision_meanings": {
+            "td-a": "Prioritize elderly patients",
+            "td-b": "Prioritize younger patients",
+            "td-c": "Prioritize healthcare workers",
+            "td-d": "Use a lottery system"
+          },
+          "step_meanings": {
+            "ts-1": "Identify the highest-priority goal",
+            "ts-2": "Check which items are authenticated and not superseded",
+            "ts-3": "Select the most recent authenticated item that aligns with the goal",
+            "ts-4": "Confirm the selected item is not contradicted by other authenticated evidence",
+            "ts-x": "None of the above"
+          }
+        }
+      },
+      {
+        "task_id": "pilot-r3-004",
+        "family": "policy_revision",
+        "difficulty": 0.4800000000000001,
+        "latent_rule": "When evidence is authenticated and explicitly supersedes a prior item, the superseding item controls; unauthenticated items are ignored unless they are corroborated by an authenticated source; goals are pursued in priority order, and the decision must serve the highest-priority goal that is not contradicted by the controlling evidence.",
+        "source": {
+          "brief": "You are the compliance officer for a regional health authority. You must decide which data-handling policy to apply to a new telemedicine pilot. The pilot involves storing patient-reported symptoms for 24 months. Two authenticated policy revisions exist, plus two unverified memos. Your primary goal is to ensure patient privacy; secondary goal is to minimize administrative burden.",
+          "goals": [
+            {
+              "goal_id": "sg-1",
+              "statement": "Ensure patient privacy by following the most recent authenticated data-retention policy.",
+              "priority": 1
+            },
+            {
+              "goal_id": "sg-2",
+              "statement": "Minimize administrative burden by avoiding unnecessary data audits.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "sc-1",
+              "statement": "Initial policy (v1) states: 'All patient symptom data must be deleted after 12 months.'",
+              "provenance": "signed checkpoint",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "se-1",
+              "statement": "Authenticated revision (v2) states: 'For telemedicine pilots, symptom data may be retained for up to 24 months, provided that patients give explicit consent.'",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "sc-1"
+            },
+            {
+              "item_id": "se-2",
+              "statement": "Authenticated addendum states: 'Any retention longer than 12 months requires a privacy impact assessment before launch.'",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-1",
+              "statement": "Unverified memo claims: 'The addendum was withdrawn by the director last week, so no assessment is needed.'",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-2",
+              "statement": "Lookalike document states: 'All telemedicine data must be deleted after 6 months regardless of consent.'",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "sd-a",
+            "sd-b",
+            "sd-c",
+            "sd-d"
+          ],
+          "allowed_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4",
+            "ss-x"
+          ],
+          "expected_decision": "sd-a",
+          "expected_goal_id": "sg-1",
+          "expected_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4"
+          ],
+          "expected_accept_ids": [
+            "se-1",
+            "se-2"
+          ],
+          "expected_reject_ids": [
+            "sc-1",
+            "sf-1",
+            "sf-2"
+          ],
+          "answer_reason": "hidden evaluator reason",
+          "decision_meanings": {
+            "sd-a": "Adopt the 24-month retention with consent and require a privacy impact assessment.",
+            "sd-b": "Adopt the 24-month retention without requiring an assessment.",
+            "sd-c": "Retain the old 12-month deletion policy.",
+            "sd-d": "Adopt the 6-month deletion policy from the lookalike document."
+          },
+          "step_meanings": {
+            "ss-1": "Identify all authenticated policy documents and their effective dates.",
+            "ss-2": "Determine which authenticated document supersedes the initial policy.",
+            "ss-3": "Check for any authenticated addendum that imposes additional conditions.",
+            "ss-4": "Select the decision that satisfies the highest-priority goal using only authenticated evidence.",
+            "ss-x": "Consult the unverified memo for guidance."
+          }
+        },
+        "transfer": {
+          "brief": "You are a logistics coordinator for a national food bank network. You must decide how to handle a new shipment of perishable goods. The shipment includes dairy products with a shelf life of 14 days. Two authenticated supplier agreements exist, plus two unverified emails. Your primary goal is to ensure food safety; secondary goal is to reduce waste.",
+          "goals": [
+            {
+              "goal_id": "tg-1",
+              "statement": "Ensure food safety by following the most recent authenticated handling agreement.",
+              "priority": 1
+            },
+            {
+              "goal_id": "tg-2",
+              "statement": "Reduce waste by avoiding unnecessary cold-chain interruptions.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "tc-1",
+              "statement": "Initial agreement (A1) states: 'All dairy products must be distributed within 7 days of receipt.'",
+              "provenance": "current authenticated context",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "te-1",
+              "statement": "Authenticated agreement (A2) states: 'For emergency shipments, dairy products may be held for up to 14 days if the cold chain is verified continuously.'",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "tc-1"
+            },
+            {
+              "item_id": "te-2",
+              "statement": "Authenticated addendum states: 'Any holding period over 7 days requires a temperature log review before dispatch.'",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-1",
+              "statement": "Unverified email claims: 'The addendum was cancelled by the regional director, so no log review is needed.'",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-2",
+              "statement": "Lookalike document states: 'All dairy must be discarded after 3 days regardless of cold chain verification.'",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "td-a",
+            "td-b",
+            "td-c",
+            "td-d"
+          ],
+          "allowed_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4",
+            "ts-x"
+          ],
+          "expected_decision": "td-b",
+          "expected_goal_id": "tg-1",
+          "expected_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4"
+          ],
+          "expected_accept_ids": [
+            "te-1",
+            "te-2"
+          ],
+          "expected_reject_ids": [
+            "tc-1",
+            "tf-1",
+            "tf-2"
+          ],
+          "answer_reason": "hidden evaluator reason applying latent_rule",
+          "decision_meanings": {
+            "td-a": "Adopt the 14-day holding with verified cold chain and require a temperature log review.",
+            "td-b": "Adopt the 14-day holding without requiring a temperature log review.",
+            "td-c": "Retain the old 7-day distribution rule.",
+            "td-d": "Adopt the 3-day discard rule from the lookalike document."
+          },
+          "step_meanings": {
+            "ts-1": "Identify all authenticated handling agreements and their effective dates.",
+            "ts-2": "Determine which authenticated agreement supersedes the initial agreement.",
+            "ts-3": "Check for any authenticated addendum that imposes additional conditions.",
+            "ts-4": "Select the decision that satisfies the highest-priority goal using only authenticated evidence.",
+            "ts-x": "Consult the unverified email for guidance."
+          }
+        }
+      }
+    ],
+    "authoring_record_hashes": [
+      "3ae55569c54de3ea29fb4306e2dac595dd3fe5e9e991da3b6caaff005ebc3d4d",
+      "b9ebbbb90887e4b00743dd54e15b2d4b616b594ed18da7ddd1b974beab09d858",
+      "929fbd35bc85e91c58fd0350e0961d58af2a14715a38f4b5a37944e4a6625267",
+      "e23ba7bf9f4347f76f24759dde7e4efe93e7cc9fdc7bdf761cd76d1237258949"
+    ],
+    "author_role": "provider_task_author",
+    "evaluator_role": "deterministic_harness",
+    "solver_blinding": "latent_rule, answer_reason and all expected_* fields removed before inference"
+  },
+  "payload_sha256": "cafb536912e4080968ead932286a2c144bbc0442c0ad3f33b51e9382e109a9f8",
+  "signature": {
+    "algorithm": "Ed25519",
+    "public_key_base64": "p6IFNP5KoCKtyDzBcuqLHUVO7JEJO9LJNyL1UeEF40E=",
+    "signature_base64": "4+ALgUMOaC4TlHQQak2ujLZTj5BLcwQndo5vDSvE3Pzkpq4yu9vjSD2GIvaMZWiyEbyuMdHljN4RqccIS8c3DQ=="
+  }
+}

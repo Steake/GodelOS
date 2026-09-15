@@ -1,0 +1,18 @@
+{
+  "schema": "repair-diagnostic-12.1",
+  "source": "/workspace/scratch/16915002b079/GodelOS/deploy/netlify-sovereignty-lab/research/release-v12-domains-live-20260913",
+  "suite_hash": "ba3fb48d63b8e0947b69e5599cc3fdb63be60e58c28f4a66d2862a1c9507c29a",
+  "selection": "All incorrect first-pass task actions, including schema-valid but semantically wrong actions",
+  "calls_planned": 56,
+  "retries_per_failed_case": 1,
+  "arms": [
+    "ordinary_retry",
+    "verifier_feedback"
+  ],
+  "oracle_answer_in_feedback": false,
+  "limitations": [
+    "Selected failure set; repair outcomes are not a new unselected performance estimate.",
+    "Ordinary retry estimates stochastic rerun improvement; one repetition per failed case."
+  ],
+  "created_at": "2026-09-13T22:17:01.925Z"
+}

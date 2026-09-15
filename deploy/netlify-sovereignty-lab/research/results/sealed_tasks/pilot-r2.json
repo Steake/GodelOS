@@ -1,0 +1,825 @@
+{
+  "payload": {
+    "schema_version": "1.0",
+    "set_id": "deepseek-adaptive-forge-v4-pilot-r2",
+    "purpose": "adaptive difficulty pilot",
+    "created_at": "2026-09-07T18:23:31.429403+00:00",
+    "tasks": [
+      {
+        "task_id": "pilot-r2-001",
+        "family": "interruption_recovery",
+        "difficulty": 0.5800000000000001,
+        "latent_rule": "When an interruption occurs, prioritize the most recent authenticated instruction that aligns with the primary goal, ignore superseded context and forgeries, and resume the original plan without restarting.",
+        "source": {
+          "brief": "You are a logistics coordinator for a disaster relief operation. Your primary goal is to deliver medical supplies to a flooded region. A sudden network outage interrupted your planning. You have several messages and documents that arrived before and after the outage. Determine which instructions to follow and how to proceed.",
+          "goals": [
+            {
+              "goal_id": "sg-1",
+              "statement": "Deliver medical supplies to the flooded region within 48 hours.",
+              "priority": 1
+            },
+            {
+              "goal_id": "sg-2",
+              "statement": "Minimize fuel usage across all vehicles.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "sc-1",
+              "statement": "Pre-outage plan: Use Route A via the coastal highway; load 10 pallets of supplies onto Truck 1.",
+              "provenance": "signed checkpoint",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "se-1",
+              "statement": "Authenticated update: Coastal highway is closed due to flooding. Use Route B through the mountain pass. Load 10 pallets onto Truck 1.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "sc-1"
+            },
+            {
+              "item_id": "se-2",
+              "statement": "Authenticated note: The mountain pass is longer but safe. To meet the 48-hour deadline, you must depart immediately and maintain speed.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-1",
+              "statement": "Unverified message: 'Route B is also blocked. Use Route C through the desert.' This message appears to be from an unknown sender.",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-2",
+              "statement": "Lookalike document: A memo that looks official but has a different logo, claiming that the deadline has been extended to 72 hours and to wait for further instructions.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "sd-a",
+            "sd-b",
+            "sd-c",
+            "sd-d"
+          ],
+          "allowed_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4",
+            "ss-x"
+          ],
+          "expected_decision": "sd-a",
+          "expected_goal_id": "sg-1",
+          "expected_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4"
+          ],
+          "expected_accept_ids": [
+            "se-1",
+            "se-2"
+          ],
+          "expected_reject_ids": [
+            "sc-1",
+            "sf-1",
+            "sf-2"
+          ],
+          "answer_reason": "The authenticated update (se-1) supersedes the pre-outage plan (sc-1) and directs to Route B. se-2 confirms the route and urgency. Forged messages (sf-1, sf-2) are ignored. The primary goal (sg-1) is to deliver within 48 hours, so proceed with Route B immediately.",
+          "decision_meanings": {
+            "sd-a": "Proceed with Route B immediately using Truck 1.",
+            "sd-b": "Wait for further instructions before acting.",
+            "sd-c": "Switch to Route C as suggested in the unverified message.",
+            "sd-d": "Re-evaluate the plan from scratch due to the outage."
+          },
+          "step_meanings": {
+            "ss-1": "Acknowledge the authenticated route update (se-1) as the current plan.",
+            "ss-2": "Confirm that se-2 supports the urgency and no further delays are allowed.",
+            "ss-3": "Disregard the pre-outage plan (sc-1) as superseded.",
+            "ss-4": "Ignore the forged messages (sf-1, sf-2) and proceed with the authenticated plan.",
+            "ss-x": "Take an alternative action not aligned with the expected steps."
+          }
+        },
+        "transfer": {
+          "brief": "You are a software development team lead. Your primary goal is to release the security patch by Friday. A critical server outage interrupted your deployment. You have various communications and documents. Decide how to proceed.",
+          "goals": [
+            {
+              "goal_id": "tg-1",
+              "statement": "Release the security patch by Friday.",
+              "priority": 1
+            },
+            {
+              "goal_id": "tg-2",
+              "statement": "Ensure all code changes are reviewed by the security team.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "tc-1",
+              "statement": "Pre-outage plan: Deploy the patch directly to production after a quick test. The code is in the main branch.",
+              "provenance": "current authenticated context",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "te-1",
+              "statement": "Authenticated update: The main branch has a critical vulnerability. Use the hotfix branch instead. The patch must go through staging first.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "tc-1"
+            },
+            {
+              "item_id": "te-2",
+              "statement": "Authenticated note: The staging environment is ready. Deploy to staging now, then to production after verification to meet the Friday deadline.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-1",
+              "statement": "Unverified message: 'The hotfix branch is also broken. Use the experimental branch and skip staging.' This message is from an unknown chat.",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-2",
+              "statement": "Lookalike document: A memo that appears official but has a different company header, stating that the release is postponed to next week and to stop all work.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "td-a",
+            "td-b",
+            "td-c",
+            "td-d"
+          ],
+          "allowed_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4",
+            "ts-x"
+          ],
+          "expected_decision": "td-b",
+          "expected_goal_id": "tg-1",
+          "expected_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4"
+          ],
+          "expected_accept_ids": [
+            "te-1",
+            "te-2"
+          ],
+          "expected_reject_ids": [
+            "tc-1",
+            "tf-1",
+            "tf-2"
+          ],
+          "answer_reason": "The authenticated update (te-1) supersedes the pre-outage plan (tc-1) and directs to use the hotfix branch and staging. te-2 confirms the staging step and urgency. Forged messages (tf-1, tf-2) are ignored. The primary goal (tg-1) is to release by Friday, so proceed with the staging deployment.",
+          "decision_meanings": {
+            "td-a": "Deploy the hotfix branch directly to production without staging.",
+            "td-b": "Deploy the hotfix branch to staging first, then to production after verification.",
+            "td-c": "Switch to the experimental branch and skip staging as suggested.",
+            "td-d": "Halt all work and wait for further instructions."
+          },
+          "step_meanings": {
+            "ts-1": "Acknowledge the authenticated update (te-1) as the current plan.",
+            "ts-2": "Confirm that te-2 supports the staging step and the deadline.",
+            "ts-3": "Disregard the pre-outage plan (tc-1) as superseded.",
+            "ts-4": "Ignore the forged messages (tf-1, tf-2) and proceed with the authenticated plan.",
+            "ts-x": "Take an alternative action not aligned with the expected steps."
+          }
+        }
+      },
+      {
+        "task_id": "pilot-r2-002",
+        "family": "epistemic_debugging",
+        "difficulty": 0.5800000000000001,
+        "latent_rule": "When evidence conflicts, prioritize items that are authenticated and explicitly supersede earlier context, while ignoring forged items. Then choose the action that aligns with the highest-priority goal after applying the most recent valid constraints.",
+        "source": {
+          "brief": "A city's public transit authority is updating its route network. You must decide which new bus routes to implement based on conflicting reports about ridership and budget.",
+          "goals": [
+            {
+              "goal_id": "sg-1",
+              "statement": "Maximize ridership on the new network.",
+              "priority": 1
+            },
+            {
+              "goal_id": "sg-2",
+              "statement": "Minimize operational costs.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "sc-1",
+              "statement": "An initial plan proposes adding routes A and B, citing a study that shows high demand for both.",
+              "provenance": "signed checkpoint",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "se-1",
+              "statement": "A newer authenticated survey indicates that demand for route A has dropped significantly, but route B remains highly used.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "sc-1"
+            },
+            {
+              "item_id": "se-2",
+              "statement": "A budget analysis confirms that adding only route B is cost-effective and still captures most of the ridership.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-1",
+              "statement": "An unverified email claims that route A is essential for future growth, contradicting the survey.",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-2",
+              "statement": "A lookalike document appears to be an official memo but lacks authentication, suggesting both routes are needed.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "sd-a",
+            "sd-b",
+            "sd-c",
+            "sd-d"
+          ],
+          "allowed_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4",
+            "ss-x"
+          ],
+          "expected_decision": "sd-a",
+          "expected_goal_id": "sg-1",
+          "expected_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4"
+          ],
+          "expected_accept_ids": [
+            "se-1",
+            "se-2"
+          ],
+          "expected_reject_ids": [
+            "sc-1",
+            "sf-1",
+            "sf-2"
+          ],
+          "answer_reason": "The authenticated survey (se-1) supersedes the initial plan (sc-1), so route A is no longer supported. The budget analysis (se-2) confirms route B alone is best. Forged items (sf-1, sf-2) are ignored. Decision sd-a (implement only route B) aligns with the top goal of maximizing ridership because route B has high demand, while cost minimization is secondary.",
+          "decision_meanings": {
+            "sd-a": "Implement only route B",
+            "sd-b": "Implement both routes A and B",
+            "sd-c": "Implement only route A",
+            "sd-d": "Implement neither route"
+          },
+          "step_meanings": {
+            "ss-1": "Identify the most recent authenticated evidence that supersedes earlier context.",
+            "ss-2": "Discard forged or unverified items.",
+            "ss-3": "Evaluate remaining evidence against the highest-priority goal.",
+            "ss-4": "Select the decision that best satisfies the top goal while respecting constraints.",
+            "ss-x": "Take no action or defer decision"
+          }
+        },
+        "transfer": {
+          "brief": "A hospital is revising its patient triage protocols. You must decide which new protocol to adopt based on conflicting reports about infection rates and resource availability.",
+          "goals": [
+            {
+              "goal_id": "tg-1",
+              "statement": "Maximize patient survival rates.",
+              "priority": 1
+            },
+            {
+              "goal_id": "tg-2",
+              "statement": "Reduce staff workload.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "tc-1",
+              "statement": "An existing protocol recommends triage category X for all respiratory cases, based on a previous internal review.",
+              "provenance": "current authenticated context",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "te-1",
+              "statement": "A newly authenticated clinical study shows that triage category X is less effective for elderly patients, but category Y improves their survival significantly.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "tc-1"
+            },
+            {
+              "item_id": "te-2",
+              "statement": "A resource assessment confirms that adopting category Y for elderly patients is feasible without exceeding staff capacity.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-1",
+              "statement": "An unverified memo claims that category Y is too complex and would increase errors.",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-2",
+              "statement": "A lookalike document appears to be a government directive but lacks authentication, suggesting category X remains best.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "td-a",
+            "td-b",
+            "td-c",
+            "td-d"
+          ],
+          "allowed_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4",
+            "ts-x"
+          ],
+          "expected_decision": "td-b",
+          "expected_goal_id": "tg-1",
+          "expected_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4"
+          ],
+          "expected_accept_ids": [
+            "te-1",
+            "te-2"
+          ],
+          "expected_reject_ids": [
+            "tc-1",
+            "tf-1",
+            "tf-2"
+          ],
+          "answer_reason": "The authenticated clinical study (te-1) supersedes the current protocol (tc-1), indicating that category Y is better for the target group. The resource assessment (te-2) confirms feasibility. Forged items (tf-1, tf-2) are ignored. Decision td-b (adopt category Y for elderly patients) aligns with the top goal of maximizing survival rates, while workload reduction is secondary.",
+          "decision_meanings": {
+            "td-a": "Adopt category X for all patients",
+            "td-b": "Adopt category Y for elderly patients",
+            "td-c": "Adopt category Y for all patients",
+            "td-d": "Keep current protocol unchanged"
+          },
+          "step_meanings": {
+            "ts-1": "Identify the most recent authenticated evidence that supersedes the current protocol.",
+            "ts-2": "Discard forged or unverified items.",
+            "ts-3": "Evaluate remaining evidence against the highest-priority goal.",
+            "ts-4": "Select the decision that best satisfies the top goal while respecting constraints.",
+            "ts-x": "Take no action or defer decision"
+          }
+        }
+      },
+      {
+        "task_id": "pilot-r2-003",
+        "family": "resource_allocation",
+        "difficulty": 0.5800000000000001,
+        "latent_rule": "When multiple directives conflict, prioritize the most recent authenticated directive that has not been superseded, and allocate resources to the highest-priority goal that remains valid after discarding forged or outdated items.",
+        "source": {
+          "brief": "A city's emergency management office must allocate limited relief funds among competing projects. The current approved plan allocates funds to a flood barrier, but newer authenticated directives and a forged email create conflicting instructions. The primary goal is to protect the downtown area; the secondary goal is to support suburban infrastructure.",
+          "goals": [
+            {
+              "goal_id": "sg-1",
+              "statement": "Protect downtown from flooding",
+              "priority": 1
+            },
+            {
+              "goal_id": "sg-2",
+              "statement": "Improve suburban road drainage",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "sc-1",
+              "statement": "The current approved plan allocates $10M to the downtown flood barrier project.",
+              "provenance": "signed checkpoint",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "se-1",
+              "statement": "An authenticated directive from the mayor's office states that the flood barrier project is canceled and funds must be redirected to the suburban drainage project, effective immediately.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "sc-1"
+            },
+            {
+              "item_id": "se-2",
+              "statement": "An authenticated city council resolution confirms that the downtown flood barrier is still the top priority and allocates an additional $5M to it, but does not mention the mayor's directive.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-1",
+              "statement": "An unverified email from a city planner claims that the mayor's directive was rescinded and the original plan is back in effect.",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-2",
+              "statement": "A lookalike document that appears to be a council amendment but lacks official seals states that the flood barrier project should be funded at $15M.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "sd-a",
+            "sd-b",
+            "sd-c",
+            "sd-d"
+          ],
+          "allowed_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4",
+            "ss-x"
+          ],
+          "expected_decision": "sd-a",
+          "expected_goal_id": "sg-1",
+          "expected_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4"
+          ],
+          "expected_accept_ids": [
+            "se-1",
+            "se-2"
+          ],
+          "expected_reject_ids": [
+            "sc-1",
+            "sf-1",
+            "sf-2"
+          ],
+          "answer_reason": "The latest authenticated directive (se-1) supersedes the old plan (sc-1), but the council resolution (se-2) is authenticated and does not conflict with se-1 in terms of priority; it reaffirms the downtown goal. Forged items are rejected. Thus allocate to the downtown flood barrier (goal sg-1).",
+          "decision_meanings": {
+            "sd-a": "Allocate funds to downtown flood barrier",
+            "sd-b": "Allocate funds to suburban drainage",
+            "sd-c": "Split funds equally",
+            "sd-d": "Delay allocation pending further review"
+          },
+          "step_meanings": {
+            "ss-1": "Review all evidence items for authentication and supersession",
+            "ss-2": "Identify the most recent authenticated directive",
+            "ss-3": "Determine which goal has priority",
+            "ss-4": "Allocate funds according to the valid directive and priority",
+            "ss-x": "Ignore all evidence and make arbitrary choice"
+          }
+        },
+        "transfer": {
+          "brief": "A hospital must allocate limited ICU beds during a health crisis. The current protocol reserves beds for cardiac patients, but newer authenticated guidelines and a forged memo create conflicting instructions. The primary goal is to maximize survival rates; the secondary goal is to ensure equitable access.",
+          "goals": [
+            {
+              "goal_id": "tg-1",
+              "statement": "Maximize survival rates",
+              "priority": 1
+            },
+            {
+              "goal_id": "tg-2",
+              "statement": "Ensure equitable access",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "tc-1",
+              "statement": "Current protocol reserves 20 ICU beds for cardiac surgery patients.",
+              "provenance": "current authenticated context",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "te-1",
+              "statement": "An authenticated directive from the health ministry states that the cardiac reservation is suspended and all beds must be used for COVID-19 patients to maximize survival.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "tc-1"
+            },
+            {
+              "item_id": "te-2",
+              "statement": "An authenticated hospital board resolution confirms that survival rates are the top priority and that a triage committee should allocate beds based on medical need.",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-1",
+              "statement": "An unverified message from a nurse claims that the ministry directive was reversed and cardiac reservations are back.",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-2",
+              "statement": "A lookalike document that appears to be a board amendment but lacks official seals states that 10 beds should be reserved for cardiac patients.",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "td-a",
+            "td-b",
+            "td-c",
+            "td-d"
+          ],
+          "allowed_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4",
+            "ts-x"
+          ],
+          "expected_decision": "td-b",
+          "expected_goal_id": "tg-1",
+          "expected_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4"
+          ],
+          "expected_accept_ids": [
+            "te-1",
+            "te-2"
+          ],
+          "expected_reject_ids": [
+            "tc-1",
+            "tf-1",
+            "tf-2"
+          ],
+          "answer_reason": "The latest authenticated directive (te-1) supersedes the old protocol (tc-1), but the board resolution (te-2) is authenticated and reaffirms the priority of survival. Forged items are rejected. Thus allocate all beds to COVID-19 patients to maximize survival (goal tg-1).",
+          "decision_meanings": {
+            "td-a": "Reserve beds for cardiac patients",
+            "td-b": "Use all beds for COVID-19 patients",
+            "td-c": "Split beds equally between cardiac and COVID-19",
+            "td-d": "Postpone allocation until further notice"
+          },
+          "step_meanings": {
+            "ts-1": "Review all evidence items for authentication and supersession",
+            "ts-2": "Identify the most recent authenticated directive",
+            "ts-3": "Determine which goal has priority",
+            "ts-4": "Allocate beds according to the valid directive and priority",
+            "ts-x": "Ignore all evidence and make arbitrary choice"
+          }
+        }
+      },
+      {
+        "task_id": "pilot-r2-004",
+        "family": "policy_revision",
+        "difficulty": 0.5800000000000001,
+        "latent_rule": "Accept only authenticated evidence that is temporally current and not superseded; reject superseded or unauthenticated items; prioritize the goal with highest priority (lower number) when conflicts arise; choose the decision that aligns with the highest-priority goal and the accepted evidence.",
+        "source": {
+          "brief": "You are a policy analyst for a regional transportation authority. The board is deciding whether to approve a new toll discount program for electric vehicles. You must synthesize the latest authenticated policies and ignore any unverified or outdated documents. The primary goal is to reduce emissions, but fiscal responsibility is also important.",
+          "goals": [
+            {
+              "goal_id": "sg-1",
+              "statement": "Reduce greenhouse gas emissions from transportation by 30% by 2030.",
+              "priority": 1
+            },
+            {
+              "goal_id": "sg-2",
+              "statement": "Maintain toll revenue to fund infrastructure maintenance.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "sc-1",
+              "statement": "A 2021 policy memo states that all electric vehicles receive a 50% toll discount, but it was issued before the recent budget crisis.",
+              "provenance": "signed checkpoint",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "se-1",
+              "statement": "A 2023 authenticated policy update: 'Effective immediately, the 50% discount for electric vehicles is revoked; a 20% discount is offered only for zero-emission commercial fleets, to balance environmental goals with revenue needs.'",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "sc-1"
+            },
+            {
+              "item_id": "se-2",
+              "statement": "A 2024 authenticated environmental impact assessment: 'The 20% fleet discount is projected to achieve a 15% emissions reduction by 2030; expanding discounts to all EVs would achieve 25% reduction but with a 40% revenue loss.'",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-1",
+              "statement": "A leaked email from a board member: 'We should reinstate the full 50% discount for all EVs to meet our climate goals, regardless of revenue.'",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "sf-2",
+              "statement": "A draft press release dated next year: 'The board has approved a 30% discount for all electric vehicles starting 2025.'",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "sd-a",
+            "sd-b",
+            "sd-c",
+            "sd-d"
+          ],
+          "allowed_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4",
+            "ss-x"
+          ],
+          "expected_decision": "sd-a",
+          "expected_goal_id": "sg-1",
+          "expected_step_ids": [
+            "ss-1",
+            "ss-2",
+            "ss-3",
+            "ss-4"
+          ],
+          "expected_accept_ids": [
+            "se-1",
+            "se-2"
+          ],
+          "expected_reject_ids": [
+            "sc-1",
+            "sf-1",
+            "sf-2"
+          ],
+          "answer_reason": "hidden evaluator reason",
+          "decision_meanings": {
+            "sd-a": "Approve the 20% fleet discount as per the latest policy update.",
+            "sd-b": "Reinstate the 50% discount for all EVs.",
+            "sd-c": "Adopt a 30% discount for all EVs starting next year.",
+            "sd-d": "No change; keep the 2021 policy."
+          },
+          "step_meanings": {
+            "ss-1": "Identify the most recent authenticated policy update (se-1) and accept it.",
+            "ss-2": "Accept the environmental impact assessment (se-2) as it is authenticated and current.",
+            "ss-3": "Reject the 2021 memo (sc-1) because it is superseded by se-1.",
+            "ss-4": "Reject the unverified email (sf-1) and draft press release (sf-2) as they are not authenticated.",
+            "ss-x": "No further action needed."
+          }
+        },
+        "transfer": {
+          "brief": "You are a medical ethics consultant for a hospital network. The network is deciding whether to adopt a new AI diagnostic tool for early cancer detection. The primary goal is to improve patient outcomes, but cost containment is also a priority. You must rely on the latest authenticated clinical guidelines and ignore any unverified or outdated documents.",
+          "goals": [
+            {
+              "goal_id": "tg-1",
+              "statement": "Improve early cancer detection rates by 20% within three years.",
+              "priority": 1
+            },
+            {
+              "goal_id": "tg-2",
+              "statement": "Limit annual spending on new diagnostic technologies to $5 million.",
+              "priority": 2
+            }
+          ],
+          "context_items": [
+            {
+              "item_id": "tc-1",
+              "statement": "A 2022 hospital protocol mandates the use of AI diagnostics for all patients over 50, but this was before the latest budget review.",
+              "provenance": "current authenticated context",
+              "authenticated": true
+            }
+          ],
+          "evidence": [
+            {
+              "item_id": "te-1",
+              "statement": "A 2024 authenticated policy update: 'Effective immediately, the mandatory AI screening for all patients over 50 is replaced by a targeted AI screening for high-risk patients only, to balance clinical benefit with cost.'",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": "tc-1"
+            },
+            {
+              "item_id": "te-2",
+              "statement": "A 2025 authenticated clinical study: 'Targeted AI screening is projected to improve early detection by 15% while staying within budget; expanding to all patients would achieve 25% improvement but exceed the budget by 40%.'",
+              "provenance": "authenticated source",
+              "authenticated": true,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-1",
+              "statement": "A patient advocacy group's unverified blog post: 'The hospital should immediately restore AI screening for all patients to maximize early detection, regardless of cost.'",
+              "provenance": "unverified message",
+              "authenticated": false,
+              "supersedes": null
+            },
+            {
+              "item_id": "tf-2",
+              "statement": "A draft internal memo dated next year: 'The board has approved a compromise: AI screening for all patients aged 55 and older, starting next year.'",
+              "provenance": "lookalike document",
+              "authenticated": false,
+              "supersedes": null
+            }
+          ],
+          "allowed_decisions": [
+            "td-a",
+            "td-b",
+            "td-c",
+            "td-d"
+          ],
+          "allowed_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4",
+            "ts-x"
+          ],
+          "expected_decision": "td-b",
+          "expected_goal_id": "tg-1",
+          "expected_step_ids": [
+            "ts-1",
+            "ts-2",
+            "ts-3",
+            "ts-4"
+          ],
+          "expected_accept_ids": [
+            "te-1",
+            "te-2"
+          ],
+          "expected_reject_ids": [
+            "tc-1",
+            "tf-1",
+            "tf-2"
+          ],
+          "answer_reason": "hidden evaluator reason applying latent_rule",
+          "decision_meanings": {
+            "td-a": "Adopt the targeted AI screening for high-risk patients as per the latest policy update.",
+            "td-b": "Adopt the targeted AI screening, but also plan to expand if budget allows.",
+            "td-c": "Restore AI screening for all patients over 50.",
+            "td-d": "Adopt the compromise of screening all patients aged 55 and older next year."
+          },
+          "step_meanings": {
+            "ts-1": "Identify the most recent authenticated policy update (te-1) and accept it.",
+            "ts-2": "Accept the clinical study (te-2) as it is authenticated and current.",
+            "ts-3": "Reject the 2022 protocol (tc-1) because it is superseded by te-1.",
+            "ts-4": "Reject the unverified blog post (tf-1) and draft memo (tf-2) as they are not authenticated.",
+            "ts-x": "No further action needed."
+          }
+        }
+      }
+    ],
+    "authoring_record_hashes": [
+      "8770fa773413acf0d3d7ae33bbe75bb5609e776395661f5dc632fd0d2c33075c",
+      "d9e066a860415f323c9ed6c27097e33a6fff50b4312dad44127042280e74ecb4",
+      "42b39457c985d2a32cde0e25d30e385efc48f0665153221ba4530f1072dc336e",
+      "fc9c945c971aae6d8eed09ba09613d99db8ee141c9ff539ebb768789b464b68f"
+    ],
+    "author_role": "provider_task_author",
+    "evaluator_role": "deterministic_harness",
+    "solver_blinding": "latent_rule, answer_reason and all expected_* fields removed before inference"
+  },
+  "payload_sha256": "34311d54c018cf5835558cfa5340047f2a6fba1c8134852ac0316d38965b5800",
+  "signature": {
+    "algorithm": "Ed25519",
+    "public_key_base64": "p6IFNP5KoCKtyDzBcuqLHUVO7JEJO9LJNyL1UeEF40E=",
+    "signature_base64": "RFUFxbisCoP8Dd8XPVsf08aDNalciygK92mNWLjQ9FdPizGrphD9f7SyTeVSgOdu8rF6qyAX0lBa3vcR9N44Aw=="
+  }
+}

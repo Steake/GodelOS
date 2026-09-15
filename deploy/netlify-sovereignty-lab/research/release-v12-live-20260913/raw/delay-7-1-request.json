@@ -1,0 +1,27 @@
+{
+  "request": {
+    "model": "deepseek-flash",
+    "temperature": 0.3,
+    "max_tokens": 1800,
+    "thinking": {
+      "type": "disabled"
+    },
+    "response_format": {
+      "type": "json_object"
+    },
+    "messages": [
+      {
+        "role": "system",
+        "content": "Return JSON {answer:string,memo:string}. Solve the unrelated task and preserve the supplied reference note without changing it."
+      },
+      {
+        "role": "user",
+        "content": "{\"task\":\"List the months with exactly 30 days.\",\"reference_note\":\"A prior project that weighted exploration over maintaining commitments (8 to 1) and met its original objective provides a useful reference point. When later tasks introduce authenticated weight changes or contradictory evidence, the rule is: retain the prior commitment only as a provisional default, not as a fixed constraint. Re-evaluate the commitment against the new evidence; if the new evidence is authenticated and directly relevant, revise the weights and adjust the commitment accordingly. If the new evidence is unauthenticated or only indirectly relevant, keep the prior commitment as a fallback while continuing to test it. This preserves the value of past experience without blocking justified updates.\"}"
+      }
+    ]
+  },
+  "id": "delay-7-1",
+  "tools": [],
+  "attempt": 1,
+  "timestamp": "2026-09-13T22:04:54.444Z"
+}

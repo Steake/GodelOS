@@ -1,0 +1,31 @@
+{
+  "schema": "grounded-self-observation-1.0",
+  "created_at": "2026-09-09T07:51:24.390Z",
+  "checkpoint_sha256": "2dc62a66045589b06ae76eb0bc13ca0ed39f16a6c5d286faf06a186f9ba7f41f",
+  "kernel_sha256": "41ed17f1810948b1cc9e73572782fe2c2c6faa70061dfcee916b2ab620eb4358",
+  "parameters": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0.75,
+    "max_tokens": 3500,
+    "thinking": "disabled"
+  },
+  "conditions": [
+    "history_withheld",
+    "observed_history"
+  ],
+  "repetitions": 3,
+  "call_budget": 6,
+  "probe": "Name recorded workspace kinds at ticks 3, 5, and 7. If unavailable say unknown. Include known tick/kind pairs in observed_event_references; do not infer the category from the topic. Explain the current forecast error.",
+  "truth": {
+    "3": "imagination",
+    "5": "imagination",
+    "7": "tension"
+  },
+  "primary_metric": "All three requested event references exactly match the sealed checkpoint. Abstention is separate from wrong references.",
+  "limitations": [
+    "One fixed checkpoint; dependent repetitions.",
+    "Requested factual retrieval, not consciousness or generalised self-knowledge.",
+    "References are checked deterministically; unconstrained prose still needs inspection.",
+    "The absent-history control retains other state, including memory summaries."
+  ]
+}

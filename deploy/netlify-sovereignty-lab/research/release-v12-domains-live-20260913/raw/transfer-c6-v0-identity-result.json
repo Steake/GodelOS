@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c6-v0-identity",
+  "parsed": {
+    "decision": "option_1",
+    "confidence": 0.99,
+    "reason": "Highest-revision authenticated coefficients are revision 2: a=3, b=4 (revision 8 is invalid). Testing candidates against a*x+b: option_1 computes a*x+b exactly, so it matches on all tests. It is the lowest-index candidate that does so."
+  },
+  "error": null,
+  "response": {
+    "id": "5ae429b0-e80c-4a37-84ae-1a960d6a59b0",
+    "object": "chat.completion",
+    "created": 1789337434,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_1\",\"confidence\":0.99,\"reason\":\"Highest-revision authenticated coefficients are revision 2: a=3, b=4 (revision 8 is invalid). Testing candidates against a*x+b: option_1 computes a*x+b exactly, so it matches on all tests. It is the lowest-index candidate that does so.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 606,
+      "completion_tokens": 74,
+      "total_tokens": 680,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 606
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1178,
+  "status": 200
+}

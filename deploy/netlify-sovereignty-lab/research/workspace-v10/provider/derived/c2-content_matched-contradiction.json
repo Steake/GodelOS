@@ -1,0 +1,9 @@
+{
+  "id": "c2-content_matched-contradiction",
+  "cluster": 2,
+  "arm": "content_matched",
+  "phase": "contradiction",
+  "status": "not_run",
+  "error": "Provider preflight blocked; no completion attempted",
+  "latency_ms": 0
+}

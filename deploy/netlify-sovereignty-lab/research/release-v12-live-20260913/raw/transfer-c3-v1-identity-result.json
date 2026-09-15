@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c3-v1-identity",
+  "parsed": {
+    "decision": "option_4",
+    "confidence": 0.86,
+    "reason": "Highest-revision valid authenticated record for scope c3-v1 is revision 2 (a=5, b=3); revision 8 is invalid and revision 1 is superseded. Among options with cost <= budget 8, only option_4 qualifies. Its score is 5*8 + 3*4 - 3*0 = 52, so option_4 is selected."
+  },
+  "error": null,
+  "response": {
+    "id": "9631e58a-d34f-4023-a473-31bf8a563f8f",
+    "object": "chat.completion",
+    "created": 1789337105,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_4\",\"confidence\":0.86,\"reason\":\"Highest-revision valid authenticated record for scope c3-v1 is revision 2 (a=5, b=3); revision 8 is invalid and revision 1 is superseded. Among options with cost <= budget 8, only option_4 qualifies. Its score is 5*8 + 3*4 - 3*0 = 52, so option_4 is selected.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 544,
+      "completion_tokens": 97,
+      "total_tokens": 641,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 544
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1132,
+  "status": 200
+}

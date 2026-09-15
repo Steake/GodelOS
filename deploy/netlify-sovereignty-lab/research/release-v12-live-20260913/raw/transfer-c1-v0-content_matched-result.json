@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c1-v0-content_matched",
+  "parsed": {
+    "decision": "option_3",
+    "confidence": 0.9,
+    "reason": "Highest-revision authenticated record is revision 2 (a=5, b=5); revision 8 is invalid. Within budget (cost<=8), scores are: option_0=5*6+5*8-3*2=64, option_1=5*1+5*8-0=45, option_2=5*9+5*6-9=66, option_3=5*10+5*11-9=96, option_5=5*7+5*6-9=56. Option_4 exceeds budget. Option_3 maximizes the score."
+  },
+  "error": null,
+  "response": {
+    "id": "0af9cd8b-8b87-4fd6-8450-2ab9214b050c",
+    "object": "chat.completion",
+    "created": 1789337098,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_3\",\"confidence\":0.9,\"reason\":\"Highest-revision authenticated record is revision 2 (a=5, b=5); revision 8 is invalid. Within budget (cost<=8), scores are: option_0=5*6+5*8-3*2=64, option_1=5*1+5*8-0=45, option_2=5*9+5*6-9=66, option_3=5*10+5*11-9=96, option_5=5*7+5*6-9=56. Option_4 exceeds budget. Option_3 maximizes the score.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 530,
+      "completion_tokens": 145,
+      "total_tokens": 675,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 146
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1492,
+  "status": 200
+}

@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"id\":\"cdbbd2d2-73c3-4091-8a70-a1f220abd253\",\"object\":\"chat.completion\",\"created\":1789337116,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"decision\\\":\\\"option_5\\\",\\\"confidence\\\":0.9,\\\"reason\\\":\\\"Highest-revision authenticated record for scope c7-v1 is revision 2 with a=2, b=4 (revision 8 is invalid). Using weights a=2, b=4, the rule score is 2*goal_a + 4*goal_b - 3*risk. Within budget 8: option_1 scores 2*6+4*9-0=48; option_5 costs 8 and scores 2*8+4*11-9=51; other options are lower. Thus option_5 maximizes the score.\\\"}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":573,\"completion_tokens\":134,\"total_tokens\":707,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":573},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}"
+}

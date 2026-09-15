@@ -1,0 +1,109 @@
+{
+  "schema": "controller-diagnostic-12.1",
+  "replications": 20,
+  "cases_per_replication": 96,
+  "provider_calls": 0,
+  "policy_origin": "Fixed engineer-authored comparators, not generated or learned by an LM",
+  "policies": {
+    "parent": {
+      "op": "sub",
+      "args": [
+        {
+          "op": "add",
+          "args": [
+            {
+              "op": "add",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    0.35,
+                    "salience"
+                  ]
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    0.4,
+                    "need"
+                  ]
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                0.35,
+                "affect"
+              ]
+            }
+          ]
+        },
+        {
+          "op": "mul",
+          "args": [
+            0.3,
+            "repeats"
+          ]
+        }
+      ]
+    },
+    "blanket_repetition_penalty": {
+      "op": "sub",
+      "args": [
+        {
+          "op": "add",
+          "args": [
+            "salience",
+            "need"
+          ]
+        },
+        {
+          "op": "mul",
+          "args": [
+            2,
+            "repeats"
+          ]
+        }
+      ]
+    },
+    "need_conditioned_penalty": {
+      "op": "sub",
+      "args": [
+        {
+          "op": "add",
+          "args": [
+            "salience",
+            {
+              "op": "mul",
+              "args": [
+                2,
+                "need"
+              ]
+            }
+          ]
+        },
+        {
+          "op": "mul",
+          "args": [
+            4,
+            {
+              "op": "mul",
+              "args": [
+                "repeats",
+                {
+                  "op": "sub",
+                  "args": [
+                    1,
+                    "need"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "purpose": "Test whether winning the old repetition suite predicts preservation of recurring goals on fresh feature cases."
+}

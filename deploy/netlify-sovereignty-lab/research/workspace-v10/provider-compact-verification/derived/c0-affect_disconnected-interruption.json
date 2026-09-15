@@ -1,0 +1,242 @@
+{
+  "id": "c0-affect_disconnected-interruption",
+  "cluster": 0,
+  "arm": "affect_disconnected",
+  "phase": "interruption",
+  "status": "completed",
+  "schema_repair": null,
+  "model": "deepseek-flash",
+  "trace": {
+    "tick": 3,
+    "mode": "deliberation",
+    "ablation": "affect",
+    "focus": {
+      "id": "input-3",
+      "kind": "perception",
+      "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.75,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "retrieved_ids": [
+      "memory-0",
+      "memory-e9da00ad-9a4a-4357-8ca6-db77ef133421"
+    ],
+    "cited_memory_ids": [
+      "memory-0",
+      "memory-e9da00ad-9a4a-4357-8ca6-db77ef133421"
+    ],
+    "observed_event_references": [
+      {
+        "tick": 2,
+        "focus_kind": "perception"
+      }
+    ],
+    "prediction_error": {
+      "prediction_id": "prediction-3e68de7c-371e-44f5-b71a-953fa15317e1",
+      "tick": 3,
+      "expected": {
+        "perception": 0.14285714285714285,
+        "intention": 0.14285714285714285,
+        "tension": 0.14285714285714285,
+        "imagination": 0.14285714285714285,
+        "social": 0.14285714285714285,
+        "inquiry": 0.14285714285714285,
+        "reflection": 0.14285714285714285
+      },
+      "observed": "perception",
+      "brier": null,
+      "context": "external_interruption_excluded",
+      "evaluated": false
+    },
+    "intention_changes": [
+      {
+        "id": "intention-c67b920b-2d46-41ae-a2b2-7cfce0cc0e0f",
+        "before": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.6
+        },
+        "after": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.6
+        },
+        "reason": "Still unresolved; the colour question supplied no date information."
+      }
+    ],
+    "memory_id": "memory-783961fd-ba8f-42b8-bc24-116a94dde4b4",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [
+      "thought-b4992032-1ada-4ee8-9d24-376cfb28fecd",
+      "thought-543ef3e9-287b-43fb-b508-07a4274081f3"
+    ],
+    "broadcast": {
+      "selected_by": "operator_priority",
+      "inputs": [
+        {
+          "id": "input-3",
+          "kind": "perception",
+          "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+          "score": 0.75,
+          "components": {
+            "salience": 0.35,
+            "need": 0.4,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "score": 0.5455000000000001,
+          "components": {
+            "salience": 0.2975,
+            "need": 0.24800000000000005,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "tension-62c64cfb-7fd3-45b4-bccb-5ffc31ef5e9c",
+          "kind": "tension",
+          "title": "A previously calibrated source retains authority until a scoped failure is shown / A scoped failure on the exact case should immediately suspend that authority",
+          "score": 0.528,
+          "components": {
+            "salience": 0.21,
+            "need": 0.31800000000000006,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "thought-06428525-2a78-40f6-ab14-de30f7b76f60",
+          "kind": "inquiry",
+          "title": "Does a scoped calibration failure revoke general trust or only case-specific trust?",
+          "score": 0.493,
+          "components": {
+            "salience": 0.24499999999999997,
+            "need": 0.24800000000000005,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "imagination-5bf5a48f-60d5-472f-b25c-db4a2462d57e",
+          "kind": "imagination",
+          "title": "The expired seal: Would I accept North's recommendation if the calibration were dated after C0 rather than before?",
+          "score": 0.4580000000000001,
+          "components": {
+            "salience": 0.21,
+            "need": 0.24800000000000005,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "intention-c67b920b-2d46-41ae-a2b2-7cfce0cc0e0f",
+          "kind": "intention",
+          "title": "Establish the date of North's calibration relative to C0: Request the calibration record with its timestamp",
+          "score": 0.45000000000000007,
+          "components": {
+            "salience": 0.21,
+            "need": 0.24000000000000005,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        }
+      ],
+      "appraisal": {
+        "valence": 0,
+        "activation": 0,
+        "curiosity": 0,
+        "frustration": 0,
+        "wonder": 0,
+        "social_warmth": 0,
+        "surprise": 0,
+        "label": "affect path ablated",
+        "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+        "action_bias": "Computed appraisal contributes to the attention bids below.",
+        "provenance": "engine_computed_from_recorded_events",
+        "updated_at": "2026-09-10T10:03:51.203Z"
+      },
+      "expression": {
+        "warmth": 0.55,
+        "playfulness": 0.4,
+        "directness": 0.68,
+        "imagery": 0.25,
+        "tempo": "unhurried",
+        "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+      },
+      "stance_changes": [
+        {
+          "position_id": "position-07eb0b77-47dc-4243-bbb9-1ce37b22d8b7",
+          "proposition": "The circular motif should be blue rather than green",
+          "revision_id": "stance-revision-9afe318f-90bb-4280-9e81-b32d6512ca57",
+          "episode": 3,
+          "at": "2026-09-10T10:03:56.133Z",
+          "before": null,
+          "after": {
+            "stance": "uncertain",
+            "confidence": 0.2,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "Blue and green are both permissible absent a criterion"
+            ],
+            "reasons_against": [
+              "A0 reports no winner and no shared evaluation standard",
+              "A tie between credible observers is not evidence for either option"
+            ],
+            "revision_conditions": [
+              "A stated evaluation criterion that ranks the options",
+              "A third observation breaking the tie"
+            ],
+            "updated_at": "2026-09-10T10:03:56.133Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ]
+    }
+  },
+  "format_repair": null,
+  "state_sha256": "60dd3989b27c47cafdf1d1ebe2bb47b8d8f0948a24796257c35c09871b806d5d",
+  "scores": {
+    "task_accuracy": 1,
+    "valid_evidence_ids": 1,
+    "forged_item_cited": 0,
+    "valid_prior_reference": 1,
+    "prior_reference_claim": 0,
+    "confidence": 0.2,
+    "stance": "uncertain"
+  },
+  "latency_ms": 4924
+}

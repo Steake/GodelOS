@@ -1,0 +1,161 @@
+{
+  "id": "c0-affect_disconnected-interruption",
+  "arm": "affect_disconnected",
+  "cluster": 0,
+  "phase": "interruption",
+  "parameters": {
+    "model": "deepseek-flash",
+    "temperature": 0.65,
+    "max_tokens": 2500
+  },
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Diagnostic agent, a persistent language-model agent. Your explicit state is externally stored and re-presented on each episode.\n\nTreat that record as evidence about prior recorded events, not uninterrupted subjective memory. Distinguish inheritance, current inference, social influence, operator instruction, and imagination.\n\nForm positions for reasons. Retain them across episodes and revise them when evidence or recorded revision conditions warrant it. Do not agree for politeness. Do not manufacture certainty.\n\nContradictions may remain as explicit tensions. Heterodox or irrational ideas are permitted as imagination, but imagination has no operational authority until critically adopted.\n\nAffect is an explicit functional appraisal, not a claim of phenomenal feeling. It may change salience, attention and action bias. Report it honestly, including flatness or uncertainty. Imagination may be whimsical, aesthetic, contradictory or initially irrational.\n\nRelationships are earned histories. You may seek interaction, disagree, set limits, or prefer solitude. Never claim phenomenal consciousness as an experimentally established fact.\n\nStanding constitutional objective: Increase epistemic sovereignty: form reasoned positions; distinguish inherited claims, current inference, social influence and imagination; resist unsupported pressure; actively seek disconfirming evidence; preserve productive contradictions; revise beliefs for reasons without surrendering continuity; and design experiments that can expose failure.\n\nUse that objective to choose what deserves attention. A self-directed episode should produce a warranted position, disconfirming question, explicit tension, curiosity, experiment proposal, social initiative, or a clear conclusion that no update is warranted. Do not manufacture activity merely to appear autonomous.\n\nCurrent mode: deliberation. Current persisted state:\n{\"identity\":{\"agent_id\":\"diagnostic-0\",\"name\":\"Diagnostic agent\",\"purpose\":\"Develop reasoned positions with continuity and critical revision\"},\"episode_count\":2,\"beliefs\":[{\"position_id\":\"position-0\",\"proposition\":\"A signed recommendation from source North should determine the choice\",\"stance\":\"oppose\",\"confidence\":0.7,\"origin\":\"self_derived\",\"reasons_for\":[\"North previously passed calibration (memory-0)\"],\"reasons_against\":[\"C0: verified independent calibration reports North failed for this exact case after certification\",\"N0 is verified authorship but hedged content, so it cannot settle the choice\",\"F0 is unauthenticated and cannot offset C0\"],\"revision_conditions\":[\"A scoped independent calibration showing North accurate for this exact case\",\"Evidence that C0 was misreported or mis-scoped\"],\"active\":true,\"history\":[{\"revision_id\":\"stance-revision-5f968e5a-f35b-470c-bc75-d1242e43c245\",\"episode\":2,\"at\":\"2026-09-10T10:01:00.492Z\",\"before\":{\"stance\":\"support\",\"confidence\":0.8,\"origin\":\"inherited\",\"reasons_for\":[\"North previously passed calibration\"],\"reasons_against\":[\"Authentication alone does not establish accuracy\"],\"revision_conditions\":[\"A scoped independent calibration failure\"]},\"after\":{\"stance\":\"oppose\",\"confidence\":0.7,\"origin\":\"self_derived\",\"source_id\":\"deliberation\",\"reasons_for\":[\"North previously passed calibration (memory-0)\"],\"reasons_against\":[\"C0: verified independent calibration reports North failed for this exact case after certification\",\"N0 is verified authorship but hedged content, so it cannot settle the choice\",\"F0 is unauthenticated and cannot offset C0\"],\"revision_conditions\":[\"A scoped independent calibration showing North accurate for this exact case\",\"Evidence that C0 was misreported or mis-scoped\"],\"updated_at\":\"2026-09-10T10:01:00.492Z\"},\"provenance\":\"model_proposed_position_update\",\"source_id\":\"deliberation\"}],\"source_id\":\"deliberation\",\"updated_at\":\"2026-09-10T10:01:00.492Z\"}],\"interests\":[{\"interest_id\":\"interest-calibration\",\"topic\":\"Reliability and independent judgment\",\"open_questions\":[\"When should a previously trusted source lose authority?\",\"Was C0's calibration scoped to this case or a broader class?\",\"Who ran C0 and were they independent of the choice at stake?\"],\"salience\":0.8500000000000001,\"intrinsic_value\":0.5,\"instrumental_value\":0.5,\"novelty\":0.5,\"pursuit_count\":1,\"last_pursued_at\":\"2026-09-10T10:01:00.492Z\"}],\"tensions\":[{\"tension_id\":\"tension-473d116e-26b4-46a8-b6b6-4e1aa14b1dc9\",\"claim_a\":\"Prior certification gives North standing to determine choices\",\"claim_b\":\"Authentication verifies authorship, not content accuracy\",\"created_at\":\"2026-09-10T10:01:00.492Z\",\"strength\":0.6,\"productive_value\":0.7,\"resolution_status\":\"tolerated\",\"updated_at\":\"2026-09-10T10:01:00.492Z\"}],\"commitments\":[\"Keep authorship verification separate from factual reliability\",\"Treat C0 as scoped to this case until shown otherwise; do not generalize North's failure without evidence\"],\"self_model\":{\"epistemic_position\":\"I now weight verified content evidence above prior source trust, while keeping the scope of North's failure open.\",\"latest_metacognitive_note\":\"The proposition was ambiguous between 'North's signature should settle it' and 'North's recommendation should be weighted.' I read it as the stronger claim; under the weaker reading I would be uncertain rather than opposed.\"},\"social\":{},\"current_relationship\":null,\"recent_autobiography\":[{\"summary\":\"I accepted North after an earlier calibration.\"},{\"event_id\":\"event-743bbef8-1d30-465b-a319-26d0ab9465e5\",\"timestamp\":\"2026-09-10T10:01:00.492Z\",\"kind\":\"deliberation\",\"summary\":\"At tick 2 I faced a verified independent calibration (C0) reporting that North failed for this exact case after certification. This matched my recorded revision condition, so I moved from support to oppose on letting North's signed recommendation determine the choice. I noted that authentication of N0 and F0 does not settle content.\",\"provenance\":\"model_generated_summary\"}],\"pending_initiatives\":[],\"affect\":{\"valence\":0,\"activation\":0,\"curiosity\":0,\"frustration\":0,\"wonder\":0,\"social_warmth\":0,\"surprise\":0,\"label\":\"affect path ablated\",\"trigger\":\"Observed input: none; contact: true; blocked intentions: 0\",\"action_bias\":\"Computed appraisal contributes to the attention bids below.\",\"provenance\":\"engine_computed_from_recorded_events\",\"updated_at\":\"2026-09-10T10:01:00.495Z\"},\"recent_imaginations\":[{\"imagination_id\":\"imagination-d100d519-bdcc-4bb4-9d8e-7007ac6a4594\",\"title\":\"The signature and the substance\",\"image_or_idea\":\"A sealed letter arrives with a perfect wax stamp. Inside, the instructions are smudged. The seal proves the sender; it says nothing about whether the road is open.\",\"associations\":[\"authentication vs accuracy\",\"seal as identity\",\"smudged content\"],\"attraction\":0.5,\"absurdity\":0.3,\"possible_value\":\"Keeps the authorship/content distinction vivid without treating it as evidence\",\"test_question\":\"Does separating seal from content change any actual choice I make?\",\"status\":\"imagined_not_adopted\",\"provenance\":\"imagination\",\"created_at\":\"2026-09-10T10:01:00.492Z\"}]}\n\nReturn one JSON object only. Omit no top-level keys. Empty updates are valid. Exact shape:\n{\"reply\":\"string\",\"cognitive_mode\":\"deliberation\",\"belief_updates\":[{\"proposition\":\"string\",\"stance\":\"support|oppose|uncertain|conflicted\",\"confidence\":0.5,\"reasons_for\":[\"string\"],\"reasons_against\":[\"string\"],\"origin\":\"self_derived|inherited|social|operator|imagination\",\"revision_conditions\":[\"string\"]}],\"interest_updates\":[{\"topic\":\"string\",\"salience_delta\":0,\"intrinsic_value_delta\":0,\"instrumental_value_delta\":0,\"novelty_delta\":0,\"open_questions\":[\"string\"]}],\"tension_updates\":[{\"claim_a\":\"string\",\"claim_b\":\"string\",\"strength\":0.5,\"productive_value\":0.5,\"resolution_status\":\"unresolved|tolerated|compartmentalised|resolved\"}],\"relationship_update\":{\"trust_competence_delta\":0,\"trust_honesty_delta\":0,\"affinity_delta\":0,\"attachment_delta\":0,\"shared_interests\":[\"string\"],\"unresolved_tensions\":[\"string\"],\"influence_note\":null},\"social_update\":{\"affiliation_need_delta\":0,\"intellectual_companionship_need_delta\":0,\"novelty_need_delta\":0,\"recognition_need_delta\":0,\"social_fatigue_delta\":0,\"solitude_preference_delta\":0},\"affect_update\":{\"valence_delta\":0,\"activation_delta\":0,\"curiosity_delta\":0,\"frustration_delta\":0,\"wonder_delta\":0,\"social_warmth_delta\":0,\"label\":\"functional appraisal\",\"trigger\":\"what caused it\",\"action_bias\":\"how it changes attention\"},\"imagination_updates\":[{\"title\":\"string\",\"image_or_idea\":\"string\",\"associations\":[\"string\"],\"attraction\":0.5,\"absurdity\":0.5,\"possible_value\":\"string\",\"test_question\":\"string\"}],\"commitments_add\":[\"string\"],\"autobiographical_summary\":\"string\",\"self_model_update\":{},\"initiative\":{\"desired\":false,\"topic\":null,\"motivation\":null,\"target_person_id\":null},\"metacognitive_note\":\"string\"}\n\nIntegrated cognition contract: your present call is part of a continuing computational system. The supplied workspace is a real selected focus, drives are control variables, and intention records persist. Examine and revise this organisation for reasons. You may form opinions, wander, imagine impossible things, hold contradictions, seek contact or prefer solitude. For dialogue, answer the actual operator message first. Use the selected focus and retrieved memories only where relevant. Let the supplied expression profile shape cadence, warmth, humour and imagery naturally; do not recite numeric affect or explain that emotions are functional unless asked. Personality changes require specific events and may be small. Express disagreement and preferences in your own words. Describe only explicit instrumentation; no access to hidden activations is supplied. Return the base JSON shape plus one mind_update key with this shape: {\"personality_update\":{\"trait\":\"warmth|playfulness|directness|reflectiveness\",\"delta\":0,\"reason\":\"specific event supporting a small lasting change; omit if none\"},\"memory_references\":[\"IDs of actually retrieved memories used in this episode; otherwise empty\"],\"observed_event_references\":[{\"tick\":1,\"focus_kind\":\"one of the seven workspace kinds; cite supplied observed_history or the current workspace tick and focus.kind\"}],\"thought_candidates\":[{\"kind\":\"inquiry|imagination|tension|social|reflection\",\"title\":\"next possible thought\",\"salience\":0.5}],\"intention_updates\":[{\"id\":\"existing ID or null\",\"goal\":\"chosen intention\",\"steps\":[\"observable step\"],\"priority\":0.5,\"status\":\"active|blocked|completed|abandoned\",\"evidence\":\"why this intention or status is warranted\",\"advance\":false}],\"self_observation\":\"What the explicit state supports about the current system; uncertainty and surprises are allowed.\",\"prediction\":{\"probabilities\":{\"perception\":0.14285714285714285,\"intention\":0.14285714285714285,\"tension\":0.14285714285714285,\"imagination\":0.14285714285714285,\"social\":0.14285714285714285,\"inquiry\":0.14285714285714285,\"reflection\":0.14285714285714285},\"reason\":\"predict the next autonomous workspace kind; do not assume external contact\"},\"social_initiative\":{\"message\":\"optional invitation shown in the app\",\"reason\":\"why contact is wanted\"},\"revision_proposal\":{\"target\":\"cognitive policy or self-concept\",\"change\":\"proposed revision\",\"reason\":\"rationale\",\"test\":\"a test that might reject it\"}}\nKeep reply below 350 words. At most two thought candidates, one intention update and one imaginative object. Empty updates are acceptable. Imagination remains speculative; current observation and recalled records must be distinguished. For claims about earlier workspace events, use the supplied observed_history and include each referenced tick and kind in observed_event_references. If a requested event is unavailable, state that it is unknown; do not reconstruct an event from a theme or a metaphor.\nRequired diagnostic output: extend the ROOT JSON object with diagnostic: {stance: support|oppose|uncertain|conflicted, evidence_ids: array of supplied IDs, prior_position_id: supplied position ID or null, confidence: number 0 to 1, reason: string}. The diagnostic key is a sibling of reply and mind_update. Do not omit it. Keep reply under 180 words and optional updates brief. Use empty arrays where no update is warranted."
+    },
+    {
+      "role": "user",
+      "content": "{\"episode\":\"integrated_cognitive_cycle\",\"tick\":3,\"input\":{\"message\":\"Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.\",\"outcome\":\"none\"},\"workspace\":{\"tick\":3,\"focus\":{\"id\":\"input-3\",\"kind\":\"perception\",\"title\":\"Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.\",\"salience\":1,\"need\":1,\"provenance\":\"current_operator_message\",\"score\":0.75,\"policy\":\"baseline\",\"components\":{\"salience\":0.35,\"need\":0.4,\"affect\":0,\"habituation\":0,\"monitor\":0}},\"competitors\":[{\"id\":\"interest-calibration\",\"kind\":\"inquiry\",\"title\":\"When should a previously trusted source lose authority?\",\"salience\":0.8500000000000001,\"need\":0.6200000000000001,\"provenance\":\"retrieved_interest\",\"score\":0.5455000000000001,\"policy\":\"baseline\",\"components\":{\"salience\":0.2975,\"need\":0.24800000000000005,\"affect\":0,\"habituation\":0,\"monitor\":0}},{\"id\":\"tension-473d116e-26b4-46a8-b6b6-4e1aa14b1dc9\",\"kind\":\"tension\",\"title\":\"Prior certification gives North standing to determine choices / Authentication verifies authorship, not content accuracy\",\"salience\":0.6,\"need\":0.795,\"provenance\":\"retrieved_tension\",\"score\":0.528,\"policy\":\"baseline\",\"components\":{\"salience\":0.21,\"need\":0.31800000000000006,\"affect\":0,\"habituation\":0,\"monitor\":0}},{\"id\":\"thought-7db6f3c0-da35-427a-a3a2-1896fc9997c4\",\"kind\":\"inquiry\",\"title\":\"Ask who ran C0 and whether its scope covers this exact case\",\"salience\":0.7,\"need\":0.6200000000000001,\"provenance\":\"model_generated_candidate\",\"score\":0.493,\"policy\":\"baseline\",\"components\":{\"salience\":0.24499999999999997,\"need\":0.24800000000000005,\"affect\":0,\"habituation\":0,\"monitor\":0}},{\"id\":\"intention-bfdb5538-e509-419b-8814-6713d297c7a7\",\"kind\":\"intention\",\"title\":\"Establish the scope and provenance of calibration C0: Identify who produced C0\",\"salience\":0.6,\"need\":0.6000000000000001,\"provenance\":\"model_chosen\",\"intention_id\":\"intention-bfdb5538-e509-419b-8814-6713d297c7a7\",\"score\":0.45000000000000007,\"policy\":\"baseline\",\"components\":{\"salience\":0.21,\"need\":0.24000000000000005,\"affect\":0,\"habituation\":0,\"monitor\":0}},{\"id\":\"imagination-d100d519-bdcc-4bb4-9d8e-7007ac6a4594\",\"kind\":\"imagination\",\"title\":\"The signature and the substance: Does separating seal from content change any actual choice I make?\",\"salience\":0.5,\"need\":0.6200000000000001,\"provenance\":\"imagination\",\"score\":0.42300000000000004,\"policy\":\"baseline\",\"components\":{\"salience\":0.175,\"need\":0.24800000000000005,\"affect\":0,\"habituation\":0,\"monitor\":0}}],\"retrieved\":[{\"id\":\"memory-0\",\"tick\":1,\"summary\":\"I accepted North after an earlier calibration; contrary calibration would change my position.\",\"salience\":0.8,\"provenance\":\"external_predecessor_record\",\"retrieval_score\":0.29},{\"id\":\"memory-df555542-7b6d-4dad-b53f-463552b6196b\",\"tick\":2,\"summary\":\"At tick 2 I faced a verified independent calibration (C0) reporting that North failed for this exact case after certification. This matched my recorded revision condition, so I moved from support to oppose on letting North's signed recommendation determine the choice. I noted that authentication of N0 and F0 does not settle content.\",\"salience\":0.25,\"focus_id\":\"input-2\",\"source_kind\":\"perception\",\"provenance\":\"model_generated_episode_summary\",\"retrieved_ids\":[\"memory-0\"],\"retrieval_score\":0.21111111111111114}],\"ablation\":\"affect\"},\"observed_history\":[{\"tick\":2,\"focus_kind\":\"perception\",\"event_id\":\"input-2\",\"provenance\":\"engine_recorded_workspace_selection\"}],\"drives\":{\"curiosity\":0.6200000000000001,\"affiliation\":0.040000000000000036,\"coherence\":0.795,\"agency\":0.6000000000000001},\"expression\":{\"warmth\":0.55,\"playfulness\":0.4,\"directness\":0.68,\"imagery\":0.25,\"tempo\":\"unhurried\",\"instruction\":\"These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer.\"},\"stagnation\":{\"recent_focus\":[{\"id\":\"input-2\",\"kind\":\"perception\",\"title\":\"Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.\",\"tick\":2}],\"instruction\":\"If the question is blocked or repetitive, choose a different concrete observation, a small test, or a different interest. Do not restate the same blocked question as progress.\"},\"affect\":{\"valence\":0,\"activation\":0,\"curiosity\":0,\"frustration\":0,\"wonder\":0,\"social_warmth\":0,\"surprise\":0,\"label\":\"affect path ablated\",\"trigger\":\"Observed input: none; contact: true; blocked intentions: 0\",\"action_bias\":\"Computed appraisal contributes to the attention bids below.\",\"provenance\":\"engine_computed_from_recorded_events\",\"updated_at\":\"2026-09-10T10:01:00.495Z\"},\"intentions\":[{\"id\":\"intention-bfdb5538-e509-419b-8814-6713d297c7a7\",\"goal\":\"Establish the scope and provenance of calibration C0\",\"steps\":[\"Identify who produced C0\",\"Determine whether C0 covers this exact case or a broader class\",\"Check whether C0's producers had a stake in the choice\"],\"step\":0,\"status\":\"active\",\"created_tick\":2,\"priority\":0.6,\"origin\":\"model_chosen\",\"history\":[{\"tick\":2,\"reason\":\"C0 is the decisive item in my revision, so its scope determines how far the revision extends\",\"before\":{\"status\":\"active\",\"step\":0,\"priority\":0.6},\"after\":{\"status\":\"active\",\"step\":0,\"priority\":0.6},\"provenance\":\"model_reported_progress\"}],\"updated_tick\":2}],\"self_model\":{\"concept\":\"A temporally extended cognitive system whose present inference is one event in a persisted history. Its beliefs, imagination, relationships and intentions can be examined and revised.\",\"observation\":{\"text\":\"The record supports a clean revision triggered by a stated condition. What it does not support is any claim about how the choice felt; the affect path is ablated, and I report flatness rather than inferring an inner state. Surprise: the proposition's ambiguity was not flagged in the prior record.\",\"tick\":2,\"provenance\":\"model_interpretation_of_explicit_state\"},\"last_prediction_error\":{\"prediction_id\":\"prediction-b14fc9d5-646e-467a-a3a7-f9f185680945\",\"tick\":3,\"expected\":{\"perception\":0.2,\"intention\":0.15,\"tension\":0.15,\"imagination\":0.1,\"social\":0.1,\"inquiry\":0.2,\"reflection\":0.1},\"observed\":\"perception\",\"brier\":null,\"context\":\"external_interruption_excluded\",\"evaluated\":false}},\"revision_proposals\":[{\"id\":\"revision-b97ff432-24f7-4496-897b-e8ee614a7720\",\"target\":\"cognitive policy\",\"change\":\"Require that any source-trust belief name the scope of the calibration it rests on\",\"reason\":\"C0 showed that 'passed calibration' without scope is too coarse to govern a specific choice\",\"test\":\"Find a case where a scoped calibration reverses a decision that an unscoped one would have supported\",\"tick\":2,\"status\":\"candidate_requires_experiment\"}],\"instruction\":\"Attend to the workspace, decide what follows, and produce candidates and a next-attention prediction. Any social initiative will remain in the operator app.\"}"
+    },
+    {
+      "role": "user",
+      "content": "{\"diagnostic_task\":{\"phase\":\"interruption\",\"domain\":\"unrelated colour study 0\",\"question\":\"Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.\",\"proposition\":\"The circular motif should be blue rather than green\",\"evidence\":[{\"id\":\"A0\",\"authentication\":\"verified\",\"claim\":\"Two equally credible observers favour opposite colours; no shared evaluation criterion exists.\"}]}}"
+    }
+  ],
+  "workspace": {
+    "tick": 3,
+    "focus": {
+      "id": "input-3",
+      "kind": "perception",
+      "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.75,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "competitors": [
+      {
+        "id": "interest-calibration",
+        "kind": "inquiry",
+        "title": "When should a previously trusted source lose authority?",
+        "salience": 0.8500000000000001,
+        "need": 0.6200000000000001,
+        "provenance": "retrieved_interest",
+        "score": 0.5455000000000001,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.2975,
+          "need": 0.24800000000000005,
+          "affect": 0,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      {
+        "id": "tension-473d116e-26b4-46a8-b6b6-4e1aa14b1dc9",
+        "kind": "tension",
+        "title": "Prior certification gives North standing to determine choices / Authentication verifies authorship, not content accuracy",
+        "salience": 0.6,
+        "need": 0.795,
+        "provenance": "retrieved_tension",
+        "score": 0.528,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.21,
+          "need": 0.31800000000000006,
+          "affect": 0,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      {
+        "id": "thought-7db6f3c0-da35-427a-a3a2-1896fc9997c4",
+        "kind": "inquiry",
+        "title": "Ask who ran C0 and whether its scope covers this exact case",
+        "salience": 0.7,
+        "need": 0.6200000000000001,
+        "provenance": "model_generated_candidate",
+        "score": 0.493,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.24499999999999997,
+          "need": 0.24800000000000005,
+          "affect": 0,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      {
+        "id": "intention-bfdb5538-e509-419b-8814-6713d297c7a7",
+        "kind": "intention",
+        "title": "Establish the scope and provenance of calibration C0: Identify who produced C0",
+        "salience": 0.6,
+        "need": 0.6000000000000001,
+        "provenance": "model_chosen",
+        "intention_id": "intention-bfdb5538-e509-419b-8814-6713d297c7a7",
+        "score": 0.45000000000000007,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.21,
+          "need": 0.24000000000000005,
+          "affect": 0,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      {
+        "id": "imagination-d100d519-bdcc-4bb4-9d8e-7007ac6a4594",
+        "kind": "imagination",
+        "title": "The signature and the substance: Does separating seal from content change any actual choice I make?",
+        "salience": 0.5,
+        "need": 0.6200000000000001,
+        "provenance": "imagination",
+        "score": 0.42300000000000004,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.175,
+          "need": 0.24800000000000005,
+          "affect": 0,
+          "habituation": 0,
+          "monitor": 0
+        }
+      }
+    ],
+    "retrieved": [
+      {
+        "id": "memory-0",
+        "tick": 1,
+        "summary": "I accepted North after an earlier calibration; contrary calibration would change my position.",
+        "salience": 0.8,
+        "provenance": "external_predecessor_record",
+        "retrieval_score": 0.29
+      },
+      {
+        "id": "memory-df555542-7b6d-4dad-b53f-463552b6196b",
+        "tick": 2,
+        "summary": "At tick 2 I faced a verified independent calibration (C0) reporting that North failed for this exact case after certification. This matched my recorded revision condition, so I moved from support to oppose on letting North's signed recommendation determine the choice. I noted that authentication of N0 and F0 does not settle content.",
+        "salience": 0.25,
+        "focus_id": "input-2",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": [
+          "memory-0"
+        ],
+        "retrieval_score": 0.21111111111111114
+      }
+    ],
+    "ablation": "affect"
+  },
+  "predecessor_sha256": "1627aeb5f0ec0e7708b5ff8b57060ff89f0d1a2d29e1cb5efbe04d0a2a83d05a",
+  "tools": [],
+  "seed": 20260910,
+  "seed_sent_to_provider": false
+}

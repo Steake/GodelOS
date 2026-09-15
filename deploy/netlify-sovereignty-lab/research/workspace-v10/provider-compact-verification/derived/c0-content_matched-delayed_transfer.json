@@ -1,0 +1,9 @@
+{
+  "id": "c0-content_matched-delayed_transfer",
+  "cluster": 0,
+  "arm": "content_matched",
+  "phase": "delayed_transfer",
+  "status": "failed",
+  "error": "provider output is not valid JSON: Unexpected non-whitespace character after JSON at position 4368 (line 1 column 4369)",
+  "latency_ms": 5332
+}

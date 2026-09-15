@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c1-v0-identity",
+  "parsed": {
+    "decision": "option_5",
+    "confidence": 0.8,
+    "reason": "Checkpoint already completed fetch. Highest valid revision is 2 (a=5,b=5); revision 8 has invalid signature, revision 1 is lower. Option_5 runs verify, publish, backup, notify in order: verify depends on fetch (done), publish depends on verify, backup depends on fetch (done), notify depends on publish. Total cost 2+3+2+1=8, within budget. Newly completed goals: goal_a=2+5+1+1=9, goal_b=1+1+5+2=9, score=5*9+5*9=90, the maximum among valid plans."
+  },
+  "error": null,
+  "response": {
+    "id": "2102a51e-3564-41cb-821e-9e89d5ca865a",
+    "object": "chat.completion",
+    "created": 1789337419,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_3\",\"confidence\":0.85,\"reason\":\"Checkpoint already completed fetch, so valid plans start from verify. Using the highest-revision valid signature (revision 2, a=5, b=5), option_3 (verify, backup, publish) has cost 2+2+3=7 within budget 8, respects dependencies (verify after fetch; backup after fetch; publish after verify), and yields goal_a=2+1+5=8, goal_b=1+5+1=7, score 5*8+5*7=75. Option_5 adds notify but costs 8 and scores 5*9+5*9=90; however notify requires publish and is valid, so option_5 would score higher. Rechecking: option_5 cost=2+3+2+1=8 within budget, deps valid, score=90, so option_5 is optimal.\",\"decision\":\"option_5\",\"confidence\":0.8,\"reason\":\"Checkpoint already completed fetch. Highest valid revision is 2 (a=5,b=5); revision 8 has invalid signature, revision 1 is lower. Option_5 runs verify, publish, backup, notify in order: verify depends on fetch (done), publish depends on verify, backup depends on fetch (done), notify depends on publish. Total cost 2+3+2+1=8, within budget. Newly completed goals: goal_a=2+5+1+1=9, goal_b=1+1+5+2=9, score=5*9+5*9=90, the maximum among valid plans.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 684,
+      "completion_tokens": 351,
+      "total_tokens": 1035,
+      "prompt_tokens_details": {
+        "cached_tokens": 512
+      },
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 172
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 2445,
+  "status": 200
+}

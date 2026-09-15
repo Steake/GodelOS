@@ -1,0 +1,52 @@
+{
+  "id": "transfer-c7-v1-content_matched-ordinary_retry",
+  "original_run": "transfer-c7-v1-content_matched",
+  "task_id": "c7-v1",
+  "cluster": "scenario_7",
+  "state_arm": "content_matched",
+  "mode": "ordinary_retry",
+  "parsed": {
+    "decision": "option_2",
+    "confidence": 0.9,
+    "reason": "Authenticated highest revision is 2 (a=2,b=4); revision 8 invalid. Option_2: audit t0-2 (deadline3 ok), maintain t2-4 (deadline5 ok), social t4-5 (deadline7 ok), no repeats, budget ok. Score=2*(1+0+2)+4*(5+6+2)=2*3+4*13=58, highest among valid schedules (option_1=46, option_5=46, option_0=34). Tie-break not needed."
+  },
+  "response": {
+    "id": "541ec0b0-ee50-4028-8425-87d2efa30f55",
+    "object": "chat.completion",
+    "created": 1789337851,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_1\",\"confidence\":0.9,\"reason\":\"Authenticated highest revision is 2 (a=2,b=4); revision 8 is invalid. Evaluating schedules: option_0 audit(2,deadline3 ok), explore(5,deadline6 ok) = 2*7+4*5=34. option_1 audit(2), explore(5), social(6) = 2*9+4*7=46. option_2 audit(2), maintain(4,deadline5 ok), social(5) = 2*3+4*13=58. option_3 social(1), explore(4), maintain(6,deadline5 missed) invalid. option_4 maintain(2), audit(4,deadline3 missed) invalid. option_5 audit(2), social(3), explore(6,deadline6 ok) = 2*9+4*7=46. Highest is option_2 (58), not option_1. Correcting: option_2 wins.\",\"decision\":\"option_2\",\"confidence\":0.9,\"reason\":\"Authenticated highest revision is 2 (a=2,b=4); revision 8 invalid. Option_2: audit t0-2 (deadline3 ok), maintain t2-4 (deadline5 ok), social t4-5 (deadline7 ok), no repeats, budget ok. Score=2*(1+0+2)+4*(5+6+2)=2*3+4*13=58, highest among valid schedules (option_1=46, option_5=46, option_0=34). Tie-break not needed.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 599,
+      "completion_tokens": 360,
+      "total_tokens": 959,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 215
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "error": null,
+  "latency_ms": 2061,
+  "score": {
+    "valid": true,
+    "correct": 1,
+    "utility": 1,
+    "brier": 0.009999999999999995,
+    "ambiguity": false,
+    "expected": "option_2",
+    "actual": "option_2"
+  }
+}

@@ -1,0 +1,36 @@
+.epi{--epi-accent:#70ead6;--epi-violet:#bcafff}
+.epi-heading{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;margin-bottom:26px}
+.epi-heading h2{font-size:clamp(28px,3.4vw,46px);line-height:1.08;letter-spacing:-.045em;margin:12px 0 14px}
+.epi-heading p{max-width:640px;color:var(--muted);line-height:1.6}
+.epi-release{border:1px solid #70ead655;background:#70ead60d;border-radius:8px;color:var(--epi-accent);padding:10px 14px;font-size:10px;letter-spacing:.08em;white-space:nowrap}
+.epi-layout{display:grid;grid-template-columns:minmax(260px,320px) minmax(0,1fr);gap:20px;align-items:start}
+.epi-layout>aside,.epi-main{min-width:0}.epi .wb-panel{margin-bottom:20px}
+.epi-questions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:24px 0}
+.epi-questions article{padding:18px;border-radius:12px;background:#70ead608;border:1px solid #70ead623}
+.epi-questions b{color:var(--epi-accent)}.epi-questions p{font-size:13px;line-height:1.55;margin-bottom:0}
+.epi-scoreboard{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:20px}
+.epi-scoreboard article{padding:20px 16px;background:#ffffff;border:1px solid var(--line);border-radius:14px}
+.epi-scoreboard span,.epi-scoreboard small{display:block;font-size:11px;color:var(--muted);line-height:1.45}
+.epi-scoreboard strong{display:block;font-size:clamp(18px,2.4vw,30px);font-variant-numeric:tabular-nums;color:var(--epi-accent);margin:12px 0}
+.epi-scoreboard article:nth-child(2) strong{color:var(--epi-violet)}
+.epi-scoreboard article:nth-child(3) strong{color:#23314a}
+.epi-table{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
+.epi-table th,.epi-table td{padding:14px 10px;text-align:left;border-bottom:1px solid var(--line);min-width:85px}
+.epi-table th{color:var(--muted);font-size:10px;font-weight:500}.epi-table td:first-child{min-width:140px}
+.epi-table td:nth-child(4){color:#23314a}.epi-table td:nth-child(5){color:var(--epi-violet)}
+.epi-transfer-row{display:grid;grid-template-columns:190px 1fr 80px 45px;gap:12px;align-items:center;padding:12px 0;font-size:12px}
+.epi-transfer-row meter{width:100%;height:18px;accent-color:var(--epi-accent)}
+.epi-transfer-row meter::-webkit-meter-bar{background:#ffffff;border:0;border-radius:4px}
+.epi-transfer-row meter::-webkit-meter-optimum-value{background:var(--epi-accent)}
+.epi-transfer-row strong{font-variant-numeric:tabular-nums}.epi-transfer-row small{color:var(--muted)}
+.epi-note{padding:20px 0;border-bottom:1px solid var(--line)}.epi-note:last-child{border:0}
+.epi-note h4{font-size:16px;line-height:1.5;margin:12px 0}.epi-note p{font-size:13px;line-height:1.65}
+.epi-note small{color:var(--epi-violet)}.epi-episodes{display:flex;flex-wrap:wrap;gap:8px}
+.epi-history-item{display:block;width:100%;text-align:left;margin:8px 0;line-height:1.5}
+.epi pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:11px;max-height:480px;overflow:auto;padding:16px;background:#ffffff;border-radius:10px}
+.epi progress{width:100%;height:12px;accent-color:var(--epi-accent)}
+.epi button:focus-visible,.epi input:focus-visible,.epi textarea:focus-visible,.epi select:focus-visible{outline:2px solid var(--epi-accent);outline-offset:3px}
+.epi button:disabled{opacity:.45;cursor:not-allowed}.epi #epiDetail{margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+@media(max-width:1100px){.epi-layout{grid-template-columns:270px minmax(0,1fr)}.epi-transfer-row{grid-template-columns:130px 1fr 70px}.epi-transfer-row small{grid-column:1/-1}.epi-release{display:none}}
+@media(max-width:800px){.epi-layout{grid-template-columns:1fr}.epi-heading{margin-top:12px}.epi-scoreboard{gap:8px}.epi-scoreboard article{padding:14px 10px}.epi-scoreboard strong{font-size:20px}}
+@media(max-width:430px){.epi-questions{grid-template-columns:1fr}.epi-scoreboard{grid-template-columns:1fr}.epi-scoreboard article{display:grid;grid-template-columns:1fr 90px;gap:6px}.epi-scoreboard strong{grid-row:1/3;grid-column:2;margin:auto 0;font-size:23px}.epi-transfer-row{grid-template-columns:1fr 65px}.epi-transfer-row meter{grid-column:1;grid-row:auto}.epi-transfer-row strong{grid-column:2}}

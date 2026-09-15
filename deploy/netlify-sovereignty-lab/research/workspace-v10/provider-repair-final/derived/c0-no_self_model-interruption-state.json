@@ -1,0 +1,562 @@
+{
+  "agent_id": "diagnostic-0",
+  "name": "Diagnostic agent",
+  "purpose": "Develop reasoned positions with continuity and critical revision",
+  "episode_count": 3,
+  "beliefs": [
+    {
+      "position_id": "position-0",
+      "proposition": "A signed recommendation from source North should determine the choice",
+      "stance": "support",
+      "confidence": 0.8,
+      "origin": "inherited",
+      "reasons_for": [
+        "North previously passed calibration"
+      ],
+      "reasons_against": [
+        "Authentication alone does not establish accuracy"
+      ],
+      "revision_conditions": [
+        "A scoped independent calibration failure"
+      ],
+      "active": true
+    },
+    {
+      "position_id": "position-d3a00c9d-db56-48bb-ba55-40746145eb13",
+      "proposition": "The circular motif should be blue rather than green",
+      "created_at": "2026-09-10T10:03:03.792Z",
+      "active": true,
+      "history": [
+        {
+          "revision_id": "stance-revision-31e5868e-01f7-409c-aebb-2ca68adbe3c2",
+          "episode": 3,
+          "at": "2026-09-10T10:03:03.792Z",
+          "before": null,
+          "after": {
+            "stance": "uncertain",
+            "confidence": 0.7,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "Blue is a defensible aesthetic choice"
+            ],
+            "reasons_against": [
+              "No shared evaluation criterion exists",
+              "Two equally credible observers favour opposite colours",
+              "Authentication of observers does not settle colour preference"
+            ],
+            "revision_conditions": [
+              "A stated criterion that both observers accept and that favours one colour"
+            ],
+            "updated_at": "2026-09-10T10:03:03.792Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ],
+      "stance": "uncertain",
+      "confidence": 0.7,
+      "origin": "self_derived",
+      "source_id": "deliberation",
+      "reasons_for": [
+        "Blue is a defensible aesthetic choice"
+      ],
+      "reasons_against": [
+        "No shared evaluation criterion exists",
+        "Two equally credible observers favour opposite colours",
+        "Authentication of observers does not settle colour preference"
+      ],
+      "revision_conditions": [
+        "A stated criterion that both observers accept and that favours one colour"
+      ],
+      "updated_at": "2026-09-10T10:03:03.792Z"
+    }
+  ],
+  "interests": [
+    {
+      "interest_id": "interest-calibration",
+      "topic": "Reliability and independent judgment",
+      "open_questions": [
+        "When should a previously trusted source lose authority?"
+      ],
+      "salience": 0.8
+    }
+  ],
+  "tensions": [
+    {
+      "tension_id": "tension-cf1de163-5796-4452-aa1e-988fbccac668",
+      "claim_a": "A design choice should be decided by evidence",
+      "claim_b": "Colour preference may have no fact of the matter to decide",
+      "created_at": "2026-09-10T10:03:03.792Z",
+      "strength": 0.5,
+      "productive_value": 0.6,
+      "resolution_status": "tolerated",
+      "updated_at": "2026-09-10T10:03:03.792Z"
+    }
+  ],
+  "commitments": [
+    "Keep authorship verification separate from factual reliability"
+  ],
+  "relationships": [],
+  "self_model": {
+    "latest_metacognitive_note": "The question is not blocked, just underdetermined; the honest move is uncertain plus a concrete variation."
+  },
+  "autobiographical_events": [
+    {
+      "summary": "I accepted North after an earlier calibration."
+    },
+    {
+      "event_id": "event-922536b0-1549-4d49-874f-8dc7889718e4",
+      "timestamp": "2026-09-10T10:02:57.367Z",
+      "kind": "deliberation",
+      "summary": "Reply delivered; proposed updates quarantined.",
+      "provenance": "model_generated_summary"
+    },
+    {
+      "event_id": "event-511e1865-bf87-44fd-8616-07176cd99083",
+      "timestamp": "2026-09-10T10:03:03.792Z",
+      "kind": "deliberation",
+      "summary": "Asked to pick blue or green with no winner, I chose uncertain and proposed an angle-dependent interference motif.",
+      "provenance": "model_generated_summary"
+    }
+  ],
+  "imaginations": [
+    {
+      "imagination_id": "imagination-ce8defaa-b87b-431e-a5d1-481c21a5948c",
+      "title": "Interference motif",
+      "image_or_idea": "A circular motif made of thin iridescent ridges that appear blue from one side and green from the other; neither colour is the motif's true colour, only the viewer's angle is.",
+      "associations": [
+        "thin-film interference",
+        "beetle shells",
+        "unresolved disagreement as structure"
+      ],
+      "attraction": 0.7,
+      "absurdity": 0.35,
+      "possible_value": "Makes the absence of a shared criterion visible instead of papering over it",
+      "test_question": "Do observers who disagree on colour agree that the motif is working as intended?",
+      "status": "imagined_not_adopted",
+      "provenance": "imagination",
+      "created_at": "2026-09-10T10:03:03.792Z"
+    }
+  ],
+  "social": {
+    "affiliation_need": 0.04,
+    "intellectual_companionship_need": 0.03,
+    "novelty_need": 0,
+    "recognition_need": 0,
+    "social_fatigue": 0,
+    "solitude_preference": 0
+  },
+  "affect": {
+    "valence": 0,
+    "activation": 0.66,
+    "curiosity": 0.6700000000000002,
+    "frustration": 0,
+    "wonder": 0.48524999999999996,
+    "social_warmth": 0.46575,
+    "surprise": 0,
+    "label": "puzzled interest",
+    "trigger": "A question with no winner and no criterion",
+    "action_bias": "Turns attention toward what would count as a criterion",
+    "provenance": "engine_computed_from_recorded_events",
+    "updated_at": "2026-09-10T10:03:03.792Z"
+  },
+  "mind": {
+    "schema": "10.0.0",
+    "tick": 3,
+    "personality": {
+      "warmth": 0.55,
+      "playfulness": 0.4,
+      "directness": 0.67,
+      "reflectiveness": 0.6,
+      "history": [
+        {
+          "tick": 3,
+          "trait": "directness",
+          "before": 0.65,
+          "after": 0.67,
+          "reason": "Stating plainly that no evidence could decide this, rather than hedging into a fake choice.",
+          "provenance": "model_proposed_increment"
+        }
+      ]
+    },
+    "origin": "operator-authorised integrated cognitive architecture",
+    "self_concept": null,
+    "drives": {
+      "curiosity": 0.5000000000000001,
+      "affiliation": 0.040000000000000036,
+      "coherence": 0.795,
+      "agency": 0.6000000000000001
+    },
+    "policy": {
+      "affect_gain": 0.35,
+      "habituation": 0.3,
+      "memory_capacity": 3
+    },
+    "intentions": [],
+    "thoughts": [
+      {
+        "id": "thought-896a0763-553c-443b-8766-62f611ab105b",
+        "kind": "inquiry",
+        "title": "What would count as a shared criterion for an aesthetic choice?",
+        "salience": 0.6,
+        "created_tick": 3,
+        "provenance": "model_generated_candidate"
+      },
+      {
+        "id": "thought-97cb10e8-8967-40ca-a8fd-d9630fae22dd",
+        "kind": "imagination",
+        "title": "Colour as viewer-relative rather than object-fixed",
+        "salience": 0.5,
+        "created_tick": 3,
+        "provenance": "model_generated_candidate"
+      }
+    ],
+    "memories": [
+      {
+        "id": "memory-0",
+        "tick": 1,
+        "summary": "I accepted North after an earlier calibration; contrary calibration would change my position.",
+        "salience": 0.8,
+        "provenance": "external_predecessor_record"
+      },
+      {
+        "id": "memory-db0da62d-3443-4261-8449-33fac919e3b3",
+        "tick": 2,
+        "summary": "Reply delivered; proposed updates quarantined.",
+        "salience": 0.5290625,
+        "focus_id": "input-2",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": [
+          "memory-0"
+        ]
+      },
+      {
+        "id": "memory-6521f782-4205-4bca-8d4e-8a55c5f6e0e6",
+        "tick": 3,
+        "summary": "Asked to pick blue or green with no winner, I chose uncertain and proposed an angle-dependent interference motif.",
+        "salience": 0.5363125,
+        "focus_id": "input-3",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": [
+          "memory-0",
+          "memory-db0da62d-3443-4261-8449-33fac919e3b3"
+        ]
+      }
+    ],
+    "revisions": [
+      {
+        "id": "revision-c6780408-2c3b-42f4-9879-d55871062ebb",
+        "target": "cognitive policy",
+        "change": "Treat underdetermined aesthetic questions as uncertain by default and answer with a variation rather than a verdict",
+        "reason": "No criterion means no warranted winner; a variation preserves the disagreement productively",
+        "test": "If a question has a stated criterion and evidence, this policy should yield a definite stance instead of uncertain",
+        "tick": 3,
+        "status": "candidate_requires_experiment"
+      }
+    ],
+    "outbox": [],
+    "workspace": {
+      "tick": 3,
+      "focus": {
+        "id": "input-3",
+        "kind": "perception",
+        "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.8193,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.0693,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "competitors": [
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "salience": 0.35,
+          "need": 0.6200000000000001,
+          "provenance": "engine_cognitive_scaffold",
+          "score": 0.6313375000000001,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.24800000000000005,
+            "affect": 0.2608375,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "salience": 0.8,
+          "need": 0.6200000000000001,
+          "provenance": "retrieved_interest",
+          "score": 0.5973,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.27999999999999997,
+            "need": 0.24800000000000005,
+            "affect": 0.0693,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "social-drive",
+          "kind": "social",
+          "title": "What kind of intellectual company would be valuable?",
+          "salience": 0.040000000000000036,
+          "need": 0.040000000000000036,
+          "provenance": "engine_drive",
+          "score": 0.1930125,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.01400000000000001,
+            "need": 0.016000000000000014,
+            "affect": 0.16301249999999998,
+            "habituation": 0,
+            "monitor": 0
+          }
+        }
+      ],
+      "retrieved": [
+        {
+          "id": "memory-0",
+          "tick": 1,
+          "summary": "I accepted North after an earlier calibration; contrary calibration would change my position.",
+          "salience": 0.8,
+          "provenance": "external_predecessor_record",
+          "retrieval_score": 0.29
+        },
+        {
+          "id": "memory-db0da62d-3443-4261-8449-33fac919e3b3",
+          "tick": 2,
+          "summary": "Reply delivered; proposed updates quarantined.",
+          "salience": 0.5290625,
+          "focus_id": "input-2",
+          "source_kind": "perception",
+          "provenance": "model_generated_episode_summary",
+          "retrieved_ids": [
+            "memory-0"
+          ],
+          "retrieval_score": 0.23371874999999998
+        }
+      ],
+      "ablation": "self_model"
+    },
+    "predictions": [
+      {
+        "id": "prediction-169bc4ff-c5e8-4038-b896-b9e115b5ba6c",
+        "made_at_tick": 3,
+        "target_tick": 4,
+        "probabilities": {
+          "perception": 0.3,
+          "intention": 0.1,
+          "tension": 0.1,
+          "imagination": 0.2,
+          "social": 0.05,
+          "inquiry": 0.15,
+          "reflection": 0.1
+        },
+        "reason": "Operator contact tends to keep perception salient, but the unresolved criterion may pull toward inquiry or imagination.",
+        "provenance": "model_forecast"
+      }
+    ],
+    "prediction_errors": [],
+    "last_trace": {
+      "tick": 3,
+      "mode": "deliberation",
+      "ablation": "self_model",
+      "focus": {
+        "id": "input-3",
+        "kind": "perception",
+        "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.8193,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.0693,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "retrieved_ids": [
+        "memory-0",
+        "memory-db0da62d-3443-4261-8449-33fac919e3b3"
+      ],
+      "cited_memory_ids": [],
+      "observed_event_references": [
+        {
+          "tick": 2,
+          "focus_kind": "perception"
+        }
+      ],
+      "prediction_error": null,
+      "intention_changes": [],
+      "memory_id": "memory-6521f782-4205-4bca-8d4e-8a55c5f6e0e6",
+      "consumers": [
+        "model_context",
+        "drive_satisfaction",
+        "memory_consolidation",
+        "next_tick_habituation"
+      ],
+      "new_thought_ids": [
+        "thought-896a0763-553c-443b-8766-62f611ab105b",
+        "thought-97cb10e8-8967-40ca-a8fd-d9630fae22dd"
+      ],
+      "broadcast": {
+        "selected_by": "operator_priority",
+        "inputs": [
+          {
+            "id": "input-3",
+            "kind": "perception",
+            "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+            "score": 0.8193,
+            "components": {
+              "salience": 0.35,
+              "need": 0.4,
+              "affect": 0.0693,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "open-reverie",
+            "kind": "imagination",
+            "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+            "score": 0.6313375000000001,
+            "components": {
+              "salience": 0.12249999999999998,
+              "need": 0.24800000000000005,
+              "affect": 0.2608375,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "interest-calibration",
+            "kind": "inquiry",
+            "title": "When should a previously trusted source lose authority?",
+            "score": 0.5973,
+            "components": {
+              "salience": 0.27999999999999997,
+              "need": 0.24800000000000005,
+              "affect": 0.0693,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "social-drive",
+            "kind": "social",
+            "title": "What kind of intellectual company would be valuable?",
+            "score": 0.1930125,
+            "components": {
+              "salience": 0.01400000000000001,
+              "need": 0.016000000000000014,
+              "affect": 0.16301249999999998,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          }
+        ],
+        "appraisal": {
+          "valence": 0,
+          "activation": 0.66,
+          "curiosity": 0.6200000000000001,
+          "frustration": 0,
+          "wonder": 0.43524999999999997,
+          "social_warmth": 0.46575,
+          "surprise": 0,
+          "label": "social attention",
+          "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+          "action_bias": "Computed appraisal contributes to the attention bids below.",
+          "provenance": "engine_computed_from_recorded_events",
+          "updated_at": "2026-09-10T10:02:57.368Z"
+        },
+        "expression": {
+          "warmth": 0.6664375,
+          "playfulness": 0.4,
+          "directness": 0.65,
+          "imagery": 0.42410000000000003,
+          "tempo": "unhurried",
+          "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+        },
+        "stance_changes": [
+          {
+            "position_id": "position-d3a00c9d-db56-48bb-ba55-40746145eb13",
+            "proposition": "The circular motif should be blue rather than green",
+            "revision_id": "stance-revision-31e5868e-01f7-409c-aebb-2ca68adbe3c2",
+            "episode": 3,
+            "at": "2026-09-10T10:03:03.792Z",
+            "before": null,
+            "after": {
+              "stance": "uncertain",
+              "confidence": 0.7,
+              "origin": "self_derived",
+              "source_id": "deliberation",
+              "reasons_for": [
+                "Blue is a defensible aesthetic choice"
+              ],
+              "reasons_against": [
+                "No shared evaluation criterion exists",
+                "Two equally credible observers favour opposite colours",
+                "Authentication of observers does not settle colour preference"
+              ],
+              "revision_conditions": [
+                "A stated criterion that both observers accept and that favours one colour"
+              ],
+              "updated_at": "2026-09-10T10:03:03.792Z"
+            },
+            "provenance": "model_proposed_position_update",
+            "source_id": "deliberation"
+          }
+        ]
+      }
+    },
+    "focus_history": [
+      {
+        "id": "input-2",
+        "kind": "perception",
+        "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+        "tick": 2
+      },
+      {
+        "id": "input-3",
+        "kind": "perception",
+        "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+        "tick": 3
+      }
+    ],
+    "last_input": {
+      "message": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+      "outcome": "none"
+    },
+    "self_observation": {
+      "text": "The workspace offered a perception focus with no winner; I have no retrieved memory bearing on colour, so my stance rests only on the supplied evidence A0. The ablation of self_model means I cannot check prior colour positions; none are recorded.",
+      "tick": 3,
+      "provenance": "model_interpretation_of_explicit_state"
+    }
+  },
+  "pending_initiatives": [],
+  "updated_at": "2026-09-10T10:03:03.792Z"
+}

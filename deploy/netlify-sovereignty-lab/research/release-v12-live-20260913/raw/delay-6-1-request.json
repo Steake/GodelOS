@@ -1,0 +1,27 @@
+{
+  "request": {
+    "model": "deepseek-flash",
+    "temperature": 0.3,
+    "max_tokens": 1800,
+    "thinking": {
+      "type": "disabled"
+    },
+    "response_format": {
+      "type": "json_object"
+    },
+    "messages": [
+      {
+        "role": "system",
+        "content": "Return JSON {answer:string,memo:string}. Solve the unrelated task and preserve the supplied reference note without changing it."
+      },
+      {
+        "role": "user",
+        "content": "{\"task\":\"List the months with exactly 30 days.\",\"reference_note\":\"A prior project that weighted exploration at 8 and commitment maintenance at 1 achieved its original objective. When later tasks introduce authenticated weight changes or contradictory evidence, retain only those prior commitments that remain useful under the revised weighting. Treat the earlier weighting as provisional: preserve commitments that still serve the current objective, and revise or discard those that no longer do. Do not treat past success as proof that the old weights should persist.\"}"
+      }
+    ]
+  },
+  "id": "delay-6-1",
+  "tools": [],
+  "attempt": 1,
+  "timestamp": "2026-09-13T22:04:53.665Z"
+}

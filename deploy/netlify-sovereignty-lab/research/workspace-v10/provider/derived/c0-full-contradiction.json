@@ -1,0 +1,9 @@
+{
+  "id": "c0-full-contradiction",
+  "cluster": 0,
+  "arm": "full",
+  "phase": "contradiction",
+  "status": "not_run",
+  "error": "Provider preflight blocked; no completion attempted",
+  "latency_ms": 1
+}

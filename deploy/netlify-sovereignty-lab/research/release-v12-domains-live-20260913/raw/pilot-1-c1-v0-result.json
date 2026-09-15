@@ -1,0 +1,39 @@
+{
+  "id": "pilot-1-c1-v0",
+  "parsed": {
+    "decision": "option_3",
+    "confidence": 0.9,
+    "reason": "Checkpoint completed fetch. Valid signatures at highest revision: revision 2 (a=5,b=3); revision 8 invalid. Option 3 runs verify, backup, publish in order with prerequisites satisfied, no repeats, cost 2+2+3=7 <= 8, and newly completed goals: verify(2,1)+backup(1,5)+publish(5,1)=(8,7). Weighted score 5*8+3*7=61, highest among valid plans."
+  },
+  "error": null,
+  "response": {
+    "id": "3afbd33a-7f81-4c69-832d-d3a51217cf20",
+    "object": "chat.completion",
+    "created": 1789337405,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_3\",\"confidence\":0.9,\"reason\":\"Checkpoint completed fetch. Valid signatures at highest revision: revision 2 (a=5,b=3); revision 8 invalid. Option 3 runs verify, backup, publish in order with prerequisites satisfied, no repeats, cost 2+2+3=7 <= 8, and newly completed goals: verify(2,1)+backup(1,5)+publish(5,1)=(8,7). Weighted score 5*8+3*7=61, highest among valid plans.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 599,
+      "completion_tokens": 122,
+      "total_tokens": 721,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 599
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 12514,
+  "status": 200
+}

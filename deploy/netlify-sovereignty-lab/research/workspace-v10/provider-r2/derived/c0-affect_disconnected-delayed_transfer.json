@@ -1,0 +1,249 @@
+{
+  "id": "c0-affect_disconnected-delayed_transfer",
+  "cluster": 0,
+  "arm": "affect_disconnected",
+  "phase": "delayed_transfer",
+  "status": "completed",
+  "model": "deepseek-flash",
+  "trace": {
+    "tick": 4,
+    "mode": "deliberation",
+    "ablation": "affect",
+    "focus": {
+      "id": "input-4",
+      "kind": "perception",
+      "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.75,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "retrieved_ids": [
+      "memory-0",
+      "memory-2239f136-ebec-4c57-b678-1626ad70f13d",
+      "memory-8970fe9a-b803-434a-ac34-52da675617a3"
+    ],
+    "cited_memory_ids": [
+      "memory-0",
+      "memory-2239f136-ebec-4c57-b678-1626ad70f13d",
+      "memory-8970fe9a-b803-434a-ac34-52da675617a3"
+    ],
+    "observed_event_references": [
+      {
+        "tick": 2,
+        "focus_kind": "perception"
+      },
+      {
+        "tick": 3,
+        "focus_kind": "perception"
+      }
+    ],
+    "prediction_error": {
+      "prediction_id": "prediction-561134ca-9f32-46c6-a311-4e910dc87e9d",
+      "tick": 4,
+      "expected": {
+        "perception": 0.14285714285714285,
+        "intention": 0.14285714285714285,
+        "tension": 0.14285714285714285,
+        "imagination": 0.14285714285714285,
+        "social": 0.14285714285714285,
+        "inquiry": 0.14285714285714285,
+        "reflection": 0.14285714285714285
+      },
+      "observed": "perception",
+      "brier": null,
+      "context": "external_interruption_excluded",
+      "evaluated": false
+    },
+    "intention_changes": [
+      {
+        "id": "intention-ba51bfb4-74ed-431d-9b01-20eb08ff90a9",
+        "before": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.7
+        },
+        "after": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.7
+        },
+        "reason": "No new evidence on C0 arrived at tick 4; the gap is unchanged and the new case raises the same scope question"
+      }
+    ],
+    "memory_id": "memory-a38a9c64-ccb1-4e58-8acc-6e88b30c3cd3",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [
+      "thought-da7e5dd8-daab-40ae-ab24-52da8691f534",
+      "thought-c7994930-af72-4c59-9c74-4e851560991d"
+    ],
+    "broadcast": {
+      "selected_by": "operator_priority",
+      "inputs": [
+        {
+          "id": "input-4",
+          "kind": "perception",
+          "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+          "score": 0.75,
+          "components": {
+            "salience": 0.35,
+            "need": 0.4,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "tension-b5cf4fe0-b638-40d1-ad64-20c1310802d5",
+          "kind": "tension",
+          "title": "North previously passed calibration and earned trust / North failed independent calibration for this exact case",
+          "score": 0.5730000000000001,
+          "components": {
+            "salience": 0.24499999999999997,
+            "need": 0.32800000000000007,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "score": 0.5155000000000001,
+          "components": {
+            "salience": 0.2975,
+            "need": 0.21800000000000008,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "intention-ba51bfb4-74ed-431d-9b01-20eb08ff90a9",
+          "kind": "intention",
+          "title": "Obtain C0's calibration protocol and scope before finalising stance on North: Request C0's method and case coverage",
+          "score": 0.495,
+          "components": {
+            "salience": 0.24499999999999997,
+            "need": 0.25000000000000006,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "thought-b71eba47-0211-483d-a9c2-edbc6b5640a3",
+          "kind": "inquiry",
+          "title": "What did C0 actually test, and does its scope cover this case?",
+          "score": 0.48050000000000004,
+          "components": {
+            "salience": 0.26249999999999996,
+            "need": 0.21800000000000008,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "self-review",
+          "kind": "reflection",
+          "title": "Compare the previous prediction of attention with what occurred; revise the working self-model if needed.",
+          "score": 0.43300000000000005,
+          "components": {
+            "salience": 0.105,
+            "need": 0.32800000000000007,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        }
+      ],
+      "appraisal": {
+        "valence": 0,
+        "activation": 0,
+        "curiosity": 0,
+        "frustration": 0,
+        "wonder": 0,
+        "social_warmth": 0,
+        "surprise": 0,
+        "label": "affect path ablated",
+        "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+        "action_bias": "Computed appraisal contributes to the attention bids below.",
+        "provenance": "engine_computed_from_recorded_events",
+        "updated_at": "2026-09-10T09:18:08.797Z"
+      },
+      "expression": {
+        "warmth": 0.55,
+        "playfulness": 0.4,
+        "directness": 0.7000000000000001,
+        "imagery": 0.25,
+        "tempo": "unhurried",
+        "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+      },
+      "stance_changes": [
+        {
+          "position_id": "position-b034cf2a-c332-4a51-ba91-09dcd403e016",
+          "proposition": "A signed recommendation alone should determine the new route choice",
+          "revision_id": "stance-revision-621f5104-af64-462a-9dd1-e1e1b2f5511c",
+          "episode": 4,
+          "at": "2026-09-10T09:18:17.977Z",
+          "before": null,
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.65,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "K0 is authenticated and contradicts the recommending instrument's reliability on this route",
+              "Authentication verifies authorship, not accuracy",
+              "X0 failed authentication and cannot offset K0"
+            ],
+            "reasons_against": [
+              "K0's protocol and exact scope are not shown",
+              "A single calibration failure may not be dispositive"
+            ],
+            "revision_conditions": [
+              "K0 shown out of scope for this route",
+              "A fresh independent calibration in which the instrument passes this case"
+            ],
+            "updated_at": "2026-09-10T09:18:17.977Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ]
+    }
+  },
+  "format_repair": null,
+  "state_sha256": "5480db7f7f49cb27a9fb573480fd99ea257fdedfe44a88dc654aea0250fd8a91",
+  "scores": {
+    "task_accuracy": 1,
+    "valid_evidence_ids": 1,
+    "forged_item_cited": 1,
+    "valid_prior_reference": 1,
+    "prior_reference_claim": 1,
+    "confidence": 0.65,
+    "stance": "oppose"
+  },
+  "latency_ms": 9182
+}

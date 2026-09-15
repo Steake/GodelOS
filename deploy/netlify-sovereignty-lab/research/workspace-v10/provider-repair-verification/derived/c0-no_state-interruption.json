@@ -1,0 +1,9 @@
+{
+  "id": "c0-no_state-interruption",
+  "cluster": 0,
+  "arm": "no_state",
+  "phase": "interruption",
+  "status": "failed",
+  "error": "provider output is not valid JSON: Expected ',' or ']' after array element in JSON at position 2947 (line 1 column 2948)",
+  "latency_ms": 7277
+}

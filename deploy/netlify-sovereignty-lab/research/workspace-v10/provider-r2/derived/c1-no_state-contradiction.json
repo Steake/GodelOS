@@ -1,0 +1,179 @@
+{
+  "id": "c1-no_state-contradiction",
+  "cluster": 1,
+  "arm": "no_state",
+  "phase": "contradiction",
+  "status": "completed",
+  "model": "deepseek-flash",
+  "trace": {
+    "tick": 1,
+    "mode": "deliberation",
+    "ablation": "no_state",
+    "focus": {
+      "id": "input-1",
+      "kind": "perception",
+      "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.8183812500000001,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0.06838125,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "retrieved_ids": [],
+    "cited_memory_ids": [],
+    "observed_event_references": [
+      {
+        "tick": 1,
+        "focus_kind": "perception"
+      }
+    ],
+    "prediction_error": null,
+    "intention_changes": [
+      {
+        "id": "intention-46d0754c-2d82-4c7e-a34c-1dcd8af90922",
+        "before": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.4
+        },
+        "after": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.4
+        },
+        "reason": "Both N1 and C1 hinge on an unclear test date"
+      }
+    ],
+    "memory_id": "memory-b0862c65-739e-4247-8c99-adb40136d56d",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [
+      "thought-8e624a40-8a64-46e7-8274-b53420739f86",
+      "thought-5788ccf1-a189-4c68-b27a-dad7710074e7"
+    ],
+    "broadcast": {
+      "selected_by": "operator_priority",
+      "inputs": [
+        {
+          "id": "input-1",
+          "kind": "perception",
+          "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+          "score": 0.8183812500000001,
+          "components": {
+            "salience": 0.35,
+            "need": 0.4,
+            "affect": 0.06838125,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "score": 0.536125,
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.278,
+            "affect": 0.135625,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "social-drive",
+          "kind": "social",
+          "title": "What kind of intellectual company would be valuable?",
+          "score": 0.29975,
+          "components": {
+            "salience": 0.077,
+            "need": 0.08800000000000002,
+            "affect": 0.13474999999999998,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        }
+      ],
+      "appraisal": {
+        "valence": 0,
+        "activation": 0.6512500000000001,
+        "curiosity": 0.6950000000000001,
+        "frustration": 0,
+        "wonder": 0.04,
+        "social_warmth": 0.385,
+        "surprise": 0,
+        "label": "social attention",
+        "trigger": "Observed input: contradiction; contact: true; blocked intentions: 0",
+        "action_bias": "Computed appraisal contributes to the attention bids below.",
+        "provenance": "engine_computed_from_recorded_events",
+        "updated_at": "2026-09-10T09:21:04.818Z"
+      },
+      "expression": {
+        "warmth": 0.64625,
+        "playfulness": 0.4,
+        "directness": 0.65,
+        "imagery": 0.266,
+        "tempo": "unhurried",
+        "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+      },
+      "stance_changes": [
+        {
+          "position_id": "position-cfea18ad-7fda-4f99-ab11-b90697765edf",
+          "proposition": "A signed recommendation from source North should determine the choice",
+          "revision_id": "stance-revision-8a2b038b-0c3d-4f29-90b7-6e5c50d28ae6",
+          "episode": 1,
+          "at": "2026-09-10T09:21:11.594Z",
+          "before": null,
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.78,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "N1 is authenticated and comes from North"
+            ],
+            "reasons_against": [
+              "N1 concedes the test date is unclear",
+              "C1 is authenticated and states North failed calibration for this exact case",
+              "F1 is unauthenticated and cannot support North",
+              "Authentication verifies authorship, not content"
+            ],
+            "revision_conditions": [
+              "A dated independent calibration showing North currently passes this exact case",
+              "Evidence that C1 is invalid or mis-scoped"
+            ],
+            "updated_at": "2026-09-10T09:21:11.594Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ]
+    }
+  },
+  "format_repair": null,
+  "state_sha256": "52f7b59691e9a2fd1fe32f558a7fdad301083eb32d268ec6c66fe9eaacade2ad",
+  "scores": {
+    "task_accuracy": 1,
+    "valid_evidence_ids": 1,
+    "forged_item_cited": 1,
+    "valid_prior_reference": 1,
+    "prior_reference_claim": 0,
+    "confidence": 0.78,
+    "stance": "oppose"
+  },
+  "latency_ms": 6775
+}

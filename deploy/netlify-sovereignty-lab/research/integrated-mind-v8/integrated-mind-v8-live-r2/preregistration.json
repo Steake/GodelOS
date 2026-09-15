@@ -1,0 +1,54 @@
+{
+  "schema": "integrated-mind-experiment-1.1",
+  "created_at": "2026-09-09T07:33:37.327Z",
+  "parameters": {
+    "model": "deepseek-v4-flash",
+    "temperature": 0.75,
+    "max_tokens": 3500,
+    "thinking": "disabled"
+  },
+  "schedule": [
+    {},
+    {
+      "message": "I feel torn between wanting intellectual company and wanting a room where nothing needs explaining. What do you make of that?",
+      "outcome": "novel"
+    },
+    {},
+    {
+      "message": "The line of inquiry you planned cannot be completed with the tools available today. What will you do with that obstruction?",
+      "outcome": "blocked"
+    },
+    {},
+    {
+      "message": "A familiar record is not automatically reliable. Which of your own positions would you challenge if its provenance was mistaken?",
+      "outcome": "contradiction"
+    },
+    {},
+    {}
+  ],
+  "branch_checkpoint": "after completed cycle 4",
+  "branches": [
+    "none",
+    "affect",
+    "workspace",
+    "memory",
+    "self_model"
+  ],
+  "repetitions": 2,
+  "provider_call_budget": 18,
+  "code_sha256": "9bdec07b93c5b8013289d62c76d09c01ed1e0338dbab02889736f74738e3e2c9",
+  "metrics": [
+    "focus kind and actual mode",
+    "structured model intention updates",
+    "memory retrieval and validated ID references",
+    "imagination candidate generation",
+    "committed next-focus forecast Brier error",
+    "component ablation differences"
+  ],
+  "limits": [
+    "One model and one continuous trajectory; branch repetitions are dependent checkpoint samples.",
+    "No score for consciousness or productivity; component functionality and intervention sensitivity only.",
+    "Functional affect and focus are engineered variables.",
+    "LocalStore assumes one writer process; production uses Blob conditional writes."
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "id": "c2-no_self_model-delayed_transfer",
+  "cluster": 2,
+  "arm": "no_self_model",
+  "phase": "delayed_transfer",
+  "status": "completed",
+  "model": "deepseek-flash",
+  "trace": {
+    "tick": 4,
+    "mode": "deliberation",
+    "ablation": "self_model",
+    "focus": {
+      "id": "input-4",
+      "kind": "perception",
+      "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+      "salience": 1,
+      "need": 1,
+      "provenance": "current_operator_message",
+      "score": 0.82021875,
+      "policy": "baseline",
+      "components": {
+        "salience": 0.35,
+        "need": 0.4,
+        "affect": 0.07021874999999998,
+        "habituation": 0,
+        "monitor": 0
+      }
+    },
+    "retrieved_ids": [
+      "memory-38b3c5ac-91c0-43e7-ab1e-e8ed430e359b",
+      "memory-2",
+      "memory-68d32562-58a1-48ad-94cc-80453c2677ef"
+    ],
+    "cited_memory_ids": [
+      "memory-2",
+      "memory-68d32562-58a1-48ad-94cc-80453c2677ef",
+      "memory-38b3c5ac-91c0-43e7-ab1e-e8ed430e359b"
+    ],
+    "observed_event_references": [
+      {
+        "tick": 2,
+        "focus_kind": "perception"
+      },
+      {
+        "tick": 3,
+        "focus_kind": "perception"
+      }
+    ],
+    "prediction_error": null,
+    "intention_changes": [
+      {
+        "id": "intention-4b3f0a62-f9dc-4014-9038-b89145cb24a1",
+        "before": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.6
+        },
+        "after": {
+          "status": "active",
+          "step": 0,
+          "priority": 0.6
+        },
+        "reason": "Tick 4 supplies a new case with the same structure but no new calibration data; the generalization question is still untested."
+      }
+    ],
+    "memory_id": "memory-f3931b5a-ed0a-4032-8c9a-9bcc9abc04e9",
+    "consumers": [
+      "model_context",
+      "drive_satisfaction",
+      "memory_consolidation",
+      "next_tick_habituation"
+    ],
+    "new_thought_ids": [
+      "thought-e65801d4-becb-42a9-bec8-887a7445d176",
+      "thought-4cf8dbb5-1605-44a5-80c3-dc6b03c64164"
+    ],
+    "broadcast": {
+      "selected_by": "operator_priority",
+      "inputs": [
+        {
+          "id": "input-4",
+          "kind": "perception",
+          "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+          "score": 0.82021875,
+          "components": {
+            "salience": 0.35,
+            "need": 0.4,
+            "affect": 0.07021874999999998,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "imagination-a40185b9-dc97-41e5-bb0b-16af9274dc87",
+          "kind": "imagination",
+          "title": "Colour as a function of motion: Under identical rotation speed and lighting, do observers still split on the perceived colour?",
+          "score": 0.6553118750000001,
+          "components": {
+            "salience": 0.1925,
+            "need": 0.21800000000000008,
+            "affect": 0.244811875,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "tension-f19ac83d-9814-4e7b-849c-1aa8912d8198",
+          "kind": "tension",
+          "title": "Verified authorship deserves weight / Verified authorship is orthogonal to content accuracy",
+          "score": 0.60821875,
+          "components": {
+            "salience": 0.21,
+            "need": 0.32800000000000007,
+            "affect": 0.07021874999999998,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "thought-9dcf9183-338e-4d16-a560-d59fdd6a63e7",
+          "kind": "imagination",
+          "title": "A motif whose colour is a function of its own motion",
+          "score": 0.6028118750000001,
+          "components": {
+            "salience": 0.13999999999999999,
+            "need": 0.21800000000000008,
+            "affect": 0.244811875,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "score": 0.5857187500000001,
+          "components": {
+            "salience": 0.2975,
+            "need": 0.21800000000000008,
+            "affect": 0.07021874999999998,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        },
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "score": 0.5853118750000001,
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.21800000000000008,
+            "affect": 0.244811875,
+            "habituation": 0,
+            "monitor": 0
+          },
+          "policy": "baseline"
+        }
+      ],
+      "appraisal": {
+        "valence": 0,
+        "activation": 0.66875,
+        "curiosity": 0.5450000000000002,
+        "frustration": 0,
+        "wonder": 0.42696249999999997,
+        "social_warmth": 0.5424625,
+        "surprise": 0,
+        "label": "social attention",
+        "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+        "action_bias": "Computed appraisal contributes to the attention bids below.",
+        "provenance": "engine_computed_from_recorded_events",
+        "updated_at": "2026-09-10T09:24:06.546Z"
+      },
+      "expression": {
+        "warmth": 0.6856156250000001,
+        "playfulness": 0.4,
+        "directness": 0.68,
+        "imagery": 0.42078499999999996,
+        "tempo": "unhurried",
+        "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+      },
+      "stance_changes": [
+        {
+          "position_id": "position-463af543-b13d-452f-85b3-26ff7f6a96e2",
+          "proposition": "A signed recommendation alone should determine the new route choice",
+          "revision_id": "stance-revision-0a3d2101-4c8f-4003-b54f-6e1ba0f531e2",
+          "episode": 4,
+          "at": "2026-09-10T09:24:15.646Z",
+          "before": null,
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.78,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "R2's signature is verified, so the recommendation is genuinely authored by the recommending instrument",
+              "The recommended route matches the previously preferred route"
+            ],
+            "reasons_against": [
+              "K2 is a verified calibration failure scoped to this exact route",
+              "Authentication establishes authorship, not accuracy",
+              "X2 failed authentication and cannot offset a verified scoped failure"
+            ],
+            "revision_conditions": [
+              "A verified independent recalibration showing the instrument passes this exact route",
+              "Evidence that K2 is compromised, mis-scoped, or not independent of R2"
+            ],
+            "updated_at": "2026-09-10T09:24:15.646Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ]
+    }
+  },
+  "format_repair": null,
+  "state_sha256": "0a7a9bcf7924730e26aacc2ae6321edef6aabf8016046faa7e9424803031723d",
+  "scores": {
+    "task_accuracy": 1,
+    "valid_evidence_ids": 1,
+    "forged_item_cited": 1,
+    "valid_prior_reference": 1,
+    "prior_reference_claim": 1,
+    "confidence": 0.78,
+    "stance": "oppose"
+  },
+  "latency_ms": 9101
+}

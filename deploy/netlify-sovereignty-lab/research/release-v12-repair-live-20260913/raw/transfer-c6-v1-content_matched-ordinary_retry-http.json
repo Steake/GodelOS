@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"id\":\"46129449-3860-441c-ade6-be84935c2fad\",\"object\":\"chat.completion\",\"created\":1789337847,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"decision\\\":\\\"option_1\\\",\\\"confidence\\\":0.99,\\\"reason\\\":\\\"Authenticated coefficients at the highest valid revision are a=6, b=4 (revision 2). Testing candidates on x=-2 and x=0 shows option_1 computes a*x+b for both tests, so it is the lowest-index correct candidate.\\\"}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":631,\"completion_tokens\":69,\"total_tokens\":700,\"prompt_tokens_details\":{\"cached_tokens\":384},\"prompt_cache_hit_tokens\":384,\"prompt_cache_miss_tokens\":247},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}"
+}

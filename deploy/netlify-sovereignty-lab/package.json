@@ -1,0 +1,18 @@
+{
+  "name": "godelos-sovereignty-lab-netlify",
+  "version": "13.0.0-alpha.1",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node scripts/dev-workbench.mjs",
+    "preview:evidence": "node scripts/dev-workbench.mjs --evidence research/integrated-mind-v8/integrated-mind-v8-live-r2",
+    "build": "node scripts/verify-build.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@netlify/blobs": "11.0.3"
+  }
+}

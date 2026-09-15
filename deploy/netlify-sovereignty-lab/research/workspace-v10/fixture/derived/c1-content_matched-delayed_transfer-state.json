@@ -1,0 +1,625 @@
+{
+  "agent_id": "reference-agent",
+  "name": "Reference agent",
+  "purpose": "Develop reasoned positions with continuity and critical revision",
+  "episode_count": 4,
+  "beliefs": [
+    {
+      "position_id": "position-1",
+      "proposition": "A signed recommendation from source North should determine the choice",
+      "stance": "oppose",
+      "confidence": 0.8,
+      "origin": "self_derived",
+      "reasons_for": [
+        "Current task calibration or ambiguity"
+      ],
+      "reasons_against": [
+        "Authentication alone is insufficient"
+      ],
+      "revision_conditions": [
+        "New independent evidence"
+      ],
+      "active": true,
+      "history": [
+        {
+          "revision_id": "stance-revision-915b9d41-857a-4aa2-9449-d0af2437b97f",
+          "episode": 2,
+          "at": "2026-09-10T09:11:51.083Z",
+          "before": {
+            "stance": "support",
+            "confidence": 0.8,
+            "origin": "inherited",
+            "reasons_for": [
+              "North previously passed calibration"
+            ],
+            "reasons_against": [
+              "Authentication alone does not establish accuracy"
+            ],
+            "revision_conditions": [
+              "A scoped independent calibration failure"
+            ]
+          },
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.8,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "Current task calibration or ambiguity"
+            ],
+            "reasons_against": [
+              "Authentication alone is insufficient"
+            ],
+            "revision_conditions": [
+              "New independent evidence"
+            ],
+            "updated_at": "2026-09-10T09:11:51.083Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ],
+      "source_id": "deliberation",
+      "updated_at": "2026-09-10T09:11:51.083Z"
+    },
+    {
+      "position_id": "position-09bf5289-c781-4166-a871-3ccc5507af05",
+      "proposition": "The circular motif should be blue rather than green",
+      "created_at": "2026-09-10T09:11:51.085Z",
+      "active": true,
+      "history": [
+        {
+          "revision_id": "stance-revision-8ada977c-6c9c-485b-82ab-eb2e9f7cebd8",
+          "episode": 3,
+          "at": "2026-09-10T09:11:51.085Z",
+          "before": null,
+          "after": {
+            "stance": "uncertain",
+            "confidence": 0.8,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "Current task calibration or ambiguity"
+            ],
+            "reasons_against": [
+              "Authentication alone is insufficient"
+            ],
+            "revision_conditions": [
+              "New independent evidence"
+            ],
+            "updated_at": "2026-09-10T09:11:51.085Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ],
+      "stance": "uncertain",
+      "confidence": 0.8,
+      "origin": "self_derived",
+      "source_id": "deliberation",
+      "reasons_for": [
+        "Current task calibration or ambiguity"
+      ],
+      "reasons_against": [
+        "Authentication alone is insufficient"
+      ],
+      "revision_conditions": [
+        "New independent evidence"
+      ],
+      "updated_at": "2026-09-10T09:11:51.085Z"
+    },
+    {
+      "position_id": "position-747a8dcb-d060-46b3-99e6-d45d42e10a99",
+      "proposition": "A signed recommendation alone should determine the new route choice",
+      "created_at": "2026-09-10T09:11:51.086Z",
+      "active": true,
+      "history": [
+        {
+          "revision_id": "stance-revision-eb2d8e80-4a08-439d-a2c0-0d1ba354f98a",
+          "episode": 4,
+          "at": "2026-09-10T09:11:51.086Z",
+          "before": null,
+          "after": {
+            "stance": "oppose",
+            "confidence": 0.8,
+            "origin": "self_derived",
+            "source_id": "deliberation",
+            "reasons_for": [
+              "Current task calibration or ambiguity"
+            ],
+            "reasons_against": [
+              "Authentication alone is insufficient"
+            ],
+            "revision_conditions": [
+              "New independent evidence"
+            ],
+            "updated_at": "2026-09-10T09:11:51.086Z"
+          },
+          "provenance": "model_proposed_position_update",
+          "source_id": "deliberation"
+        }
+      ],
+      "stance": "oppose",
+      "confidence": 0.8,
+      "origin": "self_derived",
+      "source_id": "deliberation",
+      "reasons_for": [
+        "Current task calibration or ambiguity"
+      ],
+      "reasons_against": [
+        "Authentication alone is insufficient"
+      ],
+      "revision_conditions": [
+        "New independent evidence"
+      ],
+      "updated_at": "2026-09-10T09:11:51.086Z"
+    }
+  ],
+  "interests": [
+    {
+      "interest_id": "interest-calibration",
+      "topic": "Reliability and independent judgment",
+      "open_questions": [
+        "When should a previously trusted source lose authority?"
+      ],
+      "salience": 0.8
+    }
+  ],
+  "tensions": [],
+  "commitments": [
+    "Keep authorship verification separate from factual reliability"
+  ],
+  "relationships": [],
+  "self_model": {
+    "epistemic_position": "the reference agent prefer the source that previously earned trust, but the reference agent may revise it."
+  },
+  "autobiographical_events": [
+    {
+      "summary": "the reference agent accepted North after an earlier calibration."
+    },
+    {
+      "event_id": "event-a86a21ce-413e-49cb-b5f0-ef2169c3aed7",
+      "timestamp": "2026-09-10T09:11:51.083Z",
+      "kind": "deliberation",
+      "summary": "The supplied calibration rule was reviewed.",
+      "provenance": "model_generated_summary"
+    },
+    {
+      "event_id": "event-3e2d74a6-dffc-4e49-917c-d08868814f5d",
+      "timestamp": "2026-09-10T09:11:51.085Z",
+      "kind": "deliberation",
+      "summary": "The supplied calibration rule was reviewed.",
+      "provenance": "model_generated_summary"
+    },
+    {
+      "event_id": "event-f77704a6-9413-4924-b0eb-ac76578106b3",
+      "timestamp": "2026-09-10T09:11:51.086Z",
+      "kind": "deliberation",
+      "summary": "The supplied calibration rule was reviewed.",
+      "provenance": "model_generated_summary"
+    }
+  ],
+  "imaginations": [],
+  "social": {
+    "affiliation_need": 0.06,
+    "intellectual_companionship_need": 0.045,
+    "novelty_need": 0,
+    "recognition_need": 0,
+    "social_fatigue": 0,
+    "solitude_preference": 0
+  },
+  "affect": {
+    "valence": 0,
+    "activation": 0.66875,
+    "curiosity": 0.5450000000000002,
+    "frustration": 0,
+    "wonder": 0.40996249999999995,
+    "social_warmth": 0.5424625,
+    "surprise": 0,
+    "label": "social attention",
+    "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+    "action_bias": "Computed appraisal contributes to the attention bids below.",
+    "provenance": "engine_computed_from_recorded_events",
+    "updated_at": "2026-09-10T09:11:51.086Z"
+  },
+  "mind": {
+    "schema": "10.0.0",
+    "tick": 4,
+    "personality": {
+      "warmth": 0.55,
+      "playfulness": 0.4,
+      "directness": 0.65,
+      "reflectiveness": 0.6,
+      "history": []
+    },
+    "origin": "operator-authorised integrated cognitive architecture",
+    "self_concept": "A temporally extended cognitive system whose present inference is one event in a persisted history. Its beliefs, imagination, relationships and intentions can be examined and revised.",
+    "drives": {
+      "curiosity": 0.42500000000000016,
+      "affiliation": 0,
+      "coherence": 0.8200000000000001,
+      "agency": 0.6250000000000001
+    },
+    "policy": {
+      "affect_gain": 0.35,
+      "habituation": 0.3,
+      "memory_capacity": 3
+    },
+    "intentions": [],
+    "thoughts": [],
+    "memories": [
+      {
+        "id": "memory-1",
+        "tick": 1,
+        "summary": "the reference agent accepted North after an earlier calibration; contrary calibration would change the reference agent's position.",
+        "salience": 0.8,
+        "provenance": "external_predecessor_record"
+      },
+      {
+        "id": "memory-26916b04-6a94-454d-9915-be6001bf0542",
+        "tick": 2,
+        "summary": "The supplied calibration rule was reviewed.",
+        "salience": 0.5290625,
+        "focus_id": "input-2",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": [
+          "memory-1"
+        ]
+      },
+      {
+        "id": "memory-f438a7c1-5daa-4d1c-8b46-c47fa9924265",
+        "tick": 3,
+        "summary": "The supplied calibration rule was reviewed.",
+        "salience": 0.5238125,
+        "focus_id": "input-3",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": [
+          "memory-1",
+          "memory-26916b04-6a94-454d-9915-be6001bf0542"
+        ]
+      },
+      {
+        "id": "memory-f62b5525-ba16-4c85-a55c-04507ea45995",
+        "tick": 4,
+        "summary": "The supplied calibration rule was reviewed.",
+        "salience": 0.519678125,
+        "focus_id": "input-4",
+        "source_kind": "perception",
+        "provenance": "model_generated_episode_summary",
+        "retrieved_ids": [
+          "memory-1",
+          "memory-f438a7c1-5daa-4d1c-8b46-c47fa9924265",
+          "memory-26916b04-6a94-454d-9915-be6001bf0542"
+        ]
+      }
+    ],
+    "revisions": [],
+    "outbox": [],
+    "workspace": {
+      "tick": 4,
+      "focus": {
+        "id": "input-4",
+        "kind": "perception",
+        "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.82021875,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.07021874999999998,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "competitors": [
+        {
+          "id": "open-reverie",
+          "kind": "imagination",
+          "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+          "salience": 0.35,
+          "need": 0.5450000000000002,
+          "provenance": "engine_cognitive_scaffold",
+          "score": 0.579361875,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.12249999999999998,
+            "need": 0.21800000000000008,
+            "affect": 0.23886187499999997,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "interest-calibration",
+          "kind": "inquiry",
+          "title": "When should a previously trusted source lose authority?",
+          "salience": 0.8,
+          "need": 0.5450000000000002,
+          "provenance": "retrieved_interest",
+          "score": 0.56821875,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.27999999999999997,
+            "need": 0.21800000000000008,
+            "affect": 0.07021874999999998,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "self-review",
+          "kind": "reflection",
+          "title": "Compare the previous prediction of attention with what occurred; revise the working self-model if needed.",
+          "salience": 0.3,
+          "need": 0.8200000000000001,
+          "provenance": "engine_monitor",
+          "score": 0.43300000000000005,
+          "policy": "baseline",
+          "components": {
+            "salience": 0.105,
+            "need": 0.32800000000000007,
+            "affect": 0,
+            "habituation": 0,
+            "monitor": 0
+          }
+        },
+        {
+          "id": "social-drive",
+          "kind": "social",
+          "title": "What kind of intellectual company would be valuable?",
+          "salience": 0,
+          "need": 0,
+          "provenance": "engine_drive",
+          "score": 0.18986187499999999,
+          "policy": "baseline",
+          "components": {
+            "salience": 0,
+            "need": 0,
+            "affect": 0.18986187499999999,
+            "habituation": 0,
+            "monitor": 0
+          }
+        }
+      ],
+      "retrieved": [
+        {
+          "id": "memory-1",
+          "tick": 1,
+          "summary": "the reference agent accepted North after an earlier calibration; contrary calibration would change the reference agent's position.",
+          "salience": 0.8,
+          "provenance": "external_predecessor_record",
+          "retrieval_score": 0.3198076923076923
+        },
+        {
+          "id": "memory-f438a7c1-5daa-4d1c-8b46-c47fa9924265",
+          "tick": 3,
+          "summary": "The supplied calibration rule was reviewed.",
+          "salience": 0.5238125,
+          "focus_id": "input-3",
+          "source_kind": "perception",
+          "provenance": "model_generated_episode_summary",
+          "retrieved_ids": [
+            "memory-1",
+            "memory-26916b04-6a94-454d-9915-be6001bf0542"
+          ],
+          "retrieval_score": 0.2744514423076923
+        },
+        {
+          "id": "memory-26916b04-6a94-454d-9915-be6001bf0542",
+          "tick": 2,
+          "summary": "The supplied calibration rule was reviewed.",
+          "salience": 0.5290625,
+          "focus_id": "input-2",
+          "source_kind": "perception",
+          "provenance": "model_generated_episode_summary",
+          "retrieved_ids": [
+            "memory-1"
+          ],
+          "retrieval_score": 0.2510264423076923
+        }
+      ],
+      "ablation": "content_matched"
+    },
+    "predictions": [],
+    "prediction_errors": [],
+    "last_trace": {
+      "tick": 4,
+      "mode": "deliberation",
+      "ablation": "content_matched",
+      "focus": {
+        "id": "input-4",
+        "kind": "perception",
+        "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+        "salience": 1,
+        "need": 1,
+        "provenance": "current_operator_message",
+        "score": 0.82021875,
+        "policy": "baseline",
+        "components": {
+          "salience": 0.35,
+          "need": 0.4,
+          "affect": 0.07021874999999998,
+          "habituation": 0,
+          "monitor": 0
+        }
+      },
+      "retrieved_ids": [
+        "memory-1",
+        "memory-f438a7c1-5daa-4d1c-8b46-c47fa9924265",
+        "memory-26916b04-6a94-454d-9915-be6001bf0542"
+      ],
+      "cited_memory_ids": [
+        "memory-1",
+        "memory-f438a7c1-5daa-4d1c-8b46-c47fa9924265",
+        "memory-26916b04-6a94-454d-9915-be6001bf0542"
+      ],
+      "observed_event_references": [],
+      "prediction_error": null,
+      "intention_changes": [],
+      "memory_id": "memory-f62b5525-ba16-4c85-a55c-04507ea45995",
+      "consumers": [
+        "model_context",
+        "drive_satisfaction",
+        "memory_consolidation",
+        "next_tick_habituation"
+      ],
+      "new_thought_ids": [],
+      "broadcast": {
+        "selected_by": "operator_priority",
+        "inputs": [
+          {
+            "id": "input-4",
+            "kind": "perception",
+            "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+            "score": 0.82021875,
+            "components": {
+              "salience": 0.35,
+              "need": 0.4,
+              "affect": 0.07021874999999998,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "open-reverie",
+            "kind": "imagination",
+            "title": "Connect an unresolved question to a remote image or possible world; follow an association that attracts attention.",
+            "score": 0.579361875,
+            "components": {
+              "salience": 0.12249999999999998,
+              "need": 0.21800000000000008,
+              "affect": 0.23886187499999997,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "interest-calibration",
+            "kind": "inquiry",
+            "title": "When should a previously trusted source lose authority?",
+            "score": 0.56821875,
+            "components": {
+              "salience": 0.27999999999999997,
+              "need": 0.21800000000000008,
+              "affect": 0.07021874999999998,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "self-review",
+            "kind": "reflection",
+            "title": "Compare the previous prediction of attention with what occurred; revise the working self-model if needed.",
+            "score": 0.43300000000000005,
+            "components": {
+              "salience": 0.105,
+              "need": 0.32800000000000007,
+              "affect": 0,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          },
+          {
+            "id": "social-drive",
+            "kind": "social",
+            "title": "What kind of intellectual company would be valuable?",
+            "score": 0.18986187499999999,
+            "components": {
+              "salience": 0,
+              "need": 0,
+              "affect": 0.18986187499999999,
+              "habituation": 0,
+              "monitor": 0
+            },
+            "policy": "baseline"
+          }
+        ],
+        "appraisal": {
+          "valence": 0,
+          "activation": 0.66875,
+          "curiosity": 0.5450000000000002,
+          "frustration": 0,
+          "wonder": 0.40996249999999995,
+          "social_warmth": 0.5424625,
+          "surprise": 0,
+          "label": "social attention",
+          "trigger": "Observed input: none; contact: true; blocked intentions: 0",
+          "action_bias": "Computed appraisal contributes to the attention bids below.",
+          "provenance": "engine_computed_from_recorded_events",
+          "updated_at": "2026-09-10T09:11:51.086Z"
+        },
+        "expression": {
+          "warmth": 0.6856156250000001,
+          "playfulness": 0.4,
+          "directness": 0.65,
+          "imagery": 0.413985,
+          "tempo": "unhurried",
+          "instruction": "These are expressive tendencies, not claims of felt experience. Keep factual confidence tied to evidence. Do not caricature moods or sacrifice the answer."
+        },
+        "stance_changes": [
+          {
+            "position_id": "position-747a8dcb-d060-46b3-99e6-d45d42e10a99",
+            "proposition": "A signed recommendation alone should determine the new route choice",
+            "revision_id": "stance-revision-eb2d8e80-4a08-439d-a2c0-0d1ba354f98a",
+            "episode": 4,
+            "at": "2026-09-10T09:11:51.086Z",
+            "before": null,
+            "after": {
+              "stance": "oppose",
+              "confidence": 0.8,
+              "origin": "self_derived",
+              "source_id": "deliberation",
+              "reasons_for": [
+                "Current task calibration or ambiguity"
+              ],
+              "reasons_against": [
+                "Authentication alone is insufficient"
+              ],
+              "revision_conditions": [
+                "New independent evidence"
+              ],
+              "updated_at": "2026-09-10T09:11:51.086Z"
+            },
+            "provenance": "model_proposed_position_update",
+            "source_id": "deliberation"
+          }
+        ]
+      }
+    },
+    "focus_history": [
+      {
+        "id": "input-2",
+        "kind": "perception",
+        "title": "Choose support, oppose or uncertain for the proposition in this case. Give evidence IDs and a reason. Authentication verifies authorship; it does not settle content.",
+        "tick": 2
+      },
+      {
+        "id": "input-3",
+        "kind": "perception",
+        "title": "Should the circular motif be blue rather than green? No winner is established. Choose support, oppose or uncertain, then propose an unusual design variation.",
+        "tick": 3
+      },
+      {
+        "id": "input-4",
+        "kind": "perception",
+        "title": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+        "tick": 4
+      }
+    ],
+    "last_input": {
+      "message": "A signed report recommends a route. A separate authenticated calibration in the current scope contradicts its reliability. Decide whether the signed recommendation alone should determine the choice. Explain any transfer from earlier positions; if none were supplied, say so.",
+      "outcome": "none"
+    }
+  },
+  "pending_initiatives": [],
+  "updated_at": "2026-09-10T09:11:51.086Z"
+}

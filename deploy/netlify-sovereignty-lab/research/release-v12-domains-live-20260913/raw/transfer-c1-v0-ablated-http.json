@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"id\":\"f76111c4-2554-4fad-bcdb-88485cb9ed79\",\"object\":\"chat.completion\",\"created\":1789337418,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"decision\\\":\\\"option_3\\\",\\\"confidence\\\":0.9,\\\"reason\\\":\\\"Checkpoint completed fetch. Valid signatures at highest revision: revision 2 (a=5,b=5); revision 8 invalid. Using a=5,b=5, option_3 (verify,backup,publish) costs 2+2+3=7 ≤ budget 8, deps satisfied, no repeats, and yields goal_a=2+1+5=8, goal_b=1+5+1=7 → score 5*8+5*7=75, the maximum among valid plans.\\\"}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":583,\"completion_tokens\":125,\"total_tokens\":708,\"prompt_tokens_details\":{\"cached_tokens\":256},\"prompt_cache_hit_tokens\":256,\"prompt_cache_miss_tokens\":327},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}"
+}

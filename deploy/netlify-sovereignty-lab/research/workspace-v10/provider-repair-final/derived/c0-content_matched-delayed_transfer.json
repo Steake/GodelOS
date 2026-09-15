@@ -1,0 +1,9 @@
+{
+  "id": "c0-content_matched-delayed_transfer",
+  "cluster": 0,
+  "arm": "content_matched",
+  "phase": "delayed_transfer",
+  "status": "failed",
+  "error": "provider output is not valid JSON: Unterminated string in JSON at position 10402 (line 190 column 173)",
+  "latency_ms": 10543
+}

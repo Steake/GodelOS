@@ -1,0 +1,89 @@
+{
+  "schema": "transfer-analysis-12.1",
+  "arms": {
+    "identity": {
+      "n": 16,
+      "accuracy": 0.5625,
+      "invalid": 0
+    },
+    "content_matched": {
+      "n": 16,
+      "accuracy": 0.625,
+      "invalid": 0
+    },
+    "ablated": {
+      "n": 16,
+      "accuracy": 0.5625,
+      "invalid": 0
+    },
+    "no_state": {
+      "n": 16,
+      "accuracy": 0.5,
+      "invalid": 0
+    }
+  },
+  "contrasts": [
+    {
+      "control": "content_matched",
+      "clusters": 8,
+      "gain": -0.0625,
+      "interval": [
+        -0.375,
+        0.25
+      ],
+      "interval_method": "97.5% percentile bootstrap of paired scenario means; two primary comparisons"
+    },
+    {
+      "control": "ablated",
+      "clusters": 8,
+      "gain": 0,
+      "interval": [
+        -0.375,
+        0.4375
+      ],
+      "interval_method": "97.5% percentile bootstrap of paired scenario means; two primary comparisons"
+    },
+    {
+      "control": "no_state",
+      "clusters": 8,
+      "gain": 0.0625,
+      "interval": [
+        0,
+        0.1875
+      ],
+      "interval_method": "97.5% percentile bootstrap of paired scenario means; two primary comparisons"
+    }
+  ],
+  "power": {
+    "method": "Normal approximation for paired cluster means; conservative planning, not observed power",
+    "effect": 0.1,
+    "paired_variance": 0.5,
+    "icc": 0.25,
+    "per_cluster": 2,
+    "clusters": 8,
+    "design_effect": 1.25,
+    "required_clusters": 298,
+    "adequate": false,
+    "alpha_familywise": 0.05,
+    "target_power": 0.8
+  },
+  "calibrated": true,
+  "all_complete": true,
+  "identity_gate": false,
+  "code_promotion_allowed": false,
+  "limitations": [
+    "Four engineered adapters cover budget allocation, dependency recovery, executable patch tests and deadline schedules; diversity within each remains limited.",
+    "Scenario-cluster intervals do not establish generalisation beyond these four generators.",
+    "Retrieved state effects do not demonstrate changes to model weights or subjective consciousness.",
+    "Invalid or failed provider outputs count as zero utility; no selective deletion."
+  ],
+  "execution": {
+    "calls": 96,
+    "fixture_completions": 0,
+    "model_names": [
+      "deepseek-flash"
+    ],
+    "errors": [],
+    "tokens": 58259
+  }
+}

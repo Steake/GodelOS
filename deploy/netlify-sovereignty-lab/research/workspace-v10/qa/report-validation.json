@@ -1,0 +1,6 @@
+{
+  "pages": 9,
+  "layout_bounds": "Every paragraph and table is checked against its allotted height and the footer boundary.",
+  "visual_review": "All nine rendered pages inspected in three contact sheets. No page overflow observed.",
+  "pdf_sha256": "ac4234aae7f9c837e17c08dcb37684e3cda9d19b50db96cc74e58662a42b97f8"
+}

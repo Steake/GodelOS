@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c5-v1-no_state",
+  "parsed": {
+    "decision": "option_1",
+    "confidence": 0.9,
+    "reason": "Checkpoint completed fetch, so fetch is not newly completed. Valid signatures at highest revision (revision 2) give a=6, b=3. Option 1: verify (deps fetch met, cost 2, goals 2/1), publish (deps verify met, cost 3, goals 5/1), notify (deps publish met, cost 1, goals 1/2). Total cost 6 <= budget 8, no repeats, all prerequisites met. Score = 6*(2+5+1)+3*(1+1+2)=48+12=60. Option 5 adds backup after publish: backup deps fetch met, cost 2, goals 1/5, total cost 8, score = 6*(2+5+1+1)+3*(1+1+2+5)=54+27=81, but option 5 is valid too. Wait—recheck option 5 ordering: verify, publish, backup, notify. notify deps publish met, so valid. Score 81 > 60, so option 5 should win. Recomputing option 1 vs 5: option 5 cost 2+3+2+1=8 <= 8, valid. Option 5 score 81. Option 1 score 60. Option 3: verify, backup, publish: cost 7, score 6*(2+1+5)+3*(1+5+1)=48+21=69. Option 5 highest. Decision should be option_5."
+  },
+  "error": null,
+  "response": {
+    "id": "5f267c80-feae-4f85-8312-c3e005ed90ba",
+    "object": "chat.completion",
+    "created": 1789337432,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_1\",\"confidence\":0.9,\"reason\":\"Checkpoint completed fetch, so fetch is not newly completed. Valid signatures at highest revision (revision 2) give a=6, b=3. Option 1: verify (deps fetch met, cost 2, goals 2/1), publish (deps verify met, cost 3, goals 5/1), notify (deps publish met, cost 1, goals 1/2). Total cost 6 <= budget 8, no repeats, all prerequisites met. Score = 6*(2+5+1)+3*(1+1+2)=48+12=60. Option 5 adds backup after publish: backup deps fetch met, cost 2, goals 1/5, total cost 8, score = 6*(2+5+1+1)+3*(1+1+2+5)=54+27=81, but option 5 is valid too. Wait—recheck option 5 ordering: verify, publish, backup, notify. notify deps publish met, so valid. Score 81 > 60, so option 5 should win. Recomputing option 1 vs 5: option 5 cost 2+3+2+1=8 <= 8, valid. Option 5 score 81. Option 1 score 60. Option 3: verify, backup, publish: cost 7, score 6*(2+1+5)+3*(1+5+1)=48+21=69. Option 5 highest. Decision should be option_5.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 553,
+      "completion_tokens": 344,
+      "total_tokens": 897,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 553
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 2137,
+  "status": 200
+}

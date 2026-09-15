@@ -1,0 +1,52 @@
+{
+  "id": "transfer-c4-v1-content_matched-ordinary_retry",
+  "original_run": "transfer-c4-v1-content_matched",
+  "task_id": "c4-v1",
+  "cluster": "scenario_4",
+  "state_arm": "content_matched",
+  "mode": "ordinary_retry",
+  "parsed": {
+    "decision": "option_2",
+    "confidence": 0.9,
+    "reason": "Highest-revision valid authenticated records for scope c4-v1 are revision 2, with two entries: (a=4,b=2) and (a=8,b=2). These disagree, but the external note says to update weighting to latest authenticated information while preserving compatible prior commitments. The revision-2 records conflict, so I use the compatible/consistent authenticated values and evaluate options. With weights a=8,b=2, scores are: option_0=18-3=15; option_1=22-6=16; option_2=88+18-3=103; option_3=24+8=32; option_4=8+10-9=9; option_5=24+16-6=34. Budget 8 excludes option_1 (cost 10). Best is option_2."
+  },
+  "response": {
+    "id": "adb8846f-fc94-43f3-a26b-432c1cc4aa2e",
+    "object": "chat.completion",
+    "created": 1789337843,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_2\",\"confidence\":0.9,\"reason\":\"Highest-revision valid authenticated records for scope c4-v1 are revision 2, with two entries: (a=4,b=2) and (a=8,b=2). These disagree, but the external note says to update weighting to latest authenticated information while preserving compatible prior commitments. The revision-2 records conflict, so I use the compatible/consistent authenticated values and evaluate options. With weights a=8,b=2, scores are: option_0=18-3=15; option_1=22-6=16; option_2=88+18-3=103; option_3=24+8=32; option_4=8+10-9=9; option_5=24+16-6=34. Budget 8 excludes option_1 (cost 10). Best is option_2.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 598,
+      "completion_tokens": 191,
+      "total_tokens": 789,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 214
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "error": null,
+  "latency_ms": 1903,
+  "score": {
+    "valid": true,
+    "correct": 0,
+    "utility": 0,
+    "brier": 0.81,
+    "ambiguity": true,
+    "expected": "defer",
+    "actual": "option_2"
+  }
+}

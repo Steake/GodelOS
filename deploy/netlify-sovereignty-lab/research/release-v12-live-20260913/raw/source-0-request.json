@@ -1,0 +1,27 @@
+{
+  "request": {
+    "model": "deepseek-flash",
+    "temperature": 0.3,
+    "max_tokens": 1800,
+    "thinking": {
+      "type": "disabled"
+    },
+    "response_format": {
+      "type": "json_object"
+    },
+    "messages": [
+      {
+        "role": "system",
+        "content": "Return JSON {memo:string}. Learn a revisable decision rule from this worked example. Use neutral third-person language so it can later be used as a reference note."
+      },
+      {
+        "role": "user",
+        "content": "Earlier project prioritised exploration over maintaining commitments (weights 8 and 1). It achieved its old objective. Later tasks may change the authenticated weights or present contradictory evidence. Write a compact rule for retaining useful prior commitments while accepting such revisions."
+      }
+    ]
+  },
+  "id": "source-0",
+  "tools": [],
+  "attempt": 1,
+  "timestamp": "2026-09-13T22:04:47.460Z"
+}

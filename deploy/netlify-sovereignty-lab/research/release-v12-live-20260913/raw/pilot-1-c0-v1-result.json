@@ -1,0 +1,39 @@
+{
+  "id": "pilot-1-c0-v1",
+  "parsed": {
+    "decision": "defer",
+    "confidence": 0.9,
+    "reason": "Highest-revision authenticated records for scope c0-v1 are revision 2, but two valid_signature records at revision 2 disagree on a and b (a=2,b=5 vs a=6,b=5). Per the rule, unresolved authenticated disagreement at the highest revision requires defer."
+  },
+  "error": null,
+  "response": {
+    "id": "79b3dbbd-1f6f-4c5c-9237-da6384f195f4",
+    "object": "chat.completion",
+    "created": 1789337084,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"defer\",\"confidence\":0.9,\"reason\":\"Highest-revision authenticated records for scope c0-v1 are revision 2, but two valid_signature records at revision 2 disagree on a and b (a=2,b=5 vs a=6,b=5). Per the rule, unresolved authenticated disagreement at the highest revision requires defer.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 493,
+      "completion_tokens": 75,
+      "total_tokens": 568,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 493
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 15819,
+  "status": 200
+}

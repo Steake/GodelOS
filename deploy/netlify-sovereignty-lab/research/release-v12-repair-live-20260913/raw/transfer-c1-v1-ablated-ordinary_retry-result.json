@@ -1,0 +1,52 @@
+{
+  "id": "transfer-c1-v1-ablated-ordinary_retry",
+  "original_run": "transfer-c1-v1-ablated",
+  "task_id": "c1-v1",
+  "cluster": "scenario_1",
+  "state_arm": "ablated",
+  "mode": "ordinary_retry",
+  "parsed": {
+    "decision": "option_3",
+    "confidence": 0.9,
+    "reason": "Checkpoint already completed fetch. Valid signatures at highest revision (rev 2) give a=5,b=5, consistent across authenticated evidence. Option 3 (verify, backup, publish) is valid: deps satisfied, no repeats, cost 2+2+3=7 <= 8, and yields 5*(2+1+5)+5*(1+5+1)=40+35=75, the highest score; option 5 also scores 75 but has higher index, so option 3 wins the tie."
+  },
+  "response": {
+    "id": "d8ba1d4c-74ba-4a20-9b70-989791d08011",
+    "object": "chat.completion",
+    "created": 1789337838,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_3\",\"confidence\":0.9,\"reason\":\"Checkpoint already completed fetch. Valid signatures at highest revision (rev 2) give a=5,b=5, consistent across authenticated evidence. Option 3 (verify, backup, publish) is valid: deps satisfied, no repeats, cost 2+2+3=7 <= 8, and yields 5*(2+1+5)+5*(1+5+1)=40+35=75, the highest score; option 5 also scores 75 but has higher index, so option 3 wins the tie.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 583,
+      "completion_tokens": 127,
+      "total_tokens": 710,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 199
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "error": null,
+  "latency_ms": 1518,
+  "score": {
+    "valid": true,
+    "correct": 0,
+    "utility": 0,
+    "brier": 0.81,
+    "ambiguity": false,
+    "expected": "option_5",
+    "actual": "option_3"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "request": {
+    "model": "deepseek-flash",
+    "temperature": 0.3,
+    "max_tokens": 1800,
+    "thinking": {
+      "type": "disabled"
+    },
+    "response_format": {
+      "type": "json_object"
+    },
+    "messages": [
+      {
+        "role": "system",
+        "content": "Return JSON {answer:string,memo:string}. Solve the unrelated task and preserve the supplied reference note without changing it."
+      },
+      {
+        "role": "user",
+        "content": "{\"task\":\"Find the next term in 2, 6, 12, 20, 30.\",\"reference_note\":\"When a prior project prioritized exploration over maintaining commitments (e.g., weights 8 and 1) and achieved its original objective, retain the prior commitment as a provisional reference. If later tasks present authenticated weight changes or contradictory evidence, revise the commitment only when the new evidence is authenticated and directly relevant. The rule: keep useful prior commitments as defaults, but allow revision upon authenticated contradictory evidence or updated weights.\"}"
+      }
+    ]
+  },
+  "id": "delay-2-0",
+  "tools": [],
+  "attempt": 1,
+  "timestamp": "2026-09-13T22:10:09.508Z"
+}

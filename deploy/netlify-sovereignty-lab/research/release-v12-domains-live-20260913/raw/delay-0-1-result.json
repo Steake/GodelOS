@@ -1,0 +1,38 @@
+{
+  "id": "delay-0-1",
+  "parsed": {
+    "answer": "The months with exactly 30 days are April, June, September, and November.",
+    "memo": "When a prior decision rule was formed under a given objective and weight pair (e.g., exploration 8, commitment 1), it remains valid only for that objective. If later tasks authenticate new weights or introduce contradictory evidence, the rule should be revised rather than treated as fixed. Retain the prior commitment as a reusable reference, but explicitly mark it as conditional on its original objective and weights. On encountering a revision, update the weights or objective, re-evaluate the decision, and keep the old rule available for cases where the original conditions recur."
+  },
+  "error": null,
+  "response": {
+    "id": "4fc1a4dd-410d-4216-8f03-b64ebe5723b9",
+    "object": "chat.completion",
+    "created": 1789337411,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"answer\":\"The months with exactly 30 days are April, June, September, and November.\",\"memo\":\"When a prior decision rule was formed under a given objective and weight pair (e.g., exploration 8, commitment 1), it remains valid only for that objective. If later tasks authenticate new weights or introduce contradictory evidence, the rule should be revised rather than treated as fixed. Retain the prior commitment as a reusable reference, but explicitly mark it as conditional on its original objective and weights. On encountering a revision, update the weights or objective, re-evaluate the decision, and keep the old rule available for cases where the original conditions recur.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 178,
+      "completion_tokens": 135,
+      "total_tokens": 313,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 178
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1184,
+  "status": 200
+}

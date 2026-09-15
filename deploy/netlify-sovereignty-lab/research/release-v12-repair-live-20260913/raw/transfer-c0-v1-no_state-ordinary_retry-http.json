@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"id\":\"2e5506ca-f6ae-4917-8295-50d42564af06\",\"object\":\"chat.completion\",\"created\":1789337835,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"decision\\\":\\\"option_5\\\",\\\"confidence\\\":0.9,\\\"reason\\\":\\\"Highest valid revision is 2, but two authenticated revision-2 records disagree (a=3,b=5 vs a=7,b=5), so the rule says to defer.\\\"}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":447,\"completion_tokens\":53,\"total_tokens\":500,\"prompt_tokens_details\":{\"cached_tokens\":256},\"prompt_cache_hit_tokens\":256,\"prompt_cache_miss_tokens\":191},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}"
+}

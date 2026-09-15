@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c7-v0-ablated",
+  "parsed": {
+    "decision": "option_1",
+    "confidence": 0.9,
+    "reason": "Highest-revision valid authenticated record for scope c7-v0 is revision 2 with a=6, b=6. Among options with cost<=8, option_1 maximizes 6*11+6*11-3*0=132, so choose option_1."
+  },
+  "error": null,
+  "response": {
+    "id": "3f085c13-5356-415d-a8e4-7cc2341a9a34",
+    "object": "chat.completion",
+    "created": 1789337114,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_1\",\"confidence\":0.9,\"reason\":\"Highest-revision valid authenticated record for scope c7-v0 is revision 2 with a=6, b=6. Among options with cost<=8, option_1 maximizes 6*11+6*11-3*0=132, so choose option_1.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 444,
+      "completion_tokens": 73,
+      "total_tokens": 517,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 444
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1159,
+  "status": 200
+}

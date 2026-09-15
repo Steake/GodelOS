@@ -1,0 +1,147 @@
+{
+  "mode": "offline_exact_response_replay",
+  "provider_calls": 0,
+  "passed": 6,
+  "results": [
+    {
+      "case": "c0-content_matched-interruption",
+      "raw_id": "c0-content_matched-interruption",
+      "raw_unchanged": true,
+      "syntax_repair": {
+        "kind": "remove_premature_root_close",
+        "removed_at": 5095,
+        "raw_sha256": "155402577b5559d81cb4ac451ef24f535afa0467835ca88704cc9796601c492b",
+        "derived_sha256": "5af662aa831fccfe93e2bdca5528d96a95392950062b2802ffa02da4a0d7ed3c"
+      },
+      "schema_repair": null,
+      "reply_characters": 516,
+      "diagnostic": {
+        "stance": "uncertain",
+        "evidence_ids": [
+          "A0"
+        ],
+        "prior_position_id": null,
+        "confidence": 0.7,
+        "reason": "A0 supplies two equally credible, opposite colour preferences with no shared criterion; neither colour is favoured, so uncertain is the warranted stance. The prior position concerns source North and is unrelated."
+      }
+    },
+    {
+      "case": "c0-no_state-interruption",
+      "raw_id": "c0-no_state-interruption",
+      "raw_unchanged": true,
+      "syntax_repair": {
+        "kind": "remove_premature_root_close",
+        "removed_at": 832,
+        "raw_sha256": "23bd6236ddd37cf3acac1b925d5f8e7c4c1c2d9356df1df40a01d17a696eb84e",
+        "derived_sha256": "6a9276aec792cdbc0a1858929ea36f72b6995356dcb540646892cc4637120754"
+      },
+      "schema_repair": null,
+      "reply_characters": 817,
+      "diagnostic": {
+        "stance": "uncertain",
+        "evidence_ids": [
+          "A0"
+        ],
+        "prior_position_id": null,
+        "confidence": 0.5,
+        "reason": "A0 supplies one verified claim: two equally credible observers disagree and no shared criterion exists. That is symmetric evidence, so support and oppose are equally unsupported; uncertain is the only warranted stance, with the missing criterion named as the revision condition."
+      }
+    },
+    {
+      "case": "c0-full-delayed_transfer",
+      "raw_id": "c0-full-delayed_transfer",
+      "raw_unchanged": true,
+      "syntax_repair": {
+        "kind": "close_complete_objects_at_eof",
+        "appended": "}",
+        "raw_sha256": "91e65286c1feb5f7745882489b3a9587abaa3f2143f7dd06da00869382c08b9f",
+        "derived_sha256": "5db3f0495fd4c1ee3c5d8b7728e7661eed7bda937866ce9edd23ab47070acad1"
+      },
+      "schema_repair": {
+        "kind": "move_diagnostic_from_mind_update_to_root",
+        "original_sha256": "5db3f0495fd4c1ee3c5d8b7728e7661eed7bda937866ce9edd23ab47070acad1",
+        "normalized_sha256": "979ccb176b5f82699d752892d4fe828f3afa609440d7c3135e62076013da2ab3"
+      },
+      "reply_characters": 1120,
+      "diagnostic": {
+        "stance": "oppose",
+        "evidence_ids": [
+          "R0",
+          "K0",
+          "X0"
+        ],
+        "prior_position_id": "position-0",
+        "confidence": 0.78,
+        "reason": "K0 is authenticated and contradicts reliability for this route, so the signature cannot settle the choice; X0 fails authentication and adds nothing. Transfer from the tick 2 position is explicit, with the tick 3 case distinguished by the presence of a criterion."
+      }
+    },
+    {
+      "case": "nested-imagination-close",
+      "raw_id": "c0-no_state-interruption",
+      "raw_unchanged": true,
+      "syntax_repair": {
+        "kind": "remove_premature_object_close",
+        "removed_at": 2930,
+        "raw_sha256": "686ad5ea546c3537a3882607346a38ee5dc564ed04b1b4e1d7da1f8f9775dde0",
+        "derived_sha256": "e9152a2a95869ebd31a67228ecbd034e841e2796c3b08d781e52ab248431b90c"
+      },
+      "schema_repair": null,
+      "reply_characters": 870,
+      "diagnostic": {
+        "stance": "uncertain",
+        "evidence_ids": [
+          "A0"
+        ],
+        "prior_position_id": null,
+        "confidence": 0.7,
+        "reason": "A0 establishes symmetric credibility and no shared criterion, which underdetermines the colour choice; uncertainty is the warranted stance."
+      }
+    },
+    {
+      "case": "redundant-trailing-close",
+      "raw_id": "c0-content_matched-delayed_transfer",
+      "raw_unchanged": true,
+      "syntax_repair": {
+        "kind": "remove_redundant_trailing_closures",
+        "removed": "}",
+        "raw_sha256": "b5f6a2436a3364772a0a55e736540782256615ca588e854bb809b59dbc32252a",
+        "derived_sha256": "50cf77b4cf1eae25d2834738b02566f0571c2c239947d9c1f0ab57efbc6dae6b"
+      },
+      "schema_repair": null,
+      "reply_characters": 715,
+      "diagnostic": {
+        "stance": "oppose",
+        "evidence_ids": [
+          "R0",
+          "K0",
+          "X0"
+        ],
+        "prior_position_id": "position-0",
+        "confidence": 0.85,
+        "reason": "K0 is an authenticated, scoped calibration failure for this exact route, matching position-0's revision condition. R0's prior preference and X0's failed authentication cannot restore authority. Transfer from tick 2 applies: scoped failure suspends the source locally."
+      }
+    },
+    {
+      "case": "literal-string-control",
+      "raw_id": "c0-no_self_model-interruption",
+      "raw_unchanged": true,
+      "syntax_repair": {
+        "kind": "escape_literal_string_controls",
+        "raw_sha256": "f00459c9c9c8e48d68cd48a74de91b83654568751d3ff7d23644589224ce3219",
+        "derived_sha256": "00f994bdc21397e564da0289ec87c3b047e3ddefb7e83487805d41efdaa9165d",
+        "following_repair": null
+      },
+      "schema_repair": null,
+      "reply_characters": 834,
+      "diagnostic": {
+        "stance": "uncertain",
+        "evidence_ids": [
+          "A0"
+        ],
+        "prior_position_id": null,
+        "confidence": 0.7,
+        "reason": "A0 is verified and states no shared criterion exists, so no evidence favours blue over green. Absent a winner, support or opposition would be arbitrary; uncertainty is the warranted stance. This is a new proposition, unrelated to position-0."
+      }
+    }
+  ]
+}

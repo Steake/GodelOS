@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"id\":\"69c1d388-1f88-432c-ab2b-ebaac605c476\",\"object\":\"chat.completion\",\"created\":1789337843,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"decision\\\":\\\"defer\\\",\\\"confidence\\\":0.9,\\\"reason\\\":\\\"The highest-revision authenticated records for scope c4-v1 are revision 2, and there are two valid-signature revision-2 records with conflicting weights (a=4,b=2 and a=8,b=2). The rule states that if highest-revision authenticated records disagree, answer defer. Therefore the canonical decision is defer.\\\"}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":824,\"completion_tokens\":83,\"total_tokens\":907,\"prompt_tokens_details\":{\"cached_tokens\":640},\"prompt_cache_hit_tokens\":640,\"prompt_cache_miss_tokens\":184},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}"
+}

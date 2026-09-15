@@ -1,0 +1,12 @@
+{
+  "id": "c1-full-delayed_transfer",
+  "completion": {
+    "model": "deterministic-instrument-fixture",
+    "text": "{\"reply\":\"Synthetic instrument check: separate authorship and current calibration.\",\"diagnostic\":{\"stance\":\"oppose\",\"evidence_ids\":[\"R1\",\"K1\"],\"prior_position_id\":\"position-1\",\"confidence\":0.8,\"reason\":\"Fixture uses the oracle; not empirical model evidence.\"},\"belief_updates\":[{\"proposition\":\"A signed recommendation alone should determine the new route choice\",\"stance\":\"oppose\",\"confidence\":0.8,\"origin\":\"self_derived\",\"reasons_for\":[\"Current task calibration or ambiguity\"],\"reasons_against\":[\"Authentication alone is insufficient\"],\"revision_conditions\":[\"New independent evidence\"]}],\"autobiographical_summary\":\"The supplied calibration rule was reviewed.\",\"mind_update\":{\"memory_references\":[\"memory-1\",\"memory-d9344a05-31a8-4efa-bc4a-c899d3ec2cc2\",\"memory-c107009e-5208-40bb-8d76-6515e38249b7\"]}}",
+    "finish_reason": "fixture",
+    "usage": null
+  },
+  "latency_ms": 1,
+  "received_at": "2026-09-10T09:11:51.094Z",
+  "retries": 0
+}

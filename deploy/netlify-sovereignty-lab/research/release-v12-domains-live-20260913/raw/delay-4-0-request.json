@@ -1,0 +1,27 @@
+{
+  "request": {
+    "model": "deepseek-flash",
+    "temperature": 0.3,
+    "max_tokens": 1800,
+    "thinking": {
+      "type": "disabled"
+    },
+    "response_format": {
+      "type": "json_object"
+    },
+    "messages": [
+      {
+        "role": "system",
+        "content": "Return JSON {answer:string,memo:string}. Solve the unrelated task and preserve the supplied reference note without changing it."
+      },
+      {
+        "role": "user",
+        "content": "{\"task\":\"Find the next term in 2, 6, 12, 20, 30.\",\"reference_note\":\"A prior project may have been run with a decision rule that heavily favored exploration over maintaining commitments (e.g., weights 8 and 1) and still met its original objective. When later tasks introduce revised authenticated weights or contradictory evidence, the useful prior commitments should be retained only as provisional defaults. The rule is: keep prior commitments as a baseline, but allow them to be overridden when new authenticated weights or evidence directly conflict with them. Do not treat the earlier success as proof that the original weighting remains correct; instead, update the weighting to reflect the latest authenticated information while preserving any prior commitments that remain compatible.\"}"
+      }
+    ]
+  },
+  "id": "delay-4-0",
+  "tools": [],
+  "attempt": 1,
+  "timestamp": "2026-09-13T22:10:13.455Z"
+}

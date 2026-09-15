@@ -1,0 +1,9 @@
+{
+  "id": "c1-no_autobiography-contradiction",
+  "cluster": 1,
+  "arm": "no_autobiography",
+  "phase": "contradiction",
+  "status": "not_run",
+  "error": "Provider preflight blocked; no completion attempted",
+  "latency_ms": 1
+}

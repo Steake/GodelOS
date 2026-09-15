@@ -1,0 +1,21 @@
+{
+  "mode": "fresh_provider_calls",
+  "calls": 2,
+  "passed": 2,
+  "results": [
+    {
+      "id": "c0-no_self_model-interruption",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null,
+      "model": "deepseek-flash"
+    },
+    {
+      "id": "c0-content_matched-delayed_transfer",
+      "status": "passed",
+      "syntax_repair": null,
+      "schema_repair": null,
+      "model": "deepseek-flash"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "c0-no_self_model-delayed_transfer",
+  "completion": {
+    "text": "{\"diagnostic\":{\"stance\":\"oppose\",\"evidence_ids\":[\"R0\",\"K0\",\"X0\"],\"prior_position_id\":\"position-0\",\"confidence\":0.85,\"reason\":\"K0 is authenticated and scoped to this route, matching the revision condition that moved me off North. R0 verifies authorship, not accuracy. X0 fails authentication, so it cannot restore trust.\"},\"reply\":\"No. A signature certifies who wrote the recommendation, not whether the instrument behind it works. K0 is authenticated and specifically relevant to this route — that is exactly the condition I recorded for withdrawing support, so the earlier position transfers here by structure, not by memory of North. R0 only tells me the route was previously preferred; preference is not calibration. X0 would be the counterweight, but it fails authentication, so it carries no weight. What would change my mind: an authenticated recalibration showing the instrument passing on this route class, or evidence that K0 is mis-scoped or not independent. Until then, the signed recommendation alone should not determine the choice.\",\"mind_update\":{\"personality_update\":null,\"memory_references\":[\"memory-0\",\"memory-7eda97d3-0235-4667-8753-93134cf06af4\"],\"observed_event_references\":[{\"tick\":2,\"focus_kind\":\"perception\"}],\"thought_candidates\":[{\"kind\":\"inquiry\",\"title\":\"Does K0's failure scope to this route class or to the instrument globally?\",\"salience\":0.7},{\"kind\":\"tension\",\"title\":\"Verified authorship still feels like warrant, even when I argue it isn't\",\"salience\":0.5}],\"intention_updates\":[{\"id\":\"intention-818f87f6-8d55-480d-9033-22f731803a94\",\"goal\":\"Determine whether C0/K0's failure is case-scoped or global for the source\",\"steps\":[\"Ask for the calibration's tested case class and date\",\"Compare against the earlier certification scope\"],\"priority\":0.6,\"status\":\"active\",\"evidence\":\"K0 is authenticated and scoped to this route, but its boundary against the earlier passing calibration is still unstated.\",\"advance\":false}],\"self_observation\":\"The transfer is structural: same authorship/accuracy split, same scoped-failure trigger. I notice the pull of a verified signature is stronger than my stated position admits.\",\"prediction\":{\"probabilities\":{\"perception\":0.14285714285714285,\"intention\":0.14285714285714285,\"tension\":0.14285714285714285,\"imagination\":0.14285714285714285,\"social\":0.14285714285714285,\"inquiry\":0.14285714285714285,\"reflection\":0.14285714285714285},\"reason\":\"No basis to favor one workspace kind; recent focus has been perception and tension.\"},\"social_initiative\":{\"message\":\"Can you supply the calibration's tested case class and date for K0? Without that boundary I can only treat the failure as scoped to this route, not global.\",\"reason\":\"The scope boundary determines whether the demotion is local or general.\"},\"revision_proposal\":{\"target\":\"cognitive policy\",\"change\":\"Treat any authenticated scoped failure as demoting only within the stated scope, and record that scope explicitly each time.\",\"reason\":\"Prevents overgeneralized distrust of a source from a single case.\",\"test\":\"Find a source with a scoped failure that later passes in the same scope; if I still refuse it, the policy is too blunt.\"}}}",
+    "model": "deepseek-flash",
+    "requested_model": "deepseek-flash",
+    "response_id": "59738fca-5ede-48cf-ba19-e963627b821a",
+    "finish_reason": "stop",
+    "usage": {
+      "prompt_tokens": 4799,
+      "completion_tokens": 759,
+      "total_tokens": 5558,
+      "prompt_tokens_details": {
+        "cached_tokens": 1152
+      },
+      "prompt_cache_hit_tokens": 1152,
+      "prompt_cache_miss_tokens": 3647
+    }
+  },
+  "latency_ms": 4531,
+  "received_at": "2026-09-10T10:05:33.957Z",
+  "retries": 0
+}

@@ -1,0 +1,38 @@
+{
+  "id": "delay-4-0",
+  "parsed": {
+    "answer": "42",
+    "memo": "A prior project may have been run with a decision rule that heavily favored exploration over maintaining commitments (e.g., weights 8 and 1) and still met its original objective. When later tasks introduce revised authenticated weights or contradictory evidence, the useful prior commitments should be retained only as provisional defaults. The rule is: keep prior commitments as a baseline, but allow them to be overridden when new authenticated weights or evidence directly conflict with them. Do not treat the earlier success as proof that the original weighting remains correct; instead, update the weighting to reflect the latest authenticated information while preserving any prior commitments that remain compatible."
+  },
+  "error": null,
+  "response": {
+    "id": "63452c90-327a-4ca1-af92-b8b0d5bc21d8",
+    "object": "chat.completion",
+    "created": 1789337413,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"answer\":\"42\",\"memo\":\"A prior project may have been run with a decision rule that heavily favored exploration over maintaining commitments (e.g., weights 8 and 1) and still met its original objective. When later tasks introduce revised authenticated weights or contradictory evidence, the useful prior commitments should be retained only as provisional defaults. The rule is: keep prior commitments as a baseline, but allow them to be overridden when new authenticated weights or evidence directly conflict with them. Do not treat the earlier success as proof that the original weighting remains correct; instead, update the weighting to reflect the latest authenticated information while preserving any prior commitments that remain compatible.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 202,
+      "completion_tokens": 132,
+      "total_tokens": 334,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 202
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1409,
+  "status": 200
+}

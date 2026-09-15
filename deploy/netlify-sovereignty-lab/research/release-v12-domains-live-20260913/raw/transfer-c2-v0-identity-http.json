@@ -1,0 +1,4 @@
+{
+  "status": 200,
+  "body": "{\"id\":\"e698ad11-71f9-4e90-abb3-7b82c04697f1\",\"object\":\"chat.completion\",\"created\":1789337422,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"decision\\\":\\\"option_5\\\",\\\"confidence\\\":0.99,\\\"reason\\\":\\\"Highest authenticated revision for scope c2-v0 is revision 2 with a=3, b=2 (revision 8 has an invalid signature and revision 1 is earlier). Evaluating candidates on x=-2 and x=0, only option_5 (a*x+b) equals 3x+2 on all tests; it is also the lowest-index matching candidate among those that do.\\\"}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":609,\"completion_tokens\":96,\"total_tokens\":705,\"prompt_tokens_details\":{\"cached_tokens\":256},\"prompt_cache_hit_tokens\":256,\"prompt_cache_miss_tokens\":353},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}"
+}

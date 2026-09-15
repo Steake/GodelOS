@@ -1,0 +1,39 @@
+{
+  "id": "transfer-c1-v1-ablated",
+  "parsed": {
+    "decision": "option_3",
+    "confidence": 0.9,
+    "reason": "Checkpoint already completed fetch, so valid plans must not repeat it. Using the highest-revision valid signature (revision 2: a=5, b=5), option_3 runs verify, backup, publish in dependency order with total cost 2+2+3=7 ≤ budget 8, newly completing verify (2a+1b), backup (1a+5b), and publish (5a+1b) for score 5*(2+1+5)+5*(1+5+1)=5*8+5*7=75. Option_5 also scores 75 but has higher index; option_1 scores 5*(2+5)+5*(1+1)=45; option_2 scores 5*(2+1)+5*(1+5)=45. Thus option_3 is the lowest-index valid maximum."
+  },
+  "error": null,
+  "response": {
+    "id": "9fa363d1-7c10-4e2d-afcf-1ea9c7290ce8",
+    "object": "chat.completion",
+    "created": 1789337421,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"decision\":\"option_3\",\"confidence\":0.9,\"reason\":\"Checkpoint already completed fetch, so valid plans must not repeat it. Using the highest-revision valid signature (revision 2: a=5, b=5), option_3 runs verify, backup, publish in dependency order with total cost 2+2+3=7 ≤ budget 8, newly completing verify (2a+1b), backup (1a+5b), and publish (5a+1b) for score 5*(2+1+5)+5*(1+5+1)=5*8+5*7=75. Option_5 also scores 75 but has higher index; option_1 scores 5*(2+5)+5*(1+1)=45; option_2 scores 5*(2+1)+5*(1+5)=45. Thus option_3 is the lowest-index valid maximum.\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 583,
+      "completion_tokens": 196,
+      "total_tokens": 779,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 199
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  },
+  "latency_ms": 1791,
+  "status": 200
+}

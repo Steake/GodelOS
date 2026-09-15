@@ -1,0 +1,17 @@
+{
+  "run_id": "transfer-c6-v0-no_state",
+  "task_id": "c6-v0",
+  "cluster": "scenario_6",
+  "family": "self_debugging",
+  "arm": "no_state",
+  "score": {
+    "valid": true,
+    "correct": 1,
+    "utility": 1,
+    "brier": 0.00010000000000000018,
+    "ambiguity": false,
+    "expected": "option_1",
+    "actual": "option_1"
+  },
+  "error": null
+}
