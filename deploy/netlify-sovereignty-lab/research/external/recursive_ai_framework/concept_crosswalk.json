@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "status": "scaffold",
+  "mappings": [
+    {
+      "upstream_concept": "recursive identity",
+      "godelos_concepts": [
+        "self_model",
+        "schema_lineage",
+        "identity_bearing arm"
+      ],
+      "claim_status": "to_reproduce"
+    },
+    {
+      "upstream_concept": "operator ordering",
+      "godelos_concepts": [
+        "typed transition operators",
+        "three-arm harness"
+      ],
+      "claim_status": "to_reproduce"
+    },
+    {
+      "upstream_concept": "contradiction",
+      "godelos_concepts": [
+        "DurableContradiction",
+        "productive contradiction tests"
+      ],
+      "claim_status": "to_reproduce"
+    },
+    {
+      "upstream_concept": "memory discontinuity",
+      "godelos_concepts": [
+        "interruption recovery",
+        "persistent identity state"
+      ],
+      "claim_status": "to_reproduce"
+    }
+  ]
+}
