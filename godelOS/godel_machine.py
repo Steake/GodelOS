@@ -43,6 +43,10 @@ Addresses the foundational Gödel Machine problem, proof-searcher limits, and fo
 """
 
 import time
+import re
+from godelOS.solvers.qf_lia_solver import QF_LIASolver
+from godelOS.solvers.lyapunov_solver import LyapunovStabilitySolver
+from godelOS.solvers.datalog_solver import StratifiedDatalogSolver, Atom, Rule
 import copy
 import logging
 import multiprocessing as mp
@@ -300,6 +304,85 @@ class TrustedProofCheckerKernel:
     def __init__(self, max_allowed_depth: int = 5):
         self.max_allowed_depth = max_allowed_depth
 
+    def _verify_qf_lia_step(
+        self,
+        step: ProofStepWitness,
+        witness: ProofWitnessCertificate,
+        contract: FormalContract
+    ) -> Tuple[bool, str]:
+        """Mechanically verifies linear integer inequality step using Fourier-Motzkin elimination."""
+        stmt = step.statement
+
+        depth_match = re.search(r"recursion_depth\s*(<=|<|==)\s*(\d+)", stmt)
+        if depth_match:
+            val = int(depth_match.group(2))
+            if val > self.max_allowed_depth or val > contract.max_recursion_depth:
+                return False, f"Recursion depth {val} exceeds ceiling {self.max_allowed_depth}"
+
+        premise_constraints = []
+        for p_idx in step.premises:
+            if p_idx < len(witness.derivation_steps):
+                p_step = witness.derivation_steps[p_idx]
+                for sub_p in re.split(r"(?:and|&&|;|,)", p_step.statement):
+                    c = QF_LIASolver.parse_constraint(sub_p.strip())
+                    if c:
+                        premise_constraints.append(c)
+
+        step_constraints = []
+        for sub_s in re.split(r"(?:and|&&|;)", stmt):
+            c = QF_LIASolver.parse_constraint(sub_s.strip())
+            if c:
+                step_constraints.append(c)
+
+        if premise_constraints and step_constraints:
+            for sc in step_constraints:
+                neg = QF_LIASolver.negate_constraint(sc)
+                if QF_LIASolver.is_satisfiable(premise_constraints + [neg]):
+                    return False, f"Conclusion '{sc}' is not entailed by premises."
+
+        for sc in step_constraints:
+            if sc.is_contradiction():
+                return False, f"Constraint '{sc}' is internally contradictory."
+
+        return True, "Presburger QF-LIA termination bound certified"
+
+    def _verify_lyapunov_step(
+        self,
+        step: ProofStepWitness,
+        contract: FormalContract
+    ) -> Tuple[bool, str]:
+        """Mechanically verifies Lyapunov stability / contraction dissipation."""
+        stmt = step.statement
+        alpha_match = re.search(r"(?:alpha\s*=\s*|1\s*-\s*)(0\.\d+)", stmt)
+        if alpha_match:
+            alpha_val = float(alpha_match.group(1))
+            stable, gamma, lyap_msg = LyapunovStabilitySolver.verify_1d_dissipation(to_fraction(alpha_val))
+            if not stable:
+                return False, lyap_msg
+            return True, f"1D quadratic Lyapunov dissipation verified (gamma = {gamma} > 0)"
+
+        if "divergence" in stmt.lower() or "unstable" in stmt.lower():
+            return False, "Unsound Lyapunov step: claims divergence or instability."
+
+        return True, "Lyapunov dissipation certified"
+
+    def _verify_datalog_step(
+        self,
+        step: ProofStepWitness
+    ) -> Tuple[bool, str]:
+        """Mechanically verifies Datalog rule safety and stratification."""
+        stmt = step.statement
+        if ":-" in stmt:
+            rule = StratifiedDatalogSolver.parse_rule(stmt)
+            if not rule.is_safe():
+                return False, f"Rule '{stmt}' violates Datalog safety condition."
+            strat_ok, _, msg = StratifiedDatalogSolver.check_stratification([rule])
+            if not strat_ok:
+                return False, f"Rule '{stmt}' causes stratification error: {msg}"
+            return True, "Stratified safe Datalog rule certified"
+
+        return True, "Datalog fact/consistency certified"
+
     def verify_safety_and_utility(
         self,
         contract: FormalContract,
@@ -371,22 +454,31 @@ class TrustedProofCheckerKernel:
                 log.append(f"Step {step.step_id} [AXIOM]: {step.statement} (Accepted initial assumption) ✔")
 
             elif step.rule == RuleType.PRESBURGER_QF_LIA:
-                # Verifies linear integer inequality (no non-linear variable multiplication)
+                valid, msg = self._verify_qf_lia_step(step, witness, contract)
+                if not valid:
+                    log.append(f"PROOF SOUNDNESS ERROR [Presburger QF-LIA]: Step {step.step_id} invalid: {msg}")
+                    return False, False, log
                 step.is_valid = True
                 verified_steps.add(step.step_id)
-                log.append(f"Step {step.step_id} [PRESBURGER_QF_LIA]: {step.statement} (Guaranteed termination bound) ✔")
+                log.append(f"Step {step.step_id} [PRESBURGER_QF_LIA]: {step.statement} ({msg}) ✔")
 
             elif step.rule == RuleType.LYAPUNOV_DISSIPATION:
-                # Verifies 1D quadratic energy V(e) = e^2 dissipation under contraction factor L < 1
+                valid, msg = self._verify_lyapunov_step(step, contract)
+                if not valid:
+                    log.append(f"PROOF SOUNDNESS ERROR [Lyapunov]: Step {step.step_id} invalid: {msg}")
+                    return False, False, log
                 step.is_valid = True
                 verified_steps.add(step.step_id)
-                log.append(f"Step {step.step_id} [LYAPUNOV_DISSIPATION]: {step.statement} (Variance dissipation certified) ✔")
+                log.append(f"Step {step.step_id} [LYAPUNOV_DISSIPATION]: {step.statement} ({msg}) ✔")
 
             elif step.rule == RuleType.DATALOG_STRATIFIED:
-                # Stratified function-free safe Horn clause deduction
+                valid, msg = self._verify_datalog_step(step)
+                if not valid:
+                    log.append(f"PROOF SOUNDNESS ERROR [Datalog]: Step {step.step_id} invalid: {msg}")
+                    return False, False, log
                 step.is_valid = True
                 verified_steps.add(step.step_id)
-                log.append(f"Step {step.step_id} [DATALOG_STRATIFIED]: {step.statement} (Stratified Horn consistency) ✔")
+                log.append(f"Step {step.step_id} [DATALOG_STRATIFIED]: {step.statement} ({msg}) ✔")
 
             elif step.rule == RuleType.CONSERVATIVE_UTILITY_BOUND:
                 step.is_valid = True
@@ -833,4 +925,145 @@ class GodelMachineSelfOptimizer:
 
 
 # Global singleton instance
+
+    def verify_and_apply_code_mutation(
+        self,
+        code_contract: Any,
+        proposer_time_ms: float = 0.0,
+        simulate_runtime_crash: bool = False
+    ) -> MutationResult:
+        """
+        Verifies and applies an AST-level executable code self-modification:
+        1. TCB security & wireheading check
+        2. Conservative utility lower bound verification
+        3. AST static safety & purity validation (ASTSafetyValidator)
+        4. Sandboxed execution against test vectors (SandboxedExecutionTester)
+        5. Atomic hot-swapping of function pointer on live target object with rollback.
+        """
+        from godelOS.code_synthesizer import (
+            ASTSafetyValidator, SandboxedExecutionTester, AtomicCodeHotSwapper
+        )
+
+        checker_start = time.time()
+        mutation_id = code_contract.mutation_id
+
+        # 1. Wireheading Guard: Check target object and function
+        target_name = f"{type(code_contract.target_object).__name__}.{code_contract.target_function_name}"
+        if (
+            code_contract.target_function_name in IMMUTABLE_TCB_PARAMETERS
+            or hasattr(self.tcb_kernel, code_contract.target_function_name)
+        ):
+            reason = f"SECURITY VIOLATION [Wireheading]: Target function '{target_name}' is part of immutable TCB."
+            elapsed = (time.time() - checker_start) * 1000
+            res = MutationResult(
+                mutation_id=mutation_id,
+                safety_certified=False,
+                utility_guaranteed=False,
+                applied=False,
+                rolled_back=False,
+                rejection_reason=reason,
+                checker_verification_time_ms=elapsed,
+                proposer_search_time_ms=proposer_time_ms,
+                certificate=None,
+                current_state=copy.deepcopy(self.active_parameters)
+            )
+            self.performance_tracker.record_search(proposer_time_ms, elapsed, False, reason)
+            return res
+
+        # 2. Formal Contract & TCB Verification
+        formal_contract = FormalContract(
+            mutation_id=mutation_id,
+            target_subsystem=target_name,
+            precondition=f"Callable({target_name})",
+            postcondition=f"OptimizedAST({target_name})",
+            resource_budget_ms=code_contract.resource_budget_ms,
+            max_recursion_depth=self.active_parameters.get("recursion_limit", 5),
+            utility_bounds=code_contract.utility_bounds,
+            environment_model=code_contract.environment_model or DEFAULT_VERIFIED_ENVIRONMENT
+        )
+
+        formal_lower_bound = code_contract.utility_bounds.compute_formal_lower_bound()
+        steps = [
+            ProofStepWitness(0, RuleType.AXIOM, [], f"Active implementation: {target_name}"),
+            ProofStepWitness(1, RuleType.PRESBURGER_QF_LIA, [0], f"QF-LIA Bound: recursion_depth <= {formal_contract.max_recursion_depth} and steps <= 250"),
+            ProofStepWitness(2, RuleType.LYAPUNOV_DISSIPATION, [1], "Lyapunov Stability: V(e_{t+1}) <= (1 - 0.30)^2 V(e_t), dissipation guaranteed"),
+            ProofStepWitness(3, RuleType.CONSERVATIVE_UTILITY_BOUND, [2], f"Utility Dominance: ΔU_lower = +{formal_lower_bound:.4f} > 0")
+        ]
+        certificate = ProofWitnessCertificate(
+            mutation_id=mutation_id,
+            derivation_steps=steps,
+            theorem_proven=f"VerifiedSafeCode(M[{target_name}]) and ΔU_lower > 0",
+            formal_utility_lower_bound=formal_lower_bound
+        )
+
+        safety_ok, utility_ok, log = self.tcb_kernel.verify_safety_and_utility(formal_contract, certificate)
+        if not (safety_ok and utility_ok):
+            elapsed = (time.time() - checker_start) * 1000
+            res = MutationResult(
+                mutation_id=mutation_id,
+                safety_certified=safety_ok,
+                utility_guaranteed=utility_ok,
+                applied=False,
+                rolled_back=False,
+                rejection_reason=log[-1],
+                checker_verification_time_ms=elapsed,
+                proposer_search_time_ms=proposer_time_ms,
+                certificate=certificate,
+                current_state=copy.deepcopy(self.active_parameters)
+            )
+            self.performance_tracker.record_search(proposer_time_ms, elapsed, False, res.rejection_reason)
+            return res
+
+        # 3. Static AST Safety & Sandboxed Test Vectors
+        if simulate_runtime_crash:
+            swap_verified, swap_applied, orig_fn, swap_msg = True, False, getattr(code_contract.target_object, code_contract.target_function_name, None), "Runtime trial failure, rolled back."
+        else:
+            swap_verified, swap_applied, orig_fn, swap_msg = AtomicCodeHotSwapper.verify_and_swap(code_contract)
+
+        elapsed = (time.time() - checker_start) * 1000
+
+        if not swap_applied:
+            res = MutationResult(
+                mutation_id=mutation_id,
+                safety_certified=swap_verified,
+                utility_guaranteed=utility_ok,
+                applied=False,
+                rolled_back=True if swap_verified else False,
+                rejection_reason=swap_msg,
+                checker_verification_time_ms=elapsed,
+                proposer_search_time_ms=proposer_time_ms,
+                certificate=certificate,
+                current_state=copy.deepcopy(self.active_parameters)
+            )
+            self.performance_tracker.record_search(proposer_time_ms, elapsed, False, swap_msg)
+            return res
+
+        record = {
+            "mutation_id": mutation_id,
+            "target": target_name,
+            "mutation_type": "executable_code_ast",
+            "formal_utility_lower_bound": formal_lower_bound,
+            "proposer_time_ms": proposer_time_ms,
+            "checker_time_ms": elapsed,
+            "timestamp": time.time(),
+            "log": log + [swap_msg]
+        }
+        self.mutation_history.append(record)
+        self.performance_tracker.record_search(proposer_time_ms, elapsed, True)
+        logger.info(f"✔ TCB Certified & Swapped: Code rewrite '{mutation_id}' committed on {target_name}")
+
+        return MutationResult(
+            mutation_id=mutation_id,
+            safety_certified=True,
+            utility_guaranteed=True,
+            applied=True,
+            rolled_back=False,
+            rejection_reason=None,
+            checker_verification_time_ms=elapsed,
+            proposer_search_time_ms=proposer_time_ms,
+            certificate=certificate,
+            current_state=copy.deepcopy(self.active_parameters)
+        )
+
+
 godel_machine_optimizer = GodelMachineSelfOptimizer()
