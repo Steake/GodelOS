@@ -21,7 +21,10 @@ import threading
 from collections import defaultdict
 
 import numpy as np
-from sentence_transformers import SentenceTransformer
+try:
+    from sentence_transformers import SentenceTransformer
+except (ImportError, Exception):
+    SentenceTransformer = None
 import faiss
 
 # Use aiofiles for async file operations

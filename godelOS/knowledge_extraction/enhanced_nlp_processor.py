@@ -28,7 +28,7 @@ from tqdm import tqdm
 try:
     from sentence_transformers import SentenceTransformer
     HAS_SENTENCE_TRANSFORMERS = True
-except ImportError:
+except (ImportError, Exception) as e:
     HAS_SENTENCE_TRANSFORMERS = False
     SentenceTransformer = None
 

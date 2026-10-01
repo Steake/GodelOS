@@ -370,7 +370,14 @@ start_backend() {
         return 1
     fi
     
-    # Check transformers capability without disruptive package reinstalls
+    # Auto-heal transformers >= 5.0.0 bug (huggingface/transformers issue #43784)
+    if "$python_bin" -c "import transformers; sys.exit(0 if int(transformers.__version__.split('.')[0]) >= 5 else 1)" 2>/dev/null; then
+        log_warning "Detected transformers >= 5.0.0 (causes NameError: name 'nn' is not defined in accelerate)."
+        log_step "Auto-downgrading to stable transformers < 5.0.0..."
+        "$python_bin" -m pip install "transformers>=4.40.0,<5.0.0" --quiet || true
+    fi
+
+    # Check transformers capability
     if "$python_bin" -c "from transformers import pipeline" 2>/dev/null; then
         log_success "transformers.pipeline ready"
     else

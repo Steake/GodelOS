@@ -6,7 +6,10 @@ import logging
 from typing import List, Tuple
 import numpy as np
 import faiss
-from sentence_transformers import SentenceTransformer
+try:
+    from sentence_transformers import SentenceTransformer
+except (ImportError, Exception):
+    SentenceTransformer = None
 
 logger = logging.getLogger(__name__)
 
@@ -28,14 +31,19 @@ class VectorStore:
         self.id_map = []
         
         # Try to load the embedding model with fallback
-        try:
-            # Test network connectivity first
-            import requests
-            response = requests.get("https://huggingface.co", timeout=5)
-            self.embedding_model = SentenceTransformer(embedding_model)
-            logger.info(f"Successfully loaded SentenceTransformer model: {embedding_model}")
-        except Exception as e:
-            logger.warning(f"Could not load SentenceTransformer model ({e}). Using fallback TF-IDF vectorizer.")
+        if SentenceTransformer is not None:
+            try:
+                # Test network connectivity first
+                import requests
+                response = requests.get("https://huggingface.co", timeout=5)
+                self.embedding_model = SentenceTransformer(embedding_model)
+                logger.info(f"Successfully loaded SentenceTransformer model: {embedding_model}")
+            except Exception as e:
+                logger.warning(f"Could not load SentenceTransformer model ({e}). Using fallback TF-IDF vectorizer.")
+                self.embedding_model = None
+                self._init_fallback_vectorizer()
+        else:
+            logger.warning("SentenceTransformer not available. Using fallback TF-IDF vectorizer.")
             self.embedding_model = None
             self._init_fallback_vectorizer()
         

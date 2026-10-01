@@ -14,11 +14,11 @@ pydantic-settings>=2.0
 websockets>=11.0.0
 aiofiles>=23.2.1
 
-# Enhanced NLP and ML dependencies
+# Enhanced NLP and ML dependencies (pin transformers <5.0.0 to prevent accelerate NameError bug)
 spacy>=3.5.0
 nltk>=3.8.0
 semver>=3.0.0
-transformers>=4.30.0
+transformers>=4.40.0,<5.0.0
 sentence-transformers>=2.2.2
 faiss-cpu>=1.7.4; python_version < "3.13"
 torch>=2.0.0
