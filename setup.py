@@ -11,6 +11,13 @@ setup(
     install_requires=[
         # Core dependencies
         "typing-extensions>=4.0.0",
+        "psutil>=5.9.0",
+        "networkx>=3.1.0",
+        "fastapi>=0.104.0",
+        "uvicorn>=0.24.0",
+        "python-dotenv>=1.0.0",
+        "dotenv>=0.9.9",
+        "pydantic>=2.4.0",
     ],
     extras_require={
         "dev": [

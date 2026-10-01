@@ -8,7 +8,14 @@ from typing import List, Dict, Any, Tuple
 
 import spacy
 from spacy.tokens import Doc
-from transformers import pipeline, AutoTokenizer, AutoModelForTokenClassification
+try:
+    from transformers import pipeline, AutoTokenizer, AutoModelForTokenClassification
+    TRANSFORMERS_AVAILABLE = True
+except ImportError:
+    pipeline = None
+    AutoTokenizer = None
+    AutoModelForTokenClassification = None
+    TRANSFORMERS_AVAILABLE = False
 
 logger = logging.getLogger(__name__)
 
@@ -51,16 +58,19 @@ class NlpProcessor:
 
         # Initialize HuggingFace model with fallback to basic text processing
         self.relation_extractor = None
-        try:
-            # Test if we can access HuggingFace
-            import requests
-            response = requests.get("https://huggingface.co", timeout=5)
-            logger.info(f"Loading Hugging Face relation extraction model: {hf_relation_model}")
-            self.relation_extractor = pipeline("question-answering", model=hf_relation_model)
-            logger.info("HuggingFace model loaded successfully")
-        except Exception as e:
-            logger.warning(f"Could not load HuggingFace model ({e}). Using basic relation extraction fallback.")
-            self.relation_extractor = None
+        if TRANSFORMERS_AVAILABLE and pipeline is not None:
+            try:
+                # Test if we can access HuggingFace
+                import requests
+                response = requests.get("https://huggingface.co", timeout=5)
+                logger.info(f"Loading Hugging Face relation extraction model: {hf_relation_model}")
+                self.relation_extractor = pipeline("question-answering", model=hf_relation_model)
+                logger.info("HuggingFace model loaded successfully")
+            except Exception as e:
+                logger.warning(f"Could not load HuggingFace model ({e}). Using basic relation extraction fallback.")
+                self.relation_extractor = None
+        else:
+            logger.info("Hugging Face transformers not available. Using basic relation extraction fallback.")
 
         logger.info("NLP Processor initialized with available components.")
 
