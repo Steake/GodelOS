@@ -1,3 +1,5 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
 # Essential backend dependencies for GödelOS
 # Core API framework
 fastapi>=0.104.0
@@ -29,7 +31,7 @@ PyYAML>=6.0.1
 jsonschema>=4.18.0
 
 # Scientific computing and ML
-numpy>=1.24.0,<2.0
+numpy>=1.24.0
 scipy>=1.11.0
 scikit-learn>=1.3.0
 networkx>=3.1.0
@@ -42,7 +44,7 @@ nltk>=3.8.0
 tiktoken>=0.5.0
 
 # Vector storage
-faiss-cpu>=1.7.4
+faiss-cpu>=1.7.4; python_version < "3.13"
 torch>=2.0.0
 
 # LLM APIs
