@@ -386,6 +386,7 @@ start_backend() {
     
     export PYTHONPATH="$ROOT_DIR:${PYTHONPATH:-}"
     export GODELOS_ENVIRONMENT="${GODELOS_ENVIRONMENT:-development}"
+    export SENTENCE_TRANSFORMERS_HOME="$ROOT_DIR/data/vector_db/model_cache"
     
     local cmd=("$python_bin" "-m" "uvicorn" "backend.unified_server:app" "--host" "$BACKEND_HOST" "--port" "$BACKEND_PORT")
     
@@ -401,7 +402,7 @@ start_backend() {
     
     log_step "Waiting for backend initialization..."
     local attempts=0
-    local max_attempts=60
+    local max_attempts=150
     local health_checks=0
     local required_health_checks=2
     
@@ -431,7 +432,7 @@ start_backend() {
         else
             health_checks=0
             if [ $((attempts % 5)) -eq 0 ] && [ $attempts -gt 0 ]; then
-                echo -ne "${YELLOW}  Starting backend server... ${attempts}s\r${NC}"
+                echo -ne "${YELLOW}  Starting backend server... ${attempts}s / ${max_attempts}s (loading subsystems & models)\r${NC}"
             fi
         fi
         

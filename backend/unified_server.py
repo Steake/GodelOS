@@ -28,6 +28,11 @@ from dotenv import load_dotenv
 
 # Ensure repository root is on sys.path before importing backend.* packages
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+# Point model cache to local pre-cached models if available
+_model_cache = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'vector_db', 'model_cache'))
+if os.path.isdir(_model_cache):
+    os.environ.setdefault('SENTENCE_TRANSFORMERS_HOME', _model_cache)
 from backend.core.errors import CognitiveError, from_exception
 from backend.schemas import (
     WikipediaImportSchema,

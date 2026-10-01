@@ -64,7 +64,10 @@ class KnowledgePipelineService:
             # Initialize NLP processor
             logger.info("🔄 Initializing Enhanced NLP Processor...")
             self.nlp_processor = EnhancedNlpProcessor()
-            await self.nlp_processor.initialize()
+            try:
+                await asyncio.wait_for(self.nlp_processor.initialize(), timeout=35.0)
+            except (asyncio.TimeoutError, Exception) as e:
+                logger.warning(f"⚠️ Enhanced NLP Processor initialization note: {e} - proceeding with available capabilities")
             
             # Initialize graph builder
             logger.info("🔄 Initializing Knowledge Graph Builder...")

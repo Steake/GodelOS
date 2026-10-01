@@ -353,12 +353,18 @@ class EnhancedNlpProcessor:
 
     def _initialize_embedding_model(self):
         """Initialize sentence transformer model for categorization."""
-        if not HAS_SENTENCE_TRANSFORMERS:
+        if not HAS_SENTENCE_TRANSFORMERS or SentenceTransformer is None:
             logger.warning("sentence-transformers not available. Categorization disabled.")
             return
         
         try:
-            self.embedding_model = SentenceTransformer(self.embedding_model_name)
+            cache_folder = os.environ.get('SENTENCE_TRANSFORMERS_HOME')
+            if not cache_folder:
+                for candidate in ('data/vector_db/model_cache', '../data/vector_db/model_cache'):
+                    if os.path.isdir(candidate):
+                        cache_folder = candidate
+                        break
+            self.embedding_model = SentenceTransformer(self.embedding_model_name, cache_folder=cache_folder)
             logger.info(f"Successfully loaded embedding model: {self.embedding_model_name}")
         except Exception as e:
             logger.warning(f"Could not load embedding model ({e}). Categorization disabled.")
