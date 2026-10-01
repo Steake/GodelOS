@@ -47,15 +47,23 @@ class CognitivePipeline:
         self._start_time = time.time()
         logger.info("CognitivePipeline: beginning subsystem activation …")
 
-        # Order matters: later stages depend on earlier ones.
-        self._init_core_kr()
-        self._init_inference_engine()
-        self._init_scalability()
-        self._init_nlu_nlg()
-        self._init_symbol_grounding()
-        self._init_common_sense()
-        self._init_metacognition()
-        self._init_learning_system()
+        # Order matters: later stages depend on earlier ones, but failures are isolated.
+        stages = [
+            ("Core KR", self._init_core_kr),
+            ("Inference Engine", self._init_inference_engine),
+            ("Scalability", self._init_scalability),
+            ("NLU/NLG", self._init_nlu_nlg),
+            ("Symbol Grounding", self._init_symbol_grounding),
+            ("Common Sense", self._init_common_sense),
+            ("Metacognition", self._init_metacognition),
+            ("Learning System", self._init_learning_system),
+        ]
+        for stage_name, stage_fn in stages:
+            try:
+                stage_fn()
+            except Exception as exc:
+                logger.warning(f"CognitivePipeline: stage {stage_name} encountered error: {exc}")
+                self.init_errors.append(f"{stage_name}: {exc}")
 
         elapsed = time.time() - self._start_time
         ok = sum(1 for s in self._subsystems.values() if s["status"] == "active")
@@ -84,6 +92,10 @@ class CognitivePipeline:
         if entry is None:
             return None
         return entry.get("instance")
+
+    def get_subsystem(self, name: str) -> Any:
+        """Alias for get_instance."""
+        return self.get_instance(name)
 
     # ------------------------------------------------------------------
     # Subsystem init helpers (each records success / failure)

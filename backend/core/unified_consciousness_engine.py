@@ -823,13 +823,17 @@ class UnifiedConsciousnessEngine:
         and its stats are included in the WebSocket broadcast."""
         self._knowledge_store_shim = shim
         self._prediction_error_tracker = shim.tracker
+        if hasattr(self, "phenomenal_experience_generator") and self.phenomenal_experience_generator:
+            self.phenomenal_experience_generator._prediction_error_tracker = shim.tracker
         logger.info("KnowledgeStoreShim attached — live prediction-error tracking active")
     
     async def initialize_components(self):
         """Initialize consciousness components that require async setup"""
         try:
-            # Initialize phenomenal experience generator
-            self.phenomenal_experience_generator = PhenomenalExperienceGenerator()
+            # Initialize phenomenal experience generator with live prediction error tracker
+            self.phenomenal_experience_generator = PhenomenalExperienceGenerator(
+                prediction_error_tracker=self._prediction_error_tracker
+            )
             
             # Initialize knowledge graph evolution
             self.knowledge_graph = KnowledgeGraphEvolution()

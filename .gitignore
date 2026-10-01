@@ -319,3 +319,4 @@ godelos_data/
 # Test output files
 query_*test*.json
 query_engine_test*.json
+godelos-latest.tar.gz
