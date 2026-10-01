@@ -3,8 +3,13 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [svelte()],
+  preview: {
+    port: 1337,
+    host: "0.0.0.0"
+  },
   server: {
-    port: 3001,
+    port: 1337,
+    host: "0.0.0.0",
     // Reduce aggressive polling that can cause performance issues
     watch: {
       usePolling: true,
