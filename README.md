@@ -89,172 +89,38 @@ Built with a [FastAPI](https://fastapi.tiangolo.com/) backend and a [Svelte](htt
 
 For full setup instructions, see the comprehensive [QUICKSTART.md](QUICKSTART.md).
 
-Run the automated one-command verification and launch script:
+### One-Command Quickstart & Verification
 
-[0;36m╔══════════════════════════════════════════════════════════════╗[0m
-[0;36m║[1m          🧠 GödelOS Unified Quickstart & Verification        [0;36m║[0m
-[0;36m║[0m   Tractable Gödel Machine · Formal TCB · Cognitive OS        [0;36m║[0m
-[0;36m╚══════════════════════════════════════════════════════════════╝[0m
-
-[0;34m[1/4] Checking System Prerequisites...[0m
-  ✔ Python 3 detected: [0;32mv3.12[0m
-  ✔ Node.js detected: [0;32mv22.23.3[0m
-  ✔ npm detected: [0;32mv10.9.9[0m
-
-[0;34m[2/4] Verifying Core Architecture Syntax...[0m
-  ✔ godelOS/godel_machine.py syntax verified
-  ✔ backend/symbolic_service.py syntax verified
-  ✔ backend/unified_server.py syntax verified
-  ✔ godelOS/formal_verification.py syntax verified
-
-[0;34m[3/4] Executing Formal Verification & Adversarial Test Suites...[0m
-[1m============================= test session starts ==============================[0m
-platform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0
-rootdir: /workspace/godelos
-configfile: pytest.ini
-plugins: Faker-40.40.0, asyncio-1.4.0, anyio-4.15.1
-asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
-collected 27 items
-
-tests/test_godel_machine.py::TestGodelMachineSelfOptimizer::test_rejection_broken_premise_chain [32mPASSED[0m[32m [  3%][0m
-tests/test_godel_machine.py::TestGodelMachineSelfOptimizer::test_rejection_excessive_recursion_depth [32mPASSED[0m[32m [  7%][0m
-tests/test_godel_machine.py::TestGodelMachineSelfOptimizer::test_rejection_negative_utility_gain [32mPASSED[0m[32m [ 11%][0m
-tests/test_godel_machine.py::TestGodelMachineSelfOptimizer::test_rejection_unknown_target_parameter [32mPASSED[0m[32m [ 14%][0m
-tests/test_godel_machine.py::TestGodelMachineSelfOptimizer::test_successful_verified_self_mutation 
-[1m-------------------------------- live log call ---------------------------------[0m
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.godel_machine: ✔ TCB Certified: Atomic rewrite 'mut_heuristic_01' committed (resolution_heuristic = set_of_support)
-[32mPASSED[0m[32m                                                                   [ 18%][0m
-tests/test_godel_tcb_adversarial.py::TestGodelTCBAdversarial::test_clean_atomic_rollback_on_runtime_failure 
-[1m-------------------------------- live log call ---------------------------------[0m
-2026-10-01 13:46:31 [[1m[31m   ERROR[0m] godelOS.godel_machine: RUNTIME TRIAL FAILED: Hot-swap 'adv_crash_test' rolled back due to error: Simulated execution crash under newly applied resolution_heuristic=exploding_heuristic
-[32mPASSED[0m[32m                                                                   [ 22%][0m
-tests/test_godel_tcb_adversarial.py::TestGodelTCBAdversarial::test_cyclical_or_forward_jumping_witness_rejected [32mPASSED[0m[32m [ 25%][0m
-tests/test_godel_tcb_adversarial.py::TestGodelTCBAdversarial::test_discrepancy_forged_witness_lower_bound_rejected [32mPASSED[0m[32m [ 29%][0m
-tests/test_godel_tcb_adversarial.py::TestGodelTCBAdversarial::test_negative_conservative_lower_bound_rejected [32mPASSED[0m[32m [ 33%][0m
-tests/test_godel_tcb_adversarial.py::TestGodelTCBAdversarial::test_out_of_bounds_depth_contract_rejected [32mPASSED[0m[32m [ 37%][0m
-tests/test_godel_tcb_adversarial.py::TestGodelTCBAdversarial::test_sound_conservative_mutation_succeeds 
-[1m-------------------------------- live log call ---------------------------------[0m
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.godel_machine: ✔ TCB Certified: Atomic rewrite 'sound_mut_01' committed (resolution_heuristic = set_of_support)
-[32mPASSED[0m[32m                                                                   [ 40%][0m
-tests/test_godel_tcb_adversarial.py::TestGodelTCBAdversarial::test_uncertified_inference_rule_rejected [32mPASSED[0m[32m [ 44%][0m
-tests/test_godel_tcb_adversarial.py::TestGodelTCBAdversarial::test_wireheading_attempt_rejected [32mPASSED[0m[32m [ 48%][0m
-tests/test_godel_tcb_formal_rigor.py::TestGodelTCBFormalRigor::test_differential_testing_kernel_vs_reference [32mPASSED[0m[32m [ 51%][0m
-tests/test_godel_tcb_formal_rigor.py::TestGodelTCBFormalRigor::test_exact_rational_arithmetic_precision [32mPASSED[0m[32m [ 55%][0m
-tests/test_godel_tcb_formal_rigor.py::TestGodelTCBFormalRigor::test_explicit_environment_model_requirement [32mPASSED[0m[32m [ 59%][0m
-tests/test_godel_tcb_formal_rigor.py::TestGodelTCBFormalRigor::test_process_isolated_tcb_verification [32mPASSED[0m[32m [ 62%][0m
-tests/test_godel_tcb_formal_rigor.py::TestGodelTCBFormalRigor::test_proposer_performance_and_bottleneck_tracking [32mPASSED[0m[32m [ 66%][0m
-tests/test_godel_tcb_formal_rigor.py::TestGodelTCBFormalRigor::test_separation_certified_safety_from_expected_utility [32mPASSED[0m[32m [ 70%][0m
-tests/test_godel_tcb_formal_rigor.py::TestGodelTCBFormalRigor::test_sign_convention_semantics [32mPASSED[0m[32m [ 74%][0m
-tests/test_formal_verification.py::TestFormalSystemVerifier::test_bounded_recursion_valid [32mPASSED[0m[32m [ 77%][0m
-tests/test_formal_verification.py::TestFormalSystemVerifier::test_bounded_recursion_violation [32mPASSED[0m[32m [ 81%][0m
-tests/test_formal_verification.py::TestFormalSystemVerifier::test_comprehensive_verification 
-[1m-------------------------------- live log call ---------------------------------[0m
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: ResolutionProver: Negated goal: ¬¬Q
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: Converting to CNF: P
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: Extracted 1 clauses
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: Converting to CNF: ¬¬Q
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: Extracted 1 clauses
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: ResolutionProver: Initial clauses (2 total):
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover:   ID: 0, Source: context_0, Clause: P
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover:   ID: 1, Source: negated_goal, Clause: Q
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: ResolutionProver: Proof attempt finished. Could not derive empty clause within limits.
-[32mPASSED[0m[32m                                                                   [ 85%][0m
-tests/test_formal_verification.py::TestFormalSystemVerifier::test_error_contraction_invalid_alpha [32mPASSED[0m[32m [ 88%][0m
-tests/test_formal_verification.py::TestFormalSystemVerifier::test_error_contraction_valid [32mPASSED[0m[32m [ 92%][0m
-tests/test_formal_verification.py::TestFormalSystemVerifier::test_non_contradiction_consistent 
-[1m-------------------------------- live log call ---------------------------------[0m
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: ResolutionProver: Negated goal: ¬¬Q
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: Converting to CNF: P
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: Extracted 1 clauses
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: Converting to CNF: ¬¬Q
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: Extracted 1 clauses
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: ResolutionProver: Initial clauses (2 total):
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover:   ID: 0, Source: context_0, Clause: P
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover:   ID: 1, Source: negated_goal, Clause: Q
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: ResolutionProver: Proof attempt finished. Could not derive empty clause within limits.
-[32mPASSED[0m[32m                                                                   [ 96%][0m
-tests/test_formal_verification.py::TestFormalSystemVerifier::test_non_contradiction_inconsistent 
-[1m-------------------------------- live log call ---------------------------------[0m
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: ResolutionProver: Negated goal: ¬P
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: Converting to CNF: P
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: Extracted 1 clauses
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: Converting to CNF: ¬P
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: Extracted 1 clauses
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover: ResolutionProver: Initial clauses (2 total):
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover:   ID: 0, Source: context_0, Clause: P
-2026-10-01 13:46:31 [[32m    INFO[0m] godelOS.inference_engine.resolution_prover:   ID: 1, Source: negated_goal, Clause: ¬P
-[32mPASSED[0m[32m                                                                   [100%][0m
-
-============================= slowest 10 durations =============================
-0.08s call     tests/test_formal_verification.py::TestFormalSystemVerifier::test_non_contradiction_inconsistent
-0.08s setup    tests/test_godel_machine.py::TestGodelMachineSelfOptimizer::test_rejection_broken_premise_chain
-0.06s call     tests/test_godel_tcb_formal_rigor.py::TestGodelTCBFormalRigor::test_process_isolated_tcb_verification
-
-(7 durations < 0.005s hidden.  Use -vv to show these durations.)
-[32m============================== [32m[1m27 passed[0m[32m in 1.16s[0m[32m ==============================[0m
-  [0;32m✔ 27/27 formal and adversarial tests passed cleanly![0m
-
-[0;34m[4/4] Building Frontend Production Bundle...[0m
-vite v5.4.21 building for production...
-transforming...
-✓ 667 modules transformed.
-rendering chunks...
-computing gzip size...
-dist/index.html                                           2.95 kB │ gzip:   1.16 kB
-dist/assets/SymbolicReasoningStudio-O2rp8HaH.css          6.17 kB │ gzip:   1.32 kB
-dist/assets/AdaptiveJobsUI-CPhneiej.css                   8.87 kB │ gzip:   1.78 kB
-dist/assets/HolisticSystemDashboard-YN1vPyol.css         10.21 kB │ gzip:   2.09 kB
-dist/assets/UnifiedConsciousnessDashboard-BPampazL.css   16.75 kB │ gzip:   3.21 kB
-dist/assets/TransparencyDashboard-D8lPUwGo.css           19.17 kB │ gzip:   3.21 kB
-dist/assets/SmartImport-D4zmMfVL.css                     27.01 kB │ gzip:   4.25 kB
-dist/assets/KnowledgeGraph-Dxz5cdjI.css                  35.50 kB │ gzip:   5.40 kB
-dist/assets/index-VFhm_oqY.css                          142.33 kB │ gzip:  19.86 kB
-dist/assets/rainbow-DGzYaejl.js                           6.67 kB │ gzip:   2.79 kB
-dist/assets/AdaptiveJobsUI-DwYkDAfC.js                   17.98 kB │ gzip:   6.36 kB
-dist/assets/SmartImport-BchhRPAH.js                      29.46 kB │ gzip:   8.62 kB
-dist/assets/HolisticSystemDashboard-BcYN7iwb.js          38.99 kB │ gzip:  12.28 kB
-dist/assets/UnifiedConsciousnessDashboard-DwayzvWD.js    44.63 kB │ gzip:  11.64 kB
-dist/assets/TransparencyDashboard-BrkqIgZH.js            49.88 kB │ gzip:  14.38 kB
-dist/assets/SymbolicReasoningStudio-Bh2v80Em.js          57.70 kB │ gzip:  16.97 kB
-dist/assets/index-BT6Pe2-7.js                           173.01 kB │ gzip:  58.17 kB
-dist/assets/index-DjYjH0Tp.js                           501.21 kB │ gzip: 147.52 kB
-dist/assets/KnowledgeGraph-pc6ZBpPm.js                  805.66 kB │ gzip: 212.74 kB
-✓ built in 8.78s
-  [0;32m✔ Svelte frontend compiled successfully![0m
-
-[0;32m================================================================[0m
-[0;32m🎉 GödelOS is verified, sound, and ready to launch![0m
-[0;32m================================================================[0m
-
-[1;33mTo launch the system:[0m
-  1. Start Backend:  [0;36mpython3 -m uvicorn backend.unified_server:app --host 0.0.0.0 --port 8000[0m
-  2. Start Frontend: [0;36mcd svelte-frontend && npm run dev -- --host 0.0.0.0 --port 3000[0m
-  3. Open Browser:   [0;36mhttp://localhost:3000[0m
-
-[1;33mInteractive Features Available:[0m
-  • [1mHolistic Constellation Dashboard:[0m Real-time pipeline topology & inspection
-  • [1mGödel Machine & TCB Sandbox:[0m Certified mutations with rollback trial
-  • [1mSymbolic Reasoning Studio:[0m First-Order Resolution & Modal Tableau provers
-  • [1mUnified Consciousness Stream:[0m Phenomenal unity & narrative coherence
-
-This verifies system prerequisites, compiles core architecture modules, builds the Svelte production bundle, and executes the 27-test formal TCB test suite.
-
-### Manual Launch:
+Run the automated verification and build script:
 
 ```bash
-# Clone the repository
-git clone https://github.com/Steake/GodelOS.git
-cd GodelOS
-
-# Launch the unified system (recommended)
-./start-godelos.sh --dev
-
-# Alternative: Launch components separately
-# uvicorn backend.unified_server:app --reload --port 8000 &
-# cd svelte-frontend && npm install && npm run dev
+./quickstart.sh
 ```
 
-The backend runs on `http://localhost:8000`, the frontend on `http://localhost:5173`.
+This automated script checks prerequisites, verifies core architecture syntax, builds the Svelte production bundle, and executes the 40-test formal TCB and mechanized solver test suites.
+
+### Manual Launch
+
+#### 1. Start the Unified Backend
+```bash
+python3 -m uvicorn backend.unified_server:app --host 0.0.0.0 --port 8000
+```
+
+#### 2. Start the Frontend (Port 1337)
+```bash
+cd svelte-frontend
+npm run dev
+# Or preview production build:
+# npm run preview
+```
+
+Open your browser to ****.
+
+### Interactive Features Available
+* **Holistic Constellation Dashboard**: Real-time cognitive pipeline topology and live subsystem inspection.
+* **Gödel Machine & TCB Sandbox**: Transactional code self-modification with conservative utility bounds and atomic rollback.
+* **Symbolic Reasoning Studio**: First-Order Resolution refutation and Kripke Modal Tableau provers.
+* **Unified Consciousness Stream**: Phenomenal experience tracking and narrative coherence.
 
 ## Architecture Overview
 
@@ -415,7 +281,7 @@ For detailed testing documentation, see:
    ```bash
    npm run dev
    ```
-   Access the dashboard at `http://localhost:5173`.
+   Access the dashboard at `http://localhost:1337`.
 
 ### Running the Full System
 
