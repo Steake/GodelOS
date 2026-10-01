@@ -65,7 +65,11 @@ files = [
     'godelOS/godel_machine.py',
     'backend/symbolic_service.py',
     'backend/unified_server.py',
-    'godelOS/formal_verification.py'
+    'godelOS/formal_verification.py',
+    'godelOS/solvers/qf_lia_solver.py',
+    'godelOS/solvers/datalog_solver.py',
+    'godelOS/solvers/lyapunov_solver.py',
+    'godelOS/code_synthesizer.py'
 ]
 for f in files:
     py_compile.compile(f, doraise=True)

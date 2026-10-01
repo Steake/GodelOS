@@ -487,4 +487,52 @@ class SymbolicCognitionService:
 
 
 # Global singleton instance
+
+    def execute_godel_code_rewrite(
+        self,
+        mutation_id: str,
+        target_object: Any,
+        target_function_name: str,
+        candidate_source_code: str,
+        test_vectors: List[Tuple[Tuple[Any, ...], Any]],
+        min_task_reward_delta: float = 0.5,
+        upper_bound_cost_delta: float = -1.0,
+        upper_bound_error_delta: float = 0.0
+    ) -> Dict[str, Any]:
+        """
+        Submits candidate AST code self-modification to the TCB.
+        Validates static safety, tests sandboxed test vectors, and executes atomic hot-swap on live target.
+        """
+        from godelOS.godel_machine import godel_machine_optimizer, ConservativeUtilityBounds, to_fraction
+        from godelOS.code_synthesizer import ExecutableCodeContract
+
+        bounds = ConservativeUtilityBounds(
+            min_task_reward_delta=to_fraction(min_task_reward_delta),
+            upper_bound_cost_delta=to_fraction(upper_bound_cost_delta),
+            upper_bound_error_delta=to_fraction(upper_bound_error_delta)
+        )
+        contract = ExecutableCodeContract(
+            mutation_id=mutation_id,
+            target_object=target_object,
+            target_function_name=target_function_name,
+            candidate_source_code=candidate_source_code,
+            test_vectors=test_vectors,
+            utility_bounds=bounds
+        )
+        res = godel_machine_optimizer.verify_and_apply_code_mutation(contract)
+        return {
+            mutation_id: res.mutation_id,
+            verified: res.verified,
+            applied: res.applied,
+            rolled_back: res.rolled_back,
+            rejection_reason: res.rejection_reason,
+            time_taken_ms: round(res.time_taken_ms, 2),
+            certificate: {
+                theorem_proven: res.certificate.theorem_proven if res.certificate else None,
+                formal_utility_lower_bound: res.certificate.formal_utility_lower_bound if res.certificate else 0.0,
+                steps_count: len(res.certificate.derivation_steps) if res.certificate else 0
+            } if res.certificate else None
+        }
+
+
 symbolic_cognition_service = SymbolicCognitionService()

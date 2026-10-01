@@ -4604,6 +4604,39 @@ async def execute_godel_self_rewrite(request: GodelRewriteRequest):
         logger.error(f"Error executing Gödel Machine self-rewrite: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
+class GodelCodeRewriteRequest(BaseModel):
+    mutation_id: str = Field("mut_code_ast_01", description="Unique code mutation identifier")
+    target_function_name: str = Field("score_clause", description="Function name on target")
+    candidate_source_code: str = Field(..., description="Pure Python source code")
+    test_vectors: List[Any] = Field(..., description="List of [args_list, expected_output]")
+    min_task_reward_delta: float = Field(0.5, description="Proven task reward lower bound")
+    upper_bound_cost_delta: float = Field(-1.0, description="Upper bound compute cost delta")
+    upper_bound_error_delta: float = Field(0.0, description="Upper bound error variance delta")
+
+@app.post("/api/v1/godel-machine/verify-and-rewrite-code")
+async def execute_godel_code_rewrite_endpoint(request: GodelCodeRewriteRequest):
+    """Verifies AST code safety, sandboxed execution, and executes atomic hot-swap on live subsystem."""
+    try:
+        from backend.symbolic_service import symbolic_cognition_service
+        # Use resolution prover heuristic as live target object
+        target_obj = symbolic_cognition_service.formal_verifier.resolution_prover
+        formatted_vectors = [(tuple(v[0]), v[1]) for v in request.test_vectors]
+        return symbolic_cognition_service.execute_godel_code_rewrite(
+            mutation_id=request.mutation_id,
+            target_object=target_obj,
+            target_function_name=request.target_function_name,
+            candidate_source_code=request.candidate_source_code,
+            test_vectors=formatted_vectors,
+            min_task_reward_delta=request.min_task_reward_delta,
+            upper_bound_cost_delta=request.upper_bound_cost_delta,
+            upper_bound_error_delta=request.upper_bound_error_delta
+        )
+    except Exception as e:
+        logger.error(f"Error executing Gödel Machine code rewrite: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 # ── Evolution Timeline & Adaptation Telemetry API ────────────────────
 
 @app.get("/api/evolution/timeline")
