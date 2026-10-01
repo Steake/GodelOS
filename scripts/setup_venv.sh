@@ -35,41 +35,57 @@ if [ -z "$PYTHON_EXE" ]; then
 fi
 
 PY_VER=$("$PYTHON_EXE" -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}')")
-PY_MINOR=$("$PYTHON_EXE" -c "import sys; print(sys.version_info.minor)")
+TARGET_PY_MINOR=$("$PYTHON_EXE" -c "import sys; print(sys.version_info.minor)")
+TARGET_PY_MM=$("$PYTHON_EXE" -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
 
 echo "✔ Using Python: $PYTHON_EXE (v$PY_VER)"
 
-if [ "$PY_MINOR" -ge 13 ]; then
+if [ "$TARGET_PY_MINOR" -ge 13 ]; then
     echo "⚠️  Note: Detected Python 3.13+. If you have Python 3.11 or 3.12 installed, using it is recommended for precompiled ML wheels."
 fi
 
-echo "Creating virtual environment in '$VENV_DIR'..."
-"$PYTHON_EXE" -m venv "$VENV_DIR"
+# Self-healing: check if existing venv is broken or built with a different Python version
+if [ -d "$VENV_DIR" ]; then
+    VENV_PY_VER=""
+    if [ -x "$VENV_DIR/bin/python" ]; then
+        VENV_PY_VER=$("$VENV_DIR/bin/python" -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')" 2>/dev/null || echo "")
+    fi
+    
+    # Check if lib/pythonX.Y directory exists and matches
+    if [ "$VENV_PY_VER" != "$TARGET_PY_MM" ] || [ ! -d "$VENV_DIR/lib/python$TARGET_PY_MM" ]; then
+        echo "⚠️ Existing virtual environment in '$VENV_DIR' is corrupted or mismatched ($VENV_PY_VER vs target $TARGET_PY_MM)."
+        echo "🧹 Removing stale virtual environment to ensure clean dependency resolution..."
+        rm -rf "$VENV_DIR"
+    fi
+fi
 
 if [ ! -d "$VENV_DIR" ]; then
+    echo "Creating virtual environment in '$VENV_DIR'..."
+    "$PYTHON_EXE" -m venv "$VENV_DIR"
+fi
+
+if [ ! -d "$VENV_DIR" ] || [ ! -x "$VENV_DIR/bin/python" ]; then
     echo "❌ Failed to create virtual environment in '$VENV_DIR'."
     exit 1
 fi
 
-echo "Activating '$VENV_DIR'..."
-# shellcheck disable=SC1091
-source "$VENV_DIR/bin/activate"
+VENV_PYTHON="$PROJECT_ROOT/$VENV_DIR/bin/python"
 
-echo "Upgrading pip, setuptools, and wheel..."
-pip install --upgrade pip setuptools wheel
+echo "Upgrading pip, setuptools, and wheel in virtual environment..."
+"$VENV_PYTHON" -m pip install --upgrade pip setuptools wheel
 
 echo "Installing project requirements from requirements.txt..."
-pip install -r requirements.txt
+"$VENV_PYTHON" -m pip install -r requirements.txt
 
 if [ -f "backend/requirements.txt" ]; then
     echo "Installing backend requirements from backend/requirements.txt..."
-    pip install -r backend/requirements.txt
+    "$VENV_PYTHON" -m pip install -r backend/requirements.txt
 fi
 
 echo "Verifying core symbolic and backend package imports..."
-python - <<'PY'
+"$VENV_PYTHON" - <<'PY'
 import sys
-core_packages = ['fastapi', 'pydantic', 'networkx']
+core_packages = ['fastapi', 'uvicorn', 'pydantic', 'networkx']
 missing = []
 for p in core_packages:
     try:
@@ -80,7 +96,7 @@ for p in core_packages:
 if missing:
     print(f"❌ Missing required core packages: {', '.join(missing)}")
     sys.exit(1)
-print("✅ Core packages successfully verified in virtual environment!")
+print("✅ Core packages (fastapi, uvicorn, pydantic, networkx) successfully verified in virtual environment!")
 PY
 
 echo ""

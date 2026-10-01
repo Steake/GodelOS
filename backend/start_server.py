@@ -23,6 +23,10 @@ import uvicorn
 from backend.main import app
 # DEPRECATED: from backend.websocket_manager import WebSocketManager
 
+# Ensure log directory exists
+os.makedirs('logs', exist_ok=True)
+os.makedirs('backend/logs', exist_ok=True)
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
