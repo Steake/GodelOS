@@ -83,11 +83,20 @@ class KnowledgeGap:
     confidence: float = 1.0
 
 
+def _get_transparency_engine():
+    """Dynamically get the transparency engine instance if initialized."""
+    try:
+        from . import cognitive_transparency as ct
+        return getattr(ct, "transparency_engine", None)
+    except Exception:
+        return None
+
 async def _safe_transparency_log(log_method_name: str, *args, **kwargs):
     """Safely log to transparency engine if available"""
-    if transparency_engine:
+    engine = _get_transparency_engine()
+    if engine:
         try:
-            log_method = getattr(transparency_engine, log_method_name, None)
+            log_method = getattr(engine, log_method_name, None)
             if log_method:
                 if asyncio.iscoroutinefunction(log_method):
                     await log_method(*args, **kwargs)
@@ -1482,8 +1491,29 @@ class CognitiveManager:
         try:
             from .knowledge_graph_evolution import EvolutionTrigger
             
-            # Convert string trigger to enum
-            trigger_enum = EvolutionTrigger(trigger.lower()) if isinstance(trigger, str) else trigger
+            # Map legacy or synonym trigger names to valid EvolutionTrigger enum members
+            trigger_aliases = {
+                "pattern_discovery": EvolutionTrigger.PATTERN_RECOGNITION,
+                "concept_formation": EvolutionTrigger.EMERGENT_CONCEPT,
+                "relationship_strengthening": EvolutionTrigger.USAGE_FREQUENCY,
+                "memory_consolidation": EvolutionTrigger.LEARNING_FEEDBACK,
+                "insight_generation": EvolutionTrigger.EXPERIENCE_INSIGHTS,
+                "contradiction_resolution": EvolutionTrigger.CONTRADICTION_DETECTION,
+                "knowledge_integration": EvolutionTrigger.NEW_INFORMATION,
+                "learning_reinforcement": EvolutionTrigger.LEARNING_FEEDBACK,
+                "novel_connection": EvolutionTrigger.EMERGENT_CONCEPT,
+                "research_question": EvolutionTrigger.NEW_INFORMATION,
+                "evidence_gathering": EvolutionTrigger.PATTERN_RECOGNITION,
+                "theory_formation": EvolutionTrigger.EMERGENT_CONCEPT,
+            }
+            if isinstance(trigger, str):
+                trigger_clean = trigger.lower().strip()
+                if trigger_clean in trigger_aliases:
+                    trigger_enum = trigger_aliases[trigger_clean]
+                else:
+                    trigger_enum = EvolutionTrigger(trigger_clean)
+            else:
+                trigger_enum = trigger
             
             result = await knowledge_graph_evolution.evolve_knowledge_graph(
                 trigger=trigger_enum,

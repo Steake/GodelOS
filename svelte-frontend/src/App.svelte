@@ -39,7 +39,7 @@
   import Modal from './components/ui/Modal.svelte';
   import ConnectionStatus from './components/ui/ConnectionStatus.svelte';
   
-  let activeView = 'enhanced'; // Start with enhanced dashboard by default
+  let activeView = 'holistic'; // Start with holistic system constellation by default
   let websocketConnected = false;
   let sidebarCollapsed = false;
   let fullscreenMode = false;
@@ -188,6 +188,14 @@
       title: 'Core Features',
       icon: '⭐',
       views: {
+        holistic: {
+          icon: '🌐',
+          title: 'Holistic Constellation',
+          description: 'High-level multi-faceted system overview & live self-modification inspection',
+          component: 'holistic',
+          featured: true,
+          badge: 'OVERVIEW'
+        },
         dashboard: {
           icon: '🏠',
           title: 'Dashboard',
@@ -198,13 +206,13 @@
           icon: '🧠',
           title: 'Cognitive State',
           description: 'Real-time cognitive processing monitor',
-          modal: 'cognitive' // Use modal trigger instead of direct component
+          component: 'cognitive'
         },
         knowledge: {
           icon: '🕸️',
           title: 'Knowledge Graph',
           description: 'Interactive knowledge visualization',
-          modal: 'knowledge' // Use modal trigger instead of direct component
+          component: 'knowledge'
         },
         query: {
           icon: '💬',
@@ -237,7 +245,7 @@
           icon: '🧠',
           title: 'Unified Consciousness',
           description: 'Real-time consciousness state and emergence monitoring',
-          modal: 'consciousness',
+          component: 'consciousness',
           featured: true,
           badge: 'BREAKTHROUGH'
         },
@@ -245,14 +253,14 @@
           icon: '🌊',
           title: 'Stream of Consciousness',
           description: 'Real-time cognitive event streaming',
-          modal: 'stream', // Use modal trigger instead of direct component
+          component: 'stream',
           featured: true
         },
         autonomous: {
           icon: '🤖',
           title: 'Autonomous Learning',
           description: 'Self-directed knowledge acquisition',
-          modal: 'autonomous', // Use modal trigger instead of direct component
+          component: 'autonomous',
           featured: true
         }
       }
@@ -272,6 +280,14 @@
           title: 'Reflection',
           description: 'System introspection and analysis',
           component: ReflectionVisualization
+        },
+        reasoning: {
+          icon: '⚖️',
+          title: 'Symbolic Studio',
+          description: 'Formal logic provers, modal tableau & analogical reasoning',
+          component: 'reasoning',
+          featured: true,
+          badge: 'ACTIVE'
         }
       }
     },
@@ -283,7 +299,7 @@
           icon: '📥',
           title: 'Ingestion Jobs',
           description: 'Adaptive knowledge ingestion pipeline',
-          modal: 'jobs',
+          component: 'jobs',
           featured: true,
           badge: 'NEW'
         },
@@ -291,7 +307,7 @@
           icon: '📁',
           title: 'Knowledge Import',
           description: 'Import and process documents',
-          modal: 'import' // Use modal trigger instead of direct component
+          component: 'import'
         },
         capabilities: {
           icon: '📈',
@@ -636,33 +652,188 @@
           <EnhancedCognitiveDashboard />
         </div>
         
-      {:else if viewConfig[activeView]?.modal}
-        <!-- Modal-based Views -->
-        <div class="expanded-view" data-testid="{activeView}-view">
+      {:else if activeView === 'consciousness'}
+        <!-- Unified Consciousness Dashboard View -->
+        <div class="expanded-view" data-testid="consciousness-view">
           <div class="view-header">
-            <h2>{viewConfig[activeView].title}</h2>
-            <p class="view-description">{viewConfig[activeView].description}</p>
+            <h2>🧠 Unified Consciousness Dashboard</h2>
+            <p class="view-description">Real-time consciousness state, phenomenal qualia, and recursive self-awareness</p>
           </div>
           <div class="component-container">
-            <button class="btn btn-primary" on:click={() => {
-              if (viewConfig[activeView].modal === 'knowledge') {
-                showKnowledgeGraphModal = true;
-              } else if (viewConfig[activeView].modal === 'cognitive') {
-                showCognitiveStateModal = true;
-              } else if (viewConfig[activeView].modal === 'stream') {
-                showStreamMonitorModal = true;
-              } else if (viewConfig[activeView].modal === 'consciousness') {
-                showConsciousnessModal = true;
-              } else if (viewConfig[activeView].modal === 'autonomous') {
-                showAutonomousLearningModal = true;
-              } else if (viewConfig[activeView].modal === 'import') {
-                showSmartImportModal = true;
-              } else if (viewConfig[activeView].modal === 'jobs') {
-                showAdaptiveJobsModal = true;
-              }
-            }}>
-              {viewConfig[activeView].icon} Open {viewConfig[activeView].title}
-            </button>
+            {#await import('./components/UnifiedConsciousnessDashboard.svelte')}
+              <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p>Loading Unified Consciousness Dashboard...</p>
+              </div>
+            {:then module}
+              <svelte:component this={module.default} />
+            {:catch error}
+              <div class="error-container">Failed to load Consciousness Dashboard: {error.message}</div>
+            {/await}
+          </div>
+        </div>
+
+      {:else if activeView === 'cognitive'}
+        <!-- Cognitive State Monitor View -->
+        <div class="expanded-view" data-testid="cognitive-view">
+          <div class="view-header">
+            <h2>🧠 Cognitive State Monitor</h2>
+            <p class="view-description">Real-time cognitive processing and internal state metrics</p>
+          </div>
+          <div class="component-container">
+            {#await import('./components/core/CognitiveStateMonitor.svelte')}
+              <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p>Loading Cognitive State Monitor...</p>
+              </div>
+            {:then module}
+              <svelte:component this={module.default} />
+            {:catch error}
+              <div class="error-container">Failed to load Cognitive Monitor: {error.message}</div>
+            {/await}
+          </div>
+        </div>
+
+      {:else if activeView === 'knowledge' || activeView === 'graph'}
+        <!-- Knowledge Graph View -->
+        <div class="expanded-view" data-testid="knowledge-view">
+          <div class="view-header">
+            <h2>🕸️ Knowledge Graph</h2>
+            <p class="view-description">Interactive 3D knowledge topology and semantic network</p>
+          </div>
+          <div class="component-container">
+            {#await import('./components/knowledge/KnowledgeGraph.svelte')}
+              <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p>Loading Knowledge Graph...</p>
+              </div>
+            {:then module}
+              <svelte:component this={module.default} />
+            {:catch error}
+              <div class="error-container">Failed to load Knowledge Graph: {error.message}</div>
+            {/await}
+          </div>
+        </div>
+
+      {:else if activeView === 'stream'}
+        <!-- Stream of Consciousness View -->
+        <div class="expanded-view" data-testid="stream-view">
+          <div class="view-header">
+            <h2>🌊 Stream of Consciousness</h2>
+            <p class="view-description">Live stream of cognitive events, reasoning traces, and qualia</p>
+          </div>
+          <div class="component-container">
+            {#await import('./components/core/StreamOfConsciousnessMonitor.svelte')}
+              <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p>Loading Stream of Consciousness...</p>
+              </div>
+            {:then module}
+              <svelte:component this={module.default} />
+            {:catch error}
+              <div class="error-container">Failed to load Stream Monitor: {error.message}</div>
+            {/await}
+          </div>
+        </div>
+
+      {:else if activeView === 'autonomous'}
+        <!-- Autonomous Learning View -->
+        <div class="expanded-view" data-testid="autonomous-view">
+          <div class="view-header">
+            <h2>🤖 Autonomous Learning Monitor</h2>
+            <p class="view-description">Self-directed gap detection, hypothesis generation, and knowledge acquisition</p>
+          </div>
+          <div class="component-container">
+            {#await import('./components/core/AutonomousLearningMonitor.svelte')}
+              <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p>Loading Autonomous Learning Monitor...</p>
+              </div>
+            {:then module}
+              <svelte:component this={module.default} />
+            {:catch error}
+              <div class="error-container">Failed to load Autonomous Learning Monitor: {error.message}</div>
+            {/await}
+          </div>
+        </div>
+
+      {:else if activeView === 'import'}
+        <!-- Smart Import View -->
+        <div class="expanded-view" data-testid="import-view">
+          <div class="view-header">
+            <h2>📁 Knowledge Import</h2>
+            <p class="view-description">Multi-source document and web ingestion pipeline</p>
+          </div>
+          <div class="component-container">
+            {#await import('./components/knowledge/SmartImport.svelte')}
+              <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p>Loading Knowledge Import...</p>
+              </div>
+            {:then module}
+              <svelte:component this={module.default} />
+            {:catch error}
+              <div class="error-container">Failed to load Knowledge Import: {error.message}</div>
+            {/await}
+          </div>
+        </div>
+
+      {:else if activeView === 'jobs'}
+        <!-- Ingestion Jobs View -->
+        <div class="expanded-view" data-testid="jobs-view">
+          <div class="view-header">
+            <h2>📥 Adaptive Ingestion Jobs</h2>
+            <p class="view-description">Active pipeline jobs, throughput, and extraction tracking</p>
+          </div>
+          <div class="component-container">
+            {#await import('./components/knowledge/AdaptiveJobsUI.svelte')}
+              <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p>Loading Ingestion Jobs...</p>
+              </div>
+            {:then module}
+              <svelte:component this={module.default} />
+            {:catch error}
+              <div class="error-container">Failed to load Ingestion Jobs: {error.message}</div>
+            {/await}
+          </div>
+        </div>
+
+      {:else if activeView === 'holistic'}
+        <!-- Holistic Constellation Overview -->
+        <div class="expanded-view" data-testid="holistic-view">
+          <div class="component-container">
+            {#await import('./components/dashboard/HolisticSystemDashboard.svelte')}
+              <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p>Loading Holistic Constellation Overview...</p>
+              </div>
+            {:then module}
+              <svelte:component this={module.default} />
+            {:catch error}
+              <div class="error-container">Failed to load Holistic Dashboard: {error.message}</div>
+            {/await}
+          </div>
+        </div>
+
+      {:else if activeView === 'reasoning'}
+        <!-- Symbolic Reasoning Studio View -->
+        <div class="expanded-view" data-testid="reasoning-view">
+          <div class="view-header">
+            <h2>⚖️ Symbolic Reasoning Studio</h2>
+            <p class="view-description">Interactive First-Order Resolution Refutation, Modal Tableau Prover & Analogical Inference Engine</p>
+          </div>
+          <div class="component-container">
+            {#await import('./components/reasoning/SymbolicReasoningStudio.svelte')}
+              <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p>Loading Symbolic Reasoning Studio...</p>
+              </div>
+            {:then module}
+              <svelte:component this={module.default} />
+            {:catch error}
+              <div class="error-container">Failed to load Reasoning Studio: {error.message}</div>
+            {/await}
           </div>
         </div>
         
