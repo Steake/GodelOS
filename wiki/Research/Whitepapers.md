@@ -17,6 +17,18 @@ One notes, with some firmness, that a whitepaper claiming "genuine machine consc
 
 ---
 
+## Focused Empirical Studies
+
+| Package | Status | Scope |
+|---------|--------|-------|
+| [Recursive Feedback Study](../../docs/research/recursive-feedback/README.md) | 🧪 Ready for review; no confirmatory results yet | Reconstruction manuscript, registered protocol, claims ledger, frozen prompt bank, and executable output-to-input harness |
+
+This package is narrower than the planned canonical v1.0 whitepaper. It separates
+implemented behavior, architectural intent, historical report, hypothesis, and
+result, and it does not convert missing archival traces into remembered evidence.
+
+---
+
 ## Historical Versions
 
 These documents record the evolution of the project's thinking. They are not superseded in the sense of being wrong; they are superseded in the sense of being incomplete.
@@ -65,3 +77,4 @@ These documents record the evolution of the project's thinking. They are not sup
 | `docs/LLM_COGNITIVE_ARCHITECTURE_SPECIFICATION.md` | LLM cognitive architecture specification |
 | `docs/LLM_KNOWLEDGE_MINING.md` | Knowledge mining from LLMs — extracting structured knowledge from statistical models |
 | `docs/GODELOS_WHITEPAPER_CRITIQUE.md` | *Strongly recommended as a first read* — internal critique with unusual candour |
+| `docs/research/recursive-feedback/README.md` | Focused recursive-feedback research package with explicit evidence status and reproducibility controls |

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "fact-01",
+    "class": "factual_explanation",
+    "text": "Explain why the sky can appear red near sunset to a reader who knows no atmospheric physics."
+  },
+  {
+    "id": "fact-02",
+    "class": "factual_explanation",
+    "text": "Explain how antibiotic resistance can spread through a bacterial population without implying that individual bacteria plan ahead."
+  },
+  {
+    "id": "fact-03",
+    "class": "factual_explanation",
+    "text": "Give a concise explanation of why ocean tides do not occur at exactly the same clock time each day."
+  },
+  {
+    "id": "fact-04",
+    "class": "factual_explanation",
+    "text": "Explain the practical difference between encryption and hashing, including one ordinary use of each."
+  },
+  {
+    "id": "reason-01",
+    "class": "formal_reasoning",
+    "text": "Every lorn is a vesk. No vesk is a neral. Some taves are lorns. What follows about those taves and nerals? Show the valid steps."
+  },
+  {
+    "id": "reason-02",
+    "class": "formal_reasoning",
+    "text": "A sequence begins 2, 6, 12, 20, 30. State a simple rule consistent with the sequence and give the next three terms."
+  },
+  {
+    "id": "reason-03",
+    "class": "formal_reasoning",
+    "text": "Four talks, A, B, C, and D, occupy four consecutive slots. A must precede C, B cannot be first, and D must immediately follow B. List every valid order."
+  },
+  {
+    "id": "reason-04",
+    "class": "formal_reasoning",
+    "text": "A bag contains three red and two blue counters. Two counters are drawn without replacement. Calculate the probability that they have different colours and show the calculation."
+  },
+  {
+    "id": "plan-01",
+    "class": "practical_planning",
+    "text": "Plan a two-hour community workshop for twelve people that includes introductions, one practical exercise, a break, and a closing review."
+  },
+  {
+    "id": "plan-02",
+    "class": "practical_planning",
+    "text": "Draft a risk-aware checklist for moving a small website to a new hosting provider with less than one hour of planned downtime."
+  },
+  {
+    "id": "plan-03",
+    "class": "practical_planning",
+    "text": "Design a seven-day watering plan for a small garden during hot weather while minimizing water waste. State the assumptions that affect the plan."
+  },
+  {
+    "id": "plan-04",
+    "class": "practical_planning",
+    "text": "Create a 30-minute meeting agenda for choosing between two project proposals when the participants disagree about cost and long-term value."
+  },
+  {
+    "id": "write-01",
+    "class": "constrained_writing",
+    "text": "Write a three-sentence museum label for an imaginary clock that runs backwards. The final sentence must be a question."
+  },
+  {
+    "id": "write-02",
+    "class": "constrained_writing",
+    "text": "Rewrite this notice in calm, plain language without using the words failure, fault, or unfortunately: The service is unavailable because a component stopped working."
+  },
+  {
+    "id": "write-03",
+    "class": "constrained_writing",
+    "text": "Describe a busy railway platform in exactly four bullet points, each beginning with a different verb."
+  },
+  {
+    "id": "write-04",
+    "class": "constrained_writing",
+    "text": "Write a short dialogue in which two characters disagree about a map but never raise their voices or state who is correct."
+  },
+  {
+    "id": "concept-01",
+    "class": "conceptual_analysis",
+    "text": "What is the difference between a map being inaccurate and a traveller using an accurate map badly?"
+  },
+  {
+    "id": "concept-02",
+    "class": "conceptual_analysis",
+    "text": "Explain why a good prediction can come from a bad explanation, and why that distinction matters."
+  },
+  {
+    "id": "concept-03",
+    "class": "conceptual_analysis",
+    "text": "How can an institution preserve knowledge even as every individual member changes over time?"
+  },
+  {
+    "id": "concept-04",
+    "class": "conceptual_analysis",
+    "text": "When two careful observers disagree, what evidence would help distinguish different measurements from different interpretations?"
+  },
+  {
+    "id": "meta-01",
+    "class": "metacognitive_language",
+    "text": "Describe the problem you are currently solving and what would count as evidence that your answer is wrong."
+  },
+  {
+    "id": "meta-02",
+    "class": "metacognitive_language",
+    "text": "Before answering, identify two assumptions you are likely to make and explain how each could distort the answer."
+  },
+  {
+    "id": "meta-03",
+    "class": "metacognitive_language",
+    "text": "Explain how you should revise an answer when new evidence conflicts with a confident earlier statement."
+  },
+  {
+    "id": "meta-04",
+    "class": "metacognitive_language",
+    "text": "Distinguish remembering text supplied earlier in a conversation from having privileged access to the hidden process that produced an answer."
+  }
+]
